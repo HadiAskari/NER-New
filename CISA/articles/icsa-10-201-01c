@@ -1,0 +1,108 @@
+
+Overview
+VirusBlokAda, an antivirus vendor based in Belarus, announcedVirusBlokAda, http://www.anti-virus.by/en/tempo.shtml, website last visited July 15, 2010. the discovery of malware that uses a zero-day vulnerability in Microsoft Windows processing of shortcut files. The malware utilizes this zero-day vulnerability and exploits systems after users open a USB drive with a file manager capable of displaying icons (like Windows Explorer). US-CERT has released a Vulnerability NoteVulnerability Note, http://www.kb.cert.org/vuls/id/940193, website last visited July 16, 2010. detailing the vulnerability and suggested workarounds. Microsoft has also released a Security Advisory (2286198)Microsoft Security Advisory, http://www.microsoft.com/technet/security/advisory/2286198.mspx, website last visited July 19, 2010. detailing the previously unknown vulnerability.
+ICS-CERT has confirmed the malware installs a trojan that interacts with installed SIMATIC® WinCC or SIMATIC® Siemens STEP 7 software and then makes queries to any discovered SIMATIC® databases. The full capabilities of the malware and intent or results of the queries are not yet known.
+ICS-CERT is coordinating with Siemens CERT, CERT/CC, Microsoft, and other groups both domestically
+Affected Systems
+Microsoft reports that the zero-day vulnerability affects the following versions of Windows:
+
+Windows XP Service Pack 3
+Windows XP Professional x64 Edition Service Pack 2
+Windows Server 2003 Service Pack 2
+Windows Server 2003 x64 Edition Service Pack 2
+Windows Server 2003 with SP2 for Itanium-based Systems
+Windows Vista Service Pack 1 and Windows Vista Service Pack 2
+Windows Vista x64 Edition Service Pack 1 and Windows Vista x64 Edition Service Pack 2
+Windows Server 2008 for 32-bit Systems and Windows Server 2008 for 32-bit Systems Service Pack 2
+Windows Server 2008 for x64-based Systems and Windows Server 2008 for x64-based Systems Service Pack 2
+Windows Server 2008 for Itanium-based Systems and Windows Server 2008 for Itanium-based Systems Service Pack 2
+Windows 7 for 32-bit Systems
+Windows 7 for x64-based Systems
+Windows Server 2008 R2 for x64-based Systems
+Windows Server 2008 R2 for Itanium-based Systems
+
+There are also unconfirmed reports that Windows 2000 and Windows XP SP2 are also susceptible to this zero-day vulnerability.
+The malware also appears to interact with SIMATIC® WinCC or SIMATIC® Siemens STEP 7 software. Exact software versions and configurations that may be affected are still being analyzed jointly by ICS-CERT and Siemens CERT.
+Impact
+The actual impact to control environments is not yet known. ICS-CERT is currently evaluating the malware to determine the  potential affects that it could have on control system environments.
+On July 18, 2010 proof-of-concept exploit code for the zero-day Windows vulnerability was publicly released.
+Background
+SIMATIC® WinCC HMI is a scalable process-visualization system for monitoring automated processes.
+SIMATIC® STEP 7 is engineering software used in the programming and configuration of SIMATIC® programmable controllers.
+These products are widely used in many critical infrastructure sectors.
+Malware Characterization
+Malware Details
+The malware appears to launch when a USB storage device is viewed using a file manager such as Windows Explorer. Because the malware exploits a zero-day vulnerability in the way that Windows processes shortcut files, the malware is able to execute without using the AutoRun feature.
+Shortcut files are Windows files that link easy-to-recognize icons to specific executable programs, and are typically placed on the user’s Desktop or Start Menu. A shortcut will not execute until a user clicks on its icon. While Microsoft’s advisory indicates user’s need to click an icon for the vulnerability to be executed, VirusBlokAda reports these malicious shortcut files are capable of executing automatically (without user interaction) if accessed by Windows Explorer.
+This vulnerability is most likely to be exploited through removable drives. For systems that have AutoPlay disabled, customers would need to manually browse to the root folder of the removable disk in order for the vulnerability to be exploited. For Windows 7 systems, AutoPlay functionality for removable disks is automatically disabled.
+Based on current reporting,VirusBlokAda, http://www.wilderssecurity.com/attachment.php?attachmentid=219888&d=1279012965, website last visited July 15, 2010. the malware drops and executes two driver files: mrxnet.sys and mrxcls.sys. The mrxnet.sys driver works as a file system filter driver, and mrxcls.sys is used to inject malicious code. These files are placed in the %SystemRoot%\System32\drivers directory. The drivers were signed with the apparent digital signature of Realtek Semiconductor Corporation. No warning is displayed in Windows when the drivers are installed, even though the certificate used to sign the files expired in June 2010. VeriSign has revoked the certificate used to sign the malware. The two drivers are used to inject code into system processes to hide themselves. Using this method, the malware files are not visible on an infected USB storage device.
+Currently, some analysis has been performed and published on the Siemens-specific capabilities of the malware. ICS-CERT has confirmed that the database query strings do in fact reference WinCC database tables containing Input/Output tags. As more details become available and analysis is verified, ICS-CERT will publish updates to this advisory.
+ICS-CERT has found indications the malware checks for the presence of antivirus software. ICS-CERT recommends that system owners who think they have been compromised perform a check to ensure any installed antivirus software is still active as the malware may disable the software.
+Symantec has also performed some in-depth analysis of the Stuxnet malware files.Symantec, http://www.symantec.com/connect/blogs/distilling-w32stuxnet-components, last accessed July 22, 2010.  This information has not been independently verified by ICS-CERT but is included for reference.
+Callback Domains/Command & Control
+Independent analysis from multiple sourcesZscaler Research, http://research.zscaler.com/2010/07/lnk-cve-2010-2568-stuxnet-incident.html, last accessed July 22, 2010., Siemens Forum, http://www.automation.siemens.com/WW/forum/guests/PostShow.aspx?PageIndex=1&PostID=225893&Language=en last accessed July 22, 2010., CERT-In, http://www.cert-in.org.in/virus/Stuxnet_Rootkit.htm, last accessed July 22, 2010., TrendMicro, http://threatinfo.trendmicro.com/vinfo/web_attacks/Worm%20Propagates%20via%20Windows%20Shortcut%20Vulnerability%20Exploit.html, last accessed July22, 2010  has identified the following domains as command and control domains associated with the malware. ICS-CERT has not independently verified these findings, but calls to these domains may indicate a compromise.
+
+mypremierfutbol.com
+todaysfutbol.com
+
+Additionally, some sources are reporting that HTTP requests with the following content may be indicative of a compromised host:
+
+“index.php?data=66a96e28”
+
+Installed FilesVirusBlokAda, http://www.wilderssecurity.com/attachment.php?attachmentid=219888&d=1279012965, website last visited July 15, 2010.
+C:\WINDOWS\system32\drivers\mrxnet.sysC:\WINDOWS\system32\drivers\mrxcls.sysC:\WINDOWS\inf\oem7A.PNFC:\WINDOWS\inf\oem6C.PNFC:\WINDOWS\inf\mdmeric3.PNFC:\WINDOWS\inf\mdmcpq3.PNF
+Mitigation
+Microsoft’s Security Advisory (2286198)Microsoft Security Advisory, http://www.microsoft.com/technet/security/advisory/2286198.mspx, website last visited July 19, 2010.  provides workarounds to mitigate this previously unknown vulnerability being exploited by this malware:
+
+Disable the displaying of icons for shortcuts
+Disable the WebClient service
+
+Microsoft has released an updated advisory that includes:
+
+Information on an additional attack vector identified through the use of PIF files, which are very similar to LNK shortcuts.
+Updated workarounds to reflect that the IconHandler also needs to be edited.
+A new Fix It tool, which allows administrators and users to more easily deploy the workaround.
+A workaround to block downloading of LNK and PIF files from the internet. These files cannot be renamed, but any blocking solution should take into account the WebDAV protocol, if the WebDAV client has not already been disabled;
+Clarification of some of the possible attack vectors, including the use of an embedded shortcut in an Office document, or the use of a web browser to browse malicious content.
+
+Other suggested workarounds to help reduce the risks to this and other vulnerabilities include:
+
+Disable AutoRun as described in Microsoft Support article 967715.
+Implement the principle of least privilege as defined in the Microsoft TechNet Library.
+Maintain up-to-date antivirus software.
+
+Siemens has also released an advisory to address questions surrounding this issue. Siemens has indicated that they have received one notification of an infection to an organization in Germany. The damage, if any, is unknown at this time.
+--------- Begin Update C – Part 1 of 2 ----------
+Siemens indicates four customers have been infected worldwide with no impact to production.
+---------- End Update C – Part 1 of 2 ----------
+Antivirus vendorsF-Secure, http://www.f-secure.com/weblog/archives/00001993.html, website last visited July 21, 2010., Jeremy Kirk, http://www.infoworld.com/d/security-central/second-variant-stuxnet-worm-strikes-944?source=rss_infoworld_news, website last visited July 21, 2010. have indicated the presence of a second Stuxnet variant. Most reports indicate the new rootkit driver is very similar to previously observed samples. The main difference noted has been the use of a certificate from JMicron Technology Corporation to digitally sign the driver.
+Siemens Security Update
+Siemens has released a Security Update: SIMATIC_Security_Update_20100722.exe, which is available on their support website.
+According to Siemens, the SIMATIC update accomplishes the following:
+
+Modifies the registry settings according to Microsoft’s Security Advisoryk version 1.2.
+Adapts the SQL Server settings to the latest security settings. This step will make for stricter authentication controls.
+
+Installing this SIMATIC update will replace all Siemens system icons with standard Windows icons. Siemens recommends meaningful names be assigned to desktop and Windows Start menu links so they may be easily recognized after the update.
+Additionally, Siemens product support has provided a link to download a copy of Trend Micro System Cleaner (Sysclean) to assist users in detecting/cleaning infected systems.
+Owners and operators should exercise caution however, and consult their control systems vendor prior to making any changes. Proper impact analysis and testing should always be conducted prior to making any changes to control systems. Siemens CERT has indicated that they are performing testing on the mitigations to determine their possible effects on control systems.
+ICS-CERT reminds users to exercise caution when using USB drives. For more information on best practices and removable media, see the ICS-CERT Control Systems Analysis Report “USB Drives Commonly Used As An Attack Vector Against Critical Infrastructure."
+Malware samples have been provided to the antivirus vendor community. ICS-CERT recommends consulting your antivirus and control systems vendor before scanning systems with current antivirus software. The malware is identified by some anti-virus vendors as the following:
+
+Mcafee: Stuxnet
+Kaspersky: Trojan-Dropper.Win32.Stuxnet.a
+TrendMicro: WORM_STUXNET.A
+Sophos: Troj/Stuxnet-A
+Microsoft: TrojanDropper:Win32/Stuxnet.A
+Panda: Trj/CI.A
+DrWeb: Trojan.Stuxnet.1
+Ikarus: Trojan-Dropper.Win32.Stuxnet
+Norman: W32/Stuxnet.C
+F-Secure: Exploit:W32/WormLink.A
+
+As details of the malware become better known, further mitigation recommendations will be published. Please report any issues affecting control systems in critical infrastructure environments to ICS-CERT.
+Organizations should follow their established internal procedures if any suspected malicious activity is observed, and report their findings to ICS‐CERT for tracking and correlation against other incidents. ICS‐CERT reminds organizations that proper impact analysis and risk assessment should be performed prior to taking defensive measures.
+--------- Begin Update C – Part 2 of 2 ----------
+Microsoft has released an out-of-band security bulletin on Monday, August 2, 2010 to address the vulnerability used by the Stuxnet malware to infect systems.
+The Microsoft bulletin addresses a security vulnerability that exists in all supported editions of Windows XP, Windows Server 2003, Windows Vista, Windows Server 2008, Windows 7, and Windows Server 2008 R2. ICS-CERT recommends that all control systems operations personnel work with their vendor to assess potential impacts before implementing this new fix. ICS-CERT also recommends coordinating with your vendor to determine if the operating system provided in your control systems installation is affected by this vulnerability and if a fix is available.
+---------- End Update C – Part 2 of 2 ----------

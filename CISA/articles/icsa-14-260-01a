@@ -1,0 +1,70 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-260-01 Yokogawa CENTUM and Exaopc Vulnerability that was published September 17, 2014, on the NCCIC/ICS-CERT web site.
+Tod Beardsley of Rapid7 Inc. and Jim Denaro of CipherLaw have identified an authentication vulnerability and released proof-of-concept (exploit) code for the Yokogawa CENTUM CS 3000 series and Exaopc products. JPCERT and Yokogawa have mitigated this vulnerability.
+This vulnerability could be exploited remotely. Exploits that target this vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+The following Yokogawa CENTUM 3000 versions are affected:
+--------- Begin Update A Part 1 of 2 --------
+
+CENTUM series with the Batch Management Packages installed
+
+
+CENTUM CS 3000 (R3.09.50 or earlier),
+CENTUM CS 3000 Entry Class (R3.09.50 or earlier),
+CENTUM VP (R4.03.00 or earlier, R5.04.00 or earlier), and
+CENTUM VP Entry Class (R4.03.00 or earlier, R5.04.00 or earlier).
+
+--------- End Update A Part 1 of 2 ----------
+The following Yokogawa Exaopc version is affected:
+
+Exaopc (R3.72.10 or earlier).
+
+IMPACT
+Successful exploitation of this vulnerability could allow an attacker to allow arbitrary files to be read and written.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Yokogawa is a company based in Japan that maintains offices in several countries around the world, including North and Central America, South America, Europe, the Middle East, Africa, South Asia, and East Asia.
+The affected products, CENTUM CS 3000, are Windows-based control systems. According to Yokogawa, these products are deployed across several sectors, including Critical Manufacturing, Energy, Food and Agriculture, and others. Yokogawa estimates that there are 7,600 systems worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER AUTHENTICATIONCWE-287: Improper Authentication, http://cwe.mitre.org/data/definitions/287.html, web site last accessed September 17, 2014.
+
+CENTUM’s BKBCopyD.exe service is started if the Batch Management Packages are installed and listens by default on Port 20111/TCP. There is a no authentication, which makes it possible to abuse several operations provided by the service in order to:
+
+Leak the CENTUM project database location
+Read arbitrary files
+Write arbitrary files.
+
+This vulnerability is different than CVE-2014-0784, which was reported earlier in March 2014.
+CVE-2014-5208NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5208, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory.  has been assigned to this vulnerability. Yokogawa has scored this vulnerability with a CVSS v2 base score of 6.8; the CVSS v2 vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:P/E:F/RL:OF/RC:F, web site last accessed September 17, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+--------- Begin Update A Part 2 of 2 --------
+Yokogawa has provided patch software for the vulnerable latest revision of Exaopc and all the CENTUM systems. Please contact Yokogawa technical support and services for the details on installation and patch availability questions.
+--------- End Update A Part 2 of 2 ----------
+Yokogawa also suggests all customers introduce appropriate security measures to the overall system, not just for the vulnerability identified.
+For more information, please see Yokogawa Security Advisory Report YSAR-14-0003E, published on September 17, 2014. This report is available at:
+http://www.yokogawa.com/dcs/security/ysar/dcs-ysar-index-en.htm.
+Yokogawa also recommends the following firewall mitigation measures:
+
+Block external data communications from outside of the control system network on Port 20111/TCP
+Allow internal traffic on Port 20111/TCP only for the CENTUM systems installed with Batch Management Packages
+Block the traffic on Port 20111/TCP to Exaopc installations.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

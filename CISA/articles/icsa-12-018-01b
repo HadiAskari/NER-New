@@ -1,0 +1,130 @@
+
+OVERVIEW
+--------- Begin Update B Part 1 of 3 --------
+This updated advisory is a follow-up to the updated advisory titled ICSA-12-018-01A Schneider Electric Quantum Ethernet Module Hard-Coded Credentials that was published on June 04, 2013, on the ICS-CERT Web site. It is also a follow-up to the original alert titled ICS‑ALERT-11-346-01 Schneider Electric Quantum Ethernet Module Credentials that was published December 12, 2011, on the ICS-CERT Web page. This advisory corrects and expands on the details in the specified alert and subsequent advisory updates.
+--------- End Update B Part 1 of 3 --------
+On December 12, 2011, independent security researcher Rubén Santamarta publicly announced information regarding hard-coded credentials in the Schneider Electric Quantum Ethernet Module. The credentials publicized grant access to the Telnet port, Windriver Debug port, and the FTP service. Prior to publication, Mr. Santamarta coordinated these vulnerabilities with ICS‑CERT.
+--------- Begin Update B Part 2 of 3 --------
+ICS-CERT has coordinated with Schneider Electric, and they have produced patches and firmware upgrades for Quantum and other affected products.
+-------- End Update B Part 2 of 3 --------
+AFFECTED PRODUCTS
+The following products and versions are affected:
+Quantum
+
+140NOE77101 Firmware V4.9 and all previous versions,
+140NOE77111 Firmware V5.0 and all previous versions,
+140NOE77100 Firmware V3.4 and all previous versions,
+140NOE77110 Firmware V3.3 and all previous versions,
+140CPU65150 Firmware V3.5 and all previous versions,
+140CPU65160 Firmware V3.5 and all previous versions,
+140CPU65260 Firmware V3.5 and all previous versions,
+140NOC77100 Firmware V1.01 and all previous versions, and
+140NOC77101 Firmware V1.01 and all previous versions.
+
+Any available conformal-coated versions of the above part numbers.
+Premium
+
+TSXETY4103 Firmware V5.0 and all previous versions,
+TSXETY5103 Firmware V5.0 and all previous versions,
+TSXP571634M Firmware V4.9 and all previous versions,
+TSXP572634M Firmware V4.9 and all previous versions,
+TSXP573634M Firmware V4.9 and all previous versions,
+TSXP574634M Firmware V3.5 and all previous versions,
+TSXP575634M Firmware V3.5 and all previous versions,
+TSXP576634M Firmware V3.5 and all previous versions, and
+TSXETC101 Firmware V1.01 and all previous versions.
+
+Any available conformal-coated versions of the above part numbers.
+M340
+
+BMXNOE0100 Firmware V2.3 and all previous versions,
+BMXNOE0110 Firmware V4.65 and all previous versions, and
+BMXNOC0401 Firmware V1.01 and all previous versions.
+
+The following products are affected by the FTP Service vulnerabilities only (not affected by Telnet or Windriver Debug vulnerabilities):
+
+STBNIC2212 Firmware V2.10 and all previous versions,
+STBNIP2311 Firmware V3.01 and all previous versions,
+STBNIP2212 Firmware V2.73 and all previous versions,
+BMXP342020 Firmware V2.2 and all previous versions, and
+BMXP342030 Firmware V2.2 and all previous versions.
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow an attacker to gain elevated privileges, to load a modified firmware, or to perform other malicious activities on the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric is a manufacturer and integrator of energy management and industrial automation systems, equipment, and software. The affected Schneider Electric systems are found primarily in energy, manufacturing, and infrastructure applications. Schneider Electric reports operations in over 100 countries worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HARD-CODED CREDENTIALS
+
+Mr. Santamarta’s report revealed multiple hard-coded credentials that enable access to the following services:
+
+Telnet port—May allow remote attackers the ability to view the operation of the module’s firmware, cause a denial of service, modify the memory of the module, and execute arbitrary code.
+Windriver Debug port—Used for development; may allow remote attackers to view the operation of the module’s firmware, cause a denial of service, modify the memory of the module, and execute arbitrary code.
+FTP service—May allow an attacker to modify the module website, download and run custom firmware, and modify the HTTP passwords.
+
+CVE-2011-4859NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4859, Web site last accessed June 04, 2013. has been assigned to this vulnerability group. A CVSS V2 base score of 10 has also been assigned.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities are remotely exploitable.
+EXISTENCE OF EXPLOIT
+Public exploits are known to target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill level could exploit these vulnerabilities.
+MITIGATION
+--------- Begin Update B Part 3 of 3 --------
+Schneider Electric has created firmware upgrades that resolve the Telnet and Windriver debug port vulnerabilities for all affected products by removing the Telnet and Windriver services from these modules. According to Schneider Electric, removing these services will not affect the capacities/functionalities of the product or impact the performance of customer installations. Telnet and Windriver debug services were installed only for advanced troubleshooting use and were never intended for customer use.
+Schneider Electric has posted firmware upgrades on their Web site, http://www.schneider-electric.com/download/ww/en/results/3541958-SoftwareFirmware/. Users should ensure they are using the minimum versions referenced below:
+Quantum
+
+140NOE77101 Exec V5.01 or greater for Unity Users,
+140NOE77111 Exec V5.11 or greater,
+140NOE77101 Exec. V4.9 or greater for Concept Users,
+140NOE77111 Exec. V5.5 or greater for Concept Users,
+140CPU65150 Exec V3.8 or greater,
+140CPU65160 Exec V3.8 or greater,
+140CPU65260 Exec V3.8 or greater, and
+140NOC77101 Exec V1.03 or greater.
+
+Premium
+
+TSXETY4103 Exec V5.2 or greater,
+TSXETY5103 Exec V5.5 or greater,
+TSXP571634 Exec V5.2 or greater,
+TSXP572634 Exec V5.2 or greater,
+TSXP573634 Exec V5.2 or greater,
+TSXP574634 Exec V3.8 or greater,
+TSXP575634 Exec V3.8 or greater,
+TSXP576634 Exec V3.8 or greater, and
+TSXETC101 Exec V2.01 or greater.
+
+M340
+
+BMXNOE0100 Exec V2.50 or greater,
+BMXNOE0110 Exec v5.3 or greater, and
+BMXNOC0401 Exec V2.01 or greater.
+
+Schneider has also released a firmware upgrade to address the FTP service vulnerability referenced above. It is available on selected Quantum programmable logic controller modules. This upgrade includes a new feature that allows the user to enable or disable both the FTP and HTTP services on the modules. Disabling these services will mitigate the vulnerability mentioned above. The following products support the HTTP and FTP service enable and disable feature:
+
+140NOE77101 Firmware Version 06.00 or greater, and
+140NOE77111 Firmware Version: 06.00 or greater.
+
+--------- End Update B Part 3 of 3 --------
+Organizations need to evaluate the impact of removing these services prior to applying this fix. ICS‑CERT will provide additional information as mitigations become available for other identified vulnerabilities.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.
+In addition, ICS‑CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in e-mail messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/sites/default/files/publications/emailscams_0905.pdf , Web site last accessed June 04, 2013. for more information on avoiding e-mail scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, Web site last accessed June 04, 2013. for more information on social engineering attacks.
+
+

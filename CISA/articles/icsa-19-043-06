@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: CP1604 and CP1616
+Vulnerabilities: Cleartext Transmission of Sensitive Information, Cross-site Scripting, Cross-site Request Forgery
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the updated advisory titled ICSA-19-043-06 Siemens CP1604 and CP1616 that was published February 12, 2019, on the former ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in a denial-of-service condition and information exposure. An attacker could inject arbitrary JavaScript in a specially crafted URL request to execute on unsuspecting user’s systems, allowing an attacker to trigger actions via the web interface that a legitimate user is allowed to perform.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports the following CP products are affected: 
+
+CP 1604 and 1616: All versions prior to v2.8
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+An attacker with network access to Port 23/TCP could extract internal communication data or cause a denial-of-service condition.
+
+CVE-2018-13808 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H).
+4.2.2    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The integrated web server of the affected CP devices could allow cross-site scripting (XSS) attacks if unsuspecting users are tricked into following a malicious link.
+
+CVE-2018-13809 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+4.2.3    CROSS-SITE REQUEST FORGERY CWE-352
+The integrated configuration web server of the affected CP devices could allow a cross-site request forgery (CSRF) attack if an unsuspecting user is tricked into accessing a malicious link.
+
+CVE-2018-13810 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N)
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture,
+	Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+Siemens recommends users update to version 2.8.
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk: 
+
+Disable the integrated web server. The web server is disabled in the default settings and its use is optional. Use in a productive environment is discouraged.
+Restrict access to the device to the internal or VPN network. Further restrict access to the web interface (80/TCP) and to the telnet port (23/TCP) to trusted IP addresses if possible.
+Do not click on links from unknown sources.
+
+--------- Begin Update A Part 1 of 1 ---------
+
+Fixes for CVE-2018-13808 have also been released in versions v2.5.2.7, v2.6.2.2, and v2.7.2.1.
+
+--------- End Update A Part 1 of 1 ---------
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security (https://www.siemens.com/cert/operational-guidelines-industrial-security), and following the recommendations in the product manuals.
+
+Additional information on industrial security by Siemens can be found at: 
+
+https://www.siemens.com/industrialsecurity
+For more information on these vulnerabilities and associated software updates, please see Siemens security advisory SSA-559174 on their website:
+https://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

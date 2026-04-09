@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: e-mesh EMS
+Vulnerabilities: Improper Restriction of Operations Within the Bounds of a Memory Buffer, Use After Free, Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following version of e-mesh EMS, an optimizer software for energy resources, is affected:
+
+e-mesh EMS Version 1.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+A vulnerability exists in a specific Node.js function, which could allow various kinds of memory corruption and cause a denial-of-service condition.
+CVE-2020-8174 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    USE AFTER FREE CWE-416
+The affected product version of Node.js is vulnerable to a Use After Free bug in its TLS implementation. This could cause corruption of memory leading to a denial-of-service condition.
+CVE-2020-8265 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The affected product version of Node.js is vulnerable to an error in the HTTP/2 session frame, which is limited to 32 settings by default. An attacker could consume all available CPU resources causing a denial-of-service condition.
+CVE-2020-11080 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The affected product version of Node.js is affected by too many connection attempts with an unknown protocol. This could allow an attacker to cause a denial-of-service condition.
+CVE-2021-22883 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends users update to e-mesh EMS 1.0.1 or later.
+Hitachi Energy recommends the following security practices and firewall configurations to help protect process control networks from attacks that originate from outside the network:
+
+Physically protect process control systems from direct access by unauthorized personnel.
+Do not directly connect to the Internet.
+Separate from other networks by means of a firewall system that has a minimal number of ports exposed.
+Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+
+Please see Hitachi Energy advisory 8DBD000077 for additional mitigation and updated information.
+For additional information and access to updated firmware, please contact the Hitachi Energy service organization.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

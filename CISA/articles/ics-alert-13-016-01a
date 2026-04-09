@@ -1,0 +1,76 @@
+
+
+Description
+
+This Alert Update is a follow-up to the original ICS-ALERT-13-016-01—Schneider Electric Product Vulnerabilities that was published January 16, 2013, on the ICS-CERT Web page.
+Summary
+This Alert Update is a follow-up to the original ICS-CERT Alert titled ICS-ALERT-13-016-01—Schneider Electric Vulnerabilities that was published January 16, 2013, on the ICS-CERT Web page.
+--------- Begin Update A Part 1 of 2 --------
+Two of the vulnerabilities initially reported have been determined not to be valid.
+
+The observed resource exhaustion issue affecting the M340 PLC family is caused by documented resource limits in the communications module. In Schneider Electric’s testing on the reported issue, the module does in fact stop communicating when the connection limit is exceeded, but the PLC continues its control functions and its operation is unaffected. After the connection limit is exceeded, the communications module performs a soft reset. An attacker could not remotely exploit this vulnerability to deny PLC control functions. 
+The Magelis XBT HMI panels have a security mode where password is required to enable remote configuration uploads. After this mode is initially enabled, a factory default password is provided. Once the user supplies a new password, the factory default password is no longer valid.
+
+--------- End Update A Part 1 of 2----------
+ICS-CERT is aware of a public report concerning vulnerabilities in multiple Schneider Electric products. These vulnerabilities were released by Arthur Gervais at the Digital Bond SCADA Security Scientific Symposium (S4) conference. ICS-CERT notified the affected vendor of the report and asked the vendor to confirm the vulnerabilities and identify mitigations. ICSCERT is issuing this alert to provide early notice of the report and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+The report included vulnerability details and proof-of-concept exploit code for the following vulnerabilities:
+
+
+
+Product
+Vulnerability Type
+Remotely Exploitable
+Impact
+
+
+BMX NOE 0110
+Unauthenticated SOAP/HTTP interface
+Yes
+Remote code execution
+
+
+Modicon M340
+TCP connection resource exhaustion
+Yes
+Denial of Service
+
+
+Magelis XBT
+HMI 6001/TCP hard coded credentials
+Yes
+Loss of integrity
+
+
+Modicon M340
+Cross Site Request Forgery
+Yes
+Unauthorized access
+
+
+
+--------- Begin Update A Part 2 of 2 --------
+The Modicon M340 TCP connection resource exhaustion and Magelis XBT HMI 6001/TCP hard coded credentials vulnerabilities were determined not to be vulnerabilities.
+--------- End Update A Part 2 of 2 --------
+Please report any issues affecting control systems in critical infrastructure environments to ICS-CERT.
+Follow-Up
+ICS-CERT released a follow-up advisory, ICSA-13-077-01 Schneider Electric PLCs Vulnerabilities, to the ICS-CERT web page on March 18, 2013.
+
+
+Mitigations
+
+Mitigation
+ICS-CERT is currently coordinating with the vendor and security researcher to identify mitigations.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Turn off or restrict FTP service when operationally possible.
+Minimize network exposure for all control system devices. Control system devices should not directly face the Internet.a
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+f remote access is required, employ secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT also provides a recommended practices section for control systems on the US-CERT Web site. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+
+
+a. ICS-CERT ALERT, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-10-301-01, Web site last accessed March 05, 2013.
+

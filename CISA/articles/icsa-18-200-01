@@ -1,0 +1,56 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit.
+Vendor: AVEVA Software, LLC (AVEVA)
+Equipment: InduSoft Web Studio and InTouch Machine Edition
+Vulnerabilities: Stack-based buffer overflow
+
+2. RISK EVALUATION
+The listed products are vulnerable only if the TCP/IP Server Task is enabled. A remote attacker could send a carefully crafted packet during a tag, alarm, or event related action such as read and write, which may allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of InduSoft Web Studio and InTouch Machine Edition, an HMI, are affected:
+
+InduSoft Web Studio v8.1 and v8.1SP1, and
+InTouch Machine Edition v2017 8.1 and v2017 8.1 SP1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+A remote user could send a carefully crafted packet to exploit a stack-based buffer overflow vulnerability during tag, alarm, or event related actions such as read and write, with potential for code to be executed. 
+CVE-2018-10620 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy, Transportation Systems, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+3.4 RESEARCHER
+Tenable Research reported this vulnerability to AVEVA and AVEVA reported it to NCCIC.
+4. MITIGATIONS
+Users of InduSoft Web Studio v8.1 SP1 are affected and should apply InduSoft Web Studio Hotfix 81.1.00.08 as soon as possible. Users of InduSoft Web Studio v8.1 are also affected and should first upgrade to InduSoft Web Studio v8.1 SP1 and then apply the hotfix. 
+Users of InTouch Machine Edition 2017 v8.1 SP1 are affected and should apply InTouch Machine Edition Hotfix 81.1.00.08 as soon as possible. Users of InTouch Machine Edition 2017 v8.1 are also affected and should first upgrade to InTouch Machine Edition 2017 v8.1 SP1 and then apply the hotfix. 
+Software security updates:
+
+http://www.indusoft.com/File-Management?Command=Core_Download&EntryId=2074
+https://softwaresupportsp.schneider-electric.com/#/producthub/details?id=5063 (login required)
+
+To identify which version of InduSoft Web Studio or InTouch Machine Edition you have installed:
+
+Windows Desktop or Server operating system: Navigate to Windows Programs and Features, locate the “InduSoft Web Studio” or “InTouch Machine Edition” entries to review the displayed installed version.
+On a Windows Embedded operating system: navigate to the Bin folder in the installation location of InduSoft Web Studio or InTouch Machine Edition and open the file “CEView.ini”. The installed version can be observed from the “version=*.*.*” attribute within the file.
+
+AVEVA’s security bulletin LFSEC00000128 is available at the following location:
+https://sw.aveva.com/hubfs/assets-2018/pdf/security-bulletin/SecurityBulletin_LFSec128(002).pdf 
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

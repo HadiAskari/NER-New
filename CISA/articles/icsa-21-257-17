@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Desigo CC Family
+Vulnerability: Deserialization of Untrusted Data
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to perform remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens danger management station products are affected:
+
+Cerberus DMS v4.0: All versions
+Cerberus DMS v4.1: All versions
+Cerberus DMS v4.2: All versions
+Cerberus DMS v5.0: All versions prior to v5.0 QU1
+Desigo CC Compact v4.0: All versions
+Desigo CC Compact v4.1: All versions
+Desigo CC Compact v4.2: All versions
+Desigo CC Compact v5.0: All versions prior to v5.0 QU1
+Desigo CC v4.0: All versions
+Desigo CC v4.1: All versions
+Desigo CC v4.2: All versions
+Desigo CC v5.0: All versions prior to v5.0 QU1
+	 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+The application deserializes untrusted data without sufficient validations, which could result in an arbitrary deserialization. This could allow an unauthenticated attacker to execute code in the affected system. The CCOM communication component used for Windows App / Click-Once and IE Web /XBAP client connectivity are affected by this vulnerability.
+CVE-2021-37181 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Government Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Markus Wulftange from Code White GmbH reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens recommends applying updates where applicable to the following products:
+
+Cerberus DMS v4.0: Apply Patch 1520637
+Cerberus DMS v4.1: Apply Patch 1417968
+Cerberus DMS v4.2: Update to v4.2 QU1 and Apply Patch 1417967
+Cerberus DMS v5.0: Update to v5.0 QU1 or later version
+Desigo CC Compact v4.0: Apply Patch 1520637
+Desigo CC Compact v4.1: Apply Patch 1417968
+Desigo CC Compact v4.2: Apply Patch Update to v4.2 QU1 and Apply Patch 1417967
+Desigo CC Compact v5.0: Update to v5.0 QU1 or later version
+Desigo CC v4.0: Apply Patch 1520637
+Desigo CC v4.1: Apply Patch 1417968
+Desigo CC v4.2: Update to v4.2 QU1 and Apply Patch 1417967
+Desigo CC v5.0: Update to v5.0 QU1 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+If a user is using a software version equal or older than v3.x, no patches will be released. Siemens recommends upgrading to v5.0 QU1 (or any newer version that will be released in the future). 
+If a patch or Quality Update is not feasible, and if the user can stop the use of Windows App and IE XBAP Web Client, then disable the Web Application and Web Client from SMC. As a result of this disabling, Windows App and IE XBAP Web Client will stop working and the vulnerability will not be exploitable.
+If users are unable to apply the above two mitigations, restrict Desigo CC to dedicated local networks, disabling Internet access by blocking the CCOM Port for inbound and outbound communication. This will allow the use of Windows App and IE XBAP Client within a defined network space, such as local network only. This action requires approval from the user as it will not remove the vulnerability but reduce the exposure. The vulnerability can be exploited in case the attacker can access the protected network first.
+
+As a general security measure, Siemens strongly recommends protecting network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.
+For additional information, please refer to Siemens Security Advisory SSA-453715
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

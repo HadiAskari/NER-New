@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: MicroSCADA Pro/X SYS600
+Vulnerability: Improper Input Validation, Improper Privilege Management, Improper Access Control, Improper Handling of Unexpected Data Type.
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could cause SYS600 fail to start or an unauthorized actor to run scripts, and could cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reports this vulnerability affects the following SCADA products used for monitoring and controlling power systems: 
+
+SYS600 10.3.1 and earlier
+SYS600 9.4 FP2 Hotfix 4 and earlier versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1     IMPROPER INPUT VALIDATION CWE-20
+A vulnerability exists during the start of SYS600, where an input validation flaw causes a buffer-overflow while reading a specific configuration file. Subsequently, SYS600 could fail to start. Administrator access is required for accessing the configuration file.
+CVE-2022-1778 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2     IMPROPER INPUT VALIDATION CWE-20
+A vulnerability exists in the ICCP stack due to a validation flaw in the process establishing the ICCP communication. The validation flaw could cause a denial-of-service condition when ICCP of SYS600 is requested to forward any data item updates with timestamps too distant in the future to any remote ICCP system. By default, ICCP is not configured and not enabled.
+CVE-2022-2277 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+A vulnerability exists in the Workplace X WebUI, in which an authenticated user could execute any MicroSCADA internal scripts irrespective of the authenticated user's role.
+CVE-2022-29490 has been assigned to this vulnerability. A CVSS v3 base score of 8.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.4    IMPROPER ACCESS CONTROL CWE-284
+A vulnerability exists in the handling of a malformed IEC 104 TCP packet. Upon receiving a malformed IEC 104 TCP packet, the malformed packet is dropped, however the TCP connection is left open; this may cause a denial-of-service condition.
+CVE-2022-29492 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.5    IMPROPER HANDLING OF UNEXPECTED DATA TYPE CWE-241
+A vulnerability exists in the handling of a specially crafted IEC 61850 packet with a valid data item but with incorrect data type in the IEC 61850 OPC Server. The vulnerability may cause a denial-of-service condition on the IEC 61850 OPC Server component of the SYS600.
+CVE-2022-29922 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy notified CISA that these devices were affected.
+4. MITIGATIONS
+Hitachi Energy recommends customers apply updates at the earliest convenience:
+
+For SYS600 9.x upgrade to at least SYS600 version 10.4.
+For SYS600 10.x update to at least SYS600 version 10.4.
+Do not enable ICCP if it is not used.
+
+Hitachi Energy recommends following 1MRK511518 MicroSCADA X Cyber Security Deployment Guideline
+For additional information and support users should contact Hitachi Energy.
+Hitachi Energy recommends the following security practices and firewall configurations to help protect process control networks from attacks originating from outside the network: 
+
+Physically protect process control systems from unauthorized direct access.
+Separate process control systems from the internet and other networks using a firewall system with minimal open ports.
+Process control systems should not be used for internet surfing, instant messaging, or email.
+Portable computers and removable storage media should be carefully scanned for viruses before connecting to a control system.
+
+For more information, see Hitachi Energy advisory 8DBD000106
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is exploitable remotely. This vulnerability has a low attack complexity.
+ 

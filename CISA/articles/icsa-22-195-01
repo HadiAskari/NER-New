@@ -1,0 +1,89 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE X Switch Devices
+Vulnerabilities: Use of Insufficiently Random Values, Classic Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to reboot, cause denial-of-service conditions, or impact the system by other means through a buffer overflow.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SCALANCE X Switch Devices, industrial ethernet switches, are affected:
+
+SCALANCE X200-4P IRT (6GK5200-4AH00-2BA3): All versions
+SCALANCE X200-4P IRT (6GK5200-4AH10-2BA3): All versions
+SCALANCE X201-3P IRT (6GK5201-3BH00-2BA3): All versions
+SCALANCE X201-3P IRT (6GK5201-3BH10-2BA3): All versions
+SCALANCE X201-3P IRT PRO (6GK5201-3BH00-2BD2): All versions
+SCALANCE X201-3P IRT PRO (6GK5201-3JR10-2BA6): All versions
+SCALANCE X202-2IRT (6GK5202-2BB00-2BA3): All versions
+SCALANCE X202-2IRT (6GK5202-2BB10-2BA3): All versions
+SCALANCE X202-2P IRT (6GK5202-2BH00-2BA3): All versions
+SCALANCE X202-2P IRT (6GK5202-2BH10-2BA3): All versions
+SCALANCE X202-2P IRT PRO (6GK5202-2JR00-2BA6): All versions
+SCALANCE X202-2P IRT PRO (6GK5202-2JR10-2BA6): All versions
+SCALANCE X204-2 (6GK5204-2BB10-2AA3): All versions prior to v5.2.6
+SCALANCE X204-2FM (6GK5204-2BB11-2AA3): All versions prior to v5.2.6
+SCALANCE X204-2LD (6GK5204-2BC10-2AA3): All versions prior to v5.2.6
+SCALANCE X204-2LD TS (6GK5204-2BC10-2CA2): All versions prior to v5.2.6
+SCALANCE X204-2TS (6GK5204-2BB10-2CA2): All versions prior to v5.2.6
+SCALANCE X204IRT (6GK5204-0BA00-2BA3): All versions
+SCALANCE X204IRT (6GK5204-0BA10-2BA3): All versions
+SCALANCE X204IRT PRO (6GK5204-0JA00-2BA6): All versions
+SCALANCE X204IRT PRO (6GK5204-0JA10-2BA6): All versions
+SCALANCE X206-1 (6GK5206-1BB10-2AA3): All versions prior to v5.2.6
+SCALANCE X206-1LD (6GK5206-1BC10-2AA3): All versions prior to v5.2.6
+SCALANCE X208 (6GK5208-0BA10-2AA3): All versions prior to v5.2.6
+SCALANCE X208PRO (6GK5208-0HA10-2AA6): All versions prior to v5.2.6
+SCALANCE X212-2 (6GK5212-2BB00-2AA3): All versions prior to v5.2.6
+SCALANCE X212-2LD (6GK5212-2BC00-2AA3): All versions prior to v5.2.6
+SCALANCE X216 (6GK5216-0BA00-2AA3): All versions prior to v5.2.6
+SCALANCE X224 (6GK5224-0BA00-2AA3): All versions prior to v5.2.6
+SCALANCE XF201-3P IRT (6GK5201-3JR00-2BA6): All versions
+SCALANCE XF202-2P IRT (6GK5202-2BH00-2BD2): All versions
+SCALANCE XF204 (6GK5204-0BA00-2AF2): All versions prior to v5.2.6
+SCALANCE XF204-2 (6GK5204-2BC00-2AF2): All versions prior to v5.2.6
+SCALANCE XF204-2BA IRT (6GK5204-2AA00-2BD2): All versions
+SCALANCE XF204IRT (6GK5204-0BA00-2BF2): All versions
+SCALANCE XF204IRT (6GK5204-0BA10-2BF2): All versions
+SCALANCE XF206-1 (6GK5206-1BC00-2AF2): All versions prior to v5.2.6
+SCALANCE XF208 (6GK5208-0BA00-2AF2): All versions prior to v5.2.6
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+The webserver of affected devices calculates session IDs and nonces in an insecure manner. This could allow an unauthenticated remote attacker to brute force session IDs and hijack existing sessions.
+CVE-2022-26647 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+Affected devices do not properly validate the GET parameter XNo of incoming HTTP requests. This could allow an unauthenticated remote attacker to crash affected devices.
+CVE-2022-26648 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:H)
+3.2.3    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+Affected devices do not properly validate the URI of incoming HTTP GET requests. This could allow an unauthenticated remote attacker to crash affected devices.
+CVE-2022-26649 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+•    CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+•    COUNTRIES/AREAS DEPLOYED: Worldwide
+•    COMPANY HEADQUARTERS LOCATION: Germany
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends updating to the latest version of its software if available:
+
+The products listed are only affected up to v5.2.6. Update to v5.2.6 or later
+
+Siemens has identified the following specific workarounds and mitigations that customers can implement to reduce exploitation risk:
+
+Restrict access to the affected systems, especially on port 80/TCP and port 443/TCP, to trusted IP addresses
+Deactivate the webserver if not required and if deactivation is supported by the product
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ Operational Guidelines for Industrial Security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-310038.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

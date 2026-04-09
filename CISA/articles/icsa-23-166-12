@@ -1,0 +1,135 @@
+
+​​As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+​CVSS v3 9.8
+​ATTENTION: Exploitable remotely / low attack complexity
+​Vendor: Siemens
+​Equipment: SINAMICS MV (medium voltage) products
+​Vulnerabilities: Out-of-bounds Write, Out-of-bounds Read, Use After Free, Improper Authentication, OS Command Injection, Improper Certificate Validation, Improper Resource Shutdown or Release, Allocation of Resources Without Limits or Throttling, Incorrect Default Permissions, Improper Validation of Syntactic Correctness of Input, Improper Input Validation
+
+2. RISK EVALUATION
+​Successful exploitation of these vulnerabilities could lead to information leaks, denial of service, code execution, or grant access to an external user.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+​Siemens reports that the following SINAMICS MV (medium voltage) products integrate the SCALANCE S615 device which contains these vulnerabilities:
+
+​SINAMICS GL150: all versions produced between Oct 2021 and May 2023 with the C68 option.
+​SINAMICS PERFECT HARMONY GH180 6SR5: all versions produced between Oct 2021 and May 2023 with installed SCALANCE S615 device.
+​SINAMICS SL150: all versions produced between Oct 2021 and May 2023 with the C68 option.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 ​OUT-OF-BOUNDS WRITE CWE-787
+​Zlib before 1.2.12 allows memory corruption when deflating (i.e., when compressing) if the input has many distant matches.
+​CVE-2018-25032 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2 ​OUT-OF-BOUNDS READ CWE-125
+​An out-of-bounds heap read in Busybox's unlzma applet leads to information leak and denial of service when crafted LZMA-compressed input is decompressed. This can be triggered by any applet/format that internally supports LZMA compression.
+​CVE-2021-42374 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:H).
+3.2.3 ​USE AFTER FREE CWE-416
+​Use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_i function.
+​CVE-2021-42378 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 USE AFTER FREE CWE-416
+​Use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the next_input_file function.
+​CVE-2021-42379 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.5 ​USE AFTER FREE CWE-416
+​Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the clrvar function.
+​CVE-2021-42380 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.6 ​USE AFTER FREE CWE-416
+​Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the hash_init function.
+​CVE-2021-42381 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.7 USE AFTER FREE CWE-416
+​Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_s function.
+​CVE-2021-42382 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.8 ​USE AFTER FREE CWE-416
+​Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the evaluate function.
+​CVE-2021-42383 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.9 USE AFTER FREE CWE-416
+​Use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the handle_special function.
+​CVE-2021-42384 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.10 ​USE AFTER FREE CWE-416
+​Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the evaluate function.
+​CVE-2021-42385 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.11 ​USE AFTER FREE CWE-416
+​Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the nvalloc function.
+​CVE-2021-42386 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.12 ​IMPROPER AUTHENTICATION CWE-287 
+​OpenVPN 2.1 until v2.4.12 and v2.5.6 may enable authentication bypass in external authentication plug-ins when more than one of them makes use of deferred authentication replies, which allows an external user to be granted access with only partially correct credentials.
+​CVE-2022-0547 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.13 USE AFTER FREE CWE-416
+​A flaw was found in the Linux kernel. This flaw allows an attacker to crash the Linux kernel by simulating amateur radio from the user space, resulting in a null-ptr-deref vulnerability and a use-after-free vulnerability.
+​CVE-2022-1199 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.14 ​IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+​The c_rehash script does not properly sanitize shell metacharacters to prevent command injection.
+​CVE-2022-1292 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.15 IMPROPER CERTIFICATE VALIDATION CWE-295
+​Under certain circumstances, the command line OCSP verify function reports successful verification when the verification in fact failed. In this case the incorrect successful response will also be accompanied by error messages showing the failure and contradicting the apparently successful result.
+​CVE-2022-1343 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.2.16 ​IMPROPER RESOURCE SHUTDOWN OR RELEASE CWE-404
+​The used OpenSSL version improperly reuses memory when decoding certificates or keys. This can lead to a process termination and denial of service for long lived processes.
+​CVE-2022-1473 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.17 USE AFTER FREE CWE-416
+​valid.c in libxml2 before 2.9.13 has a use-after-free of ID and IDREF attributes.
+​CVE-2022-23308 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.18 ​ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+​A malicious server can serve excessive amounts of "Set-Cookie:" headers in a HTTP response to curl and curl < 7.84.0 stores all of them. A sufficiently large amount of (big) cookies makes subsequent HTTP requests to this, or other servers to which the cookies match, create requests that become larger than the threshold that curl uses internally to avoid sending crazy large requests (1048576 bytes) and instead returns an error. This denial state might remain for as long as the same cookies are kept, match and haven't expired. Due to cookie matching rules, a server on "foo.example.com" can set cookies that also would match for "bar.example.com", making it possible for a "sister server" to effectively cause a denial of service for a sibling site on the same second level domain using this method.
+​CVE-2022-32205 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L).
+3.2.19 ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+​Curl < 7.84.0 supports "chained" HTTP compression algorithms, meaning that a server response can be compressed multiple times and potentially with different algorithms. The number of acceptable "links" in this "decompression chain" was unbounded, allowing a malicious server to insert a virtually unlimited number of compression steps. The use of such a decompression chain could result in a "malloc bomb", making curl end up spending enormous amounts of allocated heap memory, or trying to and returning out of memory errors.
+​CVE-2022-32206 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+3.2.20 ​INCORRECT DEFAULT PERMISSIONS CWE-276
+​When curl < 7.84.0 saves cookies, alt-svc and hsts data to local files, it makes the operation atomic by finalizing the operation with a rename from a temporary name to the final target file name. In that rename operation, it might accidentally *widen* the permissions for the target file, leaving the updated file accessible to more users than intended.
+​CVE-2022-32207 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.21 OUT-OF-BOUNDS WRITE CWE-787
+​When curl < 7.84.0 does FTP transfers secured by krb5, it handles message verification failures wrongly. This flaw makes it possible for a man-in-the-middle attack to go unnoticed and even allows it to inject data to the client.
+​CVE-2022-32208 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.22 ​IMPROPER VALIDATION OF SYNTACTIC CORRECTNESS OF INPUT CWE-1286
+​When curl is used to retrieve and parse cookies from a HTTP(S) server, it accepts cookies using control codes that when later are sent back to a HTTP server might make the server return 400 responses. Effectively allowing a "sister site" to deny service to all siblings.
+​CVE-2022-35252 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.23 ​IMPROPER INPUT VALIDATION CWE-20
+​nfqnl_mangle in net/netfilter/nfnetlink_queue.c in the Linux kernel through 5.18.14 allows remote attackers to cause a denial of service (panic) because, in the case of an nf_queue verdict with a one-byte nfta_payload attribute, an skb_pull can encounter a negative skb->len.
+​CVE-2022-36946 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+
+​CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Water and Wastewater Systems
+
+
+​COUNTRIES/AREAS DEPLOYED: Worldwide
+
+
+​COMPANY HEADQUARTERS LOCATION: Germany
+
+
+3.4 RESEARCHER
+​Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+​Siemens recommends updating the firmware of the integrated SCALANCE S615 device to the latest version. Siemens recommends specific countermeasures for products where the firmware update is not, or not yet applied:
+
+​Update the firmware of the integrated SCALANCE S615 device to V7.2 or later version.
+
+​Siemens has identified the following specific workarounds and mitigations that customers can apply to reduce the risk:
+
+​Restrict physical access to the affected drives, also to their Ethernet Port included on the front of the control door.
+​Disconnect any direct network connection to the integrated SCALANCE S615 device.
+
+​As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for industrial security, and to follow the recommendations in the product manuals. Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+​For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories 
+​As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+​Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+​For more information see the associated Siemens security advisory SSA-942865 in HTML and CSAF.
+​ 
+​CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+​CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+​Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+​Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+​No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.

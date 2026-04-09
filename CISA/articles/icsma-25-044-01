@@ -1,0 +1,59 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 7.2
+ATTENTION: Low attack complexity
+Vendor: Qardio
+Equipment: Heart Health IOS application, Heart Health Android Application, QardioARM A100
+Vulnerabilities: Exposure of Private Personal Information to an Unauthorized Actor, Uncaught Exception, Files or Directories Accessible to External Parties
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain sensitive information, cause a denial-of-service condition, and obtain firmware files.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Qardio products are affected:
+
+Qardio Heart Health IOS Mobile Application: Version 2.7.4
+Qardio Heart Health Android Mobile Application: Version 2.5.1
+QardioARM A100: All versions
+
+3.2 VULNERABILITY OVEERVIEW
+3.2.1 EXPOSURE OF PRIVATE PERSONAL INFORMATION TO AN UNAUTHORIZED ACTOR CWE-359
+The Qardio Arm iOS application exposes sensitive data such as usernames and passwords in a plist file. This allows an attacker to log in to production-level development accounts and access an engineering backdoor in the application. The engineering backdoor allows the attacker to send hex-based commands over a UI-based terminal.
+CVE-2025-20615 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.2 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L).
+A CVSS v4 score has also been calculated for CVE-2025-20615. A base score of 6.9 has been calculated; the CVSS vector string is (AV:P/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N).
+3.2.2 UNCAUGHT EXCEPTION CWE-248
+With a specially crafted Python script, an attacker could send continuous startMeasurement commands over an unencrypted Bluetooth connection to the affected device. This would prevent the device from connecting to a clinician's app to take patient readings and ostensibly flood it with requests, resulting in a denial-of-service condition.
+CVE-2025-24836 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.1 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2025-24836. A base score of 7.2 has been calculated; the CVSS vector string is (AV:A/AC:L/AT:N/PR:N/UI:N/VC:L/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 FILES OR DIRECTORIES ACCESSIBLE TO EXTERNAL PARTIES CWE-552
+An attacker could obtain firmware files and reverse engineer their intended use leading to loss of confidentiality and integrity of the hardware devices enabled by the Qardio iOS and Android applications.
+CVE-2025-23421 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.4 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L).
+A CVSS v4 score has also been calculated for CVE-2025-23421. A base score of 6.9 has been calculated; the CVSS vector string is (AV:P/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Bryan Riggins of Insulet Corporation reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Qardio has not responded to requests to work with CISA to mitigate these vulnerabilities. Users of these affected products are invited to contact Qardio customer support for additional information.
+Users should do the following to help mitigate the risk:
+
+Disable Bluetooth when not in use.
+Don't use this device in public or within Bluetooth range of malicious actors.
+Only use trusted mobile apps from trusted providers.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities is are not exploitable remotely.
+5. UPDATE HISTORY
+
+February 13, 2025: Initial Publication
+

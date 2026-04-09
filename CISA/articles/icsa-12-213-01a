@@ -1,0 +1,69 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-12-213-01 - Sielco Sistemi Winlog Multiple Vulnerabilities that was published July 31, 2012, on the NCCIC/ICS-CERT web site. The updated advisory matches new CVE identifiers up with other publicly available vulnerability disclosuresSecunia Advisory SA49395, http://secunia.com/community/advisories/49395, web site last accessed March 18, 2014. and databases.OSVDB, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3815, web site last accessed March 18, 2014.
+Researchers Carlos Mario Penagos Hollmann of IOActive, Michael Messner, and Luigi Auriemma have separately identified multiple vulnerabilities in Sielco Sistemi’s Winlog application. Sielco Sistemi has produced a new release that corrects all identified vulnerabilities. Mr. Hollmann and Mr. Auriemma have tested the release to validate that it resolves the vulnerabilities.
+These vulnerabilities can be remotely exploited. Exploit code is publicly available for these vulnerabilities.
+AFFECTED PRODUCTS
+The following Sielco Sistemi products are affected.
+
+Winlog Pro SCADA, all versions prior to 2.07.18
+Winlog Lite SCADA, all versions prior to 2.07.18.
+
+IMPACT
+Successful exploitation of these vulnerabilities could lead to a program crash, information leakage, or arbitrary code execution.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Sielco Sistemi is an Italy-based company that creates supervisory control and data acquisition (SCADA)/human-machine interface (HMI) software and hardware products.
+Winlog Lite SCADA is a demo version of the Winlog Pro SCADA/HMI system. According to Sielco Sistemi, Winlog Pro SCADA is deployed across several sectors including manufacturing, public utilities, telecommunications, and others. Sielco Sistemi products are deployed mainly in Italy, Turkey, Canada, USA, Indonesia, and Spain.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+FAILURE TO CONSTRAIN OPERATIONS WITH THE BOUNDS OF A MEMORY BUFFERCWE-119: Failure to Constrain Operations within the Bounds of a Memory Buffer,  http://cwe.mitre.org/data/definitions/119.html, web site last accessed July 31, 2012.
+
+By sending malicious specially crafted packets to Port 46824/TCP, an attacker can overflow a memory buffer on the target system. Errors in RunTime.exe and TCPIPS_Story.dll can be exploited by these packets to cause the buffer overflow. The packets can also cause a boundary error in RunTime.exe causing the buffer overflow. This can allow the attacker to cause a denial-of-service condition leading to a crash or possible execution of arbitrary code.
+CVE-2012-3815NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3815 , web site last accessed July 31, 2012. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed March 18, 2014.
+
+IMPROPER ACCESS CONTROLCWE-284: Improper Access Control,  http://cwe.mitre.org/data/definitions/284.html, web site last accessed July 31, 2012.
+
+Unauthorized users can access and read files on the system that Winlog is running by causing an input validation error. An attacker can send a malicious specially formed packet to Port 46824/TCP to allow unauthorized access to the system, which may lead to information leakage.
+--------- Begin Update A Part 1 of 3 --------
+CVE-2012-4353NVD: CVE-2012-4353, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4353, web site last accessed March 18, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed March 18, 2014.
+--------- End Update A Part 1 of 3 ----------
+
+IMPROPER ACCESS OF INDEXABLE RESOURCECWE-118: Improper Access of Indexable Resource,  http://cwe.mitre.org/data/definitions/118.html, web site last accessed July 31, 2012.
+
+By sending malicious specially crafted packets that point outside of the defined array, an attacker can cause a crash of the system. By using 32-bit operation coding, a file pointer outside the array can be used to execute arbitrary code and cause a denial-of-service condition leading to a crash.
+--------- Begin Update A Part 2 of 3 --------
+CVE-2012-4354NVD: CVE-2012-4354, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4354, web site last accessed March 18, 2014. and CVE-2012-4355NVD: CVE-2012-4355, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4355, web site last accessed March 18, 2014. have been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed March 18, 2014.
+
+DIRECTORY TRAVERSALCWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'),  http://cwe.mitre.org/data/definitions/22.html, web site last accessed March 18, 2014.
+
+An input validation error when processing certain requests can be exploited to disclose arbitrary files via directory traversal sequences sent in a specially crafted packet to TCP Port 46824.
+CVE-2012-4356NVD: CVE-2012-4356, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4356, web site last accessed March 18, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:N, web site last accessed July 31, 2012.
+--------- End Update A Part 2 of 3 ----------
+
+WRITE-WHAT-WHERE CONDITIONCWE-123: Write-what-where Condition,  http://cwe.mitre.org/data/definitions/123.html, web site last accessed July 31, 2012.
+
+By sending a malicious specifically formed packet, unauthorized attackers are able to write outside of the existing buffer allocation. The error when allocating when processing these malicious packets can be exploited to reference an invalid memory location. This exploit could cause a crash of the system.
+--------- Begin Update A Part 3 of 3 --------
+CVE-2012-4358NVD: CVE-2012-4358, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4358, web site last accessed March 18, 2014. and CVE-2012-4359NVD: CVE-2012-4359, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4359, web site last accessed March 18, 2014. have been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed March 18, 2014.
+--------- End Update A Part 3 of 3 ----------
+Some of the preceding vulnerability details were obtained from a Secunia Advisory SA49395.Secunia Advisory SA49395, http://secunia.com/advisories/49395, web site last accessed July 31, 2012.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities can be remotely exploited.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low-skill level would be able to exploit these vulnerabilities.
+MITIGATION
+Sielco Sistemi has created an update to fix these vulnerabilities. This update, Winlog Pro SCADA and Winlog Lite SCADA Version 2.07.18, is available for customer download at the following location:   http://www.sielcosistemi.com/en/news/index.html?id=70
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

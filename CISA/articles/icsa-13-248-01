@@ -1,0 +1,49 @@
+
+OVERVIEW
+Lucas Apa and Carlos Mario Penagos Hollman, security researchers with IOActive, have identified a weak pseudo-random number generator (PRNG) seed in the ProSoft Technology RadioLinx ControlScape application software. ProSoft Technology has produced a new firmware patch that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following ProSoft Technology RadioLinx ControlScape versions are affected:
+
+RadioLinx ControlScape, versions prior to version FH v6.00.040
+
+IMPACT
+The researchers have identified a vulnerability within the implementation of the PRNG that generates the passphrase. This vulnerability could allow an attacker to forecast automatically generated passwords, thus aiding in brute-force attacks.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+ProSoft Technology is a US-based company with headquarters located in Bakersfield, California. Business offices are located worldwide in Europe, the Americas, and Asia.
+The affected product, ProSoft Technology RadioLinx ControlScape, is used for radio frequency communication with field-based automation controllers—primarily Rockwell Automation and Schneider Electric. The device provides connectivity between dissimilar systems over the Ethernet.
+According to ProSoft Technology, RadioLinx ControlScape software is deployed worldwide across several sectors including oil and gas, water and wastewater, and electric utilities.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+USE OF CRYPTOGRAPHICALLY WEAK PRNGCWE-338: Use of Cryptographically Weak PRNG, http://cwe.mitre.org/data/definitions/338.html, Web site last accessed September 05, 2013.
+
+This product uses standard C Run-Time libraries srand and rand calls to seed and generate passphrases. By using the same seed, an attacker could predict default values built into the software, leaving the system vulnerable to expedited brute-force passphrase/password attacks. Custom passphrases are less vulnerable to this type of attack.
+CVE-2013-2803NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2803, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, Web site last visited September 05, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+ProSoft Technology has released a new firmware patch, v6.00.040, which is available from the ProSoft Technology download page:
+
+http://www.prosoft-technology.com/SERVICES-SUPPORT/Downloads.
+
+Click on the ProSoft Software tab, then click on the ControlScape tab, and then click on the ControlScape FH v6.00.040 link to download the new firmware patch.
+ProSoft has the following additional recommendations:
+
+Changing the default ‘seed’ passphrase will greatly increase the entropy of passphrase generation process.
+
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed September 05, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed September 05, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

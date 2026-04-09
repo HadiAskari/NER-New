@@ -1,0 +1,94 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Siemens 
+Equipment: Industrial Products 
+Vulnerabilities: Use After Free, Deadlock, Allocation of Resources Without Limits or Throttling 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to cause a denial-of-service condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following software from Siemens is affected: 
+
+SIMATIC CP 1242-7 V2 (6GK7242-7KX31-0XE0): All versions 
+SIMATIC CP 1243-1 (6GK7243-1BX30-0XE0): All versions 
+SIMATIC CP 1243-1 DNP3 (incl. SIPLUS variants): All versions 
+SIMATIC CP 1243-1 IEC (incl. SIPLUS variants): All versions 
+SIMATIC CP 1243-7 LTE EU (6GK7243-7KX30-0XE0): All versions 
+SIMATIC CP 1243-7 LTE US (6GK7243-7SX30-0XE0): All versions 
+SIMATIC CP 1243-8 IRC (6GK7243-8RX30-0XE0): All versions 
+SIMATIC CP 1542SP-1 (6GK7542-6UX00-0XE0): All versions 
+SIMATIC CP 1542SP-1 IRC (6GK7542-6VX00-0XE0): All versions 
+SIMATIC CP 1543SP-1 (6GK7543-6WX00-0XE0): All versions 
+SIMATIC CP 443-1 (6GK7443-1EX30-0XE0): All versions prior to V3.3 
+SIMATIC CP 443-1 (6GK7443-1EX30-0XE1): All versions prior to V3.3 
+SIMATIC CP 443-1 Advanced (6GK7443-1GX30-0XE0): All versions prior to V3.3 
+SIMATIC IPC DiagBase: All versions 
+SIMATIC IPC DiagMonitor: All versions 
+SIPLUS ET 200SP CP 1542SP-1 IRC TX RAIL (6AG2542-6VX00-4XE0): All versions 
+SIPLUS ET 200SP CP 1543SP-1 ISEC (6AG1543-6WX00-7XE0): All versions 
+SIPLUS ET 200SP CP 1543SP-1 ISEC TX RAIL (6AG2543-6WX00-4XE0): All versions 
+SIPLUS NET CP 1242-7 V2 (6AG1242-7KX31-7XE0): All versions 
+SIPLUS NET CP 443-1 (6AG1443-1EX30-4XE0): All versions prior to V3.3 
+SIPLUS NET CP 443-1 Advanced (6AG1443-1GX30-4XE0): All versions prior to V3.3 
+SIPLUS S7-1200 CP 1243-1 (6AG1243-1BX30-2AX0): All versions 
+SIPLUS S7-1200 CP 1243-1 RAIL (6AG2243-1BX30-1XE0): All versions 
+SIPLUS TIM 1531 IRC (6AG1543-1MX00-7XE0): All versions prior to V2.3.6 
+TIM 1531 IRC (6GK7543-1MX00-0XE0): All versions prior to V2.3.6 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 USE AFTER FREE CWE-416 
+The webserver of the affected products contains a vulnerability that may lead to a denial-of-service condition. An attacker could cause a denial-of-service condition, which would lead to a restart of the webserver of the affected product. 
+CVE-2022-43716 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.2 DEADLOCK CWE-833 
+The webserver of the affected products contains a vulnerability that could lead to a denial-of-service condition. An attacker could cause a denial-of-service condition of the webserver of the affected product. 
+CVE-2022-43767 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.3 ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770 
+The webserver of the affected products contains a vulnerability that may lead to a denial-of-service condition. An attacker could cause a denial-of-service condition of the webserver of the affected product. 
+CVE-2022-43768 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Siemens has released updates for several affected products and recommends updating to the latest versions. Siemens is preparing further updates and recommends specific countermeasures for products where updates are not, or not yet, available: 
+
+SIMATIC CP 443-1 (6GK7443-1EX30-0XE0): Update to V3.3 or later version 
+SIMATIC CP 443-1 (6GK7443-1EX30-0XE1): Update to V3.3 or later version 
+SIMATIC CP 443-1 Advanced (6GK7443-1GX30-0XE0): Update to V3.3 or later version 
+SIPLUS TIM 1531 IRC (6AG1543-1MX00-7XE0): Update to V2.3.6 or later version 
+TIM 1531 IRC (6GK7543-1MX00-0XE0): Update to V2.3.6 or later version 
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk: 
+
+Restrict access to the web interface of the affected products—if deactivation unsupported by the product. 
+Deactivate the webserver if not required and if deactivation is supported by the product. 
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' Operational Guidelines for Industrial Security and to follow the recommendations in the product manuals. Additional information on Industrial Security by Siemens can be found on the Siemens webpage for Industrial Security. 
+For further inquiries on security vulnerabilities in Siemens’ products and solutions, users should contact the Siemens ProductCERT. 
+For more information, see the associated Siemens security advisory SSA-566905 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+No known public exploits specifically target these vulnerabilities.  

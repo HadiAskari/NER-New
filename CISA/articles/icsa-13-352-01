@@ -1,0 +1,84 @@
+
+OVERVIEW
+Adam Crain of Automatak and independent researcher Chris Sistrunk have identified an improper input validation vulnerability in the NovaTech Orion Substation Automation Platform. NovaTech has produced a firmware update that mitigates this vulnerability. The researchers have tested the firmware update to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Orion versions are affected:
+
+OrionLX DNP Master v1.27.38 and DNP Slave V1.23.10 and earlier (included in firmware releases 7.6 and earlier), and
+Orion5/Orion5r DNP Master V1.27.38 and DNP Slave V1.23.10 and earlier.
+
+IMPACT
+By sending a specially crafted command from either Internet Protocol (IP) or serial connection, the command causes the Orion Process to restart. This applies to both IP Master/Client and the serial Slave/Server implementation.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+NovaTech is a US-based company located in Lenexa, Kansas, separated into four regional areas.
+The affected product, NovaTech Orion Substation Automation Platform, is a SCADA RTU system using the DNP3 protocol. According to NovaTech, the Orion is deployed across several sectors, but primarily in Energy in the United States.
+VULNERABILITY CHARACTERIZATION 
+VULNERABILITY OVERVIEW
+As this vulnerability affects Internet protocol-connected and serial-connected devices, two CVSS scores have been calculated.
+
+IMPROPER INPUT VALIDATION-IP-BASEDCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed December 18, 2013.
+
+The NovaTech Orion DNP Products Master Driver does not validate input correctly. A specially crafted IP-based packet can be sent that causes the Orion Process in the OrionLX to restart. The sequence of effects caused by this packet is the running DNP driver crashes, the Alarm LED/contact asserts, and the Orion process restarts.
+The following scoring is for IP-connected devices.
+CVE-2013-2821NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2821, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed December 18, 2013.
+
+IMPROPER INPUT VALIDATION-SERIAL-BASEDCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed December 18, 2013.
+
+A specially crafted packet can be sent via serial connection that causes the Orion Process in the OrionLX to restart. The sequence of effects caused by this packet is the running DNP driver crashes, the Alarm LED/contact asserts, and the Orion process restarts.
+The following scoring is for serial-connected devices.
+CVE-2013-2822NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2822 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory has been assigned to this vulnerability. A CVSS v2 base score of 4.7 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed December 18, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The IP-based vulnerability could be exploited remotely.
+The serial-based vulnerability is not exploitable remotely. Local access to the serial-connected outstation is required.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill could craft an IP packet that would be able to exploit the vulnerability for an IP-based device.
+An attacker with a high skill could exploit the serial-based vulnerability because physical access to the device or some amount of social engineering is required.
+MITIGATION
+NovaTech has produced a firmware update that is available for download from the NovaTech Orion Support Site (user registration is required for access). Customers are encouraged to contact the following regional NovaTech representative for download information.
+
+
+
+Name
+Phone Number
+States
+
+
+Mark Matassa
+443-243-0570
+CT, DE, IN, KY, MA, MD, ME, MI, NH, NJ, NY, OH, PA, RI, VA, VT, WV
+
+
+Kevin Johnson
+570-498-4409
+AL, AR, FL, GA, LA, MS, NC, SC, TN
+
+
+Jim Siders
+913-209-2308
+IA, KS, IL, MO, NE, OK
+
+
+Chuck Englebrecht
+303-886-2402
+AK, AZ, CA, CO, HI, ID, MN, MT, ND, NM, NV, OR, SD, TX, UT, WA, WI, WY
+
+
+
+The researchers suggest the following mitigations:
+
+Block DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DNP3-specific rule sets.
+
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation StrategiesTargeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed December 18, 2013., that is available for download from the NCCIC/ICS-CERT Web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

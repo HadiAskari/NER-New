@@ -1,0 +1,56 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 4.9
+
+Vendor: Medtronic
+Equipment: MyCareLink Patient Monitor
+Vulnerabilities: Insufficient Verification of Data Authenticity, Storing Passwords in a Recoverable Format
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker with physical access to obtain per-product credentials that are utilized to authenticate data uploads and encrypt data at rest. Additionally, an attacker with access to a set of these credentials and additional identifiers can upload invalid data to the Medtronic CareLink network.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the Medtronic MyCareLink 24950 Patient Monitor, are affected:
+
+24950 MyCareLink Monitor, all versions,
+24952 MyCareLink Monitor, all versions.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+The affected product’s update service does not sufficiently verify the authenticity of the data uploaded. An attacker who obtains per-product credentials from the monitor and paired implantable cardiac device information can potentially upload invalid data to the Medtronic CareLink network.
+CVE-2018-10626 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:N).
+3.2.2    STORING PASSWORDS IN A RECOVERABLE FORMAT CWE-257
+The affected products use per-product credentials that are stored in a recoverable format. An attacker can use these credentials for network authentication and encryption of local data at rest.
+CVE-2018-10622 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated; the CVSS vector string is (AV:P/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+3.4 RESEARCHER
+Billy Rios, Jesse Young, and Jonathan Butts of Whitescope LLC reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Medtronic has made server-side updates to address the insufficient verification vulnerability identified in this advisory. Medtronic is implementing additional server-side mitigations to enhance data integrity and authenticity.
+Medtronic recommends users take additional defensive measures to minimize the risk of exploitation. Specifically, users should:
+
+Maintain good physical control over the home monitor.
+Only use home monitors obtained directly from their healthcare provider or a Medtronic representative to ensure integrity of the system.
+
+Medtronic has released additional patient focused information, at the following location:
+https://www.medtronic.com/security
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Do not upload and run files without verifying the integrity of the file.
+Interact with, and only obtain files, software, and software patches from trustworthy reputable sources.
+Minimize network exposure for all medical devices and/or systems, and ensure that they are not accessible from the Internet.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. High skill level is needed to exploit.

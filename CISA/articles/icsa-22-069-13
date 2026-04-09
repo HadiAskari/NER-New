@@ -1,0 +1,73 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.9
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: Mendix
+Vulnerability: Improper Access Control
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-22-069-13 Siemens Mendix that was published March 10, 2021, to the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+--------- Begin Update A Part 1 of 4 ---------
+Successful exploitation of this vulnerability could allow a malicious user to deduce contents of inaccessible attributes and modify sensitive data.
+--------- End Update A Part 1 of 4 ---------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Mendix, an application development platform, are affected:
+
+Mendix Applications using Mendix 7: All versions prior to v7.23.29
+Mendix Applications using Mendix 8: All versions prior to v8.18.16
+
+--------- Begin Update A Part 2 of 4 ---------
+
+Mendix Applications using Mendix 9: All deployments with Runtime Custom Setting DataStorage.UseNowQueryHandler set to False
+
+--------- End Update A Part 2 of 4 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER ACCESS CONTROL CWE-284
+If an entity has an association readable by the user, then in some cases, Mendix Runtime may not apply checks for XPath constraints that parse said associations within apps running on affected versions. A malicious user could use this to dump and manipulate sensitive data.
+--------- Begin  Update A Part 3 of 4 ---------
+CVE-2022-24309 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N).
+--------- End Update A Part 3 of 4 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+5. MITIGATIONS
+Siemens recommends upgrading the following versions of Mendix to the latest version:
+
+Mendix applications using Mendix 7: Update to v7.23.29 or later
+Mendix applications using Mendix 8: Update to v8.18.16 or later
+
+--------- Begin Update A Part 4 of 4 ---------
+
+Mendix applications using Mendix 9: Set Runtime Custom Setting DataStorage.UseNewQueryHandler to True or remove the custom setting. The value is set to True by default. Please refer to the Mendix documentation for additional details.
+
+--------- End Update A Part 4 of 4 ---------
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to the Siemens operational guidelines for industrial security and follow the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-148641
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

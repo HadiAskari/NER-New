@@ -1,0 +1,73 @@
+
+CVSS v3 8.2
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Advantech
+Equipment: WebAccess
+Vulnerabilities: Untrusted Pointer Dereference, Stack-based Buffer Overflow, Path Traversal, SQL Injection, Improper Input Validation.
+UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-004-02 Advantech WebAccess that was published January 4, 2018, on the NCCIC/ICS-CERT web site.
+AFFECTED PRODUCTS
+Advantech reports the vulnerabilities affect the following WebAccess products:
+
+WebAccess versions prior to 8.3
+
+IMPACT
+Successful exploitation of these vulnerabilities could cause the device to crash. An attacker may be able to further exploit this condition to remotely execute arbitrary code or bypass authentication.
+MITIGATION
+Advantech has released WebAccess Version 8.3 to address the reported vulnerabilities. Users can download the latest version of WebAccess at the following location (registration required):
+http://www.advantech.com/industrial-automation/webaccess/download
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+UNTRUSTED POINTER DEREFERENCE CWE-822
+
+There are multiple vulnerabilities that may allow an attacker to cause the program to use an invalid memory address, resulting in a program crash.
+CVE-2017-16728 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+
+STACK-BASED BUFFER OVERFLOW CWE-121
+
+There are multiple instances of a vulnerability that allows too much data to be written to a location on the stack.
+CVE-2017-16724 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+
+IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+
+An attacker has access to files within the directory structure of the target device.
+CVE-2017-16720 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+
+IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+
+WebAccess does not properly sanitize its inputs for SQL commands.
+CVE-2017-16716 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+
+IMPROPER INPUT VALIDATION CWE-20
+
+WebAccess allows some inputs that may cause the program to crash.
+CVE-2017-16753 has been assigned to this vulnerability. A CVSS v3 base score of 5.0 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:H).
+--------- Begin Update A Part 1 of 1 --------
+
+UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+
+WebAccess allows a remote attacker to upload arbitrary files.
+CVE-2017-16736 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+
+USE AFTER FREE CWE-416
+
+WebAccess allows an unauthenticated attacker to specify an arbitrary address.
+CVE-2017-16732 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).
+--------- End Update A Part 1 of 1 ----------
+RESEARCHER
+Steven Seeley of Offensive Security, Zhou Yu, rgod working with Trend Micro’s Zero Day Initiative, and Michael DePlante of Leahy Center for Digital Investigation at Champlain College reported these vulnerabilities to ICS-CERT.
+BACKGROUND
+Critical Infrastructure Sectors: Critical Manufacturing, Energy, Water and Wastewater Systems
+Countries/Areas Deployed: East Asia, United States, Europe
+Company Headquarters Location: Taiwan

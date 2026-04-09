@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.5
+
+ATTENTION: Exploitable remotely
+Vendor: Abbott Laboratories
+Equipment: Implantable Cardioverter Defibrillator and Cardiac Synchronization Therapy Defibrillator
+Vulnerabilities: Improper Authentication and Improper Restriction of Power Consumption
+
+MedSec Holdings Ltd., has identified vulnerabilities in Abbott Laboratories’ (formerly St. Jude Medical) Implantable Cardioverter Defibrillator (ICD) and Cardiac Synchronization Therapy Defibrillator (CRT-D). Abbott has produced firmware updates to help mitigate identified vulnerabilities in their eligible ICDs and CRT-Ds that utilize radio frequency (RF) communications. A third-party security research firm has verified the new firmware updates mitigate the identified vulnerabilities.
+The Food and Drug Administration (FDA) released a safety communication on April 17, 2018, titled “Battery Performance Alert and Cybersecurity Firmware Updates for Certain Abbott (formerly St. Jude Medical) Implantable Cardiac Devices: FDA Safety Communication,” regarding the identified vulnerabilities and corresponding mitigation. In response, NCCIC is releasing this advisory to provide additional detail to patients and healthcare providers.
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow a nearby attacker to gain unauthorized access to an ICD to issue commands, change settings, or otherwise interfere with the intended function of the ICD.
+Impact to individual organizations depends on many factors unique to each organization. NCCIC recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment and specific clinical usage.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following ICDs and CRT-Ds manufactured and distributed prior to April 19, 2018, are affected:
+
+Fortify,
+Fortify Assura,
+Quadra Assura,
+Quadra Assura MP,
+Unify,
+Unify Assura,
+Unify Quadra,
+Promote Quadra,
+Ellipse,
+Current,
+Promote.
+
+3.2 VULNERABILITY OVERVIEW
+ 
+3.2.1   IMPROPER AUTHENTICATION CWE-287
+The device’s authentication algorithm, which involves an authentication key and time stamp, can be compromised or bypassed, which may allow a nearby attacker to issue unauthorized commands to the ICD or CRT-D via RF communications.
+CVE-2017-12712 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2   IMPROPER RESTRICTION OF POWER CONSUMPTION CWE-920
+The ICDs and CRT-Ds do not restrict or limit the number of correctly formatted “RF wake-up” commands that can be received, which may allow a nearby attacker to repeatedly send commands to reduce device battery life.
+CVE-2017-12714 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+Abbott is a U.S.-based company headquartered in Abbott Park, Illinois.
+The affected ICDs and CRT-Ds are implantable medical devices designed to deliver high voltage electrical pulses to correct a fast or irregular heartbeat. According to Abbott, these devices are deployed across the healthcare and public health sector. Abbott indicates that these products are used worldwide.
+3.3 BACKGROUND
+Abbott is a U.S.-based company headquartered in Abbott Park, Illinois.
+The affected ICDs and CRT-Ds are implantable medical devices designed to deliver high voltage electrical pulses to correct a fast or irregular heartbeat. According to Abbott, these devices are deployed across the healthcare and public health sector. Abbott indicates that these products are used worldwide.
+3.4 RESEARCHER
+MedSec Holdings Ltd., reported these vulnerabilities to Abbott Laboratories and NCCIC.
+4. MITIGATIONS
+Abbott has developed a firmware update to help mitigate the identified vulnerabilities.
+The firmware update provides additional security to reduce the risk of unauthorized access by bypassing authentication to the following high voltage device families that utilize wireless radio frequency (RF) communication: Fortify, Fortify Assura, Quadra Assura, Quadra Assura MP, Unify, Unify Assura, Unify Quadra, Promote Quadra, and Ellipse.
+The firmware update can be applied to an eligible implanted ICD or CRT-D via the Merlin PCS Programmer by a healthcare provider. Abbott and FDA have recommended the update to all eligible patients at the next regularly scheduled visit or when appropriate depending on the preferences of the patient and physician. ICDs and CRT-Ds manufactured beginning April 25, 2018, will have these updates preloaded on devices.
+Abbott states that firmware updates should be approached with caution. As with any software update, firmware updates can cause devices to malfunction. Potential risks include discomfort due to back-up VVI pacing settings, reloading of previous firmware version due to incomplete upgrade, inability to treat VT/VF while in back-up mode given high voltage therapy is disabled, device remaining in back-up mode due to unsuccessful upgrade, and loss of currently-programmed device settings or diagnostic data. The Abbott Cybersecurity Medical Advisory Board has reviewed this firmware update and the associated risk of performing the update in the context of potential cybersecurity risk.
+While not intended to serve as a substitute for clinician judgment as to whether the firmware update is advisable for a particular patient, the Cybersecurity Medical Advisory Board recommends the following:
+
+Healthcare providers and patients should discuss the risks and benefits of the cybersecurity vulnerabilities and associated firmware update during the next regularly scheduled visit or when appropriate depending on the preferences of the patient and physician. As part of this discussion, it is important to consider patient-specific issues such as pacemaker dependence, frequency of high voltage therapy, age of device, patient preference, and provide patients with the “Patient Communication.”
+Determine if the update is appropriate given the risk of update for the patient. If deemed appropriate, install this firmware update following the instructions provided by the manufacturer.
+The cybersecurity firmware update should be performed in a facility where appropriate monitoring and external defibrillation are readily available.
+
+Abbott’s older generation devices (i.e., Current and Promote) are not capable of accepting the firmware update due to technology limitations. If healthcare providers and patients have any concerns relating to device cybersecurity for those patients implanted with Current/Promote devices, providers have the option to permanently disable the RF communication capability in the device. However, if this option is selected, the patient can no longer be monitored remotely using an RF Merlin@home transmitter. For most patients, permanently disabling RF is not advisable given the proven benefits and improved survival associated with home monitoring.
+Therefore, the Medical Advisory Boards recommends the following:
+
+Healthcare providers and patients should discuss the risks of cybersecurity vulnerabilities and benefits of remote monitoring at the next regularly scheduled visit or when appropriate depending on the preferences of the patient and physician.
+If deemed appropriate, RF communication may be permanently disabled during an in-clinic device interrogation with the Merlin programmer software.
+
+Patients and healthcare providers with questions can call the dedicated hotline at 1-800-722-3774 (U.S.) or visit https://www.sjm.com/cyberupdate  for more information.
+Battery Performance Alert and Cybersecurity Firmware Updates for Certain Abbott (formerly St. Jude Medical) Implantable Cardiac Devices: FDA Safety Communication: FDA Safety Communication is available at the following location:
+https://www.fda.gov/MedicalDevices/Safety/AlertsandNotices/ucm604706.htm
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+No known public exploits specifically target these vulnerabilities. High skill level is needed to exploit.

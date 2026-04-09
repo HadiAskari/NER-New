@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 5.3
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC S7-1500, SIMATIC S7-1500 Software Controller and SIMATIC ET 200SP Open Controller
+Vulnerability: Improper Input Validation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-282-05 Siemens SIMATIC S7-1500, SIMATIC S7-1500 Software Controller and SIMATIC ET 200SP OpenController that was published October 9, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+An attacker with network access to the PLC may be able to cause a denial-of-service condition on the network stack.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that this vulnerability affects the following products and versions:
+
+Simatic S7-1500 (incl. F), all versions prior to v2.5 down to and including v2.0
+Simatic S7-1500 Software Controller all versions prior to v2.5 down to and including v2.0
+
+--------- Begin Update A Part 1 of 2 ---------
+
+Simatic ET 200SP Open Controller all versions prior to v2.5 down to and including v2.0
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER INPUT VALIDATION CWE-20 
+An attacker can cause a denial-of-service condition on the network stack by sending a large number of specially crafted packets to the PLC. The PLC will lose its ability to communicate over the network. This vulnerability could be exploited by an attacker with network access to the affected systems. Successful exploitation requires no privileges and no user interaction. An attacker could use this vulnerability to compromise availability of the network connectivity.
+CVE-2018-13805 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Marcin Dudek, Jacek Gajewski, Kinga Staszkiewicz, Jakub Suchorab, and Joanna Walkiewicz from National Centre for Nuclear Research Poland reported this vulnerability to Siemens.
+5. MITIGATIONS
+Siemens provides updates to address this vulnerability in these products and recommends users update to the new version.
+
+SIMATIC S7-1500 Software Controller: Update to v2.5 or newer:
+
+https://support.industry.siemens.com/cs/us/en/view/109478528
+
+SIMATIC S7-1500 incl. F: Update to v2.5 or newer:
+
+https://support.industry.siemens.com/cs/us/en/ps/13717/dl
+--------- Begin Update A Part 2 of 2--------  
+
+SIMATIC ET-200SP Open Controller: Update to v2.1.6 or newer:
+
+https://support.industry.siemens.com/cs/us/en/view/109759122
+--------- End Update A Part 2 of 2--------  
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Restrict network access to affected devices
+Apply cell-protection concept
+Apply defense-in-depth
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security (https://www.siemens.com/cert/operational-guidelines-industrial-security), and following the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-347726 on their website:
+https://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

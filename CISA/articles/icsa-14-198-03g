@@ -1,0 +1,108 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the updated advisory titled ICSA-14-198-03F Siemens OpenSSL Vulnerabilities that was published October 16, 2014, on the NCCIC/ICS-CERT web site.
+--------- Begin Update G Part 1 of 3 --------
+Siemens has identified four vulnerabilities in its OpenSSL cryptographic software library affecting several Siemens industrial products. Updates are available for APE 2.0.2, S7-1500, WinCC OA (PVSS), CP1543-1, Ruggedcom ROX 1, and ROX 2-based products.
+--------- End Update G Part 1 of 3 ----------
+These vulnerabilities could be exploited remotely. Exploits that target OpenSSL vulnerabilities are publicly available. ICS-CERT is unaware of any OpenSSL exploits that target Siemens’ products specifically.
+AFFECTED PRODUCTS
+The following Siemens products are affected:
+--------- Begin Update G Part 2 of 3 --------
+
+APE (only affected if SSL/TLS component is used):
+
+
+APE stand-alone: All versions prior to V2.0.2,
+ELAN on APE: All versions prior to V8.4.0,
+
+
+CP1543-1: prior to Version 1.1.25,
+ROX 1: all versions prior to V1.16.1 (only affected if Crossbow is installed),
+ROX 2: all versions prior to V2.6.0 (only affected if ELAN or Crossbow is installed),
+
+
+Crossbow: All versions prior to V4.2.3
+ELAN: All versions prior to V8.4.0
+
+
+S7-1500: versions prior to Version 1.6, and
+WinCC OA (PVSS): Version 3.12-P001–3.12-P008
+
+--------- End Update G Part 2 of 3 ----------
+IMPACT
+The vulnerabilities identified could impact authenticity, integrity, and availability of affected devices. The man-in-the-middle attack could allow an attacker to hijack a session between an authorized user and the device. The other vulnerabilities reported could impact the availability of the device by causing the web server of the product to crash.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany. Siemens develops products mainly in the energy, healthcare and public health sectors, and transportation systems.
+The affected Siemens industrial products are for process and network control and monitoring in critical infrastructure sectors such as Chemical, Critical Manufacturing, Energy, Food and Agriculture, and Water and Wastewater Systems.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+MAN-IN-THE-MIDDLECWE-310: Cryptographic Issues, http://cwe.mitre.org/data/definitions/310.html, web site last accessed July 17, 2014.
+
+An attacker could perform a man-in-the-middle (MitM) attack between a vulnerable client and a vulnerable server. This vulnerability affects ROX, APE, S7-1500, and CP1543-1.
+CVE-2014-0224NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0224, web site last accessed July 17, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:P, web site last accessed July 17, 2014.
+
+IMPROPER INPUT VALIDATIONCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed July 17, 2014.
+
+Specially crafted packets may crash the web server of the product. This vulnerability affects the SIMATIC S7-1500.
+CVE-2014-0198NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0198, web site last accessed July 17, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:P, web site last accessed July 17, 2014.
+
+IMPROPER INPUT VALIDATIONCWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition'), http://cwe.mitre.org/data/definitions/362.html, web site last accessed July 17, 2014.
+
+Specially crafted packets may crash the web server of the product. This vulnerability affects the SIMATIC S7-1500.
+CVE-2010-5298NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-5298, web site last accessed July 17, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.0 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:N/C:N/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:H/Au:N/C:N/I:P/A:P, web site last accessed July 17, 2014.
+
+IMPROPER INPUT VALIDATIONCWE-476: NULL Pointer Dereference, http://cwe.mitre.org/data/definitions/476.html, web site last accessed July 17, 2014.
+
+Specially crafted packets may crash the web server of the product. This vulnerability affects the WinCC OA (PVSS).
+CVE-2014-3470NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3470, web site last accessed July 17, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:P, web site last accessed July 17, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target OpenSSL vulnerabilities are publicly available. ICS-CERT is unaware of any OpenSSL exploits that target Siemens’ products specifically.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens provides updates for the following products:
+--------- Begin Update G Part 3 of 3 --------
+APE 2.0.2 stand-alone available at:
+http://support.automation.siemens.com/WW/view/en/97654933
+S7-1500: update to Version 1.6 at:
+http://support.automation.siemens.com/WW/view/de/98164677
+WinCC OA (PVSS) available at the Siemens ETM portal.
+CP1543-1 update to Version V1.1.25 at:
+http://support.automation.siemens.com/WW/view/en/99804563
+Updated firmware for Ruggedcom ROX-based devices and ELAN software can be obtained for free from the following contact points:
+
+Submit a support request to Siemens online:
+
+
+http://www.siemens.com/automation/support-request
+
+
+Call a local hotline center:
+
+
+http://www.automation.siemens.com/mcms/aspa-db/en/automation-technology/Pages/default.aspx
+
+Update Debian using the standard update procedures if eLAN is installed on a Linux system.
+--------- End Update G Part 3 of 3 ----------
+Siemens provides specific advice for mitigating risk in each of the affected products in SSA‑234763, which can be found at its web site at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed July 17, 2014. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed July 17, 2014. for more information on social engineering attacks.
+

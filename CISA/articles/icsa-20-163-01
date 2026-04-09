@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.7
+ATTENTION: Exploitable remotely
+Vendor: OSIsoft
+Equipment: PI Web API 2019
+Vulnerability: Cross-site Scripting
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote authenticated attacker with write access to a PI Server to trick a user into interacting with a PI Web API endpoint that executes arbitrary JavaScript in the user’s browser, resulting in view, modification, or deletion of data as allowed for by the victim’s user permissions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of PI Web API are affected:
+
+PI Web API 2019 Patch 1 (1.12.0.6346) and all previous versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The affected product is vulnerable to a cross-site scripting attack, which may allow an attacker to remotely execute arbitrary code.
+CVE-2020-12021 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Government Facilities, Healthcare and Public Health, Information Technology, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+OSIsoft, working with Dor Yardeni and Eliad Mualem at OTORIO, reported this vulnerability to CISA.
+4. MITIGATIONS
+OSIsoft recommends affected users upgrade to PI Web API 2019 SP1.
+OSIsoft also recommends affected users implement the following measures to reduce exploitation:
+
+Avoid adding authentication type anonymous in PI Web API configuration settings to limit exposure to authenticated users only.
+Consider using a web application firewall to block HTML responses from PI Web API servers.
+Limit write access to PI Server to trusted users.
+Remove PI Web API write access to PI AF servers with the “DisableWrite” setting. For more information on the “DisableWrite” setting, please consult the PI Web API User Guide.
+Enable IE Enhanced Security Configuration on Windows servers where the Desktop Experience feature is installed.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability. High skill level is needed to exploit.

@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Omron
+Equipment: PLC CJ, CS and NJ Series
+Vulnerability: Improper Restriction of Excessive Authentication Attempts
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to brute force login credentials, obtain unauthorized access of the system, and may allow an attacker unauthorized access to the FTP interface.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Omron Programmable Logic Controllers are affected:
+
+Omron PLC CS series, all versions
+Omron PLC CJ series, all versions
+Omron PLC NJ series, all versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+The software does not implement sufficient measures to prevent multiple failed authentication attempts within in a short time frame, making it more susceptible to brute force attacks.
+
+CVE-2019-18261 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+n0b0dy reported this vulnerability to CISA.
+4. MITIGATIONS
+Omron recommends the following mitigation measures:
+
+Filter FTP port: Protect access to Omron’s PLC with a firewall and block unnecessary remote access to FTP port (default: 21).
+Filter IP addresses: Protect access to Omron’s PLC with a firewall and filtering devices connected to the PLC by IP address.
+Ensure the use of strong passwords.
+
+For more information provided by Omron on these vulnerabilities refer to this Omron report.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

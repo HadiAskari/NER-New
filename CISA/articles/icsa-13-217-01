@@ -1,0 +1,41 @@
+
+Overview
+Researcher Nadia Heninger of the University of California, San Diego, and researchers Zakir Durumeric, Eric Wustrow, and J. Alex Halderman of the University of Michigan identified an insufficient entropy vulnerability in MOXA OnCell Gateways. MOA produced and released a firmware upgrade on April 3, 2013, that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+Affected Products
+The following Moxa OnCell Gateway models (before firmware version 1.4) are affected:
+·         G3111,
+·         G3151,
+·         G3211, and
+·         G3251.
+Impact
+An attacker could gain unauthorized access to the gateway by determining the authentication keys from reused or nonunique SSH and SSL host keys. Exploitation of this vulnerability could allow an attacker to affect the confidentiality, integrity, and availability of the OnCell Gateways.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Moxa is a Taiwan-based company that maintains offices in several countries around the world, including the US, UK, India, Germany, France, China, and Brazil.
+The affected products, Moxa OnCell Gateways, are cellular IP gateways that can conveniently and transparently connect up to two devices to a cellular network. This allows one to connect their existing Ethernet and serial devices with basic configuration.
+According to Moxa, Moxa OnCell Gateways are deployed across several sectors, including critical manufacturing, transportation systems, information technology, water and wastewater, and communications. Moxa estimates that these products are used globally, are focused mostly in the Asia-Pacific region, and have smaller deployments in the Americas and Europe.
+Vulnerability Characterization
+Vulnerability Overview
+
+Insufficient entropyCWE-331: Insufficient Entropy, http://cwe.mitre.org/data/definitions/331.html, Web site last accessed August 05, 2013.
+
+The OnCell G3111, G3151, G3211, and G3251 gateways do not use sufficient entropy when generating keys for SSH and SSL connections; therefore, these keys are vulnerable to exploits. By calculating private authentication keys, an attacker could gain unauthorized access to the system and read information on the device, as well as send commands to the device, which would compromise the integrity and confidentiality of the data and could compromise the availability.
+CVE-2012-3039NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3039, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:S/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:H/Au:S/C:C/I:C/A:C, Web site last visited August 05, 2013.
+Vulnerability Details
+Exploitability
+This vulnerability could be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a high skill level would be able to exploit this vulnerability.
+Mitigation
+Moxa released a firmware upgrade (OnCell G3111/G3151/G3211/G3251 Version 1.4) for these products on April 3, 2013, and is currently in the process of sending notification to its customers. This upgrade can be downloaded from the Moxa software download page at the following link: http://www.moxa.com/support/download.aspx?type=support&id=222. The firmware upgrade fixes the vulnerability by increasing the entropy in the dynamically generated keys to avoid nonuniqueness and key reuse.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+·         Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+·         Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+·         When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed August 05, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed August 05, 2013 that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.
+ 

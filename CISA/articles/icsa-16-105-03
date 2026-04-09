@@ -1,0 +1,82 @@
+
+OVERVIEW
+Independent security researcher Marcus Richerson and Steven Seeley of Source Incite, working with Trend Micro’s Zero Day Initiative, independently identified vulnerabilities in Ecava’s IntegraXor application. Ecava has produced a new version to mitigate these vulnerabilities. Marcus Richerson has tested the new version to validate that it resolves all the vulnerabilities, except for one incomplete fix, which Ecava plans to fully address in an upcoming release.
+These vulnerabilities could be exploited remotely.
+Exploits that target these vulnerabilities are known to be publicly available.
+AFFECTED PRODUCTS
+The following Ecava IntegraXor versions are affected:
+
+IntegraXor, versions prior to Version 5.0, build 4522
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow a remote attacker to gain full access to an affected system.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Ecava Sdn Bhd (Ecava) is a Malaysia-based software development company that provides the IntegraXor SCADA product. Ecava specializes in factory and process automation solutions.
+The affected product, IntegraXor, is a suite of tools used to create and run a web-based human‑machine interface for a SCADA system. According to Ecava, IntegraXor is deployed across several sectors including Critical Manufacturing, Energy, Water and Wastewater Systems, and others. Ecava estimates that this product is used in multiple countries, with the largest installations based in the United Kingdom, the United States, Australia, Poland, Canada, and Estonia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATIONCWE-319: Cleartext Transmission of Sensitive Information, http://cwe.mitre.org/data/definitions/319.html, web site last accessed April 14, 2016.
+
+IntegraXor HMI web server transmits unencrypted sensitive information.
+CVE-2016-2306NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2306, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N, web site last accessed April 14, 2016.
+
+CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), http://cwe.mitre.org/data/definitions/79.html, web site last accessed April 14, 2016.
+
+The application is vulnerable to Document Object Model (DOM)-based cross-site scripting, which can be exploited by including malicious HTML and Javascript into the URL. If the HMI operator were using the SCADA application and were to click a specially crafted link or go to a malicious web site, then an attacker may be able to perform malicious functions on the SCADA software using Javascript.
+CVE-2016-2305NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2305, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:N, web site last accessed April 14, 2016.
+
+IMPROPER NEUTRALIZATION OF ALTERNATE XSS SYNTAXCWE-87: Improper Neutralization of Alternate XSS Syntax, http://cwe.mitre.org/data/definitions/87.html, web site last accessed April 14, 2016.
+
+The application does not set the HTTPOnly flag on the session cookie, which may allow a remote attacker to steal the cookie and resend it to potentially log in as an administrative user.
+CVE-2016-2304NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2304, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N, web site last accessed April 14, 2016.
+
+IMPROPER NEUTRALIZATION OF CRLF SEQUENCES IN HTTP HEADERSCWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting'), http://cwe.mitre.org/data/definitions/113.html, web site last accessed April 14, 2016.
+
+The IntegraXor HMI does not neutralize special elements in inputs.
+CVE-2016-2303NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2303, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N, web site last accessed April 14, 2016.
+
+IMPROPER AUTHORIZATIONCWE-285: Improper Authorization, http://cwe.mitre.org/data/definitions/285.html, web site last accessed April 14, 2016.
+
+The application does not properly check whether a user has authenticated prior to accessing some sensitive web pages.
+CVE-2016-2300NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2300, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N, web site last accessed April 14, 2016.
+
+SQL INJECTIONCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection'), http://cwe.mitre.org/data/definitions/89.html, web site last accessed April 14, 2016.
+
+The application is vulnerable to unauthenticated SQL injection that may allow an attacker to remotely execute code in certain situations.
+CVE-2016-2299NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2299, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L, web site last accessed April 14, 2016.
+
+INFORMATION EXPOSURECWE-200: Information Exposure, http://cwe.mitre.org/data/definitions/200.html, web site last accessed April 14, 2016.
+
+The application uses detailed error messages that could be used by an attacker to extract information that could be used in an attack.
+CVE-2016-2302NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2302, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N, web site last accessed April 14, 2016.
+
+SQL INJECTIONCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection'), http://cwe.mitre.org/data/definitions/89.html, web site last accessed April 14, 2016.
+
+The application is vulnerable to authenticated SQL injection that may allow an attacker to extract information about the database and further exploit the application.
+CVE-2016-2301NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2301, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L, web site last accessed April 14, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target these vulnerabilities are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Ecava has produced a new version that addresses the reported vulnerabilities, as well as some identified security risks, in Version 5.0, build 4522. Ecava has resolved the authenticated SQL injection associated with operator and supervisor accounts. Ecava is planning to address the remaining risk to administrative accounts in an upcoming release. Ecava’s new version of the IntegraXor software, Version 5.0, build 4522 is available for download at the following link:
+http://www.integraxor.com/download/beta.msi?5.0.4525.2.
+Ecava recommends downloading the latest build to address the identified vulnerabilities.
+Ecava has released a vulnerability note, which is available at the following URL:
+http://www.integraxor.com/blog/category/security/vulnerability-note/.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Restrict administrative access to the minimum number of required users.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

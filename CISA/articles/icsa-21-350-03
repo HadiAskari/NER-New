@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+ATTENTION: Low attack complexity
+Vendor: Wibu-Systems AG
+Equipment: CodeMeter
+Vulnerability: Improper Privilege Management
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to crash the CodeMeter Runtime Server, which could cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of CodeMeter Runtime, a license manger, are affected:
+
+CodeMeter Runtime: All versions prior to Version 7.30a
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+A local attacker using the Microsoft Windows OS could cause CodeMeter Runtime to improperly control file access permissions by setting up a link to a special system file used with CmDongles. This could result in overwriting of essential files or a crash of the CodeMeter Runtime Server.
+CVE-2021-41057 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Jokūbas Arsoba reported this vulnerability to Wibu-Systems.
+4. MITIGATIONS
+Wibu-Systems recommends the following:
+
+Update to the latest version of the CodeMeter Runtime.
+
+The following measures are recommended to reduce the risk until the fixed version can be installed. Please be aware not all mitigations apply to every possible product configuration, so please check which of these could be relevant or applicable.
+
+Restrict unprivileged access to machines running the CodeMeter License Server service.
+Disable the container type “Mass Storage” in CodeMeter. If there are no CmDongles connected to the affected machine, or if the connected CmDongles are configured as HID, the CodeMeter communication with “Mass Storage” devices can be disabled at the Windows Registry as follows:
+
+Set the value of the key HKEY_LOCAL_MACHINE\SOFTWARE\WIBUSYSTEMS\CodeMeter\Server\CurrentVersion\EnabledContainerTypes” to 4294967294 (0xFFFFFFFE).
+Restart CodeMeter to apply this change.
+
+
+
+General security best practices can help protect systems from local and network attacks.
+For more information on products dependent on the affected CodeMeter see the following vendor security advisories:
+
+Siemens: SSA-580693
+Please see Wibu-Systems Security Advisory WIBU-210910-01 for more information.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

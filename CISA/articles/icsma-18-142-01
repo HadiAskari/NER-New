@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.3
+
+ATTENTION: Exploitable from adjacent network
+Vendor: Becton, Dickinson and Company (BD)
+Equipment: BD Kiestra and InoqulA systems
+Vulnerabilities: Product UI does not Warn User of Unsafe Actions
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-18-142-01 BD Kiestra and InoquIA Systems that was published May 22, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may lead to loss or corruption of data.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+BD reports these vulnerabilities affect applications used by the following BD Kiestra systems:
+
+BD Kiestra TLA,
+BD Kiestra WCA, and
+BD InoqulA+ specimen processor.
+
+All three BD Kiestra systems listed above use the following vulnerable applications:
+
+Database (DB) Manager, Version 3.0.1.0,
+ReadA Overview, Version 1.1.0.2 and previous, and
+PerformA, Version 3.0.0.0 and previous versions.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1 PRODUCT UI DOES NOT WARN USER OF UNSAFE ACTIONS CWE-356
+A vulnerability in DB Manager and PerformA allows an authorized user with access to a privileged account on a BD Kiestra system to issue SQL commands, which may result in data corruption.
+CVE-2018-10593 has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:H/UI:R/S:U/C:N/I:H/A:H).
+4.3.2 PRODUCT UI DOES NOT WARN USER OF UNSAFE ACTIONS CWE-356
+A vulnerability in ReadA allows an authorized user with access to a privileged account on a BD Kiestra system to issue SQL commands, which may result in loss or corruption of data.
+CVE-2018-10595 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Healthcare and Public Health
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: United States
+
+4.4 RESEARCHER
+BD discovered these vulnerabilities and reported them to NCCIC.
+5. MITIGATIONS
+--------- Begin Update A Part 1 of 1 --------
+BD has developed a mitigation to prevent authorized users with access to a privileged account on a BD Kiestra system from triggering SQL functions. This mitigation also remediates a limited set of ePHI patient data that can be exposed when a privileged user executes a select SQL statement in the ReadA Overview. BD is in the process of deploying the mitigation remotely or on premise, depending on user preference.
+--------- End Update A Part 1 of 1 ----------
+Until mitigations are in place, BD recommends the following compensating controls. These controls require user action in order to reduce risk associated with these vulnerabilities:
+
+DB Manager:
+
+BD Kiestra Laboratory personnel should refrain from using the functionality associated SQL functions in all three BD Kiestra Systems: BD Kiestra TLA, BD Kiestra WCA and BD InoqulA+ specimen processor. When configuring new programs through the ‘Configuring Programs’ function in DB Manager, it is advised not to re-use current programs through the export-import function, but to set up a new program or use the predefined program templates. Please refer to the users manuals for more information.
+Ensure only authorized and qualified personnel, such as lab managers and/or lab supervisors, have access control rights to all functions in the DB Manager. This can be configured through the ‘Users’ function in DB Manager. For details about setting the appropriate user access control in DB Manager, consult the respective device manual.
+
+
+ReadA Overview: Users are advised to set the ‘Users’ function for all users to ‘none’ for access to ReadA Overview, if the application is not used or not commonly used. This can be configured through the ‘Users’ function in DB Manager. If use of ReadA Overview is necessary, users are advised to ensure only authorized and qualified personnel, such as lab managers and/or lab supervisors, have access control rights to all functions in ReadA Overview. This can be configured through the ‘Users’ function in DB Manager. For details about setting the appropriate user access control in DB Manager, consult the respective device manual.
+PerformA: Users are advised to ensure access to BD Kiestra servers are closely monitored while continuing to implement best security practices to effectively prevent unauthorized access to BD Kiestra Systems.
+
+For product support or site-specific concerns, users in North America may contact Lab Automation Regional Phone Support via email lab_automation_phone_support@bd.com or by phone (1-800-638-8663). Users in EMEA may contact Customer Service Desk via email csd@bd.com or by phone (+31 512 540 623).
+For more specific details regarding these vulnerabilities, the associated mitigations, and links to user manuals, please see the BD Product Security Bulletin at the following location:
+https://www.bd.com/en-us/support/product-security-and-privacy
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. High skill level is needed to exploit.

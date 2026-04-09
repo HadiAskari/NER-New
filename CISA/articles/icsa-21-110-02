@@ -1,0 +1,86 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Exploitable remotely/ Low attack complexity
+Vendor: Rockwell Automation
+Equipment: Stratix Switches
+Vulnerabilities: Insufficiently Protected Credentials, Insufficient Verification of Data Authenticity, Use of Out-of-Range Pointer Offset, Insertion of Sensitive Information Into Log File, Command Injection, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may result in denial-of-service conditions, unauthorized privilege escalation, web socket hijacking, relative path traversal, or command injection.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports the vulnerabilities affect the following Stratix switches:
+
+Stratix 5800: Versions 16.12.01 and earlier
+Stratix 8000: Versions 15.2(7)E3 and earlier
+Stratix 5700: Versions 15.2(7)E3 and earlier
+Stratix 5410: Versions 15.2(7)E3 and earlier
+Stratix 5400: Versions 15.2(7)E3 and earlier
+
+Please see the Rockwell Automation security advisory for more detailed information.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+A vulnerability in the CLI command permissions of Cisco IOS and Cisco IOS XE software could allow an authenticated attacker to retrieve the password for Common Industrial Protocol (CIP) and then remotely configure the affected device as an administrative user.
+CVE-2021-1392 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+A vulnerability in the web UI feature of Cisco IOS XE software could allow an unauthenticated, remote attacker to conduct a cross-site WebSocket hijacking (CSWSH) attack and cause a denial-of-service condition on an affected device.
+CVE-2021-1403 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:N/A:H).
+3.2.3    USE OF OUT-OF-RANGE POINTER OFFSET CWE-823
+A vulnerability in the DECnet protocol processing of Cisco IOS XE software could allow an unauthenticated, adjacent attacker to cause a denial-of-service condition on an affected device. An attacker could exploit this vulnerability by sending DECnet traffic to an affected device. A successful exploit could allow the attacker to cause the affected device to reload, resulting in a denial-of-service condition.
+This vulnerability affects Stratix 5800 devices if they are running a vulnerable release of Cisco IOS XE software and have the DECnet protocol enabled. DECnet is not enabled by default.
+CVE-2021-1352 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.4    INSERTION OF SENSITIVE INFORMATION INTO LOG FILE CWE-532
+A vulnerability in a diagnostic command for the Plug and Play (PnP) subsystem of Cisco IOS XE software could allow an authenticated, local attacker to elevate privileges to the level of an administrator on an affected Stratix 5800. Plug-and-Play is disabled after Express Setup has completed.
+CVE-2021-1442 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    OS COMMAND INJECTION CWE-78
+A vulnerability in the Stratix 5800 switches could allow an unauthenticated, physical attacker to execute persistent code at boot time and break the chain of trust.
+CVE-2021-1452 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    COMMAND INJECTION CWE-77
+A vulnerability in the web UI of the IOS XE software could allow a remote, authenticated attacker to execute arbitrary code with root privileges on the underlying operating system of the affected device. To exploit this vulnerability, an attacker would need to have admin credentials to the device.
+CVE-2021-1443 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:H/A:N).
+3.2.7    IMPROPER INPUT VALIDATION CWE-20
+Multiple vulnerabilities in the Web UI feature of IOS XE software could allow an authenticated, remote attacker with read-only privileges to cause the web management software to hang and consume vty line instances resulting in a denial-of-service condition.
+CVE-2021-1220 and CVE-2021-1356 have been assigned to these vulnerabilities. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Cisco reported these vulnerabilities to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation encourages users of the affected Stratix devices to update to an available firmware revision that addresses the associated risk.
+
+Stratix 5800: Apply Version 17.04.01 or later. If possible, disable DECnet protocol completely or on select interfaces.
+Stratix 8300: Migrate to contemporary solution.
+All versions, including Stratix 8000, Stratix 5700, Stratix 5410, Stratix 5400: Confirm the least-privilege user principle is followed, and user account access to is only granted with a minimum number of rights as needed.
+
+Please see the Rockwell Automation security advisory for more detailed information.
+Where a fix is not yet available, users who are unable to update are directed towards the risk mitigation strategies provided below, and are encouraged, when possible, to apply general security guidelines to employ multiple strategies simultaneously.
+Currently, Rockwell Automation is working to address these vulnerabilities and will continue to provide updates as these fixes become available.
+Rockwell Automation recommends the following network-based vulnerability mitigations for embedded products:
+
+Use proper network infrastructure controls, such as firewalls, to help confirm traffic from unauthorized sources is blocked.
+Consult the product documentation for specific features, such as a hardware mode switch setting, to which may be used to block unauthorized changes, etc.
+
+Rockwell Automation recommends the following software/PC-based mitigation strategies:
+
+Confirm the least-privilege user principle is followed, and user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.
+
+Rockwell Automation recommends the following general mitigations:
+
+Use trusted firmware, antivirus/antimalware programs and interact only with trusted websites and attachments.
+Minimize network exposure for all control system devices and/or systems and confirm they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, please see Knowledgebase Article PN715
+Locate control system networks and devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize a VPN is only as secure as the connected devices.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

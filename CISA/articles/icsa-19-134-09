@@ -1,0 +1,72 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.5
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC WinCC Runtime Advanced, WinCC Runtime Professional, WinCC (TIA Portal); HMI Panels
+Vulnerabilities: Use of Hard-coded Credentials, Insufficient Protection of Credentials, Cross-site Scripting
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker with network access to the device to read/write variables via SNMP.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens SIMATIC products are affected:
+
+SIMATIC HMI Comfort Panels, 4” – 22”; all versions prior to v15.1 Update 1
+SIMATIC HMI Comfort Outdoor Panels, 7” & 15”; all versions prior to v15.1 Update 1
+SIMATIC HMI KTP Mobile Panels KTP400F, KTP700, KTP700F, KTP900, KTP900F; all versions prior to v15.1 Update 1
+SIMATIC WinCC Runtime Advanced; all versions prior to v15.1 Update 1
+SIMATIC WinCC Runtime Professional; all versions prior to v15.1 Update 1
+SIMATIC WinCC (TIA Portal); all versions prior to v15.1 Update 1
+SIMATIC HMI Classic Devices (TP/MP/OP/MP Mobile Panel); all versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF HARD-CODED CREDENTIALS CWE-798
+The affected devices offer SNMP read/write capabilities with a hardcoded community string, which may allow an attacker to read/write variables over SNMP. This could compromise the confidentiality and integrity of the affected system.
+CVE-2019-6572 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.2.2    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+An attacker with network access could potentially obtain a TLS session key and use it to decrypt TLS traffic. This could impact the confidentiality of communications between the device and a legitimate user.
+CVE-2019-6576 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3    CROSS-SITE SCRIPTING CWE-79
+The integrated web server could allow a cross-site scripting (XSS) attack if an attacker is able to modify certain device configuration settings via SNMP. This could impact confidentiality and integrity of the affected system.
+CVE-2019-6577 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens ProductCERT reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Siemens has updates at https://support.industry.siemens.com/cs/ww/en/view/109763890/ for the following products:
+
+SIMATIC HMI Comfort Panels, 4” – 22”: Update SIMATIC WinCC (TIA Portal) to v15.1 Update 1 or newer; then update the panel to v15.1 Update 1 or newer
+SIMATIC HMI Comfort Outdoor Panels, 7” & 15”: Update SIMATIC WinCC (TIA Portal) to v15.1 Update 1 or newer; then update the panel to v15.1 Update 1 or newer
+SIMATIC HMI KTP Mobile Panels KTP400F, KTP700, KTP700F, KTP900, KTP900F”: Update SIMATIC WinCC (TIA Portal) to v15.1 Update 1 or newer; then update the panel to v15.1 Update 1 or newer
+SIMATIC WinCC Runtime Advanced: Update to v15.1 Update 1 or newer
+SIMATIC WinCC Runtime Professional: Update to v15.1 Update 1 or newer
+SIMATIC WinCC (TIA Portal): Update to v15.1 Update 1 or newer
+
+Siemens recommends users apply these specific workarounds and mitigations to reduce risk until an update is available or can be applied:
+
+Restrict access to the web interface of the affected devices.
+Restrict access to Port 161/UDP to trusted devices.
+
+As a general security measure, Siemens recommends users configure their environment according to Siemens’ operational guidelines for industrial security and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: 
+https://www.siemens.com/industrialsecurity
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens security advisory SSA-307392 at the following location: 
+http://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

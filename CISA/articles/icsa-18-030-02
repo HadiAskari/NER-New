@@ -1,0 +1,57 @@
+
+CVSS v3 8.8
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Siemens
+Equipment: TeleControl Server Basic
+Vulnerabilities: Authentication Bypass Using an Alternate Path or Channel, Permissions, Privileges, and Access Controls, Resource Exhaustion
+AFFECTED PRODUCTS
+The following versions of TeleControl Server Basic, a monitoring platform, are affected:
+
+TeleControl Server Basic versions prior to V3.1
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow for escalation of privileges to perform administrative actions.
+MITIGATION
+Siemens recommends that users install the latest version of TeleControl Server Basic which can be found at:
+https://support.industry.siemens.com/cs/ww/en/view/109755199
+Siemens has also identified other mitigations that affected users can take:
+
+If TeleControl Server Basic is operated in standalone mode, then users can close Port 8000/TCP on the Windows firewall to mitigate vulnerabilities CVE-2018-4835 and CVE-2018-4836.
+If TeleControl Server Basic is operated in redundancy mode, then users can use the Windows firewall to restrict access to Port 8000/TCP to the second TeleControl Server Basics’ IP address to mitigate vulnerabilities CVE-2018-4835 and CVE-2018-4836.
+Users can use the Windows firewall to close Ports 80/TCP and 443/TCP to mitigate vulnerability CVE-2018-4837.
+
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens Security Advisory SSA-65145 at the following location:
+http://www.siemens.com/cert/en/cert-security-advisories.htm (link is external)
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+
+An attacker with network access to Port 8000/TCP could bypass the authentication mechanism gaining access to limited information.
+CVE-2018-4835 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+
+PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264
+
+An authenticated attacker with network access to Port 8000/TCP could escalate privileges and perform administrative operations.
+CVE-2018-4836 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+
+UNCONTROLLED RESOURCE CONSUMPTION ('RESOURCE EXHAUSTION') CWE-400
+
+An attacker with access to the TeleControl Server Basic’s webserver (Ports 80/TCP or 443/TCP) could cause a Denial-of-Service condition on the web server. The remaining functionality of the TeleControl Server Basic is not affected by the Denial-of-Service condition.
+CVE-2018-4837 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+RESEARCHER
+Siemens ProductCERT reported the vulnerabilities to NCCIC.
+BACKGROUND
+Critical Infrastructure Sector: Critical Manufacturing
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany

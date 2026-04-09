@@ -1,0 +1,83 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the updated advisory titled ICSA-16-103-03B Siemens Industrial Products DROWN Vulnerability that was published June 15, 2017, on the NCCIC/ICS-CERT web site.
+Siemens has found that a DROWNThe DROWN Attack, https://drownattack.com/, web site last accessed April 12, 2016. (Decrypting RSA with Obsolete and Weakened eNcryption) attack can affect some Siemens industrial products under certain conditions. Siemens recommends specific countermeasures until patches are available.
+This vulnerability could be exploited remotely. Exploits that target this vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+--------- Begin Update C Part 1 of 2 -------- 
+Siemens reports that the vulnerability may affect the following products:
+
+SCALANCE X300 family: All versions prior to V4.1.0,
+SCALANCE X414: All versions prior to V3.10.2,
+SCALANCE X200 IRT family: All versions prior to V5.3.0,
+SCALANCE X200 RNA family: All versions prior to V3.2.5,
+SCALANCE X200 family: All versions prior to V5.2.2, and
+ROX I: All versions not using the mitigations listed in SSA-327980.
+
+--------- End Update C Part 1 of 2 ----------
+IMPACT
+An attacker in a privileged network position could use this vulnerability to intercept transport layer security sessions.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+SCALANCE-X switches are used to connect industrial components like PLCs or HMIs. Siemens RuggedCom ROX-based VPN endpoints and firewall devices are used to connect devices that operate in harsh environments such as electric utility substations and traffic control cabinets.
+According to Siemens, these devices are deployed across most sectors including Chemical, Communications, Critical Manufacturing, Dams, Defense Industrial Base, Energy, Food and Agriculture, Government Facilities, Transportation Systems, and Water and Wastewater Systems. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CRYPTOGRAPHIC ISSUESCWE-310: Cryptographic Issues, http://cwe.mitre.org/data/definitions/310.html, web site last accessed April 12, 2016.
+
+A cross-protocol attack was discovered that could allow an attacker to decrypt intercepted TLS sessions by using a server supporting SSLv2 as a Bleichenbacher RSA padding oracle.
+CVE-2016-0800NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0800, web site last accessed April 12, 2016. has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N, web site last accessed April 12, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult.
+MITIGATION
+--------- Begin Update C Part 2 of 2 -------- 
+Siemens has released updates and encourages users to apply them as soon as possible. The following is a list of the products with their corresponding updates:
+
+SCALANCE X300 family: Update to V4.1.0:
+
+https://support.industry.siemens.com/cs/ww/en/view/109748080
+
+SCALANCE X414: Update to V3.10.2:
+
+https://support.industry.siemens.com/cs/ww/en/view/109747276
+
+SCALANCE X200 IRT family: Update to V5.3.0:
+
+https://support.industry.siemens.com/cs/document/109744096
+
+SCALANCE X200 RNA family: Update to V3.2.5:
+
+https://support.industry.siemens.com/cs/ww/en/view/109745413
+
+SCALANCE X200 family: Update to V5.2.2:
+
+https://support.industry.siemens.com/cs/ww/de/view/109752018
+For ROX I devices, Siemens provides a mitigation tool and application note in SSA-327980. The mitigation tool also disables the use of SSL 2.0 and SSL 3.0 on port 10000/TCP. The mitigation tool can be obtained by submitting a support request online (https://www.siemens.com/automation/support-request) or by calling a local hotline center (https://w3.siemens.com/aspa_app/).
+--------- End Update C Part 2 of 2 ----------
+Siemens recommends that users apply the following mitigations until patches are available:
+
+Protect network access to the web server (443/TCP, 10000/TCP for ROX I by default) on the devices with appropriate mechanisms.
+Restrict access to management interface to internal network.
+Apply defense-in-depth.
+
+As a general security measure, Siemens strongly recommends to protect network access to nonperimeter devices with appropriate mechanisms. It is advised to configure the environment according to Siemens operational guidelines in order to run the devices in a protected IT environment.
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+For more information on these vulnerabilities and detailed instructions, please see Siemens Security Advisory SSA-623229 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

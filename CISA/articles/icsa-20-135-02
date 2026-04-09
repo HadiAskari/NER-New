@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Emerson
+Equipment: Emerson WirelessHART Gateways (1410, 1420 and 1552WU)
+Vulnerability: Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could disable the internal gateway firewall. Once the gateway's firewall is disabled, a malicious user could issue specific commands to the gateway, which could then be forwarded on to the end user's wireless devices.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Emerson reports that the vulnerability affects the following products when the VLAN feature is enabled:
+
+Wireless 1410 Gateway, revisions 4.6.43 to 4.7.84
+Wireless 1420 Gateway, revisions 4.6.43 to 4.7.84
+Wireless 1552WU Gateway, revisions 4.6.43 to 4.7.84
+
+Note that this is not an issue with the WirelessHART communication protocol. Wireless field devices, Smart Wireless Field Link, AMS Wireless SNAP-ON, and AMS Wireless Configurator are unaffected.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+There is a flaw in the code used to configure the internal gateway firewall when the gateway's VLAN feature is enabled. If a user enables the VLAN setting, the internal gateway firewall becomes disabled resulting in exposure of all ports used by the gateway.
+CVE-2020-12030 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Dams, Energy, Food and Agriculture, Healthcare and Public Health, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Emerson discovered this vulnerability and reported it to CISA once there was a solution.
+4. MITIGATIONS
+Emerson recommends end users update the firmware on VLAN-enabled Version 4 gateways as soon as possible.
+If the VLAN feature is not enabled, no immediate action is necessary.
+Please see Emerson’s cybersecurity notification alert number EMR.RMT20001-1 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Disable any unused features. 
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

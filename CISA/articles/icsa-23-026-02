@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Econolite
+Equipment: EOS
+Vulnerability: Improper Access Control, Use of Weak Hash
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-23-026-02 Econolite EOS that was published January 26, 2023.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in a remote unauthenticated attacker gaining full control over traffic lights.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of EOS, a traffic control software, are affected:
+--------- Begin Update A Part 1 of 4 --------- 
+
+
+EOS: Versions prior to 3.2.23
+
+
+--------- End Update A Part 1 of 4 --------- 
+4.2 VULNERABILITY OVERVIEW
+4.2.1 IMPROPER ACCESS CONTROL CWE-284
+--------- Begin Update A Part 2 of 4 ---------
+Econolite EOS versions prior to 3.2.23 lack a password requirement for gaining “READONLY” access to log files and certain database and configuration files. One such file contains tables with MD5 hashes and usernames for all defined users in the control software, including administrators and technicians.
+--------- End Update A Part 2 of 4 ---------
+CVE-2023-0451 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+4.2.2 USE OF WEAK HASH CWE-328
+--------- Begin Update A Part 3 of 4 --------- 
+Econolite EOS versions prior to 3.2.23 use a weak hash algorithm for encrypting privileged user credentials. A configuration file that is accessible without authentication uses MD5 hashes for encrypting credentials, including those of administrators and technicians.
+--------- End Update A Part 3 of 4 ---------
+CVE-2023-0452 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Transportation 
+COUNTRIES/AREAS DEPLOYED: United States and Canada 
+COMPANY HEADQUARTERS LOCATION: United States 
+
+4.4 RESEARCHER
+Rustam Amin reported these vulnerabilities to CISA. 
+5. MITIGATIONS
+--------- Begin Update A Part 4 of 4 ---------
+Econolite recommends users update their affected products to the latest version. Customers are strongly encouraged to download the latest software updates through https://www.econolite.com/support.
+Customers may also contact Econolite by sending an email to support@econolite.com or calling the Support line at (800) 225-6480 or reaching out to their local Account Manager or Distributor.
+Econolite also recommends that customers follow best practices for network security and access control for all safety-critical equipment and minimize exposure by restricting access to equipment on the open public internet.
+--------- End Update A Part 4 of 4 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

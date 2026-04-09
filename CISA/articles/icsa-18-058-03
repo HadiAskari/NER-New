@@ -1,0 +1,46 @@
+
+CVSS v3 7.5
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Emerson Process Management LLLP
+Equipment: ControlWave Micro Process Automation Controller
+Vulnerability: Stack-based Buffer Overflow
+AFFECTED PRODUCTS
+The following versions of ControlWave Micro firmware, a family of SCADA RTUs, PLCs, PACs, and flow computers, are affected:
+
+ControlWave Micro [ProConOS v.4.01.280] – firmware: CWM v.05.78.00 and prior.
+
+IMPACT
+Exploitation may possibly cause a halt of Ethernet functionality, requiring a cold start to restore the system as well as communications related to ControlWave Designer access. This can possibly result in a loss of system availability and disruption in communications with other connected devices.
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERFLOW CWE-121
+
+A stack-based buffer overflow vulnerability caused by sending crafted packets on Port 20547 could force the PLC to change its state into halt mode.
+CVE-2018-5452 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+RESEARCHER
+Younes Dragoni of Nozomi Networks reported this vulnerability to NCCIC.
+BACKGROUND
+Critical Infrastructure Sectors: Energy, Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Minnesota, USA
+MITIGATION
+Emerson offers the following mitigation advice:
+
+Assess which ControlWave products in your organization have Ethernet connectivity.
+Upgrade the affected devices to firmware version 05.79.00 to correct this possible action. System firmware upgrade instructions are available in product documentation (ControlWave Micro Process Automation Controller Instruction Manual, part D301392X012).
+The resolution described is available only to the user when appropriately incorporated into the application running in ControlWave Micro firmware.
+Prior to upgrading the system firmware, always perform a full alarm and historical collection (archive files as well as audit logs).
+
+The release notes and firmware upgrade are available to registered users at the following link:
+http://www3.emersonprocess.com/remote/support/v2/login.html.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

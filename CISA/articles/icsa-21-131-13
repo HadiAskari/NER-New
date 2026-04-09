@@ -1,0 +1,81 @@
+
+1. EXECUTIVE SUMMARY
+--------- Begin Update A Part 1 of 3 ---------
+
+CVSS v3 8.1
+
+--------- End Update A Part 1 of 3 ---------
+
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: SINAMICS Medium Voltage Products
+Vulnerability: Missing Authentication for Critical Function
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to gain full remote access to the HMI.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports this vulnerability affects the following SINAMICS products with telnet enabled on SIMATIC comfort HMI Panels:
+
+SINAMICS GH150: All versions
+SINAMICS GL150 (with option X30): All versions
+SINAMICS GM150 (with option X30): All versions
+SINAMICS SH150: All versions
+SINAMICS SL150: All versions
+SINAMICS SM120: All versions
+SINAMICS SM150: All versions
+SINAMICS SM150i: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The Telnet service of the HMI Comfort Panels system component in affected SINAMICS products does not require authentication, which may allow a remote attacker to gain access to the device if the service is enabled. Telnet is disabled by default.
+--------- Begin Update A Part 2 of 3 ---------
+CVE-2020-15798 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+--------- End Update A Part 2 of 3 ---------
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Commercial Facilities, Critical Manufacturing, Energy, Food and Agriculture, Healthcare and Public Health, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+---------Begin Update A Part 3 of 3 ---------
+Only HMI image versions prior to v16 Update 3a are affected. Siemens recommends updating the following products to v16 Update 4 or later:
+
+SINAMICS GH150
+SINAMICS GL150 (with option X30)
+SINAMICS GM150 (with option X30)
+SINAMICS SH150
+SINAMICS SM120
+
+As only SIMATIC HMI image versions prior to v15 SP1 Update 6 are affected, update the HMI panel image as included in your installation of the following products to v15 SP1 Update 6 or later version.
+
+SINAMICS SL150
+SINAMICS SM150
+SINAMICS SM150i
+
+--------- End Update A Part 3 of 3 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Disable Telnet on the HMI Panels if enabled. If this is not possible, defense-in-depth should be used. Note: By default, Telnet is disabled.
+Follow SINAMICS MV industrial security guidelines
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for industrial security, and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For additional information see Siemens Security Advisory SSA-752103
+For more details regarding the telnet authentication vulnerability in SIMATIC HMI Comfort Panels, refer to Siemens Security Advisory SSA-520004
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a attack complexity.

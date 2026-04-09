@@ -1,0 +1,60 @@
+
+OVERVIEW
+Stephen Craven of the Tennessee Valley Authority (TVA) has identified an IP forwarding vulnerability in older versions of Siemens RUGGEDCOM ROS. Siemens recommends updating to the latest version to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following versions of RUGGEDCOM ROS:
+
+ROS: All versions between 3.8.0 and 4.2.0
+
+ROS on the following products is not affected:
+
+RMC products,
+RP110, and
+RS950G.
+
+IMPACT
+An attacker in one VLAN could possibly circumvent VLAN isolation and communicate with devices in another VLAN if IP addresses are configured on both VLANs.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is an international company headquartered in Munich, Germany.
+The affected products, Siemens RUGGEDCOM ROS-based devices, are used to connect devices that operate in harsh environments such as electric utility substations and traffic control cabinets. According to Siemens, RUGGEDCOM ROS-based devices are deployed across several sectors including Energy, Healthcare and Public Health, and Transportation Systems. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNINTENDED PROXY OR INTERMEDIARYCWE-441: Unintended Proxy or Intermediary ('Confused Deputy'), http://cwe.mitre.org/data/definitions/441.html, web site last accessed September 1, 2015.
+
+The ROS operating system for layer 2 switches include IP forwarding capabilities that cannot be deactivated by users. This may allow an attacker in one VLAN to possibly circumvent VLAN isolation and communicate with devices in another VLAN if IP addresses are configured on both VLANs.
+CVE-2015-6675NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6675, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:A/AC:M/Au:N/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:M/Au:N/C:P/I:P/A:N, web site last accessed September 1, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a medium skill would be able to exploit this vulnerability.
+MITIGATION
+Firmware versions since ROS 4.2.0 provide an option to disable IP forwarding. Siemens recommends that users update to the latest firmware version. The firmware updates for the affected products can be obtained for free from the following contact points:
+
+Submit a support request online
+
+http://www.siemens.com/automation/support-request
+
+Call a local hotline center:
+
+http://www.automation.siemens.com/mcms/aspa-db/en/automationtechnology/Pages/default.aspx
+If users do not want IP forwarding between VLANs in their configuration, then they need to disable IP forwarding after updating to the new firmware according to the instructions in the user guide. The following link leads to the ROS user guide:
+https://support.industry.siemens.com/cs/ww/en/ps/15305/man
+Until the firmware can be updated to the latest version, users can remove IP addresses from the VLAN if they are not required.
+For more information on this vulnerability and detailed instructions, please see Siemens Security Advisory SSA-720081 at the following location:
+http://www.siemens.com/cert/advisories/
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

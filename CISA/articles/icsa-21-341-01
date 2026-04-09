@@ -1,0 +1,64 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: RTU500 Series
+Vulnerabilities: Type Confusion, Reachable Assertion
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a denial-of-service condition in the affected version of the RTU500 series product.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of RTU500 Series, a remote terminal unit, are affected:
+
+RTU500 Series CMU Firmware Version 12.4.X
+RTU500 Series CMU Firmware Version 12.6.X
+RTU500 Series CMU Firmware Version 12.7.X
+RTU500 Series CMU Firmware Version 13.0.X
+RTU500 Series CMU Firmware Version 13.1.X
+RTU500 Series CMU Firmware Version 13.2.1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    ACCESS OF RESOURCE USING INCOMPATIBLE TYPE ('TYPE CONFUSION') CWE-843
+A vulnerability exists in the affected OpenLDAP versions leading to an LDAP service crash in the parsing of a keystring, resulting in a denial-of-service condition.
+CVE-2020-36229 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    REACHABLE ASSERTION CWE-617
+A vulnerability exists in the affected OpenLDAP versions leading in an assertion failure in an LDAP service in the parsing of a file, resulting in a denial-of-service condition.
+CVE-2020-36230 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends users update to the following versions:
+
+RTU500 series CMU Firmware Versions 12.4.X to Version 12.4.11 (to be released by end of January 2022)
+RTU500 series CMU Firmware Versions 12.6.X to Version 12.6.7
+RTU500 series CMU Firmware Versions 12.7.X to Version 12.7.2
+RTU500 series CMU Firmware Versions 13.0.X to Version 13.2.3
+RTU500 series CMU Firmware Versions 13.1.X to Version 13.2.3
+RTU500 series CMU Firmware Versions 13.2.X to Version 13.2.3
+
+As the vulnerabilities affect only the RTU500 series in which CAM function is configured and enabled, a possible mitigation is to disable the CAM function if it is not used.
+The CAM function is disabled by default.
+Hitachi Energy recommends the following security practices and firewall configurations to help protect process control networks from attacks that originate outside the network:
+
+Physically protect process control systems from direct access by unauthorized personnel.
+Do not directly connect to the Internet.
+Separate from other networks by means of a firewall system that has a minimal number of ports exposed.
+Process control systems should not be used for Internet surfing, instant messaging, or receiving emails.
+
+Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system. Please see Hitachi Energy advisory 8DBD000066 for further mitigation and update information.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

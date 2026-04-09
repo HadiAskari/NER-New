@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATICS PCS neo (Admin Console), SINTEPLAN, TIA Portal
+Vulnerability: Uncontrolled Resource Consumption
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-104-16 Siemens TIA Administrator that was published April 14, 2022, to the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated attacker to cause a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+TIA Administrator in the following Siemens products is affected:    
+
+SIMATICS PCS neo (Administration Console): All versions prior to v3.1 SP1
+
+--------- Begin Update A Part 1 of 2 ---------
+
+SINETPLAN: All versions
+TIA Portal: Versions 15, 15.1, 16, and 17
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The affected system cannot properly process specially crafted packets sent to Port 8888/TCP. A remote attacker could exploit this vulnerability to cause a denial-of-service condition. The affected devices must be restarted manually.
+CVE-2022-27194 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Peter Cheng of Elex Feigong Research reported this vulnerability to Siemens.
+5. MITIGATIONS
+Siemens recommends applying the following updates:
+
+SIMATICS PCS neo (Administration Console): Update to v3.1 SP1 or later
+
+--------- Begin Update A Part 2 of 2 ---------
+
+SINETPLAN: Update TIA Administrator to v1.0 SP7 or later
+TIA Portal: Versions 15, 15.1, 16, and 17: Update TIA Administrator to v1.0 SP7 or later
+
+--------- End Update A Part 2 of 2 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Restrict access to Port 8888/TCP to localhost (default)
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to the Siemens operational guidelines for industrial security and follow the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-711829
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

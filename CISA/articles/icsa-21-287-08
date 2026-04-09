@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: RUGGEDCOM ROX
+Vulnerability: Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated attacker to cause a permanent denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of RUGGEDCOM ROX, switches and serial-to-Ethernet devices, are affected:
+
+RUGGEDCOM ROX MX5000: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1400: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1500: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1501: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1510: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1511: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1512: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1524: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1536: All versions prior to v2.14.1
+RUGGEDCOM ROX RX5000: All versions prior to v2.14.1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+Affected devices write crash-dumps without checking if enough space is available on the file system. Once the crash-dump fills the entire root file system, affected devices fail to boot. An attacker can leverage this vulnerability to cause a permanent denial-of-service condition.
+CVE-2021-41546 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+•    CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+•    COUNTRIES/AREAS DEPLOYED: Worldwide
+•    COMPANY HEADQUARTERS LOCATION: Germany
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has released updates for the affected products and recommends updating to the latest versions:
+
+Update to v2.14.1 or later version.
+Restrict access to the affected systems, especially to Port 443/TCP, to trusted IP addresses only.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security, and to follow the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-173565
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

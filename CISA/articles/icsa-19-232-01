@@ -1,0 +1,45 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Low skill level to exploit
+Vendor: Zebra
+Equipment: Industrial Printers
+Vulnerability: Insufficiently Protected Credentials
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote attacker to send specially crafted packets to a port on the printer, resulting in the retrieval of a front control panel passcode.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Zebra Industrial Printers are affected:
+
+All Zebra Industrial Printers
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSUFFICENTLY PROTECTED CREDENTIALS CWE-522
+Zebra printers are shipped with unrestricted end-user access to front panel options. If the option to use a passcode to limit the functionality of the front panel is applied, specially crafted packets could be sent over the same network to a port on the printer and the printer will respond with an array of information that includes the front panel passcode for the printer. Once the passcode is retrieved, an attacker must have physical access to the front panel of the printer to enter the passcode to access the full functionality of the front panel.
+CVE-2019-10960 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Tri Quach reported this vulnerability to CISA.
+4. MITIGATIONS
+Zebra has released a new version of the software that can be obtained at: https://www.zebra.com/linkos
+Zebra recommends its printers should not be configured to be fully accessible via the Internet. Zebra further recommends that if a Zebra printer needs to be accessed from outside an organization’s secure network architecture, users use Weblink Technology (or similar tools) that provide a secure, encrypted connection to the user’s printer.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

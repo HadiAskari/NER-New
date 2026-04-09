@@ -1,0 +1,58 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on October 24, 2013, and is now being released to the NCCIC/ICS-CERT Web site.
+General Electric (GE) Intelligent Platforms reported to NCCIC/ICS-CERT an improper input validation vulnerability in the DNP3 driver used with Proficy products iFIX and CIMPLICITY. The vulnerability report was part of a resolution by Catapult Software, which developed the driver for the GE products.
+Adam Crain of Automatak and independent researcher Chris Sistrunk originally reported the improper input validation vulnerability in the Catapult Software driver to NCCIC/ICS-CERT in the advisory ICSA-13-297-01 Catapult Software DNP3 Driver Improper Input Validation.
+This vulnerability is remotely exploitable.
+AFFECTED PRODUCTS 
+The following GE Intelligent Platforms are affected:
+
+Proficy human-machine interface/supervisory control and data acquisition (HMI/SCADA) DNP3 I/O Driver (“DNP”): Version 7.20j (Catapult v7.2.0.56) and prior versions.
+Proficy HMI/SCADA—iFIX or CIMPLICITY servers with the vulnerable I/O Driver installed (this includes iFIX or CIMPLICITY installations that are part of Proficy Process Systems).
+
+IMPACT
+The master station can be put into a denial-of-service (DoS) condition by sending a specially crafted transmission control protocol (TCP) packet from the outstation on an IP-based network. If the device is connected via a serial connection, the same attack can be accomplished with physical access to the outstation. The device must be shut down and restarted to recover from the DoS.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+GE is a US-based company that maintains offices in several countries around the world.
+The affected DNP3 driver products can be used in conjunction with Proficy, iFIX, and CIMPLICITY HMI/SCADA software. According to GE Proficy, iFIX and CIMPLICITY are deployed across several sectors including oil and gas, water and wastewater, and electric utilities.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+As this vulnerability affects Internet Protocol-connected and Serial-connected devices, two CVSS scores have been calculated.
+
+IMPROPER INPUT VALIDATION-IP-BASEDCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed November 19, 2013.
+
+The Catapult Software DNP3 driver, used in the GE iFIX and CIMPLICITY products, does not validate input correctly. An attacker could cause the software to go into an infinite loop by sending a specifically crafted TCP packet, causing the process to crash.
+CVE-2013-2811NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2811, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed November 19, 2013.
+
+IMPROPER INPUT VALIDATION-SERIAL-BASEDCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed November 19, 2013.
+
+The Catapult Software DNP3 driver, used in the GE iFIX and CIMPLICITY products, does not validate input correctly. An attacker could cause the software to go into an infinite loop, causing the process to crash. The system must be restarted manually to clear the condition.
+The following scoring is for serial-connected devices.
+CVE-2013-2823NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2823, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.7 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed November 19, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability can be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+GE has provided the following mitigations:
+
+Installing Version 7.20k (Catapult v7.2.0.60) of the DNP driver or newer will address this issue. To obtain the latest version of any I/O driver, visit GE’s Web site at http://support.ge-ip.com and in the right column look for “Quick Picks” > “Downloads” > “I/O Drivers.”
+DNP Distributed Network Protocol 3.0 v7.xx I/O Driver: http://support.ge-ip.com/support/index?page=dwchannel&comp=iodetail&id=DG309
+
+For the GE Security Advisory on this issue:
+http://support.ge-ip.com/support/index?page=kbchannel&id=KB15805
+In addition, the driver update is also available from Catapult Software at http://catapultsoftware.com/support
+The researchers suggest blocking DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DNP3-specific rule sets to add an additional layer of protection.
+NCCIC/ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense‑in‑Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed November 19, 2013. NCCIC/ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Target Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed November 19, 2013. that is available for download from the NCCIC/ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS‑CERT for tracking and correlation against other incidents.

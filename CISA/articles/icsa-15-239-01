@@ -1,0 +1,48 @@
+
+OVERVIEW
+NCCIC/ICS-CERT received a report from HP’s Zero Day Initiative (ZDI) concerning buffer overflow vulnerabilities in Moxa’s SoftCMS software package. These vulnerabilities were reported to ZDI by security researcher Carsten Eiram of Risk Based Security, who identified seven vulnerabilities, and Fritz Sands, who discovered two vulnerabilities. Moxa has released a new version to mitigate these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following versions of Moxa’s SoftCMS are affected:
+
+SoftCMS, Version 1.3 and prior versions.
+
+IMPACT
+Successful exploitation of these vulnerabilities could cause a buffer overflow condition that may allow remote code execution.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Moxa is a Taiwan-based company that maintains offices in several countries around the world, including the US, UK, India, Germany, France, China, Russia, and Brazil.
+The affected product, SoftCMS, is a central management software that manages large scale surveillance systems. According to Moxa, SoftCMS is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, Transportation Systems, and others. Moxa estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HEAP-BASED BUFFER OVERFLOWCWE-122: Heap-based Buffer Overflow, http://cwe.mitre.org/data/definitions/122.html, web site last accessed August 27, 2015.
+
+The application is susceptible to multiple buffer overflow conditions that may crash or allow remote code execution.
+CVE-2015-6457NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6457, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory.has been assigned to this vulnerability. ZDI has assigned a CVSS v2 base score of 6.8; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:P, web site last accessed August 27, 2015.
+
+CLASSIC BUFFER OVERFLOWCWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow'), http://cwe.mitre.org/data/definitions/120.html, web site last accessed August 27, 2015.
+
+The application is susceptible to multiple buffer overflow conditions that may crash or allow remote code execution.
+CVE-2015-6458NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6458, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory.has been assigned to this vulnerability. ZDI has assigned a CVSS v2 base score of 6.8; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:P, web site last accessed August 27, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with medium skill would be able to exploit these vulnerabilities.
+MITIGATION
+Moxa has released SoftCMS, Version 1.4 on June 1, 2015, which addresses the vulnerabilities by removing SStreamVideo ActiveX Control. SoftCMS, Version 1.4 can be downloaded at the following URL:
+http://www.moxa.com/support/download.aspx?type=support&id=8013
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Using application whitelisting will not prevent memory-based attacks, such as exploiting buffer overflows vulnerabilities, but it can prevent shellcode from running executables that have not been authorized, thereby limiting the impact of memory-based attacks that call files.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

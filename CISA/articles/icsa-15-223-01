@@ -1,0 +1,47 @@
+
+OVERVIEW
+Alexander Bolshev, Gleb Cherbov, and Svetlana Cherkasova of Digital Security have identified a memory corruption vulnerability in Schneider Electric IMT25 DTM component. Schneider Electric has produced a patch that mitigates this vulnerability. Digital Security has tested this patch to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Schneider Electric IMT25 Magnetic Flow DTM versions are affected:
+
+IMT25 Magnetic Flow DTM, Version 1.500.000 and all previous versions.
+
+IMPACT
+The vulnerability produces an overwritten memory value that could cause a denial of service and potentially remote code execution. The denial of service would impact the DTM component and possibly the Frame Application running the DTM software. Remote code execution means that a malicious actor could execute commands and software at the same level of permissions as the Frame Application on the machine hosting the Frame Application.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric’s corporate headquarters is located in Paris, France. It maintains offices in more than 100 countries worldwide.
+The affected product, IMT25 Magnetic Flow DTM, is an FDT/DTM software library. According to Schneider Electric, this is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, Water and Wastewater Systems, and others. Schneider Electric estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+MEMORY CORRUPTIONCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed August 06, 2015.
+
+A specific memory value can be overwritten by sending a special reply to a HART command. The overwritten memory value can cause a denial of service and remote code execution.
+CVE-2015-3977NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3977, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.7 has been assigned; the CVSS vector string is (AV:A/AC:L/Au:S/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:L/Au:S/C:C/I:C/A:C, web site last accessed August 06, 2015
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely from an adjacent network.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be moderately difficult. Access to an adjacent network is required to exploit. This decreases the likelihood of a successful exploit.
+MITIGATION
+Schneider Electric has produced a new version to mitigate this vulnerability, and recommends customers download and install version 1.500.004 of the DTM software. This software version can be found at:
+http://iom.invensys.com/EN/Pages/Foxboro_MandI_DocTools_DeviceManagers.aspx/
+Schneider Electric has published Security Notification SEVD-2015-215-01 with details about this vulnerability. This notice may be downloaded at
+http://www.schneider-electric.com/ww/en/download/document/SEVD-2015-215-01?showAsIframe=true
+For further information on vulnerabilities in Schneider Electric’s products, please visit Schneider Electric’s cybersecurity web page at
+http://www2.schneider-electric.com/sites/corporate/en/support/cybersecurity/cybersecurity.page
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Keep control system traffic seperate from other networks as much as possible.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

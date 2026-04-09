@@ -1,0 +1,60 @@
+
+OVERVIEW
+Automation software company Ing. Punzenberger COPA-DATA GmbH reported an improper input validation vulnerability affecting the DNP3 driver in the zenon SCADA software. The vulnerability was found based on the DNP3 research conducted by Adam Crain of Automatak and Chris Sistrunk of Mandiant. COPA-DATA has produced an update that mitigates the vulnerability, as well as provides customer support information to assist asset owners and integrators.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following COPA-DATA products are affected:
+
+zenon DNP3 NG driver (DNP3 master), Versions 7.10 SP0 up to and including 7.11 SP0 build 10238
+zenon DNP3 Process Gateway (DNP3 outstation), Versions 7.11 SP0 build 10238 and prior.
+
+IMPACT
+Exploiting this vulnerability could result in a denial-of-service (DoS) condition, which would close communication connections and cause system instability.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+COPA-DATA is an Austrian-based company that maintains offices in several countries around the world, including the United States, Europe, and Asia.
+The affected products, zenon HMI/SCADA, are Windows based SCADA systems. According to COPA-DATA, the zenon DNP3_NG driver and the zenon DNP3 process gateway are used primarily in the energy and infrastructure industries, including water and waste-water treatment. These products are used mainly in the United States and Australia but also in other countries in North America, South America, Africa, Asia, Europe and the Middle-East.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+As this vulnerability affects Internet Protocol (IP)-connected and Serial-connected devices, two CVSS scores have been calculated.
+
+IMPROPER INPUT VALIDATION-IP-BASEDCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed June 03, 2014.
+
+The zenon DNP3 driver software incorrectly validates input. An attacker could cause the software to go into an infinite loop with a specifically crafted TCP packet, causing the process to crash. The system must be restarted manually to clear the condition.
+The following scoring is for IP-connected devices.
+CVE- 2014-2345NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2345, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, web site last accessed June 03, 2014.
+
+IMPROPER INPUT VALIDATION-SERIAL-BASEDCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed June 03, 2014.
+
+The zenon DNP3 driver software incorrectly validates input. An attacker could cause the software to go into an infinite loop, causing the process to crash. The system must be restarted manually to clear the condition.
+The following scoring is for serial-connected devices.
+CVE- 2014-2346NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2346, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.0 has been assigned; the CVSS vector string is (AV:L/AC:H/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:H/Au:N/C:N/I:N/A:C, web site last accessed June 03, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The IP-based vulnerability could be exploited remotely.
+The serial-based vulnerability is not exploitable remotely. Local access to the serial-based outstation is required.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill could craft an IP packet that would be able to exploit the vulnerability for an IP-based device.
+An attacker with a high skill could exploit the serial-based vulnerability because physical access to the device or some amount of social engineering is required.
+MITIGATION
+Build 11206 for Version zenon 7.11 is available that contains updated versions of the affected products that resolve the discovered vulnerabilities. COPA-DATA recommends upgrading or updating the affected products to this version.
+Please see Knowledge Base articles 179444 and 178001 located here:
+http://www.copadata.com/en/support.html
+System integrators and asset owners should contact their local COPA-DATA representative for further information on how to obtain this update.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed June 03, 2014. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed June 03, 2014. for more information on social engineering attacks.
+

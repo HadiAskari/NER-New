@@ -1,0 +1,41 @@
+
+CVSS v3 9.8
+ATTENTION: Remotely exploitable/low skill level to exploit. Public exploits are available.
+Vendor: ABB
+Equipment: SREA-01 and SREA-50
+Vulnerability: Relative Path Traversal
+AFFECTED PRODUCTS
+ABB reports that the vulnerability affects the following SREA-01 and SREA-50 legacy remote monitoring tools and Ethernet adapters:
+
+SREA-01 revisions A, B, C: application versions up to 3.31.5, and
+SREA-50 revision A: application versions up to 3.32.8
+
+IMPACT
+An attacker who successfully exploits this vulnerability could access files on the affected products’ file systems, view data, change configuration, retrieve password hash codes, and potentially insert and send commands to connected devices without authorization.
+MITIGATION
+HMS Industrial Networks Ab created an update to resolve a publicly reported vulnerability in the ABB products listed above. Products are based on a legacy software platform which is no longer actively maintained. The problem is corrected by installing a patch that is available at the following location:
+http://search-ext.abb.com/library/Download.aspx?DocumentID=9AKK107045A1782&LanguageCode=en&DocumentPartId=&Action=Launch
+Note: ABB has tested the patch only with the latest revisions of the SREA-01. The patch should also be applicable to the latest revisions of the SREA-50. If an old revision of hardware is in use, it is suggested to replace the hardware either with latest revision or with some other remote monitoring tool.
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+VULNERABILITY OVERVIEW
+
+RELATIVE PATH TRAVERSAL CWE-23
+
+An attacker may access internal files of the affected products without any authorization over the network, using a HTTP request which refers to files using ../../ relative paths.
+Once the internal password file is retrieved, the password hash can be identified using a brute force attack. There is also an exploit allowing running of commands after authorization.
+CVE-2017-9664 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+Bertin Jose and Fernandez Ezequiel discovered the vulnerability. HMS Industrial Networks Ab provided a patch to correct the issue.
+BACKGROUND
+Critical Infrastructure Sectors: Critical Manufacturing, Energy
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Switzerland

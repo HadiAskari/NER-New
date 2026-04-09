@@ -1,0 +1,60 @@
+
+CVSS v3 8.1
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: NXP Semiconductors
+Equipment: MQX RTOS
+Vulnerabilities: Classic Buffer Overflow, Out-of-Bounds Read
+UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-17-285-04 NXP Semiconductors MQX RTOS that was published October 12, 2017, on the NCCIC/ICS-CERT web site.
+AFFECTED PRODUCTS
+The following versions of MQX Real-Time Operating System (RTOS) are used in NXP’s ColdFire microcontrollers, Kinetis microcontrollers, i.MX processors, and Vybrid processors, which are affected by the vulnerabilities listed below.
+Versions susceptible to Classic Buffer Overflow Vulnerability:
+
+MQX RTOS, Version 5.0 and prior versions, and
+
+Versions susceptible to Out-of-Bounds Read Vulnerability:
+
+MQX RTOS, Version 4.1 and prior versions.
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow a remote attacker to cause a buffer overflow condition that may, in turn, cause remote code execution or out-of-bounds read conditions, resulting in a denial of service.
+MITIGATION
+--------- Begin Update A Part 1 of 1 --------
+NXP released MQX, Version 5.1 on January 31, 2018, which addresses both vulnerabilities.
+
+For MQX users running versions older than 5.1, NXP has produced an update that can be obtained at the following location:
+
+http://www.nxp.com/mqxv5
+
+For MQX users running Version 5.0, NXP recommends users update to version 5.1 or the latest version. Existing licensees will be contacted about the update. Users can also contact NXP directly via email at MQXsales@NXP.com to get additional information as needed. 
+For MQX users running Version 4.2 and prior versions, NXP recommends that users obtain a patch or update to Version 5.1, which does not contain the out-of-bounds read vulnerability. Please contact NXP via email at MQXsales@NXP.com to get additional information as needed.
+
+--------- End Update A Part 1 of 1 --------
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+
+The Real-Time TCP/IP Communications Suite (RTCS) in MQX’s DHCP client fails to sanitize all inputs, which may allow maliciously crafted DHCP packets to cause memory to be overwritten, allowing remote code execution.
+CVE-2017-12718 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+
+OUT-OF-BOUNDS READ CWE-125
+
+The DNS client for MQX fails to bounds check DNS response parameters, which may allow maliciously crafted DNS packets to cause memory to be read out-of-bounds, resulting in a denial of service.
+CVE-2017-12722 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+RESEARCHER
+Scott Gayou identified and coordinated these vulnerabilities with NXP, CERT/CC, and NCCIC.
+BACKGROUND
+Critical Infrastructure Sectors: Communications, Critical Manufacturing, Healthcare and Public Health, and Transportation
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Eindhoven, Netherlands

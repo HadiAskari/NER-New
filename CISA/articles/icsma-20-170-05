@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 4.6
+ATTENTION: Exploitable with adjacent access/low skill level to exploit 
+Vendor: BIOTRONIK
+Equipment: CardioMessenger II-S T-Line, CardioMessenger II-S GSM
+Vulnerabilities: Improper Authentication, Cleartext Transmission of Sensitive Information, Missing Encryption of Sensitive Data, Storing Passwords in a Recoverable Format
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker with physical access to the CardioMessenger to obtain sensitive data, obtain transmitted medical data from implanted cardiac devices with the implant’s serial number or impact Cardio Messenger II product functionality. Successful exploitation of these vulnerabilities could allow an attacker with adjacent access to influence communications between the Home Monitoring Unit (HMU) and the Access Point Name (APN) gateway network. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the CardioMessenger II, a home monitoring unit, are affected:
+
+CardioMessenger II-S T-Line T4APP 2.20
+CardioMessenger II-S GSM T4APP 2.20
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER AUTHENTICATION CWE-287
+The affected products do not properly enforce mutual authentication with the BIOTRONIK Remote Communication infrastructure.  
+CVE-2019-18246 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The affected products transmit credentials in cleartext prior to switching to an encrypted communication channel. An attacker can disclose the product’s client credentials for connecting to the BIOTRONIK Remote Communication infrastructure. 
+CVE-2019-18248 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.3    IMPROPER AUTHENTICATION CWE-287
+The affected products allow credential reuse for multiple authentication purposes. An attacker with adjacent access to the CardioMessenger can disclose its credentials used for connecting to the BIOTRONIK Remote Communication infrastructure.
+CVE-2019-18252 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.4    MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+The affected products do not encrypt sensitive information while at rest. An attacker with physical access to the CardioMessenger can disclose medical measurement data and the serial number from the implanted cardiac device the CardioMessenger is paired with.
+CVE-2019-18254 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    STORING PASSWORDS IN A RECOVERABLE FORMAT CWE-257
+The affected products use individual per-device credentials that are stored in a recoverable format. An attacker with physical access to the CardioMessenger can use these credentials for network authentication and decryption of local data in transit.
+CVE-2019-18256 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Guillaume Bour, Anniken Wium Lie, and Marie Moe reported these vulnerabilities to CISA.
+4. MITIGATIONS
+BIOTRONIK reports they will not be issuing a product security update; however, BIOTRONIK has identified compensating controls which have been put place that reduce the risk of exploitation and prevent patient safety risks. BIOTRONIK assessed these vulnerabilities and determined no new potential safety risks exist.
+BIOTRONIK recommends users take the following defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Maintain good physical control over home monitoring units.
+Use only home monitoring units obtained directly from a trusted healthcare provider or a BIOTRONIK representative to ensure integrity of the system.
+Report any concerning behavior regarding these products to your healthcare provider or a BIOTRONIK representative.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Where feasible, users with concerns about the cybersecurity of their current medical devices should contact their healthcare provider or a BIOTRONIK professional. 
+Do not connect unapproved devices to the home monitoring unit by any network or physical connections.
+Only use the home monitoring units in private controlled environments such as a home, apartment, or otherwise physically controlled environment.
+Restrict system access to authorized personnel only.
+Follow proper disposal procedures of the home monitoring unit for the continued protection sensitive data.
+In cases where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

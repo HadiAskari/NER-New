@@ -1,0 +1,49 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v4.8 
+
+ATTENTION: Low skill level to exploit
+Vendor: OSIsoft
+Equipment: PI Vision
+Vulnerability: Cross-site Scripting
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to read and modify the contents of the PI Vision web page and data related to the PI Vision application in the victim’s browser.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of PI Vision, a process visualization tool are affected:
+
+PI Vision 2017, and
+PI Vision 2017 R2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The application contains a cross-site scripting vulnerability where displays that reference AF elements and attributes containing JavaScript are affected. This vulnerability requires the ability of authorized AF users to store JavaScript in AF elements and attributes.
+CVE-2018-19006 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+OSIsoft reported this vulnerability to NCCIC.
+4. MITIGATIONS
+OSIsoft recommends users upgrade to PI Vision 2017 R2 SP1 to address this issue. This update can be obtained directly from OSIsoft. 
+Additionally, OSIsoft recommends the following defensive measures. All access to the AF Server is protected by Windows authentication, so the modifications to AF data items required by an attacker would have to be performed by a user with write access to either the AF hierarchy or templates. Periodic review of AF Server permissions to ensure only intended users are granted write access to elements, element templates, and event frame templates is a good practice to reduce exposure.
+Similarly, which data items are available to PI Vision is controlled by the PI Vision administrators through the administrative site. Only add data sources to PI Vision that you can verify as legitimate with appropriate access control configured.
+For additional guidance on web security for PI Vision, please see KB01631 - Security Tips for PI Vision using the link below:
+https://techsupport.osisoft.com/Troubleshooting/KB/KB01631/
+For more information on this vulnerability, please refer to OSIsoft’s Security Bulletin AL00344 using the link below:
+https://techsupport.osisoft.com/Troubleshooting/Alerts/AL00344
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

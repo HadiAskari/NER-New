@@ -1,0 +1,266 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE
+Vulnerabilities: Improper Neutralization of Special Elements in Output Used by a Downstream Component (‘Injection’), Allocation of Resources Without Limits or Throttling, Basic Cross Site Scripting
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-223-07 Siemens SCALANCE that was published August 11, 2022, on the ICS webpage on www.cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow attackers to execute custom code through a cross site scripting attack or allow the unauthenticated attackers to create a denial-of-service situation.
+4. TECHNICAL DETAILS
+ 4.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affects the following SCALANCE products:
+
+M-800 / S615: All versions
+SC-600 Family: All versions prior to V2.3.1
+W-700 IEEE 802.11ax Family: All versions
+W-700 IEEE 802.11n Family: All versions 
+W-1700 IEEE 802.11ac Family: All versions
+XB-200 Switch Family: All versions
+XC-200 Switch Family: All versions
+XF-200BA Switch Family: All versions
+XM-400 Family: All versions
+XP-200 Switch Family: All versions
+XR-300WG Switch Family: All versions
+XR-500 Family: All versions
+
+--------- Begin Update A Part 1 of 2 ---------
+
+RUGGEDCOM RM1224 LTE(4G) EU (6GK6108-4AM00-2BA2): All versions < V7.1.2
+RUGGEDCOM RM1224 LTE(4G) NAM (6GK6108-4AM00-2DA2): All versions < V7.1.2
+SCALANCE M804PB (6GK5804-0AP00-2AA2): All versions < V7.1.2
+SCALANCE M812-1 ADSL-Router (Annex A) (6GK5812-1AA00-2AA2): All versions < V7.1.2
+SCALANCE M812-1 ADSL-Router (Annex B) (6GK5812-1BA00-2AA2): All versions < V7.1.2: All versions < V7.1.2
+SCALANCE M816-1 ADSL-Router (Annex B) (6GK5816-1BA00-2AA2): All versions < V7.1.2
+SCALANCE M826-2 SHDSL-Router (6GK5826-2AB00-2AB2): All versions < V7.1.2
+SCALANCE M874-2 (6GK5874-2AA00-2AA2): All versions < V7.1.2
+SCALANCE M874-3 (6GK5874-3AA00-2AA2): All versions < V7.1.2
+SCALANCE M876-3 (EVDO) (6GK5876-3AA02-2BA2): All versions < V7.1.2
+SCALANCE M876-3 (ROK) (6GK5876-3AA02-2EA2): All versions < V7.1.2
+SCALANCE M876-4 (EU) (6GK5876-4AA00-2BA2): All versions < V7.1.2
+SCALANCE M876-4 (NAM) (6GK5876-4AA00-2DA2): All versions < V7.1.2
+SCALANCE MUM853-1 (EU) (6GK5853-2EA00-2DA1): All versions < V7.1.2
+SCALANCE MUM856-1 (EU) (6GK5856-2EA00-3DA1): All versions < V7.1.2
+SCALANCE MUM856-1 (RoW) (6GK5856-2EA00-3AA1): All versions < V7.1.2
+SCALANCE S615 (6GK5615-0AA00-2AA2): All versions < V7.1.2
+SCALANCE SC622-2C (6GK5622-2GS00-2AC2): All versions < V2.3.1
+SCALANCE SC632-2C (6GK5632-2GS00-2AC2): All versions < V2.3.1
+SCALANCE SC636-2C (6GK5636-2GS00-2AC2): All versions < V2.3.1
+SCALANCE SC642-2C (6GK5642-2GS00-2AC2): All versions < V2.3.1
+SCALANCE SC646-2C (6GK5646-2GS00-2AC2): All versions < V2.3.1
+SCALANCE W721-1 RJ45 (6GK5721-1FC00-0AA0): All versions
+SCALANCE W721-1 RJ45 (6GK5721-1FC00-0AB0): All versions
+SCALANCE W722-1 RJ45 (6GK5722-1FC00-0AA0): All versions
+SCALANCE W722-1 RJ45 (6GK5722-1FC00-0AB0): All versions
+SCALANCE W722-1 RJ45 (6GK5722-1FC00-0AC0): All versions
+SCALANCE W734-1 RJ45 (6GK5734-1FX00-0AA0): All versions
+SCALANCE W734-1 RJ45 (6GK5734-1FX00-0AA6): All versions
+SCALANCE W734-1 RJ45 (6GK5734-1FX00-0AB0): All versions
+SCALANCE W734-1 RJ45 (USA) (6GK5734-1FX00-0AB6): All versions
+SCALANCE W738-1 M12 (6GK5738-1GY00-0AA0): All versions
+SCALANCE W738-1 M12 (6GK5738-1GY00-0AB0): All versions
+SCALANCE W748-1 M12 (6GK5748-1GD00-0AA0): All versions
+SCALANCE W748-1 M12 (6GK5748-1GD00-0AB0): All versions
+SCALANCE W748-1 RJ45 (6GK5748-1FC00-0AA0): All versions
+SCALANCE W748-1 RJ45 (6GK5748-1FC00-0AB0): All versions
+SCALANCE W761-1 RJ45 (6GK5761-1FC00-0AA0): All versions
+SCALANCE W761-1 RJ45 (6GK5761-1FC00-0AB0): All versions
+SCALANCE W774-1 M12 EEC (6GK5774-1FY00-0TA0): All versions
+SCALANCE W774-1 M12 EEC (6GK5774-1FY00-0TB0): All versions
+SCALANCE W774-1 RJ45 (6GK5774-1FX00-0AA0): All versions
+SCALANCE W774-1 RJ45 (6GK5774-1FX00-0AA6): All versions
+SCALANCE W774-1 RJ45 (6GK5774-1FX00-0AB0): All versions
+SCALANCE W774-1 RJ45 (6GK5774-1FX00-0AC0): All versions
+SCALANCE W774-1 RJ45 (USA) (6GK5774-1FX00-0AB6): All versions
+SCALANCE W778-1 M12 (6GK5778-1GY00-0AA0): All versions
+SCALANCE W778-1 M12 (6GK5778-1GY00-0AB0): All versions
+SCALANCE W778-1 M12 EEC (6GK5778-1GY00-0TA0): All versions
+SCALANCE W778-1 M12 EEC (USA) (6GK5778-1GY00-0TB0): All versions
+SCALANCE W786-1 RJ45 (6GK5786-1FC00-0AA0): All versions
+SCALANCE W786-1 RJ45 (6GK5786-1FC00-0AB0): All versions
+SCALANCE W786-2 RJ45 (6GK5786-2FC00-0AA0): All versions
+SCALANCE W786-2 RJ45 (6GK5786-2FC00-0AB0): All versions
+SCALANCE W786-2 RJ45 (6GK5786-2FC00-0AC0): All versions
+SCALANCE W786-2 SFP (6GK5786-2FE00-0AA0): All versions
+SCALANCE W786-2 SFP (6GK5786-2FE00-0AB0): All versions
+SCALANCE W786-2IA RJ45 (6GK5786-2HC00-0AA0): All versions
+SCALANCE W786-2IA RJ45 (6GK5786-2HC00-0AB0): All versions
+SCALANCE W788-1 M12 (6GK5788-1GD00-0AA0): All versions
+SCALANCE W788-1 M12 (6GK5788-1GD00-0AB0): All versions
+SCALANCE W788-1 RJ45 (6GK5788-1FC00-0AA0): All versions
+SCALANCE W788-1 RJ45 (6GK5788-1FC00-0AB0): All versions
+SCALANCE W788-2 M12 (6GK5788-2GD00-0AA0): All versions
+SCALANCE W788-2 M12 (6GK5788-2GD00-0AB0): All versions
+SCALANCE W788-2 M12 EEC (6GK5788-2GD00-0TA0): All versions
+SCALANCE W788-2 M12 EEC (6GK5788-2GD00-0TB0): All versions
+SCALANCE W788-2 M12 EEC (6GK5788-2GD00-0TC0): All versions
+SCALANCE W788-2 RJ45 (6GK5788-2FC00-0AA0): All versions
+SCALANCE W788-2 RJ45 (6GK5788-2FC00-0AB0): All versions
+SCALANCE W788-2 RJ45 (6GK5788-2FC00-0AC0): All versions
+SCALANCE W1748-1 M12 (6GK5748-1GY01-0AA0): All versions
+SCALANCE W1748-1 M12 (6GK5748-1GY01-0TA0): All versions
+SCALANCE W1788-1 M12 (6GK5788-1GY01-0AA0): All versions
+SCALANCE W1788-2 EEC M12 (6GK5788-2GY01-0TA0): All versions
+SCALANCE W1788-2 M12 (6GK5788-2GY01-0AA0): All versions
+SCALANCE W1788-2IA M12 (6GK5788-2HY01-0AA0): All versions
+SCALANCE WAM763-1 (6GK5763-1AL00-7DA0): All versions
+SCALANCE WAM766-1 (6GK5766-1GE00-7DA0): All versions
+SCALANCE WAM766-1 (6GK5766-1GE00-7DB0): All versions
+SCALANCE WAM766-1 6GHz (6GK5766-1JE00-7DA0): All versions
+SCALANCE WAM766-1 EEC (6GK5766-1GE00-7TA0): All versions
+SCALANCE WAM766-1 EEC (6GK5766-1GE00-7TB0): All versions
+SCALANCE WAM766-1 EEC 6GHz (6GK5766-1JE00-7TA0): All versions
+SCALANCE WUM763-1 (6GK5763-1AL00-3AA0): All versions
+SCALANCE WUM763-1 (6GK5763-1AL00-3DA0): All versions
+SCALANCE WUM766-1 (6GK5766-1GE00-3DA0): All versions
+SCALANCE WUM766-1 (6GK5766-1GE00-3DB0): All versions
+SCALANCE WUM766-1 6GHz (6GK5766-1JE00-3DA0): All versions
+SCALANCE XB205-3 (SC) (6GK5205-3BD00-2TB2): All versions
+SCALANCE XB205-3 (SC, PN) (6GK5205-3BB00-2AB2): All versions
+SCALANCE XB205-3 (ST, PN) (6GK5205-3BD00-2AB2): All versions
+SCALANCE XB205-3 (ST/BFOC) (6GK5205-3BB00-2TB2): All versions
+SCALANCE XB205-3LD (6GK5205-3BF00-2TB2): All versions
+SCALANCE XB205-3LD (SC, PN) (6GK5205-3BF00-2AB2): All versions
+SCALANCE XB208 (6GK5208-0BA00-2TB2): All versions
+SCALANCE XB208 (PN) (6GK5208-0BA00-2AB2): All versions
+SCALANCE XB213-3 (SC) (6GK5213-3BD00-2TB2): All versions
+SCALANCE XB213-3 (SC, PN) (6GK5213-3BD00-2AB2): All versions
+SCALANCE XB213-3 (ST, PN) (6GK5213-3BB00-2AB2): All versions
+SCALANCE XB213-3 (ST/BFOC) (6GK5213-3BB00-2TB2): All versions
+SCALANCE XB213-3LD (6GK5213-3BF00-2TB2): All versions
+SCALANCE XB213-3LD (SC, PN) (6GK5213-3BF00-2AB2): All versions
+SCALANCE XB216 (6GK5216-0BA00-2TB2): All versions
+SCALANCE XB216 (PN) (6GK5216-0BA00-2AB2): All versions
+SCALANCE XC206-2 (SC) (6GK5206-2BD00-2AC2): All versions
+SCALANCE XC206-2 (ST/BFOC) (6GK5206-2BB00-2AC2): All versions
+SCALANCE XC206-2G PoE (6GK5206-2RS00-2AC2): All versions
+SCALANCE XC206-2G PoE (54 V DC) (6GK5206-2RS00-5AC2): All versions
+SCALANCE XC206-2G PoE EEC (54 V DC) (6GK5206-2RS00-5FC2): All versions
+SCALANCE XC206-2SFP (6GK5206-2BS00-2AC2): All versions
+SCALANCE XC206-2SFP EEC (6GK5206-2BS00-2FC2): All versions
+SCALANCE XC206-2SFP G (6GK5206-2GS00-2AC2): All versions
+SCALANCE XC206-2SFP G (EIP DEF.) (6GK5206-2GS00-2TC2): All versions
+SCALANCE XC206-2SFP G EEC (6GK5206-2GS00-2FC2): All versions
+SCALANCE XC208 (6GK5208-0BA00-2AC2): All versions
+SCALANCE XC208EEC (6GK5208-0BA00-2FC2): All versions
+SCALANCE XC208G (6GK5208-0GA00-2AC2): All versions
+SCALANCE XC208G (EIP def.) (6GK5208-0GA00-2TC2): All versions
+SCALANCE XC208G EEC (6GK5208-0GA00-2FC2): All versions
+SCALANCE XC208G PoE (6GK5208-0RA00-2AC2): All versions
+SCALANCE XC208G PoE (54 V DC) (6GK5208-0RA00-5AC2): All versions
+SCALANCE XC216 (6GK5216-0BA00-2AC2): All versions
+SCALANCE XC216-3G PoE (6GK5216-3RS00-2AC2): All versions
+SCALANCE XC216-3G PoE (54 V DC) (6GK5216-3RS00-5AC2): All versions
+SCALANCE XC216-4C (6GK5216-4BS00-2AC2): All versions
+SCALANCE XC216-4C G (6GK5216-4GS00-2AC2): All versions
+SCALANCE XC216-4C G (EIP Def.) (6GK5216-4GS00-2TC2): All versions
+SCALANCE XC216-4C G EEC (6GK5216-4GS00-2FC2): All versions
+SCALANCE XC216EEC (6GK5216-0BA00-2FC2): All versions
+SCALANCE XC224 (6GK5224-0BA00-2AC2): All versions
+SCALANCE XC224-4C G (6GK5224-4GS00-2AC2): All versions
+SCALANCE XC224-4C G (EIP Def.) (6GK5224-4GS00-2TC2): All versions
+SCALANCE XC224-4C G EEC (6GK5224-4GS00-2FC2): All versions
+SCALANCE XF204 (6GK5204-0BA00-2GF2): All versions
+SCALANCE XF204 DNA (6GK5204-0BA00-2YF2): All versions
+SCALANCE XF204-2BA (6GK5204-2AA00-2GF2): All versions
+SCALANCE XF204-2BA DNA (6GK5204-2AA00-2YF2): All versions
+SCALANCE XM408-4C (6GK5408-4GP00-2AM2): All versions
+SCALANCE XM408-4C (L3 int.) (6GK5408-4GQ00-2AM2): All versions
+SCALANCE XM408-8C (6GK5408-8GS00-2AM2): All versions
+SCALANCE XM408-8C (L3 int.) (6GK5408-8GR00-2AM2): All versions
+SCALANCE XM416-4C (6GK5416-4GS00-2AM2): All versions
+SCALANCE XM416-4C (L3 int.) (6GK5416-4GR00-2AM2): All versions
+SCALANCE XP208 (6GK5208-0HA00-2AS6): All versions
+SCALANCE XP208 (6GK5208-0HA00-2TS6): All versions
+SCALANCE XP208EEC (6GK5208-0HA00-2ES6): All versions
+SCALANCE XP208PoE EEC (6GK5208-0UA00-5ES6): All versions
+SCALANCE XP216 (6GK5216-0HA00-2AS6): All versions
+SCALANCE XP216 (6GK5216-0HA00-2TS6): All versions
+SCALANCE XP216EEC (6GK5216-0HA00-2ES6): All versions
+SCALANCE XP216POE EEC (6GK5216-0UA00-5ES6): All versions
+SCALANCE XR324WG (24 x FE, AC 230V) (6GK5324-0BA00-3AR3): All versions
+SCALANCE XR324WG (24 X FE, DC 24V) (6GK5324-0BA00-2AR3): All versions
+SCALANCE XR326-2C PoE WG (6GK5326-2QS00-3AR3): All versions
+SCALANCE XR326-2C PoE WG (without UL) (6GK5326-2QS00-3RR3): All versions
+SCALANCE XR328-4C WG (24xFE,4xGE,AC230V) (6GK5328-4FS00-3AR3): All versions
+SCALANCE XR328-4C WG (24xFE,4xGE,AC230V) (6GK5328-4FS00-3RR3): All versions
+SCALANCE XR328-4C WG (24XFE, 4XGE, 24V) (6GK5328-4FS00-2AR3): All versions
+SCALANCE XR328-4C WG (24xFE, 4xGE,DC24V) (6GK5328-4FS00-2RR3): All versions
+SCALANCE XR328-4C WG (28xGE, AC 230V) (6GK5328-4SS00-3AR3): All versions
+SCALANCE XR328-4C WG (28xGE, DC 24V) (6GK5328-4SS00-2AR3): All versions
+SCALANCE XR524-8C, 1x230V (6GK5524-8GS00-3AR2): All versions
+SCALANCE XR524-8C, 1x230V (L3 int.) (6GK5524-8GR00-3AR2): All versions
+SCALANCE XR524-8C, 2x230V (6GK5524-8GS00-4AR2): All versions
+SCALANCE XR524-8C, 2x230V (L3 int.) (6GK5524-8GR00-4AR2): All versions
+SCALANCE XR524-8C, 24V (6GK5524-8GS00-2AR2): All versions
+SCALANCE XR524-8C, 24V (L3 int.) (6GK5524-8GR00-2AR2): All versions
+SCALANCE XR526-8C, 1x230V (6GK5526-8GS00-3AR2): All versions
+SCALANCE XR526-8C, 1x230V (L3 int.) (6GK5526-8GR00-3AR2): All versions
+SCALANCE XR526-8C, 2x230V (6GK5526-8GS00-4AR2): All versions
+SCALANCE XR526-8C, 2x230V (L3 int.) (6GK5526-8GR00-4AR2): All versions
+SCALANCE XR526-8C, 24V (6GK5526-8GS00-2AR2): All versions
+SCALANCE XR526-8C, 24V (L3 int.) (6GK5526-8GR00-2AR2): All versions
+SCALANCE XR528-6M (6GK5528-0AA00-2AR2): All versions
+SCALANCE XR528-6M (2HR2) (6GK5528-0AA00-2HR2): All versions
+SCALANCE XR528-6M (2HR2, L3 int.) (6GK5528-0AR00-2HR2): All versions
+SCALANCE XR528-6M (L3 int.) (6GK5528-0AR00-2AR2): All versions
+SCALANCE XR552-12M (6GK5552-0AA00-2AR2): All versions
+SCALANCE XR552-12M (2HR2) (6GK5552-0AA00-2HR2): All versions
+SCALANCE XR552-12M (2HR2) (6GK5552-0AR00-2HR2): All versions
+SCALANCE XR552-12M (2HR2, L3 int.) (6GK5552-0AR00-2AR2): All versions
+SIPLUS NET SCALANCE XC206-2 (6AG1206-2BB00-7AC2): All versions
+SIPLUS NET SCALANCE XC206-2SFP (6AG1206-2BS00-7AC2): All versions
+SIPLUS NET SCALANCE XC208 (6AG1208-0BA00-7AC2): All versions
+SIPLUS NET SCALANCE XC216-4C (6AG1216-4BS00-7AC2): All versions
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+ 4.2.1    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT (‘INJECTION’) CWE-74
+Affected devices do not properly sanitize an input field. This could allow an authenticated remote attacker with administrative privileges to inject code or spawn a system root shell.
+CVE-2022-36323 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+4.2.2    ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+Affected devices do not properly handle the renegotiation of SSL/TLS parameters. This could allow an unauthenticated remote attacker to bypass the TCP brute force prevention and lead to a denial-of-service condition for the duration of the attack.
+CVE-2022-36324 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.3    IMPROPER NEUTRALIZATION OF SCRIPT-RELATED HTML TAGS IN A WEB PAGE (BASIC XXS) CWE-80
+Affected devices do not properly sanitize data introduced by a user when rendering the web interface. This could allow an authenticated remote attacker with administrative privileges to inject code and lead to a DOM-based XSS.
+CVE-2022-36325 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+ Siemens has reported these vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 ---------
+Siemens has provided software patches for the following vulnerable products:
+
+For product versions prior to V7.1.2 update to V7.1.2 or later
+For product versions prior to V2.3.1 update to V2.3.1 or later 
+
+--------- End Update A Part 2 of 2 ---------
+Siemens has identified the following specific workarounds and mitigations to reduce the risk:
+
+Apply the principle of least privileges for accounts configured on the affected devices
+Restrict network access in affected systems to ports 80/TCP and 443/TCP to trusted IP addresses and personal only.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to the Siemens operational guidelines for industrial security and follow the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-710008.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

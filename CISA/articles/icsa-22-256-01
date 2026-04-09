@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Hitachi Energy
+Equipment: TXpert Hub CoreTec 4
+Vulnerability: Off-by-one Error
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to take control of the system node and its information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of TXpert Hub CoreTec 4, a digital transformer monitoring and diagnostics device, are affected:
+
+TXpert Hub CoreTec 4 version 2.0.0, 2.0.1
+TXpert Hub CoreTec 4 version 2.1.0, 2.1.1, 2.1.2, 2.1.3
+TXpert Hub CoreTec 4 version 2.2.0, 2.2.1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OFF-BY-ONE ERROR CWE-193
+Sudo is included in most Linux operating systems, including in the affected product. Versions of Sudo prior to 1.9.5p2 contain an Off-by-one Error that can result in a heap-based buffer overflow, which then allows privilege escalation to root.
+CVE-2021-3156 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported this vulnerability to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends updating the affected devices to the following versions:
+
+TXpert Hub CoreTec 4 version 2.3.0
+
+Hitachi Energy also recommends the following security practices and firewall configurations to protect against attacks that originate from outside the network:
+
+Physically protect process control systems from unauthorized direct access.
+Do not expose process control systems to the internet.
+Use a firewall system with the necessary ports open to separate process control systems from other networks.
+Process control systems should not be used for internet surfing, instant messaging, or receiving emails.
+Portable computers and removable storage media should be carefully scanned for viruses before connecting to process control systems.
+
+For the affected product, Hitachi Energy recommends the following workarounds:
+
+Remove secure remote access (SSH) as described in the system hardening section of the security deployment guidelines. This will not remove the vulnerable component, but it will remove the ability of an attacker to remotely access the command line interface and exploit the vulnerability.
+
+Additionally, Hitachi Energy recommends following product Security Deployment Guidelines. Recommended practices for the affected product can be found in the TXpert Hub CoreTec 4 Software Manual.
+For more information, see Hitachi security advisory 8DBD000081
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

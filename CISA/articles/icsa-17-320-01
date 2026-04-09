@@ -1,0 +1,55 @@
+
+CVSS v3 8.6
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Moxa
+Equipment: NPort 5110, 5130, 5150
+Vulnerabilities: Injection, Information Exposure, Resource Exhaustion
+AFFECTED PRODUCTS
+The following versions of NPort, a serial network interface, are affected:
+
+NPort 5110 Version 2.2,
+NPort 5110 Version 2.4,
+NPort 5110 Version 2.6,
+NPort 5110 Version 2.7,
+NPort 5130 Version 3.7 and prior, and
+NPort 5150 Version 3.7 and prior.
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow for remote code execution on the device.
+MITIGATION
+Moxa has produced new firmware for the affected devices that can be downloaded from:
+NPort 5110 https://www.moxa.com/support/download.aspx?type=support&id=882
+NPort 5130 and NPort 5150 https://www.moxa.com/support/download.aspx?type=support&id=356
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+
+An attacker may be able to inject packets that could potentially disrupt the availability of the device.
+CVE-2017-16719 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+
+INFORMATION EXPOSURE CWE-200
+
+An attacker may be able to exploit a flaw in the handling of Ethernet frame padding that may allow for information exposure.
+CVE-2017-16715 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).
+
+UNCONTROLLED RESOURCE CONSUMPTION ('RESOURCE EXHAUSTION') CWE-400
+
+An attacker may be able to exhaust memory resources by sending a large amount of TCP SYN packets.
+CVE-2017-14028 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+RESEARCHER
+Florian Adamsky reported the vulnerabilities to ICS-CERT and tested the new firmware.
+BACKGROUND
+Critical Infrastructure Sectors: Critical Manufacturing, Energy, and Transportation Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Taiwan

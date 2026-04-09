@@ -1,0 +1,53 @@
+
+OVERVIEW
+Adam Crain of Automatak and Chris Sistrunk of Mandiant have identified an uncontrolled resource consumption vulnerability in Triangle MicroWorks products and third-party components. Triangle MicroWorks has produced an update that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Triangle MicroWorks products are affected:
+
+SCADA Data Gateway, versions prior to v3.00.0635
+
+IMPACT
+The outstation and master can go into a denial of service (DoS) by sending a specially crafted DNP3 packet from the master or outstation on an IP-based network. If the device is connected via a serial connection, the same attack can be accomplished with physical access to the master or outstation. The DoS will resolve itself after a period of time.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Triangle MicroWorks is a US-based company with headquarters in North Carolina.
+According to Triangle MicroWorks, the product is deployed across several sectors including Energy, Government Facilities, Transportation Systems, and Water and Wastewater Systems. Triangle MicroWorks estimates that these products are used primarily in the United States and Europe/Asia with a small percentage in South America and Australia/New Zealand.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNCONTROLLED RESOURCE CONSUMPTION IP-BASEDCWE-400: Uncontrolled Resource Consumption (Resource Exhaustion), http://cwe.mitre.org/data/definitions/400.html, web site last accessed May 29, 2014.
+
+The Triangle MicroWorks software incorrectly validates input and allows a DNP request that results in processing an unreasonably large amount of data. An attacker could cause the software to go into a DoS with a specifically crafted DNP3 packet. The system will be restored after a period of time as the DoS will resolve itself.
+The following scoring is for IP-connected devices.
+CVE-2014-2342NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2342, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned for IP-connected devices; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:P, web site last accessed May 29, 2014.
+
+UNCONTROLLED RESOURCE CONSUMPTION SERIAL-BASEDCWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion'), http://cwe.mitre.org/data/definitions/400.html, web site last accessed May 29, 2014.
+
+The Triangle MicroWorks software incorrectly validates input and allows a DNP request that results in processing an unreasonably large amount of data. An attacker could cause the software to go into a DoS with serial access to the device. The system will be restored after a period of time as the DoS will resolve itself.
+The following scoring is for serial-connected devices.
+CVE-2014-2343NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2343, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 1.2 has been assigned; the CVSS vector string is (AV:L/AC:H/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:H/Au:N/C:N/I:N/A:P, web site last accessed May 29, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The IP-based vulnerability could be exploited remotely.
+The serial-based vulnerability is not remotely exploitable. Local access to the serial-based outstation is required.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill could craft an IP packet that would be able to exploit this vulnerability for an IP-based device.
+An attacker with a high skill could exploit the serial-based vulnerability because physical access to the device or some amount of social engineering is required.
+MITIGATION
+Triangle MicroWorks has produced an update and release notes describing the mitigation. Please contact Triangle MicroWorks Support for details on specific platform updates here:
+http://www.trianglemicroworks.com/SupportPage.htm
+Release notes are found here:
+http://www.trianglemicroworks.com/products/scada-data-gateway/what%27s-new
+Triangle MicroWorks recommends following the International Electrotechnical Commission (IEC) Technical Specification TS 62351 to reduce the risk from vulnerability. More information on recommended implementation practices for Triangle MicroWorks products is available by contacting your product representative.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

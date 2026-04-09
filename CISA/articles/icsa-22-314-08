@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.4
+ATTENTION: Exploitable remotely/low attack complexity/public exploits are available 
+Vendor: Omron 
+Equipment: NJ/NX-series Controllers and Software 
+Vulnerabilities: Hard-coded Credentials, Authentication Bypass by Capture-replay 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to bypass authentication in the communications connection process to login and operate the controller products without authorization. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of NJ/NX-series, a machine automation controller, are affected: 
+
+NX7-series Machine Automation Controller (All Models): Versions 1.28 and prior  
+NX1-series Machine Automation Controller (All Models): Versions 1.48 and prior 
+NJ-series Machine Automation Controller (All Models): Versions 1.48 and prior 
+Automation Software Sysmac Studio (All Models): Versions 1.49 and prior 
+NA-series Programable Terminal (NA5-15W, NA5-12W, NA5-9W, NA5-7W): Runtime versions 1.15 and prior  
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 USE OF HARD-CODED CREDENTIALS CWE-798
+Use of hard-coded credentials vulnerability exists in machine automation controller NJ series models v1.48 and earlier, machine automation controller NX7 series models v1.28 and earlier, machine automation controller NX1 series models v1.48 and earlier, automation software Sysmac Studio models v1.49 and earlier, and programmable terminal (PT) NA series NA5-15W/NA5-12W/NA5-9W/NA5-7W models with runtime v1.15 and earlier; this may allow a remote attacker who successfully obtained the user credentials by analyzing the affected product to access the controller.
+CVE-2022-34151 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H). 
+3.2.2 AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294 
+An attacker who can capture and analyze communication between the affected controllers and either automation software Sysmac Studio and/or a programmable terminal (PT) can obtain sensitive information that would allow the attacker to bypass authentication and access the controller. 
+CVE-2022-33208 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Japan 
+
+3.4 RESEARCHER
+Reid Wightman of Dragos reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Omron recommends the following: 
+
+NX7-series Machine Automation Controller: Update to version 1.29 or higher 
+NX1-series Machine Automation Controller: Update to version 1.50 or higher 
+NJ-series Machine Automation Controller (NJ501-1300, NJ501-1400, NJ501-1500): Update to version 1.49 or higher 
+NJ-series Machine Automation Controller (All other models): Update to version 1.50 or higher 
+Automation Software Sysmac Studio: Update to version 1.50 or higher 
+NA-series Programable Terminal: Update to runtime version 1.16 or higher 
+
+For information on how to obtain and update firmware for the countermeasure version of the product, contact Omron sales office or distributors. Users can update the Sysmac Studio to the latest versions using the installed Omron Automation Software AutoUpdate tool. 
+Omron recommends customers take the following mitigation measures to minimize the risk of exploitation of this vulnerability:  
+Enable antivirus protection 
+
+Protect any PC with access to the control system against malware by ensuring the installation and maintenance of up-to-date commercial grade antivirus software protection. 
+
+Implement security measures to prevent unauthorized access: 
+
+Minimize connection of control systems and equipment to open networks preventing untrusted devices from accessing them. 
+Implement firewalls by shutting down unused communications ports, limiting communications between hosts, and isolate affected systems from the IT network. 
+Use a virtual private network (VPN) for remote access to control systems and equipment. 
+Use strong passwords and change passwords frequently. 
+Install physical controls that only permit authorized personnel access to control systems and equipment. 
+Scan USB drives or similar devices for viruses and malware to ensure the devices are safe before connecting them to systems and devices. 
+When possible, enforce multifactor authentication (MFA) on all devices with remote access to control systems and equipment. 
+
+Protect data input and output:  
+
+Perform process validation, such as backup validation or range checks, to cope with unintentional modification of input/output data to control systems and devices. 
+
+Use data recovery: 
+
+Conduct periodical data backups and maintenance to prepare for potential data loss. 
+
+For more information see Omron’s advisory: OMSR-2022-001 
+This vulnerability and countermeasures correspond to the those reported in the CISA ICS Alert: APT Cyber Tools Targeting ICS/SCADA Devices. 
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. 
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies. 
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents. 

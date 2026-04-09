@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/Low skill level to exploit/Public exploits known
+Vendor: Spacelabs
+Equipment: Xhibit Telemetry Receiver
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+A remote code execution vulnerability called BlueKeep (CVE-2019-0708) exists within the Remote Desktop Protocol (RDP) used by the Microsoft Windows operating systems listed below. An attacker can exploit this vulnerability to perform remote code execution on an unprotected system.
+According to Microsoft, an attacker can send specially crafted packets to operating systems with RDP enabled.  After successfully sending the packets the attacker could perform a number of actions, including adding accounts with full user rights; viewing, changing, or deleting data; or installing programs. This exploit, which requires no user interaction, must occur for successful authentication.
+BlueKeep is considered “worm-able” because malware exploiting this vulnerability on a system could propagate to other vulnerable systems; thus a BlueKeep exploit would be capable of rapidly spreading like the WannaCry malware attacks of 2017.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions and operating systems of Spacelabs Xhibit Telemetry Receiver are affected:
+
+Xhibit Telemetry Receiver (XTR), Model number 96280, v1.0.2
+Arkon (99999), all versions – previously sold by Spacelabs, no longer a supported product
+
+The following Microsoft Windows operating systems, including both 32- and 64-bit versions, as well as all Service Pack versions, are affected:
+
+Windows 2000
+Windows Vista
+Windows XP
+Windows 7
+Windows Server 2003
+Windows Server 2003 R2
+Windows Server 2008
+Windows Server 2008 R2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+The affected product is vulnerable to a remote code execution vulnerability that exists in Remote Desktop Services (formerly known as Terminal Services) when an unauthenticated attacker connects to the target system using RDP and sends specially crafted requests. This vulnerability is pre-authentication and requires no user interaction. An attacker who successfully exploited this vulnerability could execute arbitrary code on the target system. An attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. To exploit this vulnerability, an attacker would need to send a specially crafted request to the target system’s Remote Desktop Service via RDP.
+CVE-2019-0708 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+The vulnerability was originally discovered by Microsoft. Spacelabs then reported the vulnerability to CISA.
+4. MITIGATIONS
+Spacelabs has determined the recommended remediation is to update to the newest release v1.2.1 or later. All deployed XTR hardware appliances are capable of update and should be updated.
+Many Spacelabs products are appliances and users are not intended to perform updates on them. Products or systems that are obsolete or are not able to be patched may use this alternate mitigation step to help protect against BlueKeep:
+
+Block Transmission Control Protocol (TCP) Port 3389 at the enterprise perimeter firewall. Because Port 3389 is used to initiate an RDP session, blocking it prevents an attacker from exploiting BlueKeep from outside the user’s network. However, this will block legitimate RDP sessions and may not prevent unauthenticated sessions from being initiated inside a network.
+
+Spacelabs also encourages users and administrators to review the Microsoft Security Advisory and the Microsoft Customer Guidance for CVE-2019-0708 and apply the appropriate mitigation measures as soon as possible.
+If you own an XTR device or have any questions about this security advisory, please contact Spacelabs at 1-800-522-7025 and select 2 for technical support. XTR is an appliance that has no user interface, so your service representative can help you to determine the installed version of software on your XTR product and will work to coordinate updates as needed.
+For additional information about this vulnerability, please see the Spacelabs Security Advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all medical devices and/or systems.
+Locate medical devices behind firewalls and isolate them where possible.
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable any unnecessary accounts, protocols and services.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.

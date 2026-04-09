@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable from adjacent network/low attack complexity
+Vendor: Philips
+Equipment: Patient Information Center iX (PIC iX) and Efficia CM Series
+Vulnerabilities: Improper Input Validation, Use of Hard-coded Cryptographic Key, Use of a Broken or Risky Cryptographic Algorithm
+
+2. UPDATE INFORMATION 
+This updated advisory is a follow-up to the original advisory titled ICSMA-21-322-02 Philips Patient Information Center iX (PIC iX) and Efficia CM Series that was published November 18, 2021, to the ICS webpage on www.cisa.gov/ics. 
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker unauthorized access to data (including patient data) and create a denial of service resulting in temporary interruption of viewing physiological data at the central station. Exploitation does not enable modification or change to point-of-care devices.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Patient Information Center iX (PIC iX) and Efficia CM Series are affected:
+
+Patient Information Center iX (PIC iX): Versions B.02, C.02, C.03
+Efficia CM Series: Revisions A.01 to C.0x and 4.0
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER INPUT VALIDATION CWE-20
+Patient Information Center iX (PIC iX) Versions C.02 and C.03 receives input or data, but does not validate or incorrectly validates that the input has the properties required to process the data safely and correctly.
+CVE-2021-43548 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+The use of a hard-coded cryptographic key significantly increases the possibility encrypted data may be recovered from the Patient Information Center iX (PIC iX) Versions B.02, C.02, and C.03.
+CVE-2021-43552 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N).
+4.2.3    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information, which affects the communications between Patient Information Center iX (PIC iX) Versions C.02 and C.03 and Efficia CM Series Revisions A.01 to C.0x and 4.0.
+CVE-2021-43550 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+4.4 RESEARCHER
+Younes Dragoni, Andrea Palanca and Ivan Speziale of Nozomi Networks reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Philips released a remediation for CVE-2021-43548 in Q3 2021 in PIC iX C.03.06.
+--------- Begin Update A part 1 of 1 ---------
+Philips plans to remediate CVE-2021-43552 and CVE-2021-43550 by end of Q2 of 2023. 
+--------- End Update A part 1 of 1 ---------
+Users should operate all Philips deployed and supported products within Philips authorized specifications, including Philips approved software, software configuration, system services, and security configuration.
+As an interim mitigation, Philips recommends the following actions outlined in the Philips Patient Monitoring System Security for Clinical Networks guide at InCenter:
+
+Philips provided hardware ships with Bitlocker Drive Encryption enabled by default to protect the data at rest stored on the system. It should not be disabled.
+Philips recommends customers follow NIST SP 800-88 for media sanitization prior to system disposal.
+By default, patient information is not included in archives. When exporting archives that contain patient information, users should store information securely with strong access controls.
+The Philips patient monitoring network is required to be physically or logically isolated from the hospital local area network (LAN). Philips recommends using a firewall or routers that can implement access control lists restricting access in and out of the patient monitoring network for only necessary ports and IP addresses.
+
+Users with questions regarding their specific Philips Patient Information Center (PIC iX) and Efficia CM Series new release eligibility should contact a Philips service support team or regional service support. Philips contact information is available at the Philips customer service website, or by calling 1-800-722-9377.
+Please see the Philips product security website for the latest security information for Philips products.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

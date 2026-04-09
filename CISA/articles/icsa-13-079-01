@@ -1,0 +1,40 @@
+
+Overview
+This advisory provides mitigation details for a vulnerability affecting the Schweitzer Engineering Laboratories (SEL) AcSELerator QuickSet software.
+Independent researcher Michael Toecker of Digital Bond has identified an improper authorization vulnerability in the SEL AcSELerator application using the Microsoft Attack Surface Analyzer tool. The vulnerability was disclosed to vendors prior to the 2013 Digital Bond S4 Conference and then presented at the conference. The function of AcSELerator QuickSet is to configure, read, and send settings to supported SEL devices such as relays, meters, and communication products. SEL has produced an update that mitigates this vulnerability.
+This vulnerability is not exploitable remotely and cannot be exploited without access to the computer as an authorized user.
+No known public exploits specifically target this vulnerability.
+Affected Products
+The following SEL AcSELerator products are affected:
+
+SEL AcSELerator QuickSet versions older than Version 5.12.0.1.
+
+Impact
+Successful exploitation of this vulnerability may allow an attacker with user rights to read or modify files in the AcSELerator QuickSet file system, possibly affecting the availability of the application. Unauthorized attackers can then access the AcSELerator Quickset executable files. This vulnerability can affect products deployed in the electric sector.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+SEL is a US-based company that maintains offices in the US and around the world.
+The affected product, SEL AcSELerator QuickSet, is a software package used to configure, read, and send settings to supported SEL devices such as relays, meters, and communication products. According to SEL, AcSELerator QuickSet is deployed across the electric utilities sector.
+Vulnerability Characterization
+Vulnerability Overview
+Improper Access ControlCWE, http://cwe.mitre.org/data/definitions/284.html, CWE-284: Improper Access Control, Web site last accessed March 20, 2013.
+The SEL AcSELerator QuickSet software does not limit user access to its installed executables to only authenticated Administrative users. A malicious user with any level of access to the computer could replace executables within the SEL Program Files directory with their own executables. If any user ran the SEL application, the malicious executable would be run instead. Successful exploitation of this vulnerability could cause loss of availability, integrity,confidentiality, and a disruption in communications with other connected devices.
+CVE-2013-0665 has been assigned to this vulnerability. A CVSS v2 base score of 6.2 has been assigned; the CVSS vector string is (AV:L/AC:H/Au:N/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+This vulnerability is not exploitable remotely and cannot be exploited without access to the computer as an authorized user.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a high skill would be able to exploit this vulnerability.
+Mitigation
+To mitigate this vulnerability, SEL developed and released AcSELerator QuickSet Version 5.12.0.1 on February 12, 2013. This version adds user access restrictions to the SEL AcSELerator QuickSet software so that only authenticated Administrative users can modify or replace executables. This version is available for download and installation through SEL Compass or from https://www.selinc.com/SEL-5030.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

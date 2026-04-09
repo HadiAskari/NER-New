@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable from the same local network segment (OSI Layer 2)
+Vendor: Siemens
+Equipment: SCALANCE X switches, RUGGEDCOM Win, RFID 181-EIP, and SIMATIC RF182C
+Vulnerability: Heap-based Buffer Overflow 
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-18-165-01 Siemens SCALANCE X Switches, RUGGEDCOM WiMAX, RFID 181-EIP, and SIMATIC RF182C (Update B) that was published June 11, 2019, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+By sending a specially crafted DHCP response to a client’s DHCP request, an unprivileged remote attacker could execute arbitrary code.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports the vulnerability affects the following products:
+
+RFID 181-EIP: All versions
+RUGGEDCOM Win: v4.4, v4.5, v5.0, and v5.1
+SCALANCE X-200 switch family (incl. SIPLUS NET variants): All versions prior to v5.2.3
+SCALANCE X-200 IRT switch family (incl. SIPLUS NET variants): All versions prior to v5.4.1
+SCALANCE X-200RNA: All versions prior to v3.2.6
+SCALANCE X-300 switch family (incl. SIPLUS NET variants): All versions prior to v4.1.3 
+SCALANCE X408: All versions prior to v4.1.3
+SCALANCE X414: All versions
+SIMATIC RF182C: All versions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+Unprivileged remote attackers located in the same local network segment (OSI Layer 2) could gain remote code execution on the affected products by sending a specially crafted DHCP response to a client’s DHCP request. 
+CVE-2018-4833  has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Healthcare and Public Health, Transportation Systems, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Dr. Ang Cui and Joseph Pantoga from Red Balloon Security reported this vulnerability to Siemens Product CERT. Artem Zinenko from Kaspersky identified that SIPLUS should also be mentioned.
+5. MITIGATIONS
+Siemens has provided updates for the following products to fix the vulnerability:
+
+RUGGEDCOM Win: Update to v5.2
+SCALANCE X-200: Update to v5.2.3
+SCALANCE X-200 IRT: Update to v5.4.1
+SCALANCE X-200RNA: Update to v3.2.6
+SCALANCE X-300 & SCALANCE X408: Update to v4.1.3
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Use static IP addresses instead of DHCP
+Apply cell protection concept.
+Apply Defense-in-Depth.
+
+--------- Begin Update D Part 1 of 1 ---------
+
+For SIMATIC RF182C and RFID 181EIP: Migrate to a successor product within the SIMATIC RF18xC/CI family, v1.3 or later version. For details refer to the phase-out announcement.
+
+--------- End Update D Part 1 of 1 ---------
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for Industrial Security, and follow the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-181018 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. High skill level is needed to exploit.

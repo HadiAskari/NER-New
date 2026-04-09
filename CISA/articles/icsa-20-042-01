@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Synergy Systems & Solutions (SSS)
+Equipment: HUSKY RTU
+
+--------- Begin Update A Part 1 of 3 ---------
+
+Vulnerabilities: Improper Authentication, Improper Input Validation, Missing Authentication for Critical Function, Improper Check for Unusual or Exceptional Conditions, Exposure of Sensitive Information to an Unauthorized Actor, Incorrect Default Permissions
+
+--------- End Update A Part 1 of 3 ---------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-042-01 Synergy Systems & Solutions HUSKY RTU that was published February 11, 2020, to the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to read sensitive information, execute arbitrary code, or cause a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of HUSKY RTU, a remote terminal unit, are affected:
+
+HUSKY RTU 6049-E70, with firmware Versions 5.0 and prior
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER AUTHENTICATION CWE-287
+The affected product does not require adequate authentication, which may allow an attacker to read sensitive information or execute arbitrary code.
+CVE-2019-20046 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    IMPROPER INPUT VALIDATION CWE-20
+Specially crafted malicious packets could cause disconnection of active authentic connections or reboot of device.
+CVE-2019-20045 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+--------- Begin Update A Part 2 of 3 ---------
+4.2.3    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected product does not require authentication for TELNET access, which may allow an attacker to change configuration or perform other malicious activities.
+CVE-2019-16879 has been assigned to this vulnerability. A CVSS v3 base score of 9.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:H).
+4.2.4    IMPROPER CHECK FOR UNUSUAL OR EXCEPTIONAL CONDITIONS CWE-754
+The affected product is vulnerable to specially crafted TCP packets, which can cause the device to shut down or reboot and lose configuration settings.
+CVE-2020-7800 has been assigned to this vulnerability. A CVSS v3 base score of 9.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:H).
+4.2.5    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The affected product is vulnerable to information exposure over the SNMP protocol.
+CVE-2020-7801 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+4.2.6    INCORRECT DEFAULT PERMISSIONS CWE-276
+The affected product is vulnerable to insufficient default permissions, which could allow an attacker to view network configurations through SNMP communication.
+CVE-2020-7802 has been assigned to this vulnerability. A CVSS v3 base score of 9.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:H/A:N).
+--------- End Update A Part 2 of 3 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Asia
+COMPANY HEADQUARTERS LOCATION: India
+
+4.4 RESEARCHER
+The VAPT Team, C3i Center, IITK, UP, India, reported to CISA that they had coordinated these vulnerabilities directly with SSS.
+5. MITIGATIONS
+SSS makes the following recommendations to mitigate risk.
+
+Upgrade to firmware Version 5.1.2 or higher. Consult with SSS for possible issues during upgrade, prior to implementing this recommendation.
+Implement network segmentation and firewall policies to reduce exposure of the RTU to uncontrolled and unprotected access.
+Follow recommended security practices and configure firewalls to help protect an industrial control network from attacks that originate from outside the network. Such practices include ensuring that protection, control, and automation systems are physically protected from direct access by unauthorized personnel, have no direct connections to the Internet, are separated from other networks by means of a firewall system that has a minimal number of ports exposed, and other practices to be evaluated case by case.
+Do not allow the use of protection, control, and automation systems for Internet surfing, instant messaging, or receiving e-mails.
+Block all nontrusted IP communications.
+Configure trusted IP address access (IP whitelisting) in the RTU configuration for IEC-104 protocol to restrict hosts that can access the RTU.
+Implement passwords in the RTU to restrict access to the RTU, via Husky Studio.
+If possible, set up an SSL tunnel between the RTU and control center to restrict access to the RTU.
+
+--------- Begin Update A Part 3 of 3 ---------
+For more information, see the associated SSS security bulletin.
+--------- End Update A Part 3 of 3 ---------
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

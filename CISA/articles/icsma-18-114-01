@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.8
+
+ATTENTION: Public exploits are available.
+Vendor: Becton, Dickinson and Company (BD)
+Equipment: Certain BD Pyxis Products
+Vulnerability: Reusing a Nonce
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow data traffic manipulation, resulting in partial disclosure of encrypted communication or injection of data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of BD Pyxis products, a medication and supply management system, are affected:
+
+BD Pyxis Anesthesia ES,
+BD Pyxis Anesthesia System 4000,
+BD Pyxis Anesthesia System 3500,
+BD Pyxis MedStation 4000 T2,
+BD Pyxis MedStation ES,
+BD Pyxis SupplyStation,
+BD Pyxis Supply Roller,
+BD Pyxis ParAssist System,
+BD Pyxis PARx,
+BD Pyxis CIISafe – Workstation,
+BD Pyxis StockStation System, and
+BD Pyxis Parx handheld
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1   REUSING A NONCE, KEY PAIR IN ENCRYPTION CWE-323
+An industry-wide vulnerability exists in the WPA and WPA2 protocol affected by the Key Reinstallation Attacks known as KRACK. The four-way hand shake traffic in the Wi-Fi Protected Access WPA and WPA2 protocol can be manipulated to allow nonce reuse resulting in key reinstallation. This could allow an attacker to execute a “man-in-the-middle” attack, enabling the attacker within radio range to replay, decrypt, or spoof frames.
+The following CVEs have been assigned to this group of vulnerabilities:
+CVE-2017-13077: Reinstallation of the pairwise key during the four-way handshake.
+CVE-2017-13078: Reinstallation of the group key during the four-way handshake.
+CVE-2017-13079: Reinstallation of the Integrity Group Temporal Key (IGTK) during the four-way handshake.
+CVE-2017-13080: Reinstallation of the group key during the group key handshake.
+CVE-2017-13081: Reinstallation of the IGTK during the group key handshake.
+CVE-2017-13082: Reinstallation of the Pairwise Transient Key (PTK) Temporal Key (TK) during the fast BSS transmission (FT) handshake.
+CVE-2017-13086: Reinstallation of the Tunneled Direct-Link Setup (TDLS) Peer Key (TPK) during the TDLS handshake.
+CVE-2017-13087: Reinstallation of the Group Temporal Key (GTK) when processing a Wireless Network Management (WNM) Sleep Mode Response frame.
+CVE-2017-13088: Reinstallation of the IGTK when processing a WNM Sleep Mode Response frame.
+A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+Critical Infrastructure Sectors: Healthcare and Public Health
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: New Jersey
+
+3.4 RESEARCHER
+Mathy Vanhoef of imec-DistriNet, KU Leuven discovered the KRACK vulnerabilities. BD reported to NCCIC that the KRACK vulnerabilities may possibly affect these products.
+4. MITIGATIONS
+BD has implemented third-party vendor patches through BD's routine patch deployment process that resolves these vulnerabilities for most devices. Some devices require coordination with BD. BD is in the process of contacting users to schedule and deploy patches. There is currently no reported verified instance of the KRACK vulnerability being exploited maliciously against BD devices.
+Additionally, BD recommends the following compensating controls in order to reduce risk associated with this vulnerability:
+
+Ensure the latest recommended updates for Wi-Fi access points have been implemented in Wi-Fi enabled networks
+Ensure appropriate physical controls are in place to prevent attackers from being within physical range of an affected Wi-Fi access point and client
+Ensure data has been backed up and stored according to individual processes and disaster recovery procedures
+
+BD has published a product security bulletin to notify users about this issue and to provide additional mitigation counsel.  It can be found at the following location on their web page:
+http://www.bd.com/en-us/support/product-security-and-privacy/product-security-bulletin-for-wpa2-krack-wi-fi-vulnerability
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+These vulnerabilities have been publicly disclosed. These vulnerabilities are exploitable from an adjacent network. High skill level is needed to exploit.

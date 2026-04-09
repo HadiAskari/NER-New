@@ -1,0 +1,47 @@
+
+Overview
+This advisory provides mitigation details for a vulnerability that impacts the Siemens SIMATIC RF Manager.
+Siemens has identified a buffer overflow vulnerability in the ActiveX component of the SIMATIC RF Manager. Siemens has produced a patch that mitigates this vulnerability. Successful exploitation of this vulnerability could lead to possible remote code execution or a denial of service.
+This vulnerability could be exploited remotely.
+Affected Products
+The following Siemens products are affected:
+
+SIMATIC RF Manager 2008, and
+SIMATIC RF Manager Basic v3.0 and lower (as distributed with RF670R and RF 640R).
+
+Impact
+The RF Manager uses ActiveX and this component can also be accessed within Internet browsers. A user would have to visit a malicious Web site on the system in which RF Manager is installed to exploit the vulnerability. By exploiting this vulnerability, an attacker could execute remote code and could cause a denial of service of the RF Manager. This could impact the setup of systems in the critical manufacturing, health and healthcare, power generation and distribution, food and beverage, and chemical industries.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Products in the Siemens SIMATIC RF Manager family manage connected radio frequency identification (RFID) readers to SIMATIC S7 controllers. This includes collecting supplied data, and compressing this data for enterprise systems, such as the Enterprise Resource Management (ERP) layer and Manufacturing Execution Systems (MES) layer. ERP and MES are widely used in industrial environments such as critical manufacturing, health and healthcare, power generation and distribution, food and beverage, and chemical industries worldwide.
+Siemens is a German-based company that maintains offices in several countries around the world.
+Vulnerability Characterization
+Vulnerability Overview
+Buffer OverflowCWE-119: Heap-based Buffer Overflow, http://cwe.mitre.org/data/definitions/119.html, Web site last accessed January, 14, 2013.
+The SIMATIC RF Manager uses an ActiveX component. This component is also shared with other programs, such as Internet browsers. If a user has installed the SIMATIC RF Manager’s ActiveX applications on the system and visits a malicious Web site, code within the ActiveX components can be executed, causing a buffer overflow. This could allow an attacker to execute arbitrary code in the browser context and possibly take control of the system.
+CVE-2013-0656 has been assigned to this vulnerability. Siemens has assigned a CVSS v2 base score of 6.8; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).
+Vulnerability Details
+Exploitability
+This vulnerability could be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+Exploiting this vulnerability could be difficult. Social engineering is required to convince the user to visit a malicious Web site using the system containing the SIMATIC RF Manager. This decreases the likelihood of a successful exploit.
+Mitigation
+Siemens has released a Siemens Security Advisoryd (SSA-099471: Buffer Overflow in SIMATIC RF Manager) that details this vulnerability and provides mitigations. Siemens has released a software patch that mitigates the vulnerability. Siemens requests that users contact Siemens’ customer support to obtain the patch.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01A—Cyber Intrusion Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+Previous Recommendations can be used as needed (otherwise, delete this text). List other products that are specific to the topic (i.e., phishing mitigations):
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click Web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

@@ -1,0 +1,72 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity/public exploits are available
+Vendor: ProPump and Controls, Inc.
+Equipment: Osprey Pump Controller
+Vulnerabilities: Insufficient Entropy, Use of GET Request Method with Sensitive Query Strings, Use of Hard-coded Password, OS Command Injection, Cross-site Scripting, Authentication Bypass using an Alternate Path or Channel, Cross-Site Request Forgery, Command Injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain unauthorized access, retrieve sensitive information, modify data, cause a denial-of-service, and/or gain administrative control.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following version of Osprey Pump Controller, pumping systems, and automated controls is affected:
+
+Osprey Pump Controller: Versions prior to release 20230518.
+
+3.2 Vulnerability Overview
+3.2.1 INSUFFICIENT ENTROPY CWE-331
+Osprey Pump Controller versions prior to release 20230518 are vulnerable to a predictable weak session token generation algorithm and could aid in authentication and authorization bypass. This could allow a cyber threat actor to hijack a session by predicting the session ID and gain unauthorized access to the product.
+CVE-2023-28395 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:L).
+3.2.2 USE OF GET REQUEST METHOD WITH SENSITIVE QUERY STRINGS CWE-598
+Osprey Pump Controller versions prior to release 20230518 are vulnerable to an unauthenticated file disclosure. Cyber threat actors could use a GET parameter to force the affected device to disclose arbitrary files and sensitive system information.
+CVE-2023-28375 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3 USE OF HARD-CODED PASSWORD CWE-259
+Osprey Pump Controller versions prior to release 20230518 have a hidden administrative account with a hardcoded password that allows full access to the web management interface configuration. The account is not visible in the Usernames and Passwords menu list of the application and the password cannot be changed through any normal operation of the device.
+CVE-2023-28654 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+Osprey Pump Controller versions prior to release 20230518 are vulnerable to an unauthenticated OS command injection vulnerability. Threat actors could exploit this vulnerability to inject and execute arbitrary shell commands through a HTTP POST parameter called by index.php script.
+CVE-2023-27886 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+Osprey Pump Controller versions prior to release 20230518 are vulnerable an unauthenticated OS command injection vulnerability. Threat actors could exploit this vulnerability to inject and execute arbitrary shell commands through a HTTP GET parameter called by DataLogView.php, EventsView.php and AlarmsView.php scripts.
+CVE-2023-27394 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+In Osprey Pump Controller versions prior to release 20230518, the inputs passed to a GET parameter are not properly sanitized before being returned to the user. Threat actors could exploit this vulnerability to execute arbitrary HTML/JS code in a user's browser session in context of an affected site.
+CVE-2023-28648 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.7 AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+Osprey Pump Controller versions prior to release 20230518 could allow an unauthenticated user to create an account and bypass authentication, thereby gaining unauthorized access to the system. A threat actor could exploit this vulnerability to create a user account without providing valid credentials. A threat actor who successfully exploits this vulnerability could gain access to the pump controller and cause disruption in operation, modify data, or shut down the controller.
+CVE-2023-28398 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+Osprey Pump Controller versions prior to release 20230518 allow users to perform certain actions via HTTP requests without performing any checks to verify the requests. This could allow an unauthorized user to perform certain actions with administrative privileges if a logged-in user visits a malicious website.
+CVE-2023-28718 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.9 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+Osprey Pump Controller versions prior to release 20230518 contain an unauthenticated command injection vulnerability that could allow system access with www-data permissions.
+CVE-2023-28712 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Gjoko Krstic of Zero Science Lab reported these vulnerabilities to CISA.
+4 MITIGATIONS
+ProPump and Controls has released version 20230518 of their product and recommends updating to this version or later. ProPump and Controls has reported the update has fixed the reported vulnerabilities. Users are encouraged to contact ProPump and Controls representative for assistance in ensuring they are up to date with the latest release. No user-initiated update process is available.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+March 23, 2023: Initial Publication
+February 8, 2024: Update A - Vendor reached out to CISA and we updated Affected Products section, Vulnerability details, and Mitigation section.
+

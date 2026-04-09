@@ -1,0 +1,104 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Martem
+Equipment: TELEM-GW6/GWM
+
+--------- Begin Update B Part 1 of 5 --------
+
+Vulnerabilities: Missing Authentication for Critical Function, Incorrect Default Permissions, Resource Exhaustion, Cross-Site Scripting
+
+--------- End Update B Part 1 of 5 --------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-142-01 Martem TELEM-GW6/GWM that was published May 22, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+--------- Begin Update B Part 2 of 5 --------
+Successful exploitation of these vulnerabilities could allow execution of unauthorized industrial process control commands, full control over RTU, denial of service, or client-side code execution.
+--------- End Update B Part 2 of 5 --------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update B Part 3 of 5 --------
+The following TELEM products with insecure configurations are affected:
+
+GW6 versions prior to 2.0.87-4018403-k4, and
+GWM versions prior to 2.0.87-4018403-k4.
+
+Not all versions are affected by all vulnerabilities.
+--------- End Update B Part 3 of 5 --------
+4.2 VULNERABILITY OVERVIEW
+4.2.1 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The RTU does not perform authentication of IEC-104 control commands, which may allow a rogue node a remote control of the industrial process.
+CVE-2018-10603 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:L).
+--------- Begin Update B Part 4 of 5 --------
+4.2.2    INCORRECT DEFAULT PERMISSIONS CWE-276
+Using default credentials to connect to the RTU, unprivileged user may modify/upload a new system configuration or take the full control over the RTU.
+CVE-2018-10605 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+--------- End Update B Part 4 of 5 --------
+4.2.2 UNCONTROLLED RESOURCE CONSUMPTION ('RESOURCE EXHAUSTION') CWE-400
+Creating new connections to one or more IOAs, without closing them properly, may cause a denial of service within the industrial process control channel.
+CVE-2018-10607 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+4.2.3 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+Improper sanitization of data over a Websocket may allow cross-site scripting and client-side code execution with target user privileges.
+CVE-2018-10609 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:H/A:N).
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Energy
+Countries/Areas Deployed: Estonia, Latvia, Lithuania, and Finland
+Company Headquarters Location: Estonia
+
+4.4 RESEARCHER
+Bernhards Blumbergs and Arturs Danilevics of CERT.LV, Latvia, reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+Martem has provided updated information within the “Security Considerations” section of their Configuration Manual which can be accessed at following link:
+http://phobos.martem.ee/shr/dsum/Telem-GWS_usermanual.pdf
+Martem recommends the following mitigations for CVE-2018-10603 and CVE-2018-10607:
+In most cases, these vulnerabilities can be resolved by proper configuration:
+
+Using "other side IP" field in RTU configuration for every TCP/IP channel. This will minimize the risk of allowing unauthorized access and control over the communication channels (i.e., only trusted partners are allowed);
+Using secure VPN channels;
+Proper packet filtering by enabling firewall in RTU configuration. Note that the "interface" field of every communication channel must be properly set in RTU configuration when firewall is enabled.
+
+See Martem Security Advisory SA1805182 and SA1805184:
+http://martem.eu/csa/Martem_CSA_Telem_1805182.pdf
+http://martem.eu/csa/Martem_CSA_Telem_1805184.pdf
+--------- Begin Update B Part 5 of 5 --------
+Martem recommends the following mitigations for CVE-2018-10605:
+
+Upgrade to new firmware release 2.0.87-4018403- k4 or newer
+Change default passwords to reasonably strong ones.
+Implement firewall rules to limit unsanctioned SSH access for IPv4 and IPv6.
+Use SSH public key authorization. 
+Ensure GWS.exe is up to date. 
+
+See Martem Security Advisory SA1805183:
+https://martem.eu/csa/Martem_CSA_Telem_1805183.pdf
+Martem recommends the following mitigations for CVE-2018-10609:
+
+Upgrade to firmware 2.0.72-cb42e64-k4 or newer. Contact Martem for more information.
+
+--------- End Update B Part 5 of 5 --------
+
+WebServer should be turned on according to need of the configurator. If the WebServer is not needed anymore, then it should be removed from the configuration.
+WebServer access should be protected by strong password to avoid unauthorized access. Other side IP should be defined in configuration. Use firewall to avoid untrusted connections and to restrict the number of parallel connections to the WebServer.
+
+See Martem Security Advisory SA1805181:
+http://martem.eu/csa/Martem_CSA_Telem_1805181.pdf
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

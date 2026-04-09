@@ -1,0 +1,45 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on August 20, 2015, and is being released to the NCCIC/ICS-CERT web site.
+Independent researcher Josep Pi Rodriguez has identified two-pointer dereference vulnerabilities in the Everest Software LLC PeakHMI application. Everest Software LLC has produced a new version to mitigate these vulnerabilities. Josep Pi Rodriguez has tested the new version to validate that it resolves the vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+Everest Software LLC reports that the vulnerabilities affect the following versions of PeakHMI:
+
+PeakHMI versions prior to 8.7.0.2
+
+IMPACT
+An attacker who exploits these vulnerabilities while the video server is enabled could remotely crash the service.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Everest Software LLC is a United States-based company.
+The affected product, PeakHMI, is a human-machine interface (HMI) product used in industrial control systems. According to Everest Software LLC, PeakHMI products are deployed across most sectors. Everest Software LLC estimates that these products are used primarily in the United States but are deployed worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+POINTER DEREFERENCECWE-822: Untrusted Pointer Dereference, http://cwe.mitre.org/data/definitions/822.html, web site last accessed August 20, 2015.
+
+The researcher found two separate instances where a specially crafted packet could cause the program to dereference a pointer. This can only be exploited when the video server is enabled.
+CVE-2015-6454NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6454, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to these vulnerabilities. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:P, web site last accessed August 20, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Everest Software LLC has addressed these problems in the latest version (8.7.0.2) of PeakHMI. Users can check for a new version anytime from within the program and get an update if so desired. There is no charge for upgrades or updates. Users can also find the new version on the PeakHMI web site:
+http://peakhmi.com/
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Carefully monitor or block traffic to Port 49454.
+Disable the video server if it is not being used. This video server is only for remote HMI video support. (It is disabled by default on installation)
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

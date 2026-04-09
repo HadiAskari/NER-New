@@ -1,0 +1,104 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.7
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: UMC Stack
+Vulnerabilities: Unquoted Search Path or Element, Uncontrolled Resource Consumption, Improper Input Validation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-20-196-05 Siemens UMC Stack (Update G) that was published April 13, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to cause a partial denial-of-service condition on the UMC component of the affected devices under certain circumstances. This could also allow an attacker to locally escalate privileges from a user with administrative privileges to execute code with SYSTEM level privileges.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that some of the vulnerabilities affect the following UMC components. For a complete list of which specific vulnerabilities affect each of these products, please see Siemens security advisory SSA-841348:
+
+Opcenter Execution Discrete: All versions prior to v3.2
+Opcenter Execution Foundation: All versions prior to v3.2
+Opcenter Execution Process: All versions prior to v3.2
+Opcenter Intelligence: All versions prior to v3.3
+Opcenter RD&L: v8.0
+
+--------- Begin Update H Part 1 of 2 ---------
+
+SIMATIC IT LMS: All versions prior to v2.6. Only affected by CVE-2020-7587, CVE-2020-7588
+
+--------- End Update H Part 1 of 2 ---------
+
+SIMATIC IT Production Suite: All versions prior to v8.0. Only affected by CVE-2020-7587 and CVE-2020-7588
+SIMATIC Notifier Server for Windows: All versions
+SIMATIC PCS neo: All versions prior to v3.0 SP1
+SIMATIC STEP 7 (TIA Portal) v15: All versions prior to v15.1 update 5
+SIMATIC STEP 7 (TIA Portal) v16: All versions prior to v16 Update 2
+SIMOCODE ES v16: All versions prior to v16 Update 1
+SIMOCODE ES v15.1: Update to v15 update 4 or later
+Soft Starter ES v15.1: Update to v15 update 3 or later
+Soft Starter ES v16: All versions prior to v16 Update 1
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNQUOTED SEARCH PATH OR ELEMENT CWE-428
+A component within the affected application calls a helper binary with SYSTEM privileges during startup while the call path is not quoted.
+CVE-2020-7581 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+Sending multiple specially crafted packets to the affected service could cause a partial remote denial-of-service condition, which would cause the service to restart itself. 
+CVE-2020-7587 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L).
+4.2.3    IMPROPER INPUT VALIDATION CWE-20
+Sending a specially crafted packet to the affected service could cause a partial remote denial-of-service condition, which would cause the service to restart itself. 
+CVE-2020-7588 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Victor Fidalgo of INCIBE and Reid Wightman of Dragos reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+Siemens recommends users upgrade affected products if upgrade are available for those products:
+
+Opcenter Execution Discrete, Foundation, and Process: Update to v3.2 or later
+Opcenter Quality: Update to v11.3 or later
+Opcenter RD&L: Update to v8.1 or later
+SIMATIC PCS neo: Update to v3.0 SP1. To obtain this update contact local support.
+SIMATIC STEP 7 (TIA Portal) v15: Update to v15.1 update 5 or later
+SIMATIC STEP 7 (TIA Portal) v16: Update to v16 Update 2 or later
+SIMOCODE ES v16: Update to v16 update 1 or later
+SIMOCODE ES v15.1 and prior: Update to v15 update 1 or later
+Soft Starter ES v15.1 and prior: Update to v15 update 1 or later
+Soft Starter ES v16: Update to v16 Update 1 or later
+SIMATIC IT Production Suite: Update to v8.0 or later
+Opcenter Intelligence: Update to v3.3 or later
+
+--------- Begin Update H Part 2 of 2 ---------
+
+SIMATIC IT LMS: Update to v2.6 or later
+
+--------- End Update H Part 2 of 2 ---------
+For products that do not have an update, Siemens has identified the following specific workarounds and mitigations customers can apply to reduce the risk:
+
+Run the software on systems within trusted networks
+For CVE-2020-7581, ensure there is no executable at the following locations:
+
+C:\Program.exe
+C:\Program Files\Common.exe
+C:\Program Files\Common Files\Siemens\Automation\Simatic.exe
+
+
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for Industrial Security and following the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information on these vulnerabilities and associated software updates, please see Siemens security advisory SSA-841348
+CISA recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

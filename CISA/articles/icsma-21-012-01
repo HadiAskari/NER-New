@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.6
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: SOOIL Developments Co., Ltd.
+Equipment: Diabecare RS, AnyDana-i and AnyDana-A
+Vulnerabilities: Use of Hard Coded Credentials, Insufficiently Protected Credentials, Use of Insufficiently Random Values, Use of Client-side Authentication, Client-side Enforcement of Server-side Security, Authentication Bypass by Capture-Replay, Unprotected Transport of Credentials, Key Exchange Without Entity Authentication, Authentication Bypass by Spoofing
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to access sensitive information, modify therapy settings, bypass authentication, or crash the device being accessed. These vulnerabilities could affect patient safety.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Dana Diabecare Insulin Pumps and mobile applications are affected:
+
+Dana Diabecare RS: All versions prior to 3.0
+AnyDana-i: All versions prior to 3.0
+AnyDana-A: All versions prior to 3.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF HARD CODED CREDENTIALS CWE-798
+A hard-coded physician PIN in the physician menu of the insulin pump allows attackers with physical access to change insulin therapy settings.
+CVE-2020-27256 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N). 
+3.2.2    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+An information disclosure vulnerability in the communication protocol of the insulin pump and its AnyDana-i and AnyDana-A mobile applications allows unauthenticated attackers to extract the pump’s keypad lock PIN via Bluetooth Low Energy.
+CVE-2020-27258 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+The communication protocol of the insulin pump and its AnyDana-i and AnyDana-A mobile applications use deterministic keys, which allows unauthenticated, physically proximate attackers to brute-force the keys via Bluetooth Low Energy.
+CVE-2020-27264 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).
+3.2.4    USE OF CLIENT-SIDE AUTHENTICATION CWE-603
+A client-side control vulnerability in the insulin pump and its AnyDana-i and AnyDana-A mobile applications allows physically proximate attackers to bypass user authentication checks via Bluetooth Low Energy.
+CVE-2020-27266  has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    CLIENT-SIDE ENFORCEMENT OF SERVER-SIDE SECURITY CWE-602
+A client-side control vulnerability in the insulin pump and its AnyDana-i and AnyDana-A mobile applications allows physically proximate attackers to bypass checks for default PINs via Bluetooth Low Energy.
+CVE-2020-27268  has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.6    AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+The communication protocol of the insulin pump and its AnyDana-i and AnyDana-A mobile applications lacks replay protection measures, which allows unauthenticated, physically proximate attackers to replay communication sequences via Bluetooth Low Energy.
+CVE-2020-27269 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:N).
+3.2.7    UNPROTECTED TRANSPORT OF CREDENTIALS CWE-523
+The communication protocol of the insulin pump and its AnyDana-i and AnyDana-A mobile applications does not use adequate measures to protect encryption keys in transit, which allows unauthenticated, physically proximate attackers to sniff the keys via Bluetooth Low Energy.
+CVE-2020-27270 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.8    KEY EXCHANGE WITHOUT ENTITY AUTHENTICATION CWE-322
+The communication protocol of the insulin pump and its AnyDana-i and AnyDana-A mobile applications does not use adequate measures to authenticate the pump before exchanging keys, which allows unauthenticated, physically proximate attackers to eavesdrop the keys and spoof the pump via Bluetooth Low Energy.
+CVE-2020-27272 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N). 
+3.2.9    AUTHENTICATION BYPASS BY SPOOFING CWE-290
+The communication protocol of the insulin pump and its AnyDana-i and AnyDana-A mobile applications does not use adequate measures to authenticate the communicating entities before exchanging keys, which allows unauthenticated, physically proximate attackers to eavesdrop the authentication sequence via Bluetooth Low Energy.
+CVE-2020-27276 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Europe, Asia
+COMPANY HEADQUARTERS LOCATION: South Korea
+
+3.4 RESEARCHER
+Julian Suleder, Birk Kauer, Raphael Pavlidis, and Nils Emmerich of ERNW Research GmbH reported these vulnerabilities to the Federal Office for Information Security (BSI, Germany), in the context of the BSI project ManiMed – Manipulation of Medical Devices. BSI then provided this report to CISA.
+4. MITIGATIONS
+Dana Diabecare recommends users update the Dana Diabecare insulin pumps to Version 3.0 or higher, or to the latest available release. Additionally, users are encouraged to immediately update AnyDana-A and AnyDana-i to Version 3.0 or higher. Also, SOOIL recommends users to apply these mitigating strategies:
+
+In the case a user cannot update the Dana RS pump to the latest version, always operate the pump in Airplane Mode.
+Users of any versions prior to 3.0 should operate Dana RS insulin pumps in Airplane Mode continuously.
+Users can obtain partial mitigation of the vulnerabilities by updating the AnyDana application to the latest Version 3.0 or later.
+Users of the latest version of the application, Version 3.0 or later, can continue to operate the Dana RS insulin pumps with versions installed prior to Version 3.0.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Maintain tight physical control of the pump and devices connected to the pump.
+Be attentive to pump notifications, alarms, and alerts be aware of anything out of the ordinary.
+Immediately cancel any unintended boluses (a single dose of insulin administered all at once).
+Do not connect insulin pump to any third-party devices or use any software not authorized.
+Get medical help immediately if you suspect any insulin pump settings or the insulin delivery has changed unexpectedly.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

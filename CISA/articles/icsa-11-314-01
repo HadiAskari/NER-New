@@ -1,0 +1,41 @@
+
+Overview
+ICS-CERT originally released advisory ICSA-11-314-01P on the US-CERT secure portal on November 14, 2011. This web page release was delayed to allow users time to download and install the update.
+Security researcher Carlos Mario Penagos Hollman of Synapse-labs has identified an input sanitization vulnerability in SafeNet Sentinel HASP Software Rights Management (HASP-SRM) license management application.
+ICS-CERT has coordinated the researcher’s vulnerability report with SafeNet, and SafeNet has produced an updated version that mitigates this vulnerability. Mr. Penagos has tested the updated version and validates that it resolves the vulnerability.
+Affected Products
+The following products are affected:
+
+SafeNet Sentinel HASP SDK releases older than Version 5.11
+Sentinel HASP Run-time installers older than Version 6.x
+7 Technologies (7T) IGSS Version 7.
+
+Impact
+Successful exploitation of this vulnerability allows an attacker to change the code in a configuration file. Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+SafeNet is a US-based company that creates products for software protection and license management. The affected products, Sentinel HASP, formerly Aladdin HASP SRM, are the digital license manager keys used to enforce digital licenses that enable the use of software or hardware. According to SafeNet, these products are used worldwide.
+7T IGSS uses the SafeNet Sentinel HASP SDK for its digital license manager to enable its software products.
+Vulnerability Characterization
+Vulnerability Overview
+The web application Sentinel HASP Admin Control Center, which is accessed remotely, does not sufficiently validate user input. This characteristic can allow attackers to craft and inject HTML code into the configuration file.
+The vulnerability can be reproduced using Mozilla Firefox 2.0. As of this writing (November 2011), it is not reproducible with the current versions of Mozilla Firefox, Microsoft Internet Explorer, Opera, and Google Chrome.
+CVE-2011-3339 has been assigned to this vulnerability. SafeNet calculated a CVSS v2 base score of 4.3 and an overall score of 0.9 for this vulnerability.
+Vulnerability Details
+Exploitability
+This vulnerability is remotely exploitable.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+Exploiting this vulnerability requires a moderate skill set.
+Mitigation
+SafeNet has provided the following links to allow users to download an updated version that mitigates this vulnerability:
+http://www3.safenet-inc.com/support/hasp-srm/enduser.aspx#Runtimehttp://www3.safenet-inc.com/support/hasp-srm/vendor.aspx#latestDD
+SafeNet has also provided more information regarding this vulnerability as well as installation instructions for the updated version at the following location: http://www.safenet-inc.com/support-downloads/sentinel-drivers/CVE-2011-3339/.
+In addition to upgrading the SafeNet software, ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control system security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

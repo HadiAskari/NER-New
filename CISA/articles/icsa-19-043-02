@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.5
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: EN100 Ethernet Communication Module and SIPROTEC 5 Relays
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+The EN100 Ethernet communication module and SIPROTEC 5 relays are affected by a security vulnerability that could allow an attacker to conduct a denial-of-service attack over the network.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports the vulnerability affects the following versions of the EN100 Ethernet Communication Module and SIPROTEC 5 relays:
+
+Firmware variant IEC 61850 for EN100 Ethernet module: All versions prior to v4.35
+Firmware variant MODBUS TCP for EN100 Ethernet module: All versions
+Firmware variant DNP3 TCP for EN100 Ethernet module: All versions
+Firmware variant IEC104 for EN100 Ethernet module: All versions
+Firmware variant Profinet IO for EN100 Ethernet module: All versions
+SIPROTEC 5 relays with CPU variants CP300 and CP100 and the respective Ethernet communication modules: All versions prior to v7.82
+SIPROTEC 5 relays with CPU variants CP200 and the respective Ethernet communication modules: All versions prior to v7.58
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+Specially crafted packets to Port 102/TCP could cause a denial-of-service condition in the affected products. A  manual restart is required to recover the EN100 module functionality of the affected devices. Successful exploitation requires an attacker with network access to send multiple packets to the affected products or modules. As a precondition, the IEC 61850-MMS communication needs to be activated on the affected products or modules. No user interaction or privileges are required to exploit the vulnerability. The vulnerability could allow a denial-of-service condition of the network functionality of the device, compromising the availability of the system.
+CVE-2018-16563 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Lars Lengersdorf from Amprion GmbH reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens has released updates for some affected products. Siemens is working on updates for the remaining affected products, and recommends specific countermeasures until fixes are available.
+
+Firmware variant IEC 61850 for EN100 Ethernet module: Update to v4.35 https://support.industry.siemens.com/cs/us/en/view/109745821
+SIPROTEC 5 relays with CPU variants CP300 and CP100 and the respective Ethernet communication modules: Update to firmware version v7.82 for the device types listed in SSA-104088
+SIPROTEC 5 relays with CPU variants CP200 and the respective Ethernet communication modules: Update to firmware version v7.58 for the device types listed in SSA-104088
+
+The firmware version for the communications modules can also be found on each device’s download page. Applying the update causes the device module to undergo a single restart cycle.
+Until updates can be applied, Siemens recommends blocking access to Port 102/TCP with an external firewall.
+Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before application, and supervision by trained staff of the update process in the target environment.
+As a general security measure Siemens strongly recommends protecting network access with appropriate mechanisms (e.g., firewalls, segmentation, VPN). Users are advisded to configure the environment according to Siemens’ operational guidelines in order to run the devices in a protected IT environment.
+Siemens recommended security guidelines to secure substations can be found at: https://www.siemens.com/gridsecurity
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-104088 on their website: https://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

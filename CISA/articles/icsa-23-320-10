@@ -1,0 +1,78 @@
+
+ 
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIPROTEC 4 7SJ66
+Vulnerabilities: Classic Buffer Overflow, Session Fixation, NULL Pointer Dereference, Origin Validation Error, Race Condition, Missing Release of Memory after Effective Lifetime
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute a variety of exploits for the purpose of denial-of-service, data extraction, remote code execution, etc.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports that the following SIPROTEC products are affected due to vulnerabilities in the underlying Wind River VxWorks network stack:
+
+SIPROTEC 4 7SJ66: versions prior to V4.41
+
+3.2 Vulnerability Overview
+3.2.1 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+Wind River VxWorks has a buffer overflow in the TCP component (issue 1 of 4). This is a IPNET security vulnerability: TCP Urgent Pointer = 0 that leads to an integer underflow.
+CVE-2019-12255 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+Wind River VxWorks 6.9 and vx7 has a buffer overflow in the IPv4 component. There is an IPNET security vulnerability: Stack overflow in the parsing of IPv4 packets' IP options.
+CVE-2019-12256 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3 SESSION FIXATION CWE-384
+Wind River VxWorks 6.6 through vx7 has session fixation in the TCP component. This is a IPNET security vulnerability: DoS of TCP connection via malformed TCP options.
+CVE-2019-12258 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4 NULL POINTER DEREFERENCE CWE-476
+Wind River VxWorks 6.6, 6.7, 6.8, 6.9 and vx7 has an array index error in the IGMPv3 client component. There is an IPNET security vulnerability: DoS via NULL dereference in IGMP parsing.
+CVE-2019-12259 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+Wind River VxWorks 6.9 and vx7 has a buffer overflow in the TCP component (issue 2 of 4). This is an IPNET security vulnerability: TCP Urgent Pointer state confusion caused by a malformed TCP AO option.
+CVE-2019-12260 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+Wind River VxWorks 6.7 though 6.9 and vx7 has a buffer overflow in the TCP component (issue 3 of 4). This is an IPNET security vulnerability: TCP Urgent Pointer state confusion during connect () to a remote host.
+CVE-2019-12261 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7 ORIGIN VALIDATION ERROR CWE-346
+Wind River VxWorks 6.6, 6.7, 6.8, 6.9 and 7 has incorrect access control in the RARP client component. IPNET security vulnerability: Handling of unsolicited Reverse ARP replies (Logical Flaw).
+CVE-2019-12262 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362
+Wind River VxWorks 6.9.4 and vx7 has a buffer overflow in the TCP component (issue 4 of 4). There is an IPNET security vulnerability: TCP Urgent Pointer state confusion due to race condition.
+CVE-2019-12263 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.9 MISSING RELEASE OF MEMORY AFTER EFFECTIVE LIFETIME CWE-401
+Wind River VxWorks 6.5, 6.6, 6.7, 6.8, 6.9.3 and 6.9.4 has a memory leak in the IGMPv3 client component. There is an IPNET security vulnerability: IGMP Information leak via IGMPv3 specific membership report.
+CVE-2019-12265 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens ProductCERT reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released a new version (V4.41 or later version) for SIPROTEC 4 7SJ66 and recommends users update to the latest version.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-617233 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as virtual private networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 16, 2023: Initial Publication
+

@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Sensormatic Electronics, LLC, a subsidiary of Johnson Controls
+Equipment: C-CURE 9000
+Vulnerability: Improper Input Validation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-182-02 Sensormatic Electronics C-CURE 9000 that was published July 1, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow remote execution of lower privileged Windows programs.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Johnson Controls reports the vulnerability affects the following product:
+
+C-CURE 9000: All versions prior to 2.80
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER INPUT VALIDATION CWE-20
+An insecure client automatic update feature in C-CURE 9000 can allow remote execution of lower privileged Windows programs. 
+CVE-2021-27660 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+4.4 RESEARCHER
+Johnson Controls, Inc., reported this vulnerability to CISA.
+5. MITIGATIONS
+--------- Begin Update A Part 1 of 1 ---------
+Johnson Controls recommends users upgrade to Version 2.80 or later. Johnson Controls recommends uninstalling the C-CURE 9000 Auto Update feature if is not in use.
+Versions prior to 2.60
+
+Versions prior to 2.60 should first be upgraded to 2.60 Service Pack 2 CU07 or later.
+
+Versions 2.60 & 2.70
+
+Apply 2.60 Service Pack 2 CU07 or later or 2.70 Service Pack 2 CU01 or later, respectively.
+On a machine with the C-CURE 9000 server installed, the service pack will automatically remove the auto update client. 
+On remote client machines, when running the service pack and if the Auto Update service is installed, a prompt will ask users if they want to remove the service. 
+If users run the service pack in silent mode, they should run it with the optional parameter “/REMOVEAUTOUPDATE” to remove the auto update client.
+
+Version 2.80 & 2.90
+
+Starting in C-CURE 9000 Version 2.80, the client Auto Update feature is a separate install.
+From Windows Programs and Features on the application server, select C-CURE 9000 Automated Update, right-click, then select Uninstall.
+From Windows Programs and Features, wherever the C-CURE 9000 clients (Monitoring Station, Administration Workstation) are installed (and the Auto Update service), select CCURE9000ClientAutoupdate, right-click, then select Uninstall.
+
+For access to more specific product update and vulnerability mitigation information, please see Johnson Controls Product Security Advisory JCI-PSA-2021-10 v2 or contact a Johnson Controls Technical Support Team representative.
+--------- End Update A Part 1 of 1 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

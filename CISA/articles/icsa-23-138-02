@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5 
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Mitsubishi Electric
+Equipment: WS0-GETH00200
+Vulnerabilities: Active Debug Code
+
+2. UPDATE OR REPOSTED INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-23-138-02 Mitsubishi Electric MELSEC WS Series that was published May 18th, 2023, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to bypass authentication and log in by connecting to the module via telnet to reset the module or, if certain conditions are met, either disclose or tamper with the module's configuration, or rewrite the firmware.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 1 of 2 --------
+The following versions of Mitsubishi Electric MELSEC WS Series, an ethernet interface module, are affected:
+
+
+WS0-GETH00200: Serial numbers 2310**** and prior
+
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1 ACTIVE DEBUG CODE CWE-489 
+In the affected products, the hidden telnet function is enabled by default when shipped from the factory. An authentication bypass vulnerability could allow a remote unauthenticated attacker to log into the affected module by connecting to it via telnet. 
+CVE-2023-1618 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Mitsubishi Electric reported this vulnerability to CISA.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 --------
+Mitsubishi Electric has released the following versions to fix this vulnerability:
+
+
+WS0-GETH00200: Serial numbers 2311**** and later.
+
+
+For the affected products, Mitsubishi Electric recommends users to take the following mitigation measures:
+
+Set password for telnet sessions that are difficult for third parties to guess. The password can be up to 15 characters long. Note that "[space]" in the input string represents a single-byte space. Users can change the password for the telnet session of the affected product by using the telnet client and performing:
+Password setting:
+
+Enter "telnet[space]" followed by the IP address of the affected product and press the Enter key.
+When "Password" is displayed, press the Enter key without entering anything.
+When "telnet>" is displayed, enter "password[space]" followed by the desired password string and press the Enter key.
+Enter "quit" and press the Enter key.
+
+
+Confirm the password is set:
+
+After the Password setting process, enter "telnet[space]" followed by the IP address of the affected product and press the Enter key.
+When "Password" is displayed, enter the password string set in the Password setting process and press the Enter key.
+If "telnet>" is displayed, the password is set correctly.
+Enter "quit" and press the Enter key.
+
+
+
+Alternatively, Mitsubishi Electric recommends that users take the following mitigation measures to minimize the risk of exploiting this vulnerability:
+
+Use a firewall, virtual private network (VPN), etc. to prevent unauthorized access when internet access is required.
+Use product within a local area network (LAN) and use firewalls to block access from untrusted networks and hosts.
+Restrict physical access to prevent untrusted devices from connecting to the LAN.
+For more information, see Mitsubishi Electric’s Security Advisory.
+
+--------- End Update A Part 2 of 2 ---------
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.

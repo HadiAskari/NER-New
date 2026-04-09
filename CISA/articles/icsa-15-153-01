@@ -1,0 +1,50 @@
+
+OVERVIEW
+Raheem Beyah, David Formby, and San Shin Jung of Georgia Tech, via a research project partially sponsored by the Georgia Tech National Electric Energy Testing Research and Applications Center, have identified a TCP initial sequence numbers vulnerability in two of Beckwith Electric’s digital voltage regulator controllers. In response to the reported vulnerability, Beckwith Electric assessed its other products for this vulnerability and identified four similarly affected devices. Beckwith Electric has released firmware upgrades that mitigate this vulnerability in five of the six affected products. Beckwith Electric is offering a specific mitigation for the sixth affected product. The researcher has tested the upgrades for the M-6200 and the M-6200A devices and has validated that they resolve the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Beckwith Electric products are affected:
+
+M-6200 Digital Voltage Regulator Control, firmware versions prior to Version D‑0198V04.07.00,
+M-6200A Digital Voltage Regulator Control, firmware versions prior to Version D‑0228V02.01.07,
+M-2001D Digital Tapchanger Control, firmware versions prior to Version D-0214V01.10.04,
+M-6283A Three Phase Digital Capacitor Bank Control, firmware versions prior to Version D-0346V03.00.02,
+M-6280A Digital Capacitor Bank Control, firmware versions prior to Version D‑0254V03.05.05, and
+M-6280 Digital Capacitor Bank Control, all firmware versions.
+
+IMPACT
+Successful exploitation of this vulnerability could result in a denial-of-service condition or session hijacking.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Beckwith Electric is a US-based company that supplies products associated with the production, transmission, and distribution of electric power.
+The affected products, M-6200 and M-6200A Digital Voltage Regulator Control, are microprocessor-based step-voltage regulator load tapchanger controllers. The M-2001D Digital Tapchanger Control enables stepped voltage regulation. The M-6283A Three Phase Digital Capacitor Bank Control, M-6280A Digital Capacitor Bank Control, and M-6280 Digital Capacitor Bank Control are used for remote capacitor automation, monitoring, and protection. According to Beckwith Electric, the six affected devices are deployed across the Energy sector. Beckwith Electric estimates that these products are used primarily in the United States.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+PREDICTABLE EXACT VALUE FROM PREVIOUS VALUESCWE-342: Predictable Exact Value from Previous Values, http://cwe.mitre.org/data/definitions/342.html, web site last accessed June 02, 2015.
+
+The affected devices generate predictable TCP initial sequence numbers that may allow an attacker to predict the correct TCP initial sequence numbers from previous values, which may allow an attacker to spoof TCP connections.
+CVE-2014-9201NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9201, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:P, web site last accessed June 02, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with medium skill would be able to exploit this vulnerability.
+MITIGATION
+Beckwith Electric has developed firmware upgrades that resolve the predictable TCP initial sequence numbers vulnerability in all the affected products except for the M-6280 Digital Capacitor Bank Control. Beckwith Electric is offering a specific mitigation for the M-6280 Digital Capacitor Bank Control. Beckwith Electric has released a customer notification at www.becoconnect.com for users with a valid account.
+For firmware upgrades and the mitigation for the M-6280, contact Beckwith Electric’s Customer Technical Support at:
+Phone: (727) 544-2326
+Email: support@beckwithelectric.com.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Implementing a bump-in-the-wire solution can provide secure communication between endpoints, which may enhance security by preventing packet sniffing.
+Effectively segment networks and implement demilitarized zones (DMZs) with properly configured firewalls can be used to selectively control and monitor traffic passed between zones and systems to prevent and identify anomalous activity.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,59 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.2
+ATTENTION: Low attack complexity  
+Vendor: Siemens
+Equipment: Adaptec maxView Application
+Vulnerability: Exposure of Sensitive Information to an Unauthorized Actor 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a local attacker to decrypt intercepted local traffic between the browser and the application. A local attacker could perform a machine-in-the-middle attack to modify data in transit. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following software from Siemens is affected: 
+
+SIMATIC IPC1047: All versions  
+SIMATIC IPC1047E: All versions with Adaptec maxView Storage Manager prior to 4.09.00.25611 on Windows 
+SIMATIC IPC647D: All versions 
+SIMATIC IPC647E: All versions with Adaptec maxView Storage Manager prior to 4.09.00.25611 on Windows 
+SIMATIC IPC847D: All versions 
+SIMATIC IPC847E: All versions with Adaptec maxView Storage Manager prior to 4.09.00.25611 on Windows 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+The Adaptec maxView application uses a non-unique TLS certificate across installations to protect communication from the local browser to the local application on affected Siemens devices. A local attacker could use this key to decrypt intercepted local traffic between the browser and the application and could perform a machine-in-the-middle attack to modify data in transit. 
+CVE-2023-23588 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple  
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA. 
+4. MITIGATIONS
+Adaptec has released updates for the affected products and recommends updating to the latest versions.  Siemens recommends countermeasures for products where updates are not, or not yet available: 
+
+Update maxView Storage Manager to 4.09.00.25611 or later version. 
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk: 
+
+Update the default self-signed device X.509 certificate with a trusted certificate. 
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for industrial security and to follow recommendations in the product manuals.  
+Additional information on industrial security by Siemens can be found here. 
+For further inquiries on security vulnerabilities in Siemens products and solutions, users should contact Siemens ProductCERT. 
+For more information, see the associated Siemens security advisory SSA-511182 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. 

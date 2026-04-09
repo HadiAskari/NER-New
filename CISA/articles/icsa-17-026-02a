@@ -1,0 +1,74 @@
+
+CVSS v3 7.1
+ATTENTION: Remotely Exploitable/low skill level to exploit.
+Vendor: Belden
+Equipment: Hirschmann GECKO
+--------- Begin Update A Part 1 of 5 --------
+Vulnerabilities: Path Traversal, Server-Side Request Forgery, Cross-Site Request Forgery, Information Exposure
+--------- End Update A Part 1 of 5 --------
+
+UPDATE INFORMATION
+
+This updated advisory is a follow-up to the original advisory titled ICSA-17-026-02 Belden Hirschmann GECKO that was published January 26, 2017, on the NCCIC/ICS-CERT web site.
+AFFECTED PRODUCTS
+The following GECKO switch versions are affected:
+
+Hirschmann GECKO Lite Managed switch, Version 2.0.00 and prior versions.
+
+IMPACT
+--------- Begin Update A Part 2 of 5 --------
+Successful exploitation of these vulnerabilities may allow a remote attacker to access a copy of the configuration file of an affected device without authenticating, exposing sensitive information.
+--------- End Update A Part 2 of 5 --------
+MITIGATION
+--------- Begin Update A Part 3 of 5 --------
+Belden has released a software version, Version 02.0.01, to address the identified vulnerabilities, which is available at the following location:
+https://www.e-catalog.beldensolutions.com/link/57078-24455-402707-402708/en/conf/0
+--------- End Update A Part 3 of 5 --------
+Belden recommends that users update to the newest software version. As an interim compensating control, Belden specifies that users can reboot affected devices after each configuration download, preventing the vulnerable state.
+--------- Begin Update A Part 4 of 5 --------
+For additional information, please review Belden’s security bulletins, BSECV-2016-5 and BSECV-2017-7, which are available at the following locations:
+https://www.belden.com/resourcecenter/security/upload/Belden-Security-Bulletin-BSECV-2016-5.pdf
+http://www.belden.com/docs/upload/Belden_Security_Bulletin_BSECV_2017_7.pdf
+--------- End Update A Part 4 of 5 --------
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are remotely exploitable.
+VULNERABILITY OVERVIEW
+
+PATH TRAVERSAL CWE-22
+
+After an administrator downloads a configuration file, a copy of the configuration file, which includes hashes of user passwords, is saved to a location that is accessible without authentication.
+CVE-2017-5163 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+--------- Begin Update A Part 5 of 5 --------
+
+SERVER-SIDE REQUEST FORGERY (SSRF) CWE-918
+
+Web server receives a request, but does not sufficiently verify that the request is being sent to the expected destination.
+CVE-2017-6036 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N ).
+
+CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+
+Web application does not sufficiently verify that requests were provided by user who submitted request.
+CVE-2017-6038 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:L).
+
+INFORMATION EXPOSURE CWE-200
+
+Non-sensitive information can be obtained anonymously.
+CVE-2017-6040 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+--------- End Update A Part 5 of 5 --------
+RESEARCHER
+Davy Douhine of RandoriSec identified these vulnerabilities.
+
+BACKGROUND
+Critical Infrastructure Sector(s): Multiple sectors
+Countries Deployed: Worldwide
+Company Headquarters Location: St. Louis, Missouri
+

@@ -1,0 +1,175 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). 
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: RUGGEDCOM APE1808 devices
+Vulnerabilities: Improper Certificate Validation, Cleartext Transmission of Sensitive Information, Path Traversal, Exposure of Sensitive Information to an Unauthorized Actor, Cross-site Scripting, Permissive List of Allowed Inputs, Relative Path Traversal, Improper Restriction of Excessive Authentication Attempts, Use of Externally-Controlled Format String, Access of Uninitialized Pointer, Out-of-bounds Write, Open Redirect, Improper Input Validation, Insertion of Sensitive Information into Log File, Heap-based Buffer Overflow, Insufficient Session Expiration, Improper Validation of Integrity Check Value, Improper Access Control, Infinite Loop, NULL Pointer Dereference, Stack-based Buffer Overflow, Basic XSS, Use of GET Request Method With Sensitive Query Strings, Interpretation Conflict, Use After Free, Improper Authorization
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to impact confidentiality, integrity, or availability of the affected products.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens using Fortinet NGFW V7.4.1 and prior are affected:
+
+RUGGEDCOM APE1808: All versions
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER CERTIFICATE VALIDATION CWE-295
+An improper certificate validation vulnerability [CWE-295] in FortiOS 7.2.0 through 7.2.3, 7.0.0 through 7.0.7, 6.4 all versions, 6.2 all versions, 6.0 all versions and FortiProxy 7.0.0 through 7.0.6, 2.0 all versions, 1.2 all versions may allow a remote and unauthenticated attacker to perform a Man-in-the-Middle attack on the communication channel between the FortiOS/FortiProxy device and remote servers hosting threat feeds (when the latter are configured as Fabric connectors in FortiOS/FortiProxy)
+CVE-2022-39948 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.2.2 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+A cleartext transmission of sensitive information vulnerability [CWE-319] in Fortinet FortiOS version 7.2.0 through 7.2.4, 7.0.0 through 7.0.8, FortiProxy version 7.2.0 through 7.2.1 and 7.0.0 through 7.0.8 allows an authenticated attacker with read-only superadmin privileges to intercept traffic in order to obtain other administrators cookies via diagnose CLI commands.
+CVE-2022-41327 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A improper limitation of a pathname to a restricted directory vulnerability ('path traversal') [CWE-22] in Fortinet FortiOS version 7.2.0 through 7.2.3, 7.0.0 through 7.0.9 and before 6.4.11 allows a privileged attacker to read and write files on the underlying Linux system via crafted CLI commands.
+CVE-2022-41328 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+An exposure of sensitive information to an unauthorized actor vulnerability [CWE-200] in Fortinet FortiProxy version 7.2.0 through 7.2.1 and 7.0.0 through 7.0.7, FortiOS version 7.2.0 through 7.2.3 and 7.0.0 through 7.0.9 allows an unauthenticated attackers to obtain sensitive logging informations on the device via crafted HTTP GET requests.
+CVE-2022-41329 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.5 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+An improper neutralization of input during web page generation vulnerability ('Cross-site Scripting') [CWE-79] in Fortinet FortiOS version 7.2.0 through 7.2.3, version 7.0.0 through 7.0.9, version 6.4.0 through 6.4.11 and before 6.2.12 and FortiProxy version 7.2.0 through 7.2.1 and before 7.0.7 allows an unauthenticated attacker to perform an XSS attack via crafted HTTP GET requests.
+CVE-2022-41330 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.6 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+An improper neutralization of input during web page generation [CWE-79] vulnerability in FortiOS versions 7.0.0 to 7.0.7 and 7.2.0 to 7.2.3 may allow a remote, unauthenticated attacker to launch a cross site scripting (XSS) attack via the "redir" parameter of the URL seen when the "Sign in with FortiCloud" button is clicked.
+CVE-2022-41334 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.7 PERMISSIVE LIST OF ALLOWED INPUTS CWE-183
+A permissive list of allowed inputs vulnerability [CWE-183] in FortiGate version 7.2.3 and below, version 7.0.9 and below Policy-based NGFW Mode may allow an authenticated SSL-VPN user to bypass the policy via bookmarks in the web portal.
+CVE-2022-42469 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N).
+3.2.8 RELATIVE PATH TRAVERSAL CWE-23
+A relative path traversal vulnerability [CWE-23] in Fortinet FortiOS version 7.2.0 through 7.2.3, version 7.0.0 through 7.0.9 and before 6.4.12, FortiProxy version 7.2.0 through 7.2.1 and 7.0.0 through 7.0.7, FortiSwitchManager version 7.2.0 through 7.2.1 and before 7.0.1 allows an privileged attacker to delete arbitrary directories from the filesystem through crafted HTTP requests.
+CVE-2022-42474 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H).
+3.2.9 RELATIVE PATH TRAVERSAL CWE-23
+A relative path traversal vulnerability [CWE-23] in Fortinet FortiOS version 7.2.0 through 7.2.2, 7.0.0 through 7.0.8 and before 6.4.11, FortiProxy version 7.2.0 through 7.2.2 and 7.0.0 through 7.0.8 allows privileged VDOM administrators to escalate their privileges to super admin of the box via crafted CLI requests.
+CVE-2022-42476 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.10 IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+An improper restriction of excessive authentication attempts vulnerability [CWE-307] in Fortinet FortiOS version 7.2.0 through 7.2.3 and before 7.0.10, FortiProxy version 7.2.0 through 7.2.2 and before 7.0.8 administrative interface allows an attacker with a valid user account to perform brute-force attacks on other user accounts via injecting valid login sessions.
+CVE-2022-43947 has been assigned to this vulnerability. A CVSS v3 base score of 5.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L).
+3.2.11 USE OF EXTERNALLY-CONTROLLED FORMAT STRING CWE-134
+A use of externally-controlled format string in Fortinet FortiOS version 7.2.0 through 7.2.4, FortiOS all versions 7.0, FortiOS all versions 6.4, FortiOS all versions 6.2, FortiProxy version 7.2.0 through 7.2.1, FortiProxy version 7.0.0 through 7.0.7 allows attacker to execute unauthorized code or commands via specially crafted commands.
+CVE-2022-43953 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.12 ACCESS OF UNINITIALIZED POINTER CWE-824
+An access of uninitialized pointer vulnerability [CWE-824] in the SSL VPN portal of Fortinet FortiOS version 7.2.0 through 7.2.3, version 7.0.0 through 7.0.9 and before 6.4.11 and FortiProxy version 7.2.0 through 7.2.1, version 7.0.0 through 7.0.7 and before 2.0.11 allows a remote authenticated attacker to crash the sslvpn daemon via an HTTP GET request.
+CVE-2022-45861 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.13 OUT-OF-BOUNDS WRITE CWE-787
+A out-of-bounds write in Fortinet FortiOS version 7.2.0 through 7.2.3, FortiOS version 7.0.0 through 7.0.10, FortiOS version 6.4.0 through 6.4.12, FortiOS all versions 6.2, FortiOS all versions 6.0, FortiProxy version 7.2.0 through 7.2.2, FortiProxy version 7.0.0 through 7.0.8, FortiProxy all versions 2.0, FortiProxy all versions 1.2, FortiProxy all versions 1.1, FortiProxy all versions 1.0 allows attacker to escalation of privilege via specifically crafted commands.
+CVE-2023-22639 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.14 OUT-OF-BOUNDS WRITE CWE-787
+A out-of-bounds write in Fortinet FortiOS version 7.2.0 through 7.2.3, FortiOS version 7.0.0 through 7.0.10, FortiOS version 6.4.0 through 6.4.11, FortiOS version 6.2.0 through 6.2.13, FortiOS all versions 6.0, FortiProxy version 7.2.0 through 7.2.1, FortiProxy version 7.0.0 through 7.0.7, FortiProxy all versions 2.0, FortiProxy all versions 1.2, FortiProxy all versions 1.1, FortiProxy all versions 1.0 allows an authenticated attacker to execute unauthorized code or commands via specifically crafted requests.
+CVE-2023-22640 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.15 URL REDIRECTION TO UNTRUSTED SITE ('OPEN REDIRECT') CWE-601
+A url redirection to untrusted site ('open redirect') in Fortinet FortiOS version 7.2.0 through 7.2.3, FortiOS version 7.0.0 through 7.0.9, FortiOS versions 6.4.0 through 6.4.12, FortiOS all versions 6.2, FortiOS all versions 6.0, FortiProxy version 7.2.0 through 7.2.2, FortiProxy version 7.0.0 through 7.0.8, FortiProxy all versions 2.0, FortiProxy all versions 1.2, FortiProxy all versions 1.1, FortiProxy all versions 1.0 allows an authenticated attacker to execute unauthorized code or commands via specially crafted requests.
+CVE-2023-22641 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:N/I:L/A:N).
+3.2.16 IMPROPER INPUT VALIDATION CWE-20
+A buffer underwrite ('buffer underflow') vulnerability in FortiOS, FortiManager, FortiAnalyzer, FortiWeb, FortiProxy & FortiSwitchManager administrative interface may allow a remote unauthenticated attacker to execute arbitrary code on the device and/or perform a DoS on the GUI, via specifically crafted requests.
+CVE-2023-25610 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.17 INSERTION OF SENSITIVE INFORMATION INTO LOG FILE CWE-532
+An insertion of sensitive information into log file vulnerability in Fortinet FortiOS 7.2.0 through 7.2.4 and FortiProxy 7.0.0 through 7.0.10. 7.2.0 through 7.2.1 allows an attacker to read certain passwords in plain text.
+CVE-2023-26207 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.18 HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow vulnerability [CWE-122] in FortiOS version 7.2.4 and below, version 7.0.11 and below, version 6.4.12 and below, version 6.0.16 and below and FortiProxy version 7.2.3 and below, version 7.0.9 and below, version 2.0.12 and below, version 1.2 all versions, version 1.1 all versions SSL-VPN may allow a remote attacker to execute arbitrary code or commands via specifically crafted requests.
+CVE-2023-27997 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.19 INSUFFICIENT SESSION EXPIRATION CWE-613
+An insufficient session expiration in Fortinet FortiOS 7.0.0 - 7.0.12 and 7.2.0 - 7.2.4 allows an attacker to execute unauthorized code or commands via reusing the session of a deleted user in the REST API.
+CVE-2023-28001 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:L).
+3.2.20 IMPROPER VALIDATION OF INTEGRITY CHECK VALUE CWE-354
+An improper validation of integrity check value vulnerability [CWE-354] in FortiOS VMs may allow a local attacker with admin privileges to boot a malicious image on the device and bypass the filesystem integrity check in place.
+CVE-2023-28002 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.21 IMPROPER CERTIFICATE VALIDATION CWE-295
+An improper certificate validation vulnerability [CWE-295] in FortiOS 6.2 all versions, 6.4 all versions, 7.0.0 through 7.0.10, 7.2.0 and FortiProxy 1.2 all versions, 2.0 all versions, 7.0.0 through 7.0.9, 7.2.0 through 7.2.3 may allow a remote and unauthenticated attacker to perform a Man-in-the-Middle attack on the communication channel between the vulnerable device and the remote FortiGuard's map server.
+CVE-2023-29175 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.2.22 ACCESS OF UNINITIALIZED POINTER CWE-824
+A access of uninitialized pointer vulnerability [CWE-824] in Fortinet FortiProxy version 7.2.0 through 7.2.3 and before 7.0.9 and FortiOS version 7.2.0 through 7.2.4 and before 7.0.11 allows an authenticated attacker to repetitively crash the httpsd process via crafted HTTP or HTTPS requests.
+CVE-2023-29178 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L).
+3.2.23 IMPROPER INPUT VALIDATION CWE-20
+A NULL pointer dereference vulnerability [CWE-476] in FortiOS may allow an authenticated attacker to crash the SSL-VPN daemon via specially crafted HTTP requests to the /proxy endpoint
+CVE-2023-29179 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.24 IMPROPER INPUT VALIDATION CWE-20
+A NULL pointer dereference vulnerability [CWE-476] in FortiOS may allow a remote unauthenticated attacker to crash the SSL-VPN daemon via specially crafted HTTP requests.
+CVE-2023-29180 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.25 IMPROPER INPUT VALIDATION CWE-20
+A use of externally-controlled format string vulnerability [CWE-134] in the Fclicense daemon of FortiOS may allow a remote authenticated attacker to execute arbitrary code or commands via specially crafted requests.
+CVE-2023-29181 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.26 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+An improper neutralization of input during web page generation ('Cross-site Scripting') vulnerability [CWE-79] in FortiProxy 7.2.0 through 7.2.4, 7.0.0 through 7.0.10 and FortiOS 7.2.0 through 7.2.4, 7.0.0 through 7.0.11, 6.4.0 through 6.4.12, 6.2.0 through 6.2.14 GUI may allow an authenticated attacker to trigger malicious JavaScript code execution via crafted guest management setting.
+CVE-2023-29183 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.27 IMPROPER ACCESS CONTROL CWE-284
+An improper access control vulnerability in Fortinet FortiOS 7.2.0 - 7.2.4 and 7.4.0 allows an attacker to access a restricted resource from a non-trusted host.
+CVE-2023-33301 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.2.28 LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+A loop with unreachable exit condition ('infinite loop') in Fortinet FortiOS version 7.2.0 through 7.2.4, FortiOS version 7.0.0 through 7.0.10, FortiOS 6.4 all versions, FortiOS 6.2 all versions, FortiOS 6.0 all versions, FortiProxy version 7.2.0 through 7.2.3, FortiProxy version 7.0.0 through 7.0.9, FortiProxy 2.0 all versions, FortiProxy 1.2 all versions, FortiProxy 1.1 all versions, FortiProxy 1.0 all versions, FortiWeb version 7.2.0 through 7.2.1, FortiWeb version 7.0.0 through 7.0.6, FortiWeb 6.4 all versions, FortiWeb 6.3 all versions allows attacker to perform a denial of service via specially crafted HTTP requests.
+CVE-2023-33305 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).
+3.2.29 NULL POINTER DEREFERENCE CWE-476
+A NULL pointer dereference vulnerability [CWE-476] in SSL-VPN may allow an authenticated remote attacker to trigger a crash of the SSL-VPN service via crafted requests.
+CVE-2023-33306 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.30 NULL POINTER DEREFERENCE CWE-476
+A NULL pointer dereference vulnerability [CWE-476] in SSL-VPN may allow an authenticated remote attacker to trigger a crash of the SSL-VPN service via crafted requests.
+CVE-2023-33307 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.31 STACK-BASED BUFFER OVERFLOW CWE-121
+A stack-based overflow vulnerability [CWE-124] in Fortinet FortiOS version 7.0.0 through 7.0.10 and 7.2.0 through 7.2.3 and FortiProxy version 7.0.0 through 7.0.9 and 7.2.0 through 7.2.2 allows a remote unauthenticated attacker to execute arbitrary code or command via crafted packets reaching proxy policies or firewall policies with proxy mode alongside deep or full packet inspection.
+CVE-2023-33308 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.32 IMPROPER NEUTRALIZATION OF SCRIPT-RELATED HTML TAGS IN A WEB PAGE (BASIC XSS) CWE-80
+An improper neutralization of script-related html tags in a web page (basic xss) in Fortinet FortiOS 7.2.0 - 7.2.4 allows an attacker to execute unauthorized code or commands via the SAML and Security Fabric components.
+CVE-2023-36555 has been assigned to this vulnerability. A CVSS v3 base score of 3.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:U/C:L/I:L/A:L).
+3.2.33 USE OF EXTERNALLY-CONTROLLED FORMAT STRING CWE-134
+A use of externally-controlled format string in Fortinet FortiProxy versions 7.2.0 through 7.2.4, 7.0.0 through 7.0.10, FortiOS versions 7.4.0, 7.2.0 through 7.2.4, 7.0.0 through 7.0.11, 6.4.0 through 6.4.12, 6.2.0 through 6.2.15, 6.0.0 through 6.0.17, FortiPAM versions 1.0.0 through 1.0.3 allows attacker to execute unauthorized code or commands via specially crafted API requests.
+CVE-2023-36639 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.34 NULL POINTER DEREFERENCE CWE-476
+A null pointer dereference [CWE-476] in FortiOS and FortiProxy SSL VPN may allow an authenticated attacker to perform a DoS attack on the device via specifically crafted HTTP requests.
+CVE-2023-36641 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.35 USE OF GET REQUEST METHOD WITH SENSITIVE QUERY STRINGS CWE-598
+A use of GET request method with sensitive query strings vulnerability in Fortinet FortiOS 7.0.0 - 7.0.12, 7.2.0 - 7.2.5 and 7.4.0 allows an attacker to view plaintext passwords of remote services such as RDP or VNC, if the attacker is able to read the GET requests to those services.
+CVE-2023-37935 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.36 INTERPRETATION CONFLICT CWE-436
+A interpretation conflict in Fortinet IPS Engine versions 7.321, 7.166 and 6.158 allows attacker to evade IPS features via crafted TCP packets.
+CVE-2023-40718 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.37 USE AFTER FREE CWE-416
+A use after free vulnerability [CWE-416] in FortiOS version 7.2.0 through 7.2.4 and version 7.0.0 through 7.0.10 and FortiProxy version 7.2.0 through 7.2.2 and version 7.0.0 through 7.0.8 may allow an unauthenticated remote attacker to crash the WAD process via multiple crafted packets reaching proxy policies or firewall policies with proxy mode alongside SSL deep packet inspection.
+CVE-2023-41675 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.38 IMPROPER AUTHORIZATION CWE-285
+An improper authorization vulnerability in Fortinet FortiOS 7.0.0 - 7.0.11 and 7.2.0 - 7.2.4 allows an attacker belonging to the prof-admin profile to perform elevated actions.
+CVE-2023-41841 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Update Fortigate NGFW to V7.4.1. Contact customer support to receive patch and update information.
+For CVE-2023-25610: Disable HTTP/HTTPS administrative interface OR Limit IP addresses that can reach the administrative interface (seehttps://www.fortiguard.com/psirt/FG-IR-23-001)
+For CVE-2023-27997: Disable SSL-VPN (seehttps://www.fortiguard.com/psirt/FG-IR-23-097)
+For CVE-2023-33308: Disable HTTP/2 support on SSL inspection profiles used by proxy policies or firewall policies with proxy mode (seehttps://www.fortiguard.com/psirt/FG-IR-23-183)
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-366067 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+March 14, 2024: Initial Publication
+

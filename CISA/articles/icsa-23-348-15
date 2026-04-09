@@ -1,0 +1,73 @@
+
+ 
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity/public exploits are available/known public exploitation
+Vendor: Unitronics
+Equipment: Vision Series, Samba Series
+Vulnerability: Initialization of a Resource with an Insecure Default
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated attacker to take administrative control of Unitronics Vision and Samba series systems and use a default administrative password.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Unitronics products are affected:
+
+VisiLogic: Versions prior to 9.9.00
+OS: Versions prior to 12.38
+
+3.2 Vulnerability Overview
+3.2.1 INITIALIZATION OF A RESOURCE WITH AN INSECURE DEFAULT CWE-1188
+Unitronics Vision Series PLCs and HMIs use default administrative passwords. An unauthenticated attacker with network access to a PLC or HMI can take administrative control of the system.
+CVE-2023-6448 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+See CISA KEV for more details.
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Water and Wastewater
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Israel
+
+3.4 RESEARCHER
+CISA became aware of active exploitation for this vulnerability.
+4. MITIGATIONS
+Unitronics has patched this vulnerability in VisiLogic version 9.9.00 and recommends all users update to the latest version. Please see Unitronics' update log for more information.
+For users who cannot update to the latest version, CISA urges organizations to:
+
+Change all default passwords on PLCs and HMIs and use a strong password. Ensure the Unitronics PLC default password "1111" is not in use.
+Set a password on PCOM-enabled sockets.
+Control remote enabled PCOM operations using SDW10 roles.
+Disconnect the PLC from the open internet. If remote access is necessary, control network access to the PLC.
+Implement a Firewall/VPN in front of the PLC to control network access to the remote PLC. A VPN or gateway device can enable multifactor authentication for remote access even if the PLC does not support multifactor authentication. Unitronics also has a secure cellular based longhaul transport device that is secure to their cloud services.
+Use an allowlist of IPs for access.
+Back up the logic and configurations on any Unitronics PLCs to enable fast recovery. Become familiar with the process for factory resetting and deploying configurations to a device in the event of being hit by ransomware.
+If possible, utilize a TCP port that is different than the default port TCP 20256. Cyber actors are actively targeting TCP 20256 after identifying it through network probing as a port associated to Unitronics PLC. Once identified, they leverage scripts specific to PCOM/TCP to query and validate the system, allowing for further probing and connection. If available, use PCOM/TCP filters to parse out the packets.
+Keep Unitronics and other PLC devices updated with the latest versions by the manufacturer.
+Confirm third-party vendors are applying the above recommended countermeasures to mitigate exposure of these devices and all installed equipment.
+
+CISA and WWS Sector partners have developed numerous tools and resources that water utilities can use to increase their cybersecurity. Please visit:
+
+CISA: Water and Wastewater Cybersecurity
+EPA: Cybersecurity for the Water Sector
+WaterISAC: Resource Center
+American Water Works Association: Cybersecurity and Guidance
+
+More information can be found by viewing the Unitronics advisory.
+CISA has also provided further guidance in the following CSA.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+Require multifactor authentication for all remote access to the OT network, including from the IT network and external networks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+Known public exploitations specifically targeting this vulnerability have been reported to CISA.
+5. UPDATE HISTORY
+
+December 14, 2023: Initial Publication
+January 4, 2024: Update A - Added additional equipment, product, mitigations, and a link to the Unitronics advisory. Adjusted risk evaluation statement.
+

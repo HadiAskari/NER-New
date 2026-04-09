@@ -1,0 +1,46 @@
+
+CVSS v3 8.8
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Siemens
+Equipment: RUGGEDCOM NMS
+Vulnerabilities: Cross-Site Request Forgery, Cross-Site Scripting.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following RUGGEDCOM monitoring products:
+
+RUGGEDCOM NMS: All versions prior to V2.1.0 (Windows and Linux).
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow a remote attacker to perform administrative operations under certain conditions.
+MITIGATION
+Siemens provides RUGGEDCOM NMS V2.1.0 which fixes the vulnerabilities and recommends users update to the new version. Information on how to obtain the latest RUGGEDCOM software and firmware can be found at the following location on the Siemens web site:
+https://support.industry.siemens.com/cs/ww/en/view/109745179
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-363881 at the following location:
+http://www.siemens.com/cert/en/cert-security-advisories.htm
+As a general security measure Siemens strongly recommends protecting network access to the RUGGEDCOM NMS with appropriate mechanisms and configuring the environment according to Siemens’ operational guidelines in order to run the devices in a protected IT environment.
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not remotely exploitable.
+VULNERABILITY OVERVIEW
+
+CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+
+The web application (Ports 8080/TCP and 8081/TCP) could allow a remote attacker to perform a cross-site request forgery (CSRF) attack, potentially allowing an attacker to execute administrative operations, provided the targeted user has an active session and is induced to trigger a malicious request.
+CVE-2017-2682 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+
+CROSS-SITE SCRIPTING CWE-79
+
+A non-privileged user of the web application (Ports 8080/TCP and 8081/TCP) could perform a persistent cross-site scripting (XSS) attack, potentially resulting in acquisition of administrative permissions.
+CVE-2017-2683 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:L/A:N).
+BACKGROUND
+Critical Infrastructure Sectors: Energy, Healthcare and Public Health, and Transportation Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany

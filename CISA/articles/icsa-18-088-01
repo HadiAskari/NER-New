@@ -1,0 +1,47 @@
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low skill level to exploit.
+Vendor: WAGO
+Equipment: 750 Series
+Vulnerability: Improper Resource Shutdown or Release
+AFFECTED PRODUCTS
+The following versions of 750 series PLC are affected:
+
+750-880 firmware version 10 and prior,
+750-881 firmware version 10 and prior,
+750-852 firmware version 10 and prior,
+750-882 firmware version 10 and prior,
+750-885 firmware version 10 and prior,
+750-831 firmware version 10 and prior,
+750-889 firmware version 10 and prior, and
+750-829 firmware version 10 and prior.
+
+IMPACT
+Successful exploitation of this vulnerability could allow a denial-of-service condition affecting the ability of the device to establish connections to commissioning and service software tools.
+MITIGATION
+WAGO has released new firmware addressing this vulnerability that can be obtained by contacting WAGO support via email at support@wago.com.
+If updating the firmware is not feasible WAGO recommends that users disable the WAGO Service Communication via WBM or limit the access to Ports 6626 and 2455/TCP/IP to trusted devices.
+For more information see WAGO’s security advisory:Vulnerability-in-the-WAGO-Ethernet-TCP-IP-driver.pdf
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.
+VULNERABILITY OVERVIEW
+
+IMPROPER RESOURCE SHUTDOWN OR RELEASE CWE-404
+
+A remote attack may take advantage of an improper implementation of the 3 way handshake during a TCP connection affecting the communications with commission and service tools. Specially crafted packets may also be sent to Port 2455/TCP/IP, used in Codesys management software, which may result in a denial-of-service condition of communications with commissioning and service tools.
+CVE-2018-8836 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+RESEARCHER
+Younes Dragoni of Nozomi Networks reported the vulnerability to NCCIC.
+BACKGROUND
+Critical Infrastructure Sectors: Commercial Facilities, Critical Manufacturing, Energy, and Transportation Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: United States, Germany, Switzerland, Poland, China, and India

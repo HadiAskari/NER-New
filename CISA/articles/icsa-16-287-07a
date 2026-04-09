@@ -1,0 +1,66 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-17-287-07 Kabona AB WDC Vulnerabilities that was published October 13, 2016, on the NCCIC/ICS-CERT web site.
+Martin Jartelius and John Stock of Outpost 24 have identified vulnerabilities in Kabona AB’s WebDatorCentral (WDC) application. Kabona AB has produced an update to mitigate these vulnerabilities. Martin Jartelius has tested the update to validate that it resolves the vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following WebDatorCentral versions are affected:
+
+All WDC versions prior to Version 3.4.0
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an unauthenticated attacker to inject arbitrary code in a specially crafted URL. This request would grant the attacker the access to the application. This access would include the ability to obtain data from the web server application and redirect users to other potentially malicious pages.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Kabona AB is a Sweden-based company that maintains offices in several countries around the world, including Sweden and the UK.
+The affected product, WDC, is a web-based SCADA system. According to Kabona AB, WDC is deployed across several sectors including Commercial Facilities. Kabona AB estimates that these products are used primarily in Sweden with a small percentage in other parts of Europe and Canada.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), http://cwe.mitre.org/data/definitions/79.html, web site last accessed October 13, 2016.
+
+The web server URL inputs are not sanitized correctly, which may allow cross-site scripting vulnerabilities.
+CVE-2016-8356NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8356, web site last accessed November 7, 2017. has been assigned to these vulnerabilities. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N, web site last accessed October 13, 2016.
+
+OPEN REDIRECTCWE-601: URL Redirection to Untrusted Site ('Open Redirect'), http://cwe.mitre.org/data/definitions/601.html, web site last accessed October 13, 2016.
+
+This non-validated redirect/non-validated forward allows chaining with authenticated vulnerabilities.
+CVE-2016-8376NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8376, web site last accessed November 7, 2017. has been assigned to this vulnerability. A CVSS v3 base score of 6.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:L/A:N, web site last accessed October 13, 2016.
+
+IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTSCWE-307: Improper Restriction of Excessive Authentication Attempts, http://cwe.mitre.org/data/definitions/307.html, web site last accessed October 13, 2016.
+
+WDC does not limit authentication attempts that may allow a brute force attack method.
+CVE-2016-8347NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8347, web site last accessed November 7, 2017. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N, web site last accessed October 13, 2016.
+--------- Begin Update A Part 1 of 1 -------- 
+
+PLAINTEXT STORAGE OF PASSWORDCWE-256: Plaintext Storage of a Password, http://cwe.mitre.org/data/definitions/256.html, web site last accessed November 7, 2017.
+
+WDC stores password credentials in plaintext.
+CVE-2016-0872NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0872, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed November 7, 2017.
+--------- End Update A Part 1 of 1 ----------
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+Crafting a working exploit for these vulnerabilities would not be difficult. Social engineering is required for one vulnerability to convince the user to accept the malformed file or links. Additional user interaction is needed to load the malformed file or access the link. This decreases the likelihood of a successful exploit.
+MITIGATION
+Kabona AB recommends updating to the latest version of WDC software. Information on updating can be obtained through the vendor by contacting their support representatives at:service@kabona.com
+Phone: +46 10 219 36 50
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed October 13, 2016. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed October 13, 2016. for more information on social engineering attacks.
+

@@ -1,0 +1,126 @@
+
+1. EXECUTIVE SUMMARY
+
+​CVSS v3 9.8
+​ATTENTION: Exploitable remotely / low attack complexity
+​Vendor: Siemens
+​Equipment: RUGGEDCOM ROX
+​Vulnerabilities: Cleartext Transmission of Sensitive Information, Command Injection, Improper Authentication, Classic Buffer Overflow, Uncontrolled Resource Consumption, Improper Certificate Validation, Cross-Site Request Forgery (CSRF), Improper Input Validation, Incorrect Default Permissions, Cross-site Scripting, Inadequate Encryption Strength, Use of a Broken or Risky Cryptographic Algorithm.
+
+2. RISK EVALUATION
+​Successful exploitation of these vulnerabilities could allow an attacker to send a malformed HTTP packet causing certain functions to fail, achieve a man-in-the-middle attack, or arbitrary code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+​The following products from Siemens are affected:
+
+​RUGGEDCOM ROX MX5000: All versions prior to V2.16.0
+​RUGGEDCOM ROX MX5000RE: All versions prior to V2.16.0
+​RUGGEDCOM ROX RX1400: All versions prior to V2.16.0
+​RUGGEDCOM ROX RX1500: All versions prior to V2.16.0
+​RUGGEDCOM ROX RX1501: All versions prior to V2.16.0
+​RUGGEDCOM ROX RX1510: All versions prior to V2.16.0
+​RUGGEDCOM ROX RX1511: All versions prior to V2.16.0
+​RUGGEDCOM ROX RX1512: All versions prior to V2.16.0
+​RUGGEDCOM ROX RX1524: All versions prior to V2.16.0
+​RUGGEDCOM ROX RX1536: All versions prior to V2.16.0
+​RUGGEDCOM ROX RX5000: All versions prior to V2.16.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 ​CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+​A user can tell curl from version 7.20.0 to version 7.78.0 to require a successful upgrade to TLS when speaking to an IMAP, POP3 or FTP server (`--ssl-reqd` on the command line or`CURLOPT_USE_SSL` set to `CURLUSESSL_CONTROL` or `CURLUSESSL_ALL` withlibcurl). This requirement could be bypassed if the server would return a properly crafted but perfectly legitimate response. This flaw would then make curl silently continue its operations without TLS contrary to the instructions and expectations, exposing possibly sensitive data in clear text over the network.
+​CVE-2021-22946 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2 ​IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+​The c_rehash script does not properly sanitize shell metacharacters to prevent command injection.
+​CVE-2022-1292 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3 ​IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+​In addition to the c_rehash shell command injection identified in CVE-2022-1292, further circumstances where the c_rehash script does not properly sanitize shell metacharacters to prevent command injection were found by code review. When the CVE-2022-1292 was fixed it was not discovered that there are other places in the script where the file names of certificates being hashed were possibly passed to a command executed through the shell. This script is distributed by some operating systems in a manner where it is automatically executed. On such operating systems, an attacker could execute arbitrary commands with the privileges of the script. Use of the c_rehash script is considered obsolete and should be replaced by the OpenSSL rehash command line tool.
+​CVE-2022-2068 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 ​IMPROPER AUTHENTICATION CWE-287
+​An improper authentication vulnerability exists in curl 7.33.0 to and including 7.82.0 which might allow reuse OAUTH2-authenticated connections without properly making sure that the connection was authenticated with the same credentials as set for this transfer. This affects SASL-enabled protocols: SMPTP(S), IMAP(S), POP3(S) and LDAP(S) (openldap only).
+​CVE-2022-22576 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).
+3.2.5 ​BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+​Rsyslog is a system for log processing. Modules for TCP syslog reception have a potential heap buffer overflow when octet-counted framing is used. This can result in a segfault or some other malfunction. This vulnerability cannot be used for remote code execution, but there may still be a slight chance for experts to do that. The bug occurs when the octet count is read. While there is a check for the maximum number of octets, digits are written to a heap buffer even when the octet count is over the maximum. This can be used to overrun the memory buffer. However, once the sequence of digits stops, no additional characters can be added to the buffer. In our opinion, this makes remote exploits impossible or at least highly complex. Octet-counted framing is one of two potential framing modes enabled by default on receivers. Modules `imtcp`, `imptcp`, `imgssapi`, and `imhttp` are used for regular syslog message reception. It is best practice not to directly expose them to the public. When this practice is followed, the risk is considerably lower. Module `imdiag` is a diagnostics module primarily intended for testbench runs. Octet-counted framing is not very common. Usually, it needs to be specifically enabled at senders. If users do not need it, they can turn it off for the most important modules. This will mitigate the vulnerability.
+​CVE-2022-24903 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6 ​UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+​libcurl provides the `CURLOPT_CERTINFO` option to allow applications to request details to be returned about a server's certificate chain. Due to an erroneous function, a malicious server could make libcurl built with NSS get stuck in a never-ending busy-loop when trying to retrieve that information.
+​CVE-2022-27781 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.7 IMPROPER CERTIFICATE VALIDATION CWE-295
+​libcurl would reuse a previously created connection even when a TLS or SSH related option had been changed that should have prohibited reuse. libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup. However, several TLS and SSH settings were left out from the configuration match checks, making them match too easily.
+​CVE-2022-27782 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.8 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+​The web interface of the affected devices is vulnerable to cross-site request forgery attacks. By tricking an authenticated victim user to click a malicious link, an attacker could perform arbitrary actions on the device on behalf of the victim user.
+​CVE-2022-29561 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.9 ​IMPROPER INPUT VALIDATION CWE-20
+​Affected devices do not properly handle malformed HTTP packets. This could allow an unauthenticated remote attacker to send a malformed HTTP packet causing certain functions to fail in a controlled manner.
+​CVE-2022-29562 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.10 ​INCORRECT DEFAULT PERMISSIONS CWE-276
+​When curl prior to 7.84.0 saves cookies, alt-svc and hsts data to local files, it makes the operation atomic by finalizing the operation with a rename from a temporary name to the final target file name. In that rename operation, it might accidentally widen the permissions for the target file, leaving the updated file accessible to more users than intended.
+​CVE-2022-32207 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.11 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+​A reflected cross-site scripting (XSS) vulnerability exists in the web interface of the affected application that could allow an attacker to execute malicious javascript code by tricking users into accessing a malicious link. The value is reflected in the response without sanitization while throwing an “invalid params element name” error on the get_elements parameters.
+​CVE-2023-36386 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.12 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+​A reflected cross-site scripting (XSS) vulnerability exists in the web interface of the affected application that could allow an attacker to execute malicious javascript code by tricking users into accessing a malicious link. The malformed value is reflected directly in the response without sanitization while throwing an “invalid path” error.
+​CVE-2023-36389 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.13 ​IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+​A reflected cross-site scripting (XSS) vulnerability exists in the web interface of the affected application that could allow an attacker to execute malicious javascript code by tricking users into accessing a malicious link. The value is reflected in the response without sanitization while throwing an “invalid params element name” error on the action parameters.
+​CVE-2023-36390 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.14 ​INADEQUATE ENCRYPTION STRENGTH CWE-326
+​The affected devices are configured to offer weak ciphers by default. This could allow an unauthorized attacker in a man-in-the-middle position to read and modify any data passed over to and from the affected device.
+​CVE-2023-36748 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:L).
+3.2.15 ​USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+​The webserver of the affected devices supports insecure TLS 1.0 protocol. An attacker could achieve a man-in-the-middle attack and compromise confidentiality and integrity of data.
+​CVE-2023-36749 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.16 ​IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+​The software upgrade URL parameter in the web interface of affected devices is vulnerable to command injection due to missing server-side input sanitation. This could allow an authenticated privileged remote attacker to execute arbitrary code with root privileges.
+​CVE-2023-36750 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.17 ​IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+​The install-app URL parameter in the web interface of affected devices is vulnerable to command injection due to missing server-side input sanitation. This could allow an authenticated privileged remote attacker to execute arbitrary code with root privileges.
+​CVE-2023-36751 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.18 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+​The upgrade-app URL parameter in the web interface of affected devices is vulnerable to command injection due to missing server-side input sanitation. This could allow an authenticated privileged remote attacker to execute arbitrary code with root privileges.
+​CVE-2023-36752 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.19 ​IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+​The uninstall-app App-name parameter in the web interface of affected devices is vulnerable to command injection due to missing server-side input sanitation. This could allow an authenticated privileged remote attacker to execute arbitrary code with root privileges.
+​CVE-2023-36753 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.20 ​IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+​The SCEP server configuration URL parameter in the web interface of affected devices is vulnerable to command injection due to missing server-side input sanitation. This could allow an authenticated privileged remote attacker to execute arbitrary code with root privileges.
+​CVE-2023-36754 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.21 ​IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+​The SCEP CA Certificate Name parameter in the web interface of affected devices is vulnerable to command injection due to missing server-side input sanitation. This could allow an authenticated privileged remote attacker to execute arbitrary code with root privileges.
+​CVE-2023-36755 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+​CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+​COUNTRIES/AREAS DEPLOYED: Worldwide
+​COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+​Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+​Siemens recommends users update the product to the following versions:
+
+​Update to V2.16.0 or later version
+
+​As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security, and to follow the recommendations in the product manuals. Additional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+​For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories
+​As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+​Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+​For more information see the associated Siemens security advisory SSA-146325 in HTML and CSAF.
+​CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+​Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+​Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+​When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+​CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+​CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+​Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+​Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+​CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+​Do not click web links or open attachments in unsolicited email messages.
+​Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+​Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+​No known public exploits specifically target these vulnerabilities.

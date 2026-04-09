@@ -1,0 +1,72 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Omron
+Equipment: SYSMAC CS/CJ/CP Series and NJ/NX Series
+Vulnerabilities: Cleartext Transmission of Sensitive Information, Insufficient Verification of Data Authenticity, Plaintext Storage of a Password
+
+CISA is aware of a public report, known as “OT:ICEFALL” that details vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. RISK EVALUATION
+ Successful exploitation of these vulnerabilities could cause a denial-of-service condition and allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+ The following versions of the Omron SYSMAC CS/CJ/CP Series and NJ/NX Series, a programmable logic controller, are affected:
+
+SYSMAC CS1: Versions prior to 4.1
+SYSMAC CJ2M: Versions prior to 2.1
+SYSMAC CJ2H: Versions prior to 1.5
+SYSMAC CP1E/CP1H: Versions prior to 1.30
+SYSMAC CP1L: Versions prior to 1.10
+CP1W-CIF41: All versions
+SYSMAC CX-Programmer: Versions prior to 9.6
+SYSMAC NJ/NX Series: Versions prior to 1.49 (1.29 for NX7)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Omron SYSMAC CS1/CJ1/CP1/CP2 series is vulnerable to a password used to restrict engineering operation is transmitted in plaintext.
+CVE-2022-31204 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.2    PLAINTEXT STORAGE OF A PASSWORD CWE-256
+The CP1W-CIF41 Ethernet Option Board is vulnerable to a Web UI password that can be read from memory using the Omron FINS protocol. An attacker obtaining this password could change the network settings of the option board.
+CVE-2022-31205 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.3    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+The logic that is downloaded to the PLC is not cryptographically authenticated, allowing an attacker to manipulate transmitted object code to an unprotected PLC without using the PLC protection password. An attacker could then execute arbitrary object code commands on the defined software logic for all versions of SYSMAC CS/CJ/CP series controllers and cause a denial-of-service condition.
+CVE-2022-31207 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:H).
+3.2.4    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-347
+The logic that is downloaded to the PLC is not cryptographically authenticated, allowing an attacker to manipulate transmitted object code to the PLC and execute arbitrary machine code on the processor of the PLC's CPU module for SYSMAC NJ/NX series controllers.
+CVE-2022-31206 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+ Daniel dos Santos and Jos Wetzels from Forescout Technologies reported these vulnerabilities to CISA.
+4. MITIGATIONS
+ For CVE-2022-31204: Omron recommends users implement an extended password protection function in the following product versions: 
+
+CS1, v.4.1 or later 
+CJ2M, v2.1 or later 
+CJ2H, v1.5 or later
+CP1E/CP1H , v1.30 or later
+CP1L, v1.10 or later 
+CX-Programmer, v9.6 or higher 
+
+For CVE-2022-31206: Omron intends to publish an update for SYSMAC NJ/NX in July 2022.
+For CVE-2022-31207: Omron recommends users of SYSMAC CS/CJ/CP Series to use the PLC protection password and enable protection against unauthorized write access to address. Also, there are hardware DIP switches on the PLC which can prevent unauthorized PLC program changes regardless of password.
+For CVE-2022-31205: Omron recommends using different passwords between the CP1W-CIF41 Ethernet Option Board and CP1 PLC itself. The Web UI password will not grant access to the PLC.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

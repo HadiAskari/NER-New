@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Schneider Electric
+Equipment: Modicon X80
+Vulnerability: Exposure of Sensitive Information to an Unauthorized Actor
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may result in information disclosure to an unauthenticated remote user, which could result in an understanding of the network architecture.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Modicon X80 are affected:
+
+Modicon X80 BMXNOR0200H RTU SV1.70 IR22 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+This vulnerability could cause an information leak concerning the current RTU configuration including communication parameters dedicated to telemetry when a specially crafted HTTP request is sent to the web server of the module.
+CVE-2021-22749 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Chizuru Toyama, TXOne IoT/ICS Security Research Labs of Trend Micro, reported this vulnerability to CISA.
+4. MITIGATIONS
+Schneider Electric recommends users immediately apply the following mitigations to reduce the risk of exploitation until a remediation plan is available:
+
+Web access service is disabled by default. Because the web server is only necessary for specific maintenance and configuration activities, it is advised users disable the web (HTTP) service when it is not needed through the Ecostruxure Control Expert application.
+Set up network segmentation and implement a firewall to block all unauthorized access to HTTP Port 80/TCP on the controllers.
+When used in an architecture including a BMXNOC module, configure the Access Control Lists following the recommendation in the Modicon Controllers Platform Cyber Security Reference Manual.
+
+Additional recommended best practice:
+
+Change the default password used to access the device web server. Update username and password for HTTP access rights with the “Security” link on the Setup page. See the Modicon X80 BMXNOR0200H RTU Module User Manual.
+
+Please see Schneider Electric’s publication SEVD-2021-159-05 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability.

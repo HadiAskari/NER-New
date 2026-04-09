@@ -1,0 +1,83 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Honeywell
+Equipment: Experion PKS, LX, and PlantCruise
+Vulnerabilities: Heap-based Buffer Overflow, Stack-based Buffer Overflow, Out-of-bounds Write, Uncontrolled Resource Consumption, Improper Encoding or Escaping of Output, Deserialization of Untrusted Data, Improper Input Validation, Incorrect Comparison
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a denial-of-service condition, allow privilege escalation or allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Honeywell reports these vulnerabilities affect the following versions of Experion PKS, LX, and PlantCruise:  
+
+Experion PKS: versions prior to R520.2
+Experion LX: versions prior to R520.2
+Experion PlantCruise: versions prior to R520.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 HEAP-BASED BUFFER OVERFLOW CWE-122
+Experion Server or Console Station could experience a denial-of-service condition due to a heap overflow during the handling of a specially crafted message for a specific configuration operation.
+CVE-2023-23585 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 STACK-BASED BUFFER OVERFLOW  CWE-121
+Experion Server or Console Station could experience a denial-of-service condition or remote code execution  due to a stack overflow during the handling of a specially crafted message for a specific configuration operation.
+CVE-2023-25078 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3 UNEXPECTED STATUS CODE OR RETURN VALUE CWE-394
+C300 could leak configuration data when an error is generated in response to a specially crafted message.
+CVE-2023-25948 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+C300 could experience a denial-of-service condition due to a buffer overflow in the handling of a specially crafted message received by the controller.
+CVE-2023-26597 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5 IMPROPER ENCODING OR ESCAPING OF OUTPUT CWE-116
+C300 could experience a denial-of-service condition due to a stack overflow when decoding a message from the server.
+CVE-2023-24480 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6 DESERIALIZATION OF UNTRUSTED DATA CWE-502
+C300 could experience a denial-of-service condition due to a buffer overflow when an error is generated in response to a specially crafted message.
+CVE-2023-25770 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7 INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+C300 may be loaded with malicious firmware which could enable remote code execution.
+CVE-2023-25178 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.8 INCORRECT COMPARISON CWE-697
+Experion Server may experience a denial-of-service condition due to an incorrect comparison when handling a specially crafted message.
+CVE-2023-22435 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.9 HEAP-BASED BUFFER OVERFLOW CWE-122 
+Experion Server may experience a denial-of-service condition due to a heap overflow which could occur when handling a specially crafted message.
+CVE-2023-24474 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+ARMIS cyber researchers reported these vulnerabilities to Honeywell.
+4. MITIGATIONS
+Honeywell recommends users upgrade Experion Platforms to version R520.2. Download information includes the following:
+
+Product: Experion PKS, LX, & PlantCruise
+Version: R520.2
+For instructions on this process:
+
+Go to the Honeywell Website and sign in.
+Select “Support” at the top of the web page.
+Select “Product Documents & Downloads.”
+In the given search box, search for: “Experion PKS R520.2”, “Experion LX R520.2” or “Experion PlantCruise R520.2” and select the hyperlink for the given Experion platform.
+
+
+
+Honeywell advises users to follow security best practices for Experion platform environments to ensure access is limited to authorized users only. Users should ensure the backup files are maintained in a network location or physical drive with access limited to authorized users only and should not share them.
+Honeywell Security Notifications are available on the Honeywell website.  For access, users should visit the Honeywell website and sign in, select the search icon at the top of the web page, and search for “SN2023-06-22”.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Ensure the least-privilege user principle is followed.
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have a low attack complexity.

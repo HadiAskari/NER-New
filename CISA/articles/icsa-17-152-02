@@ -1,0 +1,80 @@
+
+CVSS v3 6.0
+REPOSTED INFORMATION
+This advisory was originally posted to the NCCIC Portal on June 1, 2017, and is being released to the NCCIC/ICS-CERT web site.
+AFFECTED PRODUCTS
+The following i.MX Devices, used on logic boards, are affected:
+Devices affected by the Stack Buffer Overflow vulnerability:
+
+i.MX 50,
+i.MX 53,
+i.MX 6ULL,
+i.MX 6UltraLite,
+i.MX 6SoloLite,
+i.MX 6Solo,
+i.MX 6DualLite,
+i.MX 6SoloX,
+i.MX 6Dual,
+i.MX 6Quad,
+i.MX 6DualPlus,
+i.MX 6QuadPlus,
+Vybrid VF3xx,
+Vybrid VF5xx, and
+Vybrid VF6xx
+
+Devices Affected by the Improper Certificate Validation Vulnerability:
+
+i.MX 28
+i.MX 50,
+i.MX 53,
+i.MX 7Solo
+i.MX 7Dual
+Vybrid VF3xx,
+Vybrid VF5xx,
+Vybrid VF6xx,
+i.MX 6ULL,
+i.MX 6UltraLite,
+i.MX 6SoloLite,
+i.MX 6Solo,
+i.MX 6DualLite,
+i.MX 6SoloX,
+i.MX 6Dual,
+i.MX 6Quad,
+i.MX 6DualPlus, and
+i.MX 6QuadPlus
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an attacker to cause a denial of service on the device due to a buffer overflow condition. When the device is placed in security-enabled mode it is possible for an attacker to exploit memory or a certificate to load an unauthorized image on the device affecting secure boot. Vulnerabilities are only exploitable when the device is placed in security enabled mode.
+MITIGATION
+Because this is a hardware vulnerability, there are no software workarounds available.
+For i.MX 6UltraLite and i.MX 6ULL devices, users are encouraged to program an eFUSE to disable the Serial Download Protocol (SDP) port to mitigate the vulnerabilities.
+NXP reports a mitigation is to prevent physical access to the respective USB OTG or UART ports used by SDP in the final customer production board design.
+NXP has confirmed that the vulnerabilities have been mitigated in new versions of silicon revisions with an updated ROM module.
+For more information NXP has released an Errata and Engineering Bulletin that can be obtained from NXP support teams. It is also available at:
+https://community.nxp.com/docs/DOC-334996.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Prevent physical access to logic boards if system design allows.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+These vulnerabilities are not remotely exploitable. Moderate skill level is needed to exploit.
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERFLOW CWE-121
+
+When the device is configured in security enabled configuration. SDP could be used to download a small section of code to an unprotected region of memory.
+CVE-2017-7936 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:P/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:L).
+
+IMPROPER CERTIFICATE VALIDATION CWE-295
+
+When the device is configured in security enabled configuration, under certain conditions it is possible to bypass the signature verification by using a specially crafted certificate leading to the execution of an unsigned image.
+CVE-2017-7932 has been assigned to this vulnerability. A CVSS v3 base score of 6.0 has been assigned; the CVSS vector string is (AV:P/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:H).
+RESEARCHER
+Quarkslab identified the vulnerabilities.
+BACKGROUND
+Critical Infrastructure Sector(s): Transportation Systems, Critical Manufacturing
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Eindhoven, Netherlands

@@ -1,0 +1,45 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits are available
+Vendor: NUUO
+Equipment: NVRmini2, NVRsolo
+Vulnerabilities: Stack-based Buffer Overflow, Leftover Debug Code
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to achieve remote code execution and user account modification. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Nuuo NVRmini2 and NVRsolo, network video recorders, are affected:
+
+All Versions 3.8.0 and prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+A stack-based buffer overflow vulnerability has been identified in which there is no bounds check when a string is passed into an input buffer. As such, a remote unauthenticated attacker can overflow the stack buffer, which could allow remote code execution.
+CVE-2018-1149 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H). 
+3.2.2    LEFTOVER DEBUG CODE CWE-489
+In some cases, files exist on the file system that, when utilized, allow an unauthenticated remote attacker to gain access to and modify sensitive user information, which could allow unauthenticated remote code execution.
+CVE-2018-1150 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Financial Services, Government Facilities, Healthcare and Public Health, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Jacob Baines of Tenable discovered these vulnerabilities.
+4. MITIGATIONS
+NUUO has developed a fix for the reported vulnerabilities and recommends users update to firmware v3.9.1. The update can be downloaded at the following location:
+https://www.nuuo.com/DownloadMainpage.php
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.

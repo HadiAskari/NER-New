@@ -1,0 +1,55 @@
+
+CVSS v3 9.8
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: General Motors (GM), Shanghai OnStar (SOS)
+Equipment: SOS iOS Client
+Vulnerabilities: Cleartext Storage of Sensitive Information, Man-in-the-Middle, Improper Authentication
+REPOSTED INFORMATION
+This advisory was originally posted to the NCCIC Portal on August 22, 2017, and is being released to the ICS-CERT web site.
+AFFECTED PRODUCTS
+The following version of Shanghai OnStar iOS Client, a vehicle management mobile application, is affected:
+
+Shanghai OnStar iOS Client Version 7.1
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an attacker to remotely gain full access to the Shanghai OnStar iOS client, allowing for the control of remote vehicle commands and the ability to view and edit account data.
+MITIGATION
+GM recommends the following mitigations:
+
+Users should not root or jailbreak their phones to prevent the preconditions for attacker access to mobile phone memory, including the ability to read JSON web token encryption keys.
+GM HTTP Public Key Pinning rollout is complete to mitigate Man-In-The-Middle attacks for SOS iOS Client Version 7.1. The rollout includes back office and iOS client changes (now version 7.2). For North America iOS OnStar clients, HTTP Public KeyPinning deployment (back office and mobile app) is scheduled for December 2017.
+Debugging code was removed from SOS Identity Management servers to prevent attacker access to user accounts.
+
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.
+VULNERABILITY OVERVIEW
+
+CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+
+Successful exploitation of this vulnerability may allow a remote attacker to access an encryption key that is stored in cleartext in memory.
+CVE-2017-9663 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+
+CHANNEL ACCESSIBLE BY NON-ENDPOINT (‘MAN-IN-THE-MIDDLE’) CWE-300
+
+Successful exploitation of this vulnerability may allow an attacker to intercept sensitive information when the client connects to the server.
+CVE-2017-12697 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+
+IMPROPER AUTHENTICATION CWE-287
+
+Successful exploitation of this vulnerability may allow an attacker to subvert security mechanisms and reset a user account password.
+CVE-2017-12695 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+ADLab of Venustech reported these vulnerabilities to ICS-CERT.
+BACKGROUND
+Critical Infrastructure Sector: Transportation Systems
+Countries/Areas Deployed: United States, Asia
+Company Headquarters Location: United States

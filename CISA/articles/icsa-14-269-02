@@ -1,0 +1,49 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on September 26, 2014, and is being released to the ICS-CERT web site.
+Tudor Enache of HelpAG identified a Cross-Site Request Forgery (CSRF) in the proxy server web administration interface for the Fox DataDiode Appliance Proxy Server. Fox-IT has produced Release 1.7.2 that resolves this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Fox DataDiode Appliance versions are affected:
+
+All Fox DataDiode Appliance versions up to and including 1.7.1
+
+IMPACT
+Attackers can remotely exploit this vulnerability by leveraging social engineering to trick administrative users to add and delete administrative users and modify permissions. When this is exploited, it is possible for an attacker to gain administrative control of proxy server facing the network he has access to. Due to the architecture of this system, it may be possible to cause a denial-of-service (DoS). The Fox DataDiode itself is not affected; any information flow remaining will be in the direction which is physically configured.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Fox-IT is based in Delft, the Netherlands.
+The affected product is the web-based administration tool used for the proxy server configuration for the Fox DataDiode. This product is used in high security applications.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CROSS-SITE REQUEST FORGERY (CSRF)CWE-352: Cross-Site Request Forgery, http://cwe.mitre.org/data/definitions/352.html, web site last accessed September 26, 2014.
+
+The administrative web interface of the Fox DataDiode proxy server is vulnerable to CSRF. By changing the configuration, the attacker can effectively disrupt the flow of information through the Fox DataDiode, resulting in a DoS.
+CVE-2014-2358NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2358, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:P, web site last accessed September 26, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince a user with administrative rights to click a malformed HTML file. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Fox-IT has released Version 1.7.2 of the Fox DataDiode Appliance that resolves the reported vulnerability. A Fox-IT product advisory titled “Fox DataDiode Appliance 1.7.2 advisory,” containing background and preparation information, as well as the upgrade instructions, are available by contacting the local Fox-IT customer support.
+Fox-IT also recommends the following actions:
+
+All users of the Fox DataDiode Appliance should upgrade their systems to Version 1.7.2.
+This installation consists of a reinstallation of the new version of the software. Therefore, the existing software configuration should be exported before this upgrade. This configuration can then be restored after the upgrade.
+Users are advised to change all passwords of administrator and user accounts in the Fox DataDiode Appliance, plus passwords used for FTP/SSL connections.
+
+ICS-CERT encourages asset owners to take the following additional basic defensive measures if they have not already addressed these basic cybersecurity risks.
+
+When used and configured correctly, data diodes present a level of protection for control system devices and/or systems that can allow accessible from the Internet.
+
+ICS-CERT also provides basic control systems security recommended practices at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks, as this is still consistently the most prevalent method of cyber attack:
+1.      Do not click web links or open unsolicited attachments in email messages.
+2.      Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed September 26, 2014. for more information on avoiding email scams.
+3.      Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed September 26, 2014. for more information on social engineering attacks.

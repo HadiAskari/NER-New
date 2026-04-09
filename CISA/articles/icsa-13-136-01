@@ -1,0 +1,46 @@
+
+OVERVIEW
+Researcher Rubén Santamarta of IOActive has identified hard-coded user accounts in TURCK’s BL20 and BL67 Programmable Gateways. Exploitation of this vulnerability would allow an attacker to have remote administrative access to the device. This vulnerability affects programmable gateways deployed in the agriculture and food, automotive, and critical manufacturing sectors.
+TURCK has produced an updated firmware version for the devices that mitigates the vulnerability by removing the hard-coded accounts accessible by the FTP service.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following TURCK products are affected:
+
+BL20 Programmable Gateway, all versions, and
+BL67 Programmable Gateway, all versions.
+
+IMPACT
+This vulnerability allows an attacker to remotely access the device by using hard-coded credentials. After gaining administrative access, the attacker can create false communication between remote I/Os, PLCs, or DCS systems. Those false communications could cause adverse actions within the control system, possibly including process shutdown.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+TURCK is a German-based company that maintains offices in 25 countries around the world, including parts of Europe, South America, Asia, the UK, and USA.
+The affected products, BL20 and BL67 Programmable Gateways, provide communication between the communications bus and I/O modules. According to TURCK, the BL20 and BL67 are deployed across several sectors including agriculture and food, automotive, and critical manufacturing. TURCK estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+Use of Hard-Coded CredentialsCWE-798: Use of Hard-Coded Credentials, http://cwe.mitre.org/data/definitions/798.html, Web site last accessed May 16, 2013.
+
+The BL20 and BL67 Programmable Gateways contain hard-coded credentials. An attacker can logon to the device through Port 21/TCP through the FTP service to obtain administrative access. This could allow the attacker to impact availability, integrity, and confidentiality.
+CVE-2012-4697NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4697, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C. Web site last visited May 16, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+
+MITIGATION
+TURCK has provided a firmware update for these products. The firmware update mitigates the vulnerability by removing the hard-coded accounts accessible by the FTP service. The firmware updates can be downloaded from the TURCK BL20 and BL67 download sites:
+BL20 <www.turck-usa.com/Search/Documentation_Search_Results.asp?ViewID=Illustrations&Page=1&SearchIn=0&SortBy=&SortDesc=&Pattern=BL20-PG-EN-IP
+BL67 <www.turck-usa.com/Search/Documentation_Search_Results.asp?ViewID=Illustrations&Page=1&SearchIn=0&SortBy=&SortDesc=&Pattern=BL67-PG-EN-IP>
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

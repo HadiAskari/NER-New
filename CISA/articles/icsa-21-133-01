@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: Connected Components Workbench
+Vulnerabilities: Deserialization of Untrusted Data, Path Traversal, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow remote code execution, authentication bypass, or privilege escalation.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports these vulnerabilities affect the following Connected Components Workbench versions: 
+
+Connected Components Workbench v12.00.00 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+Connected Components Workbench does not limit the objects that can be deserialized. This vulnerability allows attackers to craft a malicious serialized object that, if opened by a local user in Connected Components Workbench, may result in remote code execution. This vulnerability requires user interaction to be successfully exploited. 
+CVE-2021-27475 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.2    PATH TRAVERSAL CWE-22
+The parsing mechanism that processes certain file types does not provide input sanitization for file paths. This may allow an attacker to craft malicious files that, when opened by Connected Components Workbench, can traverse the file system. If successfully exploited, an attacker could overwrite existing files and create additional files with the same permissions of the Connected Components Workbench software. User interaction is required for this exploit to be successful. 
+CVE-2021-27471 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.3    IMPROPER INPUT VALIDATION CWE-20
+Connected Components Workbench does not sanitize paths specified within the .ccwarc archive file during extraction. This type of vulnerability is also commonly referred to as a Zip Slip. A local, authenticated attacker can create a malicious .ccwarc archive file that, when opened by Connected Components Workbench, will allow the attacker to gain the privileges of the software. If the software is running at SYSTEM level, the attacker will gain admin level privileges. User interaction is required for this exploit to be successful. 
+CVE-2021-27473 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Defense Industrial Base, Energy, and Government Facilities
+COUNTRIES/AREAS DEPLOYED: Globally
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Mashav Sapir of Claroty reported these vulnerabilities to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation recommends users of the affected software update to an available software revision (Connected Components Workbench v13.00.00 or later) that addresses the associated risk. Users who are unable to update are directed towards risk mitigation strategies provided below, and are encouraged, when possible, to combine these with Rockwell Automation’s general security guidelines to employ multiple strategies simultaneously.
+If upgrade is not possible, Rockwell Automation recommends deploying the following mitigations:
+
+Run Connected Components Workbench as a User, not as an Administrator, to minimize the impact of malicious code on the infected system.
+Do not open untrusted .ccwarc, files with Connected Components Workbench. Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.
+Use of Microsoft AppLocker or other similar allow list applications can help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at KnowledgeBase Article QA17329 (login required).
+Ensure the least-privilege user principle is followed, and user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.
+
+For more information, please see the industrial security advisory from Rockwell Automation. 
+CISA recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

@@ -1,0 +1,97 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC CP Devices
+Vulnerabilities: Heap-based Buffer Overflow, Command Injection, Code Injection
+
+2. UPDATE
+This updated advisory is a follow-up to the original advisory titled ICSA-22-195-12 Siemens SRCS VPN Feature in SIMATIC CP Devices that was published July 14, 2022, on the ICS webpage on cisa.gov/ics.
+3. RISK EVALUATION
+These vulnerabilities, if successfully exploited when authorized personnel are using the SINEMA Remote Connect Server (SRCS) VPN feature, could allow an attacker to execute arbitrary code with elevated privileges under certain circumstances.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of SIMATIC CP Devices, communication processors, are affected:
+--------- Begin Update A Part 1 of 2 ---------
+
+SIMATIC CP 1242-7 V2 (6GK7242-7KX31-0XE0): All versions prior to V3.3.46
+SIMATIC CP 1243-1 (6GK7243-1BX30-0XE0): All versions prior to V3.3.46
+SIMATIC CP 1243-7 LTE EU (6GK7243-7KX30-0XE0): All versions prior to V3.3.46
+SIMATIC CP 1243-7 LTE US (6GK7243-7SX30-0XE0): All versions prior to V3.3.46
+SIMATIC CP 1243-8 IRC (6GK7243-8RX30-0XE0): All versions prior to V3.3.46
+SIMATIC CP 1542SP-1 IRC (6GK7542-6VX00-0XE0): All versions v2.0 and later
+SIMATIC CP 1543-1 (6GK7543-1AX00-0XE0): All versions prior to v3.0.22
+SIMATIC CP 1543SP-1 (6GK7543-6WX00-0XE0): All versions v2.0 and later
+SIPLUS ET 200SP CP 1542SP-1 IRC TX RAIL (6AG2542-6VX00-4XE0): All versions v2.0 and later
+SIPLUS ET 200SP CP 1543SP-1 ISEC (6AG1543-6WX00-7XE0): All versions v2.0 and later
+SIPLUS ET 200SP CP 1543SP-1 ISEC TX RAIL (6AG2543-6WX00-4XE0): All versions v2.0 and later
+SIPLUS NET CP 1242-7 V2 (6AG1242-7KX31-7XE0): All versions prior to V3.3.46
+SIPLUS NET CP 1543-1 (6AG1543-1AX00-2XE0): All versions prior to v3.0.22
+SIPLUS S7-1200 CP 1243-1 (6AG1243-1BX30-2AX0): All versions prior to V3.3.46
+SIPLUS S7-1200 CP 1243-1 RAIL (6AG2243-1BX30-1XE0): All versions prior to V3.3.46
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+The application lacks proper validation of user-supplied data when parsing specific messages. This could result in a heap-based buffer overflow. An attacker could leverage this vulnerability to execute arbitrary code in the context of the device.
+CVE-2022-34819 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+The application does not correctly escape some user provided fields during the authentication process. This could allow an attacker to inject custom commands and execute arbitrary code with elevated privileges.
+CVE-2022-34820 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+4.2.3    IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94
+By injecting code to specific configuration options for OpenVPN, an attacker could execute arbitrary code with elevated privileges.
+CVE-2022-34821 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens recommends updating to the latest version of its software if available:
+--------- Begin Update A Part 2 of 2 ---------
+
+SIMATIC CP 1242-7 V2 (6GK7242-7KX31-0XE0): Update to V3.3.46 or later
+SIMATIC CP 1243-1 (6GK7243-1BX30-0XE0): Update to V3.3.46 or later
+SIMATIC CP 1243-7 LTE EU (6GK7243-7KX30-0XE0): Update to V3.3.46 or later
+SIMATIC CP 1243-7 LTE US (6GK7243-7SX30-0XE0): Update to V3.3.46 or later
+SIMATIC CP 1243-8 IRC (6GK7243-8RX30-0XE0): Update to V3.3.46 or later
+SIMATIC CP 1543-1 (6GK7543-1AX00-0XE0): Update to V3.0.22 or later
+SIPLUS NET CP 1242-7 V2 (6AG1242-7KX31-7XE0): Update to V3.3.46 or later
+SIPLUS NET CP 1543-1 (6AG1543-1AX00-2XE0): Update to V3.0.22 or later
+SIPLUS S7-1200 CP 1243-1 (6AG1243-1BX30-2AX0): Update to V3.3.46 or later
+SIPLUS S7-1200 CP 1243-1 RAIL (6AG2243-1BX30-1XE0): Update to V3.3.46 or later
+
+--------- End Update A Part 2 of 2 ---------
+Siemens has identified the following specific workarounds and mitigations that customers can implement to reduce exploitation risk:
+
+Configure the CP to only connect to trusted SINEMA Remote Connect Server instances.
+Block access to port 5243/UDP with an external firewall if possible.
+Disable the SINEMA Remote Connect Server (SRCS) VPN feature.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ Operational Guidelines for Industrial Security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-517377.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.
+ 

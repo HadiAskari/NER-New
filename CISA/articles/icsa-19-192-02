@@ -1,0 +1,88 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.2
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC WinCC and SIMATIC PCS7
+Vulnerability: Unrestricted Upload of File with Dangerous Type
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-19-192-02 Siemens SIMATIC WinCC and PCS7 (Update B) that was published September 10, 2019, on the ICS webpage of us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could cause a denial-of-service condition on the affected service or device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens industrial products are affected:
+
+SIMATIC PCS 7 v8.0: all versions
+SIMATIC PCS 7 v8.1: all versions prior to v8.1 with WinCC v7.3 Upd 19
+SIMATIC PCS 7 v8.2: all versions prior to v8.2 SP1 with WinCC v7.4 SP1 Upd 11
+SIMATIC PCS 7 v9.0: all versions prior to v9.0 SP2 with WinCC v7.4 SP1 Upd 11
+SIMATIC WinCC Professional (TIA Portal v13): all versions
+
+--------- Begin Update C Part 1 of 2 --------
+
+SIMATIC WinCC Professional (TIA Portal v14): all versions prior to v14 SP1 Upd 9
+SIMATIC WinCC Professional (TIA Portal v15): all versions prior to v15.1 Upd 3
+SIMATIC WinCC Runtime Professional v14: all versions prior to v14.1 Upd 8
+SIMATIC WinCC Runtime Professional v15: all versions prior to v15.1 Upd 3
+
+--------- End Update C Part 1 of 2 --------
+
+SIMATIC WinCC v7.2 and earlier: all versions
+SIMATIC WinCC v7.3: all versions prior to v7.3 Upd 19
+SIMATIC WinCC v7.4: all versions prior to v7.4 SP1 Upd 11
+SIMATIC WinCC v7.5: all versions prior to v7.5 Upd 3
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The SIMATIC WinCC DataMonitor web application of the affected products allows an authenticated user with network access to the WinCC DataMonitor application to upload arbitrary ASPX code.
+Successful exploitation requires no user interaction and may impact the confidentiality, integrity, and availability of the affected device. The vulnerability is relevant only in situations where an attacker has access via the web interface but not to the directory structure.
+CVE-2019-10935 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Xuchen Zhu from ZheJiang Guoli Security Technology and CNCERT/CC reported this vulnerability to Siemens.
+5. MITIGATIONS
+Siemens currently has updates for the following products:
+
+SIMATIC PCS 7 v8.1: Update WinCC to v7.3 Upd 19
+SIMATIC PCS 7 v8.2: Update WinCC to v7.4 SP1 Upd 11
+SIMATIC PCS 7 v9.0: Update WinCC to v7.4 SP1 Upd 11
+SIMATIC WinCC v7.3: Update WinCC to v7.3 Upd 19
+SIMATIC WinCC v7.4: Update WinCC to v7.4 SP1 Upd 11
+SIMATIC WinCC v7.5: Update WinCC to v7.5 Upd 3
+
+--------- Begin Update C Part 2 of 2 --------
+
+SIMATIC WinCC Runtime Professional (TIA Portal v14): Update v14 SP1 Upd 9
+SIMATIC WinCC Runtime Professional (TIA Portal v15): Update v15.1 Upd 3
+SIMATIC WinCC Runtime Professional v14: Update v14.1 Upd 8
+SIMATIC WinCC Runtime Professional v15: Update v15.1 Upd 3
+
+--------- End Update C Part 2 of 2 ---------
+For the balance of the listed products, Siemens is preparing further updates and recommends users apply the following specific workarounds and mitigations to reduce risk until patches are available:
+
+Apply defense in depth.
+
+Siemens recommends users configure their environment according to Siemens’ operational guidelines for industrial security (Download) and follow the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on the vulnerability and more detailed mitigation instructions, please see Siemens security advisory SSA-121293 at the following location:
+http://www.siemens.com/cert/advisories
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

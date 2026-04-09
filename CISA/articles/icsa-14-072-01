@@ -1,0 +1,57 @@
+
+OVERVIEW
+Andrew Brooks identified and reported to The Zero Day Initiative (ZDI) a File Parsing Vulnerability: Schneider Electric StruxureWare SCADA Expert ClearSCADA ServerMain.exe OPF File Parsing Vulnerability. Schneider Electric has prepared workarounds and helped develop security upgrades for a third‑party component that is affected.
+AFFECTED PRODUCTS
+The following SCADA Expert ClearSCADA versions are affected:
+
+ClearSCADA 2010 R2 (build 71.4165),
+ClearSCADA 2010 R2.1 (build 71.4325),
+ClearSCADA 2010 R3 (build 72.4560),
+ClearSCADA 2010 R3.1 (build 72.4644),
+SCADA Expert ClearSCADA 2013 R1 (build 73.4729),
+SCADA Expert ClearSCADA 2013 R1.1 (build 73.4832),
+SCADA Expert ClearSCADA 2013 R1.1a (build 73.4903),
+SCADA Expert ClearSCADA 2013 R1.2 (build 73.4955), and
+SCADA Expert ClearSCADA 2013 R2 (build 74.5094).
+
+IMPACT
+Successful exploitation of this vulnerability can cause the process to crash, resulting in a denial of service.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric corporate headquarters is located in Paris, France, and maintains offices in 190 countries worldwide.
+According to Schneider Electric, SCADA Expert ClearSCADA is deployed across several sectors including Commercial Facilities, Energy, and Water and Wastewater Systems.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed March 13, 2014.
+
+An input project-file validation vulnerability has been discovered in the KepServerEX V4 component, present within the PLC Driver in versions of SCADA Expert ClearSCADA released prior to January 2014. Kepware has confirmed that this vulnerability is not present in KepServerEX V5.
+The PLC Driver is an optional component that requires selection during installation. Most SCADA Expert ClearSCADA users may have installed this component inadvertently during a full installation.
+The flawed PLC Driver is located in the ServerMain.exe file, which is part of KepServerEX V4. This product contains several vulnerabilities that will cause the process to crash.
+CVE-2014-0779NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0779, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. ZDI has assessed a CVSS v2 base score of 6.8; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:P, web site last accessed March 13, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+Schneider Electric recommends that customers using the vulnerable product versions to:
+
+Uninstall the Kepware driver in the vulnerable product versions and migrate to an external installation of KepServerEX V5.
+Guidance and assistance is available from Schneider Electric Technical Application Support at:
+
+http://products.schneider-electric.us/products-services/services/automation-and-control-services/telephone-and-software-support/telephone-support-service/.
+Kepware has confirmed this vulnerability is not present in KepServerEX V5.
+The security announcement affecting the SCADA Expert ClearSCADA File Parsing Vulnerability is available here:
+http://download.schneider-electric.com/files?p_Doc_Ref=SEVD%202014-024-01.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

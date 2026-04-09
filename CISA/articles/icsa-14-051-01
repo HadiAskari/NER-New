@@ -1,0 +1,48 @@
+
+OVERVIEW
+NCCIC/ICS-CERT discovered a vulnerability in the ICONICS GENESIS32 application during resolution of unrelated products. ICONICS has produced a patch for all vulnerable versions of its GENESIS32 product. ICONICS GENESIS32 Version 9.0 and newer are not vulnerable to this ActiveX vulnerability.
+This vulnerability could be exploitable remotely, but requires user interaction.
+AFFECTED PRODUCTS
+The following ICONICS product is affected:
+
+GENESIS32 versions 8.0, 8.02, 8.04, and 8.05.
+
+IMPACT
+An attacker can craft a web page script that uses the insecure ActiveX control to launch any arbitrary executable code. Social engineering would be needed to get a user to visit the attacker’s web page to launch the script.
+The noted versions of GENESIS32 are vulnerable to this exploit as the ActiveX control is installed by default whether or not it is actively used.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+ICONICS is a US-based enterprise located in Foxborough, Massachusetts. ICONICS maintains offices in the United Kingdom, Netherlands, Italy, India, Germany, France, Czech Republic, China and the Asia/Australia/Pacific Rim.
+ICONICS GENESIS32 products are deployed across several sectors including Commercial Facilities, Energy, Food and Agriculture, Healthcare and Public Health, and Water and Wastewater Systems.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+EXPOSED DANGEROUS METHOD OR FUNCTIONCWE-749: Exposed Dangerous Method or Function, http://cwe.mitre.org/data/definitions/749.html, web site last accessed February 20, 2014.
+
+The insecure ActiveX control is used by the GenLaunch.htm file, which is used to launch GENESIS32 applications. An attacker can fashion a web page script that uses the insecure ActiveX control to launch any arbitrary executable code, without any authentication or permission elevation. Social engineering would be needed to get the user to visit the attacker’s web page to launch the script.
+The ActiveX control may not be in use but can be triggered by this vulnerability as it is part of the default installation.
+CVE-2014-0758NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0758, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed February 20, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability may be exploitable remotely; however, it cannot be exploited without user interaction. The exploit is only triggered when a local user visits the attacker’s web page, which could launch the exploit script.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are not known to be publicly available.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+ICONICS provides information and useful links related to its security patches at its web site at http://www.iconics.com/certs.
+ICONICS also recommends users of GENESIS32 V8 systems take the following mitigation steps:
+
+Use a firewall, place control system networks and devices behind firewalls and isolate them from the business network.
+Do not click web links or open unsolicited attachments in e-mail messages.
+Install the patch.
+
+The ICONICS web site also provides a downloadable Whitepaper on Security Vulnerabilities (registration required for download). The Whitepaper on Security Vulnerabilities contains overview, details and mitigation plan for regarding buffer overflow and memory corruption vulnerabilities for ICONICS GENESIS32 and GENESIS64 Supervisory Control and Data Acquisition (SCADA) products.
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the NCCIC/ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

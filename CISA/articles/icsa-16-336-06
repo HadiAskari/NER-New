@@ -1,0 +1,74 @@
+
+OVERVIEW
+This advisory was originally posted to the NCCIC Portal library on December 1, 2016, and is being released to the NCCIC/ICS-CERT web site.
+Alexey Osipov and Ilya Karpov of Positive Technologies have identified vulnerabilities in Rockwell Automation’s Allen-Bradley MicroLogix 1100 and 1400 programmable logic controller (PLC) systems. Rockwell Automation has produced new firmware versions to mitigate some of the vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Allen-Bradley MicroLogix 1100 controller versions are affected:
+
+1763-L16AWA, Series A and B, Version 14.000 and prior versions;
+1763-L16BBB, Series A and B, Version 14.000 and prior versions;
+1763-L16BWA, Series A and B, Version 14.000 and prior versions; and
+1763-L16DWD, Series A and B, Version 14.000 and prior versions.
+
+The following Allen-Bradley MicroLogix 1400 controller versions are affected:
+
+1766-L32AWA, Series A and B, Version 15.004 and prior versions;
+1766-L32BWA, Series A and B, Version 15.004 and prior versions;
+1766-L32BWAA, Series A and B, Version 15.004 and prior versions;
+1766-L32BXB, Series A and B, Version 15.004 and prior versions;
+1766-L32BXBA, Series A and B, Version 15.004 and prior versions; and
+1766-L32AWAA, Series A and B, Version 15.004 and prior versions.
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow a remote attacker to gain unauthorized access to affected devices, as well as impact the availability of affected devices.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Rockwell Automation is a US-based company, which provides industrial automation control and information products worldwide across a wide range of industries.
+The affected products, the Allen-Bradley MicroLogix 1100 and 1400, are PLCs. According to Rockwell Automation, these products are deployed across several sectors including Food and Agriculture, Water and Wastewater Systems, and others. Rockwell Automation estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATIONCWE-319: Cleartext Transmission of Sensitive Information, https://cwe.mitre.org/data/definitions/319.html, web site last accessed January 05, 2017.
+
+User credentials are sent to the web server in clear text, which may allow an attacker to discover the credentials if they are able to observe traffic between the web browser and the server.
+CVE-2016-9334NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9334, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N, web site last accessed January 05, 2017.
+
+INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCECWE-732: Incorrect Permission Assignment for Critical Resource, https://cwe.mitre.org/data/definitions/732.html, web site last accessed January 05, 2017.
+
+Users with administrator privileges may be able to remove all administrative users requiring a factory reset to restore ancillary web server function. Exploitation of this vulnerability will still allow the affected device to function in its capacity as a controller.
+CVE-2016-9338NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9338, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 2.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L, web site last accessed January 05, 2017.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Rockwell Automation has released a new firmware version for the Allen-Bradley MicroLogix 1100 Series B controller, Version 15.000, which mitigates the incorrect permission assignment for critical resource vulnerability. Neither of the identified vulnerabilities are mitigated in the Allen-Bradley MicroLogix 1100 Series A controller. Rockwell Automation reports that if applicable, users can disable the web server on the Allen-Bradley MicroLogix 1100 controllers to protect against the exploitation of these vulnerabilities.
+Rockwell Automation has released a new firmware version for the Allen-Bradley MicroLogix 1400 Series B controller, Version 16.000, which mitigates the identified vulnerabilities. Neither of the identified vulnerabilities are mitigated in the Allen-Bradley MicroLogix 1400 Series A controller. Rockwell Automation reports that if applicable, users can disable the web server on the Allen-Bradley MicroLogix 1400 controllers to protect against the exploitation of these vulnerabilities.
+The latest available firmware versions containing the mitigations are available at the following URL:
+http://compatibility.rockwellautomation.com/Pages/MultiProductDownload.aspx
+Rockwell Automation’s security notification is available at the following URL, with a valid account:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/968962
+Rockwell Automation recommends that users apply firmware updates for supported products. Rockwell Automation also recommends that the additional precautions and risk mitigations strategies be applied, where feasible:
+
+Disable the web server on the MicroLogix 1100 or the MicroLogix 1400, if not needed, as it is enabled by default. See KB: 732398 for detailed instructions on disabling the web server. The Web Server Tech Note, KB: 732398 is available at the following URL, with a valid account:
+
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/732398
+
+Set the keyswitch to RUN to prohibit any re-enabling of the web server while the keyswitch is in this mode.
+Use trusted software, software patches, anti-virus / anti-malware programs, and interact only with trusted web sites and attachments.
+Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.
+
+ICS-CERT recommends, as quality assurance, that users test the update in a test development environment that reflects their production environment prior to installation. In addition, users should:
+
+Minimize network exposure for all control system devices and/or systems, and confirm that they are not accessible from the Internet.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that a VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,100 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits available
+Vendor: WIBU-SYSTEMS AG
+Equipment: WibuKey Digital Rights Management (DRM)
+Vulnerabilities: Information Exposure, Out-of-bounds Write, Heap-based Buffer Overflow
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-19-043-03 Siemens Licensing Software for SICAM 230 (Update C) that was published April 9, 2019, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow information disclosure, privilege escalation, or remote code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following products are affected by vulnerabilities in WibuKey Digital Rights Management (DRM):
+
+Siemens SICAM 230: All Versions 7.20 and prior,
+Siemens SIMATIC WinCC OA:
+
+3.14: All versions prior to vP025
+3.15: All versions prior to vP018
+3.16: All versions prior to vP007
+
+
+
+--------- Begin Update D Part 1 of 2 ---------
+
+Siemens SISHIP EMCS, IMAC, IPMS: All versions
+
+--------- End Update D Part 1 of 2 ---------
+
+COPA-DATA zenon products: All Versions 7.20 and prior (7.50 and 7.60 may also be affected if WibuKey was installed manually)
+COPA-DATA straton workbench: All Versions 9.2 and prior
+Sprecher Automation SPRECON-V460 products: All Versions 7.20 and prior (7.50 and 7.60 may also be affected if WibuKey was installed manually)
+Phoenix Contact MEVIEW3: All versions prior to 3.14.25 and 3.15.18
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INFORMATION EXPOSURE CWE-200
+A specially crafted IRP (I/O request packet) can cause the driver to return uninitialized memory, which may result in kernel memory disclosure.
+CVE-2018-3989 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N).
+4.2.2    OUT-OF-BOUNDS WRITE CWE-787
+A specially crafted IRP (I/O request packet) can cause a buffer overflow resulting in kernel memory corruption, which may allow privilege escalation.
+CVE-2018-3990 has been assigned to this vulnerability. A CVSS v3 base score of 9.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.2.3    HEAP-BASED BUFFER OVERFLOW CWE-122
+A specially crafted TCP packet sent to Port 22347/TCP can cause a heap overflow, which may lead to remote code execution.
+CVE-2018-3991 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Communications, Critical Manufacturing, Energy, Financial Services, Healthcare and Public Health, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens and BSI Germany reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+Updated Wibu Systems Software can be found at the following link:
+https://www.wibu.com/support/user/downloads-user-software.html
+5.1    SIEMENS
+--------- Begin Update D Part 2 of 2 ---------
+Siemens has an updated software version for the affected SISHIP products that resolves the vulnerabilities. Users are advised to contact Siemens customer support for details.
+Siemens has released the following updates for WinCC OA that address the WibuKey vulnerabilities (login required):
+
+v3.14-P025 (https://www.winccoa.com/downloads/category/patches-315-16.html)
+v3.15-P018 (https://www.winccoa.com/downloads/category/patches-315-17.html)
+v3.16-P007 (https://www.winccoa.com/downloads/category/patches-316-1.html)
+
+WinCC OA users can also apply the following general mitigations below to resolve the vulnerabilities.
+Siemens recommends users upgrade to WibuKey DRM Version 6.50 or newer for all affected Siemens products. Siemens also recommends mitigating CVE-2018-3991 by blocking Port 22347/TCP. For detailed information, see Siemens security advisories SSA-760124, SSA-844562, and SSA-902727 at the following link:
+http://www.siemens.com/cert/en/cert-security-advisories.htm
+--------- End Update D Part 2 of 2 ---------
+5.2    COPA-DATA
+COPA-DATA recommends users upgrade WibuKey DRM to Version 6.50a or newer, restrict physical and network access, segment network traffic, ensure systems using WibuKey WkLAN Server are not external facing, and apply application whitelisting. For detailed information, see COPA_DATA’s security advisory at the following link:
+https://www.copadata.com/fileadmin/user_upload/faq/files/CD_SVA_2019_1.pdf
+5.3    SPRECHER AUTOMATION
+Sprecher Automation recommends users upgrade WibuKey DRM to Version 6.50b or newer, restrict physical and network access, segment network traffic, ensure systems using WibuKey WkLAN Server are not external facing, and apply application whitelisting. For detailed information, see Sprecher Automation’s security advisory at the following link:
+https://www.sprecher-automation.com/fileadmin/kundendaten/teaser/News/2018/SPRECON-V460_Security_Vulnerability_Announcement_2019-01_Issue_1.pdf
+5.4    PHOENIX CONTACT
+Phoenix Contact has calculated different CVSS vectors from those in the Vulnerability Overview section. See the Phoenix Contact or CERT@VDE advisory for details. 
+Phoenix Contact recommends those using dongle-based licensing to update to WibuKey Version 6.50 or newer. MEVIEW3 Versions 3.14.25 and 3.15.18 will include Version 6.50 of WibuKey. For those using hardware code-based licensing, Phoenix Contact recommends removing the WibuKey application. For detailed information, the Phoenix Contact MEVIEW3 security advisory can be found at the following link:
+https://www.phoenixcontact.com/psirt
+CERT@VDE has also published an advisory for the Phoenix Contact MEVIEW3 at the following link:
+https://cert.vde.com/de-de/advisories/vde-2019-003
+5.5    NCCIC
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

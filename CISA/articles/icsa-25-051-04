@@ -1,0 +1,63 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SiPass integrated
+Vulnerability: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to execute arbitrary code on the application server, if a specially crafted backup set is used for a restore.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports that the following products are affected:
+
+SiPass integrated V2.90: Versions prior to V2.90.3.19
+SiPass integrated V2.95: Versions prior to V2.95.3.15
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+Directory traversal vulnerability in DotNetZip versions v.1.16.0 and prior which allows a remote attacker to execute arbitrary code via the src/Zip.Shared/ZipEntry.Extract.cs component. This vulnerability only affects products that are no longer supported by the maintainer. For SiPass integrated V2.90 and V2.95: The product could only be exploitable in situations where a specially crafted backup set is used for a restore.
+CVE-2024-48510 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-48510. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Transportation Systems, Energy, Healthcare and Public Health, Financial Services, Government Services and Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens ProductCERT reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has released a new version for SiPass integrated and recommends updating to the latest version:
+
+SiPass integrated V2.90: Update to V2.90.3.19 or later version
+SiPass integrated V2.95: Update to V2.95.3.15 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Ensure that only trusted persons are permitted to initiate a restore via the Configuration Client
+Do not use untrusted backup files for a restore
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-992434 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+February 20, 2025: Initial Publication
+

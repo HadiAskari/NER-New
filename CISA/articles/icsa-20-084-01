@@ -1,0 +1,69 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: VISAM
+Equipment: VBASE
+Vulnerabilities: Relative Path Traversal, Incorrect Default Permissions, Inadequate Encryption Strength, Insecure Storage of Sensitive Information, Stack-based Buffer Overflow
+
+2.UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-084-01 VISAM Automation Base (VBASE) (Update A) that was published July 8, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to read the contents of unexpected files, escalate privileges to system level, execute arbitrary code on the targeted system, bypass security mechanisms, and discover the cryptographic key for the web login.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of VBASE, an automation platform, are affected:
+
+VBASE Editor, Version 11.5.0.2
+VBASE Web-Remote Module
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    RELATIVE PATH TRAVERSAL CWE-23
+Input passed in the URL is not properly verified before use, which may allow an attacker to read arbitrary files from local resources.
+CVE-2020-7008 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.2    INCORRECT DEFAULT PERMISSIONS CWE-276
+Weak or insecure permissions on the VBASE directory may result in elevation of privileges or malicious effects on the system the next time a privileged user runs the application.
+CVE-2020-7004 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H).
+4.2.3    INADEQUATE ENCRYPTION STRENGTH CWE-326
+Weak hashing algorithm and insecure permissions may allow a local attacker to bypass the password-protected mechanism through brute-force attacks, cracking techniques, or overwriting the password hash.
+CVE-2020-10601 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).
+4.2.4    INSECURE STORAGE OF SENSITIVE INFORMATION CWE-922
+An unauthenticated attacker may discover the cryptographic key from the web server and gain information about the login and the encryption/decryption mechanism, which may be exploited to bypass authentication of the HTML5 HMI web interface.
+CVE-2020-7000 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.5    STACK-BASED BUFFER OVERFLOW CWE-121
+A vulnerable ActiveX component may be exploited resulting in a buffer overflow, which may allow remote attackers to cause a denial-of-service condition and execute arbitrary code. 
+CVE-2020-10599 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Gjoko Krstic of Applied Risk reported these vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update B Part 1 of 1 ---------
+VISAM recommends users update to VBASE v11.7.0.2 or later. A download link will be provided by submitting a request form.
+For more information, please contact VISAM using the information provided on their contact page.
+--------- End Update B Part 1 of 1 ---------
+For more information about these vulnerabilities and how VISAM plans to address them, please contact VISAM using the information provided on their contact page (German language).
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

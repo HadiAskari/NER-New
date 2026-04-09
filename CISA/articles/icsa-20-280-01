@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: ISaGRAF5 Runtime
+Vulnerabilities: Use of Hard-coded Cryptographic Key, Unprotected Storage of Credentials, Relative Path Traversal, Uncontrolled Search Path Element, Cleartext Transmission of Sensitive Information\
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the portal-to-web advisory titled ICSA-20-280-01P Rockwell Automation ISaGRAF5 Runtime. This advisory was originally posted to the HSIN ICS library on October 6, 2020, and was then published as ICSA-20-280-01 Rockwell Automation ISaGRAF5 Runtime to the ICS webpage on us-cert.cisa.gov on June 8, 2021.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may result in remote code execution, information disclosure, or a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Rockwell Automation reports these vulnerabilities affect all ISaGRAF Runtime Versions 4.x and 5.x
+The following Rockwell Automation products are based on ISaGRAF5 to design integrated automation solutions:
+
+AADvance Controller version 1.40 and earlier
+ISaGRAF Free Runtime in ISaGRAF6 Workbench Version 6.6.8 and earlier
+Micro800 family, all versions
+
+GE reports that GE Steam Power's ALSPA S6 MFC3000 and MFC1000 (all versions), a distributed control system, are impacted by vulnerabilities in Rockwell's ISaGRAF runtime.
+--------- Begin Update A Part 1 of 2 --------- 
+Xylem reports that MultiSmart Gen-1 devices and MultiSmart Gen-2 devices running firmware prior to Version 3.2.0 contain a version of ISaGRAF 5.x. If ISaGRAF is enabled on those devices, then they might be affected by these vulnerabilities.
+--------- End Update A Part 1 of 2 --------- 
+Other vendors may also use ISaGRAF5 in their products.
+4.2 VULNERABILITY OVERVIEW
+4.2.1    RELATIVE PATH TRAVERSAL CWE-23
+Some commands used by the ISaGRAF eXchange Layer (IXL) protocol perform various file operations in the file system. Since the parameter pointing to the file name is not checked for reserved characters, it is possible for a remote, unauthenticated attacker to traverse an application’s directory, which could lead to remote code execution.
+CVE-2020-25176 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+4.2.2    UNPROTECTED STORAGE OF CREDENTIALS CWE-256
+ISaGRAF Runtime stores the password in plaintext in a file that is in the same directory as the executable file. ISaGRAF Runtime reads the file and saves the data in a variable without any additional modification. A local, unauthenticated attacker could compromise the user passwords, resulting in information disclosure.
+CVE-2020-25184 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+ISaGRAF Workbench communicates with ISaGRAF Runtime using TCP/IP. This communication protocol provides various file system operations, as well as the uploading of applications. Data is transferred over this protocol unencrypted, which could allow a remote unauthenticated attacker to upload, read, and delete files.
+CVE-2020-25178 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.4    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+ISaGRAF Runtime searches for and loads DLLs as dynamic libraries. Uncontrolled loading of dynamic libraries could allow a local, unauthenticated attacker to execute arbitrary code. This vulnerability only affects ISaGRAF Runtime when running on Microsoft Windows systems.
+CVE-2020-25182 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.5    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+ISaGRAF Runtime includes the functionality of setting a password that is required to execute privileged commands. The password value passed to ISaGRAF Runtime is the result of encryption performed with a fixed key value using the Tiny Encryption Algorithm (TEA) on an entered or saved password. A remote, unauthenticated attacker could pass their own encrypted password to the ISaGRAF 5 Runtime, which may result in information disclosure on the device.
+CVE-2020-25180 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Kaspersky reported these vulnerabilities to Rockwell Automation.
+5. MITIGATIONS
+Rockwell Automation recommends users update to ISaGRAF Runtime 5 Version 5.72.00. End users are encouraged to restrict or block access on TCP 1131 and TCP 1132 from outside the industrial control system. Confirm the least-privilege user principle is followed and user/service account access to Runtime's folder location is granted with a minimum amount of rights needed.
+Rockwell Automation recommends users of affected versions evaluate the mitigations provided and apply the appropriate mitigations to deployed products. Users are encouraged to combine this guidance with the general security guidelines for a comprehensive defense-in-depth strategy.
+To reduce risk, Rockwell Automation recommends users:
+
+Employ proper network segmentation and security controls.
+Minimize network exposure for all control system devices.
+Locate control systems behind firewalls.
+Isolate control systems from other networks when possible.
+Refer to the Converged Plantwide Ethernet (CPwE) Design and Implementation Guide for best practices deploying network segmentation and broader defense-in-depth strategies.
+Consider using proper network infrastructure controls, such as firewalls, UTM devices, VPN, or other security appliances.
+Ensure the least-privilege user principle is followed, and user/service account access to Runtime’s folder location is granted with a minimum amount of rights, as needed.
+
+--------- Begin Update A Part 2 of 2 ---------
+Please see publications from Rockwell Automation and Schneider Electric, Xylem, or contact GE for further information about how to mitigate these vulnerabilities in additional affected products.
+--------- End Update A Part 2 of 2 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,69 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the updated advisory titled ICSA-12-342-01A Rockwell Allen-Bradley MicroLogix, SLC 500, and PLC-5 controller that was published December 11, 2012, on the NCCIC/ICS-CERT web site.
+Independent researcher Matthew Luallen of CYBATI has identified a fault generation vulnerability that can cause a denial of service (DoS) in the Rockwell Automation Allen-Bradley MicroLogix, SLC 500, and PLC-5 controller. Rockwell has released a notification511407 - MicroLogix, SLC 500 and PLC-5 Controller Vulnerability, https://rockwellautomation.custhelp.com/app/answers/detail/a_id/511407, web site last accessed December 11, 2012. that includes mitigation strategies for this vulnerability.
+--------- Begin Update B Part 1 of 3 --------
+Rockwell has released new firmware for the MicroLogix product line that resolves this vulnerability.
+--------- End Update B Part 1 of 3 ----------
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Rockwell Automation reports that the vulnerabilities affect the following versions of Allen‑Bradley devices:
+
+MicroLogix 1100 controller,
+MicroLogix 1200 controller,
+MicroLogix 1400 controller,
+MicroLogix 1500 controller,
+SLC 500 controller platform, and
+PLC-5 controller platform.PLC-5 Control System, http://ab.rockwellautomation.com/programmable-controllers/plc-5, web site last accessed December 11, 2012.
+
+IMPACT
+This vulnerability affects the availability of the device and connected devices.
+A successful attack will cause the controller to cease its logic execution and enter a fault state. Recovery from this fault state requires the controller’s operating mode selector to be switched via direct physical interaction.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Rockwell Automation provides industrial automation control and information products worldwide, across a wide range of industries.
+The affected products, MicroLogix, SLC500, and PLC5 are programmable logic controllers (PLC). According to Rockwell Automation, these products are deployed across several sectors including agriculture and food, water, chemical, manufacturing and others. According to Rockwell’s web site, these products are used in Germany, Czech Republic, France, Poland, Denmark, Hungary, Italy and other countries in Europe, as well as the United States, Korea, China, Japan, and Latin American countries.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+MODIFICATION OF ASSUMED-IMMUTABLE DATACWE-471: Modification of Assumed Immutable Data, http://cwe.mitre.org/data/definitions/471.html, web site last accessed December 11, 2012.
+
+When certain configuration parameters are not enabled, the affected devices are susceptible to a remote attack. To exploit the vulnerability, the attacker sends specially crafted messages that change specific bits in status files. This creates a device fault, which in turn causes a DoS.
+Attackers sending malicious packets to Port 2222 TCP/UDP and Port 44818 TCP/UDP will cause the device fault. An attack will be successful regardless of controller’s mode switch setting. Physical interaction is required to recover the device.
+--------- Begin Update B Part 2 of 3 --------
+CVE-2012-4690NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4690, web site last accessed April 10, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, web site last accessed April 10, 2014.
+--------- End Update B Part 2 of 3 --------
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+--------- Begin Update B Part 3 of 3 --------
+On August 2, 2013, Rockwell Automation updated their product security advisory that addresses this topic. This product security advisory, titled “511407 - MicroLogix, SLC 500 and PLC5 Controller Vulnerability,” can be found at the following location:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/511407
+There are now firmware releases available for MicroLogix 1100 controller, MicroLogix 1200 controller, MicroLogix 1400 controller, and MicroLogix 1500 controller.
+--------- End Update B Part 3 of 3 --------
+Rockwell Automation recommends the following mitigation strategies to help reduce the likelihood of compromise and the associated security risk. When possible, multiple strategies should be employed simultaneously.
+
+If possible, change the controller’s settings to the nonvulnerable state:
+SLC-500: Set the Status file to “Static”
+PLC-5: Enable the Passwords and Privileges feature.
+Employ layered security and defense-in-depth methods in system design to restrict and control access to individual products and control networks. Refer to http://www.ab.com/networks/architectures.html for comprehensive information about implementing validated architectures designed to deliver these measures.
+Employ firewalls with ingress/egress filtering, intrusion detection/prevention systems, and validate all configurations. Evaluate firewall configurations to ensure other appropriate inbound and outbound traffic is blocked.
+Block all traffic to the EtherNet/IP or other CIP protocol based devices from outside the Manufacturing Zone by restricting or blocking access to both TCP and UDP Port# 2222 and Port 44818 using appropriate security technology (e.g., a firewall, UTM devices, or other security appliance).
+Restrict physical and electronic access to automation products, networks and systems to only those individuals authorized to be in contact with control system equipment.
+For more information about this vulnerability or other problems with a Rockwell device, please contact the Rockwell Automation Support Center at https://rockwellautomation.custhelp.com.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+ 

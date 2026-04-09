@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.2
+ATTENTION: Low attack complexity/exploitable remotely
+Vendor: Automated Logic is a part of Carrier Global Corporation
+Equipment: WebCtrl Server
+Vulnerability: Open Redirect
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to redirect the user to a malicious webpage or to download a malicious file.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Carrier reports this vulnerability affects the following Automated Logic WebCtrl Server building automation software products:
+
+WebCtrl Server: All versions up to 7.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OPEN REDIRECT CWE-601
+WebCtrl Version 6.1 “Help” index pages are vulnerable to open redirection. If a user visits a maliciously crafted URL, this vulnerability could allow an attacker to redirect a user to a malicious webpage or download a malicious file.
+CVE-2022-1019 has been assigned to this vulnerability. A CVSS v3 base score of 5.2 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Chizuru Toyama of TXOne IoT/ICS Security Research Labs, working with Trend Micro’s Zero Day Initiative, reported this vulnerability to CISA.
+4. MITIGATIONS
+Carrier recommends users contact an Automated Logic dealer for instructions to download the latest version of WebCTRL.
+Carrier also recommends the following manual workaround:
+
+An administrator can add the CSP header/meta tag to each “index.htm” file in each of the directories under “<install_dir>/webroot/_common/lvl5/help/*”
+Example would read: <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'">
+
+Please see Carrier product security advisory CARR-PSA-001-1121 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

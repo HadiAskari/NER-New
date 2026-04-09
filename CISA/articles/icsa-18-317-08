@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.5
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC Panels
+Vulnerabilities: Path Traversal, Open Redirect
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow download of arbitrary files from the device, or allow URL redirections to untrusted websites.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports that these vulnerabilities affect the following SIMATIC products:
+
+SIMATIC HMI Comfort Panels 4”-22” all versions prior to v15 Update 4,
+SIMATIC HMI Comfort Outdoor Panels 7” & 15” all versions prior to v15 Update 4,
+SIMATIC HMI KTP Mobile Panels all versions prior to v15 Update 4
+
+KTP400F, 
+KTP700, 
+KTP700F, 
+KTP900 and 
+KTP900F,
+
+
+SIMATIC WinCC Runtime Advanced all versions prior to v15 Update 4,
+SIMATIC WinCC Runtime Professional all versions prior to v15 Update 4,
+SIMATIC WinCC (TIA Portal) all versions prior to v15 Update 4, and 
+SIMATIC HMI Classic Devices (TP/MP/OP/MP Mobile Panel) all versions.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A directory traversal vulnerability has been identified that could enable download of arbitrary files from the device. The security vulnerability could be exploited by an attacker with network access to the integrated web server. 
+CVE-2018-13812 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    URL REDIRECTION TO UNTRUSTED SITE ('OPEN REDIRECT') CWE-601
+The webserver of affected HMI devices may allow URL redirections to untrusted websites. An attacker must trick a valid user who is authenticated to the device into clicking on a malicious link.
+CVE-2018-13813 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Healthcare and Public Health, Transportation.
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Hosni Tounsi from Carthage Red Team // Carthage Cyber Services reported one of these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Update SIMATIC WinCC (TIA Portal) to v15 Update 4 or newer, then update panel to v15 Update 4 or newer. See: 
+
+https://support.industry.siemens.com/cs/ww/en/view/109755826
+
+Restrict network access to the integrated web server.
+Deactivate the web server if not required. The web server is disabled by default.
+Apply defense-in-depth.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security (download: https://www.siemens.com/cert/operational-guidelines-industrial-security), and following the recommendations in the product manuals.
+For more information on these vulnerabilities and associated software updates, please see Siemens’ security advisory SSA-233109 on their website:
+https://www.siemens.com/cert/advisories 
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

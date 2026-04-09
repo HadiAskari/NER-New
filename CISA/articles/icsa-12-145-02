@@ -1,0 +1,52 @@
+
+Overview
+This advisory is a follow-up to ICS-ALERT-12-065-01 xArrow Vulnerabilities that was published March 05, 2012.
+Independent security researcher Luigi Auriemma identified and released four security vulnerabilities, along with proof-of-concept code, in the xArrow software application without coordination with ICS-CERT, the vendor, or any other coordinating entity. The following remotely exploitable vulnerabilities were identified:
+
+NULL Pointer Dereference,
+Heap-Based Buffer Overflow,
+Out-of-Bounds read, and
+Improper Restriction of Operations within the Bounds of a Memory Buffer.
+
+xArrow has produced a new version that resolves the reported vulnerabilities. Luigi Auriemma has tested the new version and confirmed that the vulnerabilities have been resolved.
+Affected Products
+The following xArrow
+
+xArrow software versions older than Version 3.4.1
+
+Impact
+Exploitation of these vulnerabilities may cause the xArrow service to crash causing a denial-of-service condition or allow an attacker to execute arbitrary code. Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+xArrow is a human-machine interface (HMI) system. According to xArrow, this product is a general configuration software tool used to monitor and collect data primarily in industrial control, infrastructure, or facility-based processes.
+xArrow Software is a software developer, located in China. xArrow is an HMI that can be used in building automation, water treatment, environmental automation framework monitoring, agricultural greenhouses monitoring, etc. xArrow systems are deployed mainly in China, India, Indonesia, Poland, and Latvia.
+Vulnerability Characterization
+Vulnerability Overview
+Null-Pointer DereferenceCWE, http://cwe.mitre.org/data/definitions/476.html , CWE-476: NULL Pointer Dereference, Web site last accessed May 25, 2012.
+A NULL pointer dereference occurs when the xArrow server allocates memory without checking the buffer returned by calloc(), which may cause a crash or exit.
+CVE-2012-2426 has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).
+Heap-Based Buffer OverflowCWE, http://cwe.mitre.org/data/definitions/122.html, CWE-122: Heap-based Buffer Overflow, Web site last accessed May 25, 2012.
+The xArrow server stores client data without bounds checking. By sending additional valid packets, an attacker could partially control corruption to force the arbitrary freeing of a memory address. This could allow the attacker to cause a crash or to execute arbitrary code.
+CVE-2012-2427 has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).
+Out of Bounds ReadCWE, http://cwe.mitre.org/data/definitions/125.html, CWE-125: Out-of-Bounds Read, Web site last accessed May 25, 2012.
+xArrow reads data past the end of the intended buffer. This is possible because of an integer overflow during the checking of the available packet size. This could cause corruption of sensitive information, a crash, or allow arbitrary code execution.
+CVE-2012-2428 has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:C).
+Improper Restriction of Operations Within the Bounds of a Memory BufferCWE, http://cwe.mitre.org/data/definitions/119.html , CWE-119: Improper Restriction of Operations within the Bounds of a Memory buffer, Web site last accessed May 25, 2012.
+When performing operations on a memory buffer, xArrow reads data from a memory location that is outside the intended boundary of the buffer. As a result, an attacker may be able to execute arbitrary code, alter the intended control flow, read sensitive information, or cause the system to crash.
+CVE-2012-2429 has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+These vulnerabilities are remotely exploitable.
+Existence of Exploit
+No known exploits specifically target these vulnerabilities.
+Difficulty
+An attacker with a moderate skill level would be able to exploit these vulnerabilities.
+Mitigation
+xArrow has produced an updated software version (3.4.2) that resolves the reported vulnerabilities. The new version can be downloaded here: http://www.xarrow.net/download.htm.
+xArrow recommends users uninstall the old version and install the new. All project data will be preserved.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.

@@ -1,0 +1,487 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.1
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: SCALANCE, RUGGEDCOM, SIPLUS, and SINEC
+Vulnerability: Improper Enforcement of Message Integrity During Transmission in a Communication Channel
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow on-path attackers to gain access to the network with the attackers desired authorization without needing legitimate credentials.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens, are affected:
+
+RUGGEDCOM CROSSBOW: All versions
+RUGGEDCOM i800: All versions
+RUGGEDCOM i800NC: All versions
+RUGGEDCOM i801: All versions
+RUGGEDCOM i801NC: All versions
+RUGGEDCOM i802: All versions
+RUGGEDCOM i802NC: All versions
+RUGGEDCOM i803: All versions
+RUGGEDCOM i803NC: All versions
+RUGGEDCOM M969: All versions
+RUGGEDCOM M969NC: All versions
+RUGGEDCOM M2100: All versions
+RUGGEDCOM M2100NC: All versions
+RUGGEDCOM M2200: All versions
+RUGGEDCOM M2200NC: All versions
+RUGGEDCOM RM1224 LTE(4G) EU (6GK6108-4AM00-2BA2): All versions
+RUGGEDCOM RM1224 LTE(4G) NAM (6GK6108-4AM00-2DA2): All versions
+RUGGEDCOM RMC30: All versions
+RUGGEDCOM RMC30NC: All versions
+RUGGEDCOM RMC8388 V4.X: All versions
+RUGGEDCOM RMC8388 V5.X: All versions
+RUGGEDCOM RMC8388NC V4.X: All versions
+RUGGEDCOM RMC8388NC V5.X: All versions
+RUGGEDCOM ROX MX5000: All versions
+RUGGEDCOM ROX MX5000RE: All versions
+RUGGEDCOM ROX RX1400: All versions
+RUGGEDCOM ROX RX1500: All versions
+RUGGEDCOM ROX RX1501: All versions
+RUGGEDCOM ROX RX1510: All versions
+RUGGEDCOM ROX RX1511: All versions
+RUGGEDCOM ROX RX1512: All versions
+RUGGEDCOM ROX RX1524: All versions
+RUGGEDCOM ROX RX1536: All versions
+RUGGEDCOM ROX RX5000: All versions
+RUGGEDCOM RP110: All versions*
+RUGGEDCOM RP110NC: All versions
+RUGGEDCOM RS400: All versions
+RUGGEDCOM RS400NC: All versions
+RUGGEDCOM RS401: All versions
+RUGGEDCOM RS401NC: All versions
+RUGGEDCOM RS416: All versions
+RUGGEDCOM RS416NC: All versions
+RUGGEDCOM RS416NCv2 V4.X: All versions
+RUGGEDCOM RS416NCv2 V5.X: All versions
+RUGGEDCOM RS416P: All versions
+RUGGEDCOM RS416PNC: All versions
+RUGGEDCOM RS416PNCv2 V4.X: All versions
+RUGGEDCOM RS416PNCv2 V5.X: All versions
+RUGGEDCOM RS416Pv2 V4.X: All versions
+RUGGEDCOM RS416Pv2 V5.X: All versions
+RUGGEDCOM RS416v2 V4.X: All versions
+RUGGEDCOM RS416v2 V5.X: All versions
+RUGGEDCOM RS900: All versions
+RUGGEDCOM RS900 (32M) V4.X: All versions
+RUGGEDCOM RS900 (32M) V5.X: All versions
+RUGGEDCOM RS900G: All versions
+RUGGEDCOM RS900G (32M) V4.X: All versions
+RUGGEDCOM RS900G (32M) V5.X: All versions
+RUGGEDCOM RS900GNC: All versions
+RUGGEDCOM RS900GNC(32M) V4.X: All versions
+RUGGEDCOM RS900GNC(32M) V5.X: All versions
+RUGGEDCOM RS900GP: All versions
+RUGGEDCOM RS900GPNC: All versions
+RUGGEDCOM RS900M-GETS-C01: All versions
+RUGGEDCOM RS900M-GETS-XX: All versions
+RUGGEDCOM RS900M-STND-C01: All versions
+RUGGEDCOM RS900M-STND-XX: All versions
+RUGGEDCOM RS900MNC-GETS-C01: All versions
+RUGGEDCOM RS900MNC-GETS-XX: All versions
+RUGGEDCOM RS900MNC-STND-XX: All versions
+RUGGEDCOM RS900MNC-STND-XX-C01: All versions
+RUGGEDCOM RS900NC: All versions
+RUGGEDCOM RS900NC(32M) V4.X: All versions
+RUGGEDCOM RS900NC(32M) V5.X: All versions
+RUGGEDCOM RS900W: All versions
+RUGGEDCOM RS910: All versions
+RUGGEDCOM RS910NC: All versions
+RUGGEDCOM RS910W: All versions
+RUGGEDCOM RS940G: All versions
+RUGGEDCOM RS940GNC: All versions
+RUGGEDCOM RS1600: All versions
+RUGGEDCOM RS1600F: All versions
+RUGGEDCOM RS1600FNC: All versions
+RUGGEDCOM RS1600NC: All versions
+RUGGEDCOM RS1600T: All versions
+RUGGEDCOM RS1600TNC: All versions
+RUGGEDCOM RS8000: All versions
+RUGGEDCOM RS8000A: All versions
+RUGGEDCOM RS8000ANC: All versions
+RUGGEDCOM RS8000H: All versions
+RUGGEDCOM RS8000HNC: All versions
+RUGGEDCOM RS8000NC: All versions
+RUGGEDCOM RS8000T: All versions
+RUGGEDCOM RS8000TNC: All versions
+RUGGEDCOM RSG907R: All versions
+RUGGEDCOM RSG908C: All versions
+RUGGEDCOM RSG909R: All versions
+RUGGEDCOM RSG910C: All versions
+RUGGEDCOM RSG920P V4.X: All versions
+RUGGEDCOM RSG920P V5.X: All versions
+RUGGEDCOM RSG920PNC V4.X: All versions
+RUGGEDCOM RSG920PNC V5.X: All versions
+RUGGEDCOM RSG2100: All versions
+RUGGEDCOM RSG2100 (32M) V4.X: All versions
+RUGGEDCOM RSG2100 (32M) V5.X: All versions
+RUGGEDCOM RSG2100NC: All versions
+RUGGEDCOM RSG2100NC(32M) V4.X: All versions
+RUGGEDCOM RSG2100NC(32M) V5.X: All versions
+RUGGEDCOM RSG2100P: All versions
+RUGGEDCOM RSG2100PNC: All versions
+RUGGEDCOM RSG2200: All versions
+RUGGEDCOM RSG2200NC: All versions
+RUGGEDCOM RSG2288 V4.X: All versions
+RUGGEDCOM RSG2288 V5.X: All versions
+RUGGEDCOM RSG2288NC V4.X: All versions
+RUGGEDCOM RSG2288NC V5.X: All versions
+RUGGEDCOM RSG2300 V4.X: All versions
+RUGGEDCOM RSG2300 V5.X: All versions
+RUGGEDCOM RSG2300NC V4.X: All versions
+RUGGEDCOM RSG2300NC V5.X: All versions
+RUGGEDCOM RSG2300P V4.X: All versions
+RUGGEDCOM RSG2300P V5.X: All versions
+RUGGEDCOM RSG2300PNC V4.X: All versions
+RUGGEDCOM RSG2300PNC V5.X: All versions
+RUGGEDCOM RSG2488 V4.X: All versions
+RUGGEDCOM RSG2488 V5.X: All versions
+RUGGEDCOM RSG2488NC V4.X: All versions
+RUGGEDCOM RSG2488NC V5.X: All versions
+RUGGEDCOM RSL910: All versions
+RUGGEDCOM RSL910NC: All versions
+RUGGEDCOM RST916C: All versions
+RUGGEDCOM RST916P: All versions
+RUGGEDCOM RST2228: All versions
+RUGGEDCOM RST2228P: All versions
+SCALANCE M804PB (6GK5804-0AP00-2AA2): All versions
+SCALANCE M812-1 ADSL-Router (6GK5812-1AA00-2AA2): All versions
+SCALANCE M812-1 ADSL-Router (6GK5812-1BA00-2AA2): All versions
+SCALANCE M816-1 ADSL-Router (6GK5816-1AA00-2AA2): All versions
+SCALANCE M816-1 ADSL-Router (6GK5816-1BA00-2AA2): All versions
+SCALANCE M826-2 SHDSL-Router (6GK5826-2AB00-2AB2): All versions
+SCALANCE M874-2 (6GK5874-2AA00-2AA2): All versions
+SCALANCE M874-3 3G-Router (CN) (6GK5874-3AA00-2FA2): All versions
+SCALANCE M874-3 (6GK5874-3AA00-2AA2): All versions
+SCALANCE M876-3 (6GK5876-3AA02-2BA2): All versions
+SCALANCE M876-3 (ROK) (6GK5876-3AA02-2EA2): All versions
+SCALANCE M876-4 (6GK5876-4AA10-2BA2): All versions
+SCALANCE M876-4 (EU) (6GK5876-4AA00-2BA2): All versions
+SCALANCE M876-4 (NAM) (6GK5876-4AA00-2DA2): All versions
+SCALANCE MUM853-1 (A1) (6GK5853-2EA10-2AA1): All versions
+SCALANCE MUM853-1 (B1) (6GK5853-2EA10-2BA1): All versions
+SCALANCE MUM853-1 (EU) (6GK5853-2EA00-2DA1): All versions
+SCALANCE MUM856-1 (A1) (6GK5856-2EA10-3AA1): All versions
+SCALANCE MUM856-1 (B1) (6GK5856-2EA10-3BA1): All versions
+SCALANCE MUM856-1 (CN) (6GK5856-2EA00-3FA1): All versions
+SCALANCE MUM856-1 (EU) (6GK5856-2EA00-3DA1): All versions
+SCALANCE MUM856-1 (RoW) (6GK5856-2EA00-3AA1): All versions
+SCALANCE S615 EEC LAN-Router (6GK5615-0AA01-2AA2): All versions
+SCALANCE S615 LAN-Router (6GK5615-0AA00-2AA2): All versions
+SCALANCE SC622-2C (6GK5622-2GS00-2AC2): All versions
+SCALANCE SC626-2C (6GK5626-2GS00-2AC2): All versions
+SCALANCE SC632-2C (6GK5632-2GS00-2AC2): All versions
+SCALANCE SC636-2C (6GK5636-2GS00-2AC2): All versions
+SCALANCE SC642-2C (6GK5642-2GS00-2AC2): All versions
+SCALANCE SC646-2C (6GK5646-2GS00-2AC2): All versions
+SCALANCE W721-1 RJ45 (6GK5721-1FC00-0AA0): All versions
+SCALANCE W721-1 RJ45 (6GK5721-1FC00-0AB0): All versions
+SCALANCE W722-1 RJ45 (6GK5722-1FC00-0AA0): All versions
+SCALANCE W722-1 RJ45 (6GK5722-1FC00-0AB0): All versions
+SCALANCE W722-1 RJ45 (6GK5722-1FC00-0AC0): All versions
+SCALANCE W734-1 RJ45 (6GK5734-1FX00-0AA0): All versions
+SCALANCE W734-1 RJ45 (6GK5734-1FX00-0AA6): All versions
+SCALANCE W734-1 RJ45 (6GK5734-1FX00-0AB0): All versions
+SCALANCE W734-1 RJ45 (USA) (6GK5734-1FX00-0AB6): All versions
+SCALANCE W738-1 M12 (6GK5738-1GY00-0AA0): All versions
+SCALANCE W738-1 M12 (6GK5738-1GY00-0AB0): All versions
+SCALANCE W748-1 M12 (6GK5748-1GD00-0AA0): All versions
+SCALANCE W748-1 M12 (6GK5748-1GD00-0AB0): All versions
+SCALANCE W748-1 RJ45 (6GK5748-1FC00-0AA0): All versions
+SCALANCE W748-1 RJ45 (6GK5748-1FC00-0AB0): All versions
+SCALANCE W761-1 RJ45 (6GK5761-1FC00-0AA0): All versions
+SCALANCE W761-1 RJ45 (6GK5761-1FC00-0AB0): All versions
+SCALANCE W774-1 M12 EEC (6GK5774-1FY00-0TA0): All versions
+SCALANCE W774-1 M12 EEC (6GK5774-1FY00-0TB0): All versions
+SCALANCE W774-1 RJ45 (6GK5774-1FX00-0AA0): All versions
+SCALANCE W774-1 RJ45 (6GK5774-1FX00-0AA6): All versions
+SCALANCE W774-1 RJ45 (6GK5774-1FX00-0AB0): All versions
+SCALANCE W774-1 RJ45 (6GK5774-1FX00-0AC0): All versions
+SCALANCE W774-1 RJ45 (USA) (6GK5774-1FX00-0AB6): All versions
+SCALANCE W778-1 M12 (6GK5778-1GY00-0AA0): All versions
+SCALANCE W778-1 M12 (6GK5778-1GY00-0AB0): All versions
+SCALANCE W778-1 M12 EEC (6GK5778-1GY00-0TA0): All versions
+SCALANCE W778-1 M12 EEC (USA) (6GK5778-1GY00-0TB0): All versions
+SCALANCE W786-1 RJ45 (6GK5786-1FC00-0AA0): All versions
+SCALANCE W786-1 RJ45 (6GK5786-1FC00-0AB0): All versions
+SCALANCE W786-2 RJ45 (6GK5786-2FC00-0AA0): All versions
+SCALANCE W786-2 RJ45 (6GK5786-2FC00-0AB0): All versions
+SCALANCE W786-2 RJ45 (6GK5786-2FC00-0AC0): All versions
+SCALANCE W786-2 SFP (6GK5786-2FE00-0AA0): All versions
+SCALANCE W786-2 SFP (6GK5786-2FE00-0AB0): All versions
+SCALANCE W786-2IA RJ45 (6GK5786-2HC00-0AA0): All versions
+SCALANCE W786-2IA RJ45 (6GK5786-2HC00-0AB0): All versions
+SCALANCE W788-1 M12 (6GK5788-1GD00-0AA0): All versions
+SCALANCE W788-1 M12 (6GK5788-1GD00-0AB0): All versions
+SCALANCE W788-1 RJ45 (6GK5788-1FC00-0AA0): All versions
+SCALANCE W788-1 RJ45 (6GK5788-1FC00-0AB0): All versions
+SCALANCE W788-2 M12 (6GK5788-2GD00-0AA0): All versions
+SCALANCE W788-2 M12 (6GK5788-2GD00-0AB0): All versions
+SCALANCE W788-2 M12 EEC (6GK5788-2GD00-0TA0): All versions
+SCALANCE W788-2 M12 EEC (6GK5788-2GD00-0TB0): All versions
+SCALANCE W788-2 M12 EEC (6GK5788-2GD00-0TC0): All versions
+SCALANCE W788-2 RJ45 (6GK5788-2FC00-0AA0): All versions
+SCALANCE W788-2 RJ45 (6GK5788-2FC00-0AB0): All versions
+SCALANCE W788-2 RJ45 (6GK5788-2FC00-0AC0): All versions
+SCALANCE W1748-1 M12 (6GK5748-1GY01-0AA0): All versions
+SCALANCE W1748-1 M12 (6GK5748-1GY01-0TA0): All versions
+SCALANCE W1788-1 M12 (6GK5788-1GY01-0AA0): All versions
+SCALANCE W1788-2 EEC M12 (6GK5788-2GY01-0TA0): All versions
+SCALANCE W1788-2 M12 (6GK5788-2GY01-0AA0): All versions
+SCALANCE W1788-2IA M12 (6GK5788-2HY01-0AA0): All versions
+SCALANCE WAM763-1 (6GK5763-1AL00-7DA0): All versions
+SCALANCE WAM763-1 (ME) (6GK5763-1AL00-7DC0): All versions
+SCALANCE WAM763-1 (US) (6GK5763-1AL00-7DB0): All versions
+SCALANCE WAM766-1 (EU) (6GK5766-1GE00-7DA0): All versions
+SCALANCE WAM766-1 (ME) (6GK5766-1GE00-7DC0): All versions
+SCALANCE WAM766-1 (US) (6GK5766-1GE00-7DB0): All versions
+SCALANCE WAM766-1 EEC (EU) (6GK5766-1GE00-7TA0): All versions
+SCALANCE WAM766-1 EEC (ME) (6GK5766-1GE00-7TC0): All versions
+SCALANCE WAM766-1 EEC (US) (6GK5766-1GE00-7TB0): All versions
+SCALANCE WUM763-1 (6GK5763-1AL00-3AA0): All versions
+SCALANCE WUM763-1 (6GK5763-1AL00-3DA0): All versions
+SCALANCE WUM763-1 (US) (6GK5763-1AL00-3AB0): All versions
+SCALANCE WUM763-1 (US) (6GK5763-1AL00-3DB0): All versions
+SCALANCE WUM766-1 (EU) (6GK5766-1GE00-3DA0): All versions
+SCALANCE WUM766-1 (ME) (6GK5766-1GE00-3DC0): All versions
+SCALANCE WUM766-1 (US) (6GK5766-1GE00-3DB0): All versions
+SCALANCE X302-7 EEC (2x 24V) (6GK5302-7GD00-2EA3): Versions prior to V4.1.8
+SCALANCE X302-7 EEC (2x 24V, coated) (6GK5302-7GD00-2GA3): Versions prior to V4.1.8
+SCALANCE X302-7 EEC (2x 230V) (6GK5302-7GD00-4EA3): Versions prior to V4.1.8
+SCALANCE X302-7 EEC (2x 230V, coated) (6GK5302-7GD00-4GA3): Versions prior to V4.1.8
+SCALANCE X302-7 EEC (24V) (6GK5302-7GD00-1EA3): Versions prior to V4.1.8
+SCALANCE X302-7 EEC (24V, coated) (6GK5302-7GD00-1GA3): Versions prior to V4.1.8
+SCALANCE X302-7 EEC (230V) (6GK5302-7GD00-3EA3): Versions prior to V4.1.8
+SCALANCE X302-7 EEC (230V, coated) (6GK5302-7GD00-3GA3): Versions prior to V4.1.8
+SCALANCE X304-2FE (6GK5304-2BD00-2AA3): Versions prior to V4.1.8
+SCALANCE X306-1LD FE (6GK5306-1BF00-2AA3): Versions prior to V4.1.8
+SCALANCE X307-2 EEC (2x 24V) (6GK5307-2FD00-2EA3): Versions prior to V4.1.8
+SCALANCE X307-2 EEC (2x 24V, coated) (6GK5307-2FD00-2GA3): Versions prior to V4.1.8
+SCALANCE X307-2 EEC (2x 230V) (6GK5307-2FD00-4EA3): Versions prior to V4.1.8
+SCALANCE X307-2 EEC (2x 230V, coated) (6GK5307-2FD00-4GA3): Versions prior to V4.1.8
+SCALANCE X307-2 EEC (24V) (6GK5307-2FD00-1EA3): Versions prior to V4.1.8
+SCALANCE X307-2 EEC (24V, coated) (6GK5307-2FD00-1GA3): Versions prior to V4.1.8
+SCALANCE X307-2 EEC (230V) (6GK5307-2FD00-3EA3): Versions prior to V4.1.8
+SCALANCE X307-2 EEC (230V, coated) (6GK5307-2FD00-3GA3): Versions prior to V4.1.8
+SCALANCE X307-3 (6GK5307-3BL00-2AA3): Versions prior to V4.1.8
+SCALANCE X307-3 (6GK5307-3BL10-2AA3): Versions prior to V4.1.8
+SCALANCE X307-3LD (6GK5307-3BM00-2AA3): Versions prior to V4.1.8
+SCALANCE X307-3LD (6GK5307-3BM10-2AA3): Versions prior to V4.1.8
+SCALANCE X308-2 (6GK5308-2FL00-2AA3): Versions prior to V4.1.8
+SCALANCE X308-2 (6GK5308-2FL10-2AA3): Versions prior to V4.1.8
+SCALANCE X308-2LD (6GK5308-2FM00-2AA3): Versions prior to V4.1.8
+SCALANCE X308-2LD (6GK5308-2FM10-2AA3): Versions prior to V4.1.8
+SCALANCE X308-2LH (6GK5308-2FN00-2AA3): Versions prior to V4.1.8
+SCALANCE X308-2LH (6GK5308-2FN10-2AA3): Versions prior to V4.1.8
+SCALANCE X308-2LH+ (6GK5308-2FP00-2AA3): Versions prior to V4.1.8
+SCALANCE X308-2LH+ (6GK5308-2FP10-2AA3): Versions prior to V4.1.8
+SCALANCE X308-2M (6GK5308-2GG00-2AA2): Versions prior to V4.1.8
+SCALANCE X308-2M (6GK5308-2GG10-2AA2): Versions prior to V4.1.8
+SCALANCE X308-2M PoE (6GK5308-2QG00-2AA2): Versions prior to V4.1.8
+SCALANCE X308-2M PoE (6GK5308-2QG10-2AA2): Versions prior to V4.1.8
+SCALANCE X308-2M TS (6GK5308-2GG00-2CA2): Versions prior to V4.1.8
+SCALANCE X308-2M TS (6GK5308-2GG10-2CA2): Versions prior to V4.1.8
+SCALANCE X310 (6GK5310-0FA00-2AA3): Versions prior to V4.1.8
+SCALANCE X310 (6GK5310-0FA10-2AA3): Versions prior to V4.1.8
+SCALANCE X310FE (6GK5310-0BA00-2AA3): Versions prior to V4.1.8
+SCALANCE X310FE (6GK5310-0BA10-2AA3): Versions prior to V4.1.8
+SCALANCE X320-1 FE (6GK5320-1BD00-2AA3): Versions prior to V4.1.8
+SCALANCE X320-1-2LD FE (6GK5320-3BF00-2AA3): Versions prior to V4.1.8
+SCALANCE X408-2 (6GK5408-2FD00-2AA2): Versions prior to V4.1.8
+SCALANCE XB205-3 (SC, PN) (6GK5205-3BB00-2AB2): All versions
+SCALANCE XB205-3 (ST, E/IP) (6GK5205-3BB00-2TB2): All versions
+SCALANCE XB205-3 (ST, E/IP) (6GK5205-3BD00-2TB2): All versions
+SCALANCE XB205-3 (ST, PN) (6GK5205-3BD00-2AB2): All versions
+SCALANCE XB205-3LD (SC, E/IP) (6GK5205-3BF00-2TB2): All versions
+SCALANCE XB205-3LD (SC, PN) (6GK5205-3BF00-2AB2): All versions
+SCALANCE XB208 (E/IP) (6GK5208-0BA00-2TB2): All versions
+SCALANCE XB208 (PN) (6GK5208-0BA00-2AB2): All versions
+SCALANCE XB213-3 (SC, E/IP) (6GK5213-3BD00-2TB2): All versions
+SCALANCE XB213-3 (SC, PN) (6GK5213-3BD00-2AB2): All versions
+SCALANCE XB213-3 (ST, E/IP) (6GK5213-3BB00-2TB2): All versions
+SCALANCE XB213-3 (ST, PN) (6GK5213-3BB00-2AB2): All versions
+SCALANCE XB213-3LD (SC, E/IP) (6GK5213-3BF00-2TB2): All versions
+SCALANCE XB213-3LD (SC, PN) (6GK5213-3BF00-2AB2): All versions
+SCALANCE XB216 (E/IP) (6GK5216-0BA00-2TB2): All versions
+SCALANCE XB216 (PN) (6GK5216-0BA00-2AB2): All versions
+SCALANCE XC206-2 (SC) (6GK5206-2BD00-2AC2): All versions
+SCALANCE XC206-2 (ST/BFOC) (6GK5206-2BB00-2AC2): All versions
+SCALANCE XC206-2G PoE (6GK5206-2RS00-2AC2): All versions
+SCALANCE XC206-2G PoE (54 V DC) (6GK5206-2RS00-5AC2): All versions
+SCALANCE XC206-2G PoE EEC (54 V DC) (6GK5206-2RS00-5FC2): All versions
+SCALANCE XC206-2SFP (6GK5206-2BS00-2AC2): All versions
+SCALANCE XC206-2SFP EEC (6GK5206-2BS00-2FC2): All versions
+SCALANCE XC206-2SFP G (6GK5206-2GS00-2AC2): All versions
+SCALANCE XC206-2SFP G (EIP DEF.) (6GK5206-2GS00-2TC2): All versions
+SCALANCE XC206-2SFP G EEC (6GK5206-2GS00-2FC2): All versions
+SCALANCE XC208 (6GK5208-0BA00-2AC2): All versions
+SCALANCE XC208EEC (6GK5208-0BA00-2FC2): All versions
+SCALANCE XC208G (6GK5208-0GA00-2AC2): All versions
+SCALANCE XC208G (EIP def.) (6GK5208-0GA00-2TC2): All versions
+SCALANCE XC208G EEC (6GK5208-0GA00-2FC2): All versions
+SCALANCE XC208G PoE (6GK5208-0RA00-2AC2): All versions
+SCALANCE XC208G PoE (54 V DC) (6GK5208-0RA00-5AC2): All versions
+SCALANCE XC216 (6GK5216-0BA00-2AC2): All versions
+SCALANCE XC216-3G PoE (6GK5216-3RS00-2AC2): All versions
+SCALANCE XC216-3G PoE (54 V DC) (6GK5216-3RS00-5AC2): All versions
+SCALANCE XC216-4C (6GK5216-4BS00-2AC2): All versions
+SCALANCE XC216-4C G (6GK5216-4GS00-2AC2): All versions
+SCALANCE XC216-4C G (EIP Def.) (6GK5216-4GS00-2TC2): All versions
+SCALANCE XC216-4C G EEC (6GK5216-4GS00-2FC2): All versions
+SCALANCE XC216EEC (6GK5216-0BA00-2FC2): All versions
+SCALANCE XC224 (6GK5224-0BA00-2AC2): All versions
+SCALANCE XC224-4C G (6GK5224-4GS00-2AC2): All versions
+SCALANCE XC224-4C G (EIP Def.) (6GK5224-4GS00-2TC2): All versions
+SCALANCE XC224-4C G EEC (6GK5224-4GS00-2FC2): All versions
+SCALANCE XCH328 (6GK5328-4TS01-2EC2): All versions
+SCALANCE XCM324 (6GK5324-8TS01-2AC2): All versions
+SCALANCE XCM328 (6GK5328-4TS01-2AC2): All versions
+SCALANCE XCM332 (6GK5332-0GA01-2AC2): All versions
+SCALANCE XF204 (6GK5204-0BA00-2GF2): All versions
+SCALANCE XF204 DNA (6GK5204-0BA00-2YF2): All versions
+SCALANCE XF204-2BA (6GK5204-2AA00-2GF2): All versions
+SCALANCE XF204-2BA DNA (6GK5204-2AA00-2YF2): All versions
+SCALANCE XM408-4C (6GK5408-4GP00-2AM2): All versions
+SCALANCE XM408-4C (L3 int.) (6GK5408-4GQ00-2AM2): All versions
+SCALANCE XM408-8C (6GK5408-8GS00-2AM2): All versions
+SCALANCE XM408-8C (L3 int.) (6GK5408-8GR00-2AM2): All versions
+SCALANCE XM416-4C (6GK5416-4GS00-2AM2): All versions
+SCALANCE XM416-4C (L3 int.) (6GK5416-4GR00-2AM2): All versions
+SCALANCE XP208 (6GK5208-0HA00-2AS6): All versions
+SCALANCE XP208 (Ethernet/IP) (6GK5208-0HA00-2TS6): All versions
+SCALANCE XP208EEC (6GK5208-0HA00-2ES6): All versions
+SCALANCE XP208PoE EEC (6GK5208-0UA00-5ES6): All versions
+SCALANCE XP216 (6GK5216-0HA00-2AS6): All versions
+SCALANCE XP216 (Ethernet/IP) (6GK5216-0HA00-2TS6): All versions
+SCALANCE XP216EEC (6GK5216-0HA00-2ES6): All versions
+SCALANCE XP216POE EEC (6GK5216-0UA00-5ES6): All versions
+SCALANCE XR324-4M EEC (2x 24V, ports on front) (6GK5324-4GG00-2ER2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (2x 24V, ports on front) (6GK5324-4GG10-2ER2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (2x 24V, ports on rear) (6GK5324-4GG00-2JR2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (2x 24V, ports on rear) (6GK5324-4GG10-2JR2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front) (6GK5324-4GG00-4ER2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front) (6GK5324-4GG10-4ER2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG00-4JR2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG10-4JR2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (24V, ports on front) (6GK5324-4GG00-1ER2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (24V, ports on front) (6GK5324-4GG10-1ER2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (24V, ports on rear) (6GK5324-4GG00-1JR2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (24V, ports on rear) (6GK5324-4GG10-1JR2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front) (6GK5324-4GG00-3ER2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front) (6GK5324-4GG10-3ER2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG00-3JR2): Versions prior to V4.1.8
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG10-3JR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE (24V, ports on front) (6GK5324-4QG00-1AR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE (24V, ports on front) (6GK5324-4QG10-1AR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE (24V, ports on rear) (6GK5324-4QG00-1HR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE (24V, ports on rear) (6GK5324-4QG10-1HR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE (230V, ports on front) (6GK5324-4QG00-3AR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE (230V, ports on front) (6GK5324-4QG10-3AR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE (230V, ports on rear) (6GK5324-4QG00-3HR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE (230V, ports on rear) (6GK5324-4QG10-3HR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE TS (24V, ports on front) (6GK5324-4QG00-1CR2): Versions prior to V4.1.8
+SCALANCE XR324-4M PoE TS (24V, ports on front) (6GK5324-4QG10-1CR2): Versions prior to V4.1.8
+SCALANCE XR324-12M (24V, ports on front) (6GK5324-0GG00-1AR2): Versions prior to V4.1.8
+SCALANCE XR324-12M (24V, ports on front) (6GK5324-0GG10-1AR2): Versions prior to V4.1.8
+SCALANCE XR324-12M (24V, ports on rear) (6GK5324-0GG00-1HR2): Versions prior to V4.1.8
+SCALANCE XR324-12M (24V, ports on rear) (6GK5324-0GG10-1HR2): Versions prior to V4.1.8
+SCALANCE XR324-12M (230V, ports on front) (6GK5324-0GG00-3AR2): Versions prior to V4.1.8
+SCALANCE XR324-12M (230V, ports on front) (6GK5324-0GG10-3AR2): Versions prior to V4.1.8
+SCALANCE XR324-12M (230V, ports on rear) (6GK5324-0GG00-3HR2): Versions prior to V4.1.8
+SCALANCE XR324-12M (230V, ports on rear) (6GK5324-0GG10-3HR2): Versions prior to V4.1.8
+SCALANCE XR324-12M TS (24V) (6GK5324-0GG00-1CR2): Versions prior to V4.1.8
+SCALANCE XR324-12M TS (24V) (6GK5324-0GG10-1CR2): Versions prior to V4.1.8
+SCALANCE XR324WG (24 x FE, AC 230V) (6GK5324-0BA00-3AR3): All versions
+SCALANCE XR324WG (24 X FE, DC 24V) (6GK5324-0BA00-2AR3): All versions
+SCALANCE XR326-2C PoE WG (6GK5326-2QS00-3AR3): All versions
+SCALANCE XR326-2C PoE WG (without UL) (6GK5326-2QS00-3RR3): All versions
+SCALANCE XR328-4C WG (24xFE,4xGE,AC230V) (6GK5328-4FS00-3AR3): All versions
+SCALANCE XR328-4C WG (24xFE,4xGE,AC230V) (6GK5328-4FS00-3RR3): All versions
+SCALANCE XR328-4C WG (24XFE, 4XGE, 24V) (6GK5328-4FS00-2AR3): All versions
+SCALANCE XR328-4C WG (24xFE, 4xGE,DC24V) (6GK5328-4FS00-2RR3): All versions
+SCALANCE XR328-4C WG (28xGE, AC 230V) (6GK5328-4SS00-3AR3): All versions
+SCALANCE XR328-4C WG (28xGE, DC 24V) (6GK5328-4SS00-2AR3): All versions
+SCALANCE XR524-8C, 1x230V (6GK5524-8GS00-3AR2): All versions
+SCALANCE XR524-8C, 1x230V (L3 int.) (6GK5524-8GR00-3AR2): All versions
+SCALANCE XR524-8C, 2x230V (6GK5524-8GS00-4AR2): All versions
+SCALANCE XR524-8C, 2x230V (L3 int.) (6GK5524-8GR00-4AR2): All versions
+SCALANCE XR524-8C, 24V (6GK5524-8GS00-2AR2): All versions
+SCALANCE XR524-8C, 24V (L3 int.) (6GK5524-8GR00-2AR2): All versions
+SCALANCE XR526-8C, 1x230V (6GK5526-8GS00-3AR2): All versions
+SCALANCE XR526-8C, 1x230V (L3 int.) (6GK5526-8GR00-3AR2): All versions
+SCALANCE XR526-8C, 2x230V (6GK5526-8GS00-4AR2): All versions
+SCALANCE XR526-8C, 2x230V (L3 int.) (6GK5526-8GR00-4AR2): All versions
+SCALANCE XR526-8C, 24V (6GK5526-8GS00-2AR2): All versions
+SCALANCE XR526-8C, 24V (L3 int.) (6GK5526-8GR00-2AR2): All versions
+SCALANCE XR528-6M (2HR2) (6GK5528-0AA00-2HR2): All versions
+SCALANCE XR528-6M (2HR2, L3 int.) (6GK5528-0AR00-2HR2): All versions
+SCALANCE XR528-6M (6GK5528-0AA00-2AR2): All versions
+SCALANCE XR528-6M (L3 int.) (6GK5528-0AR00-2AR2): All versions
+SCALANCE XR552-12M (2HR2) (6GK5552-0AA00-2HR2): All versions
+SCALANCE XR552-12M (2HR2) (6GK5552-0AR00-2HR2): All versions
+SCALANCE XR552-12M (2HR2, L3 int.) (6GK5552-0AR00-2AR2): All versions
+SCALANCE XR552-12M (6GK5552-0AA00-2AR2): All versions
+SCALANCE XRH334 (24 V DC, 8xFO, CC) (6GK5334-2TS01-2ER3): All versions
+SCALANCE XRM334 (2x230 V AC, 8xFO) (6GK5334-2TS01-4AR3): All versions
+SCALANCE XRM334 (2x230 V AC, 12xFO) (6GK5334-3TS01-4AR3): All versions
+SCALANCE XRM334 (24 V DC, 8xFO) (6GK5334-2TS01-2AR3): All versions
+SCALANCE XRM334 (24 V DC, 12xFO) (6GK5334-3TS01-2AR3): All versions
+SCALANCE XRM334 (230 V AC, 8xFO) (6GK5334-2TS01-3AR3): All versions
+SCALANCE XRM334 (230 V AC, 12xFO) (6GK5334-3TS01-3AR3): All versions
+SINEC INS: All versions when RADIUS Server feature is enabled
+SIPLUS NET SCALANCE X308-2 (6AG1308-2FL10-4AA3): Versions prior to V4.1.8
+SIPLUS NET SCALANCE XC206-2 (6AG1206-2BB00-7AC2): All versions
+SIPLUS NET SCALANCE XC206-2SFP (6AG1206-2BS00-7AC2): All versions
+SIPLUS NET SCALANCE XC208 (6AG1208-0BA00-7AC2): All versions
+SIPLUS NET SCALANCE XC216-4C (6AG1216-4BS00-7AC2): All versions
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER ENFORCEMENT OF MESSAGE INTEGRITY DURING TRANSMISSION IN A COMMUNICATION CHANNEL CWE-924
+RADIUS Protocol under RFC 2865 is susceptible to forgery attacks by a local attacker who can modify responses Access-Reject or Access-Accept using a chosen-prefix collision attack against MD5 Response Authenticator signature.
+CVE-2024-3596 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-3596. A base score of 9.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:H/SI:H/SA:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Communications
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Restrict access to the networks where RADIUS messages are exchanged (e.g., send RADIUS traffic via management network or a dedicated VLAN)
+Configure the RADIUS server to require the presence of a Message-Authenticator attribute in all Access-Request packets from RADIUS client devices that support it
+SCALANCE X302-7 EEC (230V, coated) (6GK5302-7GD00-3GA3), SCALANCE X302-7 EEC (230V) (6GK5302-7GD00-3EA3), SCALANCE X302-7 EEC (24V, coated) (6GK5302-7GD00-1GA3), SCALANCE X302-7 EEC (24V) (6GK5302-7GD00-1EA3), SCALANCE X302-7 EEC (2x 230V, coated) (6GK5302-7GD00-4GA3), SCALANCE X302-7 EEC (2x 230V) (6GK5302-7GD00-4EA3), SCALANCE X302-7 EEC (2x 24V, coated) (6GK5302-7GD00-2GA3), SCALANCE X302-7 EEC (2x 24V) (6GK5302-7GD00-2EA3), SCALANCE X304-2FE (6GK5304-2BD00-2AA3), SCALANCE X306-1LD FE (6GK5306-1BF00-2AA3), SCALANCE X307-2 EEC (230V, coated) (6GK5307-2FD00-3GA3), SCALANCE X307-2 EEC (230V) (6GK5307-2FD00-3EA3), SCALANCE X307-2 EEC (24V, coated) (6GK5307-2FD00-1GA3), SCALANCE X307-2 EEC (24V) (6GK5307-2FD00-1EA3), SCALANCE X307-2 EEC (2x 230V, coated) (6GK5307-2FD00-4GA3), SCALANCE X307-2 EEC (2x 230V) (6GK5307-2FD00-4EA3), SCALANCE X307-2 EEC (2x 24V, coated) (6GK5307-2FD00-2GA3), SCALANCE X307-2 EEC (2x 24V) (6GK5307-2FD00-2EA3), SCALANCE X307-3 (6GK5307-3BL00-2AA3), SCALANCE X307-3 (6GK5307-3BL10-2AA3), SCALANCE X307-3LD (6GK5307-3BM00-2AA3), SCALANCE X307-3LD (6GK5307-3BM10-2AA3), SCALANCE X308-2 (6GK5308-2FL00-2AA3), SCALANCE X308-2 (6GK5308-2FL10-2AA3), SCALANCE X308-2LD (6GK5308-2FM00-2AA3), SCALANCE X308-2LD (6GK5308-2FM10-2AA3), SCALANCE X308-2LH (6GK5308-2FN00-2AA3), SCALANCE X308-2LH (6GK5308-2FN10-2AA3), SCALANCE X308-2LH+ (6GK5308-2FP00-2AA3), SCALANCE X308-2LH+ (6GK5308-2FP10-2AA3), SCALANCE X308-2M (6GK5308-2GG00-2AA2), SCALANCE X308-2M (6GK5308-2GG10-2AA2), SCALANCE X308-2M PoE (6GK5308-2QG00-2AA2), SCALANCE X308-2M PoE (6GK5308-2QG10-2AA2), SCALANCE X308-2M TS (6GK5308-2GG00-2CA2), SCALANCE X308-2M TS (6GK5308-2GG10-2CA2), SCALANCE X310 (6GK5310-0FA00-2AA3), SCALANCE X310 (6GK5310-0FA10-2AA3), SCALANCE X310FE (6GK5310-0BA00-2AA3), SCALANCE X310FE (6GK5310-0BA10-2AA3), SCALANCE X320-1 FE (6GK5320-1BD00-2AA3), SCALANCE X320-1-2LD FE (6GK5320-3BF00-2AA3), SCALANCE X408-2 (6GK5408-2FD00-2AA2), SCALANCE XR324-12M (230V, ports on front) (6GK5324-0GG00-3AR2), SCALANCE XR324-12M (230V, ports on front) (6GK5324-0GG10-3AR2), SCALANCE XR324-12M (230V, ports on rear) (6GK5324-0GG00-3HR2), SCALANCE XR324-12M (230V, ports on rear) (6GK5324-0GG10-3HR2), SCALANCE XR324-12M (24V, ports on front) (6GK5324-0GG00-1AR2), SCALANCE XR324-12M (24V, ports on front) (6GK5324-0GG10-1AR2), SCALANCE XR324-12M (24V, ports on rear) (6GK5324-0GG00-1HR2), SCALANCE XR324-12M (24V, ports on rear) (6GK5324-0GG10-1HR2), SCALANCE XR324-12M TS (24V) (6GK5324-0GG00-1CR2), SCALANCE XR324-12M TS (24V) (6GK5324-0GG10-1CR2), SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front) (6GK5324-4GG00-3ER2), SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front) (6GK5324-4GG10-3ER2), SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG00-3JR2), SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG10-3JR2), SCALANCE XR324-4M EEC (24V, ports on front) (6GK5324-4GG00-1ER2), SCALANCE XR324-4M EEC (24V, ports on front) (6GK5324-4GG10-1ER2), SCALANCE XR324-4M EEC (24V, ports on rear) (6GK5324-4GG00-1JR2), SCALANCE XR324-4M EEC (24V, ports on rear) (6GK5324-4GG10-1JR2), SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front) (6GK5324-4GG00-4ER2), SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front) (6GK5324-4GG10-4ER2), SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG00-4JR2), SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG10-4JR2), SCALANCE XR324-4M EEC (2x 24V, ports on front) (6GK5324-4GG00-2ER2), SCALANCE XR324-4M EEC (2x 24V, ports on front) (6GK5324-4GG10-2ER2), SCALANCE XR324-4M EEC (2x 24V, ports on rear) (6GK5324-4GG00-2JR2), SCALANCE XR324-4M EEC (2x 24V, ports on rear) (6GK5324-4GG10-2JR2), SCALANCE XR324-4M PoE (230V, ports on front) (6GK5324-4QG00-3AR2), SCALANCE XR324-4M PoE (230V, ports on front) (6GK5324-4QG10-3AR2), SCALANCE XR324-4M PoE (230V, ports on rear) (6GK5324-4QG00-3HR2), SCALANCE XR324-4M PoE (230V, ports on rear) (6GK5324-4QG10-3HR2), SCALANCE XR324-4M PoE (24V, ports on front) (6GK5324-4QG00-1AR2), SCALANCE XR324-4M PoE (24V, ports on front) (6GK5324-4QG10-1AR2), SCALANCE XR324-4M PoE (24V, ports on rear) (6GK5324-4QG00-1HR2), SCALANCE XR324-4M PoE (24V, ports on rear) (6GK5324-4QG10-1HR2), SCALANCE XR324-4M PoE TS (24V, ports on front) (6GK5324-4QG00-1CR2), SCALANCE XR324-4M PoE TS (24V, ports on front) (6GK5324-4QG10-1CR2), SIPLUS NET SCALANCE X308-2 (6AG1308-2FL10-4AA3): Update to V4.1.8 or later version
+SINEC INS: Currently no fix is planned
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-723487 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability has a high attack complexity.
+5. UPDATE HISTORY
+
+July 11, 2024: Initial Publication
+

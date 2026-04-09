@@ -1,0 +1,62 @@
+
+OVERVIEW
+This advisory is a follow-up to the alert titled ICS-ALERT-13-256-01 WellinTech KingView ActiveX VulnerabilitiesICS-ALERT-13-256-01 WellinTech KingView ActiveX Vulnerabilities, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-13-256-01, Web site last accessed October 22, 2013. that was published September 13, 2013, on the NCCIC/ICS-CERT Web site.
+Independent researcher “Blake” identified ActiveX vulnerabilities and released proof-of-concept (exploit) code for WellinTech KingView application without coordination with NCCIC/ICS‑CERT, the vendor, or any other coordinating entity known to NCCIC/ICS-CERT. WellinTech has produced a new version that mitigates these vulnerabilities.
+These vulnerabilities could be exploited remotely. Exploits that target these vulnerabilities are known to be publicly available.
+AFFECTED PRODUCTS
+The following KingView versions are affected:
+
+KingView versions older than Version 6.53.
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow an attacker to overwrite files and copy them from one location to another on the target machine.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+WellinTech is a software development company specializing in automation and control. WellinTech is based in Beijing, China, with branches in the United States, Japan, Singapore, Europe, and Taiwan.
+According to the WellinTech Web site, the KingView product is a Windows-based control, monitoring, and data collection application deployed across several industries including power, water, building automation, mining, and others.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INSECURE ACTIVEX CONTROLCWE-40: Path Traversal: '\\UNC\share\name\' (Windows UNC Share), http://cwe.mitre.org/data/definitions/40.html, Web site last accessed October 22, 2013.
+
+WellinTech KingView contains a flaw in the SuperGrid.ocx ActiveX control that allows an attacker to traverse outside a restricted path. The issue is due to the program not properly sanitizing user input, specifically directory traversal style attacks.
+This proof of concept will copy any arbitrary file from one location to a second location. It can also be used to overwrite existing files. This vulnerability may be used to inject files which, in turn, may allow arbitrary code execution.
+CVE-2013-6127NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6127, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:P/A:P, Web site last visited October 22, 2013.
+
+ACTIVEX REMOTE FILE CREATION/OVERWRITECWE-28: Path Traversal: '..\filedir', http://cwe.mitre.org/data/definitions/28.html, Web site last accessed October 22, 2013.
+
+WellinTech KingView contains a flaw in the KChartXY.ocx ActiveX control that allows an attacker to traverse outside a restricted path. The issue is due to the program not properly sanitizing user input.
+Proof of concept overwrites the win.ini file.
+CVE-2013-6128NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6128, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:P/A:P, Web site last visited October 22, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target these vulnerabilities are publicly available.
+DIFFICULTY
+An attacker with a medium skill would be able to exploit these vulnerabilities.
+MITIGATION
+WellinTech has provided the following links to download new versions of the affected files:
+
+SuperGrid.ocx Version number：65.30.30000.10002
+
+http://www.kingview.com/en/downloads/Downloads/SuperGrid.rar
+
+KChartXY.ocx Version number：65.30.30000.10002
+
+http://www.kingview.com/en/downloads/Downloads/KChartXY.rar
+It is also possible to correct the flaw by implementing the following workarounds:
+
+Set the kill-bit on the KChartXY ActiveX Control (CLSID A9A2011A-1E02-4242-AAE0-B239A6F88BAC).
+Set the kill-bit on the SuperGrid ActiveX Control (CLSID F494550F-A028-4817-A7B5-E5F2DCB4A47E).
+
+For specific information on mitigating ActiveX vulnerabilities, see Microsoft KB article 240797.Microsoft Support article: How to stop an ActiveX control from running in Internet Explorer, http://support.microsoft.com/kb/240797, Web site last accessed October 22, 2013.
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed October 22, 2013. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed October 22, 2013. that is available for download from the NCCIC/ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

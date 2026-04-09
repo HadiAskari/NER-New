@@ -1,0 +1,90 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Remotely exploitable/low skill level to exploit
+Vendor: (BD) Becton, Dickinson and Company
+Equipment: Alaris Gateway Workstation
+Vulnerabilities: Improper Access Control, Unrestricted Upload of File with Dangerous Type
+
+2. RISK EVALUATION
+Exploitation of these vulnerabilities could allow unauthorized arbitrary code execution, which could allow an attacker to view and edit device status and configuration details as well as cause devices to become unavailable. The vendor has stated the affected products are not sold in the United States.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of BD’s Alaris Gateway Workstation are affected:
+For the Alaris Gateway Workstation Web Browser User Interface vulnerability:
+
+1.0.13
+1.1.3 Build 10
+1.1.3 MR Build 11
+1.1.5
+1.1.6
+
+This does not impact the latest firmware Versions 1.3.2 and 1.6.1
+For the Alaris Gateway Workstation Dangerous File Upload vulnerability:
+
+1.1.3 Build 10
+1.1.3 MR Build 11
+1.3.0 Build 14
+1.3.1 Build 13
+
+This does not impact the latest firmware Versions 1.3.2 and 1.6.1
+Additionally, this notification applies to the following products using software Version 2.3.6 and below:
+
+Alaris GS
+Alaris GH
+Alaris CC
+Alaris TIVA
+
+Only software versions for 2.3.6 and below are impacted. Software Version 2.3.6 was released in 2006. These pumps were previously sold under the Asena brand. This does not apply to Alaris Medley devices.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+The web browser user interface on the Alaris Gateway Workstation does not prevent an attacker with knowledge of the IP address of the Alaris Gateway Workstation terminal to gain access to the status and configuration information of the device.
+CVE-2019-10962 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.2    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The application does not restrict the upload of malicious files during a firmware update.
+CVE-2019-10959 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Europe, Asia
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Elad Luz of CyberMDX reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+BD recommends the following mitigations and compensating controls in order to reduce risk associated with these vulnerabilities.
+For the Alaris Gateway Workstation Web Browser User Interface vulnerability:
+
+BD recommends using the latest firmware, Version 1.3.2 or 1.6.1
+Users should ensure only appropriate associates have access to their network
+Users should isolate their network from untrusted systems
+
+For the Alaris Gateway Workstation Dangerous File Upload vulnerability:
+
+BD recommends users block the SMB protocol
+Users should segregate their VLAN network
+Users should ensure only appropriate associates have access to the network.
+
+BD is currently assessing additional remediation efforts, including an adjustment to restrict the SMB protocol.
+For more information on BD’s product security and vulnerability management, contact BD’s Product Security Office at:
+https://www.bd.com/en-us/support/product-security-and-privacy/product-security-bulletins
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all medical devices and/or systems.
+Locate medical devices behind firewalls and isolate them where possible.
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable any unnecessary accounts, protocols and services.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA at the following location:
+
+https://www.fda.gov/MedicalDevices/DigitalHealth/ucm373213.htm
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

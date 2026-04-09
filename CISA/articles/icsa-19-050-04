@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits are available
+Vendor: Rockwell Automation
+Equipment: Allen-Bradley PowerMonitor 1000
+Vulnerabilities: Cross-site Scripting and Authentication Bypass
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-050-04 Rockwell Automation Allen-Bradley PowerMonitor 1000 that was published February 9, 2019, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker to affect the confidentiality, integrity, and availability of the device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of PowerMonitor 1000, a monitoring platform, are affected:
+
+PowerMonitor 1000, all versions.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+A remote attacker could inject arbitrary code into a targeted user’s web browser to gain access to the affected device.
+CVE-2018-19615 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+4.2.2    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+A remote attacker may be able to use a proxy to enable functionality that is typically available to those with administrative rights for the web application, allowing the attacker to bypass authentication. Once bypassed, the attacker could disrupt user settings and device configuration. 
+CVE-2018-19616 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Luca Chiou of ACSI reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+--------- Begin Update A Part 1 of 1 --------
+Rockwell Automation has released FRN 4.019, which addresses the reported vulnerabilities.
+Rockwell Automation reports CheckPoint Software Technologies has released IPS rules to detect attempts to exploit CVE-2018-19615.
+In the event a user can not apply the FRN 4.019 patch, Rockwell Automation notes users can temporarily mitigate these vulnerabilities by disabling the FTP port using the LCD configuration menu or in the configuration options. Users can also disable access to the webpage using the LCD screen configuration menu or in the configuration options.
+For more information, Rockwell Automation has released a security notification (login required).
+--------- End Update A Part 1 of 1 --------
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.

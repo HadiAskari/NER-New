@@ -1,0 +1,57 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on February 25, 2016, and is being released to the NCCIC/ICS-CERT web site.
+Ivan Sanchez from Nullcode Team has identified an access violation memory error in Rockwell Automation’s Integrated Architecture Builder (IAB) application. Rockwell Automation has produced a software update to mitigate this vulnerability.
+AFFECTED PRODUCTS
+The following IAB versions are affected:
+
+Integrated Architecture Builder, Versions 9.6.0.7 and earlier, and
+Integrated Architecture Builder, Versions 9.7.0.0 and 9.7.0.1
+
+IMPACT
+A successful attack would allow an attacker to execute malicious code on the target computer at the same privilege level as the IAB tool.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Rockwell Automation, which is a US-based company, provides industrial automation control and information products worldwide across a wide range of industries.
+The affected product, IAB, is used to configure Logix-based automation systems used in industrial control systems. According to Rockwell Automation, IAB is deployed across several sectors including Critical Manufacturing, Energy, and Water and Wastewater Systems. Rockwell Automation estimates that the product is used globally.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed February 25, 2016.
+
+Execution of a maliciously crafted or altered project file can allow the execution of unknown code on the affected computer. If successful, such unknown code will run at the same privilege level as the user who is logged into the machine.
+CVE-2016-2277NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2277, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H, web site last accessed February 25, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed project file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince the user to introduce or replace project files. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Rockwell Automation recommends users upgrade to the newest available software versions to mitigate the threat of this vulnerability. They also recommend the following steps:
+
+Do not open untrusted project files with IAB.exe.
+Upgrade Integrated Architecture Builder V9.6.0.7 and earlier to either V9.7.0.2+ or V9.6.0.8+ (available now) using Current Program Updater. Current Program Updater is a program that is installed on the user’s computer when Integrated Architecture Builder is installed.
+For additional information, please refer to the user guide which is built into the Current Program Updater application.
+Run all software as “User,” not as an “Administrator,” to minimize the impact of malicious code on the infected system.
+Use trusted software, software patches, antivirus/antimalware programs and interact only with trusted web sites and attachments.
+Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+Use of Microsoft AppLocker or other similar whitelisting applications can help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at https://rockwellautomation.custhelp.com/app/answers/detail/a_id/546989.
+
+Rockwell Automation’s security notification is available at the following URL, with a valid account:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/54102
+For more information on this vulnerability and more detailed mitigation instructions, please see Rockwell Automation’s public security web page at:
+http://www.rockwellautomation.com/security
+ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed February 25, 2016. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed February 25, 2016. for more information on social engineering attacks.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

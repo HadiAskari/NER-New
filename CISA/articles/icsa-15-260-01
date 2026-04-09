@@ -1,0 +1,58 @@
+
+OVERVIEW
+This advisory is a follow-up to the ICS-ALERT titled ICS-ALERT-15-203-01 FCA Uconnect VulnerabilityICS-CERT ALERT, https://ics-cert.us-cert.gov/alerts/ICS-ALERT-15-203-01, web site last accessed September 17, 2015. that was published July 22, 2015, on the NCCIC/ICS-CERT web site.
+Chris Valasek of IOActive and Dr. Charlie Miller of Twitter discovered an unauthorized remote access to Fiat-Chrysler Automobile US (FCA US) LLC Uconnect telematics infotainment system manufactured by Harman-Kardon. They had been coordinating with FCA US LLC for nearly 9 months before releasing information about this remote exploit publicly. FCA US LLC released a security notice and a firmware patch to owners of vehicles with the Uconnect feature on July 16, 2015. Subsequently, FCA US LLC launched two recall campaigns on July 23, 2015, and on September 5 where owners of vehicles were mailed USB sticks containing the updated software. The details of the exploit were released several weeks later at BlackHat 2015 and DefCon23 conventions held in early August in Las Vegas, Nevada.
+Chris Valasek and Dr. Charlie Miller confirmed a missing authorization vulnerability in FCA Uconnect RA3/RA4 radio manufactured by Harman-Kardon. FCA US LLC has produced a patch that mitigates this vulnerability and worked with Sprint, the network provider to disable access to the vulnerable port. Prior to the Blackhat conference, the researchers have tested the patch to confirm that it mitigates the vulnerability.
+AFFECTED PRODUCTS
+The following UConnect 8.4AN/RA3/RA4 infotainment systems are affected:
+
+2013-2015 Ram 1500/2500/3500/4500/5500,
+2013-2015 Dodge Viper,
+2014/15 Jeep Cherokee/Grand Cherokee,
+2014/15 Dodge Durango,
+2015 Chrysler 200/300,
+2015 Dodge Challenger,
+2015 Dodge Charger, and
+2015 Jeep Renegade.
+
+IMPACT
+The UConnect Infotainment system has direct access to the controls of the vehicle. A malicious party connecting to the UConnect infotainment system could without any form of authentication gain access to the UConnect system. From this connection, the malicious party could take control of connected control units and send commands to the various control systems within the vehicle with the potential to affect:
+
+Information to be displayed within the car (e.g., tachometer); and
+Vehicle control systems, including brakes, steering, and A/C fans.
+
+Impact to individual vehicles depends on many factors that are unique to the features and make of the vehicle. ICS-CERT recommends that owners evaluate the impact of this vulnerability based on their own vehicle.
+BACKGROUND
+Harman-Kardon is a division of Harman International Industries and manufactures home and car audio equipment and is headquartered in Stanford, Connecticut.
+FCA US LLC is a North American automaker that maintains offices in several countries around the world and is headquartered in Auburn Hills, Michigan.
+The affected products, Uconnect 8.4AN/RA3/RA4, are vehicle-based infotainment systems. According to FCA, the Uconnect systems are integrated in certain Chrysler, Dodge, Jeep, and Ram makes of vehicles. FCA estimates that these products are used primarily in the United States and Europe.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+MISSING AUTHENTICATIONCWE-862: Missing Authorization, http://cwe.mitre.org/data/definitions/862.html, web site last accessed September 17, 2015.
+
+The UConnect infotainment system allowed an unauthenticated connection from other access points on the Sprint Network. After the release of the information on this vulnerability, Sprint blocked access to the vulnerable ports. A malicious party could then issue commands through the infotainment system to other components within the vehicle.
+CVE-2015-5611NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5611, web site last accessed September 17, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:A/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, https://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:L/Au:N/C:C/I:C/A:C, web site last accessed September 17, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is no longer exploitable remotely because of Sprint’s reconfiguration on the cellular network. The software within the system is still vulnerable until patched.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability is difficult. Connections to the vulnerable UConnect systems are currently unreachable because of port screening by Sprint. This decreases the likelihood of a successful exploit.
+MITIGATION
+FCA has issued a voluntary recall of 1.4 million impacted vehicles to patch the software of the UConnect Infotainment system.
+In addition, Sprint has disabled traffic to the vulnerable port on its network.
+Letter to the National Highway and Transportation Safety Administrationhttp://www-odi.nhtsa.dot.gov/acms/cs/jaxrs/download/doc/UCM483033/RCAK-15V461-4967.pdf
+Part 573 Safety Recall Reporthttp://www-odi.nhtsa.dot.gov/acms/cs/jaxrs/download/doc/UCM483036/RCLRPT-15V461-9407.pdf
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+If the Wi-Fi is used, encrypt the Wi-Fi with the WPA2 encryption option.
+Minimize network exposure for all connected devices and/or systems, and ensure that they are not accessible from the Internet.
+Do not insert media (e.g., USB, SD card or CD) of unknown origin into your vehicle.  Only use devices that came from a trusted source.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

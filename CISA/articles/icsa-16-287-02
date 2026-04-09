@@ -1,0 +1,58 @@
+
+OVERVIEW
+Siemens has identified vulnerabilities in Siemen’s Automation License Manager (ALM). These vulnerabilities were reported directly to Siemens by Sergey Temnikov and Vladimir Dashchenko from Critical Infrastructure Defence Team, Kaspersky Lab. Siemens has produced a new version to mitigate these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerabilities affect the following versions of ALM:
+
+ALM: All versions prior to V5.3 SP3 Update 1.
+
+IMPACT
+An attacker who successfully exploits these vulnerabilities may be able to upload files, change configuration settings, or create a denial-of-service condition.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected product, ALM, centrally manages licenses for various Siemens software products. The products contact ALM either locally or remotely to verify their license using a proprietary protocol. To enable this license verification, ALM listens on Port 4410/TCP by default. According to Siemens, ALM is deployed across several sectors including Energy, and Healthcare and Public Health. Siemens estimates that this product is used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+RESOURCE EXHAUSTIONCWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion'), https://cwe.mitre.org/data/definitions/400.html, web site last accessed October 13, 2016.
+
+Specially crafted packets sent to Port 4410/TCP could cause a denial of service of the ALM service. To recover, the service needs to be restarted manually.
+CVE-2016-8563NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8563, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H, web site last accessed October 13, 2016.
+
+SQL INJECTIONCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection'), https://cwe.mitre.org/data/definitions/89.html, web site last accessed October 13, 2016.
+
+A SQL Injection vulnerability could allow a remote attacker with access to Port 4410/TCP to read and write configuration settings of the ALM.
+CVE-2016-8564NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8564, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N, web site last accessed October 13, 2016.
+
+PATH TRAVERSALCWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'), https://cwe.mitre.org/data/definitions/22.html, web site last accessed October 13, 2016.
+
+A remote attacker could use specially crafted packets to upload files to the hard disk, create or delete directories, or move existing files on the hard disk.
+ALM Version 5.3 SP3 is not affected by this vulnerability.
+CVE-2016-8565NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8565, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H, web site last accessed October 13, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens has released ALM Version V5.3 SP3 Update 1, which fixes the vulnerabilities. Siemens strongly recommends users to update to the new version. It can be found on the Siemens web site at the following location:
+https://support.industry.siemens.com/cs/ww/en/view/114358
+Siemens recommends only allowing connections from the local subnet to the ALM default Port 4410/TCP and blocking requests from other networks. These products should only be operated within trusted networks.
+Siemens strongly recommends that users protect network access PC-based automation systems with appropriate mechanisms. Siemens also advises that users configure the operational environment according to Siemens’ operational guidelines for industrial security:
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-284342 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

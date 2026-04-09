@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Ovarro
+Equipment: TBoxLT2 (All models), TBox MS-CPU32, TBox MS-CPU32-S2, TBox RM2 (All models), TBox TG2 (All models)
+
+--------- Begin Update A Part 1 of 3 ---------
+
+Vulnerabilities: Code Injection, Incorrect Permission Assignment for Critical Resource, Uncontrolled Resource Consumption, Insufficiently Protected Credentials, Use of Hard-coded Cryptographic Key, Relative Path Traversal
+
+--------- End Update A Part 1 of 3 ---------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-054-04 Ovarro TBox that was published March 23, 2021, to the ICS webpage on us-cert.cisa.gov. The original advisory was titled ICSA-21-054-04P Ovarro TBox and posted to the HSIN ICS library on February 23, 2021. 
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in remote code execution, which may cause a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of TBox, a remote terminal unit (RTU), are affected:
+
+TBoxLT2 (All models)
+TBox MS-CPU32
+TBox MS-CPU32-S2
+TBox RM2 (All models)
+TBox TG2 (All models)
+All versions prior to TWinSoft 12.4 and Firmware 1.46
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94
+The “ipk” package containing the configuration created by TWinSoft can be uploaded, extracted, and executed in the TBox, allowing malicious code execution.
+CVE-2021-22646 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCE CWE-732
+The TBox proprietary Modbus file access functions allow attackers to read, alter, or delete the configuration file.
+CVE-2021-22648 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+An attacker could use specially crafted invalid Modbus frames to crash the system.
+CVE-2021-22642 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.4    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+An attacker can decrypt the login password by communication capture and brute force attacks.
+CVE-2021-22640 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.5    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+TWinSoft uses the custom hardcoded user “TWinSoft” with a hardcoded key.
+CVE-2021-22644 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+--------- Begin Update A Part 2 of 3 ---------
+4.2.6    RELATIVE PATH TRAVERSAL CWE-23
+An attacker may use TWinSoft and a malicious source project file (TPG) to extract files on machine executing TWinSoft, which could lead to code execution.
+CVE-2021-22650 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+--------- End Update A Part 2 of 3 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+4.4 RESEARCHER
+Uri Katz of Claroty reported these vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update A Part 3 of 3 ---------
+Ovarro recommends affected users update to 12.5 or later of TWinSoft to mitigate these vulnerabilities.
+--------- End Update A Part 3 of 3 ---------
+The latest version can be found on www.ovarro.com in the customer support section (service portal).
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

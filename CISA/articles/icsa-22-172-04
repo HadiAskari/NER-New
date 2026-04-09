@@ -1,0 +1,56 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Phoenix Contact
+Equipment: ProConOS/ProConOS eCLR and MULTIPROG
+Vulnerability: Insufficient Verification of Data Authenticity
+
+CISA is aware of a public report, known as “OT:ICEFALL” that details vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to upload arbitrary malicious code after gaining access to the communication to products utilizing ProConOS/ProConOS eCLR or MULTIPROG.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of ProConOS, a software development kit, are affected:
+
+ProConOS: All versions
+ProConOS eCLR: All versions
+MULTIPROG: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+The affected product lacks an integrity check in the SDK, which could allow an attacker to upload logic with arbitrary malicious code.
+CVE-2022-31801 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Daniel dos Santos and Jos Wetzels of Forescout Technologies reported this vulnerability to CISA.
+4. MITIGATIONS
+Phoenix Contact has provided the following mitigations and workarounds:
+
+Industrial controllers based on ProConOS/ProConOS eCLR are typically developed and designed for use in closed industrial networks using a defense-in-depth approach and focusing on network segmentation. In such an approach, the production plant is protected against attacks (especially from the outside) by a multi-level perimeter, including firewalls, as well as dividing the plant into OT zones. This concept is supported by organizational measures in the production plant as part of a security management system. To accomplish such security, measures are required at all levels.
+Manufacturers using ProConOS/ProConOS eCLR in automation devices are advised to check implementation and publish an advisory according to their product.
+Users of automation devices utilizing ProConOS/ProConOS eCLR in their automation systems may check if their application requires additional security measures, such as adequate defense-in-depth networking architecture, the use of virtual private networks (VPNs) for remote access, or the use of firewalls for network segmentation or controller isolation. Users should check manufacturer security advisories for more adequate information according to their dedicated device.
+Users should ensure logic is always transferred or stored in protected environments. This is valid for data in transmission as well as data in rest.
+Users should ensure connections between the engineering tools and the controller are located in a locally protected environment or protected by VPN for remote access.
+Do not send project data as a file via email or other transfer mechanisms without additional integrity and authenticity checks. Save project data in protected environments only.
+Generic information and recommendations for security measures to protect network-capable devices can be found in the Application Note.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

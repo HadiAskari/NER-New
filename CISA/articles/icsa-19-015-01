@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: LCDS - Leão Consultoria e Desenvolvimento de Sistemas Ltda ME
+Equipment: LAquis SCADA
+Vulnerabilities: Improper Input Validation, Out-of-Bounds Read, Code Injection, Untrusted Pointer Dereference, Out-of-Bounds Write, Relative Path Traversal, Injection, Use of Hard-Coded Credentials, Authentication Bypass Using an Alternate Path or Channel
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution, data exfiltration, or cause a system crash.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of LAquis SCADA, an industrial automation software, are affected:
+
+SCADA 4.1.0.3870
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+Opening a specially crafted report format file allows execution of script code, which may allow remote code execution, data exfiltration, or cause a system crash.
+CVE-2018-18988 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.2    OUT-OF-BOUNDS READ CWE-125
+Opening a specially crafted project file may cause an out of bounds read, which may allow data exfiltration.
+CVE-2018-19004 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.3    IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94
+Opening a specially crafted project file may cause improper control of generation of code, which may allow remote code execution, data exfiltration, or cause a system crash.
+CVE-2018-19002 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    UNTRUSTED POINTER DEREFERENCE CWE-822
+An attacker using a specially crafted project file can supply a pointer for a controlled memory address, which may allow remote code execution, data exfiltration, or cause a system crash.
+CVE-2018-19029 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.5    OUT-OF-BOUNDS WRITE CWE-787
+Opening specially crafted report format file may cause an out of bounds read, which may cause a system crash, allow data exfiltration, or remote code execution.
+CVE-2018-18986 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.6    RELATIVE PATH TRAVERSAL CWE-23
+The issue results from the lack of proper validation of a user-supplied path prior to using it in file operations. An attacker can leverage this vulnerability to disclose sensitive information under the context of the web server process.
+CVE-2018-18990 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.7    OUT-OF-BOUNDS READ CWE-125
+Opening specially crafted project file may cause an out of bounds read, which may cause a system crash or allow data exfiltration.
+CVE-2018-18994 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.8    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+Taking in user input without proper sanitation may allow an attacker to execute remote code on the server.
+CVE-2018-18992 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.2.9    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+Taking in user input without proper authorization or sanitation may allow an attacker to execute remote code on the server.
+CVE-2018-18996 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.10    USE OF HARD-CODED CREDENTIALS CWE-798
+Use of hard coded credentials may allow an attacker unauthorized access to the system with high-privileges.
+CVE-2018-18998 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.11    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+An authentication bypass is possible, which may allow an attacker access to sensitive data.
+CVE-2018-19000 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Commercial Facilities, Energy, Food and Agriculture, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: South America
+COMPANY HEADQUARTERS LOCATION: Brazil
+
+3.4 RESEARCHER
+Esteban Ruiz (mr me) working with Zero Day Initiative reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+LCDS recommends users update to Version 4.1.0.4150 which can be found at the following location:
+https://laquisscada.com
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

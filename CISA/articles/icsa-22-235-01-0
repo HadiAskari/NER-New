@@ -1,0 +1,62 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.5
+ATTENTION: Low attack complexity
+Vendor: ARC Informatique
+Equipment: PcVue
+Vulnerability: Cleartext Storage of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to access the OAuth web service database.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following ARC Informatique product components are affected:
+
+PcVue 12 OAuth web service configuration
+PcVue 15 OAuth web service configuration
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+The affected device stores sensitive information in cleartext, which may allow an authenticated user to access session data stored in the OAuth database belonging to legitimate users.
+CVE-2022-2569 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+An unnamed researcher reported this vulnerability to ARC Informatique.
+4. MITIGATIONS
+ARC Informatique recommends users apply the following updates:
+
+PcVue 12: The fix is available in Maintenance release 12.0.27
+
+After installing the fix, users should update the Web Deployment Console (WDC) and re-deploy the Web Server. 
+All users using the affected component should install a patched release of the WDC and re-deploy the Web Server. This will allow the WDC to update and protect the database connection string, including clearing any sensitive information stored in the web.config file.
+
+
+PcVue 15: A fix is forthcoming.
+
+ARC Informatique has identified additional steps users can apply to reduce the risk:
+
+Uninstall the Web Server
+
+All users not using the affected component should uninstall the web server. The OAuth web service and its configuration are part of the Web Server for PcVue. If the system does not require Web & Mobile features, then users should not install them.
+
+
+
+Users should contact ARC Informatique’s PcVue Solutions for assistance with the above steps.
+For additional information, visit the public ARC Informatique security alert page.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

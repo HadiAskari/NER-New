@@ -1,0 +1,54 @@
+
+1. EXECUTIVE SUMMARY
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: Stratix 5400/5410/5700, ArmorStratix 5700
+Vulnerability: Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated remote attacker to cause a memory leak on an affected device, which may cause the device to reload.
+3. TECHNICAL DETAILS
+
+3.1 AFFECTED PRODUCTS
+The following Stratix Industrial Switches are affected by this vulnerability in the Cisco Open Plug-n-Play agent:
+
+Allen-Bradley Stratix 5400: All versions prior to 15.2(6)E2a
+Allen-Bradley Stratix 5410: All versions prior to 15.2(6)E2a
+Allen-Bradley Stratix 5700: All versions prior to 15.2(6)E2a
+Allen-Bradley ArmorStratix 5700: All versions prior to 15.2(6)E2a
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+An unauthenticated remote attacker could send invalid data to the Cisco Network Plug and Play agent (also referred to as the Cisco Open Plug-n-Play agent) causing a memory leak on the device, which could cause the device to reload.
+CVE-2018-15377 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported this vulnerability to NCCIC.
+4. MITIGATIONS
+Rockwell automation recommends users upgrade to FRN 15.2(6)E2a or later, which can be downloaded from the following page:
+http://compatibility.rockwellautomation.com/Pages/MultiProductDownload.aspx?famID=15
+Rockwell Automation recommends users apply the following general guidelines:
+
+Utilize proper network infrastructure controls, such as firewalls, to help ensure that requests from unauthorized sources are blocked and the controls are isolated from the business network.
+Block all traffic to EtherNet/IP, or other CIP protocol-based devices, from outside the manufacturing zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation Products, see Knowledgebase Article ID 898270.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+For additional information, see Rockwell Automation’s security advisory, which can be found at the following link:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1082686 (Login required)
+Cisco’s product security disclosure is available at the following link: https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180926-pnp-memleak
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

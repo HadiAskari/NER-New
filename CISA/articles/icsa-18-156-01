@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: ABB
+Equipment: IP Gateway
+Vulnerabilities: Improper Authentication, Cross-site Request Forgery, Unprotected Storage of Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow attackers to perform actions using administrative privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of IP Gateway, a building management system, are affected. The IP Gateway is available under two brands; ABB and Busch-Jaeger. Busch-Jaeger Elektro GmbH is part of the ABB Group.
+
+IP Gateway Versions 3.39 and prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER AUTHENTICATION CWE-287
+By accessing a specific uniform resource locator (URL) on the web server, a malicious user is able to access the configuration files and application pages without authentication.
+CVE-2017-7931 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    CROSS-SITE REQUEST FORGERY CWE-352
+The web server does not sufficiently verify that a request was performed by the authenticated user, which may allow an attacker to launch a request impersonating that user.
+CVE-2017-7906 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    UNPROTECTED STORAGE OF CREDENTIALS CWE-256
+Some configuration files contain passwords stored in plain-text, which may allow an attacker to gain unauthorized access.
+CVE-2017-7933 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Maxim Rupp reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+ABB recommends users apply the update at earliest convenience. The update is available for download at the product page of the Busch-Jaeger catalogue in the Software section:
+(English) http://www.busch-jaeger-catalogue.com/artikel.php?bereich=1016301&programm=1016477&gruppe=1016493&produkt=1016494
+(Deutsch) http://www.busch-jaeger-katalog.de/artikel.php?bereich=1016301&programm=1016477&gruppe=1016493&produkt=1016494
+Users can find more information in ABB’s security advisory ABB-VU-EPBP-R-2505 at the following location:
+http://new.abb.com/about/technology/cyber-security/alerts-and-notifications
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

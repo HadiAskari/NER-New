@@ -1,0 +1,82 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: IDEC
+Equipment: PLCs (Programmable Logic Controllers)
+Vulnerabilities: Unprotected Transport of Credentials, Plaintext Storage of a Password
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to upload, alter, and/or download the PLC user program. An attacker could also access the PLC web server and hijack the controllers, resulting in the manipulation and/or suspension of the PLC output.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following IDEC PLCs are affected:
+
+FC6A MICROSmart All-in-One CPU Module: v2.32 and earlier
+FC6B MICROSmart All-in-One CPU Module: v2.31 and earlier
+FC6A MICROSmart Plus CPU Module: v1.91 and earlier
+FC6B MICROSmart Plus CPU Module: v2.31 and earlier
+FT1A Controller SmartAXIS Pro/Lite: v2.31 and earlier
+WindLDR: v8.19.1 and earlier
+WindEDIT Lite: v1.3.1 and earlier
+Data File Manager: v2.12.1 and earlier
+FC6A MICROSmart All-in-One CPU Module: v2.32 and earlier
+FC6A MICROSmart Plus CPU Module: v1.91 and earlier
+WindLDR: v8.19.1 and earlier
+WindEDIT: Lite v1.3.1 and earlier
+Data File Manager: v2.12.1 and earlier
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNPROTECTED TRANSPORT OF CREDENTIALS CWE-523
+An attacker may obtain the user credentials from the communication between the PLC and the software. As a result, the PLC user program may be uploaded, altered, and/or downloaded.
+CVE-2021-37400 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).
+3.2.2    PLAINTEXT STORAGE OF A PASSWORD CWE-256
+An attacker may obtain the user credentials from file servers, backup repositories, or ZLD files saved in SD cards. As a result, the PLC user program may be uploaded, altered, and/or downloaded.
+CVE-2021-37401 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).
+3.2.3    UNPROTECTED TRANSPORT OF CREDENTIALS CWE-523
+An attacker may obtain the PLC web server user credentials from the communication between the PLC and the software. As a result, the complete access privileges to the PLC web server may be obtained, and manipulation of the PLC output and/or suspension of the PLC may be conducted.
+CVE-2021-20826 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).
+3.2.4    PLAINTEXT STORAGE OF A PASSWORD CWE-256
+An attacker may obtain the PLC web server user credentials from file servers, backup repositories, or ZLD files saved in SD cards. As a result, the attacker may access the PLC web server and hijack the PLC, and manipulation of the PLC output and/or suspension of the PLC may be conducted.
+CVE-2021-20827 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Khalid Ansari of FM Approvals reported these vulnerabilities to IDEC Corporation.
+4. MITIGATIONS
+Apply the appropriate software update according to the information provided by the developer.
+
+FC6A MICROSmart All-in-One CPU Module: v2.40 and later
+FC6B MICROSmart All-in-One CPU Module: v2.40 and later
+FC6A MICROSmart Plus CPU Module: v2.00 and later
+FC6B MICROSmart Plus CPU Module: v2.40 and later
+FT1A Controller SmartAXIS Pro/Lite: v2.40 and later
+WindLDR: v8.20.0 and later
+WindEDIT Lite: v1.4.0 and later
+Data File Manager: v2.13.0 and later
+
+Applying the below workarounds can mitigate the impacts of these vulnerabilities.
+
+Restrict the network appropriately to prevent suspicious connections from untrusted devices
+Restrict the devices that can access PLCs
+Manage ZLD files appropriately
+
+For more information, refer to the information provided by the developer (document in Japanese).
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

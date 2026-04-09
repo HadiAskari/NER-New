@@ -1,0 +1,196 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendors: Multiple
+Equipment: Multiple
+Vulnerabilities: Integer Overflow or Wraparound
+
+CISA is aware of a public report, known as “BadAlloc” that details vulnerabilities found in multiple real-time operating systems (RTOS) and supporting libraries. CISA is issuing this advisory to provide early notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+The various open-source products may be implemented in forked repositories. 
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-119-04 Multiple RTOS (Update D) that was published November 30, 2021, to the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in unexpected behavior such as a crash or a remote code injection/execution. 
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+
+Amazon FreeRTOS, Version 10.4.1
+Apache Nuttx OS, Version 9.1.0 
+ARM CMSIS-RTOS2, versions prior to 2.1.3
+ARM Mbed OS, Version 6.3.0
+ARM mbed-ualloc, Version 1.3.0
+BlackBerry QNX SDP Versions 6.5.0 SP1 and earlier
+BlackBerry QNX OS for Safety Versions 1.0.1 and earlier safety products compliant with IEC 61508 and/or ISO 26262
+BlackBerry QNX OS for Medical Versions 1.1 and earlier safety products compliant with IEC 62304
+
+A full list of affected QNX products and versions is available here
+
+
+Cesanta Software Mongoose OS, v2.17.0
+eCosCentric eCosPro RTOS, Versions 2.0.1 through 4.5.3
+Google Cloud IoT Device SDK, Version 1.0.2
+Media Tek LinkIt SDK, versions prior to 4.6.1
+Micrium OS, Versions 5.10.1 and prior
+Micrium uC/OS: uC/LIB Versions 1.38.xx, Version 1.39.00
+NXP MCUXpresso SDK, versions prior to 2.8.2
+NXP MQX, Versions 5.1 and prior
+Redhat newlib, versions prior to 4.0.0
+RIOT OS, Version 2020.01.1 
+Samsung Tizen RT RTOS, versions prior 3.0.GBB
+TencentOS-tiny, Version 3.1.0
+Texas Instruments CC32XX, versions prior to 4.40.00.07
+Texas Instruments SimpleLink MSP432E4XX
+Texas Instruments SimpleLink-CC13XX, versions prior to 4.40.00
+Texas Instruments SimpleLink-CC26XX, versions prior to 4.40.00
+Texas Instruments SimpleLink-CC32XX, versions prior to 4.10.03
+Uclibc-NG, versions prior to 1.0.36 
+Windriver VxWorks, prior to 7.0
+Zephyr Project RTOS, versions prior to 2.5
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Media Tek LinkIt SDK versions prior to 4.6.1 is vulnerable to integer overflow in memory allocation calls pvPortCalloc(calloc) and pvPortRealloc(realloc), which can lead to memory corruption on the target device. 
+CVE-2021-30636 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.2    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+ARM CMSIS RTOS2 versions prior to 2.1.3 are vulnerable to integer wrap-around inosRtxMemoryAlloc (local malloc equivalent) function, which can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or injected code execution.
+CVE-2021-27431 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.3    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+ARM mbed-ualloc memory library Version 1.3.0 is vulnerable to integer wrap-around in function mbed_krbs, which can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution.
+CVE-2021-27433 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.4    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+ARM mbed product Version 6.3.0 is vulnerable to integer wrap-around in malloc_wrapper function, which can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution. 
+CVE-2021-27435 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.5    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+RIOT OS Versions 2020.01.1 is vulnerable to integer wrap-around in its implementation of calloc function, which can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution. 
+CVE-2021-27427 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.6    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Samsung Tizen RT RTOS version 3.0.GBB is vulnerable to integer wrap-around in functions_calloc and mm_zalloc. This improper memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash. 
+CVE-2021-22684 has been assigned to this vulnerability. A CVSS v3 base score of 3.2 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:L).
+4.2.7    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+TencentOS-tiny Version 3.1.0 is vulnerable to integer wrap-around in function 'tos_mmheap_alloc incorrect calculation of effective memory allocation size. This improper memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution. 
+CVE-2021-27439 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.8    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Cesanta Software Mongoose-OS v2.17.0 is vulnerable to integer wrap-around in function mm_malloc. This improper memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution. 
+CVE-2021-27425 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.9    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Apache Nuttx OS Version 9.1.0 is vulnerable to integer wrap-around in functions malloc, realloc and memalign. This improper memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution. 
+CVE-2021-26461 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.10    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Wind River VxWorks several versions prior to 7.0 firmware are vulnerable to weaknesses found in the following functions; calloc(memLib), mmap/mmap64 (mmanLib), cacheDmaMalloc(cacheLib) and cacheArchDmaMalloc(cacheArchLib). This improper memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution. 
+CVE-2020-35198 and CVE-2020-28895 have been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.11    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Amazon FreeRTOS Version 10.4.1 is vulnerable to integer wrap-around in multiple memory management API functions (MemMang, Queue, StreamBuffer). This unverified memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution. 
+CVE-2021-31571 and CVE-2021-31572 have been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.12    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+eCosCentric eCosPro RTOS Versions 2.0.1 through 4.5.3 are vulnerable to integer wraparound in function calloc (an implementation of malloc). The unverified memory assignment can lead to arbitrary memory allocation, resulting in a heap-based buffer overflow.
+CVE-2021-27417 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:H/UI:R/S:U/C:N/I:L/A:H).
+4.2.13    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Redhat newlib versions prior to 4.0.0 are vulnerable to integer wrap-around in malloc and nano-malloc family routines (memalign, valloc, pvalloc, nano_memalign, nano_valloc, nano_pvalloc) due to insufficient checking in memory alignment logic.  This insufficient checking can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution.
+CVE-2021-3420 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.14    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+NXP MCUXpresso SDK versions prior to 2.8.2 are vulnerable to integer overflow in SDK_Malloc function, which could allow to access memory locations outside the bounds of a specified array, leading to unexpected behavior such segmentation fault when assigning a particular block of memory from the heap via malloc. 
+CVE-2021-27421 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.15    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+NXP MQX Versions 5.1 and prior are vulnerable to integer overflow in mem_alloc, _lwmem_alloc and _partition functions. This unverified memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution. 
+CVE-2021-22680 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.16    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+uClibc-ng versions prior to 1.0.37 are vulnerable to integer wrap-around in functions malloc-simple. This improper memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or a remote code injection/execution. 
+CVE-2021-27419 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.17    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Texas Instruments TI-RTOS returns a valid pointer to a small buffer on extremely large values. This can trigger an integer overflow vulnerability in 'HeapTrack_alloc' and result in code execution. 
+CVE-2021-27429 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.18    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Texas Instruments TI-RTOS returns a valid pointer to a small buffer on extremely large values, which can trigger an integer overflow vulnerability in 'malloc' and result in code execution. 
+CVE-2021-22636 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.19    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Texas Instruments devices running FREERTOS, malloc returns a valid pointer to a small buffer on extremely large values, which can trigger an integer overflow vulnerability in 'malloc' for FreeRTOS, resulting in code execution.
+CVE-2021-27504 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.20    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Texas Instruments TI-RTOS, when configured to use HeapMem heap(default), malloc returns a valid pointer to a small buffer on extremely large values, which can trigger an integer overflow vulnerability in 'HeapMem_allocUnprotected' and result in code execution. 
+CVE-2021-27502 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.21    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Google Cloud IoT Device SDK Version 1.0.2 is vulnerable to heap overflow due to integer overflow in its implementation of calloc, which can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or code execution. 
+Google PSIRT will assign a CVE. CVSS score will be calculated when a CVE has been assigned. 
+4.2.22    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Micrium OS Versions 5.10.1 and prior are vulnerable to integer wrap-around in functions Mem_DynPoolCreate, Mem_DynPoolCreateHW and Mem_PoolCreate. This unverified memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as very small blocks of memory being allocated instead of very large ones.
+CVE-2021-27411 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).
+4.2.23    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Micrium uC/OS: uC/LIB Versions 1.38.xx, 1.39.00 are vulnerable to integer wrap-around in functions Mem_DynPoolCreate, Mem_DynPoolCreateHW and Mem_PoolCreate. This unverified memory assignment can lead to arbitrary memory allocation, resulting in unexpected behavior such as very small blocks of memory being allocated instead of very large ones.
+CVE-2021-26706 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H).
+4.2.24    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Zephyr Project RTOS versions prior to 2.5 are vulnerable to integer wrap-around sys_mem_pool_alloc function, which can lead to arbitrary memory allocation resulting in unexpected behavior such as a crash or code execution. 
+CVE-2020-13603 has been assigned to this vulnerability. A CVSS v3 base score of 6.9 has been calculated; the CVSS vector string is (AV:P/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:H).
+4.2.25    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+BlackBerry QNX SDP Versions 6.5.0 SP1 and earlier, QNX OS for Safety Versions 1.0.1 and earlier, QNX OS for Medical Versions 1.1, and other products are vulnerable to integer wrap-around in the calloc( ) C runtime function, which can lead to arbitrary memory allocation, resulting in unexpected behavior such as a crash or injected code execution.
+CVE-2021-22156 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Multiple
+
+4.4 RESEARCHER
+David Atch, Omri Ben Bassat, and Tamir Ariel from Microsoft Section 52, and the Azure Defender for IoT research group reported these vulnerabilities to CISA.
+5. MITIGATIONS
+
+Amazon FreeRTOS – Update available
+Apache Nuttx OS Version 9.1.0 – Update available
+ARM CMSIS-RTOS2 – Update in progress, expected in June
+ARM Mbed OS – Update available
+ARM mbed-ualloc – no longer supported and no fix will be issued
+Blackberry QNX 6.5.0SP1 – Update available. See public advisory
+Blackberry QNX OS for Safety 1.0.2 – Update available. See public advisory
+Blackberry QNX OS for Medical 1.1.1 – Update available. See public advisory
+Cesanta Software mongooses – Update available 
+eCosCentric eCosPro RTOS: Update to Versions 4.5.4 and newer – Update available
+Google Cloud IoT Device SDK – Update available
+Media Tek LinkIt SDK – MediaTek will provide the update to users. No fix for free version, as it is not intended for production use. 
+Micrium OS: Update to v5.10.2 or later – Update available
+Micrium uCOS: uC/LIB Versions 1.38.xx, 1.39.00: Update to v1.39.1 – Update available
+NXP MCUXpresso SDK – Update to 2.9.0 or later 
+NXP MQX –  update to 5.1 or newer
+Redhat newlib – Update available
+RIOT OS – Update available
+Samsung Tizen RT RTOS – Update available
+TencentOS-tiny – Update available
+Texas Instruments CC32XX – Update to v4.40.00.07
+Texas Instruments SimpleLink CC13X0 – Update to v4.10.03
+Texas Instruments SimpleLink CC13X2-CC26X2 – Update to v4.40.00
+Texas Instruments SimpleLink CC2640R2 – Update to v4.40.00
+Texas Instruments SimpleLink MSP432E4 – Confirmed. No update currently planned
+uClibc-ng – Update available
+Windriver VxWorks – Update in progress
+
+--------- Begin Update E Part 1 of 1 ---------
+
+Windriver VxWorks – Update in progress
+
+The following devices use Windriver VxWorks as their RTOS:
+
+Hitachi Energy GMS600 – See public advisory.
+Hitachi Energy PWC600 –  See public advisory.
+Hitachi Energy REB500 – See public advisory.
+Hitachi Energy Relion 670, 650 series and SAM600-IO – See public advisory
+Hitachi Energy RTU500 series CMU – Updates available for some firmware versions – See public advisory.
+Hitachi Energy Modular Switchgear Monitoring System MSM – Protect your network – See public advisory.
+
+
+
+
+
+--------- End Update E Part 1 of 1 ---------
+
+Zephyr Project: Update to 2.5 or later.  Patches available for prior supported versions. See the Zephyr security advisory for more information.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Apply available vendor updates.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

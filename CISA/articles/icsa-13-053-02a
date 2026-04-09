@@ -1,0 +1,48 @@
+
+Overview
+This updated advisory is a follow-up to the original advisory titled ICSA-13-053-02--Honeywell Enterprise Buildings Integrator (EBI), SymmetrE, and ComfortPoint Open Manager Station that was published February 22, 2013, on the ICS-CERT Web page.
+This advisory provides mitigation details for a vulnerability that impacts the Honeywell EBI.
+Independent researcher Juan Vazquez of Rapid7 privately disclosed an ActiveX vulnerability in the Honeywell EBI, SymmetrE, and ComfortPoint Open Manager (CPO-M) Station, and HMIWeb Browser client packages. Honeywell has produced an update that mitigates this vulnerability. Rapid7 has tested the update to validate that it resolves the vulnerability. Exploitation of this vulnerability could allow partial loss of availability, integrity, and confidentiality. This vulnerability could affect systems deployed in the government facilities and commercial facilities sectors. This vulnerability could be exploited remotely.
+--------- Begin Update A Part 1 of 2 --------
+Rapid7 has released a Metasploit module for this vulnerability. Honeywell is coordinating with Microsoft to release a kill bit for this vulnerability in a Microsoft Patch Tuesday security update.
+--------- End Update A Part 1 of 2 ----------
+Affected Products
+Honeywell reports that the vulnerability affects the following product versions:
+
+EBI R310, R400.2, R410.1, R410.2,
+SymmetrE R310, R410.1, R410.2, and
+CPO-M R100.
+
+Impact
+Successfully exploiting this vulnerability may allow an attacker to execute code of the attacker’s choice on an EBI client or EBI system and possibly affect the availability of the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Honeywell is a US-based company that maintains offices worldwide.The Honeywell EBI, SymmetrE, and ComfortPoint Open Manager platforms integrate different systems and devices such as heating, ventilation, and air conditioning (HVAC) controls; security; access control; life safety; lighting; energy management; and facilities management into a common platform.The platforms are typically managed and controlled by dedicated Station-based clients on secured, isolated building control, security or life safety networks. Noncritical applications can be installed on customer-based enterprise networks and can use the optional Web browser interface.
+Vulnerability Characterization
+Vulnerability Overview
+Improper Input ValidationCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed February 22, 2013.
+The vulnerability could allow remote attackers to execute arbitrary code via a specially crafted HTML document. The attacker would require an end-user or operator to voluntarily interact with the attack mechanism for it to be successful. For example, the attacker could send an email message to the end-user, containing a link to a Web site with the specially crafted HTML document.CVE-2013-0108NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0108, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=(AV:N/AC:M/Au:N/C:P/I:P/A:P), Web site last visited February 22, 2013.
+Vulnerability Details
+Exploitability
+This vulnerability could be exploited remotely.
+Existence of Exploit
+--------- Begin Update A Part 2 of 2 --------
+There is a publicly available Metasploit module for this vulnerability.
+--------- End Update A Part 2 of 2 ----------
+Difficulty
+An attacker with a medium skill would be able to exploit this vulnerability. Social engineering is required to convince the user to visit the malicious site. This decreases the likelihood of a successful exploit.
+Mitigation
+Honeywell recommends disabling HscRemoteDeploy.dll from any client or server computers on affected systems. This DLL is not used for any runtime functions and is only required to simplify the installation or upgrade of the HMIWeb Browser client.Honeywell has created a Station Security Update package that disables the DLL. It should be run on the EBI servers, all Station client PCs, and any PCs that have used the HMIWeb Browser client. Honeywell recommends asset owners contact their local HBS service representative as this update should only be performed by a qualified, trained resource.Honeywell has requested that Microsoft issue a kill bit for the HscRemoteDeploy.dll in a future monthly Microsoft Windows security update. This will also automatically disable the DLL on any affected system that is using the Windows Update feature in the listed Honeywell products.Honeywell EBI, SymmetrE, and CPO-M users can find more information in Honeywell’s Bulletin CSA-2013-0131-01 or Product Bulletin 581 on the EBI support website.Honeywell Enterprise Buildings Integrator, https://buildingsolutions.honeywell.com/Cultures/en-US/ServicesSolutions/BuildingManagementSystems/EnterpriseBuildingsIntegrator/, (login required), Web site last visited February 22, 2013.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.  ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks.
+
+Do not click Web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+

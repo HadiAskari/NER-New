@@ -1,0 +1,62 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.1
+ATTENTION: Low skill level to exploit
+Vendor: Philips
+Equipment: IntelliSpace Perinatal
+Vulnerability: Exposure of Resource to Wrong Sphere
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may allow an attacker unauthorized access to system resources, including access to execute software or to view/update files, directories, or system configuration. This could impact confidentiality and integrity of the system and application. If a user has opted to install the Document Export (DOX) function on the application server, information at risk of exposure may also include protected health information (PHI).
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of IntelliSpace Perinatal, an obstetrics information management system, are affected:
+
+IntelliSpace Perinatal Versions K and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    EXPOSURE OF RESOURCE TO WRONG SPHERE CWE-668
+A vulnerability within the IntelliSpace Perinatal application environment could enable an unauthorized attacker with physical access to a locked application screen, or an authorized remote desktop session host application user to break-out from the containment of the application and access unauthorized resources from the Windows operating system as the limited-access Windows user. Due to potential Windows vulnerabilities, it may be possible for additional attack methods to be used to escalate privileges on the operating system.
+CVE-2019-13546 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+3.4 RESEARCHER
+Brian Landrum of Coalfire LABS reported this vulnerability to Philips.
+4. MITIGATIONS
+Philips has identified the following guidance and controlling risk mitigations:
+
+Users should operate all deployed and supported Philips IntelliSpace Perinatal products within Philips authorized specifications, including Philips approved software, software configuration, system services, and security configuration. Reference the Philips Site Preparation and IT Specification Guide, which is available on Philips InCenter.
+During installation, the Philips provided System Check Tool must be run to properly configure the system as per the installation guide. The latest version of the System Check Tool is available for download from Philips InCenter.
+The IntelliSpace Perinatal System Check Tool prepares the Windows firewall and opens required ports automatically as per the installation guide, but users should also configure local and network firewalls to prevent unauthorized access to network resources.
+For IntelliSpace Perinatal applications running continuously/unattended or in remote desktop mode, the logged in Windows user must run with restricted privileges. The Windows user logon should never be granted administrator rights, and permissions to the file system should not be changed.
+Locking or logging out of the application does not automatically lock Windows. Users should always lock Windows when not actively using the application. Closing the application when in remote desktop session mode will logoff the active Windows session.
+For all IntelliSpace Perinatal applications running on PCs with a wall mounted display, ensure there is no public access by making only the display available and physically locking the machine. When this is not possible, ensure there are no publicly accessible input devices available.
+Install the IntelliSpace Perinatal application on a dedicated server with no unnecessary services or drivers installed.
+It is not recommended to run the Document Export (DOX) functionality on the IntelliSpace Perinatal application server. Where DOX is required, only allow logon of Windows users who are allowed to access patient data and lock the Windows session when not in use.
+Install the database on a dedicated server. All other IntelliSpace Perinatal functionality (remote desktop session hosting, application client) should not be installed or used on the database server.
+As documented in the Philips Site Preparation and IT Specification Guide, it is recommended for the user to prevent the start of Task Manager for non-administrators.
+Philips also recommends users implement a comprehensive, multi-layered strategy to protect their systems from internal and external security threats, including restricting physical access to only authorized personnel, thus reducing the risk of physical access compromise by an unauthorized user.
+
+Philips will update IntelliSpace Perinatal documentation to provide clear guidance on the above mitigations. This documentation is available to users on Philips InCenter.
+Philips will be further assessing options for remediation in the next minor product update, which is planned for the end of 2020.
+Users with questions about their specific IntelliSpace Perinatal product should contact a Philips service support team.
+The Philips advisory is available at the following URL: http://www.philips.com/productsecurity
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Restrict physical system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable unnecessary accounts and services.
+
+Where additional information is needed, follow this link to existing cybersecurity in medical device guidance issued by the FDA.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

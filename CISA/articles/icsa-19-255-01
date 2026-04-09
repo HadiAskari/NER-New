@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: 3S-Smart Software Solutions GmbH
+Equipment: CODESYS V3 web server
+Vulnerabilities: Path Traversal, Stack-based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to create a denial-of-service condition, to perform remote code execution, or to access restricted files.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following CODESYS V3 runtime systems, all versions prior to 3.5.14.10, containing the web server (CmpWebServer) are affected:
+
+CODESYS Control for BeagleBone
+CODESYS Control for emPC-A/iMX6
+CODESYS Control for IOT2000
+CODESYS Control for Linux
+CODESYS Control for PFC100
+CODESYS Control for PFC200
+CODESYS Control for Raspberry Pi
+CODESYS Control RTE V3
+CODESYS Control RTE V3 (for Beckhoff CX)
+CODESYS Control Win V3 (also part of the CODESYS Development System setup)
+CODESYS HMI V3
+CODESYS Control V3 Runtime System Toolkit
+CODESYS V3 Embedded Target Visu Toolkit
+CODESYS V3 Remote Target Visu Toolkit
+
+In CODESYS V3, the web server is an optional part of the CODESYS runtime system.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+Specially crafted http or https requests may allow an attacker access to files outside the restricted working directory of the controller.
+CVE-2019-13532 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    STACK-BASED BUFFER OVERFLOW CWE-121
+Specially crafted http or https requests could cause a stack overflow, which may create a denial-of-service condition or allow remote code execution.
+CVE-2019-13548 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Ivan Cheyrezy of Schneider Electric reported this vulnerability to 3S-Smart Software Solutions GmbH.
+4. MITIGATIONS
+3S-Smart Software Solutions GmbH has released Versions 3.5.12.80, 3.5.14.10, and 3.5.15.0 to resolve the vulnerabilities for the affected CODESYS products.
+Please visit the CODESYS update page for more information on how to obtain the software update: https://www.codesys.com/download/ 
+Updating to Version 3.5.14.10 or higher is recommended over Version 3.5.12.80, which does not resolve the vulnerabilities for all affected products. Further details from 3S-Smart Software Solutions GmbH can be found in a security report at the following link:
+https://www.codesys.com/fileadmin/data/customers/security/2019/Advisory2019-01_CDS-64543.pdf
+As part of a security strategy, 3S-Smart Software Solutions GmbH recommends the following general defense measures to reduce the risk of exploits:
+
+Use controllers and devices only in a protected environment to minimize network exposure and ensure that they are not accessible from outside.
+Use firewalls to protect and separate the control system network from other networks.
+Use VPN (virtual private networks) tunnels if remote access is required.
+ Activate and apply user management and password features.
+Limit the access to both development and control system by physical means, operating system features, etc.
+Protect both development and control system by using up-to-date virus detecting solutions. For more information and general recommendations for protecting machines and plants, see also the CODESYS security whitepaper at https://customers.codesys.com/fileadmin/data/customers/security/CODESYS-Security-Whitepaper.pdf
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

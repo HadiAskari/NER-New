@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: LOGO! 8 BM
+Vulnerabilities: Missing Authentication for Critical Function, Use of Hard-coded Cryptographic Key, Use of a Broken or Risky Cryptographic Algorithm, Insufficiently Protected Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker the ability to make configuration and password changes, capture device keys, access confidential information, and gain full control of the device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports the vulnerabilities affect the following LOGO! products:
+
+LOGO! 8 BM (incl. SIPLUS variants): All versions prior to 8.3
+LOGO! Soft Comfort: All versions prior to 8.3 (only affected by CVE-2020-25231, CVE-2020-25234)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+An attacker who has access to a specific service may gain complete access to all services without authorization.
+CVE-2020-25228 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+An attacker could execute replay attacks due to the usage of a static key, which may allow unauthorized password or configuration change on any affected device.
+CVE-2020-25229 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+An attacker can use an outdated cipher mode, which may allow the extraction of the encryption key from captured communication with the device.
+CVE-2020-25230 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.4    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+An attacker could use the affected device’s static key to decrypt program data, which may allow extraction of confidential information from protected program files.
+CVE-2020-25231 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+An attacker could extract the communication key that is used when communicating with an affected device, which may allow confidential information disclosure.
+CVE-2020-25232 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.6    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+An attacker may obtain the private RSA key that is used for encrypting communication with the device, which may allow confidential information disclosure.
+CVE-2020-25233 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.7    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+An attacker could reverse engineer the user-defined functions directly from stored program files.
+CVE-2020-25234 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.8    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+An attacker with access to network traffic could derive valid logins, which may allow confidential information disclosure.
+CVE-2020-25235 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Thomas Meesters from cirosec GmbH, Tobias Gebhardt, and Max Bäumler reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has released updates for the affected products and recommends users update to the latest versions:
+
+LOGO! 8 BM (incl. SIPLUS variants): Update to v8.3; A new hardware version is required in order to update
+LOGO! Soft Comfort: Update to v8.3
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Protect access to Port 10005/TCP
+Apply defense-in-depth concept, including protection concept outlined in the system manual.
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for Industrial Security and to follow the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information, please see Siemens Security Advisory SSA-480824
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,98 @@
+
+
+Description
+
+NCCIC/ICS-CERT is aware of a public report of three vulnerabilities affecting the Sierra Wireless AirLink Raven XE and XT gateways. According to this report, the affected products allow unauthenticated access to directories on the system, which may allow remote file upload, download, and system reboot.
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+SUMMARY
+NCCIC/ICS-CERT is aware of a public report of three vulnerabilities affecting the Sierra Wireless AirLink Raven XE and XT gateways. According to this report, the affected products allow unauthenticated access to directories on the system, which may allow remote file upload, download, and system reboot. According to this report, the affected products also contain a cross-site request forgery vulnerability that may make it possible for an attacker to trick a user into making an unintentional request to a web server, which is treated as an authenticated request, by accessing a malicious URL or downloading a malicious file. In addition, the public report indicates that the affected devices are vulnerable to credential sniffing, which could be used to log into the system.
+The public report was released after the independent researcher, Karn Ganeshen, collaborated with the affected vendor to validate the vulnerabilities and identify mitigation procedures.
+ICS-CERT has contacted the affected vendor, and the vendor has validated the reported vulnerabilities. ICS-CERT is issuing this alert to provide notice of the public report and to identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+The report included vulnerability details for the following vulnerabilities:
+
+
+
+Vulnerability Type
+Remotely Exploitable
+Impact
+
+
+Unauthenticated access/Arbitrary file upload
+Yes
+Remote arbitrary file upload, download, and system reboot
+
+
+Cross-site request forgery
+Yes
+
+Possible for an attacker to trick a user into making an unintentional request to a web server
+
+
+
+Vulnerable to credential sniffing
+Yes
+Sniffed credentials could be used to log into the system
+
+
+
+The Sierra Wireless Raven XE and XT wireless gateways are used in the following industries and applications: utilities, manufacturing, automation, oil and gas, Ethernet-based SCADA, and telemetry.
+Sierra Wireless announced in March 2016 that they were going to discontinue the sale of Raven XE and XT gateways on August 31, 2016; however, limited telephone support will be available until December 30, 2019.
+FOLLOW-UP
+ICS-CERT released the follow-up advisory titled ICSA-17-115-02 Sierra Wireless AirLink Raven XE and XT on April 25, 2017, on the ICS-CERT web site.
+MITIGATION
+Sierra Wireless advises that the Raven XE and XT products are end of life and no new firmware releases will be made available. In order to mitigate the risks presented by the identified vulnerabilities and other security concerns, Sierra Wireless recommends that Raven XE and XT users follow best practices, which include the following:
+
+To minimize the risk associated with nonrandom default passwords:
+
+Change the default password on all equipment you purchase from any source.
+
+
+Use firewall configuration options to disable user access on all nonessential interfaces, in particular the cellular WAN interface.
+
+Take reasonable steps to physically secure local interfaces (e.g., Deploy in a lockbox or restricted access facility).
+
+
+Do not enable the port forwarding feature to forward traffic to devices that operate unauthenticated or otherwise insecure network interfaces.
+To minimize the risk associated with lack of anti-cross-site request forgery tokens in AceManager:
+
+Do not operate AceManager from a client device that has simultaneous access to the Raven device and the public Internet, where most cross-site request forgery attacks are found.
+
+
+To minimize the risk associated with sensitive information exposed via HTTP GET operations through the AceManager interface, and unauthenticated access to directories:
+
+Disable AceManager access via the cellular WAN interface, particularly when the device is operating on public networks.
+
+
+
+For additional information about these vulnerabilities or the recommendations provided, please contact Sierra Wireless’ security team at:
+security@sierrawireless.com
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.ICS-CERT ALERT, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-10-301-01, web site last accessed June 30, 2016.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT also provides a recommended practices section for control systems on the ICS-CERT web site (http://ics-cert.us-cert.gov). Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

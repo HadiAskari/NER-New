@@ -1,0 +1,43 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on July 8, 2014, and is being released to the NCCIC/ICS-CERT web site.
+The Applied Risk Research team has identified an unauthorized download of system information from Innominate mGuard devices. Innominate has produced a firmware patch that mitigates this vulnerability. This firmware patch has been validated by the Applied Risk Research team, and the original vulnerability research is referenced on at http://www.applied-risk.com as ARA‑2014001.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Innominate mGuard firmware versions are affected:
+
+Innominate mGuard firmware Versions 4.0.0 up to Version 8.0.2
+
+Innominate mGuard firmware Versions 7.6.4 patch release, and firmware Versions 8.0.3, 8.1.0, 8.1.1, and higher are not affected.
+IMPACT
+Exploitation of this vulnerability could allow a remote unauthenticated user access to release configuration information. While this is a minor vulnerability, it represents a method for further network reconnaissance.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Innominate is a German-based company that sells products worldwide through its international partners. Innominate was acquired by Phoenix Contact in 2008.
+The vulnerability affects only the mGuard products, which are industrial security routers. They can be found in many critical infrastructure sectors, including Communications, Critical Manufacturing, and Healthcare and Public Health.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INFORMATION DISCLOSURECWE-200: Information Exposure, http://cwe.mitre.org/data/definitions/200.html, web site last accessed July 08, 2014.
+
+An attacker using a carefully crafted URL may download a configuration snapshot without prior authorization using the HTTPS CGI interface. The configuration snapshot contains configuration data, current system information and log files, but no confidential data such as RSA private keys, Pre-Shared keys or passwords. An attacker might gather information about network topology, traffic flows, and other connected systems from this data.
+CVE-2014-2356NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2356, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:N, web site last accessed July 08, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+All users of affected Innominate mGuard devices may either update to one of the following firmware versions: 7.6.4, 8.0.3, 8.1.0, 8.1.1, or higher, or use the hotfix-CVE-2014-2356.tar.gz patch-update to fix their systems without updating any other component.
+The patch can be applied by either uploading the patch-update as “Local Update” or by the “Online Update” functionality and using hotfix-CVE-2014-2356 as “Package set name.” In addition, Innominate recommends limiting access to the administrative interfaces via firewall rules to the minimum necessary.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

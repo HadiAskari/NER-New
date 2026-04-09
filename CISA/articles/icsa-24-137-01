@@ -1,0 +1,71 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.3
+ATTENTION: Low Attack Complexity
+Vendor: Siemens
+Equipment: Parasolid
+Vulnerabilities: Out-of-bounds Read, NULL Pointer Dereference
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute code in the context of the current process and crash the application causing a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siemens Parasolid, a design and simulation product, are affected:
+
+Siemens Parasolid V35.1: Versions prior to V35.1.256
+Siemens Parasolid V36.0: Versions prior to V36.0.208
+Siemens Parasolid V36.1: Versions prior to V36.1.173
+
+3.2 Vulnerability Overview
+3.2.1 OUT-OF-BOUNDS READ CWE-125
+The affected applications contain an out-of-bounds read past the unmapped memory region while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process.
+CVE-2024-32635 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-32635. A base score of 7.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 OUT-OF-BOUNDS READ CWE-125
+The affected applications contain an out-of-bounds read past the end of an allocated structure while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process.
+CVE-2024-32636 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-32636. A base score of 7.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 NULL POINTER DEREFERENCE CWE-476
+The affected applications contain a null pointer dereference vulnerability while parsing specially crafted X_T files. An attacker could leverage this vulnerability to crash the application causing a denial-of-service condition.
+CVE-2024-32637 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L).
+A CVSS v4 score has also been calculated for CVE-2024-32637. A base score of 4.8 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends users to update to the latest version:
+
+Parasolid V35.1: Update to V35.1.256 or later version
+Parasolid V36.0: Update to V36.0.208 or later version
+Parasolid V36.1: Update to V36.1.173 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+All affected products: Do not open untrusted X_T files in Parasolid
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-046364 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+May 16, 2024: Initial Publication
+

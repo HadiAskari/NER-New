@@ -1,0 +1,55 @@
+
+OVERVIEW
+Becton, Dickinson and Company (BD) has identified a hard-coded password vulnerability in BD’s Kiestra PerformA and KLA Journal Service applications that access the BD Kiestra Database. BD has produced compensating controls to reduce the risk of exploitation of the identified vulnerability by issuing product updates and defensive measures to be applied by end users.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following BD products are affected:
+
+PerformA, Version 2.0.14.0 and prior versions, and
+KLA Journal Service, Version 1.0.51 and prior versions.
+
+IMPACT
+Successful exploitation of the vulnerability may allow an attacker to gain access to limited Protected Health Information (PHI)/Personally Identifiable Information (PII) information stored in the BD Kiestra Database.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+BD is a US-based company that maintains offices in multiple countries around the world.
+BD’s PerformA and KLA Journal Service applications are used with the BD Kiestra Database used in BD’s Kiestra TLA (Total Lab Automation), Kiestra WCA (Work Cell Lab Automation), and Kiestra InoqulA+ systems. The BD PerformA application is used for system monitoring and the BD KLA Journal application is used for incremental backups. BD’s Kiestra TLA and Kiestra WCA are lab automation systems. Kiestra InoqulA+ is a standalone lab automation system. According to BD, these products are deployed across the Healthcare and Public Health Sector. BD estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+USE OF HARD-CODED PASSWORDCWE-259: Use of Hard-coded Password, http://cwe.mitre.org/data/definitions/259.html, web site last accessed March 23, 2017.
+
+BD’s PerformA and KLA Journal Service applications use hard-coded passwords to access the BD Kiestra Database, which could be leveraged to compromise the confidentiality of limited PHI/PII information stored in the BD Kiestra Database.
+CVE-2017-6022NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-6022, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L, web site last accessed March 23, 2017.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill level would be able to exploit this vulnerability.
+MITIGATION
+BD has produced compensating controls to reduce the risk of exploitation of the hard-coded passwords vulnerability in the PerformA and KLA Journal Service applications by issuing product updates to the PerformA application, KLA Journal Service application, and the Kiestra Database. The product updates ensure that each user will be assigned a unique password.
+The updated product versions are scheduled to be remotely updated between April 2017 and October 2017. The updated version numbers to be applied are as follows:
+
+PerformA application, Version 2.0.14.0,
+KLA Journal Service application, Version 1.0.51, and
+Kiestra Database, Version 3.0.61.
+
+BD has also identified the following defensive measures that should be applied by all users to reduce the risk of exploitation of the identified vulnerability:
+
+Disable SMB1 protocol on the Database Server, File/Program Server, and Back-up Server if this is active,
+Ensure Port 3050/TCP/IP is closed to incoming and outgoing connections (e.g. from Internet to internal hospital network), and
+Close Port 3050/TCP/IP on the internal network for traffic other than BD Kiestra applications with the BD Kiestra database.
+
+For additional information, BD has released a Product Security Bulletin, which is available at the following location:
+http://www.bd.com/aboutbd/productsecurity/
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all medical devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate all medical devices and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

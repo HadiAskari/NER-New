@@ -1,0 +1,69 @@
+
+
+Description
+
+NCCIC/ICS-CERT received a technical bulletin from the Sierra Wireless company, outlining mitigations to secure Airlink Cellular Gateway devices affected by (or at risk of) the “Mirai” malware. While the Sierra Wireless devices are not being targeted by the malware, unchanged default factory credentials, which are publicly available, could allow the devices to be compromised. Additionally, a lower security posture could lead to the device being used in Distributed Denial of Service (DDoS) attacks against Internet web sites.
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+SUMMARY
+NCCIC/ICS-CERT received a technical bulletin from the Sierra Wireless company, outlining mitigations to secure Airlink Cellular Gateway devices affected by (or at risk of) the “Mirai” malware. While the Sierra Wireless devices are not being targeted by the malware, unchanged default factory credentials, which are publicly available, could allow the devices to be compromised. Additionally, a lower security posture could lead to the device being used in Distributed Denial of Service (DDoS) attacks against Internet web sites. There is evidence that "Internet of Things"-type devices have been infected with the Linux malware Mirai, which attackers used in the recent DDoS attacks against the web site Krebs on Security.
+This alert is being produced to amplify mitigations outlined by Sierra Wireless, for users of the following products:
+
+LS300,
+GX400,
+GX/ES440,
+GX/ES450, and
+RV50
+
+ICS-CERT would like to emphasize that there is no software or hardware vulnerability being exploited in the Sierra Wireless devices by the Mirai malware. The issue is configuration management of the device upon deployment.
+INDICATORS OF COMPROMISE
+Sierra Wireless provided the following analysis:
+Based on currently available information, once the malware is running on the gateway, it deletes itself and resides only in memory. The malware will then proceed to scan for vulnerable devices and report its findings back to a command and control server. The command and control server may also instruct the malware to participate in a DDoS attack on specified targets.
+Currently, the best known indicator of the malware’s presence is abnormal traffic on Port 23/TCP as it scans for vulnerable devices. Users may also observe command and control traffic on Port 48101/TCP, and a large amount of outbound traffic if the infected gateway is participating in a DDoS attack.
+Because the malware resides only in memory, rebooting the gateway will remove the infection. However, if the gateway continues to use the default ACEmanager password, it will likely become reinfected.
+Devices attached to the gateway’s local area network may also be vulnerable to infection by the Mirai malware. Sierra Wireless gateways have a number of features that make these devices remotely accessible.
+MITIGATION
+Sierra Wireless strongly recommends that users with the identified products perform the following steps on each gateway:
+
+Reboot the gateway to eliminate any existing Mirai malware; and
+Immediately change the ACEmanager password to a secure, unique value.
+
+The password can be changed by either:
+
+Logging into ACEmanager and navigating to Admin > Change Password; or
+Remotely changing the password using the AirLink Management Service (ALMS). Instructions can be found at:
+
+https://doc.airvantage.net/alms/reference/monitor/howtos/remotelyChangeACEManagerPassword/
+If users have multiple gateways and do not currently subscribe to ALMS, they can sign up for a free 30-day trial by visiting https://na.airvantage.net/accounts/signup?type=AVMS_AL
+The full Sierra Wireless Technical Bulletin outlining this issue can be found at:
+http://source.sierrawireless.com/resources/airlink/software_reference_docs/technical-bulletin/sierra-wireless-technical-bulletin---mirai/
+Signatures to detect Mirai are available via open-source web sites but ICS-CERT has not tested the efficacy of these signatures. ICS-CERT recommends testing in a safe environment prior to deploying on a Control Systems network.
+ICS-CERT recommends, as quality assurance, that users test the mitigations in a test development environment that reflects their production environment prior to installation. In addition, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that a VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT also provides a control systems recommended practices page on the ICS-CERT web site. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

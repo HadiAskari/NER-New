@@ -1,0 +1,72 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.4
+Vendor: Philips
+Equipment: IntelliVue M3002A X2 MMS Transport Monitor/Module and IntelliVue MP monitors (MP2/X2, MP5, MP20-MP90, MX600, MX700 and MX800)
+Vulnerabilities: Use of Hard-coded Password, Download of Code Without Integrity Check
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may cause corruption of the IntelliVue WLAN firmware and impact to the data flow over the WLAN Version A and WLAN Version B wireless modules. This would lead to an inoperative condition alert at the device and Central Station.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Philips IntelliVue WLAN, portable patient monitors, are affected:
+
+IntelliVue MP monitors MP20-MP90 (M8001A/2A/3A/4A/5A/7A/8A/10A)
+
+WLAN Version A, Firmware A.03.09
+
+
+IntelliVue MP monitors MP5/5SC (M8105A/5AS)
+
+WLAN Version A, Firmware A.03.09, Part #: M8096-67501
+
+
+IntelliVue MP monitors MP2/X2 (M8102A/M3002A)
+
+WLAN Version B, Firmware A.01.09, Part #: N/A (Replaced by Version C)
+
+
+IntelliVue MP monitors MX800/700/600 ((865240/41/42)
+
+WLAN Version B, Firmware A.01.09, Part #: N/A (Replaced by Version C)
+
+
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF HARD-CODED PASSWORD CWE-259
+An attacker can use these credentials to login via ftp and upload a malicious firmware.
+CVE-2019-13530 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    DOWNLOAD OF CODE WITHOUT INTEGRITY CHECK CWE-494
+The product downloads source code or an executable from a remote location and executes the code without sufficiently verifying the origin and integrity of the code.
+CVE-2019-13534 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+3.4 RESEARCHER
+Shawn Loveric of Finite State, Inc., reported these vulnerabilities to Philips.
+4. MITIGATIONS
+WLAN Version B is obsolete. Philips recommends users update to the WLAN assembly Version C wireless module in affected IntelliVue monitors.
+WLAN Version C with current firmware of B.00.31 is not vulnerable to the described attack.
+WLAN Version A is a software patch from Philips estimated to be available in Incenter by the end of 2019.
+Wireless network access should be controlled by authentication and authorization (e.g., WPA2), which are supported by Philips.
+As an additional mitigation measure, Philips recommends implementing a firewall rule on the user’s wireless network to restrict access control via FTP. Users should implement role-based access controls to control physical access to the system. Refer to the Security for Clinical Networks Guide and the IntelliVue Network Configuration Guide for additional security recommendations.
+Please see the Philips product security website for the latest security information for Philips products:
+https://www.philips.com/productsecurity
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable unnecessary accounts and services.
+
+Where additional information is needed, follow this link to existing cybersecurity in medical device guidance issued by the FDA.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. High skill level is needed to exploit.

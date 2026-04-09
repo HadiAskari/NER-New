@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.5
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: B. Braun Melsungen AG 
+Equipment: Battery Pack SP with Wi-Fi 
+Vulnerability: Improper neutralization of directives in dynamically evaluated code ('Eval Injection') 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a sophisticated and authenticated attacker to compromise the security of the Space communication device Battery Pack SP with Wi-Fi. An attacker could escalate privileges, view sensitive information, upload arbitrary files, and perform remote code execution. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following B. Braun products are affected: 
+
+Battery pack SP with Wi-Fi (SN 138853 and higher) with software 053L000091 (global) / 054U000091 (U.S.) and 053L000092 (global) / 054U000092 (U.S.) 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER NEUTRALIZATION OF DIRECTIVES IN DYNAMICALLY EVALUATED CODE ('EVAL INJECTION') CWE-95 
+An improper neutralization of directives in dynamically evaluated code vulnerability in the Wi-Fi Battery embedded web server versions L90/U70 and L92/U92 can be used to gain administrative access to the Wi-Fi communication module. An authenticated user, having access to both the medical device Wi-Fi network (such as a biomedical engineering staff member) and the specific B. Braun Battery Pack SP with Wi-Fi web server credentials, could gain administrative (root) access on the infusion pump communication module. This could be used as a vector to launch further attacks. 
+CVE-2023-0888 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:L). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare, Public Health 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Tom Johnston, a cyber security consultant, reported this vulnerability to B. Braun. 
+4. MITIGATIONS
+B. Braun has released software updates to mitigate the reported vulnerabilities: 
+
+Battery pack SP with Wi-Fi: software 053L000093 (global) / 054U000093 (U.S.) 
+
+Facilities in Canada utilizing “U” versions of software should follow the U.S. version.  
+Facilities in Canada utilizing non-“U” versions (e.g. L) should follow the global version. 
+
+
+
+The infusion pumps are not directly affected. However, the interrupted network communication might prevent certain features of the device from functioning properly. Specifically, an impacted device may be unable to receive infusion orders from EMR/PDMS systems, receive a drug library update, or communicate with DoseTrac. 
+For more information, see the B. Braun Vulnerability Advisory. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

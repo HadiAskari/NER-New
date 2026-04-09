@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Horner Automation
+Equipment: Cscape, Cscape EnvisionRV
+Vulnerabilities: Stack-based Buffer Overflow, Out-of-bounds Read, Use After Free, Access of Uninitialized Pointer, Out-of-bounds Write
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to disclose information and to execute arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Horner Automation's Cscape are affected:
+
+Cscape: v9.90 SP8
+Cscape EnvisionRV: v4.70
+
+3.2 Vulnerability Overview
+3.2.1 STACK-BASED BUFFER OVERFLOW CWE-121
+The affected application lacks proper validation of user-supplied data when parsing project files (e.g., CSP). This could lead to a stack-based buffer overflow. An attacker could leverage this vulnerability to execute arbitrary code in the context of the current process.
+CVE-2023-29503 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2 OUT-OF-BOUNDS READ CWE-125
+The affected application lacks proper validation of user-supplied data when parsing project files (e.g., CSP). This could lead to an out-of-bounds read in the FontManager. An attacker could leverage this vulnerability to execute arbitrary code in the context of the current process.
+CVE-2023-32281 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.3 OUT-OF-BOUNDS READ CWE-125
+The affected application lacks proper validation of user-supplied data when parsing project files (e.g., CSP). This could lead to an out-of-bounds read in IO_CFG. An attacker could leverage this vulnerability to execute arbitrary code in the context of the current process.
+CVE-2023-32289 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4 OUT-OF-BOUNDS READ CWE-125
+The affected application lacks proper validation of user-supplied data when parsing project files (e.g., CSP). This could lead to an out-of-bounds read in Cscape!CANPortMigration. An attacker could leverage this vulnerability to execute arbitrary code in the context of the current process.
+CVE-2023-32545 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.5 OUT-OF-BOUNDS READ CWE-125
+The affected application lacks proper validation of user-supplied data when parsing font files (e.g., FNT). This could lead to an out-of-bounds read. An attacker could leverage this vulnerability to potentially execute arbitrary code in the context of the current process.
+CVE-2023-27916 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.6 USE AFTER FREE CWE-416
+The affected application lacks proper validation of user-supplied data when parsing project files (e.g., CSP). This could lead to an out-of-bounds read in the FontManager. An attacker could leverage this vulnerability to execute arbitrary code in the context of the current process.
+CVE-2023-28653 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.7 ACCESS OF UNINITIALIZED POINTER CWE-824
+The affected product does not properly validate user-supplied data. If a user opens a maliciously formed CSP file, then an attacker could execute arbitrary code within the current process by accessing an uninitialized pointer.
+CVE-2023-31244 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.8 OUT-OF-BOUNDS WRITE CWE-787
+The affected application lacks proper validation of user-supplied data when parsing project files (e.g., HMI). This could lead to an out-of-bounds write at CScape_EnvisionRV+0x2e374b. An attacker could leverage this vulnerability to execute arbitrary code in the context of the current process.
+CVE-2023-32203 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.9 OUT-OF-BOUNDS WRITE CWE-787
+The affected application lacks proper validation of user-supplied data when parsing project files (e.g., HMI). This could lead to an out-of-bounds write at CScape_EnvisionRV+0x2e3c04. An attacker could leverage this vulnerability to potentially execute arbitrary code in the context of the current process.
+CVE-2023-32539 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.10 OUT-OF-BOUNDS READ CWE-125
+The affected application lacks proper validation of user-supplied data when parsing project files (e.g., HMI). This could lead to an out-of-bounds read. An attacker could leverage this vulnerability to potentially execute arbitrary code in the context of the current process.
+CVE-2023-31278 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Michael Heinzl reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Horner Automation recommends upgrading the following software:
+
+Cscape: Update to v9.90 SP9
+Cscape Envision RV: Update to v4.80
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+May 23, 2023: Initial Publication
+

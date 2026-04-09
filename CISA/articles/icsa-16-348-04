@@ -1,0 +1,52 @@
+
+OVERVIEW
+Mingzheng Li from Acorn Network Security Lab has identified an ActiveX vulnerability in Siemens’ SIMATIC WinCC and SIMATIC PCS 7. Siemens has produced a new version to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following versions of SIMATIC:
+
+SIMATIC WinCC: All versions prior to SIMATIC WinCC V7.2, and
+SIMATIC PCS 7: All versions prior to SIMATIC PCS 7 V8.0 SP1
+
+IMPACT
+Exploitation of this vulnerability may allow an attacker to crash the component or leak application memory content.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected products are: SIMATIC WinCC, a supervisory control and data acquisition (SCADA) system; and SIMATIC PCS7, a distributed control system (DCS) integrating SIMATIC WinCC. These products are deployed across several sectors including Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, https://cwe.mitre.org/data/definitions/119.html, web site last accessed December 13, 2016.
+
+An attacker could crash an ActiveX component or leak parts of the application memory if a user is tricked into clicking on a malicious link under certain conditions. An attacker must have control over a web site that is allowed to execute ActiveX components.
+CVE-2016-9160NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9160, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:L, web site last accessed December 13, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user is social engineered into clicking on a malicious link.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince the user to click on the malicious link.
+MITIGATION
+Siemens provides SIMATIC WinCC Version 7.2 and newer, and PCS7 Version 8.0 SP2 and newer, which fix the vulnerability. Users can obtain these newer versions by contacting the local Siemens representative or customer support at:
+https://w3.siemens.com/aspa_app/
+Until users can upgrade to the new versions, Siemens recommends the following mitigations to reduce the risk:
+
+Only allow execution of ActiveX components on trusted sites.
+Apply defense-in-depth concepts.
+
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-693129 at the following location:
+http://www.siemens.com/cert/en/cert-security-advisories.htm
+Siemens advises configuring the environment according to Siemens operational guidelines in order to run the devices in a protected IT environment.
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

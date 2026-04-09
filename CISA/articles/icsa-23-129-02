@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8 
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Hitachi Energy 
+Equipment: Modular Switchgear Monitoring (MSM) 
+Vulnerabilities: Improper Restriction of Excessive Authentication Attempts, Authentication Bypass by Capture-replay, Code Injection, Improper Restriction of Operations within the Bounds of a Memory Buffer, NULL Pointer Dereference, Insufficient Entropy 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain user access credentials of the MSM web interface or cause a denial-of-service condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Hitachi Energy products are affected: 
+
+
+MSM: 2.2.5 and earlier 
+
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307 
+The code that performs password matching when using 'basic' HTTP authentication does not use a constant-time memcmp and has no rate-limiting. An unauthenticated network attacker could brute-force the HTTP basic password byte-by-byte, by recording the webserver's response time until the unauthorized (401) response. 
+CVE-2021-43298 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294 
+The HTTP digest authentication in the GoAhead web server before 5.1.2 does not completely protect against replay attacks. An unauthenticated remote attacker could bypass authentication via capture-replay if TLS is not used to protect the underlying communication channel. 
+CVE-2020-15688 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.3 IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94 
+An issue was discovered in Embedthis GoAhead 2.5.0. Certain pages (ex: goform/login and config/log_off_page.htm) create links containing a hostname obtained from an arbitrary HTTP host header sent by an attacker. This could potentially be used in a phishing attack. 
+CVE-2019-16645 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N). 
+3.2.4 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+In http.c in Embedthis GoAhead before 4.1.1 and 5.x before 5.0.1, a header parsing vulnerability causes a memory assertion, out-of-bounds memory reference, and a potential denial-of-service condition, as demonstrated by a single colon on a line. 
+CVE-2019-12822 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.5 NULL POINTER DEREFERENCE CWE-476 
+An issue was discovered in Embedthis GoAhead before 4.0.1 and Appweb before 7.0.2. The server mishandles HTTP request fields associated with time, which results in a NULL pointer dereference, as demonstrated by If-Modified-Since or If-Unmodified-Since with a month greater than 11. 
+CVE-2018-15504 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.6 NULL POINTER DEREFERENCE CWE-476 
+An issue was discovered in Embedthis GoAhead before 4.0.1 and Appweb before 7.0.2. An HTTP POST request with a specially crafted "host" header field may cause a NULL pointer dereference resulting in a denial-of-service condition, as demonstrated by the lack of a trailing ']' character in an IPv6 address. 
+CVE-2018-15505 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.7 INSUFFICIENT ENTROPY CWE-331 
+Websda.c in GoAhead WebServer 2.1.8 has insufficient nonce entropy due to the nonce calculation relying on the hardcoded onceuponatimeinparadise value, which does not follow the secret-data guideline for HTTP digest access authentication in RFC 7616 section 3.3 (or RFC 2617 section 3.2.1).  
+Note: 2.1.8 is a version from 2003; however, the affected websda.c code appears in derivative works that may be used in 2021. Recent GoAhead software is unaffected. 
+CVE-2021-41615 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.8 INSUFFICIENT ENTROPY CWE-331 
+An allocation of resources without limits or throttling vulnerability exists in curl <v7.88.0 based on the "chained" HTTP compression algorithms; a server response can be compressed multiple times and potentially with different algorithms. The number of acceptable "links" in this "decompression chain" was capped, but the cap was implemented on a per-header basis, allowing a malicious server to insert a virtually unlimited number of compression steps by using many headers.  
+The use of such a decompression chain could result in a "malloc bomb", making curl spend enormous amounts of allocated heap memory, or try to, and return out of memory errors. 
+CVE-2023-23916 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+MSM is not intrinsically designed nor intended to be directly connected to the internet. Users should disconnect the device from any internet-facing network.  
+Hitachi Energy suggests adopting user access management and antivirus protection software equipped with the latest signature rules on hosts with the Manufacturing Message Specification (MMS) Client application installed. Users can implement the operating system user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands at the operating system level via MMS client application. 
+Also, Hitachi Energy recommends following the hardening guidelines published by “The Center for Internet Security (CIS)” to protect the host operating system of machines connecting with MSM. These guidelines help prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers include: 
+
+CIS Microsoft Windows Desktop Benchmarks (cisecurity.org) 
+CIS Microsoft Windows Server Benchmarks (cisecurity.org) 
+
+According to Hitachi Energy, users should follow recommended security practices and firewall configurations to help protect a network from outside attacks, including: 
+
+Physically protecting systems from direct access by unauthorized personnel. 
+Ensuring monitoring systems have no direct connections to the internet. 
+Separating monitoring system networks from other networks using a firewall system with a minimal number of ports exposed 
+
+Hitachi advises that monitoring systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for malware prior to connection to monitoring systems. 
+For more information, see Hitachi Energy advisory 8DBD000154. 
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. 
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies. 
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents. 
+No known public exploits specifically target these vulnerabilities. 

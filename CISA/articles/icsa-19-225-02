@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.5
+ATTENTION: Exploitable remotely
+Vendor: OSIsoft LLC
+Equipment: OSIsoft PI Web API
+Vulnerabilities: Inclusion of Sensitive Information in Log Files, Protection Mechanism Failure
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow direct attacks against the product and disclose sensitive information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of OSIsoft PI Web API, a RESTful service access layer, are affected:
+
+PI Web API 2018 and prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INCLUSION OF SENSITIVE INFORMATION IN LOG FILES CWE-532
+Successful exploitation of this vulnerability may allow disclosure of sensitive information.
+CVE-2019-13515 has been assigned to this vulnerability. A CVSS v3 base score of 8.5 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.2    PROTECTION MECHANISM FAILURE CWE-693
+The affected product is vulnerable to a direct attack due to a cross-site request forgery protection setting that has not taken effect.
+CVE-2019-13516 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Government Facilities, Healthcare and Public Health, Information Technology, Metals and Mining, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+OSIsoft reported these vulnerabilities to CISA.
+4. MITIGATIONS
+OSIsoft recommends users upgrade to PI Web API 2018 SP1 or later to resolve these issues. To download PI Web API 2018 SP1, please access the OSIsoft customer portal (login required).
+To avoid exposing sensitive information in the PI Web API Application Debug log, ensure that the Debug log is disabled on the Windows machine running PI Web API. Follow these steps to disable the Debug log:
+1.    Open Command Prompt and run the command eventvwr.msc.
+2.    Navigate to View > Show Analytic and Debug Logs.
+3.    Under Applications and Services Logs, find the PIWebAPI folder.
+4.    Right click on the log entitled Debug, and click Disable Log.
+Also be sure to clear existing entries in the Debug log.
+Assuming the log is Disabled but contains Events (e.g., after a troubleshooting session), enable the log and then disable it immediately.
+If the log is already enabled, disable it, enable it, and finally disable it again to wipe out the contents.
+The CSRF defense is enabled by default in new installations of PI Web API. OSIsoft recommends leaving the EnableCSRFDefense configuration setting unchanged so that the CSRF defense is always in effect. If it is necessary to toggle this setting, OSIsoft recommends restarting the PI Web API service after changing the state.
+For more information on these vulnerabilities, please refer to OSIsoft’s Security Bulletin:
+PI Web API Multiple security vulnerabilities resolved
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. High skill level is needed to exploit.

@@ -1,0 +1,69 @@
+
+1. EXECUTIVE SUMMARY
+--------- Begin Update A Part 1 of 6 --------- 
+
+CVSS v3 9.8
+
+--------- End Update A Part 1 of 6 --------- 
+
+ATTENTION: Exploitable remotely/low attack complexity/public exploits are available 
+Vendor: AVEVA 
+
+--------- Begin Update A Part 2 of 6 --------- 
+
+Equipment: InTouch Access Anywhere, Plant SCADA Access Anywhere 
+Vulnerability: Relative Path Traversal, Classic Buffer Overflow, Cross-site Scripting  
+
+--------- End Update A Part 2 of 6 --------- 
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-342-02 AVEVA InTouch Access Anywhere, published December 8, 2022 on the ICS webpage at cisa.gov/topics/industrial-control-systems. 
+3. RISK EVALUATION
+--------- Begin Update A Part 3 of 6 --------- 
+Successful exploitation of these vulnerabilities could allow an unauthenticated user to read files on the system, execute arbitrary code, or create a denial-of-service condition. 
+--------- End Update A Part 3 of 6 --------- 
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 4 of 6 --------- 
+The following versions of AVEVA InTouch Access Anywhere and Plant SCADA Access Anywhere—both remote human machine interface (HMI) software—are affected: 
+
+InTouch Access Anywhere: 2023 and prior 
+Plant SCADA Access Anywhere: 2020 R2 and prior
+
+--------- End Update A Part 4 of 6 --------- 
+4.2 VULNERABILITY OVERVIEW
+4.2.1 RELATIVE PATH TRAVERSAL CWE-23
+AVEVA InTouch Access Anywhere versions 2020 R2 and older are vulnerable to a path traversal exploit that could allow an unauthenticated user with network access to read files on the system outside of the secure gateway web server. 
+CVE-2022-23854 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+--------- Begin Update A Part 5 of 6 --------- 
+4.2.2 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120 
+AVEVA InTouch Access Anywhere versions 2023 and prior and Plant SCADA Access Anywhere versions 2020 R2 and prior use outdated OpenSSL versions that are vulnerable to a classic buffer overflow, which could allow an attacker to create denial-of-service conditions or execute arbitrary code. 
+CVE-2021-3711 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+4.2.3 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79 
+AVEVA InTouch Access Anywhere versions 2023 and prior and Plant SCADA Access Anywhere versions 2020 R2 and prior use versions of jQuery vulnerable to cross-site scripting. Passing HTML from untrusted sources—even after sanitizing it—to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code in jQuery versions greater than or equal to 1.2 and before 3.5.0. 
+CVE-2020-11022 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N). 
+--------- End Update A Part 5 of 6 --------- 
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: United Kingdom 
+
+4.4 RESEARCHER
+Jens Regel of CRISEC reported this vulnerability to AVEVA. 
+5. MITIGATIONS
+--------- Begin Update A Part 6 of 6 --------- 
+AVEVA recommends users uninstall their old software and reinstall the following versions:  
+InTouch Access Anywhere 2023b or later. 
+Plant SCADA Access Anywhere 2023 or later. 
+Hotfixes for these vulnerabilities on older software versions are not available. 
+For additional information, please refer to AVEVA’s security advisory AVEVA-2023-001. 
+--------- End Update A Part 6 of 6 --------- 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.

@@ -1,0 +1,165 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: OSIsoft
+Equipment: PI System
+Vulnerabilities: Uncontrolled Search Path Element, Improper Verification of Cryptographic Signature, Incorrect Default Permissions, Uncaught Exception, Null Pointer Dereference, Improper Input Validation, Cross-site Scripting, Insertion of Sensitive Information into Log File
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-133-02 OSIsoft PI System that was published May 12, 2020, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to access unauthorized information, delete or modify local processes, and crash the affected device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of PI System are affected:
+CVE-2020-10610, CVE-2020-10608, CVE-2020-10606:
+
+Applications using PI Asset Framework (AF) Client versions prior to and including PI AF Client 2018 SP3 Patch 1, Version 2.10.7.283
+Applications using PI Software Development Kit (SDK) versions prior to and including PI SDK 2018 SP1, Version 1.4.7.602
+PI API for Windows Integrated Security versions prior to and including 2.0.2.5,
+PI API versions prior to and including 1.6.8.26
+PI Buffer Subsystem versions prior to and including 4.8.0.18
+PI Connector for BACnet, versions prior to and including 1.2.0.6
+PI Connector for CygNet, versions prior to and including 1.4.0.17
+PI Connector for DC Systems RTscada, versions prior to and including 1.2.0.42
+PI Connector for Ethernet/IP, versions prior to and including 1.1.0.10
+PI Connector for HART-IP, versions prior to and including 1.3.0.1
+PI Connector for Ping, versions prior to and including 1.0.0.54
+PI Connector for Wonderware Historian, versions prior to and including 1.5.0.88
+PI Connector Relay, versions prior to and including 2.5.19.0
+PI Data Archive versions prior to and including PI Data Archive 2018 SP3, Version 3.4.430.460
+PI Data Collection Manager, versions prior to and including 2.5.19.0
+PI Integrator for Business Analytics versions prior to and including 2018 R2 SP1, Version 2.2.0.183
+PI Interface Configuration Utility (ICU) versions prior to and including 1.5.0.7
+PI to OCS versions prior to and including 1.1.36.0
+
+--------- Begin Update A Part 1 of 2 ---------
+
+PI Connector for IEC 60870-5-104, versions prior to and including 1.2.2.79
+PI Connector for OPC-UA, versions prior to and including 1.3.0.130
+PI Connector for Siemens Simatic PCS 7, versions prior to and including 1.2.1.71
+PI Connector for UFL, versions prior to and including 1.3.1.135
+
+--------- End Update A Part 1 of 2 ---------
+CVE-2020-10604, CVE-2020-10602: 
+
+PI Data Archive 2018 and 2018 SP2 only
+
+CVE-2020-10600: 
+
+PI Data Archive 2018 SP2 and prior versions
+
+CVE-2019-10768:
+
+PI Vision 2019 and prior
+PI Manual Logger 2017 R2 Patch 1 and prior
+RtReports Version 4.1 and prior
+
+CVE-2020-10600, CVE-2020-10614, CVE-2019-18244: 
+
+PI Vision 2019 and prior versions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+A local attacker can modify a search path and plant a binary to exploit the affected PI System software to take control of the local computer at Windows system privilege level, resulting in unauthorized information disclosure, deletion, or modification.
+CVE-2020-10610 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    IMPROPER VERIFICATION OF CRYPTOGRAPHIC SIGNATURE CWE-347
+A local attacker can plant a binary and bypass a code integrity check for loading PI System libraries. This exploitation can target another local user of PI System software on the computer to escalate privilege and result in unauthorized information disclosure, deletion, or modification.
+CVE-2020-10608 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    INCORRECT DEFAULT PERMISSIONS CWE-276
+A local attacker can exploit incorrect permissions set by affected PI System software. This exploitation can result in unauthorized information disclosure, deletion, or modification if the local computer also processes PI System data from other users, such as from a shared workstation or terminal server deployment.
+CVE-2020-10606 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    UNCAUGHT EXCEPTION CWE-248
+A remote, unauthenticated attacker could crash PI Network Manager service through specially crafted requests. This can result in blocking connections and queries to PI Data Archive.
+CVE-2020-10604 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.5    NULL POINTER DEREFERENCE CWE-476
+An authenticated remote attacker could crash PI Network Manager due to a race condition. This can result in blocking connections and queries to PI Data Archive.
+CVE-2020-10602 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+4.2.6    NULL POINTER DEREFERENCE CWE-476
+An authenticated remote attacker could crash PI Archive Subsystem when the subsystem is working under memory pressure. This can result in blocking queries to PI Data Archive.
+CVE-2020-10600 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:H).
+4.2.7    IMPROPER INPUT VALIDATION CWE-20
+An authenticated remote attacker could add or modify internal object properties, resulting in undefined behavior.
+CVE-2019-10768 and CVE-2019-11358 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.8    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+An authenticated remote attacker could use specially crafted URLs to send a victim using PI Vision mobile to a vulnerable webpage due to a known issue in a third-party component.
+CVE-2020-10643 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+4.2.9    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+An authenticated remote attacker with write access to PI Vision databases could inject code into a display. Unauthorized information disclosure, deletion, or modification is possible if a victim views the infected display.
+CVE-2020-10614 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:L/A:H).
+4.2.10    INSERTION OF SENSITIVE INFORMATION INTO LOG FILE CWE-532
+A local attacker could view sensitive information in log files when service accounts are customized during installation or upgrade of PI Vision. The update fixes a previously reported issue.
+CVE-2019-18244 has been assigned to this vulnerability. A CVSS v3 base score of 5.1 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+William Knowles, Senior Security Consultant at Applied Risk, working with OSIsoft, reported vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 --------- 
+OSIsoft provides the following security updates to mitigate the reported vulnerabilities:
+OSIsoft reports further action should be taken after applying the security updates. Remove PI Asset Framework (AF) Client .NET 3.5 after verifying OSIsoft products that include the PI AF Client, such as PI ProcessBook, PI DataLink and other PI System desktop applications have been upgraded to 2015 (as well as later versions) in order to eliminate exposure to CVE-2020-10608. 
+For PI System servers and interface nodes that are normally unattended, limit console and remote desktop logon access to authorized administrators.
+Individual updates for core PI System components are available. Additionally, the following OSIsoft product installation kits have been re-released to automatically deliver the updated components:  
+Client
+
+PI DataLink
+PI OLEDB Enterprise
+PI OLEDB Provider
+PI ProcessBook
+PI System Management Tools
+
+Server
+
+PB Migration Utility
+PI Event Frames Generator
+PI Interface Configuration Utility
+PI OPC DA Server
+PI Vision
+PI to OCS
+RtReports 
+
+Connectors
+
+PI Connector for BACnet
+PI Connector for DC Systems Rtscada
+PI Connector for Ethernet IP       
+PI Connector for IEC 60870-5-104
+PI Connector for OPC UA
+PI Connector for Ping
+PI Connector for SIMATIC PCS 7
+PI Connector for Wonderware Historian
+
+OSIsoft reports not all products have been rebundled to include the affected update. 
+Contact OSIsoft support for guidance on products missing that use affected components that are missing from the currently available releases.
+--------- End Update A Part 2 of 2 ---------
+CVE-2020-10610—Manage permissions on HKLM\Software\PISystem and HKLM\WOW6432Node\Software\PISystem registry keys to block a high impact exploit path. See OSIsoft customer portal knowledge article PI System Registry Security Recommendations for details on setting registry permissions.
+CVE-2019-18244—Provision and use domain Group Managed Service Accounts or use the default NetworkService account to run PI Vision AppPools. There is no exposure to this vulnerability when using either of these account types. To limit exposure in case standard domain account is used to run PI Vision AppPools, remove the password entry from the setup log files immediately.
+OSIsoft reports the following measures can be used to lower likelihood of exploitation:
+CVE-2020-10610, CVE-2020-10608, CVE-2020-10606—Migrate standard users to PI Vision and browser-based access to PI System data.
+CVE-2020-10608—Restrict network connections from PI client workstations to trusted AF servers (TCP Port 5457).
+CVE-2020-10606—Disable unused PI Buffering services from PI client workstations (PI Buffer Subsystem, PI Buffer Server).
+CVE-2019-10768, CVE-2020-10600, CVE-2020-10614—Limit write access to PI Vision displays to trusted users.
+The following measures can be used to lower the potential impact of exploitation:
+CVE-2020-10610 and CVE-2020-10608—Deploy application whitelisting solutions with enforcement for approved DLLs:
+
+Windows AppLocker
+Windows Defender Application Control
+CVE-2020-10610 and CVE-2020-10608—Monitor HKLM\Software\PISystem and HKLM\WOW6432Node\Software\PISystem registry keys as well as ProgramData\PISystem folder for unauthorized changes.
+See OSIsoft customer portal knowledge article Monitoring PISystem Registry.
+
+For a list of PI System firewall port requirements, see knowledge base article KB01162 - Firewall Port Requirements.
+CVE-2020-10604, CVE-2020-10602, CVE-2020-10600—Fully configure Windows authentication for the PI System and disable legacy authentication methods. For a starting point on PI System security best practices, see knowledge base article KB00833 - Seven best practices for securing your PI Server.
+For more information and workaround details for these vulnerabilities, please refer to OSIsoft’s Security Bulletin (registration required): OSIsoft Updates PI System and Common Components.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

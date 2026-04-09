@@ -1,0 +1,64 @@
+
+
+Description
+
+This Alert contains a public report of a Remote Code Execution vulnerability affecting robot motion servers written in OEM exclusive programming languages running on the robot controller.
+1    EXECUTIVE SUMMARY
+CISA is aware of a public report of a vulnerability affecting robot motion servers. The motion servers are programs written in OEM exclusive programming languages and run on the robot controller. Motion servers enable receiving target values and optionally sending actual values. According to the public report, which was coordinated with CISA prior to its release, researchers Federico Maggi and Marco Balduzzi of Trend Micro, Marcello Pogliani and Stefano Zanero of POLIMI, and Davide Quarta of POLIMI, EURECOM, identified this vulnerability in the motion servers that allows an adjacent attacker to execute arbitrary code.
+This vulnerability in motion servers is not limited to any one vendor but exist in many OEM robots, both open- and closed-source. CISA is issuing this alert to provide early notice of the report and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+The report included vulnerability details for the following vulnerability:
+
+
+
+
+Vulnerability Type
+
+
+Exploitable
+			Remotely
+
+
+Impact
+
+
+
+
+
+
+Insufficient Verification of Data Authenticity
+
+
+No
+
+
+Remote Code Execution
+
+
+
+
+Please report any issues affecting control systems in critical infrastructure environments to CISA.
+Industrial robots are used widely throughout the Critical Manufacturing and Healthcare and Public Health sectors. The impact and exploitability of the identified problem is dependent on the implementation and controls. 
+Successful exploitation of this vulnerability in automation task programs or abuse of such powerful programming features may allow an attacker with network access and extensive knowledge of industrial robotics to exfiltrate data from, partially control the movements of, or disrupt the availability of arbitrary functions of the targeted device.
+
+Mitigations
+
+2    MITIGATIONS
+Trend Micro recommends the following short-to-medium term mitigations as follows:
+
+Network Segmentation: use proper network-protection devices to isolate industrial robots that need to process data coming from other networks, possibly with a physical cable, to make spoofing only possible to an attacker who is physically onsite.
+Secure Programming: in addition to adopting secure network architectures, system integrators should promote secure programming guidelines among their control-process engineers and programmers, to minimize the attack surface exposed by automation code.
+Automation Code Management: knowing and keeping track of the automation code produced by a system integrator and running in a factory is a fundamental prerequisite to find, manage, and resolve vulnerabilities and other security issues that may arise.
+
+ROS-I Consortium, an authority in industrial robotics, suggests the following mitigations:
+To minimize the risk of this potential attack vector on the interface between the ROS PC and the robot controller, the network needs to be set up correctly. The connection between the ROS PC and the robot controller needs to be isolated from other networks that might be connected to the ROS PC.
+If users isolate the connection between the ROS PC and the robot controller, but connect the ROS PC to a network with potentially malicious participants on another network card, industry experts strongly recommend following the instructions on http://wiki.ros.org/Security. If users use Ubuntu, they are encouraged to follow the instructions provided by Canonical to ensure their ROS PC is protected. More information can be found on ROS-I Consortium’s web blog.
+CISA recommends users: 
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.

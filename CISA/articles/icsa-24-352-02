@@ -1,0 +1,54 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: TropOS Devices Series 1400/2400/6400
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Hitachi Energy are affected:
+
+TropOS devices series 1400/2400/6400: All versions prior to 8.9.6
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER INPUT VALIDATION CWE-20
+The monlist feature in ntp_request.c in ntpd in NTP before 4.2.7p26 allows remote attackers to cause a denial of service (traffic amplification) via forged (1) REQ_MON_GETLIST or (2) REQ_MON_GETLIST_1 requests, as exploited in the wild in December 2013.
+CVE-2013-5211 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy PSIRT reported this vulnerability to CISA.
+4. MITIGATIONS
+Hitachi Energy has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Update to Version 8.9.6 or later when available
+Hitachi Energy recommends users implement countermeasures for DoS with proper firewall rule sets and filters, as well as to apply mitigation as described in the Mitigation Factors/WorkaroundsSection.
+
+Hitachi Energy recommends users follow recommended security practices and firewall configurations, which can help protect a process control network from attacks that originate from outside the network. Such practices include that process control systems are physically protected from direct access by unauthorized personnel, have no direct connections to the Internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed, and others that have to be evaluated case by case. Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails. Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+For more information, see Hitachi Energy Cybersecurity Advisory "DoS Vulnerability in Hitachi Energy's TropOS core routers and edge nodes."
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+December 17, 2024: Initial Publication
+

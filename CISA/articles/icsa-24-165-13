@@ -1,0 +1,88 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.7
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SINEC Traffic Analyzer
+Vulnerabilities: Out-of-bounds Write, Insufficient Session Expiration, Cross-Site Request Forgery (CSRF), Insufficiently Protected Credentials, Exposed Dangerous Method or Function, Cleartext Transmission of Sensitive Information, Sensitive Cookie in HTTPS Session Without 'Secure' Attribute, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to cause a denial-of-service condition, disclose sensitive information, or modify files.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens, are affected:
+
+SINEC Traffic Analyzer (6GK8822-1BG01-0BA0): Versions prior to V1.2
+
+3.2 Vulnerability Overview
+3.2.1 OUT-OF-BOUNDS WRITE CWE-787
+NGINX Open Source before versions 1.23.2 and 1.22.1, NGINX Open Source Subscription before versions R2 P1 and R1 P1, and NGINX Plus before versions R27 P1 and R26 P1 have a vulnerability in the module ngx_http_mp4_module that might allow a local attacker to cause a worker process crash, or might result in worker process memory disclosure by using a specially crafted audio or video file. The issue affects only NGINX products that are built with the module ngx_http_mp4_module, when the mp4 directive is used in the configuration file. Further, the attack is possible only if an attacker can trigger processing of a specially crafted audio or video file with the module ngx_http_mp4_module.
+CVE-2022-41742 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H).
+3.2.2 INSUFFICIENT SESSION EXPIRATION CWE-613
+The affected application does not expire the session. This could allow an attacker to get unauthorized access.
+CVE-2024-35206 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-35206. A base score of 8.6 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N)
+3.2.3 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+The web interface of the affected devices are vulnerable to Cross-Site Request Forgery (CSRF) attacks. By tricking an authenticated victim user to click a malicious link, an attacker could perform arbitrary actions on the device on behalf of the victim user.
+CVE-2024-35207 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-35207. A base score of 8.5 has been calculated; the CVSS vector string is (CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N)
+3.2.4 INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The affected web server stored the password in cleartext. This could allow attacker in a privileged position to obtain access passwords.
+CVE-2024-35208 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L).
+A CVSS v4 score has also been calculated for CVE-2024-35208. A base score of 4.8 has been calculated; the CVSS vector string is (CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L)
+3.2.5 EXPOSED DANGEROUS METHOD OR FUNCTION CWE-749
+The affected web server is allowing HTTP methods like PUT and DELETE. This could allow an attacker to modify unauthorized files.
+CVE-2024-35209 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-35209. A base score of 8.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N)
+3.2.6 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The affected web server is not enforcing HSTS. This could allow an attacker to perform downgrade attacks exposing confidential information.
+CVE-2024-35210 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-35210. A base score of 6.9 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N)
+3.2.7 SENSITIVE COOKIE IN HTTPS SESSION WITHOUT 'SECURE' ATTRIBUTE CWE-614
+The affected web server, after a successful login, sets the session cookie on the browser, without applying any security attributes (such as "Secure", "HttpOnly", or "SameSite").
+CVE-2024-35211 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-35211. A base score of 7.1 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N)
+3.2.8 IMPROPER INPUT VALIDATION CWE-20
+The affected application lacks input validation due to which an attacker can gain access to the Database entries.
+CVE-2024-35212 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-35212. A base score of 7.1 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N)
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+SINEC Traffic Analyzer (6GK8822-1BG01-0BA0): Update to V1.2 or later version
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-196737 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+June 13, 2024: Initial Publication
+

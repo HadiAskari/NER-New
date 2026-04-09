@@ -1,0 +1,120 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely
+Vendor: Schneider Electric
+Equipment: EcoStruxure Control Expert, EcoStruxure Process Expert and Modicon M340, M580 and M580 Safety PLCs
+Vulnerabilities: Improper Enforcement of Message Integrity During Transmission in a Communication Channel, Use of Hard-coded Credentials, Insufficiently Protected Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a denial of service, a loss of confidentiality, and threaten the integrity of controllers.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Schneider Electric products are affected:
+
+Modicon M340 CPU (part numbers BMXP34*): Versions prior to sv3.60 (CVE-2023-6408)
+Modicon M580 CPU (part numbers BMEP* and BMEH* excluding M580 CPU Safety): Versions prior to SV4.20 (CVE-2023-6408)
+Modicon M580 CPU Safety: Versions prior to SV4.21 (CVE-2023-6408)
+EcoStruxure Control Expert: Versions prior to v16.0
+EcoStruxure Process Expert: Versions prior to v2023
+Modicon MC80 (part numbers BMKC80): All versions (CVE-2023-6408)
+Modicon Momentum Unity M1E Processor (171CBU*): All versions (CVE-2023-6408)
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER ENFORCEMENT OF MESSAGE INTEGRITY DURING TRANSMISSION IN A COMMUNICATION CHANNEL CWE-924
+An improper enforcement of message integrity during transmission in a communication channel vulnerability exists that could cause a denial of service, a loss of confidentiality, and threaten the integrity of controllers through a man-in-the-middle attack.
+CVE-2023-6408 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 USE OF HARD-CODED CREDENTIALS CWE-798
+A use of hard-coded credentials vulnerability exists that could cause unauthorized access to a project file protected with application password when opening the file with EcoStruxure Control Expert.
+CVE-2023-6409 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.3 INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+An insufficiently protected credentials vulnerability exists that could cause unauthorized access to the project file in EcoStruxure Control Expert when a local user tampers with the memory of the engineering workstation.
+CVE-2023-27975 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Gao Jian, Jianshuang Ding, and Kaikai Yang reported these vulnerabilities to Schneider Electric.
+4. MITIGATIONS
+Schneider Electric has identified the following remediations and mitigations users can apply to reduce risk:
+Modicon M340 CPU (part numbers BMXP34*):
+
+Firmware Version SV3.60 includes a fix for this vulnerability and is available for download.
+Set up an application password in the project properties.
+Set up network segmentation and implement a firewall to block all unauthorized access to Port 502/TCP.
+Configure the access control list following the recommendations of the user manuals: "Modicon M340 for Ethernet Communications Modules and Processors User Manual" in chapter "Messaging Configuration Parameters":
+Set up a secure communication according to the following guideline "Modicon Controllers Platform Cyber Security Reference Manual," in chapter "Set up secured communications":
+Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections for M340 & M580 architectures. For more details refer to the chapter "How to protect M580 and M340 architectures with EAGLE40 using VPN"
+Ensure the M340 CPU is running with the memory protection activated by configuring the input bit to a physical input, for more details refer to the following guideline "Modicon Controllers Platform Cyber Security Reference Manual", "CPU Memory Protection section".
+
+Modicon M580 CPU (part numbers BMEP* and BMEH* excluding M580 CPU Safety):
+
+Firmware Versions SV4.20 includes a fix for this vulnerability and is available for download.
+Set up an application password in the project properties
+Setup network segmentation and implement a firewall to block all unauthorized access to Port 502/TCP.
+Configure the access control list following the recommendations of the user manuals: "Modicon M580, Hardware, Reference Manual".
+Set up a secure communication according to the following guideline "Modicon Controllers Platform Cyber Security Reference Manual," in chapter "Set up secured communications":
+Use a BMENOC module and follow the instructions to configure IPSEC feature as described in the guideline "Modicon M580 - BMENOC03.1 Ethernet Communications Schneider Electric Security Notification Module, Installation and Configuration Guide" in the chapter "Configuring IPSEC communications":
+Use a BMENUA0100 module and follow the instructions to configure IPSEC feature as described in the chapter "Configuring the BMENUA0100 Cybersecurity Settings".
+Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections for M340 & M580 architectures. For more details refer to the chapter "How to protect M580 and M340 architectures with EAGLE40 using VPN".
+Ensure the M580 CPU is running with the memory protection activated by configuring the input bit to a physical input, for more details refer to the following guideline "Modicon Controllers Platform Cyber Security Reference Manual", "CPU Memory Protection section".
+The CPU memory protection cannot be configured with M580 Hot Standby CPUs. In such cases, use IPsec encrypted communication .
+
+Modicon M580 CPU Safety (part numbers BMEP58S and BMEH58S):
+
+Firmware SV4.21 includes a fix for CVE-2023-6408 and is available for download. Important: users needs to use version of EcoStruxure Control Expert v16.0 HF001 minimum to connect with the latest version of M580 CPU Safety.
+If users choose not to apply the remediation, they are encouraged to immediately apply the following mitigations to reduce the risk of exploit:
+Set up an application password in the project properties.
+Setup network segmentation and implement a firewall to block all unauthorized access to Port 502/TCP.
+Configure the Access Control List following the recommendations of "Modicon M580, Hardware, Reference Manual"
+Set up a secure communication according to the following guideline "Modicon Controllers Platform Cyber Security Reference Manual," in chapter "Set up secured communications".
+Use a BMENOC module and follow the instructions to configure IPSEC feature as described in the guideline "Modicon M580 - BMENOC03.1 Ethernet Communications Schneider Electric Security Notification Module, Installation and Configuration Guide" in the chapter "Configuring IPSEC communications": https://www.se.com/ww/en/download/document/HRB62665/
+Use a BMENUA0100 module and follow the instructions to configure IPSEC feature as described in the chapter "Configuring the BMENUA0100 Cybersecurity Settings"
+Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections for M340 & M580 architectures. For more details refer to the chapter "How to protect M580 and M340 architectures with EAGLE40 using VPN"
+Ensure the M580 CPU is running with the memory protection activated by configuring the input bit to a physical input, for more details refer to the following guideline "Modicon Controllers Platform Cyber Security Reference Manual", "CPU Memory Protection section"
+NOTE: The CPU memory protection cannot be configured with M580 Hot Standby CPUs. In such cases, use IPsec encrypted communication.
+To further reduce the attack surface on Modicon M580 CPU Safety: Ensure the CPU is running in Safety mode and maintenance input is configured to maintain this Safety mode during operation – refer to the document Modicon M580 - Safety System Planning Guide - in the chapter "Operating Mode Transitions".
+Schneider Electric is establishing a remediation plan for all future versions of EcoStruxure Process Expert that will include a fix for CVE-2023-6409 and CVE-2023-27975. They will update SEVD-2024-317-04 when the remediation is available. Until then, users should immediately apply the above mitigations to reduce the risk of exploit.
+
+Modicon MC80 (part numbers BMKC80):
+
+Set up an application password in the project properties.
+Set up network segmentation and implement a firewall to block all unauthorized access to Port 502/TCP.
+Configure the access control list following the recommendations of "Modicon MC80 Programmable Logic Controller (PLC) manual" in the chapter "Access Control List (ACL)" a secure communication according to "Modicon Controller Systems Cybersecurity, User Guide" in chapter "Set Up Encrypted Communication".
+(CVE-2023-6408) Schneider Electric Modicon Momentum Unity M1E Processor (171CBU*) All versions: Setup an application password in the project properties
+
+Setup network segmentation and implement a firewall to block all unauthorized access to Port 502/TCP
+Setup a secure communication according to the following guideline "Modicon Controller Systems Cybersecurity, User Guide" in chapter "Set Up Encrypted Communication":
+
+
+
+EcoStruxure Control Expert:
+
+Version 16.0 includes a fix for these vulnerabilities and is available for download. Reboot the computer after installation is completed.
+Enable encryption on application project and store application files in secure location with restricted access only for legitimate users.
+Schneider Electric recommends using McAfee Application and Change Control software for application control. Refer to the Cybersecurity Application Note.
+Follow workstation, network and site-hardening guidelines in the Recommended Cybersecurity Best Practices.
+
+EcoStruxure Process Expert:
+
+Version 15.3 HF008 includes the fix for these vulnerabilities and is available for download.
+EcoStruxure Process Expert manages application files within its database in secure way. Do not export & store them outside the application.
+Schneider Electric recommends using McAfee Application and Change Control software for application control. Refer to the Cybersecurity Application Note.
+Follow workstation, network and site-hardening guidelines in the Recommended Cybersecurity Best Practices.
+
+For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices and the associated Schneider Electric Security Notification SEVD-2024-044-01 in PDF and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities have a high attack complexity.
+5. UPDATE HISTORY
+
+November 26, 2024: Initial Publication
+

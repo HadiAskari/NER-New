@@ -1,0 +1,226 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SPPA-T3000
+Vulnerabilities: Improper Input Validation, Deserialization of Untrusted Data, Improper Authentication, Cleartext Transmission of Sensitive Information, Unrestricted Upload of File with Dangerous Type, Heap-based Buffer Overflow, Integer Overflow or Wraparound, Out-of-bounds Read, Improper Access Control, Stack-based Buffer Overflow, SFP Secondary Cluster: Missing Authentication, Information Exposure
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-351-02 Siemens SPPA-T3000 that was published December 17, 2019, to the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary code on the server, cause a denial-of-service condition, view and modify passwords, gain root privileges, access sensitive information, and read and write arbitrary files on the local system.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports the vulnerabilities affect the following SPPA-T3000 products:
+--------- Begin Update A Part 1 of 2 ---------
+
+Application Server: all versions prior to Service Pack R8.2 SP2
+
+--------- End Update A Part 1 of 2 ---------
+
+MS3000 Migration Server: All Versions
+
+4.2 VULNERABILITY OVERVIEW
+Note that an attacker must have network access to the Application Server, MS3000, or access to the Application Highway in order to exploit these vulnerabilities.
+4.2.1    IMPROPER INPUT VALIDATION CWE-20
+Specially crafted messages sent to the RPC service of the affected products could cause a denial-of-service condition on the remote and local communication functionality of the affected products. A reboot of the system is required to recover the remote and local communication functionality.
+CVE-2018-4832 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+The AdminService is available without authentication on the Application Server. An attacker can gain remote code execution by sending specially crafted objects to one of its functions.
+CVE-2019-18283 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    IMPROPER AUTHENTICATION CWE-287
+The AdminService is available without authentication on the Application Server. An attacker can use methods exposed via this interface to receive password hashes of other users and to change user passwords.
+CVE-2019-18284 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The RMI communication between the client and the Application Server is unencrypted. An attacker with access to the communication channel can read credentials of a valid user.
+CVE-2019-18285 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).
+4.2.5    IMPROPER AUTHENTICATION CWE-287
+The Application Server exposes directory listings and files containing sensitive information.
+CVE-2019-18286 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.6    IMPROPER AUTHENTICATION CWE-287
+The Application Server exposes directory listings and files containing sensitive information.
+CVE-2019-18287 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.7    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+An attacker with valid authentication at the RMI interface could gain remote code execution through an unsecured file upload.
+CVE-2019-18288 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.8    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18289, has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.9    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18290 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.10    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18291 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.11    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18292 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.12    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18293 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.13    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18294 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.14    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18295 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.15    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18296 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.16    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with local access to the MS3000 Server and low privileges could gain root privileges by sending specially crafted packets to a named pipe.
+CVE-2019-18297 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.17    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18298 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.18    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18299 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.19    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18300 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.20    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18301 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.21    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18302 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.22    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18303 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.23    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18304 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.24    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18305 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.25    OUT-OF-BOUNDS READ CWE-125
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18306 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.26    OUT-OF-BOUNDS READ CWE-125
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18307 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.27    IMPROPER ACCESS CONTROL CWE-284
+An attacker with local access to the MS3000 Server and a low privileged user account could gain root privileges by manipulating specific files in the local file system.
+CVE-2019-18308 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.28    IMPROPER ACCESS CONTROL CWE-284
+An attacker with local access to the MS3000 Server and a low privileged user account could gain root privileges by manipulating specific files in the local file system.
+CVE-2019-18309 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.29    STACK-BASED BUFFER OVERFLOW CWE-121
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 7061/TCP.
+CVE-2019-18310 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.30    SFP SECONDARY CLUSTER: MISSING AUTHENTICATION CWE-952
+An attacker with network access to the MS3000 Server could trigger a denial-of-service condition by sending specially crafted packets to Port 7061/TCP.
+CVE-2019-18311 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.31    IMPROPER AUTHENTICATION CWE-287
+An attacker with network access to the MS3000 Server could be able to enumerate running RPC services.
+CVE-2019-18312 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.32    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+An attacker with network access to the MS3000 Server could gain remote code execution by sending specially crafted objects to one of the RPC services.
+CVE-2019-18313 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.33    IMPROPER AUTHENTICATION CWE-287
+An attacker with network access to the Application Server could gain remote code execution by sending specially crafted objects via RMI.
+CVE-2019-18314 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.34    IMPROPER AUTHENTICATION CWE-287
+An attacker with network access to the Application Server could gain remote code execution by sending specially crafted packets to Port 8888/TCP.
+CVE-2019-18315 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.35    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+An attacker with network access to the Application Server could gain remote code execution by sending specially crafted packets to Port 1099/TCP.
+CVE-2019-18316 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.36    IMPROPER AUTHENTICATION CWE-287
+An attacker with network access to the Application Server could cause a denial-of-service condition by sending specially crafted objects via RMI.
+CVE-2019-18317 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.37    IMPROPER AUTHENTICATION CWE-287
+An attacker with network access to the Application Server could cause a denial-of-service condition by sending specially crafted objects via RMI.
+CVE-2019-18318 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.38    IMPROPER AUTHENTICATION CWE-287
+An attacker with network access to the Application Server could cause a denial-of-service condition by sending specially crafted objects via RMI.
+CVE-2019-18319 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.39    IMPROPER AUTHENTICATION CWE-287
+An attacker with network access to the Application Server could be able to upload arbitrary files without authentication.
+CVE-2019-18320 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.40    IMPROPER AUTHENTICATION CWE-287
+An attacker with network access to the MS3000 Server could be able to read and write arbitrary files on the local system by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18321 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.2.41    IMPROPER AUTHENTICATION CWE-287
+An attacker with network access to the MS3000 Server could be able to read and write arbitrary files on the local system by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18322 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.2.42    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could cause a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18323 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.43    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could cause a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18324 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.44    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could cause a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18325 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.45    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could cause a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18326 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.46    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could cause a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18327 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.47    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could cause a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18328 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.48    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could cause a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18329 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.49    HEAP-BASED BUFFER OVERFLOW CWE-122
+An attacker with network access to the MS3000 Server could cause a denial-of-service condition and gain remote code execution by sending specially crafted packets to Port 5010/TCP.
+CVE-2019-18330 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.50    INFORMATION EXPOSURE CWE-200
+An attacker with network access to the Application Server could gain access to path and filenames on the server by sending specially crafted packets to Port 1099/TCP.
+CVE-2019-18331 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.51    INFORMATION EXPOSURE CWE-200
+An attacker with network access to the Application Server could gain access to directory listings of the server by sending specially crafted packets to Port 80/TCP, 8095/TCP, or 8080/TCP.
+CVE-2019-18332 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.52    INFORMATION EXPOSURE CWE-200
+An attacker with network access to the Application Server could gain access to filenames on the server by sending specially crafted packets to Port 8090/TCP.
+CVE-2019-18333 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.53    INFORMATION EXPOSURE CWE-200
+An attacker with network access to the Application Server could be able to enumerate valid usernames by sending specially crafted packets to Port 8090/TCP.
+CVE-2019-18334 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.54    INFORMATION EXPOSURE CWE-200
+An attacker with network access to the Application Server could be able to gain access to logs and configuration files by sending specially crafted packets to Port 80/TCP.
+CVE-2019-18335 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Gleb Gritsai, Eugenie Potseluevskaya, Sergey Andreev, and Radu Motspan from Kaspersky Lab; Vyacheslav Moskvin, and Ivan B from Positive Technologies; and Can Demirel from Biznet Bilisim Sistemleri ve Danışmanlık reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 ---------
+Siemens recommends users upgrade SPPA-T3000 Application Server to SPPAT3000 Service Pack R8.2 SP2 to resolve vulnerabilities in the Application Server. Please contact a Siemens service management organization to obtain the update. For the Migration Server, Siemens recommends following the configuration recommendations for SPPAT3000 MS3000 in Siemens customer portal to mitigate these vulnerabilities.
+
+Implement mitigations described in the SPPA-T3000 security manual.
+Restrict access to the Application Highway using the SPPA-T3000 Firewall.
+External components should only be connected to the SPPA-T3000 DMZ; no bridging of external networks to either the Application or Automation highways is allowed.
+
+--------- End Update A Part 2 of 2 ---------
+
+Perform regular updates of the SPPA-T3000 (e.g., by using the Security Server if available).
+Implement mitigations provided in the customer information letter distributed via the customer service portal.
+Please contact a Siemens representative if you need help at securing SPPA-T3000 installation.
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for industrial security (download: https://www.siemens.com/cert/operational-guidelines-industrial-security) and follow the recommendations in the product manuals. Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information, please see Siemens Security Advisory SSA-451445.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Monitor or block access to 80/TCP, 8090/TCP, 8095/TCP, 8080/TCP, 1099/TCP, 5010/TCP, 8888/TCP, and 7061/TCP.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

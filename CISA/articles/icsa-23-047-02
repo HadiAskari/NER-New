@@ -1,0 +1,68 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Siemens 
+Equipment: SCALANCE X200 IRT Products 
+Vulnerability: Improper Input Validation 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow remote attackers to cause a denial-of-service condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected: 
+
+SCALANCE X200-4P IRT (6GK5200-4AH00-2BA3): All versions prior to V5.5.0 
+SCALANCE X201-3P IRT (6GK5201-3BH00-2BA3): All versions prior to V5.5.0 
+SCALANCE X201-3P IRT PRO (6GK5201-3JR00-2BA6): All versions prior to V5.5.0 
+SCALANCE X202-2IRT (6GK5202-2BB00-2BA3): All versions prior to V5.5.0 
+SCALANCE X202-2P IRT (6GK5202-2BH00-2BA3): All versions prior to V5.5.0 
+SCALANCE X202-2P IRT PRO (6GK5202-2JR00-2BA6): All versions prior to V5.5.0 
+SCALANCE X204IRT (6GK5204-0BA00-2BA3): All versions prior to V5.5.0 
+SCALANCE X204IRT PRO (6GK5204-0JA00-2BA6): All versions prior to V5.5.0 
+SCALANCE XF201-3P IRT (6GK5201-3BH00-2BD2): All versions prior to V5.5.0 
+SCALANCE XF202-2P IRT (6GK5202-2BH00-2BD2): All versions prior to V5.5.0 
+SCALANCE XF204-2BA IRT (6GK5204-2AA00-2BD2): All versions prior to V5.5.0 
+SCALANCE XF204IRT (6GK5204-0BA00-2BF2): All versions prior to V5.5.0 
+SIPLUS NET SCALANCE X202-2P IRT (6AG1202-2BH00-2BA3): All versions prior to V5.5.0 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER INPUT VALIDATION CWE-20 
+SCALANCE X200 IRT Products all versions prior to V5.5.0 use an SNMP agent (snmp_agent.c) in net-snmp before 5.4.1 that could allow remote attackers to cause a denial-of-service (CPU and memory consumption) via a GETBULK request with a large max-repeaters value. 
+CVE-2007-5846 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H) 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Munich, Germany 
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA. 
+4. MITIGATIONS
+Siemens recommends updating the software to v5.5.0 or later. 
+Siemens identified the following specific workaround and mitigation users can apply to reduce risk: 
+
+Disable the SNMP service if possible and supported by the product. 
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following the recommendations in the product manuals. Additional information on industrial security by Siemens can be found on the Siemens Industrial Security webpage. 
+For further inquiries on security vulnerabilities in Siemens products and solutions, users should contact the Siemens ProductCERT. 
+For more information, see the associated Siemens security advisory SSA-617755 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+No known public exploits specifically target this vulnerability. This vulnerability is exploitable remotely. This vulnerability has low attack complexity. 

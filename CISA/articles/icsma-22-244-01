@@ -1,0 +1,68 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.7
+ATTENTION: Low attack complexity
+Vendor: Contec Health
+Equipment: CMS8000 CONTEC ICU CCU Vital Signs Patient Monitor
+Vulnerabilities: Improper Physical Access Control, Allocation of Resources Without Limits or Throttling, Use of Hard-Coded Credentials, Active Debug Code, Unprotected Primary Channel
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a threat actor to cause a denial-of-service condition, modify firmware with physical access to the device, access a root shell, or employ hard-coded credentials to make configuration changes.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Contec Health products are affected:
+
+CMS8000 CONTEC ICU CCU Vital Signs Patient Monitor: Versions smart3250-2.6.27-wlan2.1.7.cramfs and prior
+CMS8000 CONTEC ICU CCU Vital Signs Patient Monitor: Versions CMS7.820.075.08/0.74(0.75) and prior
+CMS8000 CONTEC ICU CCU Vital Signs Patient Monitor: Versions CMS7.820.120.01/0.93(0.95) and prior
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER PHYSICAL ACCESS CONTROL CWE-1263
+A threat actor with momentary access to the device can plug a USB drive in and perform a malicious firmware update, resulting in permanent changes to device functionality. No authentication or controls are in place to prevent a threat actor from maliciously modifying firmware and performing a drive-by attack to load the firmware on any CMS8000 device.
+CVE-2022-36385 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2022-36385. A base score of 7.0 has been calculated; the CVSS vector string is (AV:P/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+The CMS800 device fails while attempting to parse malformed network data sent by a threat actor. A threat actor with network access can remotely issue a specially formatted UDP request that will cause the entire device to crash and require a physical reboot. A UDP broadcast request could be sent that causes a mass denial-of-service attack on all CME8000 devices connected to the same network.
+CVE-2022-38100 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2022-38100. A base score of 8.7 has been calculated; the CVSS vector string is (AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N).
+3.2.3 USE OF HARD-CODED CREDENTIALS CWE-798
+Multiple globally default credentials exist across all CMS8000 devices, that once exposed, allow a threat actor with momentary physical access to gain privileged access to any device. Privileged credential access enables the extraction of sensitive patient information or modification of device parameters.
+CVE-2022-38069 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.3 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+A CVSS v4 score has also been calculated for CVE-2022-38069. A base score of 2.4 has been calculated; the CVSS vector string is (AV:P/AC:L/AT:N/PR:H/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N).
+3.2.4 ACTIVE DEBUG CODE CWE-489
+Multiple binary application files on the CMS8000 device are compiled with 'not stripped' and 'debug_info' compilation settings. These compiler settings greatly decrease the level of effort for a threat actor to reverse engineer sensitive code and identify additional vulnerabilities.
+CVE-2022-38453 has been assigned to this vulnerability. A CVSS v3.1 base score of 3.0 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2022-38453. A base score of 1.8 has been calculated; the CVSS vector string is (AV:L/AC:H/AT:N/PR:H/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N).
+3.2.5 UNPROTECTED PRIMARY CHANNEL CWE-419
+The CMS8000 device does not properly control or sanitize the SSID name of a new Wi-Fi access point. A threat actor could create an SSID with a malicious name, including non-standard characters that, when the device attempts connecting to the malicious SSID, the device can be exploited to write arbitrary files or display incorrect information.
+CVE-2022-3027 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.7 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2022-3027. A base score of 6.9 has been calculated; the CVSS vector string is (AV:A/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: China
+
+3.4 RESEARCHER
+Level Nine reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Per FDA recommendation, CISA recommends users remove any Contec CMS8000 devices from their networks.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+September 1, 2022: Initial Publication
+January 30, 2025: Update A - Updated Risk Evaluation section vulnerabilities, Added in CVSS 4.0 scores, updated discouraged CWEs, aligned title and mitigation recommendations with ICSMA-25-030-01.
+

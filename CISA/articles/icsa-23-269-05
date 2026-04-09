@@ -1,0 +1,55 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Baker Hughes - Bently Nevada
+Equipment: Bently Nevada 3500 System
+Vulnerabilities: Exposure of Sensitive Information to an Unauthorized Actor, Cleartext Transmission of Sensitive Information, Authentication Bypass by Capture-replay
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to steal sensitive information and gain access to the device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the Bently Nevada 3500 System, a real-time monitoring solution, are affected:
+
+Bently Nevada 3500 Rack (TDI Firmware): version 5.05
+
+3.2 Vulnerability Overview
+3.2.1 INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCE CWE-732
+Baker Hughes – Bently Nevada 3500 System TDI Firmware version 5.05 has a vulnerability in their password retrieval functionality which could be used by an attacker to access passwords stored on the device.
+CVE-2023-34437 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Baker Hughes – Bently Nevada 3500 System TDI Firmware version 5.05 authentication secrets, used with the Connect Password, are passed in cleartext with every request to the device. An attacker could steal the authentication secret from communication traffic to the device and reuse it for arbitrary requests.
+CVE-2023-34441 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:L).
+3.2.3 AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+Baker Hughes – Bently Nevada 3500 System TDI Firmware version 5.05 accepts out-of-sequence messages from older communications. This could allow an attacker to replay older captured packets of traffic to the device to gain access.
+CVE-2023-36857 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Diego Zaffaroni of Nozomi Networks reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Baker Hughes – Bently Nevada recommends that users follow their hardening guidelines to reduce the risk of exploitation. Customers who have registered for access to Baker Hughes DAM may directly access the hardening guideline at https://dam.bakerhughes.com/media/?mediaId=32F7FC2F-9F22-4C69-BB847565B7834D08.
+For customers that do not have access to Baker Hughes DAM may send an email to bentlysupport@bakerhughes.com to request document 106M9733.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 26, 2023: Initial Publication
+

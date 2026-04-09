@@ -1,0 +1,51 @@
+
+Overview
+Independent researcher Carlos Mario Penagos Hollmann has identified an uncontrolled search path element vulnerability, commonly referred to as a DLL hijack, in the RealFlex RealWinDemo application.
+RealFlex Technologies has produced an upgrade to address this vulnerability, which Mr. Hollmann has validated, and it resolves the reported vulnerability.
+Affected Products
+The following RealFlex products are affected:
+
+RealWinDemo 2.1.12 and prior,
+RealWin 2.1.12 and prior, and
+FlexView 3.1.85 and prior.
+
+Impact
+Successful exploitation of this vulnerability may lead to arbitrary code execution.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+RealWinDemo is a Microsoft Windows-based human-machine interface/supervisory control and data acquisition (HMI/SCADA) software package that is provided by RealFlex Technologies, and is used primarily for customer demonstration purposes. It can be used in small automation projects using standard protocols such as Modbus.
+RealWin is used primarily as a demo product to generate sales of the RealFlex 6 SCADA product. RealWin is in production on projects in Nigeria, USA, India, Philippines, Saudi Arabia, and Mexico.
+Vulnerability Characterization
+Vulnerability Overview
+Uncontrolled Search Path ElementCWE-427 Uncontrolled Search Path Element, http://cwe.mitre.org/data/definitions/427.html, Web site last accessed September 06, 2012.
+RealWinDemo uses an uncontrolled search path to find resources that could allow an unauthorized user to locate and exploit one or more locations. An unauthorized user could place a malicious DLL in a directory where it could be loaded before the valid DLL. An attacker must have access to the host file system to exploit this vulnerability. If exploited, this vulnerability could allow execution of arbitrary code.
+CVE-2012-3004 has been assigned to this vulnerability. A CVSS V2 base score of 6.2 has also been assigned; the CVSS vector string is (AV:L/AC:H/Au:N/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+This vulnerability is not remotely exploitable and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads a malicious realwin.dll or keyhook.dll file.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+Constructing a malicious DLL and placing it in an exploitable location requires only a low skill level. However, the attacker cannot exploit this vulnerability without local user access.
+Mitigation
+RealFlex has produced an updated version that resolves the issue. Customers may log in to download an updated version of the following products:
+
+RealWin 2.1.13,
+FlexView 3.1.86, and
+RealWinDemo 2.1.13. http://realflex.com/download/
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.d ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01A—Cyber Intrusion Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click Web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

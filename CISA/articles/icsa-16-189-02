@@ -1,0 +1,41 @@
+
+OVERVIEW
+Independent researcher Maxim Rupp has identified an authorization bypass vulnerability in Moxa’s Device Server Web Console. Moxa has indicated the NPort 5232-N was discontinued in 2012 and has produced recommendations to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Device Server Web Console 5232-N versions are affected:
+
+Device Server Web Console 5232-N, all versions.
+
+IMPACT
+An attacker could exploit this vulnerability to gain access to change settings and data on the target device.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Moxa is a Taiwan-based company that maintains offices in several countries around the world, including the US, UK, India, Germany, France, China, Russia, and Brazil.
+The affected product, Device Server Web Console 5232-N, is a serial to Ethernet device. According to Moxa, Device Server Web Console devices are deployed across several sectors, including Commercial Facilities and Energy. Moxa estimates that this product is used primarily in the United States, Europe, and Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+AUTHORIZATION BYPASSCWE-639: Authorization Bypass Through User-Controlled Key, http://cwe.mitre.org/data/definitions/639.html, web site last accessed July 07, 2016.
+
+An attacker could identify an authenticated UserId from a parameter passed in a cookie and gain access.
+CVE-2016-4503NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4503, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N, web site last accessed July 07, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Moxa recommends disabling Ports 80/TCP (HTTP) and 23/TCP (TELNET). Moxa indicates that users should ensure that Ports 161/UDP (SNMP), 4800/UDP (utility), and 4900/TCP (utility) are only accessible by trusted systems and that restricting access to Ports 4800/UDP and 4900/TCP will impact remote systems administration.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

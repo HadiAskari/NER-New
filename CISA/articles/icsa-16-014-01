@@ -1,0 +1,82 @@
+
+OVERVIEW
+Ilya Karpov of Positive Technologies, Ivan Sanchez, Andrea Micalizzi, Ariele Caltabiano, Fritz Sands, Steven Seeley, and an anonymous researcher have identified multiple vulnerabilities in Advantech WebAccess application. Many of these vulnerabilities were reported through the Zero Day Initiative (ZDI) and iDefense. Advantech has produced a new version to mitigate these vulnerabilities. Ivan Sanchez has tested the new version to validate that it resolves the vulnerabilities which he reported.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+Advantech reports that the vulnerabilities affect the following versions of WebAccess:
+
+WebAccess Version 8.0 and prior versions.
+
+IMPACT
+An attacker who exploits these vulnerabilities may be able to upload, create, or delete arbitrary files on the target system, deny access to valid users, or remotely execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Advantech is based in Taiwan and has distribution offices in 21 countries worldwide.
+The affected product, WebAccess, formerly known as BroadWin WebAccess, is a web-based SCADA and human-machine interface (HMI) product. According to Advantech, WebAccess is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, and Government Facilities. Advantech estimates that these products are used globally.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+ACCESS OF MEMORY LOCATION AFTER END OF BUFFERCWE-788: Access of Memory Location After End of Buffer, http://cwe.mitre.org/data/definitions/788.html, web site last accessed January 14, 2016.
+The software reads or writes to a buffer using an index or pointer that references a memory location after the end of the buffer.
+CVE-2016-0851NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0851, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H, web site last accessed January 14, 2016.
+UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPECWE-434: Unrestricted Upload of File with Dangerous Type, http://cwe.mitre.org/data/definitions/434.html, web site last accessed January 14, 2016.
+An attacker can upload or create arbitrary files on the server without authentication or constraint.
+CVE-2016-0854NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0854, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed January 14, 2016.
+PATH TRAVERSALCWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'), http://cwe.mitre.org/data/definitions/22.html, web site last accessed January 14, 2016.
+The virtual directory created by WebAccess can be browsed anonymously without authentication.
+CVE-2016-0855NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0855, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed January 14, 2016.
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed January 14, 2016.
+There are many instances where the buffer on the stack can be overwritten.
+CVE-2016-0856NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0856, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed January 14, 2016.
+HEAP-BASED BUFFER OVERFLOWCWE-122: Heap-based Buffer Overflow, http://cwe.mitre.org/data/definitions/122.html, web site last accessed January 14, 2016.
+There are many conditions in which more space than what is allocated can be written to the heap.
+CVE-2016-0857NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0857, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed January 14, 2016.
+RACE CONDITIONCWE-362: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition'), http://cwe.mitre.org/data/definitions/362.html, web site last accessed January 14, 2016.
+A specially crafted request can cause a buffer overflow in a shared virtual memory area.
+CVE-2016-0858NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0858, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed January 14, 2016.
+INTEGER OVERFLOW TO BUFFER OVERFLOWCWE-680: Integer Overflow to Buffer Overflow, http://cwe.mitre.org/data/definitions/680.html, web site last accessed January 14, 2016.
+An attacker can send a crafted RPC request to the Kernel service to cause a stack-based buffer overflow.
+CVE-2016-0859NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0859, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed January 14, 2016.
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed January 14, 2016.
+An attacker can send a crafted RPC request to the BwpAlarm subsystem to cause a buffer overflow on global variables.
+CVE-2016-0860NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0860, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N, web site last accessed January 14, 2016.
+IMPROPER ACCESS CONTROLCWE-284: Improper Access Control, http://cwe.mitre.org/data/definitions/284.html, web site last accessed January 14, 2016.
+Normal and remote users have access to files and folders that only administrators should be allowed to access.
+CVE-2016-0852NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0852, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H , web site last accessed January 14, 2016.
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed January 14, 2016.
+Input validation vulnerabilities could allow an attacker to gain sensitive information from the target system.
+CVE-2016-0853NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0853, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N, web site last accessed January 14, 2016.
+CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), http://cwe.mitre.org/data/definitions/79.html, web site last accessed January 14, 2016.
+The web server does not filter user input correctly, allowing a malicious user to initiate a cross-site scripting vulnerability.
+CVE-2015-3948NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3948 , NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RL:O/RC:R).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RL:O/RC:R, web site last accessed January 14, 2016.
+SQL INJECTIONCWE-89: SQL Injection, http://cwe.mitre.org/data/definitions/89.html, web site last accessed January 14, 2016.
+Web server settings, accounts, and projects may be modified through scripted commands.
+CVE-2015-3947NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3947, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N/E:P/RL:O/RC:R).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N/E:P/RL:O/RC:R, web site last accessed January 14, 2016.
+CROSS-SITE REQUEST FORGERYCWE-352: Cross-Site Request Forgery, http://cwe.mitre.org/data/definitions/352.html, web site last accessed January 14, 2016.
+The web server accepts commands via specific scripts that imitate trusted accounts.
+CVE-2015-3946NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3946, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N/E:P/RL:O/RC:R).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N/E:P/RL:O/RC:R, web site last accessed January 14, 2016.
+EXTERNAL CONTROL OF FILE NAME OR PATHCWE-73: External Control of File Name or Path, http://cwe.mitre.org/data/definitions/73.html, web site last accessed January 14, 2016.
+WebAccess can be made to run remote code through the use of a browser plug-in.
+CVE-2015-6467NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6467 , NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N/E:P/RL:O/RC:R).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N/E:P/RL:O/RC:R, web site last accessed January 14, 2016.
+CLEARTEXT STORAGE OF SENSITIVE INFORMATIONCWE-312: Cleartext Storage of Sensitive Information, http://cwe.mitre.org/data/definitions/312.html, web site last accessed January 14, 2016.
+Email project accounts are stored in clear text.
+CVE-2015-3943NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3943, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:P/RL:O/RC:R).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:P/RL:O/RC:R, web site last accessed January 14, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Advantech has released a new version of WebAccess, Version 8.1, to address the reported vulnerabilities. This new version is available on the Advantech website at the following location:
+http://www.advantech.com/industrial-automation/webaccess
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems and ensure that they are not accessible from the Internet
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page athttp://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,61 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.9
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: Asset Suite 9
+Vulnerability: Improper Authentication
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an authenticated user to enter an arbitrary password to execute equipment tag out actions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reports these vulnerabilities affect the following products:
+
+Asset Suite: Versions 9.6.3.11.1 and prior
+Asset Suite: Version 9.6.4
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER AUTHENTICATION CWE-287
+A vulnerability exists in the Equipment Tag Out authentication, when configured with Single Sign-On (SSO) with password validation in T214. This vulnerability can be exploited by an authenticated user performing an Equipment Tag Out holder action (Accept, Release, and Clear) for another user and entering an arbitrary password in the holder action confirmation dialog box. Despite entering an arbitrary password in the confirmation box, the system will execute the selected holder action.
+CVE-2023-4816 has been assigned to this vulnerability. A CVSS v3 base score of 6.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:C/C:N/I:H/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported this vulnerability to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends applying one the following mitigation actions until a fix has been delivered in a patch:
+
+Configure Asset Suite 9 with a different authentication method other than SSO.
+Configure Asset Suite security to disallow holder actions to be taken on behalf of other employees by removing authorization for the following security events to all users: T214ACT, T214RLS, and T214CLR.
+Set Equipment Tag Out preference 'C/O HOLDER PSWD' to 'N'.
+
+For more information, see Hitachi Energy advisory 8DBD000172
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 26, 2023: Initial Publication
+

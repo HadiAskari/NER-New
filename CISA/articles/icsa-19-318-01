@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+ATTENTION: Low skill level to exploit
+Vendor: Siemens
+Equipment: Mentor Nucleus Networking Module
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to affect the integrity and availability of the device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following networking modules from Mentor Nucleus (a division of Siemens) are affected:
+
+Nucleus NET: All versions
+Nucleus RTOS: All versions
+Nucleus ReadyStart for ARM, MIPS, and PPC: All versions prior to v2017.02.2 with patch “Nucleus 2017.02.02 Nucleus NET Patch”
+Nucleus SafetyCert: All versions
+Nucleus Source Code: All versions
+VSTAR: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER INPUT VALIDATION CWE-20
+By sending specially crafted DHCP packets to a device, an attacker may be able to affect availability and integrity of the device. Attackers require adjacent network access to exploit this vulnerability, but do not require authentication or user interaction.
+CVE-2019-13939 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Armis reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens recommends installing the following software updates to address this vulnerability.
+Nucleus NET:
+
+Avoid using DHCP Client of Nucleus NET or upgrade Nucleus ReadyStart and apply the corresponding patch.
+
+Nucleus RTOS:
+
+Avoid using DHCP Client of Nucleus NET, or upgrade Nucleus ReadyStart and apply the corresponding patch.
+
+Nucleus ReadyStart for ARM, MIPS, and PPC:
+
+Upgrade to v2017.02.2 and install the patch “Nucleus 2017.02.02 Nucleus NET Patch.” Updated firmware versions can be obtained from Mentor supportcenter at (login required):
+
+https://support.mentor.com/en/product/1009925838/downloads
+Nucleus SafetyCert:
+
+Nucleus SafetyCert is not affected since it leverages the LWNET stack, which is not affected. The Nucleus SafetyCert bundle, however, does include a copy of Nucleus ReadyStart to allow easier prototyping, which is affected.
+
+Nucleus Source Code:
+
+Avoid using DHCP Client of Nucleus NET.
+
+VSTAR:
+
+Contact customer support to receive patch and update instructions.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ Operational Guidelines for Industrial Security and to follow the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens security advisory SSA-434032 at the following location:
+http://www.siemens.com/cert/advisories
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

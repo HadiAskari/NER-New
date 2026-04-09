@@ -1,0 +1,93 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Schneider Electric
+Equipment: EcoStruxure Control Expert, EcoStruxure Process Expert, SCADAPack RemoteConnect x70, SCADAPack x70 RTUs, and Modicon M580 and M340 control products
+Vulnerabilities: Insufficiently Protected Credentials, Authentication Bypass by Spoofing, Deserialization of Untrusted Data, Missing Encryption of Sensitive Data.
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-194-02 Schneider Electric SCADApack RTU, Modicon Controllers, and Software that was published July 13, 2021, on the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow arbitrary code execution and loss of confidentiality and integrity of the project file.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Schneider Electric reports these vulnerabilities affect the following control products:
+
+EcoStruxure Control Expert, all versions prior to v15.0 SP1
+
+Including all versions of Unity Pro (former name of EcoStruxure Control Expert)
+
+
+EcoStruxure Control Expert v15.0 SP1
+EcoStruxure Process Expert, all versions
+
+Including all versions of EcoStruxure Hybrid DCS (former name of EcoStruxure Process Expert)
+
+
+SCADAPack RemoteConnect for x70, all versions
+
+--------- Begin Update A Part 1 of 2 ---------
+
+SCADAPack 470, 474, 570, 574, and 575 RTUs, all versions
+
+--------- End Update A Part 1 of 2 ---------
+
+Modicon M580 CPU (part numbers BMEP* and BMEH*), all versions
+Modicon M340 CPU (part numbers BMXP34*), all versions
+
+Please note not all the vulnerabilities listed below affect all the products above. See SEVD-2021-194-01 to see how they correlate.
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+An insufficiently protected credentials vulnerability exists that could cause protected derived function blocks to be read or modified by unauthorized users when accessing a project file.
+CVE-2021-22778 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+--------- Begin Update A Part 2 of 2 --------
+4.2.2    AUTHENTICATION BYPASS BY SPOOFING CWE-290
+An authentication bypass by spoofing vulnerability exists that could cause unauthorized access in read and write mode to the controller by spoofing the Modbus communication between the engineering software and the controller.
+CVE-2021-22779 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+--------- End Update A Part 2 of 2 --------
+4.2.3    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+M&M Software fdtCONTAINER component in versions below 3.5.20304.x and between 3.6 and 3.6.20304.x is vulnerable to deserialization of untrusted data in its project storage.
+Note: This vulnerability could cause local code execution on the engineering workstation when a malicious project file is loaded into the engineering software.
+CVE-2020-12525 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+ 
+4.2.4    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+An insufficiently protected credentials vulnerability exists that could cause unauthorized access to a project file protected by a password when this file is shared with untrusted sources. An attacker may bypass the password protection and be able to view and modify a project file.
+CVE-2021-22780 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).
+ 
+4.2.5    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+An insufficiently protected credentials vulnerability exists that could cause a leak of SMTP credentials used for mailbox authentication when an attacker can access a project file.
+CVE-2021-22781 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+ 
+4.2.6    MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+A missing encryption of sensitive data vulnerability exists that could cause an information leak allowing disclosure of network and process information, credentials, or intellectual property when an attacker can access a project file.
+CVE-2021-22782 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Energy, Food and Agriculture, Government Facilities, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+4.4 RESEARCHER
+Kai Wang (Fortinet's FortiGuard Labs), Andrey Muravitsky (Kaspersky), Gal Kauffman (Armis), Nicholas Miles (Tenable), Li Wei (Friday Lab - Bolean Tech), Maxim Tumakov (Kaspersky), Kai Wang (Codesafe Team of Legendsec at Qi'anxin Group), and Artem Zinenko (Kaspersky) reported these vulnerabilities to Schneider Electric.
+5. MITIGATIONS
+Schneider Electric provides detailed mitigation information for each of the affected products in their own advisory, for more information about these issues, please refer to the original Schneider Electric publication SEVD-2021-194-01.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

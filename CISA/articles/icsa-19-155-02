@@ -1,0 +1,69 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Phoenix Contact
+Equipment: FL NAT SMx
+Vulnerability: Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow unauthorized users full access to the device configuration.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Phoenix Contact reports the vulnerability affects the following FL NAT SMx industrial Ethernet switches:
+
+FL NAT SMN 8TX-M (2702443)
+FL NAT SMN 8TX-M-DMG (2989352)
+FL NAT SMN 8TX (2989365)
+FL NAT SMCS 8TX (2989378)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+An unauthorized user can access the web interface using an authorized IP address, which may allow full access to the device configuration. This attack is only possible if an authorized session is still active on the system.
+CVE-2019-9744 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications, Critical Manufacturing, Information Technology
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+CERT@VDE, working with Maxim Rupp and Phoenix Contact, reported this vulnerability to NCCIC.
+4. MITIGATIONS
+Phoenix Contact recommends affected users operate the devices in closed networks or protected with a suitable firewall.
+Phoenix Contact recommends that users consider the following steps to protect the device from an attacker who has gained access to the closed network, or if there is a possibility that multiple users might share a VPN connection with a single endpoint IP:
+
+Log off from the WEB-UI immediately after administration.
+Disable the WEB-UI and use configuration access via SNMP instead.
+
+Ensure the system password is strong as this is also the SNMP write community.
+
+
+
+Additional recommendations can be found within the following application note:
+https://www.phoenixcontact.com/assets/downloads_ed/local_pc/web_dwl_technical_info/ah_en_industrial_security_107913_en_01.pdf
+Please see VDE-2019-006 at the following location for more details:
+https://cert.vde.com/en-us/advisories/vde-2019-006
+NCCIC notes that the SNMP mitigation strategy introduces new risk into the system because of known vulnerabilities within SNMP v2c. NCCIC recommends those using the SNMP mitigation strategy implement the following best practices:
+
+Apply extended access control lists (ACLs) to block unauthorized computers from accessing the device. Access to devices with read and/or write SNMP permission should be strictly controlled. If monitoring and change management are done through separate software, then they should be on separate devices.
+Segregate SNMP traffic onto a separate management network. Management network traffic should be out-of-band; however, if device management must coincide with standard network activity, all communication occurring over that network should use some encryption capability. If the network device has a dedicated management port, it should be the sole link for services like SNMP, Secure Shell (SSH), etc.
+For additional SNMP security recommendations see the following US-CERT Alert:
+
+https://www.us-cert.gov/ncas/alerts/TA17-156A
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability.

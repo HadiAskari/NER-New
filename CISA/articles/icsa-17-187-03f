@@ -1,0 +1,129 @@
+
+CVSS v3 8.6
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Siemens
+Equipment: SIPROTEC 4 and SIPROTEC Compact
+Vulnerabilities: Improper Input Validation, Missing Authorization, Improper Authentication
+UPDATE INFORMATION
+This updated advisory is a follow-up to the updated advisory titled ICSA-17-187-03E Siemens SIPROTEC 4 and SIPROTEC Compact that was published January 4, 2018, on the NCCIC/ICS-CERT website.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerabilities affect the following SIPROTEC 4 and SIPROTEC Compact protection, control, measurement, and automation devices:
+--------- Begin Update F Part 1 of 2 --------
+
+Firmware variants for EN100 Ethernet modules as options for SIPROTEC 4 and SIPROTEC Compact:
+
+Firmware variant PROFINET IO: All versions prior to V1.04.01,
+Firmware variant Modbus TCP: All versions prior to  V1.11.00,
+Firmware variant DNP3 TCP: All versions prior to V1.03, and
+Firmware variant IEC 104: All versions prior to V1.21
+
+
+EN100 Ethernet module included in SIPROTEC Merging Unit 6MU80: All firmware versions prior to V1.02.02
+SIPROTEC 7SJ686: All versions prior to V4.87
+SIPROTEC 7UT686: All versions prior to V4.02
+SIPROTEC 7SD686: All versions prior V4.05
+SIPROTEC 7SJ66: All versions prior to V4.30
+
+Please note that not all of the devices above are affected by all of these vulnerabilities. Please see Siemens Security Advisory SSA-323211 for more detailed information.
+--------- End Update F Part 1 of 2 ----------
+IMPACT
+Successful exploitation of these vulnerabilities could cause a denial-of-service condition, allow an attacker access to sensitive information, or allow an attacker to perform administrative functions.
+MITIGATION
+--------- Begin Update F Part 2 of 2 --------
+Siemens provides updates for the following affected products and recommends users update to the latest version:
+
+Firmware variants for EN100 Ethernet modules as options for SIPROTEC 4 and SIPROTEC Compact:
+
+Firmware variant PROFINET IO: Update to V1.04.01
+Firmware variant Modbus TCP: Update to V1.11.00
+Firmware variant DNP3 TCP: Update to V1.03
+Firmware variant IEC 104: Update to V1.21
+
+
+
+https://support.industry.siemens.com/cs/us/en/view/109745821
+
+EN100 Ethernet module included in SIPROTEC Merging Unit 6MU80: Update to firmware V1.02.02 by contacting the Siemens energy hotline at: support.energy@siemens.com
+SIPROTEC 7SJ66: update to firmware V4.30
+
+https://support.industry.siemens.com/cs/gb/en/view/109743555
+
+SIPROTEC 7SJ686: update to firmware V4.87
+
+http://www.siemensenergysector.com/ProductRelatedDown.aspx?ProductId=51
+
+SIPROTEC 7UT686: update to firmware V4.02
+
+http://www.siemensenergysector.com/ProductRelatedDown.aspx?ProductId=68
+
+SIPROTEC 7SD686: update to firmware V4.05
+
+http://www.siemensenergysector.com/ProductRelatedDown.aspx?ProductId=64
+--------- End Update F Part 2 of 2 ----------
+Siemens is preparing updates for the remaining affected products and recommends the following mitigations in the meantime:
+
+Apply secure substation concepts and defense-in-depth measures.
+
+Please see the specific product manual for more information. Manuals can be obtained from the downloads menu at the following Siemens website:
+http://www.siemens.com/gridsecurity
+
+Restrict network access to Port 80/TCP and Port 50000/UDP
+
+Siemens recommends users protect network access with appropriate mechanisms such as firewalls, segmentation, and VPNs. Siemens also advises that users configure the operational environment according to Siemens’ Operational Guidelines for Industrial Security:
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-323211 at the following location:
+http://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+In addition, NCCIC recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATION CWE-20
+
+Specially crafted packets sent to Port 50000/UDP could cause a denial of service of the affected device. A manual reboot may be required to recover the service of the device.
+CVE-2015-5374 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+
+MISSING AUTHORIZATION CWE-862
+
+The integrated web server (Port 80/TCP) of the affected devices could allow remote attackers to obtain sensitive device information if network access was obtained.
+CVE-2016-4784 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+
+MISSING AUTHORIZATION CWE-862
+
+The integrated web server (Port 80/TCP) of the affected devices could allow remote attackers to obtain a limited amount of device memory content if network access was obtained.
+CVE-2016-4785 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+
+MISSING AUTHORIZATION CWE-862
+
+Attackers with network access to the device’s web interface (Port 80/TCP) could circumvent authentication and perform certain administrative operations.
+CVE-2016-7112 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+
+IMPROPER INPUT VALIDATION CWE-20
+
+Specially crafted packets sent to Port 80/TCP could cause the affected device to go into defect mode.
+CVE-2016-7113 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+
+IMPROPER AUTHENTICATION CWE-287
+
+Attackers with network access to the device’s web interface (Port 80/TCP) could circumvent authentication and perform certain administrative operations. A legitimate user must be logged into the web interface for the attack to be successful.
+CVE-2016-7114 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+RESEARCHER
+Siemens reported these vulnerabilities to NCCIC when they made firmware available to fix them.
+BACKGROUND
+Critical Infrastructure Sector: Energy
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany

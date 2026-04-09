@@ -1,0 +1,94 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: HCC Embedded
+Equipment: InterNiche stack (NicheStack), NicheLite
+Vulnerabilities: Return of Pointer Value Outside of Expected Range, Improper Handling of Length Parameter Inconsistency, Use of Insufficiently Random Values, Improper Input Validation, Uncaught Exception, Numeric Range Comparison Without Minimum Check, Generation of Predictable Numbers or Identifiers, Improper Check or Handling of Exceptional Conditions, Improper Null Termination
+
+CISA is aware of a public report, known as “INFRA:HALT” that details vulnerabilities found in the HCC Embedded InterNiche TCP/IP stack, previously known as InterNiche NicheStack. CISA is issuing this advisory to provide early notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-217-01 HCC Embedded InterNiche TCP/IP stack NicheLite (Update A) that was published September 14, 2021, to the ICS webpage at www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may result in unauthorized access to arbitrary information, DNS cache poisoning, remote code execution, or a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following embedded component TCP/IP stacks are affected:
+
+InterNiche stack: All versions prior to v4.3
+NicheLite: All versions prior to v4.3
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    RETURN OF POINTER VALUE OUTSIDE OF EXPECTED RANGE CWE-466
+When parsing DNS domain names, there are no checks on whether a domain name compression pointer is pointing within the bounds of the packet, which may result in an out-of-bounds read.
+CVE-2020-25767 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    IMPROPER HANDLING OF LENGTH PARAMETER INCONSISTENCY CWE-130
+The routine for parsing DNS response packets does not check the “response data length” field of individual DNS answers, which may cause an out-of-bounds read/write.
+CVE-2020-25928 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    IMPROPER HANDLING OF LENGTH PARAMETER INCONSISTENCY CWE-130
+The number of queries or responses specified in the DNS packet header is not validated with the query/response data available in the DNS packet, leading to an out-of-bounds read.
+CVE-2020-25927 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+4.2.4    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+The DNS client does not sufficiently randomize transaction IDs, facilitating DNS cache poisoning attacks.
+CVE-2020-25926 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N).
+4.2.5    IMPROPER INPUT VALIDATION CWE-20
+The code that parses ICMP packets relies on an unchecked value of the IP payload size to compute the ICMP checksum, which may result in an out-of-bounds read.
+CVE-2020-35683 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.6    IMPROPER INPUT VALIDATION CWE-20
+The code that parses TCP packets relies on an unchecked value of the IP payload size to compute the length of the TCP payload within the TCP checksum computation function, which may result in an out-of-bounds read.
+CVE-2020-35684 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.7    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+TCP ISNs are insufficiently randomized, which may result in TCP spoofing by an attacker.
+CVE-2020-35685 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.8    UNCAUGHT EXCEPTION CWE-248
+The TCP urgent data processing function may invoke a panic function, which may result in an infinite loop.
+CVE-2021-31400 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.9    IMPROPER INPUT VALIDATION CWE-20
+An attacker could send a specially crafted IP packet to trigger an integer overflow due to the lack of IP length validation.
+CVE-2021-31401 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.10    IMPROPER INPUT VALIDATION CWE-20
+A potential heap buffer overflow exists in the code that parses the HTTP POST request due to lack of size validation.
+CVE-2021-31226 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).
+4.2.11    NUMERIC RANGE COMPARISON WITHOUT MINIMUM CHECK CWE-839
+A potential heap buffer overflow exists in the code that parses the HTTP POST request due to an incorrect signed integer comparison.
+CVE-2021-31227 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.12    GENERATION OF PREDICTABLE NUMBERS OR IDENTIFIERS CWE-340
+An attacker may be able to predict DNS queries’ source port to then send forged DNS response packets, which may be accepted as valid answers.
+CVE-2021-31228 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N).
+4.2.13    IMPROPER CHECK OR HANDLING OF EXCEPTIONAL CONDITIONS CWE-703
+Unhandled HTTP requests result in an infinite loop that disrupts TCP/IP communication.
+CVE-2021-27565 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.14    IMPROPER NULL TERMINATION CWE-170
+The TFTP packet processing function does not ensure that the filename is null-terminated, which may result in a denial-of-service condition.
+CVE-2021-36762 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Hungary
+
+4.4 RESEARCHER
+Amine Amri, Stanislav Dashevskyi, and Daniel dos Santos from Forescout, and Asaf Karas and Shachar Menashe from VDOO reported these vulnerabilities to CISA.
+5. MITIGATIONS
+HCC recommends users apply release v4.3 or later to mitigate these vulnerabilities. For more information, contact HCC.
+Additional vendors affected by the reported vulnerabilities have also released security advisories related to their affected products. Those advisories are as follows:
+
+Siemens
+
+--------- Begin Update B Part 1 of 1 ---------
+
+Mitsubishi Electric MELSEC Series Remote I/O
+
+--------- End Update B Part 1 of 1 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

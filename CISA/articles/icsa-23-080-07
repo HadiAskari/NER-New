@@ -1,0 +1,96 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely 
+Vendor: Siemens 
+Equipment: Various third-party components used in SCALANCE W-700 devices 
+Vulnerabilities: Generation of Error Message Containing Sensitive Information, Out-of-bounds Write, NULL Pointer Dereference, Out-of-bounds Read, Improper Input Validation, Release of Invalid Pointer or Reference, Use After Free, Prototype Pollution 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to cause a denial-of-service condition or disclose sensitive data. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following software from Siemens is affected: 
+
+SCALANCE WAM763-1 (6GK5763-1AL00-7DA0): All versions prior to v2.0 
+SCALANCE WAM766-1 (EU) (6GK5766-1GE00-7DA0): All versions prior to v2.0 
+SCALANCE WAM766-1 (US) (6GK5766-1GE00-7DB0): All versions prior to v2.0 
+SCALANCE WAM766-1 EEC (EU) (6GK5766-1GE00-7TA0): All versions prior to v2.0 
+SCALANCE WAM766-1 EEC (US) (6GK5766-1GE00-7TB0): All versions prior to v2.0 
+SCALANCE WUM763-1 (6GK5763-1AL00-3DA0): All versions prior to v2.0 
+SCALANCE WUM763-1 (6GK5763-1AL00-3AA0): All versions prior to v2.0 
+SCALANCE WUM766-1 (EU) (6GK5766-1GE00-3DA0): All versions prior to v2.0 
+SCALANCE WUM766-1 (US) (6GK5766-1GE00-3DB0): All versions prior to v2.0 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 GENERATION OF ERROR MESSAGE CONTAINING SENSITIVE INFORMATION CWE-209 
+Stack_protect_prologue in cfgexpand.c and stack_protect_epilogue in function.c in GNU Compiler Collection (GCC) 4.1 through 8 (under certain circumstances) generate instruction sequences when targeting ARM targets that spill the address of the stack protector guard, which allows an attacker to bypass the protection of -fstack-protector, -fstack-protector-all, fstack-protector-strong, and fstack-protector-explicit against stack overflow by controlling what the stack canary is compared against. 
+CVE-2018-12886 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 OUT-OF-BOUNDS WRITE CWE-787 
+Zlib versions before 1.2.12 allows memory corruption when deflating (i.e., when compressing) if the input has many distant matches. 
+CVE-2018-25032 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.3 NULL POINTER DEREFERENCE CWE-476 
+A NULL pointer dereference in Busybox's man applet leads to a denial-of-service condition when a section name is supplied but no page argument is given. 
+CVE-2021-42373 has been assigned to this vulnerability. A CVSS v3 base score of 5.1 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.4 OUT-OF-BOUNDS READ CWE-125 
+An out-of-bounds heap read in Busybox's unlzma applet leads to an information leak and a denial-of-service condition when crafted LZMA-compressed input is decompressed. This can be triggered by any applet/format that internally supports LZMA compression. 
+CVE-2021-42374 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:H). 
+3.2.5 IMPROPER INPUT VALIDATION CWE-20 
+An incorrect handling of a special element in Busybox's ash applet leads to a denial-of-service condition when processing a crafted shell command, due to the shell mistaking specific characters for reserved characters. This could be used for a denial-of-service attack under rare conditions of filtered command input. 
+CVE-2021-42375 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:H). 
+3.2.6 NULL POINTER DEREFERENCE CWE-476 
+A NULL pointer dereference in Busybox's hush applet leads to a denial-of-service condition when processing a crafted shell command, due to missing validation after a \x03 delimiter character. This may be used for a denial-of-service attack under very rare conditions of filtered command input. 
+CVE-2021-42376 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:H). 
+3.2.7 RELEASE OF INVALID POINTER OR REFERENCE CWE-763 
+An attacker-controlled pointer free in Busybox's hush applet leads to a denial-of-service condition and possible code execution when processing a crafted shell command, due to the shell mishandling the &&& string. This could be used for remote code execution under rare conditions of filtered command input. 
+CVE-2021-42377 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.8 USE AFTER FREE CWE-416 
+A use-after-free in Busybox's awk applet leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the getvar_i function. 
+CVE-2021-42378 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.9 USE AFTER FREE CWE-416 
+A use-after-free in Busybox's awk applet leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the next_input_file function. 
+CVE-2021-42379 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.10 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the clrvar function. 
+CVE-2021-42380 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.11 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the hash_init function. 
+CVE-2021-42381 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.12 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the getvar_s function. 
+CVE-2021-42382 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.13 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the evaluate function. 
+CVE-2021-42383 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.14 USE AFTER FREE CWE-416 
+A use-after-free in Busybox's awk applet leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the handle_special function. 
+CVE-2021-42384 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.15 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the evaluate function. 
+CVE-2021-42385 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.16 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the nvalloc function. 
+CVE-2021-42386 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.17 IMPROPERLY CONTROLLED MODIFICATION OF OBJECT PROTOTYPE ATTRIBUTES ('PROTOTYPE POLLUTION') CWE-1321 
+jQuery Cookie 1.4.1 is affected by prototype pollution, which could lead to DOM cross-site scripting (XSS). 
+CVE-2022-23395 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Siemens recommends updating the software to v2.0 or later. 
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens' operational guidelines for Industrial Security and to follow the recommendations in the product manuals. Additional information on Industrial Security by Siemens can be found on the Siemens webpage for Industrial Security. 
+For further inquiries on security vulnerabilities in Siemens products and solutions, users should contact the Siemens ProductCERT. 
+For more information, see the associated Siemens security advisory SSA-565386 in HTML and CSAF. 
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity. 

@@ -1,0 +1,79 @@
+
+OVERVIEW
+Ivan Sanchez from Nullcode Team has identified two buffer overflow vulnerabilities that are present in Opto 22’s PAC Project Professional, PAC Project Basic, OptoOPCServer, OptoDataLink, PAC Display Basic, and PAC Display Professional products. Opto 22 has released new versions that mitigate these vulnerabilities. Ivan Sanchez has tested the new versions to validate that they resolve the vulnerabilities.
+One of the two vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Opto 22 products that contain the Heap-buffer overflow vulnerability:
+
+PAC Project Professional, versions prior to Version R9.4006,
+PAC Project Basic, versions prior to Version R9.4006,
+PAC Display Basic, versions prior to Version R9.4f,
+PAC Display Professional, versions prior to Version R9.4f,
+OptoOPCServer, versions prior to Version R9.4c, and
+OptoDataLink, Version R9.4d and prior versions that were installed by PAC Project installer, versions prior to Version R9.4006.
+
+The following Opto 22 products that contain the Stack-buffer overflow vulnerability in OPCTest.exe:
+
+PAC Project Professional, versions prior to Version R9.4008,
+PAC Project Basic, versions prior to Version R9.4008,
+PAC Display Basic, versions prior to Version R9.4g,
+PAC Display Professional, versions prior to Version R9.4g,
+OptoOPCServer, Version R9.4c and prior versions that were installed by PAC Project installer, versions prior to Version R9.4008, and
+OptoDataLink, Version R9.4d and prior versions that were installed by PAC Project installer, versions prior to Version R9.4008.
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow an attacker to execute arbitrary code on the target system.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Opto 22 is a US-based company that manufactures hardware and software products that link electrical and mechanical devices to networks and computers.
+The affected product, OptoOPCServer, integrates control systems with PCs on an Ethernet network running OPC clients. The PAC Project Basic and PAC Project Professional software suites are used for industrial automation, remote monitoring, and data acquisition applications. The PAC Display Basic and PAC Display Professional software suites are HMI packages for building operator interface applications to communicate with the SNAP PAC System. OptoDataLink connects the SNAP PAC System with various database packages. According to Opto 22, the affected products are deployed across several sectors. Opto 22 estimates that these products are used primarily in North America.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HEAP-BASED BUFFER OVERFLOWCWE-122: Heap-based Buffer Overflow, http://cwe.mitre.org/data/definitions/122.html, web site last accessed April 30, 2015.
+
+A vulnerable file in the affected products is susceptible to a buffer overflow condition that may allow remote code execution on the target system.
+CVE-2015-1006NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1006, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:C/I:C/A:C, web site last accessed April 30, 2015.
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed April 30, 2015.
+
+A specially crafted configuration file could be used to cause a buffer overflow condition in the OPCTest.exe, which may allow remote code execution on the target system.
+CVE-2015-1007NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1007, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.2 has been assigned; the CVSS vector string is (AV:L/AC:H/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:H/Au:N/C:C/I:C/A:C, web site last accessed April 30, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+One of the two vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit the heap-based buffer overflow vulnerability. Crafting a working exploit for the stack-based buffer overflow vulnerability would be difficult. Social engineering is required to convince the user to accept the malformed configuration file. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Opto 22 has addressed the heap-based buffer overflow vulnerability in the PAC Project installer, Version 9.4006, which is used to install the affected products. Opto 22 has released a customer notification that discusses the heap-based buffer overflow vulnerability, which is available at the following URL:
+http://www.opto22.com/site/knowledgebase/kb_view_article.aspx?aid=2571
+The stack-based buffer overflow vulnerability has been addressed in the PAC Project installer, Version 9.4008, by removing the diagnostic tool, OPCTest.exe, from the installed software in the affected products. Opto 22 has released a customer notification that discusses the stack-based buffer overflow vulnerability, which is available at the following URL:
+http://www.opto22.com/site/knowledgebase/kb_view_article.aspx?aid=2602
+Opto 22 suggests upgrading to the new product version, as soon as possible. Opto 22’s product downloads are available at the following URL:
+http://www.opto22.com/site/downloads/dl_downloads.aspx
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities.
+
+Use application whitelisting to detect and prevent files from executing if they have not been approved. Application whitelisting will not prevent memory-based attacks, such as exploiting buffer overflows vulnerabilities, but it can prevent shell code from running executables that have not been authorized.
+
+
+Utilize good design practices that include network segmentation. Use DMZs with properly configured firewalls to selectively control traffic and monitor traffic passed between zones and systems.
+Maintain layered physical and logical security to implement defense-in-depth design practices for ICS environments.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+Ensure that employees with access to the software are fully aware of the ongoing potential for social engineering attacks and are trained to identify and avoid social engineering attacks.
+Do not upload and run untrusted files without verifying the integrity of the file.
+Interact with, and only obtain files, software, and software patches from trustworthy highly reputable sources.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed April 30, 2015. for more information on avoiding email scams.
+
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed April 30, 2015. for more information on social engineering attacks.

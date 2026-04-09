@@ -1,0 +1,99 @@
+
+Overview
+This advisory is a follow-up to the alert update, ICS-ALERT-11-336-01A 3S CoDeSys Vulnerabilities, which was released on the ICS-CERT Web page on December 02, 2011.
+Security researcher Celil Unuver (SignalSec LLC) and independent researcher Luigi Auriemma have identified vulnerabilities in the 3S Smart Software Solutions CoDeSys product, summarized in the following table. Mr. Auriemma publicly disclosed the five vulnerabilities along with proof-of-concept (PoC) exploit code, including the vulnerability previously coordinated with ICS-CERT by Celil Unuver, without coordination with 3S Smart Software Solutions, ICS-CERT, or any other coordinating entity known to ICS-CERT.
+ICS-CERT has coordinated these vulnerabilities with 3S Smart Software Solutions, and they have produced new versions for both CoDeSys V3 and V2.3 that mitigate these vulnerabilities. Mr. Auriemma has confirmed that the new versions fully resolve the reported vulnerabilities.
+
+
+
+Researcher
+Vulnerability
+Coordinated/Unanticipated
+CVE
+
+
+
+
+Luigi Auriemma
+Integer Overflow
+Unanticipated
+CVE-2011-5008
+
+
+Luigi AuriemmaCelil Unuver
+Stack Overflow
+UnanticipatedCoordinated
+CVE-2011-5007
+
+
+Luigi Auriemma
+Content-Length NULL Pointer
+Unanticipated
+CVE-2011-5009
+
+
+Luigi Auriemma
+Content-Length NULL Pointer
+Unanticipated
+CVE-2011-5009
+
+
+Luigi Auriemma
+Invalid HTTP Request NULL Pointer
+Unanticipated
+CVE-2011-5009
+
+
+Luigi Auriemma
+Folders Creation
+Unanticipated
+None
+
+
+
+Affected Products
+The following 3S Smart Software Solutions CoDeSys versions are affected:
+
+Version 2.3
+Version 3.4.
+
+Impact
+Successful exploitation of these vulnerabilities may allow an attacker to cause a denial of service (DoS) or to execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+CoDeSys is produced by 3S Smart Software Solutions GmgH based in Germany. According to the 3S Smart Software Solutions website.
+CoDeSys is used across several sectors of the automation industry by manufacturers of industrial controllers or intelligent automation devices and by end users in different industries including system integrators who offer automation solutions using CoDeSys.
+Vulnerability Characterization
+Vulnerability Overview
+Integer Overflow
+An attacker could exploit this vulnerability by sending specially crafted packets to Port 1217/TCP.
+CVE-2011-5008 has been assigned to this vulnerability.
+Stack Overflow
+An attacker could exploit this vulnerability by sending an overly long URL to Port 8080/TCP.
+CVE-2011-5007 has been assigned to this vulnerability.
+Content-Length Null Pointer
+An attacker could exploit this vulnerability by sending a specially crafted Content-Length header to Port 8080/TCP.
+CVE-2011-5009 has been assigned to this vulnerability.
+Invalid HTTP Request Null Pointer
+An attacker could exploit this vulnerability by sending a request with an unknown HTTP method to Port 8080/TCP.
+CVE-2011-5009 has been assigned to this vulnerability.
+Folders Creation
+An attacker could exploit this vulnerability by sending a web request containing a nonexistent directory to Port 8080/TCP. Exploitation of this vulnerability results in the creation of arbitrary directories.
+Vulnerability Details
+Exploitability
+These vulnerabilities are remotely exploitable.
+Existence of Exploit
+Public exploits are known to target this vulnerability.
+Difficulty
+An attacker with a low skill level can create the DoS, whereas it would require a more skilled attacker to execute arbitrary code.
+Mitigation
+3S Smart Software Solutions has developed a new version of CoDeSys that resolves these vulnerabilities (V3.5 and V2.3.9.32). Customers can download the new versions for CoDeSys from the 3S Smart Software Solutions customer download website.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control system security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.  ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+

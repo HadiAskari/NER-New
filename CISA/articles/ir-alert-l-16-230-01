@@ -1,0 +1,71 @@
+
+
+Description
+
+NCCIC/ICS-CERT is responding to a campaign of activity affecting maritime transportation sector members. This report is intended to provide awareness to the US Critical Infrastructure community and make available Indicators of Compromise (IOCs) and mitigation recommendations. ICS-CERT is aware of a public report of SQL Injection vulnerability with proof-of-concept (PoC) exploit code affecting the Navis WebAccess application. This vulnerability has been exploited against multiple U.S.-based organizations, resulting in data loss.
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+SUMMARY
+NCCIC/ICS-CERT is responding to a campaign of activity affecting maritime transportation sector members. This report is intended to provide awareness to the US Critical Infrastructure community and make available Indicators of Compromise (IOCs) and mitigation recommendations.
+ICS-CERT is aware of a public report of SQL Injection vulnerability with proof-of-concept (PoC) exploit code affecting the Navis WebAccess application. This vulnerability has been exploited against multiple U.S.-based organizations, resulting in data loss.
+RISK EVALUATION
+Table 1. NCCIC Cyber Incident Scoring System Rating
+
+
+
+NCCIC Cyber Incident System Scores
+NCCIC Color Code/Level
+
+
+45
+Green (Low)
+
+
+
+Successful exploitation of the vulnerability may allow a remote attacker to compromise the confidentiality, integrity, and availability of the SQL database. There is a direct threat to the data stored within the system as well as systems that may be related to and/or depend on the system in question.
+NCCIC Cyber Incident Scoring System (NCISS) rating explanation
+Low
+Is unlikely to impact public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence.
+The NCISS score is provided to show severity of the incident based on factors listed in NIST 800-60 Rev. 2 as well as potential impact and infrastructure interdependency levels. Functional Impact, Intrusion Scope, Information Impact, Recoverability, and Threat Actor, Critical Infrastructure Interdependencies and Potential Impact are used to assess the risk.
+TECHNICAL ANALYSIS
+The exploit code was publicly released, and requires a low sophistication to execute. The SQL injection occurs as part of the URL string. The output is due to a flaw in the error reporting of the application.
+DETECTION
+Initial detection of the attack may be recognized in the logs of the web application server as well as the database logs. Further investigation will show manipulated URL input and resulting database queries within the database logs.
+It is encouraged that anyone running the related software increase the level of logging and be alert to error conditions pertaining to the application.
+MITIGATION
+ICS-CERT is currently reaching out to the vendor to identify mitigations. Details about the vulnerability can be found at:
+https://ics-cert.us-cert.gov/alerts/ICS-ALERT-16-230-01
+In addition, additional details about mitigating SQL injections can be found in the following publications:
+https://www.us-cert.gov/security-publications/sql-injection
+https://www.owasp.org/index.php/SQL_Injection.
+ICS-CERT is currently coordinating with the affected entity to provide Incident Response assistance and Assessment services.
+Asset Owners/Operators affected by this or similar activity should follow standard forensic data collection techniques including: Memory Capture of affected systems, verbose logging for time periods surrounding malicious activity, and user notification of the incident to ask for any additional information. For more information on potential detection and mitigation strategies, please refer to the ICS-CERT TIP-12-146-01B Targeted Intrusion Detection & Mitigation.
+ICS-CERT recommends organizations perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT provides a recommended practices section for control systems on the ICS-CERT web site. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+
+
+Mitigations
+
+ 
+

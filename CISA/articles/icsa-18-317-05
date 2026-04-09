@@ -1,0 +1,70 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 5.3
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC S7
+Vulnerability: Resource Exhaustion 
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-317-05 Siemens SIMATIC S7 that was published November 13, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could result in a denial-of-service condition that could result in a loss of availability of the affected device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports the following SIMATIC S7 products are affected:
+--------- Begin Update A Part 1 of 2 -------- 
+
+SIMATIC S7-1200: All versions prior to v4.3, and
+
+--------- End Update A Part 1 of 2 ---------
+
+SIMATIC S7-1500: All versions prior to 2.6
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCONTROLLED RESOURCE CONSUMPTION ('RESOURCE EXHAUSTION') CWE-400
+An attacker could exhaust the available connection pool of an affected device by opening a sufficient number of connections to the device. Successful exploitation requires an attacker to be able to send packets to Port 102/TCP of the affected device. 
+CVE-2018-13815 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems. 
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Younes Dragoni of Nozomi Networks reported this vulnerability to Siemens.
+5. MITIGATIONS
+Siemens recommends users of SIMATIC S7-1500 update to Version 2.6, which can be downloaded at the following location: 
+https://support.industry.siemens.com/cs/de/en/view/109478459
+--------- Begin Update A Part 2 of 2 ---------
+
+
+SIMATIC S7-1200 update to Version 4.3, which can be downloaded at the following location: ​​
+
+
+https://support.industry.siemens.com/cs/us/en/view/109763919
+ 
+--------- End Update A Part 2 of 2 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk: 
+
+Protect network access to Port 102/TCP of affected devices
+Apply cell-protection concept
+Apply defense-in-depth
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security (https://www.siemens.com/cert/operational-guidelines-industrial-security), and following the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at: 
+https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-584286 on their website:
+https://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

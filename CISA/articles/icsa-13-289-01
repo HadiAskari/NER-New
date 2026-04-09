@@ -1,0 +1,47 @@
+
+Overview
+On October 9, 2013, Cisco released two security advisorieshttp://www.us-cert.gov/ncas/current-activity/2013/10/10/Cisco-Releases-Security-Advisories concerning multiple vulnerabilities within software for the following components:
+
+Cisco Adaptive Security Appliance (ASA) hardwarehttp://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20131009-asa
+Firewall Services Module (FWSM) Software for Cisco Catalyst 6500 Series Switches and Cisco 7600 Series Routershttp://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20131009-fwsm
+
+These devices are used by many organizations to provide essential network services, including control systems integration and operations. As such, it is essential that each organization assess their environment to determine the applicability of the risks, and apply appropriate mitigation techniques in accordance with Cisco’s guidance.
+The noted vulnerabilities (denial of service (DoS) and remote authentication bypass) can directly impact the confidentiality, integrity, and availability of control systems. In addition to remediating the noted vulnerabilities, ICS-CERT advises organizations to employ multiple layers of security controls and monitoringhttp://ics-cert.us-cert.gov/sites/default/files/recommended_practices/NCCIC_ICS-CERT_Defense_in_Depth_2016_S508C.pdf (defense in depth) to minimize overall risk.
+Affected Products
+Cisco Firewall Services Module (FWSM) software for Cisco Catalyst 6500 Series switches and Cisco 7600 Series routers is affected by the following vulnerabilitiesMultiple versions of software are impacted – Reference Software Versions and Fixes section of the advisory: http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20131009-fwsm:
+
+Cisco FWSM Command Authorization Vulnerability
+SQL*Net Inspection Engine Denial of Service Vulnerability
+
+Cisco Adaptive Security Appliance (ASA) software is affected by the following vulnerabilitiesMultiple versions of software are impacted – Reference Software Versions and Fixes section of the advisory: http://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20131009-asa:
+
+IPsec VPN Crafted ICMP Packet Denial of Service Vulnerability
+SQL*Net Inspection Engine Denial of Service Vulnerability
+Digital Certificate Authentication Bypass Vulnerability
+Remote Access VPN Authentication Bypass Vulnerability
+Digital Certificate HTTP Authentication Bypass Vulnerability
+HTTP Deep Packet Inspection Denial of Service Vulnerability
+DNS Inspection Denial of Service Vulnerability
+AnyConnect SSL VPN Memory Exhaustion Denial of Service Vulnerability
+Clientless SSL VPN Denial of Service Vulnerability
+
+Impact
+The noted vulnerabilities are independent of each other; a software release that is affected by a particular vulnerability might not be impacted by another.
+Firewall Services Module (FWSM) software for Cisco Catalyst 6500 Series switches and Cisco 7600 Series routers:
+
+Successful exploitation of the Cisco FWSM Command Authorization Vulnerability may result in a complete compromise of the confidentiality, integrity and availability of the affected system.
+Successful exploitation of the SQL*Net Inspection Engine Denial of Service Vulnerability may result in a reload of an affected device, leading to a denial of service (DoS) condition.
+
+Cisco Adaptive Security Appliance (ASA) hardware:
+
+Successful exploitation of the IPsec VPN Crafted ICMP Packet Denial of Service Vulnerability, SQL*Net Inspection Engine Denial of Service Vulnerability, HTTP Deep Packet Inspection Denial of Service Vulnerability, DNS Inspection Denial of Service Vulnerability, and Clientless SSL VPN Denial of Service Vulnerability may result in a reload of an affected device, leading to a denial of service (DoS) condition.
+Successful exploitation of the Digital Certificate Authentication Bypass Vulnerability, Remote Access VPN Authentication Bypass Vulnerability, and Digital Certificate HTTP Authentication Bypass Vulnerability may result in an authentication bypass, which could allow the attacker access to the inside network via remote access VPN or management access to the affected system via the Cisco Adaptive Security Device Management (ASDM).
+Successful exploitation of the AnyConnect SSL VPN Memory Exhaustion Denial of Service Vulnerability may exhaust available memory, which could result in general system instability and cause the affected system to become unresponsive and stop forwarding traffic.
+
+Vulnerability Characterization & Mitigation
+Please reference the Cisco advisories for additional vulnerability details and mitigation strategies. Cisco has released software updates that address these vulnerabilities. Consult the Cisco advisories for information on obtaining upgraded software.
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks:
+
+Disable any unnecessary features or services within the device running configuration;
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+

@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SNMP Implementation of WinCC Runtime
+Vulnerability: Out-of-bounds Write
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could crash the SNMP service and require a manual restart of the device to resume operation of the service.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products are affected due to the SNMP implementation of WinCC Runtime:
+
+SIMATIC HMI Comfort Panels 1st Generation (incl. SIPLUS variants): All versions prior to v16 update 4
+SIMATIC HMI KTP Mobile Panels: All versions prior to v16 update 4
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS WRITE CWE-787
+Specially crafted packets sent to Port 161/UDP can cause the SNMP service of affected devices to crash. A manual restart of the device is required to resume operation of the service. 
+CVE-2019-19276 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Younes Dragoni and Alessandro Di Pinto of Nozomi Networks reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens recommends the following:
+
+Update to Version 16 update 4 or later
+Disable SNMP if this is supported by the product. Disabling SNMP fully mitigates this vulnerability.
+Restrict network access to Port 161/UDP of affected devices to trusted devices or IP addresses.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security, and following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information see SSA-594364
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

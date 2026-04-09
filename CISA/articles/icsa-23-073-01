@@ -1,0 +1,113 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low attack complexity  
+Vendor: Omron 
+Equipment: CJ1M PLC 
+Vulnerabilities: Improper Access Control   
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to bypass user memory protections by writing to a specific memory address. An attacker can also overwrite passwords and lock engineers from reading their own memory regions. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following components of Omron CJ1M, a programmable logic controller, are affected: 
+
+SYSMAC CJ-series 
+
+CJ2H-CPU6 □ -EIP: All versions 
+CJ2H-CPU6 □: All versions 
+CJ2M-CPU □ □: All versions 
+CJ1G-CPU □ □ P: All versions 
+
+
+SYSMAC CS-series  
+
+CS1H-CPU □ □ H: All versions 
+CS1G-CPU □ □ H: All versions 
+CS1D-CPU □ □ HA: All versions 
+CS1D-CPU □ □ H: All versions 
+CS1D-CPU □ □ SA: All versions 
+CS1D-CPU □ □ S: All versions 
+CS1D-CPU □ □ P: All versions 
+
+
+SYSMAC CP-series 
+
+CP2E-E □ □ D □ - □: All versions 
+CP2E-S □ □ D □- □ All versions 
+CP2E-N □ □ D □ - □: All versions 
+CP1H-X40D □ - □: All versions 
+CP1H-XA40D □ - □: All versions 
+CP1H-Y20DT-D: All versions  
+CP1L-EL20D □ - □: All versions 
+CP1L-EM □ □ D □ - □: All versions 
+CP1L-L □ □ D □- □: All versions 
+CP1L-M □ □ D □ - □: All versions 
+CP1E-E □ □ D □ - □: All versions 
+CP1E-NA □ □ D □ - □: All versions  
+
+
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER ACCESS CONTROL CWE-284 
+Omron CJ1M unit v4.0 and prior has improper access controls on the memory region where the UM password is stored. If an adversary issues a PROGRAM AREA WRITE command to a specific memory region, they could overwrite the password. This may lead to disabling UM protections or setting a non-ASCII password (non-keyboard characters) and preventing an engineer from viewing or modifying the user program. 
+CVE-2023-0811 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Japan 
+
+3.4 RESEARCHER
+Sam Hanson of Dragos reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+OMRON has released the following countermeasures for users to implement: 
+
+Enable the hardware switch to prohibit writing UM (DIP switch on front panel of the CPU Unit) 
+Set UM read protection password and “Prohibit from overwriting to a protected program “option. 
+
+If the countermeasures cannot be applied, OMRON recommends that customers take the following mitigation measures: 
+Security measures to prevent unauthorized access: 
+
+If the following products and versions are used, the risk of attacks by an attacker via the network can be reduced by taking the following measures. 
+
+Enable the FINS write protection function. 
+Select the Protect by IP Address 
+
+
+Minimize connection of control systems and equipment to open networks, so that untrusted devices will be unable to access them.  
+Implement firewalls (by shutting down unused communications ports, limiting communications hosts, limiting access to FINS port (9600)) and isolate them from the IT network. 
+Use a virtual private network (VPN) for remote access to control systems and equipment. 
+Use strong passwords and change them frequently. 
+Install physical controls so that only authorized personnel can access control systems and equipment. 
+Scan virus to ensure safety of any USB drives or similar devices before connecting them to systems and devices. 
+Enforce multifactor authentication to all devices with remote access to control systems and equipment whenever possible. 
+Anti-virus protection 
+
+Protect any PC with access to the control system against malware and ensure installation and maintenance of up-to-date commercial grade anti-virus software protection. 
+
+
+Data input and output protection 
+
+Validation processing such as backup and range check to cope with unintentional modification of input/output data to control systems and devices. 
+
+
+Data recovery 
+
+Periodical data backup and maintenance to prepare for data loss. 
+
+
+
+For more information, see Omron’s Security Advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

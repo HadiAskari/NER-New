@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Red Lion Controls
+Equipment: Crimson (Windows configuration software)
+Vulnerabilities: Use After Free, Improper Restriction of Operations within the Bounds of a Memory Buffer, Pointer Issues, Use of Hard-coded Cryptographic Key
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute code, crash the device, or view protected data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Crimson, windows configuration software, are affected:
+
+Crimson Versions 3.0 and prior
+Crimson Versions 3.1 prior to release 3112.00
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE AFTER FREE CWE-416
+Multiple vulnerabilities can be exploited when a valid user opens a specially crafted, malicious input file that can reference memory after it has been freed.
+CVE-2019-10996 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+Multiple vulnerabilities can be exploited when a valid user opens a specially crafted, malicious input file that operates outside of the designated memory area.
+CVE-2019-10978 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.3    POINTER ISSUES CWE-465
+Multiple vulnerabilities can be exploited when a valid user opens a specially crafted, malicious input file that causes the program to mishandle pointers.
+CVE-2019-10984 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+Crimson uses a hard-coded password to encrypt protected files in transit and at rest, which may allow an attacker to access configuration files.
+CVE-2019-10990 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Michael DePlante, Anthony Fuller, and Todd Manning of Trend Micro’s Zero Day Initiative reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Red Lion Controls recommends users migrate to Crimson 3.1 release 3112.00 or later where the model choice allows. Updated software can be found at the following link:
+https://www.redlion.net/red-lion-software/crimson
+The use of a hardcoded key vulnerability (CVE-2019-10990) can be mitigated in two ways:
+
+The user manual for Crimson 3.1 release 3112.00 now includes a paragraph describing the intended use of the database protection mechanism, noting the software is not designed to provide a cryptographically secure method of database protection.
+In a later release, targeted for September 2019, Red Lion Controls will modify the existing database protection scheme to include an option for a second file access password designed to encrypt the file.
+
+For more information, Red Lion Controls has released a security bulletin that can be found at the following link:
+https://support.redlion.net/hc/en-us/articles/360033077531
+CISA recommends users take the following measures to protect themselves from social engineering attacks:
+
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

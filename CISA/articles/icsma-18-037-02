@@ -1,0 +1,91 @@
+
+OVERVIEW
+This advisory was originally posted to the HSIN ICS-CERT library on February 6, 2018, and is being released to the NCCIC/ICS-CERT website.
+Independent researcher Scott Erven submitted information regarding the potential use of default or hard-coded credentials in multiple GE Healthcare products. Following the researcher’s report, GE performed a self-assessment and validated that multiple GE Healthcare products use default or hard-coded credentials. GE has reviewed capability to change passwords identified by the researcher within the product documentation, and users are advised to contact GE Service for assistance in changing passwords.
+Vulnerability information about the affected products is publicly available.
+AFFECTED PRODUCTS
+The following GE Healthcare products are affected:
+
+Optima 520, which are medical imaging systems, all versions,
+Optima 540, which are medical imaging systems, all versions,
+Optima 640, which are medical imaging systems, all versions,
+Optima 680, which are medical imaging systems, all versions,
+Discovery NM530c, which is a nuclear medical imaging system, versions prior to Version 1.003,
+Discovery NM750b, which is a dedicated breast imaging system, versions prior to Version 2.003,
+Discovery XR656 and Discovery XR656 Plus, which are digital radiographic imaging systems, all versions,
+Revolution XQ/i, which is a medical imaging system, all versions,
+THUNIS-800+, which is a stationary diagnostic radiographic and fluoroscopic X-ray system, all versions,
+Centricity PACS Server, which is used to support a medical imaging archiving and communication system, all versions,
+Centricity PACS RA1000, which is used for diagnostic image analysis, all versions,
+Centricity PACS-IW, which is an integrated web-based system for medical imaging, all versions including Version 3.7.3.7 and Version 3.7.3.8,
+Centricity DMS, which is a data management software, all versions,
+Discovery VH / Millenium VG, which are nuclear medical imaging systems, all versions,
+eNTEGRA 2.0/2.5 Processing and Review Workstation, which is a nuclear medicine workstation for displaying, archiving, and communicating medical imaging, all versions,
+CADstream, which is a medical imaging software, all versions,
+Optima MR360, which is a medical imaging system, all versions,
+GEMNet License server (EchoServer), all versions,
+Image Vault 3.x medical imaging software, all versions,
+Infinia / Infinia with Hawkeye 4 / 1, which are medical imaging systems, all versions,
+Millenium MG / Millenium NC / Millenium MyoSIGHT, which are nuclear medical imaging systems, all versions,
+Precision MP/i, which is a medical imaging system, all versions, and
+Xeleris 1.0 / 1.1 / 2.1 / 3.0 / 3.1, which are medical imaging workstations, all versions.
+
+IMPACT
+Successful exploitation of this vulnerability may allow a remote attacker to bypass authentication and gain access to the affected devices.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC recommends that organizations evaluate the impact of this vulnerability based on their operational environment and specific clinical usage.
+BACKGROUND
+GE Healthcare is a U.S.-based company that maintains offices in several countries around the world.
+According to GE, the affected products are deployed across the Healthcare and Public Health sector. GE estimates that most of these products are used worldwide; however, the Optima 680, the Image Vault 3.x, and the THUNIS-800+ have very limited or no usage in the United States or Canada.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER AUTHENTICATION CWE-287
+
+The affected devices use default or hard-coded credentials.
+
+CVE-2010-5306 has been assigned to the GE Optima 520, 540, 640, and 680.
+CVE-2009-5143 has been assigned to the GE Discovery NM530c.
+CVE-2013-7404 has been assigned to the GE Discovery NM750b.
+CVE-2014-7232 has been assigned to the GE Discovery XR656 and Discovery XR656 Plus.
+CVE-2010-5310 has been assigned to the GE Revolution XQ/i.
+CVE-2014-7233 has been assigned to the GE THUNIS-800+.
+CVE-2012-6693, CVE-2012-6694, CVE-2012-6695, and CVE-2013-7442 have been assigned to the GE Centricity PACS Server.
+CVE-2017-14008 has been assigned to the GE Centricity PACS RA1000 workstation.
+CVE-2011-5322 has been assigned to the GE Centricity PACS-IW.
+CVE-2007-6757 has been assigned to the GE Centricity DMS.
+CVE-2003-1603 has been assigned to the GE Discovery VH and Millenium VG.
+CVE-2001-1594 has been assigned to the GE eNTEGRA 2.0/2.5 Processing and Review Workstation.
+CVE-2010-5309 has been assigned to the GE CADstream.
+CVE-2010-5307 has been assigned to the GE Optima MR360.
+CVE-2017-14004 has been assigned to the GE GEMNet License server (EchoServer).
+CVE-2004-2777 has been assigned to the GE Image Vault 3.x.
+CVE-2017-14002 has been assigned to the GE Infinia / Infinia with Hawkeye 4.
+CVE-2002-2446 has been assigned to the GE Millenium MG / Millenium NC / Millenium MyoSIGHT.
+CVE-2012-6660 has been assigned to GE Precision MP/i.
+CVE-2017-14006 has been assigned to GE Xeleris 1.0/1.1/2.1/3.0/3.1.
+
+For the affected products, a CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Vulnerability information about the affected products is publicly available.
+DIFFICULTY
+An attacker with a low skill level would be able to exploit this vulnerability.
+MITIGATION
+GE has produced product updates that are available upon request, which replace default or hard-coded credentials with custom credentials for all but three of the affected products. GE’s product updates are not available for the Optima 680, Revolution XQ/i, and THUNIS-800+ systems.
+NCCIC recommends that users take additional defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Close all unused ports on affected systems.
+Where possible, discontinue or limit the use of non-product-related third-party software, such as email and web browser software on the affected system, which could broaden the attack surface of medical devices.
+Ensure that affected systems have applied the most current vendor-issued patches available.
+Restrict network access to affected systems and ensure they are not directly accessible from the Internet.
+Follow good network design practices, such as implementing network segmentation, and use DMZs with properly configured firewalls to selectively control, and monitor all traffic passed between zones and systems.
+Monitor and log all network traffic attempting to reach affected products for suspicious activity.
+When remote access is required, use secure methods such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+GE Healthcare provides updates on vulnerability management and other security information at the following URL: 
+http://www3.gehealthcare.com/en/support/security
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.

@@ -1,0 +1,101 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC, SINEC-NMS, SINEMA, SINEMURIK Industrial Control Products with OPC UA
+Vulnerability: Uncaught Exception
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the updated advisory titled ICSA-19-099-03 Siemens Industrial Products with OPC UA (Update G) that was posted April 14, 2022, on the ICS webpage on www.cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could cause a denial-of-service condition on the affected service or device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens industrial products are affected:
+
+SIMATIC CP443-1 OPC UA (including SIPLUS NET variants): all versions
+SIMATIC ET 200 Open Controller CPU 1515SP PC2 (including SIPLUS variants): all versions prior to v2.7
+SIMATIC HMI Comfort Outdoor Panels 7" & 15" (including SIPLUS variants): all versions prior to v15.1 Upd 4
+SIMATIC HMI Comfort Panels 4" 22" (including SIPLUS variants): all versions prior to v15.1 Upd 4
+SIMATIC HMI KTP Mobile Panels KTP400F, KTP700, KTP700F, KTP900, KTP900F (including SIPLUS variants): all versions prior to v15.1 Upd 4
+SIMATIC IPC DiagMonitor: all versions prior to v5.1.3
+SIMATIC NET PC Software v13: all versions
+SIMATIC NET PC Software v14: all versions prior to v14 SP1 Update 14
+SIMATIC NET PC Software v15: all versions
+SIMATIC RF188C: all versions prior to v1.1.0
+SIMATIC RF600R: all versions prior to v3.2.1
+SIMATIC S7-1500 CPU Family (including related ET200 CPUs and SIPLUS variants): all versions, v2.5 and newer, and prior to v2.6.1
+SIMATIC S7-1500 Software Controller: all versions between v2.5 (including) and v2.7 (excluding)
+SIMATIC WinCC OA: all versions prior to v3.15-P018
+SIMATIC WinCC Runtime Advanced: all versions prior to v15.1 Upd 4
+SINEC-NMS: all versions prior to v1.0 SP1
+SINEMA Server: all versions prior to v14 SP2
+SINUMERIK OPC UA Server: all versions prior to v2.1
+
+--------- Begin Update H Part 1 of 2 ---------
+
+TeleControl Server Basic: all versions prior to v3.1.1
+
+--------- End Update H Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCAUGHT EXCEPTION CWE-248
+Specially crafted network packets sent to affected devices on Port 4840/TCP could allow an unauthenticated remote attacker to cause a denial-of-service condition in the OPC communication or crash the device.
+An attacker with network access to the affected systems could exploit the vulnerability. Successful exploitation requires no system privileges and no user interaction. An attacker could use the vulnerability to compromise availability of the OPC communication.
+CVE-2019-6575 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens ProductCERT reported this vulnerability to CISA. Artem Zinenko of Kaspersky identified that SIPLUS is also affected.
+5. MITIGATIONS
+Siemens currently has updates for the following products:
+SIMATIC ET 200 Open Controller CPU 1515SP PC2: Update to v2.7
+
+SIMATIC HMI Comfort Outdoor Panels 7" & 15" (including SIPLUS variants): Update to v15.1 Upd 4
+SIMATIC HMI Comfort Panels 4" 22" (including SIPLUS variants): Update to v15.1 Upd 4
+SIMATIC HMI KTP Mobile Panels KTP400F, KTP700, KTP700F, KTP900, KTP900F (including SIPLUS variants): Update to v15.1 Upd 4
+SIMATIC IPC DiagMonitor: Update to v5.1.3
+SIMATIC NET PC Software v14: Update to v14 SP1 Update 14 or later version
+SIMATIC RF188C: Update to v1.1.0
+SIMATIC RF600R: Update to v3.2.1
+SIMATIC S7-1500 CPU Family (including related ET200 CPUs and SIPLUS variants): Update to v2.6.1
+SIMATIC S7-1500 Software Controller: Update to v2.7
+SIMATIC WinCC OA: Update to v3.15-P018 (logon required)
+SIMATIC WinCC Runtime Advanced: Update to v15.1 Upd 4
+SINEC-NMS: Update to v1.0 SP1
+SINEMA Server: Update to v14 SP2
+SINUMERIK OPC UA Server: Update to v2.1 or newer
+
+--------- Begin Update H Part 2 of 2 ---------
+
+TeleControl Server Basic: Update to V3.1.1 or later version
+
+--------- End Update H Part 2 of 2 ---------
+For the balance of the listed products, Siemens is preparing further updates and recommends users apply the following specific workarounds and mitigations to reduce risk until patches are available:
+
+Deactivate the OPC UA Service if supported by the product.
+Apply cell protection concept.
+Use VPN for protecting network communication between cells.
+Apply Defense-in-Depth.
+
+Siemens recommends users configure their environment according to Siemens’ operational guidelines for Industrial Security (Download) and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information on the vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-307392
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

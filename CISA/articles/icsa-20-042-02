@@ -1,0 +1,82 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Various SCALANCE, SIMATIC, SIPLUS products
+Vulnerabilities: Data Processing Errors, NULL Pointer Dereference
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-20-042-02 Siemens Industrial Products SNMP Vulnerabilities (Update E) that was published February 10, 2022, to the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote attackers to conduct a denial-of-service attack by sending specially crafted packets to Port 161/UDP (SNMP).
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+IE/PB LINK PN IO (including SIPLUS NET variants): All versions prior to v4.0.1
+SCALANCE S602: All versions prior to v4.1
+SCALANCE S612: All versions prior to v4.1
+SCALANCE S623: All versions prior to v4.1
+SCALANCE S627-2M: All versions prior to v4.1
+SIMATIC CP 343-1 Advanced (6GK7343-1GX31-0XE0):All versions
+SIMATIC CP 443-1 (6GK7443-1EX30-0XE0): All versions
+SIMATIC CP 443-1 Advanced (6GK7443-1GX30-0XE0):: All versions
+SIMATIC CP 443-1 OPC UA (6GK7443-1UX00-0XE0): All versions
+SIMATIC CP 1623 (6GK1162-3AA00): All versions prior to v14.00.15.00_51.25.00.01
+SIMATIC CP 1626 (6GK1162-6AA01): All versions prior to v1.1.1
+SIMATIC CP 1628(6GK1162-8AA00):  All versions prior to v14.00.15.00_51.25.00.01
+SIPLUS NET CP 343-1 Advanced (6AG1343-1GX31-4XE0): All versions
+SIPLUS NET CP 443-1 (6AG1443-1EX30-4XE0): All versions
+SIPLUS NET CP 443-1 Advanced (6AG1443-1GX30-4XE0): All version
+TIM 1531 IRC (including SIPLUS NET variants): All versions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    DATA PROCESSING ERRORS CWE-19
+An error in the message handling of SNMP messages allows remote attackers to cause a denial-of-service condition and execute arbitrary code via a crafted packet sent on Port 161/UDP (SNMP).
+CVE-2015-5621 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    NULL POINTER DEREFERENCE CWE-476
+A NULL pointer exception bug within the SNMP handling code allows authenticated attacker to remotely cause a denial-of-service condition via a crafted packet sent on Port 161/UDP (SNMP).
+CVE-2018-18065 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Healthcare and Public Health, Transportation Systems, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Artem Zinenko of Kaspersky Lab reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+Siemens has released updates for several affected products and recommends users update to the new version. Siemens is preparing further updates and recommends specific countermeasures until patches are available.
+
+For IE/PB LINK PN IO, update to v4.0.1
+For SCALANCE S602, SCALANCE S612, SCALANCE S623, and SCALANCE S627-2M products: Update to v4.1 (Update is only available via Siemens Support contact). Upgrade hardware to successor product from SCALANCE SC-600 family
+
+--------- Begin Update F Part 1 of 1 ---------
+
+For SIMATIC NET CP 1623 the updated firmware is contained in SIMATIC NET PC Software v14 Update 14 or later version or SIMATIC NET PC Software v16 or later version
+
+--------- End Update F Part 1 of 1 ---------
+
+For SIMATIC NET CP 1626, update to v1.1.1 or later version
+For TIM 1531 IRC or SIPLUS NET variants, update to Version 2.0 
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Disable SNMP if this is supported by the product (refer to the product documentation). Disabling SNMP fully mitigates these vulnerabilities.
+Protect network access to Port 161/UDP of affected devices.
+Apply cell protection concept and implement defense-in-depth.
+Use VPN for protecting network communication between cells.
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for Industrial Security, and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity.
+For more information on the vulnerabilities and detailed mitigation instructions, please see Siemens security advisory SSA-978220
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

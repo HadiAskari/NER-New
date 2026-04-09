@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.6
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: Stratix 5950
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote attacker to cause an affected device to reload.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Allen-Bradley Stratix 5950 security appliance products are affected by a vulnerability in the Cisco IPsec driver code:
+
+1783-SAD4T0SBK9
+1783-SAD4T0SPK9
+1783-SAD2T2SBK9
+1783-SAD2T2SPK9
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+Sending malformed IPsec packets to an affected device could allow an unauthenticated remote attacker to cause the device to reload. IPsec is disabled by default in the Allen-Bradley Stratix 5950 devices.
+CVE-2018-0472 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported this vulnerability to NCCIC.
+4. MITIGATIONS
+IPsec is disabled by default in the Allen-Bradley Stratix 5950 devices.
+Rockwell Automation recommends that users not use any IPsec virtual private network (VPN) connections, including the following:
+
+LAN-to-LAN IPsec VPN
+Remote-access VPN using the IPsec VPN client
+Layer 2 tunneling protocol (L2TP)-over-IPsec VPN connections
+
+Rockwell Automation also recommends users apply the following general guidelines:
+
+Utilize proper network infrastructure controls, such as firewalls, to help ensure that requests from unauthorized sources are blocked and the controls are isolated from the business network.
+Consult the product documentation for specific features, such as access control lists and deep pack inspection, which may be used to block unauthorized changes, etc.
+Block all traffic to EtherNet/IP, or other CIP protocol-based devices, from outside the manufacturing zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation Products, see Knowledgebase Article ID 898270.
+Minimize network exposure for all control system devices and/or systems and ensure that they are not accessible from the Internet
+
+For additional information, see Rockwell Automation’s security advisory, which can be found at the following link:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1082688 (Login required)
+Cisco's security disclosure for this vulnerability is available at the following link:
+https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180926-ipsec
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

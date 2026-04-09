@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Schneider Electric
+Equipment: IGSS (Interactive Graphical SCADA System)
+Vulnerabilities: Classic Buffer Overflow, Unrestricted Upload of File with Dangerous Type, Path Traversal, Missing Authentication for Critical Function
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain code execution, read/delete files, and create arbitrary files.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of IGSS software are affected:
+
+IGSS Data Collector (dc.exe): v15.0.0.21243 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The affected product is vulnerable to remote code execution, due to missing length check on user supplied data, when a constructed message is received on the network.
+CVE-2021-22802 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+By sending constructed messages on the network, an attacker could write arbitrary files to folders in context of the DC module that could lead to remote code execution.
+CVE-2021-22803 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+An issue exists that could allow disclosure and read access of arbitrary files in the context of the user running IGSS, due to missing validation of user supplied data in network messages.
+CVE-2021-22804 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.4    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+An issue exists that could allow disclosure and read access of arbitrary files in the context of the user running IGSS, due to missing validation of user supplied data in network messages.
+CVE-2021-22805 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Vyacheslav Moskvin, working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Schneider Electric recommends users update to Version 15.0.0.21244 of the IGSS DC module. Please note, dc.exe includes fixes for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software or at the IGSS update link.
+Users should employ appropriate patching methodologies. Schneider Electric strongly recommends the use of backups as well as an evaluation of the impact of these patches in a test and development environment or an offline infrastructure. Contact Schneider Electric’s Customer Care Center if you need assistance removing a patch.
+If users choose not to apply the remediation provided above, they should immediately apply the following mitigations to reduce the risk of exploit:
+
+Only accept incoming connections from machines, which names have been added as a station in the IGSS System Configuration module by setting the registry key called “MatchWinName” to 1 under: “HKEY_CURRENT_USER\SOFTWARE\SchneiderElectric\IGSS32\V15.00.00\DC_HKLM\”
+Follow the general security recommendation below and verify devices are isolated on a private network and firewalls are configured with strict boundaries for devices that require remote access.
+
+For more information see Schneider Electric’s security notification: SEVD-2021-285-03
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

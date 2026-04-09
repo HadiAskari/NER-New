@@ -1,0 +1,94 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC NET CP 443-1 OPC UA
+Vulnerabilities: Improper Input Validation, Improper Restriction of Operations within the Bounds of a Memory Buffer, Incorrect Calculation, Classic Buffer Overflow, Improper Authentication, Race Condition, Data Processing Errors, Exposure of Sensitive Information to an Unauthorized Actor, Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could create a denial-of-service condition as well as other specified and unspecified impacts.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SIMATIC NET CP 443-1 OPC UA are affected:
+
+SIMATIC NET CP 443-1 OPC UA: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+An exploitable denial-of-service vulnerability exists in the origin timestamp check functionality of ntpd 4.2.8p9. A specially crafted, unauthenticated network packet can be used to reset the expected origin timestamp for target peers. Legitimate replies from targeted peers will fail the origin timestamp check (TEST2), causing the reply to be dropped and creating a denial-of-service condition.
+CVE-2016-9042 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+Multiple buffer overflows in the ctl_put* functions in NTP before 4.2.8p10 and 4.3.x before 4.3.94 allow remote authenticated users to have unspecified impact via a long variable.
+CVE-2017-6458 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER INPUT VALIDATION CWE-20
+NTP before 4.2.8p9 allows remote attackers to bypass the origin timestamp protection mechanism via an origin timestamp of zero. Note: this vulnerability exists due to a CVE-2015-8138 regression.
+CVE-2016-7431 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.2.4    INCORRECT CALCULATION CWE-682
+NTP before 4.2.8p9 does not properly perform the initial sync calculations, which allows remote attackers to unspecified impact via unknown vectors related to a “root distance that did not include the peer dispersion.”
+CVE-2016-7433 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.5    CLASSIC BUFFER OVERFLOW CWE-120
+The datalen parameter in the refclock driver in NTP 4.2.x before 4.2.8p4, and 4.3.x before 4.3.77 allows remote attackers to execute arbitrary code or cause a denial-of-service condition via a negative input value.
+CVE-2015-7853 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    IMPROPER AUTHENTICATION CWE-287
+ntpd in NTP 4.x before 4.2.8p8 allows remote attackers to cause a denial-of-service condition (ephemeral-association demobilization) by sending a spoofed crypto-NAK packet with incorrect authentication data at a certain time.
+CVE-2016-4953 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.7    CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362
+The process_packet function in ntp_proto.c in ntpd in NTP 4.x before 4.2.8p8 allows remote attackers
+to cause a denial-of-service condition (peer-variable modification) by sending spoofed packets from multiple sourced IP addresses in a certain scenario, as demonstrated by triggering an incorrect leap indication.
+CVE-2016-4954 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.8    CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362
+ntpd in NTP 4.x before 4.2.8p8, when autokey is enabled, allows remote attackers to cause a denial-of-service condition (peer-variable clearing and association outage) by sending a spoofed crypto-NAK packet or a packet with an incorrect MAC value at a certain time.
+CVE-2016-4955 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.9    IMPROPER INPUT VALIDATION CWE-20
+ntpd in NTP 4.x before 4.2.8p8 allows remote attackers to cause a denial-of-service condition (interleaved-mode transition and time change) via a spoofed broadcast packet. Note: this vulnerability exists because of an incomplete fix for CVE-2016-1548.
+CVE-2016-4956 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.10    IMPROPER INPUT VALIDATION CWE-20
+The rate limiting feature in NTP 4.x before 4.2.8p4 and 4.3.x before 4.3.77 allows remote attackers to have an unspecified impact via a large number of crafted requests.
+CVE-2015-7705 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AAV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.11    IMPROPER INPUT VALIDATION CWE-20
+NTP before 4.2.8p6 and 4.3.x before 4.3.90 allows remote attackers to bypass the origin timestamp validation via a packet with an origin timestamp set to zero.
+CVE-2015-8138 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.12    IMPROPER INPUT VALIDATION CWE-20
+An off-path attacker can cause a preemptible client association to be demobilized in NTP 4.2.8p4 and earlier, and NTPSec a5fb34b9cc89b92a8fef2f459004865c93bb7f92, by sending a crypto NAK packet to a victim client with a spoofed source address of an existing associated peer. This is true even if authentication is enabled.
+CVE-2016-1547 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.13    DATA PROCESSING ERRORS CWE-19
+An attacker can spoof a packet from a legitimate ntpd server with an origin timestamp that matches the peer->dst timestamp recorded for that server. After making this switch, the client in NTP 4.2.8p4 and earlier, and NTPSec aa48d001683e5b791a743ec9c575aaf7d867a2b0c, will reject all future legitimate server responses. It is possible to force the victim client to move time after the mode has been changed. ntpq gives no indication the mode has been switched.
+CVE-2016-1548 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:L/A:L).
+3.2.14    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+A vulnerability exists in the message authentication functionality of libntp in ntp 4.2.8p4 and NTPSec a5fb34b9cc89b92a8fef2f459004865c93bb7f92. An attacker can send a series of crafted messages to attempt to recover the message digest key.
+CVE-2016-1550 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.15    OUT-OF-BOUNDS READ CWE-125
+The MATCH_ASSOC function in NTP before Version 4.2.8p9 and 4.3.x before 4.3.92 allows remote attackers to cause an out-of-bounds reference via an addpeer request with a large hmode value.
+CVE-2016-2518 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Deactivate NTP-based time synchronization of the device, if enabled. The feature is disabled by default.
+Configure an additional firewall to prevent communication to Port UDP/123 of an affected device.
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens operational guidelines for industrial security, and follow the recommendations in the product manual.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information about this issue, please see Siemens security advisory SSA-211752
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

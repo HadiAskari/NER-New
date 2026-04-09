@@ -1,0 +1,49 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SCALANCE, RUGGEDCOM
+Vulnerability: Classic Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to gain unauthenticated access to a device and cause a buffer overflow to execute custom code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+RUGGEDCOM RM1224: All versions prior to 6.3
+SCALANCE M-800 / S615: All versions prior to 6.3
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW’) CWE-120
+The version of pppd shipped with this product has a vulnerability that may allow an unauthenticated remote attacker to cause a stack buffer overflow, which may allow arbitrary code execution on the target system.
+CVE-2020-8597 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens recommends applying the following updates:
+
+RUGGEDCOM RM1224: Update to v6.3
+SCALANCE M-800: Update to v6.3
+
+Siemens has identified the following specific workaround and mitigations users can apply to reduce the risk:
+
+Only use the PPP functionality of the affected devices in trusted environments. This functionality is not enabled by default but typically used in internet dial-in or point-to-point connection scenarios. At this point the vulnerability could be exploited by a malicious peer.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-809841
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

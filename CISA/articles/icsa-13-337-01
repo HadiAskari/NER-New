@@ -1,0 +1,41 @@
+
+OVERVIEW
+Adam Crain of Automatak and independent researchers Chris Sistrunk and Adam Todorski have identified an improper input validation in the Elecsys Director Gateway application. Elecsys has produced a patch that mitigates this vulnerability. Adam Todorski has tested the patch to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Elecsys Director Gateway versions are affected:
+
+Elecsys Director DNP3 Outstation, kernel Version 2.6.32.11ael1 and all previous versions.
+
+IMPACT
+Successful exploitation of this vulnerability could allow an attacker to affect the availability of the DNP3 master slave communication in Elecsys Director Gateway devices.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Elecsys is a US-based company that provides machine-to-machine communication technology solutions, custom electronic equipment, and displays for critical industrial applications worldwide. Its primary markets include energy production and distribution, agriculture, transportation, safety and security systems, water management, aerospace, and military.
+The affected products, the Director Industrial Communication Gateway, are industrial data communications devices. According to Elecsys, Director Gateway products are deployed across several sectors including the energy sector. Elecsys estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed December 03, 2013.
+
+The DNP3 service in Elecsys Director Gateway does not validate or incorrectly validates input. Successful exploitation of this vulnerability disables communications and induces high system load for a short period of time.
+CVE-2013-2825NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2825, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:P, Web site last accessed December 03, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a medium skill would be able to exploit this vulnerability.
+MITIGATION
+Elecsys has created a patch to mitigate this vulnerability. Customers may obtain this patch by contacting Elecsys customer service at 913-647-0158 or info@elecsyscorp.com.
+Because this vulnerability is identified with fuzzing tools, the researchers suggest developers use extensive negative testing during quality control of products. The researchers also suggest blocking DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DNP3-specific rule sets.
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed December 03, 2013. that is available for download from the NCCIC/ICS-CERT Web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

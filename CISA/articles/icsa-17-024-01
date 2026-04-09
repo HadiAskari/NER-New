@@ -1,0 +1,48 @@
+
+CVSS V3 7.3
+ATTENTION: Remotely exploitable/Low skill level to exploit
+Vendor: Schneider Electric
+Equipment: Wonderware Historian
+Vulnerability: Credentials Management
+AFFECTED PRODUCTS
+The following Wonderware Historian versions are affected:
+
+Wonderware Historian 2014 R2 SP1 P01 and earlier.
+
+IMPACT
+Successful exploitation of this vulnerability could allow a malicious entity to compromise Historian databases. In some installation scenarios, SQL resources beyond those created by Wonderware Historian may be compromised as well.
+MITIGATION
+Schneider Electric strongly recommends that the following steps be taken to mitigate this vulnerability:
+
+Identify where the logins are used. Some likely places for the logins to have been used are:
+
+
+Wonderware Historian Client,
+Wonderware InTouch and Application Object scripts,
+Wonderware Information Server configuration, and
+Custom applications not supplied by Schneider Electric that interact with Historian data.
+
+
+Logins that are not used should be disabled from the SQL Server Management Studio.
+For logins that are still in use, the passwords should be changed from the default.
+
+For an increased level of security, Schneider Electric and Microsoft further advise that connectivity to SQL Server be accomplished with Windows Integrated Security as opposed to using native SQL logins.
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not remotely exploitable. Low skill level is needed to exploit.
+VULNERABILITY OVERVIEW
+
+CREDENTIALS MANAGEMENT CWE-255
+
+Wonderware Historian creates logins with default passwords, which can allow a malicious entity to compromise Historian databases. In some installation scenarios, resources beyond those created by Wonderware Historian may be compromised as well.
+CVE-2017-5155 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+RESEARCHER
+Ruslan Habalov and Jan Bee of the Google ISA Assessments Team discovered this vulnerability.

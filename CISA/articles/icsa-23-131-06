@@ -1,0 +1,67 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.9
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE LPE9403
+Vulnerabilities: Command Injection, Creation of Temporary File with Insecure Permissions, Path Traversal, Heap-based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation these vulnerabilities could allow an attacker to gain access to the device as root or create a denial-of-service condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products from Siemens are affected: 
+
+
+SCALANCE LPE9403 (6GK5998-3GS00-2AC2): Versions prior to 2.1
+
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+The web-based management of affected devices does not properly validate user input, making it susceptible to command injection. This could allow an authenticated remote attacker to access the underlying operating system as root.
+CVE-2023-27407 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.2 CREATION OF TEMPORARY FILE WITH INSECURE PERMISSIONS CWE-378
+The `i2c` mutex file is created with the permissions bits of `-rw-rw-rw-.` This file is used as a mutex for multiple applications interacting with i2c. This could allow an authenticated attacker with access to the secure shell (SSH) interface on the affected device to interfere with the integrity of the mutex and the data it protects. 
+CVE-2023-27408 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N).
+3.2.3 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A path traversal vulnerability was found in the `deviceinfo` binary via the `mac` parameter. This could allow an authenticated attacker with access to the SSH interface on the affected device to read the contents of any file named `address.`
+CVE-2023-27409 has been assigned to this vulnerability. A CVSS v3 base score of 2.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.4 HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow vulnerability was found in the `edgebox_web_app` binary. The binary will crash if supplied with a backup password longer than 255 characters. This could allow an authenticated privileged attacker to cause a denial-of-service condition.
+CVE-2023-27410 has been assigned to this vulnerability. A CVSS v3 base score of 2.7 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workaround/mitigation users can apply to reduce risk: 
+
+SCALANCE LPE9403 (6GK5998-3GS00-2AC2): Update to V2.1 or later version.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for Industrial Security, and following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens Industrial Security webpage.
+For further inquiries on security vulnerabilities in Siemens products, users should contact the Siemens ProductCERT.
+For more information, see the associated Siemens security advisory SSA-325383 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should: 
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. 
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies. 
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents. 
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

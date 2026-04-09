@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Aethon (owned by ST Engineering)
+Equipment: TUG Home Base Server
+Vulnerabilities: Missing Authorization, Channel Accessible by Non-endpoint, Cross-site Scripting 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a denial-of-service condition, allow full control of robot functions, or expose sensitive information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Aethon reports these vulnerabilities affect the following versions of TUG Home Base Server, a server used to control and communicate with autonomous mobile robots in hospitals:
+
+All versions prior to Version 24
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHORIZATION CWE-862
+An unauthenticated attacker can arbitrarily add new users with administrative privileges and delete or modify existing users.
+CVE-2022-1066 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N).
+3.2.2    MISSING AUTHORIZATION CWE-862
+An unauthenticated attacker can freely access hashed user credentials.
+CVE-2022-26423 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N).
+3.2.3    CHANNEL ACCESSIBLE BY NON-ENDPOINT CWE-300
+An unauthenticated attacker can connect to the TUG Home Base Server websocket to take control of TUG robots.
+CVE-2022-1070 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    CROSS-SITE SCRIPTING CWE-79
+The “Reports” tab of the Fleet Management Console is vulnerable to stored cross-site scripting attacks when new reports are created or edited.
+CVE-2022-27494 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:L).
+3.2.5    CROSS-SITE SCRIPTING CWE-79
+The “Load” tab of the Fleet Management Console is vulnerable to reflected cross-site scripting attacks.
+CVE-2022-1059 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: East Asia, United States
+COMPANY HEADQUARTERS LOCATION: Singapore
+
+3.4 RESEARCHER
+Asher Brass and Daniel Brodie of Cynerio reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Aethon has implemented a mitigation plan to address these vulnerabilities. Aethon has checked all locations where this product is in use to ensure firewalls are active and to update systems to the newest software (Version 24). 
+For more information about these issues and the associated mitigation practices, please contact Aethon.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

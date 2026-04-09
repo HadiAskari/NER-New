@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Remotely exploitable/low skill level to exploit
+Vendor: Advantech
+Equipment: WebAccess
+Vulnerabilities: SQL Injection, Improper Authorization, Path Traversal, Heap-based Buffer Overflow, Stack-based Buffer Overflow, Untrusted Pointer Dereference, Improper Privilege Management, and External Control of File Name or Path
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to disclose sensitive information from the host and/or target, execute arbitrary code, or delete files.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of WebAccess products are affected:
+
+WebAccess versions V8.2_20170817 and prior,
+WebAccess versions V8.3.0 and prior,
+WebAccess Dashboard versions V.2.0.15 and prior,
+WebAccess Scada Node versions prior to 8.3.1,
+WebAccess/NMS 2.0.3 and prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1   IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+Several SQL injection vulnerabilities have been identified, which may allow an attacker to disclose sensitive information from the host.
+CVE-2018-7501 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2   INFORMATION EXPOSURE THROUGH DIRECTORY LISTING CWE-548
+An information exposure vulnerability through directory listing has been identified, which may allow an attacker to find important files that are not normally visible.
+CVE-2018-10590 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3   IMPROPER AUTHORIZATION CWE-264
+A TFTP application has unrestricted file uploads to the web application without authorization, which may allow an attacker to execute arbitrary code.
+CVE-2018-7505 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4   PATH TRAVERSAL CWE-22
+A path transversal vulnerability has been identified, which may allow an attacker to disclose sensitive information on the target.
+CVE-2018-7503 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5   PATH TRAVERSAL CWE-22
+A path transversal vulnerability has been identified, which may allow an attacker to execute arbitrary code.
+CVE-2018-10589 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6   STACK-BASED BUFFER OVERFLOW CWE-121
+Several stack-based buffer overflow vulnerabilities have been identified, which may allow an attacker to execute arbitrary code.
+CVE-2018-7499 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7   HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow vulnerability has been identified, which may allow an attacker to execute arbitrary code.
+CVE-2018-8845 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8   UNTRUSTED POINTER DEREFERENCE CWE-822
+Several untrusted pointer dereference vulnerabilities have been identified, which may allow an attacker to execute arbitrary code.
+CVE-2018-7497 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.9   EXTERNAL CONTROL OF FILE NAME OR PATH CWE-73
+An external control of file name or path vulnerability has been identified, which may allow an attacker to delete files.
+CVE-2018-7495 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.10   ORIGIN VALIDATION ERROR CWE-346
+An origin validation error vulnerability has been identified, which may allow an attacker to create a malicious web site, steal session cookies, and access data of authenticated users.
+CVE-2018-10591 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:N/A:N).
+3.2.11   IMPROPER PRIVILEGE MANAGEMENT CWE-269
+An improper privilege management vulnerability may allow an authenticated user to modify files when read access should only be given to the user.
+CVE-2018-8841 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+Critical Infrastructure Sectors: Critical Manufacturing, Energy, Water and Wastewater Systems
+Countries/Areas Deployed: East Asia, United States, Europe
+Company Headquarters Location: Taiwan
+
+3.4 RESEARCHER
+Mat Powell and Fritz Sands of Trend Micro’s Zero Day Initiative; Ariele Caltabiano (kimiya) and rgod working with Trend Micro’s Zero Day Initiative; Steven Seeley of Offensive Security, working with Trend Micro's Zero Day Initiative; and Donato Onofri and Simone Onofri of Business Integration Partners S.p.A. reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Advantech has released Version 8.3.1 of WebAccess to address the reported vulnerabilities. Users can download the latest version of WebAccess at the following location:
+http://support.advantech.com/support/DownloadSRDetail_New.aspx?SR_ID=1-MS9MJV&Doc_Source=Download
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

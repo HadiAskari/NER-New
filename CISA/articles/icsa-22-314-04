@@ -1,0 +1,50 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.3
+ATTENTION: Low attack complexity  
+Vendor: Siemens 
+Equipment: SINUMERIK ONE and SINUMERIK MC 
+Vulnerability: Insufficiently Protected Credentials 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow attackers to discover the private key of a given CPU product family via an offline attack against a single CPU from the family. Attackers could then use this knowledge to extract confidential configuration data from projects.  
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SINUMERIK CNC systems are affected: 
+
+SINUMERIK ONE All Versions 
+SINUMERIK MC All Versions 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522 
+All versions of Siemens SINUMERIK ONE and SINUMERIK MC use an insecure method to store authentication credentials, which are therefore susceptible to being retrieved. 
+CVE-2022-38465 has been assigned to this vulnerability. A CVSS v3 base score of 9.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing  
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA. 
+4. MITIGATIONS
+Siemens identified the following specific workarounds and mitigations that customers can apply to reduce the risk: 
+
+Expose the communication between the S7-1500 CPU and the HMI of the affected products only to trusted network environments. 
+Protect access to the TIA Portal project and SINUMERIK NCU (including related memory cards) from unauthorized actors. 
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following the recommendations in the product manuals. 
+For more information, see Siemens security advisory SSA-568428 in HTML or CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.  

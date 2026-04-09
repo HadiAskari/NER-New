@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+​CVSS v3 7.2
+​ATTENTION: Exploitable remotely/low attack complexity
+​Vendor: Ovarro
+​Equipment: TBox RTUs
+​Vulnerabilities: Missing Authorization, Use of Broken or Risky Cryptographic Algorithm, Inclusion of Functionality from Untrusted Control Sphere, Insufficient Entropy, Improper Authorization, Plaintext Storage of a Password
+
+2. RISK EVALUATION
+​Successful exploitation of these vulnerabilities could result in sensitive system information being exposed and privilege escalation.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+​The following firmware versions of TBox RTUs are affected: 
+
+​TBox MS-CPU32: Version 1.50.598 and prior (CVE-2023-36607, CVE-2023-36609, CVE-2023-36610, CVE-2023-36611)
+​TBox MS-CPU32-S2: Version 1.50.598 and prior (CVE-2023-36607, CVE-2023-36609, CVE-2023-36610, CVE-2023-36611)
+​TBox LT2: Version 1.50.598 and prior (CVE-2023-36607, CVE-2023-36609, CVE-2023-36610, CVE-2023-36611)
+​TBox TG2: Version 1.50.598 and prior (CVE-2023-36607, CVE-2023-36609, CVE-2023-36610, CVE-2023-36611)
+​TBox RM2: Version 1.50.598 and prior (CVE-2023-36607, CVE-2023-36609, CVE-2023-36610, CVE-2023-36611)
+​TBox MS-CPU32: Version 1.46 through 1.50.598 (CVE-2023-36608)
+​TBox MS-CPU32-S2: Version 1.46 through 1.50.598 (CVE-2023-36608)
+​TBox LT2: Version 1.46 through 1.50.598 (CVE-2023-36608)
+​TBox TG2: Version 1.46 through 1.50.598 (CVE-2023-36608)
+​TBox RM2: Version 1.46 through 1.50.598 (CVE-2023-36608)
+​TBox MS-CPU32: All versions (CVE-2023-3395)
+​TBox MS-CPU32-S2: All versions (CVE-2023-3395)
+​TBox LT2: All versions (CVE-2023-3395)
+​TBox TG2: All versions (CVE-2023-3395)
+​TBox RM2: All versions (CVE-2023-3395)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 ​MISSING AUTHORIZATION CWE-862
+​The affected TBox RTUs are missing authorization for running some API commands. An attacker running these commands could reveal sensitive information such as software versions and web server file contents.
+​CVE-2023-36607 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2 USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+​The affected TBox RTUs store hashed passwords using MD5 encryption, which is an insecure encryption algorithm.
+​CVE-2023-36608 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.3 ​INCLUSION OF FUNCTIONALITY FROM UNTRUSTED CONTROL SPHERE CWE-829
+​The affected TBox RTUs run OpenVPN with root privileges and can run user defined configuration scripts. An attacker could set up a local OpenVPN server and push a malicious script onto the TBox host to acquire root privileges.
+​CVE-2023-36609 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 INSUFFICIENT ENTROPY CWE-331
+​The affected TBox RTUs generate software security tokens using insufficient entropy. The random seed used to generate the software tokens is not initialized correctly, and other parts of the token are generated using predictable time-based values. An attacker with this knowledge could successfully brute force the token and authenticate themselves.
+​CVE-2023-36610 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5 ​IMPROPER AUTHORIZATION CWE-285
+​The affected TBox RTUs allow low privilege users to access software security tokens of higher privilege. This could allow an attacker with “user” privileges to access files requiring higher privileges by establishing an SSH session and providing the other tokens.
+​CVE-2023-36611 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.6 ​PLAINTEXT STORAGE OF A PASSWORD CWE-256
+​All versions of the TWinSoft Configuration Tool store encrypted passwords as plaintext in memory. An attacker with access to system files could open a file to load the document into memory, including sensitive information associated with document, such as password. The attacker could then obtain the plaintext password by using a memory viewer.
+​CVE-2023-3395 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+​CRITICAL INFRASTRUCTURE SECTORS: Water and Wastewater, Energy, Transportation, Communications
+​COUNTRIES/AREAS DEPLOYED: Worldwide
+​COMPANY HEADQUARTERS LOCATION: England
+
+3.4 RESEARCHER
+​Floris Hendriks and Jeroen Wijenbergh of Radboud University reported these vulnerabilities to CISA.
+4. MITIGATIONS
+​Ovarro recommends users update the affected products to the latest version by downloading the newest software version from the Ovarro website in the “Customer Support” section.
+​In addition to applying patches, Ovarro has identified the following workarounds:
+​CVE-2023-36607: Disable SSH access through the integrated firewall and disable the user account SSH access by emptying its password in the application.
+​CVE-2023-36608: Update to TWinSoft version 12.7.2 or later, which includes firmware version 1.50.598.
+​CVE-2023-36609: Update to TWinSoft version 12.7.2 or later, which includes firmware version 1.50.598.
+​CVE-2023-36610: Disable SSH access through the integrated firewall and disable the user account SSH access by emptying its password in the application. Setting a password on the application will also cause the retrieved application to be encrypted.
+​CVE-2023-36611: Disable SSH access through the integrated firewall and disable the user account SSH access by emptying its password in the application. Setting a password on the application will also cause the retrieved application to be encrypted.
+​CVE-2023-3395: Use password protected files within the TBox software. This will prevent attackers from opening files to load passwords into memory in plaintext.
+​CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+​Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+​Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+​When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+​CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+​CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+​Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+​Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+​No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,54 @@
+
+OVERVIEW
+Researcher Bob Radvanovsky of Infracritical has notified NCCIC/ICS-CERT that Innominate has released a new firmware version that mitigates the OpenSSL HeartBleed vulnerability in the mGuard products.
+--------- Begin Update A Part 1 of 4 --------
+Phoenix Contact branded devices are not likely to be affected, but Phoenix Contact has released a new firmware version to alleviate concern about this vulnerability affecting its products.
+--------- End Update A Part 1 of 4 ----------
+This vulnerability could be exploited remotely. Exploits that target the OpenSSL Heartbleed vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+--------- Begin Update A Part 2 of 4 --------
+The following mGuard versions are affected:
+
+mGuard firmware Versions 8.0.0 and 8.0.1
+
+mGuard firmware versions prior to 8.0.0 whether running on Innominate, Phoenix Contact, or other brands of devices are NOT affected.
+--------- End Update A Part 2 of 4 ----------
+IMPACT
+mGuard firmware Versions 8.0.0 and 8.0.1 use the OpenSSL cryptographic library and transport layer security (TLS) implementation Version 1.0.1, which is known to be vulnerable to the HeartBleed vulnerability.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND 
+--------- Begin Update A Part 3 of 4 --------
+Innominate is a German-based company that sells products worldwide through its international partners. Innominate was acquired by Phoenix Contact in 2008.
+--------- End Update A Part 3 of 4 ----------
+The affected products, the mGuard family of products, are industrial security routers. They can be found in many critical infrastructure sectors, including Communications, Healthcare and Public Health, and Critical Manufacturing.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed April 15, 2014.
+
+Because of the unpredictable memory layout of HTTPS communication, it is possible that the private key of the mGuard web graphic user interface could be disclosed. An attacker could use this key to impersonate the authenticated user and perform a man-in-the-middle attack.
+CVE-2014-0160NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160, web site last accessed April 15, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:N/A:N, web site last accessed April 15, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+All users of the affected mGuard firmware Versions 8.0.0 and 8.0.1 should upgrade to mGuard firmware Version 8.0.2. Innominate recommends users update SSL keys on the affected products after upgrade. The mGuard firmware Version 8.0.2 provides a combined function to replace both the HTTPS and SSH keys.
+For more information regarding this vulnerability and specific instructions on how to install the latest firmware version, please see the Innominate Security Advisory published April 11, 2014, at the following location:
+http://www.innominate.com/data/downloads/software/innominate_security_advisory_20140411_001_en.pdf
+--------- Begin Update A Part 4 of 4 --------
+Phoenix Contact branded devices are not vulnerable to this issue, as they are using mGuard firmware Version 7.5 that is not affected by HeartBleed. Only mGuard firmware Versions 8.0.0 and 8.0.1 are affected. Phoenix Contact has posted the 8.0.2 firmware patch release on its web site:
+https://www.phoenixcontact.com/mguardsecurity
+--------- End Update A Part 4 of 4 ----------
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

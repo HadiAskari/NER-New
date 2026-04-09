@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+
+--------- Begin Update A Part 1 of 3 ---------
+
+Equipment: Capital VSTAR, Nucleus NET, Nucleus ReadyStart v3, Nucleus ReadyStart v4, Nucleus Source Code
+
+--------- End Update A Part 1 of 3 ---------
+
+Vulnerabilities: Infinite Loop
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-103-05 Siemens Nucleus Products IPv6 Stack that was published April 13, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Nucleus products are affected:
+--------- Begin Update A Part 2 of 3 ---------
+
+Capital VSTAR: Versions including the affected IPv6 stack
+Nucleus NET: All versions
+Nucleus ReadyStart v3: All versions prior to v2017.02.4
+Nucleus ReadyStart v4: All versions prior to v4.1.0
+Nucleus Source Code: Versions including the affected IPv6 stack
+
+--------- End Update A Part 2 of 3 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+The function that processes IPv6 headers does not check the lengths of extension header options, allowing attackers to put this function into an infinite loop with crafted length values.
+CVE-2021-25663 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+The function that processes the hop-by-hop extension header in IPv6 packets and its options lacks any checks against the length field of the header, allowing attackers to put the function into an infinite loop by supplying arbitrary length values.
+CVE-2021-25664 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens has published security advisory SSA-248289 and released the following mitigations for the affected products:
+--------- Begin Update A Part 3 of 3 ---------
+
+Capital VSTAR: Contact customer support to receive patch and update information.
+Nucleus NET: Update to the latest versions of Nucleus ReadyStart v3 or v4. Users may also contact customer support or the local Nucleus Sales team for mitigation advice.
+Nucleus ReadyStart v3: Update to v2017.02.4 or later version
+Nucleus ReadyStart v4: Update to v4.1.0 or later version
+Nucleus Source Code: Contact customer support to receive patch and update information.
+
+--------- End Update A Part 3 of 3 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+For additional mitigation advice contact customer support or the Nucleus Sales team.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ Operational Guidelines for Industrial Security, and following the recommendations in the product manuals.
+
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For further inquiries on security vulnerabilities in Siemens’ products and solutions, contact Siemens ProductCERT.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

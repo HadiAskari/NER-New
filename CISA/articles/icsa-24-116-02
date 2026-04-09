@@ -1,0 +1,64 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.9
+ATTENTION: Exploitable remotely
+Vendor: Hitachi Energy
+Equipment: MACH SCM
+Vulnerabilities: Improper Control of Generation of Code, Improper Neutralization of Directives in Dynamically Evaluated Code
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in an execution of arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of MACH SCM, are affected:
+
+MACH SCM: Versions 4.0 to 4.5.x
+MACH SCM: Versions 4.6 to 4.38
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER CONTROL OF GENERATION OF CODE CWE-94
+SCM Software is a client and server application. An Authenticated System manager client can execute LINQ query in the SCM server, for customized filtering. An Authenticated malicious client can send a specially crafted code to skip the validation and execute arbitrary code (RCE) on the SCM Server remotely. Malicious clients can execute any command by using this RCE vulnerability.
+CVE-2024-0400 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-0400. A base score of 8.9 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:L).
+3.2.2 IMPROPER NEUTRILIZATION OF DIRECTIVES IN DYNAMICALLY EVALUATED CODE CWE-95
+Authenticated List control client can execute the LINQ query in SCM Server to present event as list for operator. An authenticated malicious client can send special LINQ query to execute arbitrary code remotely (RCE) on the SCM Server that an attacker otherwise does not have authorization to do.
+CVE-2024-2097 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H ).
+A CVSS v4 score has also been calculated for CVE-2024-2097. A base score of 8.8 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:H/SA:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy has released the following mitigation for CVE-2024-2097:
+
+MACH SCM: Versions 4.6 to 4.38: Upgrade to MACH SCM Version 4.38.1
+
+Until the updates are made available, Hitachi Energy recommends the following general mitigation factors/workarounds for the products with MACH SCM Versions 4.0 to 4.5.x to address the vulnerability CVE-2024-0400:
+Recommended security practices and firewall configurations can help protect a process control network from attacks originating from outside the network including:
+
+Physically protect process control systems from direct access by unauthorized personnel.
+Do not allow process control systems direct connections to the Internet.
+Separate process control systems from other networks by means of a firewall system that has a minimal number of ports exposed.
+Process control systems should not be used for Internet surfing, instant messaging, or receiving emails.
+Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+
+For more information, see Hitachi Energy's Security Advisories:
+
+RCE Vulnerabilities in Hitachi Energy's MACH SCM Product
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities have a high attack complexity.
+5. PUBLICATION HISTORY
+
+April 25, 2024: Initial Publication
+

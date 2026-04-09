@@ -1,0 +1,47 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.5
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: PowerFlex 525 AC Drives
+Vulnerability: Resource Exhaustion
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could result in resource exhaustion, denial of service, and/or memory corruption.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of PowerFlex 525, an AC drive, are affected:
+
+PowerFlex 525 AC Drives with embedded EtherNet/IP and Safety Versions 5.001 and earlier.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED RESOURCE CONSUMPTION ('RESOURCE EXHAUSTION') CWE-400
+A remote, unauthenticated threat actor can repeatedly send specific CIP packets to an affected PowerFlex 525 drive, which may allow disruption of the availability of the device. 
+CVE-2018-19282 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Nicolas Merle of Applied Risk reported this vulnerability to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation has released new firmware to address the vulnerability. Download the latest version of the firmware from:
+https://compatibility.rockwellautomation.com/Pages/MultiProductDownload.aspx?Keyword=25B&crumb=112
+Rockwell Automation recommends the following general security guidelines:
+
+Utilize proper network infrastructure controls, such as firewalls, to help ensure CIP messages from unauthorized sources are blocked.
+Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the manufacturing zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818, using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation Products, see Knowledgebase Article ID 898270 (login required).
+If applicable, consult the product documentation for specific features, such as a hardware key-switch setting, which may be used to block unauthorized changes, etc.
+Use trusted software, software patches, antivirus/antimalware programs, and interact only with trusted websites and attachments.
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet or the business network.
+When remote access is required, use secure methods such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+Rockwell Automation has released a security advisory regarding this vulnerability, which can be found on its website at the following location (login required):  https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1082684
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

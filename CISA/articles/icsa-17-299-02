@@ -1,0 +1,49 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.9
+
+ATTENTION: Exploitable remotely/public exploits are available
+Vendor: Rockwell Automation
+Equipment: Stratix 5100 Wireless Access Point/Workgroup Bridge
+Vulnerability: Reusing a Nonce
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled “ICSA-17-299-02 Rockwell Automation Stratix 5100” that was published October 26, 2017, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability may allow the attacker to operate as a “man-in-the-middle” between the device and the wireless network.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Rockwell Automation reports the vulnerability affects the following wireless access point/workgroup bridge products:
+
+Stratix 5100 Version 15.3(3) JC1 and earlier.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1   REUSING A NONCE, KEY PAIR IN ENCRYPTION CWE-323
+Key reinstallation attacks (“KRACK”) work against the four-way handshake of the WPA2 protocol. KRACK takes advantage of the retransmission of a handshake message to prompt the installation of the same encryption key every time it receives message 3 from the access point. Retransmission of the handshake message from the access point occurs if a proper client acknowledgement is not received to the initial message; retransmission resets the nonce value and replay counter to their initial values. A malicious actor could force these nonce resets by replaying the appropriate handshake message, which could allow for injection and decryption of arbitrary packets, hijacking of TCP connections, injection of HTTP content, or replaying of unicast or multicast data frames on the targeted device.
+CVE-2017-13082 has been assigned to this vulnerability. A CVSS v3 base score of 6.9 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:L/I:H/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Mathy Vanhoef, of the Katholieke Universiteit Leuven in Belgium discovered this vulnerability.
+5. MITIGATIONS
+Rockwell Automation recommends that all users patch the clients that connect to the Stratix 5100 WAP/WGB, and recommends contacting a supplier to get the most updated compatible patch. However, patching the client only protects the connection formed by that specific client. In order to protect all future clients, Rockwell Automation recommends patching the Stratix 5100 WAP/WGB when the firmware is available.
+--------- Begin Update A Part 1 of 1 -------- 
+After further investigation, Rockwell Automation has determined that since the vulnerability affects Stratix 5100 access points with 802.11r enabled and 802.11r is not fully supported on the Stratix 5100 WAP/WGB, access-point users are not affected by this vulnerability and patching the Stratix 5100 WAP/WGB is not required when the device is operating as an access point. To verify that 802.11r is disabled, please refer to this Knowledgebase Article ID 1068007. Rockwell still suggests that users refer to manufacturers of their connected wireless client devices for suggested patch procedures.
+--------- End Update A Part 1 of 1 ---------- 
+As new versions of firmware are released to remediate this vulnerability, Rockwell Automation will provide mitigation updates in their advisory. For more information about this vulnerability, mitigation updates, and Rockwell Automation’s general security guidelines, please see Rockwell Automation’s security advisory found at the following link. A login is required to view the advisory.https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1066697 Rockwell Automation also offers the following general security guidelines:
+
+Use trusted software, software patches, anti-virus/anti-malware programs, and interact only with trusted websites and attachments.
+Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the manufacturing zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls, such as firewalls, unified threat management (UTM) devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation Products, see Knowledge base Article ID 898270.
+Help minimize network exposure for all control system devices and/or systems, and confirm that they are not accessible from the Internet.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that a VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+This vulnerability is exploitable from an adjacent network. High skill level is needed to exploit.

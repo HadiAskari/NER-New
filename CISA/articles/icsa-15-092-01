@@ -1,0 +1,43 @@
+
+OVERVIEW
+Schneider Electric has notified NCCIS/ICS-CERT of a buffer overflow vulnerability in the Schneider Electric VAMPSET software product. Ricardo Narvaja and Joaquín Rodríguez of Core Security reported this vulnerability directly to Schneider Electric. Schneider Electric has published a security notification,SEVD-2015-084-01, http://www2.schneider-electric.com/sites/corporate/en/support/cybersecurity/cyber-security-vulnerabilities-sorted.page, web site last accessed April 02, 2015. which tells how to mitigate this vulnerability.
+AFFECTED PRODUCTS
+Schneider Electric reports that the vulnerability affects the following versions of VAMPSET:
+
+VAMPSET software, V2.2.145 and all previous versions.
+
+IMPACT
+An attacker who exploits this vulnerability may be able to execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric’s corporate headquarters is located in Paris, France, and it maintains offices in more than 100 countries worldwide.
+The affected product, VAMPSET software, is used to configure and maintain multiple protection relays and arc monitoring units. According to Schneider Electric, this product is deployed in the Energy sector. Schneider Electric estimates that this product is used on all continents and in 60 countries world-wide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERFLOW . CWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed April 02, 2015.
+
+VAMPSET is vulnerable to a Stack-based and Heap-based buffer overflow attack, which can be exploited by attackers to execute arbitrary code by providing a malicious CFG or DAT file with specific parameters. These malformed or corrupted disturbance recording files cause VAMPSET to crash when opened in a stand-alone state, without connection to a protection relay. This vulnerability has no effect on the Windows Operating System.
+CVE-2014-8390NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8390, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. Schneider Electric has assigned a CVSS v2 base score of 6.6; the CVSS vector string is (AV:L/AC:M/Au:N/C:P/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:P/I:C/A:C, web site last accessed April 02, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed disturbance recording file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince the user to accept the malformed disturbance recording file. Additional user interaction is needed to load the malformed file, which decreases the likelihood of a successful exploit.
+MITIGATION
+To protect the computer and configuration files from unauthorized escalation of privileges through manipulation, Schneider Electric recommends users employ best IT practices to secure their computers and relay configuration files. Use of User Access Control (UAC) can further improve the security of the computer. To minimize the risk of attack, users who are not directly using this software on a regular basis are strongly encouraged to delete this application from their computer to reduce the likelihood of attack and to store relay configuration files in a protected location.
+Schneider Electric has updated the VAMPSET tool in order to recognize malformed disturbance recorder files. It now checks the length of the text string in the Comtrade file in order to recognize them as being acceptable. This means that the station name and device identification must be the proper length. If these conditions are not met, the software will block opening the file, remain operational, and report to the user that the file is not complete or contains wrong data.
+For more information about this issue, see Schneider Electric security notification SEVD-2015-084-01 at the following location on their website:
+http://www2.schneider-electric.com/sites/corporate/en/support/cybersecurity/cyber-security-vulnerabilities-sorted.page
+ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed April 02, 2015. for more information
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed April 02, 2015. for more information.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, which is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

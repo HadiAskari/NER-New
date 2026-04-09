@@ -1,0 +1,55 @@
+
+OVERVIEW
+--------- Begin Update A Part 1 of 4 --------
+This updated advisory is a follow-up to the original advisory titled ICSA-15-141-01 Schneider Electric OFS Server Vulnerability that was published May 21, 2015, on the NCCIC/ICS-CERT web site.
+Ivan Sanchez from Nullcode Team has identified two instances of DLL hijacking in Schneider Electric’s OPC Factory Server (OFS) application. Schneider Electric has produced several new service patches that mitigate this vulnerability. Ivan Sanchez has tested the new service patches to validate that it resolves the vulnerability.
+--------- End Update A Part 1 of 4 ----------
+AFFECTED PRODUCTS
+The following OPC Factory Server versions are affected:
+OPC Factory Server (OSF) Version 3.5, and all previous versions.
+--------- Begin Update A Part 2 of 4 --------
+Schneider Electric has developed additional patches that mitigates additional vulnerabilities if using the following software packages:
+OFS v3.5 with Version v7.40 of SCADA Expert Vijeo Citect/CitectSCADA,OFS v3.5 with Version v7.30 of Vijeo Citect/CitectSCADA, andOFS v3.5 with Version v7.20 of Vijeo Citect/CitectSCADA.
+--------- End Update A Part 2 of 4 ----------
+IMPACT
+Exploitation of DLL hijack vulnerabilities can crash the system and possibly gives an attacker access to the system with the same privilege level as the application that utilizes the malicious DLL.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the potential impact of this vulnerability based on their operational environment and architecture.
+BACKGROUND
+Schneider Electric’s corporate headquarters is located in Paris, France, and it maintains offices in more than 100 countries worldwide.
+The affected product, OPC Factory Server, enables Windows client applications to access Modicon PLC data in real time. According to Schneider Electric, OPC Factory Server is deployed across many complex manufacturing processes and infrastructures in many sectors including Commercial Facilities, Critical Manufacturing, Energy, Water and Wastewater Systems, and others. Schneider Electric estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+DLL HIJACKINGCWE-427: Uncontrolled Search Path Element, http://cwe.mitre.org/data/definitions/427.html, web site last accessed May 21, 2015.
+
+A successful exploit of these vulnerabilities requires the local user to load a crafted DLL file in the system directory on the victim machine. If the application attempts to open that file, the application could crash or allow the attacker to execute arbitrary code.
+--------- Begin Update A Part 3 of 4 --------
+CVE-2015-1014NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1014, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.6 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:S/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:S/C:C/I:C/A:C, web site last accessed July 14, 2015.
+--------- End Update A Part 3 of 4 ----------
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads a specially crafted malformed DLL file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince the user to click and access specially malformed files necessary to exploit this vulnerability. Additional user interaction is also needed to load additional malformed files. This decreases the likelihood of a successful exploit.
+MITIGATION
+--------- Begin Update A Part 4 of 4 --------
+Schneider Electric recommends vulnerable users upgrade the OFS to V3.5 and install the latest service pack (SP 6 or newer) for their associated version prior to installing any patches.
+OFS V3.50 – Service Pack 6 can be downloaded from the following URL:
+http://www.schneider-electric.com/download/WW/EN/details/703716507-OPC-Factory-Server-V350---Service-Pack-6/?showAsIframe=true&reference=OFS_3_50_2911-(SP6)
+Schneider Electric’s security notice’s SEVD-2015-133-01(13-May-2015) and SEVD-2015-181-01 (V1.1 – 30 June 2015) are available at the following location, respectively:
+http://www.schneider-electric.com/ww/en/download/document/SEVD-2015-133-01
+http://www.citect.schneider-electric.com/safety-and-security-notifications/36-security-notifications/8915-dll-hijacking-vulnerability
+Schneider Electric originally released advisory SEVD-2015-181-01 on its SCADA & MES Support secure Portal on May 29, 2015. This public web page release was delayed to allow users time to implement the patch recommended.
+SCADA Expert Vijeo Citect/CitectSCADA customers can download the latest Service Packs organized by version at the following location:
+http://www.citect.schneider-electric.com/scada/vijeo-citect/downloads-updates/service-packs
+Additional Schneider Electric Safety and Security Notification information is located at:
+http://www.citect.schneider-electric.com/safety-and-security-notifications
+--------- End Update A Part 4 of 4 ----------
+ICS-CERT also recommends that users take the following measures to protect themselves from social engineering attacks, as this attack component is necessary for a successful exploit:
+Do not click web links or open unsolicited attachments in email messages.Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed May 21, 2015. for more information on avoiding email scams.Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed May 21, 2015. for more information on social engineering attacks.
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,81 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.4
+ATTENTION: Exploitable remotely
+Vendor: Mitsubishi Electric Corporation
+Equipment: MELSEC iQ-R Series CPU Module
+Vulnerabilities: Exposure of Sensitive Information to an Unauthorized Actor, Insufficiently Protected Credentials, Overly Restrictive Account Lockout Mechanism
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker unauthorized access to legitimate usernames, CPU module access, or the ability to deny access to legitimate users.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Mitsubishi Electric reports these vulnerabilities affect the following MELSEC products. Users may use the manual (MELSEC iQ-R Module Configuration Manual "Appendix 1 Checking Production Information and Firmware Version") to learn how to check the firmware version:
+
+MELSEC iQ-R series Safety CPU R08SFCPU: Firmware versions "26" and prior (CVE-2021-20594 and CVE-2021-20597)
+MELSEC iQ-R series Safety CPU R16SFCPU: Firmware versions "26" and prior (CVE-2021-20594 and CVE-2021-20597)
+MELSEC iQ-R series Safety CPU R32SFCPU: Firmware versions "26" and prior (CVE-2021-20594 and CVE-2021-20597)
+MELSEC iQ-R series Safety CPU R120SFCPU: Firmware versions "26" and prior (CVE-2021-20594 and CVE-2021-20597)
+MELSEC iQ-R series Safety CPU R08SFCPU: all versions (CVE-2021-20598)
+MELSEC iQ-R series Safety CPU R16SFCPU: all versions (CVE-2021-20598)
+MELSEC iQ-R series Safety CPU R32SFCPU: all versions (CVE-2021-20598)
+MELSEC iQ-R series Safety CPU R120SFCPU: all versions (CVE-2021-20598)
+MELSEC iQ-R series SIL2 Process CPU R08PSFCPU: Firmware versions "11" and prior (CVE-2021-20594 and CVE-2021-20597)
+MELSEC iQ-R series SIL2 Process CPU R16PSFCPU: Firmware versions "11" and prior (CVE-2021-20594 and CVE-2021-20597)
+MELSEC iQ-R series SIL2 Process CPU R32PSFCPU: Firmware versions "11" and prior (CVE-2021-20594 and CVE-2021-20597)
+MELSEC iQ-R series SIL2 Process CPU R120PSFCPU: Firmware versions "11" and prior (CVE-2021-20594 and CVE-2021-20597)
+MELSEC iQ-R series SIL2 Process CPU R08PSFCPU: all versions (CVE-2021-20598)
+MELSEC iQ-R series SIL2 Process CPU R16PSFCPU: all versions (CVE-2021-20598)
+MELSEC iQ-R series SIL2 Process CPU R32PSFCPU: all versions (CVE-2021-20598)
+MELSEC iQ-R series SIL2 Process CPU R120PSFCPU: all versions (CVE-2021-20598)
+
+3.2 Vulnerability Overview
+3.2.1 Exposure of Sensitive Information to an Unauthorized Actor CWE-200
+A remote attacker can leverage a brute-force attack to acquire legitimate usernames registered in the module.
+CVE-2021-20594 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2021-20594. A base score of 8.2 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.2 Insufficiently Protected Credentials CWE-522
+A remote attacker could obtain unprotected credentials by sniffing network traffic.
+CVE-2021-20597 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2021-20597. A base score of 9.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N).
+3.2.3 Overly Restrictive Account Lockout Mechanism CWE-645
+A remote attacker could lock out a legitimate user by continually attempting to login with a known username and incorrect passwords.
+CVE-2021-20598 has been assigned to this vulnerability. A CVSS v3.1 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).
+A CVSS v4 score has also been calculated for CVE-2021-20598. A base score of 6.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Ivan Speziale of Nozomi Networks Labs reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Users of the affected products and versions may take measures through mitigations and workarounds. Mitsubishi Electric has released the fixed versions for CVE-2021-20594 and CVE-2021-20597 as shown below, but updating the product to the fixed version is not available.
+
+MELSEC iQ-R series Safety CPU R08/16/32/120SFCPU:Firmware versions "27" or later
+MELSEC iQ-R series SIL2 Process CPU R08/16/32/120PSFCPU:Firmware versions "12" or later
+
+Mitsubishi Electric recommends users take the following mitigation measures to minimize the risk of exploiting these vulnerabilities:
+
+Use a firewall or virtual private network (VPN), etc. to prevent unauthorized access when Internet access is required.
+Use within a LAN and block access from untrusted networks and hosts through firewalls.
+Use the IP filter function to restrict the accessible IP addresses. MELSEC iQ-R Ethernet User's Manual (Application) 1.13 Security "IP filter"
+Register user information or change the password via USB. If you have already registered user information or changed the user's password via the network, change the password once via USB. This mitigation is applicable to CVE-2021-20597
+
+Additional information about these vulnerabilities or Mitsubishi Electric's compensating control is available by contacting a Mitsubishi Electric representative.
+Users should refer to Mitsubishi Electric advisories 2021-008, 2021-009, and 2021-010 for further details.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 07, 2021: Initial Publication
+October 13, 2022: Update A - Added new fixed version
+April 18, 2024: Update B - Added new fixed version
+

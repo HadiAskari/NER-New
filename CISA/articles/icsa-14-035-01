@@ -1,0 +1,61 @@
+
+OVERVIEW
+Researchers Gleb Gritsai, Ilya Karpov, and Kirill Nesterov of Positive Technologies have identified multiple vulnerabilities in the Siemens SIMATIC WinCC Open Architecture (OA) application. Siemens has produced updates that mitigate these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens product is affected:
+
+SIMATIC WinCC OA all versions prior to 3.12 P002 
+
+IMPACT
+Successful exploitation of these vulnerabilities may result in attackers escalating their privileges, performing remote code execution, traversing through file systems, or causing a denial of service.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation. 
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected product, SIMATIC WinCC OA, is a client-server human-machine interface (HMI) system. According to Siemens, SIMATIC WinCC OA is deployed across several sectors including food and beverage, water and wastewater, oil and gas, and chemical. Siemens estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER CONTROL OF GENERATION OF CODE (“CODE INJECTION”)CWE-94: Improper Control of Generation of Code (“Code Injection”), http://cwe.mitre.org/data/definitions/94.html, Web site last accessed February 4, 2014.
+
+The SIMATIC WinCC OA integrated Web server at Port 4999/TCP might allow attackers to perform remote code execution by sending specially crafted packets without authentication.
+CVE-2014-1697NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1697, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, Web site last visited February 4, 2014.
+
+RELATIVE PATH TRAVERSALCWE-23: Relative Path Traversal, http://cwe.mitre.org/data/definitions/23.html, Web site last accessed February 4, 2014.
+
+The SIMATIC WinCC OA integrated Web server at Port 4999/TCP might allow attackers to traverse through the server’s file system based on the application’s Windows user permissions by sending specially crafted packets over the network without authentication.
+CVE-2014-1698NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1698, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:N/A:N, Web site last visited February 4, 2014.
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed February 4, 2014.
+
+The SIMATIC WinCC OA integrated Web server at Port 4999/TCP might allow attackers to perform a denial of service attack on the SIMATIC WinCC OA monitoring service by sending malformed HTTP requests over the network without authentication. Restarting the WinCC OA Console recovers the monitoring service.
+CVE-2014-1699NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1699, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:P, Web site last visited February 4, 2014.
+
+USE OF PASSWORD HASH WITH INSUFFICIENT COMPUTATIONAL EFFORTCWE-916: Use of Password Hash With Insufficient Computational Effort, http://cwe.mitre.org/data/definitions/916.html, Web site last accessed February 4, 2014.
+
+The SIMATIC WinCC OA server application has a weak hashing algorithm for project users’ credentials. By brute force, attackers might be able to escalate their privileges within the affected WinCC OA server application.
+CVE-2014-1696NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-1696, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P, Web site last visited February 4, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely. 
+EXISITENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities. 
+DIFFICULTY
+An attacker with a low to moderate skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens recommends updating to SIMATIC WinCC OA v3.12 and to install patch P002 January.
+SIMATIC WiNCC OA v3.12 can be obtained here (login and password required):
+SIMATIC WiNCC OA v3.12
+The patch SIMATIC WinCC OA v3.12 P002 January can be obtained here (login and password required):
+SIMATIC WinCC OA v3.12 P002 January
+Siemens security advisory is located here:
+Siemens security advisory SSA-342587
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the NCCIC/ICS-CERT Web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

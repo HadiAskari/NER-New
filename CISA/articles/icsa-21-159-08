@@ -1,0 +1,49 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: TIM 1531 IRC
+Vulnerability: Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote attacker to cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+TIM 1531 IRC (incl. SIPLUS NET variants): All versions prior to v2.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+During key agreement in a TLS handshake using a DH(E)-based cipher suite, a malicious server can send a very large prime value to the client. This will cause the client to spend an unreasonably long period of time generating a key for this prime, resulting in a hang until the client has finished. This could be exploited in a denial-of-service attack.
+CVE-2018-0732 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens recommends updating the following products to the latest version:
+
+TIM 1531 IRC (incl. SIPLUS NET variants): Update to v2.2 or later
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-419820
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

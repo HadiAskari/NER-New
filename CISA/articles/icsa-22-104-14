@@ -1,0 +1,64 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.4
+Vendor: Siemens
+Equipment: STEP 7 (TIA Portal)
+Vulnerability: Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to achieve privilege escalation on the web server of certain devices configured by SIMATIC STEP 7 (TIA Portal) due to incorrect handling of the webserver’s user management configuration during downloading.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SIMATIC STEP 7 (TIA Portal) v15: All versions
+SIMATIC STEP 7 (TIA Portal) v16: All versions prior to v16 Update 5
+SIMATIC STEP 7 (TIA Portal) v17: All versions prior to v17 Update 2
+	 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+An attacker could achieve privilege escalation on the web server of certain devices due to an improper access control vulnerability in the engineering system software. The attacker needs to have direct access to the impacted web server.
+CVE-2021-42029 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:H/UI:R/S:C/C:H/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens recommends updating their software to the latest version:
+
+SIMATIC STEP 7 (TIA Portal) v15: Currently no fix is planned
+SIMATIC STEP 7 (TIA Portal) v16: Update to v16 Update 5 or later
+SIMATIC STEP 7 (TIA Portal) v17: Update to v17 Update 2 or later
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Whenever changes of the web server’s user configuration are performed with one of the affected versions for S7-1200 or S7-1500 CPUs (incl. related ET200 CPUs and SIPLUS variants), validate web server permissions for unauthenticated users by directly accessing the web server in an unauthenticated manner. If unintentional, unauthenticated access is possible, the web server’s user configuration needs to be removed and reconfigured using TIA-Portal v16 Update 5 or later, or v17 Update 2 or later
+If a new TIA-Portal version is not available, updating the web server’s user configuration is not effective.. The PLC must be deleted and reconfigured with a new project. Warning: Copy the PLC-program before deleting the PLC or use the original project (one that was not uploaded by a PLC) to update the web server’s user management and to download the changed configuration
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to the Siemens operational guidelines for industrial security and follow the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-350757
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. This vulnerability has a high attack complexity.

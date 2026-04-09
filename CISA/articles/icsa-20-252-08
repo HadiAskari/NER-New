@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens 
+Equipment: Polarion Subversion Webclient
+Vulnerabilities: Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS), Cross-site Request Forgery (CSRF)
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities where an attacker injects client-side script to induce the victim to issue an HTTP request could lead to a state-changing operation.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siemens Polarion Subversion Webclient are affected:
+
+Polarion Subversion Webclient, all versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF SCRIPT-RELATED HTML TAGS IN A WEB PAGE (BASIC XSS) CWE-80
+The Polarion Subversion Webclient application does not filter user input in a way that prevents cross-site scripting (XSS). If a user is enticed into passing specially crafted malicious input to the web client (e.g., by clicking on a malicious URL with embedded JavaScript), JavaScript code can be returned and executed by the user’s client. Various actions could be triggered by running malicious JavaScript code.
+CVE-2020-15788 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.2    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+The web interface could allow a CSRF attack if an unsuspecting user is tricked into accessing a malicious link. Successful exploitation requires user interaction by a legitimate user, who must be authenticated to the web interface. A successful attack could allow an attacker to trigger actions via the web interface that the legitimate user is allowed to perform. This could allow the attacker to read or modify contents of the web application.
+CVE-2020-15789 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Li Yifan reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has stated that the tool is considered shareware, distributed “as is,” and will be no fix as it is no longer supported.
+Siemens has identified the following specific workaround and mitigation users can apply to reduce the risk:
+
+Do not open unknown links while working on Polarion Subversion Webclient.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-436520
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

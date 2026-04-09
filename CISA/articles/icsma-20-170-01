@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Baxter
+Equipment: Baxter ExactaMix EM 2400 & EM 1200
+Vulnerabilities: Use of Hard-coded Password, Cleartext Transmission of Sensitive Data, Missing Encryption of Sensitive Data, Improper Access Control, Exposure of Resource to Wrong Sphere, Improper Input Validation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-170-01 Baxter ExactaMix that was published June 18, 2020, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in unauthorized access to sensitive data, alteration of system configuration, alteration of system resources, and impact to system availability.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Baxter ExactaMix Systems, are affected:
+
+ExactaMix EM2400 Versions 1.10, 1.11, 1.13, 1.14,
+ExactaMix EM1200 Versions 1.1, 1.2, 1.4, 1.5
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF HARD-CODED PASSWORD CWE-259
+Baxter ExactaMix EM 2400 Versions 1.10, 1.11, 1.13, 1.14 and ExactaMix EM1200 Versions 1.1, 1.2, 1.4 and 1.5 have hard-coded administrative account credentials for the ExactaMix operating system. Successful exploitation of this vulnerability may allow an attacker who has gained unauthorized access to system resources, including access to execute software or to view/update files, directories, or system configuration. This could allow an attacker with network access to view sensitive data including PHI.
+CVE-2020-12016 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    USE OF HARD-CODED PASSWORD CWE-259
+Baxter ExactaMix EM 2400 Versions 1.10, 1.11, and 1.13, and ExactaMix EM1200 Versions 1.1, 1.2, and 1.4 have hard-coded administrative account credentials for the ExactaMix application. Successful exploitation of this vulnerability may allow an attacker with physical access to gain unauthorized access to view/update system configuration or data. This
+could impact confidentiality and integrity of the system and risk exposure of sensitive information including PHI.
+CVE-2020-12012 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    CLEARTEXT TRANSMISSION OF SENSITIVE DATA CWE-319
+Baxter ExactaMix EM 2400 Versions 1.10, 1.11 and ExactaMix EM1200 Versions 1.1, 1.2 systems use cleartext messages to communicate order information with an order entry system. This could allow an attacker with network access to view sensitive data including PHI.
+CVE-2020-12008 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.4    MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+Baxter ExactaMix EM 2400 Versions 1.10, 1.11 and ExactaMix EM1200 Versions 1.1, 1.2 systems store device data with sensitive information in an unencrypted database. This could allow an attacker with network access to view or modify sensitive data including PHI.  
+CVE-2020-12032 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.5    IMPROPER ACCESS CONTROL CWE-284
+Baxter ExactaMix EM 2400 versions 1.10, 1.11, 1.13, 1.14 and ExactaMix EM1200 Versions 1.1, 1.2, 1.4 and 1.5 does not restrict access to the USB interface from an unauthorized user with physical access. Successful exploitation of this vulnerability may allow an attacker with physical access to the system the ability to load an unauthorized payload or unauthorized access to the hard drive by booting a live USB OS. This could impact confidentiality and integrity of the system and risk exposure of sensitive information including PHI.
+CVE-2020-12024 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.6    EXPOSURE OF RESOURCE TO WRONG SPHERE CWE-668
+Baxter ExactaMix EM 2400 Versions 1.10, 1.11, and 1.13 and ExactaMix EM1200 Versions 1.1, 1.2, and 1.4 does not restrict non administrative users from gaining access to the operating system and editing the application startup script. Successful exploitation of this vulnerability may allow an attacker to alter the startup script as the limited-access user. 
+CVE-2020-12020 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H).
+4.2.7    IMPROPER INPUT VALIDATION CWE-20
+Baxter ExactaMix EM 2400 Versions 1.10, 1.11 and ExactaMix EM1200 Versions 1.1, 1.2 does not validate or incorrectly validates input via the SMBv1 port that can affect the control flow or data flow of a system. The SMBv1 input validation vulnerabilities could allow a remote attacker to gain unauthorized access to sensitive information, create denial of service conditions, or execute arbitrary code.For details, refer to Microsoft Security Bulletin MS17-010 and NCCIC WannaCry fact sheet.
+CVE-2017-0143 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Baxter Healthcare reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Baxter recommends that users of the ExactaMix EM 2400 Versions 1.10 and 1.11, and ExactaMix EM1200 Versions 1.1 and 1.2, should contact the service support team or regional product service support to upgrade to the ExactaMix Version 1.4 (EM1200) and ExactaMix Version 1.13 (EM2400) compounders.
+For all users, Baxter recommends the following compensating controls including, but not limited to:
+
+Ensure appropriate physical controls within user’s environments to protect against unauthorized access to devices.
+Ensure ExactaMix Compounder passwords are kept confidential. Users should implement administrative controls to ensure they are not misused, mismanaged, or otherwise shared with unauthorized individuals.
+The device should be used only in accordance with its intended use and not for email, Internet access, file sharing, or other non-approved use. No software of any kind should be installed on the device unless approved, in writing, by Baxter.
+The ExactaMix Compounder should be segmented from the enterprise main network, and block all non-required communication via firewall and ACL configuration.
+Users should follow standard guidance to ensure security patches are up to date across the network.
+Users should follow proper backup and storage procedures to maintain the integrity of data utilized with the ExactaMix Compounder.
+
+Baxter separately provided an ExactaMix Cybersecurity Guide, instructing users on good cybersecurity practices relevant to the use of the ExactaMix product. The guide can be requested from productsecurity@baxter.com
+--------- Begin Update A Part 1 of 1 ---------
+For additional information please see the Baxter Product Security Bulletin. 
+--------- End Update A Part 1 of 1 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA. 
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

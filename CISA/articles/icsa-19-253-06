@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely
+Vendor: OSIsoft LLC
+Equipment: OSIsoft PI SQL Client
+Vulnerability: Integer Overflow or Wraparound
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow remote code execution or cause a denial of service, resulting in disclosure, deletion, or modification of information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of OSIsoft PI SQL Client, a component interface that enables data access via SQL queries to the PI System, are affected:
+
+PI SQL Client 2018 (PI SQL Client OLEDB 2018)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An attacker could exploit this vulnerability in a third-party component to remotely execute code on the client computer with the same permissions as the PI SQL Client user.
+Communication with a malicious PI SQL Data Access Server (RTQP Engine) is needed to expose a PI SQL client to this vulnerability.
+CVE-2017-9765 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy, Government Facilities, Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+OSIsoft reported this vulnerability to CISA.
+4. MITIGATIONS
+OSIsoft recommends users upgrade to PI SQL Client 2018 R2 or later to resolve this issue. To download PI SQL Client 2018 R2, please access the OSIsoft customer portal (login required).
+OSIsoft also provides the following measures to be used to avoid exploitation:
+Configure the PI SQL Client OLEDB 2018 Data Link Advanced Properties to use NetTcp (Port 5465) and delete Https/Soap (Port 5464) from the network protocol order.
+The following measures can be used to lower the likelihood of exploitation: 
+
+Restrict PI SQL Client outbound network connections to trusted servers.
+Monitor network infrastructure for spoofing attacks on PI SQL Data Access Servers.
+Monitor PI SQL Data Access Servers for unauthorized access.
+
+The following measures can be used to lower the potential impact of exploitation: 
+
+Execute PI SQL Client using a least privilege account.
+Use application whitelisting on the PI SQL Client to block unauthorized code execution.
+
+For more information on this vulnerability, please refer to OSIsoft’s security bulletin (login required): OSIsoft releases security update to PI SQL Client 2018
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. High skill level is needed to exploit.

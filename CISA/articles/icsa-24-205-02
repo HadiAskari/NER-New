@@ -1,0 +1,77 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: AFS650, AFS660, AFS665, AFS670, AFS675, AFS677, AFR677
+Vulnerabilities: Type Confusion, Use After Free, Double Free, Observable Discrepancy
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to create a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Hitachi Energy AFS/AFR are affected:
+
+AFS650: Version 9.1.08 and prior
+AFS660-C: Version 7.1.05 and prior
+AFS665-B: Version 7.1.05 and prior
+AFS670-V2: Version 7.1.05 and prior
+AFS670: Version 9.1.08 and prior
+AFS675: Version 9.1.08 and prior
+AFS677: Version 9.1.08 and prior
+AFR677: Version 9.1.08 and prior
+
+3.2 Vulnerability Overview
+3.2.1 ACCESS OF RESOURCE USING INCOMPATIBLE TYPE ('TYPE CONFUSION') CWE-843
+There is a type confusion vulnerability relating to X.400 address processing inside an X.509 GeneralName. X.400 addresses were parsed as an ASN1_STRING but the public structure definition for GENERAL_NAME incorrectly specified the type of the x400Address field as ASN1_TYPE. For more details check the NVD link.
+CVE-2023-0286 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H).
+3.2.2 USE AFTER FREE CWE-416
+The public API function BIO_new_NDEF is a helper function used for streaming ASN.1 data via a BIO. It is primarily used internally to OpenSSL to support the SMIME, CMS and PKCS7 streaming capabilities, but may also be called directly by end user applications. 
+CVE-2023-0215 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3 DOUBLE FREE CWE-415
+The function PEM_read_bio_ex() reads a PEM file from a BIO and parses and decodes the "name" (e.g."CERTIFICATE"), any header data and the payload data. If the function succeeds then the "name_out", "header" and "data" arguments are populated with pointers to buffers containing the relevant decoded data. 
+CVE-2022-4450 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4 OBSERVABLE DISCREPANCY CWE-203
+A timing based side channel exists in the OpenSSL RSA Decryption implementation which could be sufficient to recover a plaintext across a network in a Bleichenbacher style attack. To achieve a successful decryption an attacker would have to be able to send a very large number of trial messages for decryption. The vulnerability affects all RSA padding modes: PKCS#1 v1.5, RSA-OEAP and RSASVE.
+CVE-2022-4304 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy has released the following mitigations/fixes:
+
+AFS650: Update to AFS 650 firmware version 9.1.10
+AFS660-C, AFS665-B, AFS670-V2: Update to AFS 66x firmware version 7.1.08
+AFS670/675/677, AFR677: Update to AFS/AFR 67x firmware version 9.1.10
+
+In addition, recommended security practices and firewall configurations can help protect a process control network from attacks that originate from outside the network. Such practices include that process control systems are physically protected from direct access by unauthorized personnel, have no direct connections to the Internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed, and others that have to be evaluated case by case. Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails. Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+For more information, see Hitachi Energy's Cybersecurity Advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+July 23, 2024: Initial Publication
+

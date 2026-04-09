@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.4
+ATTENTION: Low skill level to exploit
+Vendor: Philips
+
+--------- Begin Update A Part 1 of 3 ----------
+
+Equipment: Brilliance CT Scanners and MX8000 Dual EXP
+
+--------- End Update A Part 1 of 3 ----------
+
+Vulnerabilities: Execution with Unnecessary Privileges, Exposure of Resource to Wrong Sphere, Use of Hard-coded Credentials
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-18-123-01 Philips’ Brilliance Computed Tomography (CT) System that was published May 3, 2018, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to attain elevated privileges and access unauthorized system resources, including access to execute software or to view/update files including patient health information (PHI), directories, or system configuration. This could impact system confidentiality, system integrity, or system availability. Philips has received no reports of exploitation or incidents from clinical associated with these vulnerabilities.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+
+Philips reports the vulnerabilities affect the following Brilliance CT Scanners:
+Brilliance 64 Versions 2.6.2 and below
+Brilliance iCT Versions 4.1.6 and below
+Brilliance iCT SP Versions 3.2.4 and below
+Brilliance CT Big Bore Versions 2.3.5 and below
+
+--------- Begin Update A Part 2 of 3 ----------
+
+MX8000 Dual EXP Systems (CVE-2018-8857 only)
+
+--------- End Update A Part 2 of 3 ----------
+4.2 VULNERABILITY OVERVIEW
+4.2.1   EXECUTION WITH UNNECESSARY PRIVILEGES CWE-250
+Philips Brilliance CT devices operate user functions from within a contained kiosk in a Microsoft Windows operating system. Windows boots by default with elevated Windows privileges, enabling a kiosk application, user, or an attacker to potentially attain unauthorized elevated privileges. Also, attackers may gain access to unauthorized resources from the underlying Windows operating system.
+CVE-2018-8853 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:L/A:L).
+4.2.2   EXPOSURE OF RESOURCE TO WRONG SPHERE CWE-668
+Vulnerabilities within the Brilliance CT kiosk environment could enable a limited-access kiosk user or an unauthorized attacker to break-out from the containment of the kiosk environment, attain elevated privileges from the underlying Windows OS, and access unauthorized resources from the operating system.
+CVE-2018-8861 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:L/A:L).
+4.2.3   USE OF HARD-CODED CREDENTIALS CWE-798
+The software contains fixed credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encryption of internal data. An attacker could compromise these credentials and gain access to the system.
+CVE-2018-8857 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Healthcare and public Health
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: U.S.
+
+4.4 RESEARCHER
+Philips reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+Philips has identified the following guidance and controlling risk mitigations:
+
+Users should operate all Philips deployed and supported Brilliance CT products within Philips authorized specifications, including Philips approved software, software configuration, system services, and security configuration such as firewall operations.
+Philips also recommends users implement a comprehensive, multi-layered strategy to protect their systems from internal and external security threats, including restricting physical access of the scanner to only authorized personnel, thus reducing the risk of physical access being compromised by an unauthorized user.
+
+Philips has also remediated hard-coded credential vulnerabilities for Brilliance iCT 4.x and above versions. The Philips iCT-iPatient (v4.x) family Instructions for Use (IFU) refers to the ability to manage credentials and is accessible to entitled users from the Philips InCenter.
+--------- Begin Update A Part 3 of 3 --------
+As the MX8000 Dual EXP has been out of support since 2017, Philips recommends a replacement based on user need. Please contact a local sales organization.
+Philips will be further assessing options for remediation with future product introductions and/or upgrades across the CT & AMI modalities to address identified security vulnerabilities. Users with questions about their specific Brilliance CT or MX8000 Dual EXP products should contact a Philips service support team.
+--------- End Update A Part 3 of 3 --------
+The Philips’ advisory is available at the following URL:
+http://www.philips.com/productsecurity (link is external)
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should follow these measures:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+Locate medical devices behind firewalls, and isolate them from the business network.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

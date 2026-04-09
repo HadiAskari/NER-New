@@ -1,0 +1,54 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Mitsubishi Electric
+Equipment: MELSEC iQ-F FX5-OPC
+Vulnerability: NULL Pointer Dereference
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote attacker to cause a Denial-of-Service (DoS) condition on the product by getting a legitimate user to import a specially crafted PKCS#12 format certificate.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Mitsubishi Electric products are affected:
+
+MELSEC iQ-F FX5-OPC: All versions
+
+3.2 Vulnerability Overview
+3.2.1 NULL POINTER DEREFERENCE CWE-476
+A Denial-of-Service (DoS) vulnerability due to NULL Pointer Dereference when processing PKCS#12 format certificate exists in OpenSSL installed on MELSEC iQ-F OPC UA Unit. Because OpenSSL does not correctly check if a certain field in the PKCS#12 format certificate is NULL, a NULL pointer dereference occurs when the field is NULL, causing the product to enter a Denial-of-Service condition.
+CVE-2024-0727 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Mitsubishi Electric reported this vulnerability to CISA.
+4. MITIGATIONS
+Mitsubishi Electric recommends users take the following mitigations to minimize the risk of exploiting this vulnerability:
+
+Use within a LAN and block access from untrusted networks and hosts through firewalls.
+Restrict physical access to the product, as well as to computers and network devices located within the same network as the product.
+Use a firewall or virtual private network (VPN), etc. to prevent unauthorized access when Internet access is required.
+Use IP filter function to block access from untrusted hosts. For details on the IP filter function, please refer to the following manual. MELSEC iQ-F FX5 OPC UA Module User's Manual "4.4 IP Filter"
+Do not import untrusted certificates.
+
+For additional details, see Mitsubishi Electric advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+October 1, 2024: Initial Publication
+

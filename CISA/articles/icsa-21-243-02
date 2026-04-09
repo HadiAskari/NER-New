@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.4
+ATTENTION: Exploitable remotely
+Vendor: FANUC
+Equipment: R-30iA and R-30iB series controllers
+Vulnerabilities: Integer Coercion Error, Out-of-bounds Write
+
+2. UPDATE INFORMATION
+This advisory is a follow-up to the original advisory titled ICSA-21-243-02P FANUC Robot Controllers that was posted to the HSIN ICS library on August 31, 2021 and subsequently published December 7, 2021, to the ICS webpage on www.cisa.gov/uscert/ics.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could crash the device being accessed; a buffer overflow condition may allow remote code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following products and versions are affected:
+--------- Begin Update A Part 1 of 1 ---------
+
+R-30iA, R-30iA Mate; v7: v7.20, v7.30, v7.40, v7.43, v7.50, v 7.63, v7.70
+R-30iB, R-30iB Mate, R-30iB Compact; v8: v8.10, v8.13, v8.20, v8.23, v8.26, v8.30, v8.33, v8.36
+R-30iB Plus, R-30iB Mate Plus, R-30iB Compact Plus, R-30iB Mini Plus; v9: v9.10, v9.13, v9.16, v9.30, v9.36, v9.40
+
+--------- End Update A Part 1 of 1 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INTEGER COERCION ERROR CWE-192
+The affected products are vulnerable to integer coercion errors, which cause the device to crash. A restart is required.
+CVE-2021-32996 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H).
+4.2.2    OUT-OF-BOUNDS WRITE CWE-787
+The affected products are vulnerable to an out-of-bounds write, which may allow an attacker to remotely execute arbitrary code. INIT START/restore from backup required.
+CVE-2021-32998 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Tri Quach of Amazon reported these vulnerabilities to CISA
+5. MITIGATIONS
+FANUC is recommending the following, both of which are documented in FANUC’s Internet Setup and Operations Manual:
+
+FANUC Server Access Control (FSAC): Users can configure access to the FANUC webserver based on IP address.
+Network Protocol Access Level: Users can configure which protocols are usable on the controller by creating a firewall where users can close unwanted ports based on the chosen access level.
+
+FANUC users can also find any additional information by visiting the FANUC website or contacting FANUC.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity.

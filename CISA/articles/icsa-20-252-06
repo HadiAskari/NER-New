@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC HMI
+Vulnerabilities: Improper Restriction of Excessive Authentication Attempts, Authentication Bypass by Primary Weakness
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-252-06 Siemens SIMATIC HMI Products that was published September 8, 2020, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker to discover user passwords and obtain access to the Sm@rt Server via a brute-force attack.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 1 of 2 ---------
+The following versions of Siemens SIMATIC HMI Products are affected:
+
+SIMATIC HMI Basic Panels, 2nd Generation (incl. SIPLUS variants): All versions prior to v16 are affected by CVE-2020-15786
+SIMATIC HMI Comfort Panels (incl. SIPLUS variants): All versions up to and including v16 are affected by CVE-2020-15786
+SIMATIC HMI Mobile Panels: All versions up to and including v16 are affected by CVE-2020-15786
+SIMATIC HMI United Comfort Panels: All versions up to and including v16
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+Affected devices insufficiently block excessive authentication attempts. This could allow a remote attacker to discover user passwords and obtain access to the Sm@rt Server via a brute-force attack.
+CVE-2020-15786 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).
+4.2.2    AUTHENTICATION BYPASS BY PRIMARY WEAKNESS CWE-305
+Affected devices insufficiently validate authentication attempts as the information given can be truncated to match only a set number of characters versus the whole provided string. This could allow a remote attacker to discover user passwords and obtain access to the Sm@rt Server via a brute-force attack.
+CVE-2020-15787 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Joseph Gardiner from Bristol Cyber Security Group, University of Bristol, reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 ---------
+Siemens has released updates for the affected products and recommends users update to the latest versions.
+
+SIMATIC HMI Basic Panels 2nd Generation: Update to v16 Update 3
+SIMATIC HMI Comfort Panels: Update to v16 Update 3
+SIMATIC HMI Mobile Panels: Update to v16 Update 3
+SIMATIC HMI Unified Comfort Panels: Update to v16 Update 3
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Apply defense-in-depth strategies.
+For Unified Comfort Panels using SmartClient: The password truncation (CVE-2020-15787) cannot be resolved due to RFC 6143 and is limited to 8 characters. Complex passwords are recommended.
+
+--------- End Update A Part 2 of 2 ---------
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-542525
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

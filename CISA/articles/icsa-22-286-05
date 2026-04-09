@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/public exploits are available
+Vendor: Hitachi Energy
+Equipment: Lumada Asset Performance Manager (APM)
+Vulnerabilities: Allocation of Resources Without Limits or Throttling, Code injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could crash the Prognostic Model Executor and could allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Lumada Asset Performance Manager with the Prognostic Model Executor Service enabled are affected:
+
+Lumada Asset Performance Manager (APM) online service (SaaS) version 6.3.220323.0 and prior
+Lumada Asset Performance Manager (APM) versions 6.0.0.0 to 6.0.0.4
+Lumada Asset Performance Manager (APM) versions 6.1.0.0 and 6.1.0.1
+Lumada Asset Performance Manager (APM) versions 6.2.0.0 to 6.2.0.2
+Lumada Asset Performance Manager (APM) versions 6.3.0.0 to 6.3.0.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+A vulnerability exists in the Spring Framework component included in the Prognostic Model Executor service of the affected product. An attacker could exploit this vulnerability by sending a specially crafted data or configuration to the application either directly or via integrated applications, causing the Prognostic Model Executor service to fail.
+CVE-2022-22950 has been assigned to this vulnerability. A CVSS v3 base score of 3.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:L).
+3.2.2    IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94
+A vulnerability in the Spring Framework component included in the Prognostic Model Executor service could allow an attacker to inject arbitrary code for remote code execution.
+CVE-2022-22965 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends applying the most recent patch version of Lumada Asset Performance Management (APM) or upgrading to a newer, unaffected major version:
+
+Lumada Asset Performance Manager (APM) versions 6.0.0.0 to 6.0.0.4: Apply patch version 6.0.0.5 or upgrade to 6.2.0.3
+Lumada Asset Performance Manager (APM) versions 6.1.0.0 and 6.1.0.1: Apply patch version 6.1.0.2 or upgrade to 6.2.0.3
+Lumada Asset Performance Manager (APM) versions 6.2.0.0 to 6.2.0.2: Apply patch version 6.2.0.4 or upgrade to 6.4.0.0
+Lumada Asset Performance Manager (APM) versions 6.3.0.0 to 6.3.0.2: Apply patch version 6.3.0.3 or upgrade to 6.4.0.0
+
+Note: For Lumada Asset Performance Manager (APM) online service (SaaS) version 6.3.220323.0 and prior, Hitachi Energy has already updated all SaaS environments.
+For additional information, support and to upgrade users should contact Hitachi Energy.
+Hitachi Energy recommends disabling the Prognostic Model Executor service if users cannot upgrade to the latest patch version.
+Users should be aware that disabling the Prognostic Model Executor service will have the following impact:
+
+Disabling the Prognostic Model Executor service will cause the Lumada APM application to stop performing condition assessment calculations (for all assets configured to use prognostic models) and to accumulate calculation requests in the internal messaging queue. As the requests in the queue have a limited lifetime (set by messaging bus topic retention), when that lifetime expires, the request will be lost.
+When the Prognostic Model Executor service is restored to function (after applying the suggested remediation steps and according to the installation guide) it will start processing the accumulated requests. When the period of accumulation is long, this may result in a prolonged period of intensive calculations.
+If any requests were lost, the affected assets may be missing historical or even current condition assessments. To ensure the current assessments are up to date, the customer should trigger recalculation of condition of all assets using the performance models.
+
+Hitachi Energy also recommends following the least privilege principle by limiting and controlling access to the “Administrator” role or “Import” role privileges in the application programmable interface (API).
+For more information, users should see Hitachi Energy advisory 8DBD000105.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+These vulnerabilities have a high attack complexity.

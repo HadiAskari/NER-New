@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: Allen-Bradley MicroLogix 1100
+Vulnerability: Improper Handling of Length Parameter Inconsistency
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could result in denial-of-service conditions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports the vulnerability affects the following Allen-Bradley MicroLogix 1100 Programmable Logic Controller:
+
+Allen-Bradley MicroLogix 1100 revision number 1.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER HANDLING OF LENGTH PARAMETER INCONSISTENCY CWE-130
+A vulnerability exists with the processing of ICMP packets with an invalid IPv4 length in the MicroLogix 1100. This vulnerability could allow a remote, unauthenticated attacker to send malformed packets and cause the controller to enter 8H Hard Fault. This event would lead to denial-of-service conditions. To recover from the condition, the controller must be power cycled and the project redownloaded.
+CVE-2020-6111 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Cisco Talos team reported this vulnerability to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation recommends users of MicroLogix 1100 migrate to MicroLogix 1400 and apply firmware v21.006 or later.
+Please see Rockwell Automation’s publication number, PN1548, for more information.
+Rockwell Automation recommends the following network-based vulnerability mitigations for embedded products:
+
+Utilize proper network infrastructure controls, such as firewalls, to help ensure traffic from unauthorized sources is blocked.
+Consult the product documentation for specific features, such as a hardware key mode setting, to which may be used to block unauthorized changes, etc.
+Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the manufacturing zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation products, see Knowledgebase Article ID BF7490
+
+Rockwell Automation also recommends the following general mitigations:
+
+Minimize network exposure for all control system devices and/or systems and ensure they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, please see Knowledgebase Article ID PN715
+Locate control system networks and devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize a VPN is only as secure as the connected devices.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

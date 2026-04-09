@@ -1,0 +1,58 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on September 29, 2016, and is being released to the NCCIC/ICS-CERT web site.
+Independent researcher Daniel Reich has identified a command injection vulnerability in Locus Energy’s LGate application. Locus Energy has produced a firmware update to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following LGate versions are affected:
+
+LGate Version prior to 1.05H,
+LGate 50,
+LGate 100,
+LGate 101,
+LGate 120, and
+LGate 320
+
+IMPACT
+The vulnerability could allow an attacker to take control of LGate that has its web server port publicly exposed.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Locus Energy is a US-based company.
+The affected product, LGate, is a web-based data acquisition system primarily used for Distributed PV Solar metering and data acquisition. According to Locus Energy, LGate is deployed across the Energy sector. Locus Energy estimates that this product is used primarily in North America.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+COMMAND INJECTIONCWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection'), http://cwe.mitre.org/data/definitions/78.html, web site last accessed December 06, 2016.
+
+Locus Energy meters use a PHP script to manage the energy meter parameters for voltage monitoring and network configuration. The PHP code does not properly validate information that is sent in the POST request.
+CVE-2016-5782NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5782, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L, web site last accessed December 06, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+If the web server port is publicly exposed, this vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Locus Energy has produced the following procedure to update LGate:
+1. Cycle power to the LGate. This might require tripping one or more AC or DC breakers.
+2. Power up the LGate and wait 5 minutes.
+3. Use the web page on the LGate within the first half hour after power up to verify its firmware version.
+3a. If connected to the local network, find the IP assigned to the LGate. Navigate to this IP using the browser on a computer also connected to the same subnet as the LGate.
+3b. If the LGate is not connected to the local network, plug the Ethernet cable from the LGate into the computer. Wait until the computer settles into an AutoIP address in the 169.254.X.X range. Then use the IP 169.254.12.13 for the LGate. Use this IP in a browser to pull up the LGate web page.
+4. The web page will display the model type, IP address, firmware version of the LGate (labeled as APP), and MAC address. Here is an example. In the picture below, the LGate (00:1E:C0:89:15:6E) is running 1.05C_EM3.
+
+5. Verify that the firmware version is 1.05H_EM3 or above.
+6. If the firmware version is less than 1.05H, send an email to support@locusenergy.com with the subject line: URGENT FW UPDATE REQUEST: MAC: <insert MAC address here> TO 1.05H or higher FW.
+7. Locus Energy support will attempt to remotely update the firmware on the LGate and confirm via email. If they encounter any difficulty in updating the LGate, Locus Energy will contact the user to arrange alternate methods to update or replace the LGate.
+8. If support confirms that the unit was updated to Version 1.05H or later, the user may repeat the above procedure (Steps 1-5) to verify this.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

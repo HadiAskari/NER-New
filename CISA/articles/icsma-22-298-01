@@ -1,0 +1,44 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.2
+ATTENTION: Public exploits are available, low attack complexity
+Vendor: AliveCor
+Equipment: KardiaMobile
+Vulnerabilities: Authentication Bypass by Assumed-immutable Data, Missing Encryption of Sensitive Data
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to attackers stealing or faking personal cardiograms or enabling a denial-of-service attack. Attackers must be at close range to carry out these attacks.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of KardiaMobile, a smartphone-based personal electrocardiogram (EKG) device, are affected:
+
+Kardia App Android application Version 5.17.1-754993421 and prior (affected only by CVE-2022-40703)
+KardiaMobile IoT device, all versions (affected only by CVE-2022-41627)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    AUTHENTICATION BYPASS BY ASSUMED-IMMUTABLE DATA CWE-302
+The smartphone application for the affected product is vulnerable to the publicly known “Intent Manipulation” exploit on Android phones. This exploit allows attackers to bypass app authentication and view or alter information in the app.
+CVE-2022-40703 has been assigned to this vulnerability. A CVSS v3 base score of 5.2 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N).
+3.2.2    MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+The physical IoT device of the affected product has no encryption for its data-over-sound protocols. Exploiting this vulnerability could allow an attacker to read patient electrocardiography (EKG) results or create a denial-of-service condition by emitting sounds at similar frequencies as the device, disrupting the smartphone microphone’s ability to accurately read the data. To carry out this attack, the attacker must be close (less than 5 feet) to pick up and emit sound waves.
+CVE-2022-41627 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated; the CVSS vector string is (AV:P/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: North America and Europe
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Carlos Cilleruelo Rodríguez and Javier Junquera Sánchez of the University of Alcalá reported these vulnerabilities to CISA.
+4. MITIGATIONS
+The Kardia App usage instructions include recommendations for users to use passcode (PIN) or biometric identification for their smartphone devices; such measures greatly reduce the risk of Intent Manipulation.
+AliveCor has acknowledged that the data-over-sound protocol has no encryption and is vulnerable to CVE-2022-41627, but the circumstances necessary for exploitation are “unlikely.”
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+These vulnerabilities are not exploitable remotely.

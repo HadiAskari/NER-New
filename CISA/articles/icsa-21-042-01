@@ -1,0 +1,114 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Multiple
+Equipment: Nut/Net, CycloneTCP, NDKTCPIP, FNET, uIP-Contiki-OS, uC/TCP-IP, uIP-Contiki-NG, uIP, picoTCP-NG, picoTCP, MPLAB Net, Nucleus NET, Nucleus ReadyStart
+Vulnerabilities: Use of Insufficiently Random Values
+
+CISA is aware of a public report, known as “NUMBER:JACK” that details vulnerabilities found in multiple open-source and proprietary TCP/IP stacks. CISA is issuing this advisory to provide early notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+The various open-source stacks may be implemented in forked repositories.
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-042-01 Multiple Embedded TCP/IP stacks (Update A) that was published February 18, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of weak initial sequence numbers (ISN) can be used to hijack or spoof TCP connections, cause denial-of-service conditions, inject malicious data, or bypass authentication.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following have been reported to be affected:
+
+Nut/Net, Version 5.1 and prior
+CycloneTCP, Version 1.9.6 and prior
+NDKTCPIP, Version 2.25 and prior
+FNET, Version 4.6.3
+uIP-Contiki-OS (end-of-life [EOL]), Version 3.0 and prior
+uC/TCP-IP (EOL), Version 3.6.0 and prior
+uIP-Contiki-NG, Version 4.5 and prior
+uIP (EOL), Version 1.0 and prior
+picoTCP-NG, Version 1.7.0 and prior
+picoTCP (EOL), Version 1.7.0 and prior
+MPLAB Net, Version 3.6.1 and prior
+Nucleus NET, All versions prior to Version 5.2
+Nucleus ReadyStart for ARM, MIPS, and PPC, All versions prior to Version 2012.12
+
+--------- Begin Update B Part 1 of 2 ---------
+
+Capital VSTAR, All Versions
+Nucleus Source Code, All Versions
+
+--------- End Update B Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+Nut/Net software relies on highly predictable source values and has consistent increments when generating initial sequence numbers (ISN), which may allow an attacker to spoof or disrupt TCP connections. 
+CVE-2020-27213 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.2    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+uC/TCP-IP ISN generation relies on a linear congruential generator (LCG), which is reversable from observed output streams as the algorithm is seeded with publicly recoverable information. This defect may allow an attacker to spoof or disrupt TCP connections. 
+CVE-2020-27630 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.3    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+CycloneTCP ISN generation relies on a linear congruential generator (LCG), which is reversable from observed output streams as the algorithm is seeded with publicly recoverable information. This defect may allow an attacker to spoof or disrupt TCP connections.
+CVE-2020-27631 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.4    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+NDKTCPIP software is initialized with a consistent value and has consistent increments when generating initial sequence numbers (ISN), which may allow an attacker to spoof or disrupt TCP connections. 
+CVE-2020-27632 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.5    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+FNET software is initialized with a consistent value and has consistent increments when generating initial sequence numbers (ISN), which may allow an attacker to spoof or disrupt TCP connections. 
+CVE-2020-27633 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.6    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+uIP, Contiki-OS, and Contiki-NG software is initialized with a consistent value and has consistent increments when generating initial sequence numbers (ISN), which may allow an attacker to spoof or disrupt TCP connections. 
+CVE-2020-27634 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.7    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+PicoTCP PicoTCP-NG software ISN generation relies on a linear congruential generator (LCG), which is reversable from observed output streams as the algorithm is seeded with publicly recoverable information. This defect may allow an attacker to spoof or disrupt TCP connections.
+CVE-2020-27635 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.8    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+MPLAB software ISN generation relies on a linear congruential generator (LCG), which is reversable from observed output streams as the algorithm is seeded with publicly recoverable information. This defect may allow an attacker to spoof or disrupt TCP connections.
+CVE-2020-27636 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.9    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+Nucleus NET and Nucleus ReadyStart software ISN generation relies on a combination of values that can be acquired from capturing network traffic, which may allow an attacker to spoof or disrupt TCP connections. 
+CVE-2020-28388 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Multiple
+
+4.4 RESEARCHER
+Daniel dos Santos, Stanislav Dashevskyi, Jos Wetzels, and Amine Amri of Forescout Research Labs reported these vulnerabilities to CISA.
+5. MITIGATIONS
+
+uIP-Contiki-OS (end-of-life [EOL]). See general recommendations below.
+uIP-Contiki-NG has a patch in progress. See general recommendations below until a patch is made available.
+uIP (EOL). See general recommendations below.
+The maintainers of picoTCP-NG recommend users update to Version 2.1 or later. 
+picoTCP (EOL), See general recommendations below.
+The maintainers of MPLAB Net recommend users update to Version 3.6.4 or later. 
+Siemens recommends Nucleus NET users update to the latest version of Nucleus ReadyStart or to protect transmitted data with cryptographic protocols such as Transport Layer Security. Additional information can be found here.
+Siemens recommends Nucleus ReadyStart for ARM, MIPS, and PPC users update to v2012.12 or later or to protect transmitted data with cryptographic protocols such as Transport Layer Security. Additional information can be found here. 
+
+--------- Begin Update B Part 2 of 2 ---------
+
+
+
+Siemens recommends for Capital VSTAR and Nucleus Source Code users contact Siemens customer support to receive patch and update information. Additional information can be found here.
+
+--------- End Update B Part 2 of 2 ---------
+
+Nut/Net has a patch in progress. See general recommendations below until a patch is made available.
+uC/TCP-IP (EOL). See general recommendations below. Patched in the latest version of Micrium OS (successor project).
+The maintainers of CycloneTCP recommend users update to Version 2.0.0 or later. 
+Texas Instruments recommends NDKTCPIP users update to Version 7.02 or later.
+The maintainer of FNET recommends users update to v4.7.1
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+Utilize cryptographic protocols such as Transport Layer Security to protect transported data.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

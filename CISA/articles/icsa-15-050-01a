@@ -1,0 +1,62 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-15-050-01 Siemens SIMATIC STEP 7 TIA Portal Vulnerabilities that was published February 19, 2015, on the NCCIC/ICS-CERT web site.
+Siemens has identified two vulnerabilities in its SIMATIC STEP 7 (TIA Portal). Siemens has produced a patch that mitigates these vulnerabilities. These vulnerabilities were initially disclosed to Siemens by the Quarkslab team and Dmitry Sklyarov with PT-Security.
+One of the vulnerabilities is remotely exploitable.
+AFFECTED PRODUCTS
+--------- Begin Update A Part 1 of 2 --------
+Siemens reports that the vulnerabilities affect the following versions of SIMATIC STEP 7 (TIA Portal):
+SIMATIC STEP 7 (TIA Portal) V13: All versions prior to V13 SP1 Upd1SIMATIC STEP 7 (TIA Portal) V12: All versions prior to V12 SP1 Upd5
+--------- End Update A Part 1 of 2 --------
+IMPACT
+One vulnerability could allow for a successful man-in-the-middle attack, allowing the attacker to view and modify data sent between the user and the system. The other allows a user with local access the ability to reconstruct passwords.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected product, SIMATIC Step 7 (TIA Portal), is engineering software for SIMATIC products. This software is deployed across several sectors including Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems. Siemens estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+MAN-IN-THE-MIDDLECWE-300: Channel Accessible by Non-Endpoint ('Man-in-the-Middle'), http://cwe.mitre.org/data/definitions/300.html, web site last accessed February 19, 2015.
+
+Attackers with access to the network path between the client and the server could possibly intercept or modify Siemens industrial communications at Port 102/TCP and conduct a man-in-the-middle attack.
+CVE-2015-1601NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1601, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:N, web site last accessed February 19, 2015.
+
+USE OF PASSWORD HASH WITH INSUFFICIENT COMPUTATIONAL EFFORTCWE-916: Use of Password Hash With Insufficient Computational Effort, http://cwe.mitre.org/data/definitions/916.html, web site last accessed February 19, 2015.
+
+Attackers with read access to TIA project files could possibly reconstruct protection-level passwords or web server passwords.
+CVE-2015-1602NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1602, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 1.9 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:P/I:N/A:N, web site last accessed February 19, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The Man-in-the-middle vulnerability can be exploited remotely, the password hash vulnerability requires local access.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+Crafting a working exploit for these vulnerabilities would be moderately difficult. Crafting a successful man-in-the-middle attack would require access to the network between the client and the server. Local access would be required to access to the project files with additional work required to reconstruct passwords. These factors decrease the likelihood of a successful exploit.
+MITIGATION
+Siemens provides Update 1 for SIMATIC STEP 7 (TIA Portal) V13 SP1, which fixes the vulnerabilities. The update can be obtained here:
+https://support.industry.siemens.com/cs/ww/en/view/109311724
+--------- Begin Update A Part 2 of 2 --------
+Siemens also provides Update 5 for SIMATIC STEP 7 (TIA Portal) V12 SP1 to fix the vulnerabilities. Update 5 can be obtained here:
+https://support.industry.siemens.com/cs/ww/en/view/78683919
+--------- End Update A Part 2 of 2 --------
+After applying the update, Siemens strongly recommends to change protection-level and web server passwords.
+As a general security measure Siemens also strongly recommends to protect network access with appropriate mechanisms. It is advised to configure the environment according to Siemens operational guidelines in order to run the devices in a protected IT environment. An overview of the operational guidelines for Industrial Security (with the cell protection concept) is available at:
+http://www.industry.siemens.com/topics/global/en/industrial-security/Documents/operational_guidelines_industrial_security_en.pdf
+For more information on these vulnerabilities and detailed instructions, please see Siemens Security Advisory SSA-315836 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed February 19, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed February 19, 2015. for more information on social engineering attacks.
+

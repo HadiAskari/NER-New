@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: InHand Networks 
+Equipment: InRouter302, InRouter615 
+Vulnerabilities: Cleartext Transmission of Sensitive Information, OS Command Injection, Use of a One-way Hash with a Predictable Salt, Improper Access Control, Use of Insufficiently Random Values 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a message queuing telemetry transport (MQTT) command injection, unauthorized disclosure of sensitive device information, and remote code execution. If properly chained, these vulnerabilities could result in an unauthorized remote user fully compromising every cloud-managed InHand Networks device reachable by the cloud. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of InRouters, an industrial router line, are affected: 
+
+InRouter 302: All versions prior to IR302 V3.5.56 
+InRouter 615: All versions prior to InRouter6XX-S-V2.3.0.r5542 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319 
+The affected products use an unsecured channel to communicate with the cloud platform by default. An unauthorized user could intercept this communication and steal sensitive information such as configuration information and MQTT credentials; this could allow MQTT command injection. 
+CVE-2023-22597 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N). 
+3.2.2 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected products are vulnerable to operating system (OS) command injection. An unauthorized user with privileged access to the local web interface or the cloud account managing the affected devices could push a specially crafted configuration update file to gain root access. This could lead to remote code execution with root privileges. 
+CVE-2023-22598 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.3 USE OF A ONE-WAY HASH WITH A PREDICTABLE SALT CWE-760
+The affected products send MQTT credentials in response to HTTP/HTTPS requests from the cloud platform. These credentials are encoded using a hardcoded string into an MD5 hash. This string could be easily calculated by an unauthorized user who spoofed sending an HTTP/HTTPS request to the devices. This could result in the affected devices being temporarily disconnected from the cloud platform and allow the user to receive MQTT commands with potentially sensitive information. 
+CVE-2023-22599 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:L). 
+3.2.4 IMPROPER ACCESS CONTROL CWE-284
+The affected products allow unauthenticated devices to subscribe to MQTT topics on the same network as the device manager. An unauthorized user who knows of an existing topic name could send and receive messages to and from that topic. This includes the ability to send GET/SET configuration commands, reboot commands, and push firmware updates. 
+CVE-2023-22600 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:H/A:H). 
+3.2.5 USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+The affected products do not properly randomize MQTT ClientID parameters. An unauthorized user could calculate this parameter and use it to gather additional information about other InHand devices managed on the same cloud platform. 
+CVE-2023-22601 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Critical Manufacturing, Transportation, Healthcare 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: China 
+
+3.4 RESEARCHER
+Roni Gavrilov from OTORIO reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+InHand recommends users update affected device firmware to the most recent version: 
+
+InRouter302 users should update firmware to IR302 V3.5.56 or later 
+InRouter615 users should update firmware to InRouter6XX-S-V2.3.0.r5542 or later 
+
+To access the updates, users should go to “Documentation → Firmware” on the product page. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

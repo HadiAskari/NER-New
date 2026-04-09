@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC WinCC and PCS
+Vulnerabilities: Exposure of Sensitive Information to an Unauthorized Actor, Insertion of Sensitive Information into Externally-Accessible File or Directory
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-22-041-02 Siemens SIMATIC WinCC and PCS (Update B) that was published May 12, 2022, to the ICS webpage on cisa.gov/ics. 
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow attackers to retrieve and brute force password hashes and access other systems.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affect the following SIMATIC products: 
+
+SIMATIC PCS 7 v9.1: All versions prior to v9.1 SP1
+SIMATIC PCS 7 v8.2: All versions prior to v7.4 SP1 Update 19
+SIMATIC PCS 7 v9.0: All versions prior to v9.0 SP3 UpdateCollection4
+SIMATIC WinCC v7.4: All versions prior to v7.4 SP1 Update 19
+SIMATIC WinCC v7.5: All versions prior to v7.5 Update 6
+SIMATIC WinCC v15 and earlier: All versions prior to v15 SP1 Update 7
+SIMATIC WinCC v16: All versions prior to v16 Update 5
+SIMATIC WinCC v17: All versions prior to v17 Update 2
+
+--------- Begin Update C Part 1 of 2 --------- 
+
+SIMATIC WinCC v17: All versions after and including v17 Update 2, but prior to v17 Update 4 are only affected by CVE-2021-40363 
+
+--------- End Update C Part 1 of 2 --------- 
+4.2 VULNERABILITY OVERVIEW
+4.2.1    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The password hash of a local user account in the remote server could be granted via public API to a user on the affected system. An authenticated attacker could brute force the password hash and use it to login to the server.
+CVE-2021-40360 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:N/A:N).
+4.2.2    INSERTION OF SENSITIVE INFORMATION INTO EXTERNALLY-ACCESSIBLE FILE OR DIRECTORY CWE-538
+The affected component stores the credentials of a local system account in a potentially publicly accessible project file using an outdated cipher algorithm. An attacker may use this to brute force the credentials and take over the system.
+CVE-2021-40363 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens has released updates for several affected products and recommends updating to the latest versions. Siemens is preparing further updates and recommends specific countermeasures for products where updates are not, or not yet available.
+
+SIMATIC PCS 7 v8.2: Install v7.4 SP1 Update 19 or later 
+SIMATIC PCS 7 v9.0: Update to v9.0 SP3 UpdateCollection4 or later 
+SIMATIC PCS 7 v9.1: Update to v9.1 SP1 or later version 
+SIMATIC WinCC v7.4: Update to v7.4 SP1 Update 19 or later 
+SIMATIC WinCC v7.5: Update to v7.5 Update 6 or later version 
+SIMATIC WinCC v15 and earlier: Update to v15 SP1 Update 7 or later 
+SIMATIC WinCC v16: Update to v16 Update 5 or later version 
+
+--------- Begin Update C Part 2 of 2 ---------
+
+SIMATIC WinCC v17: Update to v17 Update 4 or later version
+
+--------- End Update C Part 2 of 2 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Harden the application’s host to prevent local access by untrusted personnel.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security, and follow the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-914168
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

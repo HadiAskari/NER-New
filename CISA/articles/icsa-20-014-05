@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low skill level to exploit
+Vendor: Siemens
+Equipment: TIA Portal
+Vulnerability: Path Traversal
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-20-014-05 Siemens TIA Portal (Update E) that was published June 16, 2022, on the ICS webpage at cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a local attacker to execute arbitrary code with SYSTEM privileges.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of TIA Portal, the Totally Integrated Automation Portal, are affected:
+
+TIA Portal v14: All versions
+TIA Portal v15: All versions prior to v15.1 Update 7
+
+--------- Begin Update F Part 1 of 2 ---------
+
+TIA Portal v16: All versions prior to v16 update 6
+
+--------- End Update F Part 1 of 2 ---------
+
+TIA Portal v17: All versions prior to v17 update 4
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+Changing the contents of a configuration file could allow an attacker to execute arbitrary code with SYSTEM privileges. This vulnerability could be exploited by an attacker with a valid account and limited access rights on the system. No user interaction is required.
+CVE-2019-10934 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+\William Knowles from Applied Risk reported this vulnerability to Siemens.
+5. MITIGATIONS
+Siemens recommends users update the following:
+
+TIA Portal v15: Update to v15.1 Update 7 or later
+
+--------- Begin Update F Part 2 of 2 ---------
+
+TIA Portal v16: Update to v16 Update 6 or later
+
+--------- End Update F Part 2 of 2 ---------
+
+TIA Portal v17: Update to v17 Update 4 or later
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Remove write permissions for every non-administrative user on files and folders located below the “TraceEngine” folder (usually located at “C:\ProgramData\Siemens\Automation”).
+A partially working fix for Native Language Windows Versions in English or Multilingual User Interface (MUI) Windows Installation was included in TIA Portal Versions v14 SP1 Update 10, v15 SP1 Update 4, v16 Update 1, and v17.
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens security advisory SSA-629512
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for Industrial Security, and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

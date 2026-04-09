@@ -1,0 +1,77 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Echelon
+Equipment: SmartServer 1, SmartServer 2, i.LON 100, i.LON 600
+Vulnerabilities: Information Exposure, Authentication Bypass Using an Alternate Path or Channel, Unprotected Storage of Credentials, Cleartext Transmission of Sensitive Information
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-200-03 Echelon SmartServer 1, SmartServer 2, SmartServer 3, i.LON 100, i.LON 600 that was published July 19, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow for remote code execution on the device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Smart Server and i.LON products, which are network devices, are affected:
+
+SmartServer 1 all versions,
+SmartServer 2 all versions prior to release 4.11.007,
+i.LON 100 all versions, and
+i.LON 600 all versions.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INFORMATION EXPOSURE CWE-200
+An attacker can use the SOAP API to retrieve and change sensitive configuration items such as the usernames and passwords for the Web and FTP servers. This vulnerability does not affect the i.LON 600 product.
+CVE-2018-10627 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+--------- Begin Update A Part 1 of 2 --------
+An attacker can bypass the required authentication specified in the security configuration file by including extra characters in the directory name when specifying the directory to be accessed.
+--------- End Update A Part 1 of 2 --------
+CVE-2018-8859 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    UNPROTECTED STORAGE OF CREDENTIALS CWE-256
+The devices store passwords in plaintext, which may allow an attacker with access to the configuration file to log into the SmartServer web user interface.
+CVE-2018-8851 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The devices allow unencrypted Web connections by default, and devices can receive configuration and firmware updates by unsecure FTP.
+CVE-2018-8855 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Information Technology
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Echelon, working with Daniel Crowley and IBM’s X-Force Red team, self-reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 --------
+For CVE-2018-8859, Echelon recommends affected users install the i.LON 600 and any servers using the i.LON 600 behind a firewall or on a VLAN without other devices. For more information, see Echelon’s security advisory at:
+https://www.echelon.com/static/company/security/security-advisories/ESA-20180823-01.pdf
+--------- End Update A Part 2 of 2 --------
+Echelon recommends that affected users install SmartServer 2 Service Pack 7 (Version 4.11.007), to mitigate CVE-2018-8859, CVE-2018-8851, and CVE-2018-8855, which can be downloaded at the following link:
+https://www.echelon.com/software-downloads?ele=153-0608-01A
+The following manual mitigation is also recommended:
+For CVE-2018-10627, Echelon recommends affected users modify the WebParams.dat file.
+Echelon recommends that the following mitigation is implemented until SmartServer 2 Service Pack 7 is installed:
+
+All SmartServer and i.LON 600 devices along with any servers using the SmartServer and i.Lon services should be installed behind a firewall or on a VLAN without other devices.
+Change the username and password during the initial installation of the affected products.
+Disable unencrypted services and secure encrypted services for the SmartServer or i.LON 100.
+
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

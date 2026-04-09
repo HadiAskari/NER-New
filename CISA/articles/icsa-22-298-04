@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/Low attack complexity
+Vendor: Hitachi Energy
+Equipment: DMS600 
+Vulnerability: Reliance on Uncontrolled Component
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerabilities could allow an attacker to gain unauthorized access to information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Hitachi Energy product, integrated with MicroSCADA X, is affected: 
+
+DMS600: Version 4.5 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 RELIANCE ON UNCONTROLLED COMPONENT CWE-1357 
+A vulnerability exists when Hitachi Energy MicroSCADA X DMS600 v4.5 uses an affected version of PostgreSQL. While modifying certain SQL array values, missing bounds checks let authenticated database users write arbitrary bytes to a wide area of server memory. Successful exploitation of this vulnerability could allow attackers to gain access to the data, causing confidentiality and integrity issues. 
+CVE-2021-32027 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 RELIANCE ON UNCONTROLLED COMPONENT CWE-1357 
+A vulnerability exists when Hitachi Energy MicroSCADA X DMS600 v4.5 uses an affected version of PostgreSQL. When using an “INSERT ... ON CONFLICT ... DO UPDATE” command on a purpose-crafted table, an authenticated database user could read arbitrary bytes of server memory. 
+CVE-2021-32028 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends users apply the update at the earliest convenience to the following product: 
+
+Hitachi Energy DMS600: Update to v4.6. 
+
+Note: In DMS600, PostgreSQL is deployed and accessible only from the local host. Remote connections are not allowed by default. 
+Recommended security practices and firewall configurations can help protect a process control network from attacks that originate from outside the network. Such practices include that process control systems are physically protected from direct access by unauthorized personnel, have no direct connections to the Internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed; and others that must be evaluated case-by-case. Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails. Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system. 
+For more information, see Hitachi Energy advisory 8DBD000102. 
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. 
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies. 
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents. 
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+No known public exploits specifically target these vulnerabilities. 

@@ -1,0 +1,57 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-087-01 Siemens ROS Improper Input Validation that was published March  28, 2014, on the NCCIC/ICS-CERT web site.
+Researcher Aivar Liimets from Martem Telecontrol Systems reported an improper input validation vulnerability in the Siemens Rugged Operating System (ROS), which could cause a denial-of-service (DoS) condition against the device’s management web interface. Siemens coordinated the vulnerability details with ICS-CERT and has provided information for mitigation of the vulnerability.
+This vulnerability can be exploited remotely.
+AFFECTED PRODUCTS
+--------- Begin Update A Part 1 of 2 --------
+The following Siemens ROS versions are affected:
+
+All ROS versions prior to v3.11,
+ROS v3.11 (for product RS950G): all versions prior to ROS v3.11.5,
+ROS v3.12: all versions prior to ROS v3.12.4, and
+ROS v4.0 (for product RSG2488): all versions prior to ROS v4.1.0.
+
+--------- End Update A Part 1 of 2 --------
+IMPACT
+A vulnerability in the implementation of the web interface might allow attackers to perform a DoS attack on the affected devices over the network without prior authentication. The switching functionality of the device is not affected.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is an international company headquartered in Munich, Germany.
+The affected products, RuggedCom switches and serial-to-Ethernet devices, are used to connect devices that operate in harsh environments such as electric utility substations and traffic control cabinets. According to Siemens, RuggedCom ROS-based products are deployed across several sectors including Energy, Healthcare and Public Health, and Transportation Systems.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed March 28, 2014.
+
+The implementation of the web server (Port 80/TCP) in the affected devices might allow attackers to perform a DoS attack against the device’s management web interface by sending specially crafted packets over the network without prior authentication. The switching functionality is not affected, only the web interface. A manual cold restart of the device is necessary to regain access to the web management interface.
+This vulnerability does not affect HTTPS (Port 443/TCP).
+CVE-2014-2590NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2590, web site last accessed May 27, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:P, web site last accessed March 28, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Siemens has provided the following mitigations:
+--------- Begin Update A Part 2 of 2 --------
+Siemens/RuggedCom provide firmware updates ROS v3.11.5, ROS v3.12.4, and ROS v4.1.0; which fix the vulnerability for RS950G products running ROS v3.11, products running ROS v3.12 and prior, and RSG2488 products running ROS v4.0.
+--------- End Update A Part 2 of 2 --------
+As a general security measure, Siemens strongly recommends protecting network access to the management interface of RuggedCom devices with appropriate mechanisms. It is advised to follow recommended security practices and to configure the environment according to operational guidelines in order to run the devices in a protected IT environment.
+The firmware updates for the RuggedCom ROS-based devices can be obtained for free from the following contact points:
+http://www.siemens.com/automation/support-request
+or
+http://www.automation.siemens.com/mcms/aspa-db/en/automation-technology/Pages/default.aspx
+The Siemens ProductCERT advisory can be found here:
+http://www.siemens.com/innovation/en/technology-focus/siemens-cert/cert-security-advisories.htm
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

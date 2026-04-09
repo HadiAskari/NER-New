@@ -1,0 +1,47 @@
+
+Overview
+This advisory provides mitigation details for a vulnerability that impacts Siemens ProcessSuite and Invensys Wonderware InTouch products. Researcher Seth Bromberger of NCI Security, LLC and independent researcher Slade Griffin have identified an insecure password storage vulnerability in both Siemens ProcessSuite and Invensys Wonderware InTouch applications. Siemens states that ProcessSuite is outdated and cannot be updated to match current security requirements; Siemens recommends upgrading to a more recent human-machine interface (HMI). Invensys recommends using Windows integrated security rather than the InTouch security subsystem but has created a new patch to mitigate this vulnerability. Successful exploitation of this vulnerability can allow an attacker to log in to the system as a privileged user and take over the application.
+Affected Products
+The following Siemens ProcessSuite versions are affected:
+
+All versions of ProcessSuite.
+
+Please note that according to Siemens, ProcessSuite was phased out in 2005 and completely discontinued in 2010. Customers using SIMATIC PCS7 / APACS+ OS are not affected.
+The following Invensys Wonderware InTouch versions are affected:
+
+Wonderware InTouch 2012 R2 and previous.
+
+Wonderware applications that use Windows Integrated security or ArchestrA security are not affected.
+Impact
+An attacker with read permissions to the password file can decrypt it and obtain all usernames and passwords, allowing logon as a privileged user and take over the application.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+ProcessSuite is a part of a Distributed Control System “APACS+” from Moore Products Inc., which was acquired by Siemens in 2000. Siemens ProcessSuite is based on Wonderware InTouch V7.11 and uses similar authentication mechanisms. Siemens no longer supports ProcessSuite.
+ProcessSuite is deployed across several sectors including manufacturing, oil and gas, chemical, and others. Siemens estimates that these products are used primarily in the United States and Canada.
+InTouch is an HMI created by Invensys Wonderware used for designing, building, deploying, and maintaining applications for manufacturing and infrastructure operations.
+Vulnerability Characterization
+Vulnerability Overview
+Insecure Password StorageCWE-326: Inadequate Encryption Strength, http://cwe.mitre.org/data/definitions/326.html, Web site last accessed December 12, 2012.
+User management information including passwords is stored in a reversible format in file “Ps_security.ini” by the affected software. An attacker with read permissions to this local file can obtain the passwords, log in as a privileged user, and potentially affect the availability, integrity, and confidentiality of the system.
+CVE-2012-4693 has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:S/C:P/I:P/A:P).
+Vulnerability Details
+Exploitability
+An attacker would need local access to the password file to be able to exploit this vulnerability.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a low skill would be able to exploit this vulnerability.
+Mitigation
+Systems running ProcessSuite are outdated in many aspects and cannot support the latest recommended security practices. As this software is discontinued, Siemens strongly recommends upgrading to a more recent HMI for APACS+.a Further information on migration options to PCS 7 / APACS+ OS along with technical support can be located at the Siemens APACS Web site.
+Invensys recommends using Windows integrated security features or migrating the HMI and OS to versions currently supported and then install their security update. Please consult with Wonderware Technical Support for help with the update.
+Schneider Electric has released a security bulletin titled “Weak Encryption for InTouch Passwords (LFSEC00000080)” to announce the security update, which is available at the following location:
+https://gcsresource.invensys.com/support/docs/_SecurityBulletins/Security_Bulletin_LFSEC00000080.pdf
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks. for help with the update.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

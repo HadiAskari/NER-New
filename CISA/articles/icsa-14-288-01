@@ -1,0 +1,57 @@
+
+OVERVIEW
+Independent researcher Billy Rios identified authentication vulnerabilities in CareFusion’s Pyxis SupplyStation system. CareFusion has implemented additional controls to mitigate some of these vulnerabilities in the SupplyStation system.
+Some of the reported vulnerabilities could be exploited remotely. These vulnerabilities could be exploited if the network and/or physical security of healthcare facilities using the SupplyStation system are also compromised. 
+AFFECTED PRODUCTS
+The following CareFusion’s products are affected:
+
+Pyxis SupplyStation system 8.1 (hardware test tool software Versions 1.0.15 and prior)
+
+IMPACT
+Exploitation of these vulnerabilities may allow an attacker to remotely compromise the Pyxis SupplyStation system. An attacker who also has physical access to the SupplyStation system could remove medical supplies via such a remote compromise. The SupplyStation system is designed to maintain critical functionality and provide access to supplies in “fail-safe mode” in the event that the cabinet is rendered inoperable. Manual keys can be used to access the cabinet if it is rendered inoperable.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+CareFusion is a US-based company that maintains offices in 20 countries around the world, including the US, UK, Netherlands, Italy, India, Germany, France, Canada, China, and Australia.
+CareFusion’s Pyxis SupplyStation systems are automated supply cabinets used in hospitals to release medical supplies. CareFusion products are deployed across the Healthcare and Public Health sector.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HARD-CODED PASSWORDCWE- 259: Use of Hard-coded Password, http://cwe.mitre.org/data/definitions/259.html, web site last accessed October 15, 2014.
+
+The Pyxis SupplyStation system contains a hard-coded service password that grants administrator privileges by default. A remote attacker may be able to compromise the device if an attacker is able to defeat the network and/or physical security of the facility in which the SupplyStation system is deployed. Physical access to the device is required to remove contents of the automated supply cabinet.
+CVE-2014-5422NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5422, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.7 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:P, web site last accessed October 15, 2014.
+
+HARD-CODED CREDENTIALSCWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, web site last accessed October 15, 2014.
+
+The Pyxis SupplyStation system uses a hard-coded password for the database account that is used to capture transaction events. The database processes run with privileged user rights on the automated supply cabinet by default. The database is accessible only to applications running locally within the cabinet. An attacker with local access may be able to completely compromise the automated supply cabinet, to include removing the contents of the automated supply cabinet.
+CVE-2014-5421NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5421, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.4 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:S/C:C/I:C/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:S/C:C/I:C/A:P, web site last accessed October 15, 2014.
+
+HARD-CODED CREDENTIALSCWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, web site last accessed October 15, 2014.
+
+The Pyxis SupplyStation system uses a hard-coded nonprivileged application account password that grants a user limited system access to application files that run the automated supply cabinet. The application account does have the functionality to manipulate the locking controls on the affected automated supply cabinet to remove the contents of the cabinet.
+CVE-2014-5420NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5420, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.5 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:P/I:P/A:N, web site last accessed October 15, 2014.
+
+INSECURE TEMPORARY FILECWE- 377: Insecure Temporary File, http://cwe.mitre.org/data/definitions/377.html, web site last accessed October 15, 2014.
+
+The Pyxis SupplyStation system contains debugging files and other developer files that may divulge information about application source code that may expose system vulnerabilities. CareFusion has deleted the debugging files from all SupplyStation systems that have a current remote support service agreement.
+CVE-2014-5423NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5423, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 1.7 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:S/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:S/C:P/I:N/A:N, web site last accessed October 15, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+Some of these vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill level would be able to exploit these vulnerabilities.
+MITIGATION
+CareFusion has released a new version of the hardware test tool software, Version 1.0.16, that addresses three of the reported vulnerabilities: hard-coded service password, hard-coded account password, and insecure temporary files. CareFusion has installed the new version on affected devices for customers with a current remote support service agreement. For additional information about the new version, contact CareFusion at: 1 (800) 727-6102 or email questions to GMB-US-SecurityAlert@carefusion.com.
+Hardware test tool software, Version 1.0.16 implements two-factor authentication to mitigate the hard-coded service password and the hard-coded account password vulnerabilities by implementing an additional required login credential. The additional credential is a dynamic password that is specific to each user and subject to frequent change. CareFusion has also removed the unnecessary debugging files in the affected products.
+CareFusion is not addressing the hard-coded password for the database in Version 1.0.16 because exploiting this vulnerability also requires coordinated local access to the SupplyStation system. CareFusion has resolved to address the hard-coded password vulnerability for the database in later versions.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

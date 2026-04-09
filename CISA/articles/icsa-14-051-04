@@ -1,0 +1,44 @@
+
+OVERVIEW
+NCCIC/ICS-CERT has been following the increase in denial-of-service (DoS) attacks using Network Time Protocol (NTP) Reflection. This type of attack provides an adversary the ability to generate high volume distributed denial of service (DDoS) traffic to target web sites or public‑facing devices that could cause disruption to services.
+This vulnerability could be exploited remotely. Exploits that target this type of attack are known to be publicly available.
+Mitigations are available for both operators of NTP Stratum devices and possible victims of these attacks.
+AFFECTED PRODUCTS
+Products using NTP service NTP-4.2.7p25 and prior (with MONLIST support) are affected. No specific vendor is specified as this is an open source protocol.
+IMPACT
+Exploitation of this vulnerability could cause NTP Stratum devices to be used as sources of unrequested NTP synchronization requests in a DoS attack.
+Victims of this type of DoS attack could see service interruption due to boundary protection rules do not filter NTP synchronization requests that do not originate internally.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+The NTP is described in RFC 958Network Time Protocol (NTP), http://tools.ietf.org/html/rfc958, web site last accessed February 20, 2014., an open source collaboration for acceptance, and is used to synchronize system time over a network.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed February 20, 2014.
+
+The NTP service could allow for multiple sync requests to be made with a forged source IP address, thus sending the unrequested responses back to the source, consuming its resources. An attacker could exploit this vulnerability by sending a specifically crafted packet with a forged source IP address of the target.
+It will not be evident to the NTP operator that the system has been exploited or is being used in a DoS attack as the commands are normal time synchronization requests.
+CVE-2013-5211NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-5211, NIST uses this advisory to create the CVE web site report. web site last accessed February 20, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:C, web site last accessed February 20, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+NTP can be upgraded to NTP-4.2.7p26 or later that removes MONLIST support and is replaced with the more secure MRUNLIST function. This fix has been available since 2010.
+In addition, integrators and asset owners are encouraged to review boundary protection rule sets and filters to eliminate incoming NTP requests that do not originate internally.
+NCCIC/US-CERT resource documents that outline suggestions for mitigating active DDoS attacks are available here:
+http://www.us-cert.gov/sites/default/files/publications/DDoS%20Quick%20Guide.pdf
+http://www.us-cert.gov/ncas/tips/ST04-015
+http://www.kb.cert.org/vuls/id/348126
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the NCCIC/ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

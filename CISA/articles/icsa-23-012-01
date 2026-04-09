@@ -1,0 +1,73 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Sewio 
+Equipment: RTLS Studio 
+Vulnerabilities: Use of Hard-coded Password, OS Command Injection, Out-of-bounds Write, Cross-Site Request Forgery, Improper Input Validation, Cross-site Scripting 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain unauthorized access to the server, alter information, create a denial-of-service condition, gain escalated privileges, and execute arbitrary code. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following version of Sewio’s RTLS Studio, a Real-Time Location System (RTLS), is affected: 
+
+RTLS Studio: version 2.0.0 up to and including version 2.6.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 USE OF HARD-CODED PASSWORD CWE-259 
+Sewio’s Real-Time Location System (RTLS) Studio version 2.0.0 up to and including version 2.6.2 contains hard-coded passwords for select users in the application’s database. This could allow a remote attacker to login to the database with unrestricted access. 
+CVE-2022-45444 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H). 
+3.2.2 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78 
+Sewio’s Real-Time Location System (RTLS) Studio version 2.0.0 up to and including version 2.6.2 does not properly validate the input module name to the backup services of the software. This could allow a remote attacker to access sensitive functions of the application and execute arbitrary system commands. 
+CVE-2022-47911 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H). 
+3.2.3 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+Sewio’s Real-Time Location System (RTLS) Studio version 2.0.0 up to and including version 2.6.2 does not properly validate the input module name to the monitor services of the software. This could allow a remote attacker to access sensitive functions of the application and execute arbitrary system commands. 
+CVE-2022-43483 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H). 
+3.2.4 OUT-OF-BOUNDS WRITE CWE-787
+Sewio’s Real-Time Location System (RTLS) Studio version 2.0.0 up to and including version 2.6.2 does not validate the length of RTLS report payloads during communication. This allows an attacker to send an exceedingly long payload, resulting in an out-of-bounds write to cause a denial-of-service condition or code execution. 
+CVE-2022-41989 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H). 
+3.2.5 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+Sewio’s Real-Time Location System (RTLS) Studio version 2.0.0 up to and including version 2.6.2 is vulnerable to cross-site request forgery in its backup services. An attacker could take advantage of this vulnerability to execute arbitrary backup operations and cause a denial-of-service condition. 
+CVE-2022-45127 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H). 
+3.2.6 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+Sewio’s Real-Time Location System (RTLS) Studio version 2.0.0 up to and including version 2.6.2 is vulnerable to cross-site request forgery in its monitor services. An attacker could take advantage of this vulnerability to execute arbitrary maintenance operations and cause a denial-of-service condition. 
+CVE-2022-47395 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H). 
+3.2.7 IMPROPER INPUT VALIDATION CWE-20
+Sewio’s Real-Time Location System (RTLS) Studio version 2.0.0 up to and including version 2.6.2 is vulnerable to improper input validation of user input to several modules and services of the software. This could allow an attacker to delete arbitrary files and cause a denial-of-service condition. 
+CVE-2022-47917 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:N/A:H). 
+3.2.8 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+Sewio’s Real-Time Location System (RTLS) Studio version 2.0.0 up to and including version 2.6.2 is vulnerable to cross-site scripting in its backup services. An attacker could take advantage of this vulnerability to execute arbitrary commands. 
+CVE-2022-46733 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L). 
+3.2.9 IMPROPER INPUT VALIDATION CWE-20
+Sewio’s Real-Time Location System (RTLS) Studio version 2.0.0 up to and including version 2.6.2 is vulnerable to improper input validation of user input to the service_start, service_stop, and service_restart modules of the software. This could allow an attacker to start, stop, or restart arbitrary services running on the server. 
+CVE-2022-43455 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:L/A:L). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Czech Republic 
+
+3.4 RESEARCHER
+Andrea Palanca of Nozomi Networks reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Sewio has provided the following updates and recommends that users update to the latest version: 
+
+RTLS Studio: Update to version 3.0.0 or later (requires login) (Only for the following vulnerabilities: CVE-2022-47911, CVE-2022-43483, CVE-2022-45127, CVE-2022-47395, CVE-2022-47917, CVE-2022-46733, CVE-2022-43455) 
+
+Sewio also recommends the following workarounds to reduce the risk of exploitation: 
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the internet. 
+Locate control system networks and remote devices behind firewalls and isolate them from business networks. 
+For CVE-2022-45444: Manually change the database password.  
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices. 
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.  

@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Medtronic
+Equipment: Paceart Optima System
+Vulnerability: Deserialization of Untrusted Data
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could result in remote code execution or a denial-of-service condition impacting a healthcare delivery organization’s Paceart Optima system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Medtronic products are affected: 
+
+Paceart Optima: Versions 1.11 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 DESERIALIZATION OF UNTRUSTED DATA CWE-502
+If a healthcare delivery organization has enabled the optional Paceart Messaging Service in the Paceart Optima system, an unauthorized user could exploit this vulnerability to perform remote code execution and/or denial-of-service (DoS) attacks by sending specially crafted messages to the Paceart Optima system. Remote code execution could result in the deletion, theft, or modification of Paceart Optima system’s cardiac device data, or use of the Paceart Optima system for further network penetration. A DoS attack could cause the Paceart Optima system to slow or be unresponsive.
+CVE-2023-31222 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+3.4 RESEARCHER
+Medtronic reported this vulnerability to CISA.
+4. MITIGATIONS
+Medtronic recommends updating the Paceart Optima system to v1.12. Contact Medtronic to schedule the update. 
+Medtronic has provided some immediate mitigations that users can apply to mitigate the risk. If running a combined Application and Integration Server, contact Medtronic Paceart Optima System technical support for immediate mitigation actions. For all other configurations, Medtronic recommends the following steps: 
+
+
+Manually disable the Paceart Messaging Service on the Application Server. 
+
+
+
+Open the “Windows Services” application.
+Find the ‘Paceart Messaging Service’
+Right-click the “Paceart Messaging Service” and select “Properties.”
+Select “Stop” to stop running the service and change the startup type to “Disabled.”
+Select ”Apply.”
+
+
+
+Manually disable message queuing on the Application Server. 
+
+
+
+Open server manager.
+Select “Add roles and features.”
+Select “Start the Remove Roles and Features Wizard.”
+Before you begin–next.
+Server selection–next.
+Server roles–next.
+Features section–take action. Select the black box next to Message Queuing.
+When the window pops up select the “Remove Features” button.
+Select “next.”
+Confirmation–select “Remove.”
+
+As long as the Paceart Messaging Service remains disabled, the vulnerability will remain mitigated. 
+Please refer to Medtronic’s security bulletin for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

@@ -1,0 +1,77 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.6
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: Allen-Bradley Stratix 5950
+Vulnerabilities: Improper Input Validation, Improper Certificate Validation, Resource Management Errors
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to bypass client certification to create connections to the affected device or cause the device to crash.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The Allen-Bradley Stratix 5950 uses the Cisco Systems, Inc., Adaptive Security Appliance (ASA) as its central operating system. Cisco has released advisories disclosing multiple vulnerabilities in the ASA software.The following Allen-Bradley Stratix 5950 Security Appliances, running the Cisco ASA v9.6.2 and earlier, are affected:
+
+1783-SAD4T0SBK9,
+1783-SAD4T0SPK9,
+1783-SAD2T2SBK9, and
+1783-SAD2T2SPK9
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+A vulnerability in the ingress flow creation functionality of the Cisco ASA could allow an unauthenticated, remote threat actor to cause the CPU to increase upwards of 100 percent utilization, causing a denial-of-service (DoS) condition on an affected system.
+CVE-2018-0228 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.2    IMPROPER CERTIFICATE VALIDATION CWE-295
+A vulnerability in the Secure Sockets Layer (SSL) Virtual Private Network (VPN) Client Certificate Authentication feature for the Cisco ASA could allow an unauthenticated, remote threat actor to establish an SSL VPN connection and bypass certain SSL certificate verification steps.
+CVE-2018-0227 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.3    IMPROPER INPUT VALIDATION CWE-20
+A vulnerability in the Transport Layer Security library of the Cisco ASA Software and Cisco Firepower Threat Defense (FTD) Software could allow an unauthenticated, remote threat actor to trigger a reload of the affected device, resulting in a DoS condition. 
+CVE-2018-0231 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.4    RESOURCE MANAGEMENT ERRORS CWE-399
+Multiple vulnerabilities in the Application Layer Protocol Inspection feature of the Cisco ASA Software and Cisco FTD Software could allow an unauthenticated, remote threat actor to trigger a reload of an affected device, resulting in a DoS condition. 
+CVE-2018-0240 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.5    IMPROPER INPUT VALIDATION CWE-20
+A vulnerability in the web interface of the Cisco ASA could allow an unauthenticated, remote threat actor to cause an affected device to reload unexpectedly, resulting in a DoS condition. It is also possible on certain software releases that the ASA will not reload, but a threat actor could view sensitive system information without authentication by using directory traversal techniques.
+CVE-2018-0296 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Wisconsin, USA
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Rockwell Automation will inform users of updated firmware as soon as it is available. Rockwell Automation recommends that users using affected devices apply the following risk mitigation strategies:
+
+CVE-2018-0228 — The ASA and FTD configuration commands—set connection per-client-embryonic-max (TCP) and set connection per-client-max (TCP, UDP, and Stream Control Transmission Protocol [SCTP])—can be configured to limit the number of connection requests allowed. Using these configuration parameters can reduce the number of connections and greatly reduce the impact of the DoS attack.
+CVE-2018-0227 — No workarounds available
+CVE-2018-0231 — No workarounds available
+CVE-2018-0240 — No workarounds available
+CVE-2018-0296 — Cisco has released Snort Rule 46897
+
+For additional information please see the Rockwell Automation security notification at (login required): https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1073860
+Additionally the Cisco advisories can be found at the following links:
+https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180418-asa2
+https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180418-asa1
+https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180418-asa3 
+https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180418-asa_inspect
+https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180606-asaftd
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

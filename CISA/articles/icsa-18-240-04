@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: ABB
+Equipment: eSOMS
+Vulnerability: Improper Authentication
+
+2    UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-240-04 ABB eSOMS that was published August 28, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability requires an attacker to discover a valid user account, which could be used to gain access to the application without authentication.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following version of ABB eSOMS, an electronic shift operations management system, is affected:
+
+eSOMS Version 6.0.2
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER AUTHENTICATION CWE-287
+Unauthorized access to the system can be achieved when LDAP is set to allow anonymous authentication, and specific key values within the eSOMS web.config file are present. Both conditions are required to exploit this vulnerability.
+CVE-2018-14805 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Defense Industrial Base, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+4.4 RESEARCHER
+ABB reported this vulnerability to NCCIC.
+5. MITIGATIONS
+--------- Begin Update A Part 1 of 1 --------
+ABB has released eSOMS version 6.0.3, which addresses this vulnerability. Please contact an ABB Global Customer Care Customer Advocate (customercare.es@abb.com) with any questions or for more information about the release.
+--------- End Update A Part 1 of 1 ----------
+ABB recommends the following immediate actions:
+Users running eSOMS Version 6.0.2 should ensure “Unauthenticated Authentication” (anonymous bind) is disabled in the LDAP configuration settings. In the eSOMS web.config file, ensure only the following key values are populated: “LDAP_Path,” “LDAP_User_Search,” and “LDAP_SSL_Enabled.” The remaining LDAP related key values are reserved for non-standard LDAP server configurations and are not normally required.
+Users should contact ABB global customer care (GCC) for further guidance if they experience issues with implementing LDAP authentication using only the previously mentioned key values.
+Users can find more information in ABB’s security advisory ABBVU-PGGA-2018030 at the following location:
+https://search.abb.com/library/Download.aspx?DocumentID=9AKK107046A5821&LanguageCode=en&DocumentPartId=&Action=Launch
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

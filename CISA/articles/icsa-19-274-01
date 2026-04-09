@@ -1,0 +1,125 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity/public exploits are available
+Vendor: ENEA, Green Hills Software, ITRON, IP Infusion, Wind River
+Equipment: OSE by ENEA, INTEGRITY RTOS by Green Hills Software, ITRON, ZebOS by IP Infusion, and VxWorks by Wind River
+Vulnerabilities: Stack-based Buffer Overflow, Heap-based Buffer Overflow, Integer Underflow (Wrap or Wraparound), Improper Restriction of Operations within the Bounds of a Memory Buffer, Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition'), Improper Neutralization of Argument Delimiters in a Command ('Argument Injection'), NULL Pointer Dereference
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Wind River, are affected:
+
+ENEA OSE: OSE4
+ENEA OSE: OSE5
+Green Hills Software INTEGRITY RTOS: All versions from 2003 to 2006
+Wind River VxWorks under CURRENT support (6.9.4.11, Vx7 SR540, Vx7 SR610): All versions
+Wind River VxWorks: All versions after 6.5
+Wind River VxWorks bootrom network stack: All versions
+Wind River VxWorks: 653 MCE 3.x
+Wind River Advanced Networking Technology (ANT): All versions
+Wind River IPnet TCP/IP Stack: All versions (Affected by CVE-2019-12255, CVE-2019-12262, and CVE-2019-12264)
+
+3.2 Vulnerability Overview
+3.2.1 STACK-BASED BUFFER OVERFLOW CWE-121
+This vulnerability resides in the IPv4 option parsing and may be triggered by IPv4 packets containing invalid options. The most likely outcome of triggering this defect is that the tNet0 task crashes. This vulnerability can result in remote code execution.
+CVE-2019-12256 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 HEAP-BASED BUFFER OVERFLOW CWE-122
+DHCP packets may go past the local area network (LAN) via DHCP-relays but are otherwise confined to the LAN. The DHCP-client may be used by VxWorks and in the bootrom. Bootrom, using DHCP/BOOTP, is only vulnerable during the boot-process. This vulnerability may be used to overwrite the heap, which could result in a later crash when a task requests memory from the heap. This vulnerability can result in remote code execution.
+CVE-2019-12257 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3 INTEGER UNDERFLOW (WRAP OR WRAPAROUND) CWE-191
+An attacker can either hijack an existing TCP-session and inject bad TCP-segments or establish a new TCP-session on any TCP-port listened to by the target. This vulnerability could lead to a buffer overflow of up to a full TCP receive-window (by default, 10k-64k depending on version). The buffer overflow occurs in the task calling recv()/recvfrom()/recvmsg(). Applications that pass a buffer equal to or larger than a full TCP-window are not susceptible to this attack. Applications passing a stack-allocated variable as a buffer are the easiest to exploit. The most likely outcome is a crash of the application reading from the affected socket, which could result in remote code execution.
+CVE-2019-12255 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+This vulnerability could lead to a buffer overflow of up to a full TCP receive-window (by default, 10k-64k depending on version). The buffer overflow happens in the task calling recv()/recvfrom()/recvmsg(). Applications that pass a buffer equal to or larger than a full TCP-window are not susceptible to this attack. Applications passing a stack-allocated variable as a buffer are the easiest to exploit. The most likely outcome is a crash of the application reading from the affected socket, which could result in remote code execution.
+CVE-2019-12260 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+The impact of this vulnerability is a buffer overflow of up to a full TCP receive-window (by default, 10k-64k depending on version). The buffer overflow happens in the task calling recv()/recvfrom()/recvmsg(). Applications that pass a buffer equal to or larger than a full TCP-window are not susceptible to this attack. Applications passing a stack-allocated variable as a buffer are the easiest to exploit. The most likely outcome is a crash of the application reading from the affected socket, which could result in remote code execution.
+CVE-2019-12261 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.6 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362
+This vulnerability relies on a race-condition between the network task (tNet0) and the receiving application. It is very difficult to trigger the race on a system with a single CPU-thread enabled, and there is no way to reliably trigger a race on SMP targets.
+CVE-2019-12263 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7 IMPROPER NEUTRALIZATION OF ARGUMENT DELIMITERS IN A COMMAND ('ARGUMENT INJECTION') CWE-88
+An attacker with the source and destination TCP-port and IP-addresses of a session can inject invalid TCP-segments into the flow, causing the TCP-session to be reset. An application will see this as an ECONNRESET error message when using the socket after such an attack. The most likely outcome is a crash of the application reading from the affected socket.
+CVE-2019-12258 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.8 NULL POINTER DEREFERENCE CWE-476
+This vulnerability requires that at least one IPv4 multicast address has been assigned to the target in an incorrect way (e.g., using the API intended for assigning unicast-addresses). An attacker may use CVE-2019-12264 to incorrectly assign a multicast IP-address. An attacker on the same LAN as the target system may use this vulnerability to cause a NULL-pointer dereference, which most likely will crash the tNet0 task.
+CVE-2019-12259 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (CVSS:3.0/AV:A/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H).
+3.2.9 IMPROPER NEUTRALIZATION OF ARGUMENT DELIMITERS IN A COMMAND ('ARGUMENT INJECTION') CWE-88
+An attacker residing on the LAN can send reverse-ARP responses to the victim system to assign unicast IPv4 addresses to the target.
+CVE-2019-12262 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+3.2.10 IMPROPER NEUTRALIZATION OF ARGUMENT DELIMITERS IN A COMMAND ('ARGUMENT INJECTION') CWE-88
+An attacker residing on the LAN may choose to hijack a DHCP-client session that requests an IPv4 address. The attacker can send a multicast IP-address in the DHCP offer/ack message, which the victim system then incorrectly assigns. This vulnerability can be combined with CVE-2019-12259 to create a denial-of-service condition.
+CVE-2019-12264 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.2.11 IMPROPER NEUTRALIZATION OF ARGUMENT DELIMITERS IN A COMMAND ('ARGUMENT INJECTION') CWE-88
+The IGMPv3 reception handler does not expect packets to be spread across multiple IP-fragments.
+CVE-2019-12265 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Information Technology, Healthcare and Public Health, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Sweden, United States
+
+3.4 RESEARCHER
+Gregory Vishnepolsky, Dor Zusman, Ben Seri of Armis reported these vulnerabilities to CISA
+4. MITIGATIONS
+Enea has no IPNet customers on support contract in the United States.
+Green Hills Software has proactively informed affected users and offers consulting services to implement mitigations.
+Microsoft states they have no history of support or integration work to include IPnet and have not released a version of ThreadX bundled with IPnet. Microsoft does caution that some hardware makers could have used ThreadX and a custom set IPnet in the hardware.
+TRON Forum reports they only publish the specification for ITRON RTOS. Various implementations are used by many users world-wide and are created by various implementors (some commercial, and some academic and some government) according the specification document. TRON Forum, the caretaker of the ITRON specification, has not endorsed the use of any particular TCP/IP stack including one from Interpeak. The choice of TCP/IP stack is up to the RTOS vendor and application developers, and thus each application user needs to check whether TCP/IP stack developed by Interpeak is used inside their application. TRON Forum will send out a preliminary warning to members by mailing list to notify implementors of the reported vulnerabilities.
+ZebOS by IP Infusion has not yet responded to CISA inquiries.
+Wind River has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+All affected products: To obtain patches, email PSIRT@windriver.com and indicate the VxWorks major version for which you need source patches.
+All affected products: For more detailed information on the vulnerabilities and the mitigating controls, please see the Wind River advisory at: https://www.windriver.com/security/announcements/tcp-ip-network-stack-ipnet-urgent11/
+
+Additional vendors affected by the reported vulnerabilities have also released security advisories related to their affected products. Those advisories are as follows:
+
+ABB
+Avaya
+Belden Industrial Devices
+ExtremeNetworks
+IDEC Corporation
+Mitsubishi Electric
+NetApp
+Rockwell Automation
+Schneider Electric
+Siemens (Power Meters)
+Siemens (RUGGEDCOM)
+Siemens (SIPROTEC 5)
+Sonicwall Firewalls
+TrendMicro IPS
+Woodward
+Xerox Printers
+Xylem
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+5. UPDATE HISTORY
+
+October 01, 2019: Initial Publication
+October 10, 2019: Update A - Included statements from Enea and Green Hills Software.
+December 10, 2019: Update B - Added links to vendor advisories.
+February 18, 2020: Update C - Added link to Mitsubishi Electric advisory.
+May 12, 2020: Update D - Added link to Siemens Power Meter advisory.
+September 24, 2024: Update E - Included IDEC Corporation.
+

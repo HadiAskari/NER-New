@@ -1,0 +1,32 @@
+
+OVERVIEW
+This advisory provides mitigation details for vulnerabilities that impact Moxa EDR-G903 Series Routers.Independent researcher Neil Smith identified a hard-coded user account vulnerability and an insufficient entropy vulnerability in Moxa’s EDR-G903 series routers. By impersonating the device, an attacker can perform a Man-in-the-Middle (MitM) attack to obtain the credentials of administrative users. Moxa has produced and released a patch that resolves these vulnerabilities on December 17, 2012. Neil Smith has tested the patch and confirms that it fully resolves these vulnerabilities. If exploited, attackers could affect the availability, integrity, and confidentiality of the EDR-G903 routers. These vulnerabilities affect devices deployed in the critical manufacturing, commercial facilities, energy, water and wastewater, and other sectors.These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Moxa products are affected:
+
+EDR-G903 series routers, all versions.
+
+IMPACT
+An attacker can gain unauthorized access to the router by determining the authentication keys from reused or nonunique SSH and SSL host keys. Exploitation of this vulnerability would allow an attacker to perform a MitM attack and affect the integrity of the data on the system.Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Moxa is a Taiwan-based company that maintains offices in several countries around the world, including the US, UK, India, Germany, France, China, and Brazil. The EDR-G903 series routers are designed for networking industrial devices over media such as cellular networks, Ethernet, and more. According to Moxa, these routers are deployed across several sectors, including agriculture and food, critical manufacturing, government facilities, commercial facilities, chemical, emergency services, water and wastewater, and energy. Moxa estimates that these products are used globally but concentrated in the US, Europe, Chile, Argentina, Peru, Columbia, and Taiwan, with 50 to 60 percent of all sales in the US.
+VULNERABILITY OVERVIEW
+HARD-CODED ACCOUNTCWE-259, http://cwe.mitre.org/data/definitions/259.html, CWE-259: Hard-Coded Password, Web site last accessed February 11, 2013.
+The EDR-G903 series router had a hard-coded user account and password. According to Moxa, this account did not have any access rights to the router and was just an old account that had not been removed from the firmware. Successful exploitation of this vulnerability would allow an attacker to gain access to the router but not be able to make changes to configuration or traverse the network. CVE-2012-4712NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4712, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:P/I:N/A:N). CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=(AV:N/AC:L/Au:S/C:P/I:N/A:N), Web site last visited February 11, 2013.
+INSUFFICENT ENTROPYCWE-331, http://cwe.mitre.org/data/definitions/331.html, CWE-331: Insufficient Entropy, Web site last accessed February 11, 2013.
+The EDR-G903 series router does not use sufficient entropy when generating keys for SSH and SSL connections; therefore, it makes these keys vulnerable to exploits. By calculating private authentication keys, an attacker could perform a MitM attack on the system by knowing the nonunique host key. This could enable the attacker to gain unauthorized access to the system and read information on the device, as well as send commands to the device, which would compromise the integrity of the data and could compromise the availability.CVE-2012-4694NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4694, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.6 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:N/C:C/I:C/A:C).
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low to high skill level would be able to exploit these vulnerabilities.
+MITIGATION
+Moxa has released customer notification and a firmware update (Moxa EDR-G903 Series Version 2.11) for this product. This update can be downloaded from the Moxa software download page. This updated firmware fixes the vulnerabilities by replacing the hard-coded SSH/SSL key with dynamically-generated keys and adding support for special characters in login passwords.ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

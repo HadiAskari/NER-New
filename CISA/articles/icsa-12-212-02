@@ -1,0 +1,50 @@
+
+Overview
+Siemens has reported to ICS-CERT that denial-of-service (DoS) vulnerabilities exist in the SIMATIC S7-400 V6 and SIMATIC S7-400 V5 PN CPU products. Siemens has produced a firmware update that mitigates the vulnerability affecting the S7-400 V6.
+Siemens will not fix the vulnerability that affects the S7-400 V5 because that product version has reached end-of-life and has been discontinued.
+Both vulnerabilities could be exploited remotely.
+Affected Products
+Siemens reports that one of the vulnerabilities affects the following products within the S7-400 CPU family with firmware Versions 6.0.1 and 6.0.2
+
+CPU 412-2 PN (6ES7412-2EK06-0AB0)
+CPU 414-3 PN/DP (6ES7414-3EM06-0AB0)
+CPU 414F-3 PN/DP (6ES7414-3FM06-0AB0)
+CPU 416-3 PN/DP (6ES7416-3ES06-0AB0)
+CPU 416F-3 PN (6ES7416-3FS06-0AB0)
+
+Another vulnerability affects the following products within the S7-400 CPU family with firmware Version 5:
+
+CPU 414-3 PN/DP (6ES7414-3EM05-0AB0)
+CPU 416-3 PN/DP (6ES7416-3ER05-0AB0)
+CPU 416F-3 PN/DP (6ES7416-3FR05-0AB0)
+
+Impact
+When specially crafted packets are received on Ethernet interfaces by the SIMATIC S7-400, the device can default into defect mode. A PLC in defect mode needs to be manually reset to return to normal operation.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Products in the Siemens SIMATIC S7-400 CPU family have been designed for process control in industrial environments such as manufacturing, power generation and distribution, food and beverages, and chemical industries worldwide.
+Vulnerability Characterization
+Vulnerability Overview
+Denial of ServiceCWE-404: Improper Resource Shutdown or Release, http://cwe.mitre.org/data/definitions/404.html, Web site last accessed July 30, 2012.
+When the Ethernet port on a SIMATIC S7-400 V6 receives a malformed IP packet, the device could go into the defect mode. The SIMATIC S7-400 V6 CPU defect mode locks out the unit so that it is not available for process control. An attacker could use this vulnerability to perform a DoS attack.
+CVE-2012-3016 has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).
+Vulnerability Details
+Exploitability
+These vulnerabilities could be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target these vulnerabilities.
+Difficulty
+An attacker with a low skill could exploit these vulnerabilities.
+Mitigation
+Siemens has released security advisories (SSA-589272 and SSA-617264) that detail the vulnerabilities in the two SIMATIC S7-400 CPU and the recommended security practices to secure the systems.
+Siemens provided firmware update V6.0.3CPU 412-2 PN, http://support.automation.siemens.com/WW/view/en/45645157, Website last visited July 26, 2012., CPU 414-3 PN/DP, CPU 414F-3 PN/DP, http://support.automation.siemens.com/WW/view/en/45645228, Website last visited July 30, 2012., CPU 416-3 PN/DP, CPU 416F-3 PN, http://support.automation.siemens.com/WW/view/en/45645229, Website last visited July 30, 2012. that closes the vulnerability affecting the S7-400 V6 by fixing the flawed packet processing implementation.
+Siemens is not providing a firmware update for SIMATIC S7-400 V5 PN CPUs because this version has reached end-of-life and has been discontinued.
+ICS-CERT encourages asset owners to take the following additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01A—Cyber Intrusion Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

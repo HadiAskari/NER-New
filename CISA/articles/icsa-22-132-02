@@ -1,0 +1,73 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Mitsubishi Electric
+Equipment: MELSOFT iQ AppPortal
+Vulnerabilities: Missing Authorization, Out-of-bounds Write, NULL Pointer Dereference, Classic Buffer Overflow, HTTP Request Smuggling, Infinite Loop
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in a denial-of-service condition, malicious program execution, information disclosure, information tampering, or authentication bypass.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following MELSOFT iQ AppPortal versions using the vulnerable open-source software used by VisualSVN Server, are affected:
+
+MELSOFT iQ AppPortal (SW1DND-IQAPL-M): Versions 1.00A through 1.26C
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHORIZATION CWE-862
+Apache HTTP Server Versions 2.4.0 to 2.4.46 allow unprivileged local users to stop httpd on Windows.
+CVE-2020-13938 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    OUT-OF-BOUNDS WRITE CWE-787
+In Apache HTTP Server Versions 2.4.0 to 2.4.46 a specially crafted SessionHeader sent by an origin server could cause a heap overflow.
+CVE-2021-26691 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    NULL POINTER DEREFERENCE CWE-476
+Malformed requests may cause the server to dereference a NULL pointer. This issue affects Apache HTTP Server Versions 2.4.48 and earlier.
+CVE-2021-34798 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+An attacker who can present SM2 content for decryption to an application could cause data to overflow the buffer up to a maximum of 62 bytes, altering the contents of other data held after the buffer or causing the application to crash. The location of the buffer is application dependent but is typically heap allocated. Fixed in OpenSSL 1.1.1 (Affected 1.1.1-1.1.1k). This issue is detailed further in CVE-2021-3711.
+CVE-2021-3711 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    OUT-OF-BOUNDS WRITE CWE-787
+A carefully crafted request body can cause a buffer overflow in the mod_lua multipart parser (r:parsebody() called from Lua scripts). The Apache httpd team is not aware of an exploit for this vulnerability, though it might be possible to craft one. This issue affects Apache HTTP Server Versions 2.4.51 and earlier.
+CVE-2021-44790 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    INCONSISTENT INTERPRETATION OF HTTP REQUESTS ('HTTP REQUEST SMUGGLING') CWE-444
+Apache HTTP Server Versions 2.4.52 and earlier fail to close inbound connections when errors are encountered discarding the request body, exposing the server to HTTP request smuggling.
+CVE-2022-22720 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7    OUT-OF-BOUNDS WRITE CWE-787
+An out-of-bounds write vulnerability in mod_sed of Apache HTTP Server allows an attacker to overwrite heap memory with possibly attacker provided data. This issue affects Apache HTTP Server 2.4 Versions 2.4.52 and earlier.
+CVE-2022-23943 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8    LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+The BN_mod_sqrt() function, which computes a modular square root, contains a bug that can cause it to loop for non-prime moduli. An attacker can use a self-signed certificate to trigger the loop during verification of the certificate signature. This issue, which is further detailed in CVE-2022-0778, affects OpenSSL Versions 1.0.2, 1.1.1, and 3.0.xxx
+CVE-2022-0778 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Mitsubishi Electric notified CISA of these vulnerabilities.
+4. MITIGATIONS
+Mitsubishi Electric recommends the following:
+
+Update to 1.29F or later. Unzip the downloaded file (zip format) and execute the file “setup.exe.”
+Restrict network access to the computer running this product so it can be accessed only from trusted networks or hosts.
+Minimize user privilege for product users.
+Install an antivirus software in the personal computer that runs this product.
+Please follow the safety precautions in the operating manual for the product.
+
+For more information see Mitsubishi Electric’s advisory 2022-003
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

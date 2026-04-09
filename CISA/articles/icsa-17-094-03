@@ -1,0 +1,54 @@
+
+CVSS v3 9.8
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Rockwell Automation
+Equipment: Allen-Bradley Stratix, Allen-Bradley ArmorStratix
+Vulnerability: Improper Input Validation
+AFFECTED PRODUCTS
+The following versions of the Allen-Bradley Stratix and ArmorStratix Industrial Ethernet and Distribution switches are affected:
+
+Allen-Bradley Stratix 5400 Industrial Ethernet Switches, All Versions 15.2(5)EA.fc4 and earlier,
+Allen-Bradley Stratix 5410 Industrial Distribution Switches, All Versions 15.2(5)EA.fc4 and earlier,
+Allen-Bradley Stratix 5700 and ArmorStratix 5700 Industrial Managed Ethernet Switches, All Versions 15.2(5)EA.fc4 and earlier,
+Allen-Bradley Stratix 8000 Modular Managed Industrial Ethernet Switches, All Versions 15.2(5)EA.fc4 and earlier, and
+Allen-Bradley Stratix 8300 Modular Managed Industrial Ethernet Switches, All Versions 15.2(4a)EA5 and earlier.
+
+IMPACT
+Successful exploitation of this vulnerability may allow a remote attacker to impact the availability of the target device or to execute arbitrary code with elevated privileges.
+MITIGATION
+Rockwell Automation has provided interim compensating controls for Allen-Bradley Stratix and ArmorStratix switches to help reduce the risk of exploitation of the vulnerability identified in the Cisco Cluster Management Protocol (CMP) processing code used in the Cisco IOS and Cisco IOS XE software. Allen-Bradley Stratix and ArmorStratix products contain the affected versions of the Cisco IOS and IOS XE software.
+Rockwell Automation encourages users to evaluate the compensating controls provided below and apply the applicable controls.
+
+Disable the Telnet protocol as an allowed protocol for incoming connections on affected devices to diminish the network-based vector of attack. For information on how to disable Telnet via Command Line Interface, please see Knowledgebase Article ID 1040270, which is available at the following location (with a valid account):
+
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1040270
+
+If a user is unable or unwilling to disable Telnet, then implementing infrastructure access control lists (iACLs) can reduce the attack service. For information on how to implement iACLs, please see Knowledgebase Article ID 1040270.
+Cisco has created two Snort rules (SIDs), 41909 and 41910, to detect exploits associated with this vulnerability.
+
+Rockwell Automation security advisory, Stratix CMP Remote Code Execution Vulnerability, is available at the following location (with a valid account):
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/54102
+Cisco’s security advisory, Cisco IOS and IOS XE Software Cluster Management Protocol Remote Code Execution Vulnerability, is available at the following location:
+https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170317-cmp
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATION CWE-20
+
+An unauthorized remote attacker may be able to establish a Telnet session with a target device by sending malformed CMP-specific Telnet messages. Incorrect processing of these messages may cause the device to reload or to allow the attacker to execute arbitrary code with elevated privileges.
+CVE-2017-3881 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+Rockwell Automation has reported this vulnerability.
+BACKGROUND
+Critical Infrastructure Sector(s): Critical Manufacturing, Energy, Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Milwaukee, Wisconsin

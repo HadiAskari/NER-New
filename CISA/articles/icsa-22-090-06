@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: General Electric Renewable Energy
+Equipment: MDS iNET/iNET II/SD/TD220/TD220MAX Radios
+Vulnerabilities: Improper Input Validation, Hidden Functionality, Inadequate Encryption Strength, Uncontrolled Resource Consumption, Plaintext Storage of a Password, Download of Code Without Integrity Check
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to control the configuration of the radio, join the network without proper authorization, or keep valid users from using the system correctly.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+General Electric reports these vulnerabilities affect the following radios: 
+
+iNET/iNET II series radio firmware versions prior to rev. 8.3.0 
+SD series radio firmware versions prior to rev. 6.4.7 
+TD220X series radio firmware versions prior to rev. 2.0.16 
+TD220MAX series radio firmware versions prior to rev. 1.2.6
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+This previously disclosed vulnerability in the GoAhead Webserver may allow remote code execution in iNET/iNET II, TD220X, and TD220MAX series radios.
+CVE-2017-17562 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.2    HIDDEN FUNCTIONALITY CWE-912
+iNET/iNET II series radios allow unauthenticated local and network access to the device configuration shell.
+CVE-2022-24119 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.3    INADEQUATE ENCRYPTION STRENGTH CWE-326
+This vulnerability identifies a weakness in the wireless security software and chipset implementations in iNET/iNET II series radios.
+CVE-2022-24116 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+A feature can allow the use of an authentication code to cause iNET/iNET II, SD, TD220X, and TD220MAX series radios  to reset back to the factory default configuration and reboot.
+CVE-2022-24118 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.2.5    PLAINTEXT STORAGE OF A PASSWORD CWE-256
+iNET and iNET II series radios store credentials in plaintext on the system flash memory.
+CVE-2022-24120 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    DOWNLOAD OF CODE WITHOUT INTEGRITY CHECK CWE-494
+There is no cryptographic signature to verify authenticity of firmware.
+CVE-2022-24117 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications, Critical Manufacturing, Energy, Healthcare and Public Health, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Reid Wightman of Dragos reported these vulnerabilities to GE.
+4. MITIGATIONS
+GE has created the following firmware versions to address the reported issues:
+
+iNET/iNET II series radio firmware rev.8.3.0 
+SD series radio firmware rev. 6.4.7 
+TD220X series radio firmware rev. 2.0.16 
+TD220MAX series radio firmware rev. 1.2.6
+
+GE also recommends the use of other protections inside the radio such as MAC address allow-listing, IEEE 802.1x authentication, or encrypt traffic at the application level with protocols such as HTTPS or SSH.
+GE provides additional mitigations and information about these vulnerabilities in GE publication number: GES-2021-18 TD220 - GES-2021-17 iNET - GES-2021-16
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. 

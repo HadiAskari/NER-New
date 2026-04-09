@@ -1,0 +1,66 @@
+
+OVERVIEW
+--------- Begin Update A Part 1 of 1 --------
+This updated advisory is a follow-up to the original advisory titled ICSA-13-350-01 Schneider Electric SCADA Products Exception Handler Vulnerability that was published February 25, 2014, on the NCCIC/ICS-CERT web site. This advisory was originally posted to the US-CERT secure Portal library on December 16, 2013. Schneider Electric requested the title change to reduce confusion.
+--------- End Update A Part 1 of 1 ----------
+Researcher Carsten Eiram of Risk Based Security has identified an exception handling vulnerability in Schneider Electric’s CitectSCADA application. The original vulnerability reported by Mr. Eiram had already been fixed in CitectSCADA v7.20SP2. While investigating this vulnerability report, Schneider Electric discovered additional related vulnerabilities and has produced a patch that mitigates them in SCADA Expert Vijeo Citect, CitectSCADA, and PowerSCADA Expert. Mr. Eiram has tested the patch to validate that it resolves all the above vulnerabilities in CitectSCADA.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Schneider Electric versions are affected:
+
+StruxureWare SCADA Expert Vijeo Citect v7.40,
+Vijeo Citect v7.20 to v7.30SP1,
+CitectSCADA v7.20 to v7.30SP1,
+StruxureWare PowerSCADA Expert v7.30 to v7.30SR1, and
+PowerLogic SCADA v7.20 to v7.20SR1.
+
+IMPACT
+An attacker can cause a denial of service in this product by exploiting this vulnerability. The software would need to be restarted to recover from a successful denial-of-service attack.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric is a France-based multinational corporation. Schneider Electric is a manufacturer and integrator of energy management and industrial automation systems, equipment, and software.
+The affected products are web-based SCADA systems. The affected Schneider Electric systems are found primarily in energy, manufacturing, and infrastructure applications worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+EXCEPTION HANDLING VULNERABILITYCWE-248: Uncaught Exception, http://cwe.mitre.org/data/definitions/248.html, web site last accessed February 25, 2014.
+
+The vulnerability could cause a denial of service on the server of the affected products. To exploit this vulnerability an attacker must send a specially crafted packet to any of the server processes.
+CVE-2013-2824NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2824, web site last accessed February 26, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:C, web site last accessed February 25, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Some customers may have experienced a crash after applying the “security & quality fix” released on December 16, 2013. Schneider Electric has determined that the problem is within the quality portion of the fix. They have removed the quality fix from the release and have issued a new patch containing only the security update for this vulnerability.
+Schneider Electric has developed a cumulative patch that addresses the above security issue as well as a separate quality issue. These patches are available for all products affected:
+
+HF740RTM60777.1 for SCADA Expert Vijeo Citect v7.40, http://www.citect.schneider-electric.com/se-vjc-HF740RTM607771
+HF730SP160775.1 for Vijeo Citect v7.30 SP1, http://www.citect.schneider-electric.com/vc-HF730SP1607751
+HF720SP460769.1 for Vijeo Citect v7.20 SP4, http://www.citect.schneider-electric.com/vc-HF720SP4607691
+HF740RTM60777.1 for CitectSCADA v7.40, http://www.citect.schneider-electric.com/cs-HF740RTM607771
+HF730SP160775.1 for CitectSCADA v7.30 SP1, http://www.citect.schneider-electric.com/cs-HF730SP1607751
+HF720SP460769.1 for CitectSCADA v7.20 SP4, http://www.citect.schneider-electric.com/cs-HF720SP4607691
+HF730SP1608004 for PowerSCADA Expert v7.30 SR1, http://www.citect.schneider-electric.com/pse-HF730SP160804
+HF720SP460803 for PowerLogic SCADA v7.20 SR1, http://www.citect.schneider-electric.com/pls-HF720SP460803
+
+Schneider Electric recommends all customers using the affected software packages listed above download and apply the relevant patch. They have published a notification that tells more about this security issue and a quality issue not discussed here. Customers with access may find it here:
+http://www.citect.schneider-electric.com/security-DoS
+SCADA Expert Vijeo Citect or CitectSCADA customers may contact the SCADA & MES Software Global Support Centre for more information at the following location:
+http://www.citect.schneider-electric.com/contact-support
+PowerSCADA Expert or PowerLogic SCADA customers may contact their local country support organization at the following locations:
+http://www2.schneider-electric.com/sites/corporate/en/support/support.page
+or
+http://www.schneider-electric.com/sites/corporate/en/support/operations/local-operations/local-operations.page
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they do not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the NCCIC/ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

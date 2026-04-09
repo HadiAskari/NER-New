@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.3
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Hitachi Energy  
+Equipment: FOXMAN-UN  
+Vulnerabilities: Inadequate Encryption Strength, Use of Default Cryptographic Key, Use of Hard-coded Cryptographic Key, Cleartext Transmission of Sensitive Information. 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an unauthorized user to obtain sensitive information and gain access to the network elements managed by the FOXMAN-UN, and could cause an availability issue on affected FOXMAN-UN products. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reports these vulnerabilities affect the following FOXMAN-UN products:  
+
+FOXMAN-UN R16A  
+FOXMAN-UN R15B 
+FOXMAN-UN R15A 
+FOXMAN-UN R14B 
+FOXMAN-UN R14A 
+FOXMAN-UN R11B 
+FOXMAN-UN R11A 
+FOXMAN-UN R10C 
+FOXMAN-UN R9C 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 INADEQUATE ENCRYPTION STRENGTH CWE-326 
+The affected Hitachi Energy FOXMAN-UN products use the DES cypher to encrypt user credentials used to access the network elements. DES is no longer considered secure due to a short 56-bit key, which could allow the cypher to be decrypted in a short time. 
+CVE-2021-40341 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N). 
+3.2.2 USE OF DEFAULT CRYPTOGRAPHIC KEY CWE-1394 
+Affected Hitachi Energy FOXMAN-UN products use a DES implementation with a default key for encryption. An attacker that exploits this vulnerability could obtain sensitive information and gain access to network elements managed by the FOXMAN-UN. 
+CVE-2021-40342 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N). 
+3.2.3 USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321 
+Affected Hitachi Energy FOXMAN-UN products contain public and private keys used to sign and protect custom parameter set (CPS) files from modification. An attacker that exploits this vulnerability could change the CPS file and sign it, so it is trusted as a legitimate CPS file. 
+CVE-2022-3927 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H). 
+3.2.4 USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321 
+The message queue of affected Hitachi Energy FOXMAN-UN products contains a hard-coded credential. An attacker that exploits this vulnerability could access data from the internal message queue. 
+CVE-2022-3928 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N). 
+3.2.5 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319 
+Communication between the client (FOXMAN-UN User Interface) and the server application (FOXMAN-UN Core) partially uses common object request broker architecture CORBA (CORBA) over TCP/IP. This protocol is not encrypted and could allow an unauthorized user to trace internal messages. 
+CVE-2022-3929 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Hitachi Energy has remediated these vulnerabilities in FOXMAN-UN R16A and recommends users upgrade to this version.  
+For CVE-2021-40341, CVE-2021-40342, FOXMAN-UN R16A has partial remediation. The full remediation will be complete in an upcoming FOXMAN-UN release. 
+Hitachi Energy recommends the following mitigation actions (refer to the mitigation factors/workarounds in Hitachi Energy’s advisory for details): 
+
+Secure the NMS CLIENT/SERVER communication. 
+Avoid embedded FOXCST with RADIUS authentication. 
+Securely handle exported files. 
+
+Hitachi Energy recommends the following security practices and firewall configurations to help protect process control networks from attacks originating from outside the network: 
+
+Physically protect process control systems from unauthorized direct access. 
+Do not directly connect control systems networks to the internet. 
+Separate process control systems from other networks using a firewall system with a minimal number of open ports. 
+Process control systems should not be used for internet surfing, instant messaging, or receiving emails. 
+Portable computers and removable storage media should be carefully scanned for viruses connecting to a control system. 
+Ensure that only authorized personnel have access to the system configuration files. 
+
+For more information, see Hitachi Energy advisory 8DBD000083. 
+Additional hardening guidelines for protecting the host operating system are published by “The Center for Internet Security (CIS).” 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have a low attack complexity. 

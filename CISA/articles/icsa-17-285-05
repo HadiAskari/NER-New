@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: BACnet Field Panels
+Vulnerabilities: Authentication Bypass Using an Alternate Path or Channel, Path Traversal
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-17-285-05 Siemens BACnet Field Panels that was published October 12, 2017, on the ICS webpage on cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow unauthenticated attackers with access to the integrated webserver to download sensitive information.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that the vulnerabilities affect the following BACnet field panels:
+--------- Begin Update A Part 1 of 3 ---------
+
+APOGEE PXC Compact (BACnet): All versions prior to v3.5
+APOGEE PXC Compact (P2 Ethernet): All versions
+APOGEE PXC Modular (BACnet): All versions prior to v3.5 
+APOGEE PXC Modular (P2 Ethernet): All versions
+TALON TC Compact (BACnet): All versions prior to v3.5
+TALON TC Modular (BACnet): All versions prior to v3.5
+
+--------- End Update A Part 1 of 3 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+An attacker with network access to the integrated web server (Ports 80/TCP and 443/TCP) could bypass the authentication and download sensitive information from the device.
+CVE-2017-9946 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.2    PATH TRAVERSAL CWE-22
+A directory traversal vulnerability could allow a remote attacker with network access to the integrated web server (Ports 80/TCP and 443/TCP) to obtain information on the structure of the file system of the affected devices.
+CVE-2017-9947 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+--------- Begin Update A Part 2 of 3 ---------
+RoseSecurity reported the vulnerabilities for APOGEE PXC Series (P2 Ethernet) devices to Siemens.
+--------- End Update A Part 2 of 3 ---------
+5. MITIGATIONS
+--------- Begin Update A Part 3 of 3 ---------
+Siemens has released updates for several affected products and recommends updating to the latest versions. Siemens recommends countermeasures for products where updates are not, or not yet available.
+
+APOGEE PXC Compact (BACnet): Update to v3.5 or later version
+APOGEE PXC Compact (P2 Ethernet): Disable the integrated webserver
+APOGEE PXC Modular (BACnet): Update to v3.5 or later version
+APOGEE PXC Modular (P2 Ethernet): Disable the integrated webserver
+TALON TC Compact (BACnet): Update to v3.5 or later version
+TALON TC Modular (BACnet): Update to v3.5 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Siemens recommends disabling the integrated webserver when not in use
+Please contact a Siemens office for additional support
+
+As a general security measure Siemens strongly recommends protecting network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices in order to run the devices in a protected IT environment.
+--------- End Update A Part 3 of 3 ---------
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-148078 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

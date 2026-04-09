@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.5
+ATTENTION: Low attack complexity
+Vendor: ARC Informatique
+Equipment: PcVue
+Vulnerabilities: Cleartext Storage of Sensitive Information, Insertion of Sensitive Information into Log File
+
+2. UPDATE OR REPOSTED INFORMATION 
+This updated advisory is a follow-up to the original advisory titled ICSA-22-354-03 ARC Informatique PcVue that was published December 20, 2022 on the ICS webpage on cisa.gov/ICS. 
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an unauthorized user to access the email account, SIM card, and other data sources associated with the affected device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of PcVue, a supervisory control and data acquisition (SCADA) monitoring and control software, are affected:
+
+PcVue Versions 15 through 15.2.2 (CVE-2022-4311 only)
+
+--------- Begin Update A part 1 of 2 ---------
+
+PcVue Versions 8.10 through 15.2.3 (CVE-2022-4312 only) 
+
+PcVue 12 products are only affected until Version 12.0.28 
+
+
+
+--------- End Update A part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+A cleartext storage of sensitive information vulnerability exists in PcVue versions 8.10 through 15.2.3. This could allow an unauthorized user to access the email and short messaging service (SMS) accounts configuration files to discover the associated simple mail transfer protocol (SMTP) account credentials and the SIM card PIN code. Successful exploitation of this vulnerability could allow an unauthorized user access to the underlying email account and SIM card.
+CVE-2022-4312 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+4.2.2    INSERTION OF SENSITIVE INFORMATION INTO LOG FILE CWE-532
+An insertion of sensitive information into log file vulnerability exists in PcVue versions 15 through 15.2.2. This could allow a user with access to the log files to discover connection strings of data sources configured for the DbConnect, which could include credentials. Successful exploitation of this vulnerability could allow other users unauthorized access to the underlying data sources.
+CVE-2022-4311 has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Transportation, Water and Wastewater, Energy, Critical Manufacturing, Food and Agriculture
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+4.4 RESEARCHER
+ARC Informatique reported these vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update A part 2 of 2 ---------
+ARC Informatique has released a fix for CVE-2022-4312 for PcVue 12 in Version 12.0.28 and recommends users install the latest version of PcVue regardless of release. Users should contact their ARC Informatique representative to request the latest update files or submit a request via their web form. 
+--------- End Update A part 2 of 2 ---------
+For additional information and mitigation recommendations, see ARC Informatique’s security bulletins for these vulnerabilities (login required):
+
+CVE-2022-4311: SB2022-6
+CVE-2022-4312: SB2022-7
+
+ARC Informatique recommends users take steps to harden system configurations. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+Exercise principles of least privilege.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

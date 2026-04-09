@@ -1,0 +1,94 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Schneider Electric 
+Equipment: EcoStruxure, EcoStruxure Process Expert, SCADAPack RemoteConnect for x70 
+Vulnerabilities: Heap-based Buffer Overflow, Wrap or Wraparound, Classic Buffer Overflow, Out-of-bounds Write 
+
+2. RISK EVALUATION
+The successful exploitation of these vulnerabilities on the affected products could lead to the execution of malicious files, which could result in code execution with elevated privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric reported these vulnerabilities affect the following products using AT&T Labs Compressor (XMill) and Decompressor (XDemill): 
+
+EcoStruxure Control Expert: All versions (including former Unity Pro) prior to V15.1 HF001 
+EcoStruxure Process Expert: All versions (including former HDCS) prior to V2021 
+SCADAPack RemoteConnect for x70: All versions prior to R2.7.3  
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 HEAP-BASED BUFFER OVERFLOW CWE-122
+A memory corruption vulnerability exists in the XML-parsing ParseAttribs functionality of AT&T Labs’ Xmill 0.7. A specially crafted XML file can lead to a heap buffer overflow. An attacker can provide a malicious file to trigger this vulnerability. 
+CVE-2021-21810 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow vulnerability exists in the XML Decompression. 
+PlainTextUncompressor::UncompressItem functionality of AT&T Labs’ Xmill 0.7. A specially crafted XMI file could lead to remote code execution. An attacker could provide a malicious file to trigger this vulnerability. 
+CVE-2021-21825 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.3 HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow vulnerability exists in the XML Decompression EnumerationUncompressor::UncompressItem functionality of AT&T Labs’ Xmill 0.7. A specially crafted XMI file can lead to remote code execution. An attacker can provide a malicious file to trigger this vulnerability. 
+CVE-2021-21829 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.4 HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow vulnerability exists in the XML Decompression LabelDict::Load functionality of AT&T Labs’ Xmill 0.7. A specially crafted XML file can lead to remote code execution. An attacker can provide a malicious file to trigger this vulnerability. 
+CVE-2021-21830 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.5 INTEGER UNDERFLOW (WRAP OR WRAPAROUND) CWE-191
+A memory corruption vulnerability exists in the XML-parsing CreateLabelOrAttrib functionality of AT&T Labs’ Xmill 0.7. The product subtracts one value from another such that the result is less than the minimum allowable integer value, which produces a value not equal to the correct result.  
+CVE-2021-21811 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.6 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW’) CWE-120 
+A stack-based buffer overflow vulnerability exists in the command-line-parsing HandleFileArg functionality of AT&T Labs’ Xmill 0.7. Within the function HandleFileArg the argument filepattern is under control of the user who passes it in from the command line. filepattern is passed directly to strcpy copying the path provided by the user into a static sized buffer without any length checks resulting in a stack-buffer overflow. An attacker can provide malicious input to trigger these vulnerabilities. 
+CVE-2021-21812 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.7 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW’) CWE-120
+Within the function HandleFileArg, the argument filepattern is under control of the user who passes it in from the command line. filepattern is passed directly to memcpy copying the path provided by the user into a staticly sized buffer without any length checks resulting in a stack-buffer overflow. 
+CVE-2021-21813 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.8 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW’) CWE-120
+Within the function HandleFileArg the argument filepattern is under control of the user who passes it in from the command line. filepattern is passed directly to strlen to determine the ending location of the char* passed in by the user, no checks are done to see if the passed in char* is longer than the staticly sized buffer data is memcpy‘d into, but after the memcpy a null byte is written to what is assumed to be the end of the buffer to terminate the char*, but without length checks, this null write occurs at an arbitrary offset from the buffer. An attacker can provide malicious input to trigger this vulnerability. 
+CVE-2021-21814 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.9 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW’)CWE-120
+A stack-based buffer overflow vulnerability exists in the command-line-parsing HandleFileArg functionality of AT&T Labs' Xmill 0.7. Within the function HandleFileArg the argument filepattern is under control of the user who passes it in from the command line. filepattern is passed directly to strcpy copying the path provided by the user into a staticly sized buffer without any length checks resulting in a stack-buffer overflow. An attacker can provide malicious input to trigger this vulnerability. 
+CVE-2021-21815 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.10 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW’) CWE-120
+A heap-based buffer overflow vulnerability exists in the XML Decompression DecodeTreeBlock functionality of AT&T Labs Xmill 0.7. Within `DecodeTreeBlock,` which is called during the decompression of an XMI file, a UINT32 is loaded from the file and used as trusted input as the length of a buffer. 
+CVE-2021-21826 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.11 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW’) CWE-120
+A heap-based buffer overflow vulnerability exists in the XML Decompression DecodeTreeBlock functionality of AT&T Labs Xmill 0.7. Within `DecodeTreeBlock` which is called during the decompression of an XMI file, a UINT32 is loaded from the file and used as trusted input as the length of a buffer. An attacker can provide a malicious file to trigger this vulnerability. 
+CVE-2021-21827 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.12 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW’) CWE-120 
+In the command-line-parsing HandleFileArg functionality of AT&T Labs’ Xmill 0.7, an attacker could trigger the vulnerability by using a specially crafted command-line argument that can lead to code execution. 
+CVE-2021-21828 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.13 OUT-OF-BOUNDS READ CWE-125
+A heap-based buffer overflow exists in XML Decompression DecodeTreeBlock in AT&T Labs Xmill 0.7. A crafted input file could lead to remote code execution. 
+CVE-2022-26507 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.3 BACKGROUND
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: France 
+3.4 RESEARCHER
+ Carl Hurd of Cisco Talos and Uri Katz of Claroty Research reported these vulnerabilities. 
+4. MITIGATIONS
+AT&T Labs have stated this software is longer supported and recommends vendors to move away from using it. 
+Schneider Electric has released the following version updates to mitigate these vulnerabilities: 
+
+EcoStruxure Control Expert V15.1 HF001 or later. 
+EcoStruxure Process Expert V2021 or later. 
+SCADAPack RemoteConnect for R2.7.3 or later (Users no longer need to update the RemoteConnect application when a Control Expert update is present.) 
+
+Schneider Electric also recommends users take specific measures: 
+
+Securely store the project files and restrict access to trusted users. 
+Use secure communication channels when exchanging files over the network,. 
+Only open project files received from trusted sources. 
+Compute a hash of the project files and regularly check the consistency of this hash to verify integrity before usage. 
+Harden the workstation running EcoStruxure Control Expert or Unity Pro. 
+Users using Unity Pro should consider migrating to EcoStruxure Control Expert. 
+Harden the workstation running EcoStruxure Process Expert. 
+Harden the workstation running SCADAPackRemoteConnect for x70 
+
+See the Schneider Electric Security Notification, number SEVD-2021-222-02 for more information. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.

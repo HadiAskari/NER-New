@@ -1,0 +1,119 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). 
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Sinteso EN, Cerberus PRO EN Fire Protection Systems
+Vulnerabilities: Classic Buffer Overflow, Out-of-bounds Read, Improper Restriction of Operations within the Bounds of a Memory Buffer
+
+2. RISK EVALUATION
+Successful exploitation of the vulnerabilities could allow an unauthenticated attacker, who gained access to the fire protection system network, to execute arbitrary code on the affected products or create a denial-of-service (DoS) condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens, are affected:
+
+Cerberus PRO EN Engineering Tool: Versions prior to IP8
+Cerberus PRO EN Engineering Tool: All versions
+Cerberus PRO EN Fire Panel FC72x: Versions prior to IP8
+Cerberus PRO EN Fire Panel FC72x: Versions prior to IP8 SR4
+Cerberus PRO EN X200 Cloud Distribution: Versions prior to V4.0.5016
+Cerberus PRO EN X200 Cloud Distribution: Versions prior to V4.3.5618
+Cerberus PRO EN X300 Cloud Distribution: Versions prior to V4.2.5015
+Cerberus PRO EN X300 Cloud Distribution: Versions prior to V4.3.5617
+Sinteso FS20 EN Engineering Tool: Versions prior to MP8
+Sinteso FS20 EN Engineering Tool: All versions
+Sinteso FS20 EN Fire Panel FC20: Versions prior to MP8
+Sinteso FS20 EN Fire Panel FC20: Versions prior to MP8 SR4
+Sinteso FS20 EN X200 Cloud Distribution: Versions prior to V4.0.5016
+Sinteso FS20 EN X200 Cloud Distribution: Versions prior to V4.3.5618
+Sinteso FS20 EN X300 Cloud Distribution: Versions prior to V4.2.5015
+Sinteso FS20 EN X300 Cloud Distribution: Versions prior to V4.3.5617
+Sinteso Mobile: Versions prior to V3.0.0
+Sinteso Mobile: All versions
+
+3.2 Vulnerability Overview
+3.2.1 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The network communication library in affected systems does not validate the length of certain X.509 certificate attributes which might result in a stack-based buffer overflow. This could allow an unauthenticated remote attacker to execute code on the underlying operating system with root privileges. Successful exploitation requires an on-path attacker that intercepts the communication of the engineering tool in the fire system network; code execution might be possible on the underlying operating system with the privileges of the engineering tool user account. Successful exploitation requires an on-path attacker that intercepts the communication of the engineering tool in the fire system network; code execution might be possible on the underlying operating system with the privileges of the engineering tool user account. Successful exploitation requires an on-path attacker that intercepts the communication of the app in the fire system network; possible impact is limited to the app, not the underlying operating system.
+CVE-2024-22039 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-22039. A base score of 10.0 has been calculated; the CVSS vector string is CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H.
+3.2.2 OUT-OF-BOUNDS READ CWE-125
+The network communication library in affected systems insufficiently validates HMAC values which might result in a buffer overread. This could allow an unauthenticated remote attacker to crash the network service. Successful exploitation requires an on-path attacker that intercepts the communication of the engineering tool in the fire system network; possible impact is limited to the tool, not the underlying operating system. Successful exploitation requires an on-path attacker that intercepts the communication of the engineering tool in the fire system network; possible impact is limited to the tool, not the underlying operating system. Successful exploitation requires an on-path attacker that intercepts the communication of the app in the fire system network; possible impact is limited to the app, not the underlying operating system.
+CVE-2024-22040 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-22040. A base score of 8.7 has been calculated; the CVSS vector string is CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N.
+3.2.3 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+The network communication library in affected systems improperly handles memory buffers when parsing X.509 certificates. This could allow an unauthenticated remote attacker to crash the network service. Successful exploitation requires an on-path attacker that intercepts the communication of the engineering tool in the fire system network; possible impact is limited to the tool, not the underlying operating system. Successful exploitation requires an on-path attacker that intercepts the communication of the engineering tool in the fire system network; possible impact is limited to the tool, not the underlying operating system. Successful exploitation requires an on-path attacker that intercepts the communication of the app in the fire system network; possible impact is limited to the app, not the underlying operating system.
+CVE-2024-22041 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-22041. A base score of 8.7 has been calculated; the CVSS vector string is CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N.
+3.3 PRODUCT IMPACT
+Product-specific impact for an affected product vulnerable to the CVE:
+
+
+CVE-2024-22039
+
+(Siemens Cerberus PRO EN Engineering Tool): A CVSS v3 base score of 9.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+(Siemens Sinteso FS20 EN Engineering Tool): A CVSS v3 base score of 9.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+(Siemens Sinteso Mobile): A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+
+
+
+CVE-2024-22040
+
+(Siemens Cerberus PRO EN Engineering Tool): A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+(Siemens Sinteso FS20 EN Engineering Tool): A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+(Siemens Sinteso Mobile): A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+
+
+
+CVE-2024-22041
+
+(Siemens Cerberus PRO EN Engineering Tool): A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+(Siemens Sinteso FS20 EN Engineering Tool): A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+(Siemens Sinteso Mobile): A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+
+
+
+3.4 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.5 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Sinteso Mobile (CVE-2024-22039): Update to V3.0.0 or later version
+Sinteso Mobile (CVE-2024-22040, CVE-2024-22041): Currently no fix is planned
+Cerberus PRO EN X200 Cloud Distribution and Sinteso FS20 EN X200 Cloud Distribution (CVE-2024-22039): Update to V4.0.5016 or later version
+Cerberus PRO EN X200 Cloud Distribution and Sinteso FS20 EN X200 Cloud Distribution (CVE-2024-22040, CVE-2024-22041): Update to V4.3.5618 or later version
+Cerberus PRO EN X300 Cloud Distribution and Sinteso FS20 EN X300 Cloud Distribution (CVE-2024-22040, CVE-2024-22041): Update to V4.3.5617 or later version
+Cerberus PRO EN X300 Cloud Distribution and Sinteso FS20 EN X300 Cloud Distribution (CVE-2024-22039): Update to V4.2.5015 or later version
+Cerberus PRO EN Engineering Tool and Cerberus PRO EN Fire Panel FC72x (CVE-2024-22039): Update to IP8 or later version
+Cerberus PRO EN Engineering Tool and Sinteso FS20 EN Engineering Tool (CVE-2024-22040, CVE-2024-22041): Currently no fix is available
+Sinteso FS20 EN Engineering Tool and Sinteso FS20 EN Fire Panel FC20 (CVE-2024-22039): Update to MP8 or later version
+Sinteso FS20 EN Fire Panel FC20 (CVE-2024-22040, CVE-2024-22041): Update to MP8 SR4 or later version
+Cerberus PRO EN Fire Panel FC72x (CVE-2024-22040, CVE-2024-22041): Update to IP8 SR4 or later version
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-225840 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+March 14, 2024: Initial Publication
+

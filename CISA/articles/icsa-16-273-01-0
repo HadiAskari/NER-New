@@ -1,0 +1,53 @@
+
+OVERVIEW
+Independent researcher Maxim Rupp has identified a local file inclusion and a plain text storage of password vulnerabilities in American Auto-Matrix’s Building Automation Front-End Solutions application. The Aspect-Matrix hardware platform was made end of life in 2015 and will no longer receive further updates. American Auto-Matrix has produced an update that fixes these vulnerabilities in the Aspect-Nexus platform.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Building Automation Front-End Solutions versions are affected:
+
+Aspect-Nexus Building Automation Front-End Solutions application versions prior to 3.0.0
+Aspect-Matrix Building Automation Front-End Solutions application all versions.
+
+IMPACT
+User logins and passwords presented in plain text provide an attacker authenticated credentials to all aspects of the system.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+American Auto-Matrix is a US-based company.
+The affected product, Building Automation Front-End Solutions application, is a building automation integration device. According to American Auto-Matrix, Building Automation Front‑End Solutions application is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, Water and Wastewater systems, and others. American Auto-Matrix estimates that this product is used primarily in the United States.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+LOCAL FILE INCLUSIONCWE-98: Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion'), http://cwe.mitre.org/data/definitions/98.html, web site last accessed September 29, 2016.
+
+Without authorization, the attacker can read files on the host, including the configuration file.
+CVE-2016-2307NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2307, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N, web site last accessed September 29, 2016.
+
+PLAINTEXT STORAGE OF A PASSWORDCWE-256: Plaintext Storage of a Password, http://cwe.mitre.org/data/definitions/256.html, web site last accessed September 29, 2016.
+
+In a file that is accessible without authentication, passwords are presented in plain text.
+CVE-2016-2308NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2308, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L, web site last accessed September 29, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+American Auto-Matrix recommends the following steps:
+Download the zip file located at Dealer Toolbox (http://www.aamatrix.com/aspect-new-features) under Product Support>Software Updates. Then:
+
+Unzip the attached file
+Install the .aam file through the WebUI under [System Administration > System Updates]
+
+Users will then need to reboot the unit in order complete the upgrade process.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

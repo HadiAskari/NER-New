@@ -1,0 +1,41 @@
+
+Overview
+This advisory provides details about a buffer overflow vulnerability in multiple Beijer Electronics ADP and H-designer products. Independent researcher Kuang-Chun Hung of Information and Communication Security Technology Center (ICST) has identified a buffer overflow vulnerability in Beijer ADP and H-Designer applications. This vulnerability can allow attackers to execute arbitrary code and gain unauthorized access. This vulnerability affects systems deployed in the critical manufacturing, food and agriculture, transportation, and energy sectors.
+Beijer has created a new version that corrects this vulnerability. Researcher Morgan Hung has tested this version to verify that it mitigates the reported problem.
+Affected Products
+The following Beijer products are affected:
+
+ADP V6.5.0-180_R1967
+ADP V6.5.1-186_R2942
+H-Designer 6.5.0 B180_R1967
+
+Impact
+Successful exploitation of this vulnerability may allow an attacker the ability to execute arbitrary code and gain the privileges of the currently logged in user.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Beijer is a Sweden-based industrial automation and data communications company that aintains offices in several countries around the world, including the US, UK, Germany, France, Taiwan, China and Brazil.
+ADP is a configuration tool used to create applications for operator terminals, and H-Designer is HMI configuration software.
+According to Beijer, their products are deployed across several sectors including critical manufacturing, food and agriculture, transportation, energy, and others.
+Vulnerability Characterization
+Vulnerability Overview
+Buffer Overflow
+An attacker can input a long string into a dll file used by ADP and H-Designer, which can cause a buffer overflow. This vulnerability could allow arbitrary code execution, which could affect the integrity of the system.
+Vulnerability Details
+Exploitability
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed dll file.
+Existence of Report
+No known public exploits specifically target this vulnerability.
+Difficulty
+Crafting a working exploit for this vulnerability could be difficult.
+Mitigation
+Beijer Electronics created Version 6.1.1 to address this vulnerability. The researcher who originally reported the vulnerability has tested the newest version and verified that it fixes the issue. Users can obtain the latest version by contacting their local distributor.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—(UPDATE) Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+ 

@@ -1,0 +1,87 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: FOXMAN-UN
+Vulnerabilities: Authentication Bypass Using an Alternate Path or Channel, Improper Neutralization of Argument Delimiters in a Command ('Argument Injection'), Heap-based Buffer Overflow, Incorrect User Management, Improper Certificate Validation, Improper Restriction of Excessive Authentication Attempts, Use of Hard-coded Password, Cleartext Storage of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an unauthenticated malicious user to interact with the services and the post-authentication attack surface.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reports that the following products are affected:
+
+Hitachi Energy FOXMAN-UN: All versions prior to R15A
+Hitachi Energy FOXMAN-UN: R15B (CVE-2024-28020, CVE-2024-28022, CVE-2024-28024)
+Hitachi Energy FOXMAN-UN: R15B PC4 (CVE-2024-2013, CVE-2024-2012, CVE-2024-2011, CVE-2024-28021, CVE-2024-28023)
+Hitachi Energy FOXMAN-UN: R16A
+Hitachi Energy FOXMAN-UN: R16B (CVE-2024-28020, CVE-2024-28022, CVE-2024-28024)
+Hitachi Energy FOXMAN-UN: R16B PC2 (CVE-2024-2013, CVE-2024-2012, CVE-2024-2011, CVE-2024-28021, CVE-2024-28023)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+An authentication bypass vulnerability exists in the FOXMAN-UN server / APIGateway component that if exploited allows unauthenticated malicious users to interact with the services and the post-authentication attack surface.
+CVE-2024-2013 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.2 IMPROPER NEUTRALIZATION OF ARGUMENT DELIMITERS IN A COMMAND ('ARGUMENT INJECTION') CWE-88
+A vulnerability exists in the FOXMAN-UN server / APIGateway that if exploited could be used to allow unintended commands or code to be executed on the FOXMAN-UN server.
+CVE-2024-2012 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.3 HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow vulnerability exists in the FOXMAN-UN that if exploited will generally lead to a denial of service but can be used to execute arbitrary code, which is usually outside the scope of a program's implicit security policy.
+CVE-2024-2011 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H).
+3.2.4 INCORRECT USER MANAGEMENT CWE-286
+A user/password reuse vulnerability exists in the FOXMAN-UN application and server management. If exploited a malicious user could use the passwords and login information to extend access on the server and other services.
+CVE-2024-28020 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.5 IMPROPER CERTIFICATE VALIDATION CWE-295
+A vulnerability exists in the FOXMAN-UN server that affects the message queueing mechanism's certificate validation. If exploited a malicious user could spoof a trusted entity causing a loss of confidentiality and integrity.
+CVE-2024-28021 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.6 IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+A vulnerability exists in the FOXMAN-UN server / APIGateway that if exploited allows a malicious user to perform an arbitrary number of authentication attempts using different passwords, and eventually gain access to other components in the same security realm using the targeted account.
+CVE-2024-28022 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:L).
+3.2.7 USE OF HARD-CODED PASSWORD CWE-259
+A vulnerability exists in the message queueing mechanism that if exploited can lead to the exposure of resources or functionality to unintended actors, possibly providing malicious users with sensitive information or even execute arbitrary code.
+CVE-2024-28023 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:L).
+3.2.8 CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+A vulnerability exists in the FOXMAN-UN in which sensitive information is stored in cleartext within a resource that might be accessible to another control sphere.
+CVE-2024-28024 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy PSIRT reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+FOXMAN-UN R16A, FOXMAN-UN R15A, FOXMAN-UN older than R15A: EOL versions - no remediation will be available. Recommended to update to UNEM R16B PC4 or R15B PC5 (update planned) and apply general mitigation factors.
+(CVE-2024-2013, CVE-2024-2012, CVE-2024-2011, CVE-2024-28021, CVE-2024-28023) FOXMAN-UN R16B PC2: Fixed in FOXMAN-UN R16B PC3 Recommended to update to FOXMAN-UN R16B PC4 and apply general mitigation factors.
+(CVE-2024-2013, CVE-2024-2012, CVE-2024-2011, CVE-2024-28021, CVE-2024-28023) FOXMAN-UN R15B PC4: Update to FOXMAN-UN R15B PC5 (under development) and apply general mitigation factors.
+(CVE-2024-28020) FOXMAN-UN R16B, FOXMAN-UN R15B: Deny nemadm account for ssh logins by configuring DenyUsers in /etc/ssh/sshd_config
+(CVE-2024-28022, CVE-2024-28024) FOXMAN-UN R16B, FOXMAN-UN R15B: Apply general mitigation factors
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+January 14, 2025: Initial Publication
+

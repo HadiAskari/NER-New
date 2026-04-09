@@ -1,0 +1,49 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.1
+ATTENTION: Exploitable remotely
+Vendor: Rockwell Automation
+Equipment: Micro800, MicroLogix 1400
+Vulnerability: Channel Accessible by Non-endpoint
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may result in denial-of-service conditions, which may require a firmware flash to recover.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following controllers are affected:
+
+Micro800: All versions
+MicroLogix 1400: Version 21 and later when Enhanced Password Security enabled
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CHANNEL ACCESSIBLE BY NON-ENDPOINT CWE-300
+When an authenticated password change request takes place, this vulnerability could allow the attacker to intercept the message that includes the legitimate, new password hash and replace it with an illegitimate hash. The user would no longer be able to authenticate to the controller causing a denial-of-service condition.
+CVE-2021-32926 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Hyunguk Yoo from The University of New Orleans, Adeen Ayub and Irfan Ahmed from Virginia Commonwealth University reported this vulnerability to CISA.
+4. MITIGATIONS
+Rockwell recommends confirming that setting and updating the password for the controller is done within a trusted network environment.
+If this vulnerability is successfully exploited, the password can be reset by performing a firmware flash on the controller. Firmware flashing will put the controller into the default state and the user program and data will be lost.
+A comprehensive defense-in-depth strategy can reduce the risk of this vulnerability. To leverage the vulnerability, an unauthorized user would require access to the same network as the controller. Users should confirm they are employing proper networking segmentation and security controls.
+Users can refer to the Converged Plantwide Ethernet (CPwE) Design and Implementation Guide for best practices for deploying network segmentation and broader defense-in-depth strategies. Users can also refer to the Rockwell Automation System Security Design Guidelines on how to use Rockwell Automation products to improve the security of their industrial automation systems.
+For more information see Rockwell Automation Security Advisory (login required).
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

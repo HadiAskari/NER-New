@@ -1,0 +1,85 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: dnsmasq by Simon Kelley
+Equipment: dnsmasq
+Vulnerabilities: Heap-based Buffer Overflow, Insufficient Verification of Data Authenticity, Use of a Broken or Risky Cryptographic Algorithm
+
+CISA is aware of a public report, known as “DNSpooq” that details vulnerabilities found in dnsmasq, a prevalent lightweight DNS and DHCP server developed and maintained by Simon Kelley. CISA is issuing this advisory to provide early notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-019-01 dnsmasq by Simon Kelley that was published January 19th, 2021, on the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in cache poisoning, remote code execution, and a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of dnsmasq DNS and DHCP server are affected:
+
+Version 2.8.2 and prior
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow was discovered in dnsmasq in the way it sorts RRSets before validating them with DNSSEC data. An attacker on the network could forge DNS replies to be accepted as valid to cause an overflow with arbitrary data in a heap-allocated memory, resulting in code execution.
+CVE-2020-25681 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+A buffer overflow vulnerability was discovered in the way dnsmasq extracts names from DNS packets before validating them with DNSSEC data. An attacker on the network could create valid DNS replies to cause an overflow with arbitrary data in a heap-allocated memory, resulting in code execution.
+CVE-2020-25682 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow was discovered in dnsmasq when DNSSEC is enabled and before it validates the received DNS entries. A remote attacker could create valid DNS replies to cause an overflow in a heap-allocated memory and cause a crash in dnsmasq, resulting in a denial-of-service condition. 
+CVE-2020-25683 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.4    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+A vulnerability exists when getting a reply from a forwarded query, where dnsmasq checks in forward.c:reply_query() if the reply destination address/port is used by the pending forwarded queries. This could allow an attacker to perform a DNS cache poisoning attack. 
+CVE-2020-25684 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N).
+4.2.5    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+Due to a weak hash, an off-path attacker can find several different domains with the same hash, substantially reducing the number of attempts to forge a reply for acceptance by dnsmasq. This could allow an attacker to perform a DNS cache poisoning attack. 
+CVE-2020-25685 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N).
+4.2.6    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+A flaw was found when receiving a query, where dnsmasq does not check for an existing pending request for the same name and forwards a new request. This could allow an off-path attacker on the network to substantially reduce the number of attempts to forge a reply and have it accepted by dnsmasq. 
+CVE-2020-25686 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N).
+4.2.7    HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow was discovered in dnsmasq when DNSSEC is enabled and before it validates the received DNS entries. A remote attacker could create valid DNS replies and cause an overflow in heap-allocated memory, resulting in a denial-of-service condition. 
+CVE-2020-25687 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+4.4 RESEARCHER
+Moshe Kol and Shlomi Oberman of JSOF reported these vulnerabilities to CISA.
+5. MITIGATIONS
+The maintainers of dnsmasq recommend users update to the latest version (2.83 or later)
+The researcher has recommended the following mitigations and workarounds:
+
+Implement Layer 2 security features such as DHCP snooping and IP source guard. 
+Configure dnsmasq not to listen to WAN interfaces if unnecessary. 
+Reduce the maximum queries allowed to be forwarded with the option --dns-forward-max=<queries>. The default is 150, but it could be lowered.
+Temporarily disable DNSSEC validation option until you patch.
+Use DNS-over-HTTPS or DNS-over-TLS to connect to upstream server.
+
+--------- Begin Update A Part 1 of 1 ---------
+Additional vendors affected by the reported vulnerabilities have also released security advisories related to their affected products. Those advisories are as follows:
+
+Siemens
+
+--------- End Update A Part 1 of 1 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. 

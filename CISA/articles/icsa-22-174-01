@@ -1,0 +1,56 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.3
+ATTENTION: Exploitable remotely
+Vendor: Yokogawa
+Equipment: STARDOM
+Vulnerabilities: Cleartext Transmission of Sensitive Information, Use of Hard-coded Credentials
+
+CISA is aware of a public report known as, “OT:ICEFALL,” which details vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow attackers to alter device configuration settings and tamper with device firmware.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of STARDOM, a network control system, are affected:
+
+STARDOM FCN/FCJ: Versions R1.01 through R4.31
+STARDOM FCN/FCJ: Versions R4.10 through R4.31, dual CPU modules only; only affected by CVE-2022-30997
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The affected product transmits sensitive information in cleartext, which may allow an attacker sniffing network traffic on the controller to read/change configuration settings or update the controller with tampered firmware.
+CVE-2022-29519 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.2    USE OF HARD-CODED CREDENTIALS CWE-798
+The affected product uses hard-coded credentials, which could enable an attacker to read/change configuration settings or update the controller with tampered firmware. Note, single CPU modules of the FCN/FCJ controller are unaffected.
+CVE-2022-30997 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+ Jos Wetzels of Forescout reported these vulnerabilities to Yokogawa.
+4. MITIGATIONS
+ Yokogawa recommends users apply the following mitigations for both vulnerabilities:
+
+Enable the packet filtering functionality of the FCN/FCJ controller to only allow connections from trusted hosts.
+Ensure network traffic cannot be captured by unauthorized users.
+
+Yokogawa strongly recommends users establish and maintain an operational security program, including regular patching, anti-virus, backup and recovery processes, network segmentation, hardened networks, whitelisting, firewalls, etc. Yokogawa can assist users in setting up and maintaining these security programs, including performing an initial security risk assessment.
+Yokogawa considers patching to be the best mitigation against these vulnerabilities. Users are encouraged to contact Yokogawa to discuss the best course of action for individual systems.
+See Yokogawa’s security advisory report YSAR-22-007 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity.

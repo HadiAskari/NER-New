@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Schneider Electric
+Equipment: Floating License Manager
+Vulnerabilities: Improper Input Validation, Memory Corruption
+
+2. RISK EVALUATION
+These vulnerabilities could allow an attacker to deny the acquisition of a valid license for legal use of the product.
+3. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Floating License Manager are affected:
+
+Floating License Manager Version 2.3.0.0 and earlier
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+A denial of service vulnerability related to preemptive item deletion in lmadmin and vendor daemon components allows a remote attacker to send a combination of messages to lmadmin or the vendor daemon, causing the heartbeat between lmadmin and the vendor daemon to stop and the vendor daemon to shut down.
+CVE-2018-20031 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    IMPROPER INPUT VALIDATION CWE-20
+A denial of service vulnerability related to message decoding in lmadmin and vendor daemon components allows a remote attacker to send a combination of messages to lmadmin or the vendor daemon, causing the heartbeat between lmadmin and the vendor daemon to stop and the vendor daemon to shut down.
+CVE-2018-20032 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    MEMORY CORRUPTION CWE-119
+A remote code execution vulnerability in lmadmin and vendor daemon components could allow a remote attacker to corrupt the memory by allocating/deallocating memory, loading lmadmin or the vendor daemon and causing the heartbeat between lmadmin and the vendor daemon to stop. This would force the vendor daemon to shut down. No exploit of this vulnerability has been demonstrated.
+CVE-2018-20033 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    IMPROPER INPUT VALIDATION CWE-20
+A denial of service vulnerability related to adding an item to a list in lmadmin and vendor daemon components allows a remote attacker to send a combination of messages to lmadmin or the vendor daemon, causing the heartbeat between lmadmin and the vendor daemon to stop and the vendor daemon to shut down.
+CVE-2018-20034 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Schneider Electric reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Schneider Electric has made a fix for these vulnerabilities available for download on its website at the following location:
+Schneider Electric recommends users upgrade to Floating License Manager (FLM) Version 2.3.1.0 as soon as possible.
+Details are described in the Schneider Electric Security Notification SEVD-2019-134-04.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

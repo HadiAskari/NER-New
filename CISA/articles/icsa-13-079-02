@@ -1,0 +1,56 @@
+
+Overview
+This advisory provides mitigation details for vulnerabilities that impact the Siemens SIMATIC WinCC.
+Positive Technologies and Siemens ProductCERT have identified multiple vulnerabilities in the Siemens SIMATIC WinCC, which is used to configure SIMATIC operator devices. Siemens has produced a software update that fully resolves these vulnerabilities. Exploitation of these vulnerabilities could allow a denial-of-service (DoS) condition, unauthorized read access to files, or remote code execution. This could affect multiple industries, including food and beverage, water and wastewater, oil and gas, and chemical sectors worldwide.
+These vulnerabilities could be exploited remotely.
+Affected Products
+The following Siemens products are affected:
+
+WinCC 7.0 SP3 Update1 and below.
+
+Note: As WinCC is part of SIMATIC PCS7, the SIMATIC PCS 7 Web Server is also affected by these vulnerabilities.
+Impact
+Successful exploitation of these vulnerabilities may result in a DoS condition, unauthorized read access to files, or remote code execution.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on heir operational environment, architecture, and product implementation in the software package impacting multiple sectors worldwide.
+Background
+Siemens is a multinational company headquartered in Munich, Germany. Siemens develops products mainly in the energy, transportation, and healthcare sectors.
+SIMATIC WinCC is a software package used as an interface between the operator and the programmable logic controllers (PLCs). SIMATIC WinCC performs the following tasks: process visualization, operator control of the process, alarm display, process value and alarm archiving, and machine parameter management. This software is used in many industries, including food and beverage, water and wastewater, oil and gas, and chemical.
+Vulnerability Characterization
+Vulnerability Overview
+Missing Encryption of Sensitive DataCWE, http://cwe.mitre.org/data/definitions/311.html, CWE-311: Missing Encryption of Sensitive Data, Web site last visited March 20, 2013.
+WinCC stores user passwords for WebNavigator in an MS SQL database. If an attacker can successfully log into the WinCC database server, these  passwords can be extracted. This would allow an attacker access to all functions and privileges of all WinCC users.
+CVE-2013-0678 has been assigned to this vulnerability. A CVSS v2 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:P/I:P/A:P).
+Improper AuthorizationCWE, http://cwe.mitre.org/data/definitions/285.html, CWE-285: Improper Authorization, Web site last visited March 20, 2013.
+WinCC provides too many rights to several users in the database. Users with low privileges could read password fields allowing an attacker to gain access to sensitive information.
+CVE-2013-0676 has been assigned to this vulnerability. A CVSS v2 base score of 4.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:P/I:N/A:N).
+Relative Path TraversalCWE, http://cwe.mitre.org/data/definitions/23.html, CWE-23: Relative Path Traversal, Web site last visited March 20, 2013.
+The WinCC Web server could return sensitive data if certain file names and paths are queried, e.g., via URL parameters. However, the user needs to be authenticated on the Web server to exploit this vulnerability. This could allow the attacker to browse the file system via URL manipulation and extract sensitive information.
+CVE-2013-0679 has been assigned to this vulnerability. A CVSS v2 base score of 4.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:P/I:N/A:N).
+Buffer OverflowCWE, http://cwe.mitre.org/data/definitions/119.html, CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, Web site last visited March 20,
+The WinCC Web server requires users to install ActiveX component RegReader to use certain WinCC functions. RegReader does not properly check the length of parameters; a malicious site can trigger a buffer overflow with possible remote code execution in the context of the user’s browser. This could allow the attacker to cause a crash or to execute arbitrary code.
+CVE-2013-0674 has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).
+Improper AuthorizationCWE, http://cwe.mitre.org/data/definitions/285.html, CWE-285: Improper Authorization, Web site last visited March 20, 2013.
+The WinCC Web server can allow a legitimate user to parse project files insecurely. If a legitimate user opens a manipulated project, sensitive data can be transmitted via the network or a DoS condition can occur.
+CVE-2013-0677 has been assigned to this vulnerability. A CVSS v2 base score of 5.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:P).
+Buffer OverflowCWE, http://cwe.mitre.org/data/definitions/119.html, CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, Web site last visited March 20, 2013.
+The WinCC central communications component (CCEServer) is vulnerable to a remote buffer overflow that can be triggered over the network. By sending a specially crafted packet to a dynamically assigned port, an attacker can generate a DoS condition against WinCC.
+CVE-2013-0675 has been assigned to this vulnerability. A CVSS v2 base score of 6.1 has been assigned; the CVSS vector string is (AV:A/AC:L/Au:N/C:N/I:N/A:C).
+Vulnerability Details
+Exploitability
+These vulnerabilities could be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target these vulnerabilities.
+Difficulty
+An attacker with a low to medium skill would be able to exploit these vulnerabilities.
+Mitigation
+Siemens has produced a software updates that resolves these vulnerabilities. The update can be applied to all versions of SIMATIC WinCC starting with Version 7.1. Siemens recommends that asset owners and operators contact Siemens customer support to acquire the update.
+The update, WinCC Version 7.2, is also part of SIMATIC PCS7 V8.0 SP 1.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

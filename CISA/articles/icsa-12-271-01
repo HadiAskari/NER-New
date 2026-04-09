@@ -1,0 +1,42 @@
+
+Overview
+This Advisory is a follow-up release to the original Advisory which was posted to the US-CERT secure Portal library October 08, 2012.
+Dale Peterson of Digital Bond has identified multiple vulnerabilities in the C3-ilex’s EOScada application that can result in data leakage and a denial-of-service (DoS) condition. C3-ilex’s has produced a patch that resolves these vulnerabilities.
+Affected Products
+C3-ilex reports that the vulnerabilities affect all EOScada versions prior to 11.0.19.2.
+Impact
+Successful exploitation of these vulnerabilities may cause a DoS or data leakage.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+C3-ilex’s EOScada is a real-time Windows-based Energy Management System for electrical, water, sewage, and gas applications. The EOScada platform features a distributed processing, networked configuration using PCs running Microsoft Windows. The EOScada product line includes PC-based Master Stations as well as remote terminal units (RTUs) that perform communication, data concentration, and connections to a variety of intelligent electronic devices (IEDs).
+Vulnerability Characterization
+Vulnerability Overview
+Improper Access Controlhttp://cwe.mitre.org/data/definitions/284.html, Web site last accessed November 01, 2012.
+The EOS Core Scada.exe does not restrict access that causes a DoS condition when attached to Port 5050/TCP or Port 24004/TCP, and any random data are sent to either port. The application will crash and restart and will be unavailable to legitimate users during that time.
+CVE-2012-1810 has been assigned to this vulnerability. A CVSS V2 base score of 5.0 has also been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:P).
+Resource Management Errors http://cwe.mitre.org/data/definitions/399.html, Web site last accessed November 01, 2012.
+The EOSDataServer.exe attached to Port 24006/TCP is susceptible to a Resource Management Error when a large amount of random data is sent to the port.
+CVE-2012-1811 has been assigned to this vulnerability. A CVSS V2 base score of 7.8 has also been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).
+Data Leakage http://cwe.mitre.org/data/definitions/200.html, Web site last accessed November 01, 2012.
+The eosfailoverservice.exe returns data in clear text when a connection is made to Port TCP/12000.
+CVE-2012-1812 has been assigned to this vulnerability. A CVSS V2 base score of 5.0 has also been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:P/A:N).
+Resource Management Errorshttp://cwe.mitre.org/data/definitions/399.html, Web site last accessed November 01, 2012.
+The eosfailoverservice.exe attached to Port 12000/TCP is susceptible to a Resource Management Error when a large amount of random data is sent to the port.
+CVE-2012-1813 has been assigned to this vulnerability. A CVSS V2 base score of 7.8 has also been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).
+Vulnerability Details
+Exploitability
+These vulnerabilities are remotely exploitable.
+Existence of Exploit
+No known public exploits specifically target these vulnerabilities.
+Difficulty
+An attacker with a low skill would be able to exploit these vulnerabilities.
+Mitigation
+C3-ilex recommends customers install the EOScada patch. Customers with a service agreement should contact C3-ilex’s Helpdesk at helpdesk@c3ilex.com or by calling the Help Desk at (510) 659-8300 x 107 for instructions on how to obtain the release. Customers without a service agreement should contact their C3-ilex Sales Manager for assistance in purchasing this or a later version release.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, specifically addressing traffic to the ports listed above, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

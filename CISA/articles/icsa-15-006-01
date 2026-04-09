@@ -1,0 +1,43 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on January 6, 2015, and is now being released to the NCCIC/ICS-CERT web site.
+Dr. Raheem Beyah, David Formby, and San Shin Jung of Georgia Tech, via a research project partially sponsored by the Georgia Tech National Electric Energy Testing Research and Applications Center (NEETRAC), have identified a predictable TCP sequence vulnerability in Eaton’s Cooper Power Systems Form 6 controls and Idea/IdeaPLUS relays with Ethernet application. Eaton’s Cooper Power Systems has produced a patch to mitigate this vulnerability. These researchers have tested the patch to validate that it resolves the vulnerability.This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Eaton’s Cooper Power Systems reports that the vulnerability affects the following versions:
+
+All versions of Eaton’s Cooper Power Series Form 6 control and Idea/IdeaPLUS relays with Ethernet with Pro View 4.0 through Pro View 5.0 software.
+
+IMPACT
+An attacker could potentially use this TCP/IP stack vulnerability to enable a man-in-the-middle (MitM) attack against products that are Internet facing.Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Eaton’s Cooper Power Systems division is a US-based company that maintains offices worldwide.
+The affected products, Form 6 control and Idea/IdeaPLUS relay protection platforms, are deployed by power grid operators to apply protection and communications support for overcurrent devices such as reclosers and circuit breakers. According to Eaton’s Cooper Power Systems division, these products are used primarily in the Energy Sector. Eaton’s Cooper Power Systems division estimates these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+PREDICTABLE EXACT VALUE FROM PREVIOUS VALUESCWE-342: Predictable Exact Value from Previous Values, http://cwe.mitre.org/data/definitions/342.html, web site last accessed July 16, 2015.
+As devices receive new connection requests, there is a predictable linear pattern of the initial sequence numbers. An attacker could potentially use this TCP/IP stack vulnerability to predict new device connection requests, possibly enabling a MitM attack. A successful MitM attack could allow the attacker to cause a crash of the system or to execute arbitrary code.
+CVE-2014-9196NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9196, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.6 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:H/Au:N/C:C/I:C/A:C, web site last accessed July 16, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits have targeted this vulnerability.
+DIFFICULTY
+An attacker would require high skill levels to exploit this vulnerability.
+MITIGATION
+No authentication mechanism was used for new socket connections to SCADA protocol listening ports on the Form 6 control and Idea/IdeaPLUS relays. The effects of exploiting this vulnerability are the same as the effects of an attacker connecting directly to the control or network and listening for or initiating a new session, without exploiting any vulnerabilities. This underscores the importance of deploying network segmentation and isolation on the control system network. By ensuring that controls are not accessible from external networks and that appropriate physical security measures are provided at network access points, risks associated with this vulnerability are greatly minimized.
+Eaton’s Cooper Power Systems recommends that asset owners using these products take the proper steps to ensure system wide defense-in-depth strategies, as outlined in Eaton’s whitepaper WP152002EN. This whitepaper can be downloaded at:
+http://www.eaton.com/ecm/idcplg?IdcService=GET_FILE&allowInterrupt=1&RevisionSelectionMethod=LatestReleased&Rendition=Primary&dDocName=WP152002EN
+Eaton’s Cooper Power Systems division has developed ProView 5.0 Revision 11 software that mitigates this vulnerability, and the Form 6 control version was released on June 12, 2015. Idea/IdeaPLUS relay ProView software versions began to be posted on June 30, 2015. ProView 5.0 Revision 11 will be compatible with any hardware and firmware Versions 5.0 and higher. Versions below 5.0 may be updated with the appropriate and corresponding hardware upgrades. Information on how to obtain and install these available remedies is available at:
+http://www.cooperindustries.com/content/public/en/power_systems/resources/securitysupport.html
+For additional technical information, please contact Eaton’s Cooper Power Systems at:
+www.eaton.com/cybersecurity
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,52 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 3.9
+ATTENTION: Exploitable from an adjacent network
+Vendor: Siemens
+Equipment: SIMATIC Products
+Vulnerability: Use of Obsolete Function
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to obtain unauthorized access to product control and data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products from Siemens are affected:
+
+SIMATIC NET PC Software V14: All versions
+SIMATIC NET PC Software V15: All versions
+SIMATIC PCS 7 V8.2: All versions
+SIMATIC PCS 7 V9.0: All versions
+SIMATIC PCS 7 V9.1: All versions
+SIMATIC WinCC: All versions prior to V8.0
+SINAUT Software ST7sc: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 USE OF OBSOLETE FUNCTION CWE-477
+Before SIMATIC WinCC V8, legacy OPC services (OPC DA (Data Access), OPC HDA (Historical Data Access), and OPC AE (Alarms & Events)) were used per default. These services were designed on top of the Windows ActiveX and DCOM mechanisms, and do not implement state-of-the-art security mechanisms for authentication and encryption of contents.
+CVE-2023-28829 has been assigned to this vulnerability. A CVSS v3 base score of 3.9 has been calculated. The CVSS vector string is (CVSS:3.1/AV:A/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+SIMATIC WinCC: Update to V8.0 or later
+SINATIC NET PC Software: Ensure that only trusted users are part of the SIMATIC Net group
+Ensure that only trusted users are part of the SIMATIC HMI group
+Disable the legacy OPC DA/HDA/AE services and switch to OPC UA, if possible
+
+For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-508677 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. This vulnerability has a high attack complexity.

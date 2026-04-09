@@ -1,0 +1,55 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Low attack complexity
+Vendor: Rockwell Automation
+Equipment: ISaGRAF
+Vulnerability: Deserialization of Untrusted Data
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow arbitrary code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Rockwell Automation products are affected:
+
+Connected Component Workbench: v13.00.00 and prior
+ISaGRAF Workbench: v6.0 though v6.6.9
+Safety Instrumented Systems Workstation: v1.2 and prior (for Trusted Controllers)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+Connected Components Workbench, ISaGRAF Workbench, and Safety Instrumented System Workstation do not limit the objects that can be deserialized. This allows attackers to craft a malicious serialized object that, if opened by a local user in Connected Components Workbench, may result in arbitrary code execution. This vulnerability requires user interaction to be successfully exploited.
+CVE-2022-1118 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+kimiya of Trend Micro’s Zero Day Initiative reported this vulnerability to CISA.
+4. MITIGATIONS
+Rockwell Automation encourages users to update to v20.00 or later.
+For the ISaGRAF Workbench and Safety Instrumented Systems Workstation, Rockwell Automation encourages users to use mitigations listed below until a patch is released. More mitigation actions are planned. 
+If an upgrade is not possible or available, users should apply the following mitigations:
+
+Run Connected Components Workbench as a User, not as an Administrator, to minimize the impact of malicious code on the infected system.
+Do not open untrusted files with Connected Component Workbench, ISaGRAF, SISW. Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.
+Use Microsoft AppLocker or other similar allow list application to help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at KnowledgeBase Article QA17329
+Ensure the least-privilege user principle is followed, and user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.
+
+For more information see Rockwell Automation’s security advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

@@ -1,0 +1,88 @@
+
+OVERVIEW
+Siemens has identified three vulnerabilities in its SIMATIC HMI devices. These vulnerabilities were reported directly to Siemens by the Quarkslab team and Ilya Karpov from Positive Technologies. Siemens has produced updates that mitigate these vulnerabilities in most of the affected products and are preparing updates for the rest of them.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following SIMATIC versions are affected:
+
+SIMATIC HMI Basic Panels 2nd Generation: All versions prior to WinCC (TIA Portal) V13 SP1 Upd2,
+SIMATIC HMI Comfort Panels: All versions prior to WinCC (TIA Portal) V13 SP1 Upd2,
+SIMATIC WinCC Runtime Advanced: All versions prior to WinCC (TIA Portal) V13 SP1 Upd2,
+SIMATIC WinCC Runtime Professional: All versions prior to WinCC (TIA Portal) V13 SP1 Upd2,
+SIMATIC HMI Basic Panels 1st Generation (WinCC TIA Portal): All versions,
+SIMATIC HMI Mobile Panel 277 (WinCC TIA Portal): All versions,
+SIMATIC HMI Multi Panels (WinCC TIA Portal): All versions,
+SIMATIC NET PC-Software V12: All versions prior to V12 SP2 HF3,
+SIMATIC NET PC-Software V13: All versions prior to V13 HF1,
+SIMATIC WinCC V7.X: All versions prior to V7.3 Upd4, and
+SIMATIC Automation Tool: All versions prior to V1.0.2.
+
+IMPACT
+An attacker exploiting these vulnerabilities could conduct man-in-the-middle attacks, denial‑of‑ service attacks, and possibly authenticate themselves as valid users.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+SIMATIC HMI Panels, SIMATIC WinCC Runtime Advanced, and SIMATIC WinCC Runtime Professional are used for operator control and monitoring of machines and plants. SIMATIC NET PC-Software is required for communication between controller (SIMATIC S7 controller) and PC-based solutions (e.g., SIMATIC WinCC). SIMATIC WinCC is a supervisory control and data acquisition (SCADA) system. It is used to monitor and control physical processes involved in industry and infrastructure on a large scale and over long distances. SIMATIC Automation Tool allows commissioning, adjusting, and service in combination with S7-1200 and S7-1500 Controllers without engineering framework. These products are deployed across several sectors including Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems. Siemens estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+MAN-IN-THE-MIDDLECWE-300: Channel Accessible by Non-Endpoint ('Man-in-the-Middle'), http://cwe.mitre.org/data/definitions/300.html, web site last accessed April 09, 2015.
+
+Attackers with access to the network path between PLCs and their communication partners could possibly intercept or modify Siemens industrial communications at Port 102/TCP and conduct a man-in-the-middle attack. This vulnerability affects all listed products.
+CVE-2015-1601NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1601, web site last accessed April 09, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 5.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:N , web site last accessed April 09, 2015.
+
+RECOURCE EXHAUSTIONCWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion'), http://cwe.mitre.org/data/definitions/400.html, web site last accessed April 09, 2015.
+
+Attackers with access to the network path between an HMI panel and a PLC (man-in-the-middle) could possibly conduct a denial-of-service attack against the HMI panel by sending specially crafted packets to the HMI (Port 102/TCP). This vulnerability affects SIMATIC WinCC Comfort Panels and SIMATIC WinCC Runtime Advanced.
+CVE-2015-2822NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2822, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, web site last accessed April 09, 2015.
+
+USE OF PASSWORD HASH INSTEAD OF PASSWORD FOR AUTHENTICATIONCWE-836: Use of Password Hash Instead of Password for Authentication, http://cwe.mitre.org/data/definitions/836.html, web site last accessed April 09, 2015.
+
+If attackers obtain password hashes for SIMATIC WinCC users, they could possibly use the hashes to authenticate themselves. This vulnerability affects SIMATIC WinCC.
+CVE-2015-2823NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2823, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:P , web site last accessed April 09, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with medium skill level would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens provides updates for the following products and recommends customers update to the new fixed versions located at their cooresponding web sites listed below:
+
+SIMATIC HMI Basic Panels 2nd Generation: Update to WinCC (TIA Portal) V13 SP1 Upd2: https://support.industry.siemens.com/cs/ww/en/view/109311724,
+SIMATIC HMI Comfort Panels: Update to WinCC (TIA Portal) V13 SP1 Upd2: https://support.industry.siemens.com/cs/ww/en/view/109311724,
+SIMATIC WinCC Runtime Advanced: Update to V13 SP1 Upd2: https://support.industry.siemens.com/cs/ww/en/view/109311423,
+SIMATIC WinCC Runtime Professional: Update to V13 SP1 Upd2: https://support.industry.siemens.com/cs/ww/en/view/109439573,
+SIMATIC NET PC-Software V12: Update to V12 SP2 HF3: https://support.industry.siemens.com/cs/ww/en/view/109475388,
+SIMATIC NET PC-Software V13: Update to V13 HF1: https://support.industry.siemens.com/cs/ww/en/view/109475388,
+SIMATIC WinCC V7.3: Update to V7.3 Upd4: https://support.industry.siemens.com/cs/de/en/view/109475497, and
+SIMATIC Automation Tool: Update to V1.0.2: https://support.industry.siemens.com/cs/ww/en/view/98161300.
+
+Siemens is preparing updates for the following products that will fix the vulnerabilities.
+
+SIMATIC HMI Basic Panels 1st Generation (WinCC TIA Portal),
+SIMATIC HMI Mobile Panel 277 (WinCC TIA Portal), and
+SIMATIC HMI Multi Panels (WinCC TIA Portal).
+
+Siemens recommends either updating the configuration of SIMATIC HMI Basic Panels 2nd Generation, SIMATIC HMI Comfort Panels, SIMATIC WinCC Runtime Advanced, SIMATIC WinCC Runtime Professional devices configured with WinCC (TIA Portal) V12 or V13 to WinCC (TIA Portal) V13 SP1 and the devices to V13 SP1, or applying the following mitigations until patches are available.
+Until new releases become available, customers should mitigate the risk of their products by implementing the following steps:
+
+Apply cell protection concept, discussed at: https://www.siemens.com/cert/operational-guidelines-industrial-security,
+Use VPN for protecting network communication between cells, and
+Apply defense-in-depth strategies, which are discussed at: http://www.industry.siemens.com/topics/global/en/industrial-security/concept/Pages/defense-in-depth.aspx.
+
+As a general security measure Siemens strongly recommends protecting network access with appropriate mechanisms. In order to run the devices in a protected IT environment, it is advised to configure the environment according to Siemens’ operational guidelines.
+For more information on these vulnerabilities and detailed instructions, please see Siemens Security Advisory SSA-487246 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Monitor Port 102/TCP, and possibly block all external traffic to that port.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

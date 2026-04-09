@@ -1,0 +1,126 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the updated advisory titled ICSA-14-329-02A Siemens SIMATIC WinCC, PCS7, and TIA Portal Vulnerabilities that was published December 2, 2014, on the NCCIC/ICS-CERT web site.
+Siemens has identified two vulnerabilities within products using the Siemens WinCC application. Siemens has produced a patch that mitigates this vulnerability in the WinCC application and is working on updates for the remaining affected products to address the other vulnerability in the WinCC application.
+These vulnerabilities could be exploited remotely. Exploits that target these vulnerabilities are potentially available.
+AFFECTED PRODUCTS
+--------- Begin Update B Part 1 of 2 --------
+The following Siemens products are affected:
+
+SIMATIC WinCC
+
+
+V7.0 SP3 and earlier: All versions,
+V7.2: All versions prior to V7.2 Update 9, and
+V7.3: All versions prior to V7.3 Update 2.
+
+
+SIMATIC PCS 7
+
+
+V7.1 SP4 and earlier: All versions,
+V8.0: All versions prior to V8.0 SP2 with WinCC V7.2 Update 9, and
+V8.1: All versions with WinCC V7.3 prior to Update 2.
+
+
+TIA Portal V13 (including WinCC Professional Runtime):
+
+
+All versions prior to V13 Update 6.
+
+--------- End Update B Part 1 of 2 --------
+IMPACT
+These vulnerabilities allow for unauthenticated remote code execution.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is an international company headquartered in Munich, Germany.
+The affected product, SIMATIC WinCC, is a supervisory control and data acquisition (SCADA) system. PCS7 is a distributed control system (DCS) integrating SIMATIC WinCC. TIA Portal is engineering software for SIMATIC products. This software is deployed across several sectors including Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems. Siemens estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+REMOTE CODE EXECUTIONCWE-284: Improper Access Control, http://cwe.mitre.org/data/definitions/284.html, web site last accessed November 25, 2014.
+
+A component within WinCC could allow remote code execution for unauthenticated users if specially crafted packets are sent to the WinCC server.
+CVE-2014-8551NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8551, web site last accessed December 02, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed November 25, 2014.
+
+TRANSFER/EXTRACT FILESCWE-284: Improper Access Control, http://cwe.mitre.org/data/definitions/284.html, web site last accessed November 25, 2014.
+
+A component within WinCC could allow unauthenticated users to extract arbitrary files from the WinCC server if specially crafted packets are sent to the server.
+CVE-2014-8552NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8552, web site last accessed December 02, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:N/A:N, web site last accessed November 25, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target these vulnerabilities are potentially available. Indicators exist that this vulnerability may have been exploited during a recent campaign.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens has released updates for the following products and strongly encourages customers to upgrade to the new versions as soon as possible:
+--------- Begin Update B Part 2 of 2 --------
+TIA Portal V13 (including WinCC Professional Runtime)
+
+Upgrade to WinCC V13 Update 6
+http://support.automation.siemens.com/WW/view/de/90527654
+
+WinCC 7.0
+
+Upgrade to WinCC 7.0 SP2 Update 11
+http://support.automation.siemens.com/WW/view/en/107174184
+
+WinCC 7.2
+
+Upgrade to WinCC 7.2 Update 9
+http://support.automation.siemens.com/WW/view/en/104151435
+
+WinCC 7.3
+
+Upgrade to WinCC 7.3 Update 2
+http://support.automation.siemens.com/WW/view/en/105898606
+
+PCS 7 V8.0 SP2
+
+Upgrade to WinCC 7.2 Update 9
+http://support.automation.siemens.com/WW/view/en/104151435
+Upgrade to OpenPCS 7 V8.0 Update 5
+http://support.automation.siemens.com/WW/view/en/106224418
+Upgrade to Route Control V8.0 Update 4
+http://support.automation.siemens.com/WW/view/en/106224418
+Upgrade to BATCH V8.0 Update 11
+http://support.automation.siemens.com/WW/view/en/106224418
+
+PCS 7 V8.1
+
+Upgrade to WinCC 7.3 Update 2
+http://support.automation.siemens.com/WW/view/de/105898606
+Upgrade to OpenPCS 7 V8.1 Update 1
+http://support.automation.siemens.com/WW/view/en/106226042
+Upgrade to Route Control V8.1 Update 1
+http://support.automation.siemens.com/WW/view/en/106226042
+Upgrade to BATCH V8.1 Update 1
+http://support.automation.siemens.com/WW/view/en/106226042
+
+Siemens is still working on updates for:
+
+WinCC V7.0 SP3
+PCS 7 V7.1 SP4 with OpenPCS 7, Route Control, or BATCH
+
+--------- End Update B Part 2 of 2 ----------
+Siemens is preparing updates for the other affected products, which will fix the vulnerabilities. As soon as new releases become available, Siemens will update its advisory, and ICS-CERT will update this advisory. In the meantime, customers should mitigate the risk of their products by implementing the following:
+
+Always run WinCC server and engineering stations within a trusted network.
+Ensure that the WinCC server and the engineering workstations communicate through encrypted channels only (e.g., activate feature “Encrypted Communications” in WinCC V7.3, or establish a VPN tunnel).
+Restrict access to the WinCC server to trusted entities.
+Apply up-to-date application whitelisting software and virus scanners.
+
+As a general security measure, Siemens strongly recommends protecting network access to the SIMATIC WinCC server with appropriate mechanisms. It is also advised to follow recommended security practices and to configure the environment according to operational guidelines in order to run the devices in a protected IT environment.
+For more information on these vulnerabilities and detailed instructions, please see Siemens Security Advisory SSA-134508 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,63 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). 
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.2
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Automation License Manager
+Vulnerability: Integer Overflow or Wraparound
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to cause a denial-of-service preventing legitimate users from using the system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siemens Automation License Manager, are affected:
+
+Automation License Manager V5: All versions
+Automation License Manager V6.0: All versions
+Automation License Manager V6.2: All versions prior to V6.2 Upd3
+
+3.2 Vulnerability Overview
+3.2.1 INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Affected applications do not properly validate certain fields in incoming network packets on port 4410/tcp. This could allow an unauthenticated remote attacker to cause an integer overflow and crash of the application. This denial of service condition could prevent legitimate users from using subsequent products that rely on the affected application for license verification.
+CVE-2024-44087 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-44087. A base score of 9.2 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Automation License Manager V5: Currently no fix is planned
+Automation License Manager V6.0: Currently no fix is planned
+Automation License Manager V6.2: Update to V6.2 Upd3 or later version
+
+On the Automation License Manager settings menu disable "Allow Remote Connections"
+If remote connections are needed, limit remote access to port 4410/tcp to trusted systems only
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-103653 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 12, 2024: Initial Publication
+
+ 

@@ -1,0 +1,171 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Multiple (open source)
+Equipment: uIP-Contiki-OS, uIP-Contiki-NG, uIP, open-iscsi, picoTCP-NG, picoTCP, FNET, Nut/Net
+Vulnerabilities: Infinite Loop, Integer Wraparound, Out-of-bounds Read, Integer Overflow, Out-of-bounds Write, Improper Input Validation, Improper Null Termination
+
+CISA is aware of a public report, known as “AMNESIA:33” that details vulnerabilities found in multiple open-source TCP/IP stacks. CISA is issuing this advisory to provide early notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+The various open-source stacks may be implemented in forked repositories.
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow attackers to corrupt memory, put devices into infinite loops, access unauthorized data, and/or poison DNS cache.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following are affected:
+
+uIP-Contiki-OS (end-of-life [EOL]), Version 3.0 and prior
+uIP-Contiki-NG, Version 4.5 and prior
+uIP (EOL), Version 1.0 and prior
+open-iscsi, Version 2.1.12 and prior
+picoTCP-NG, Version 1.7.0 and prior
+picoTCP (EOL), Version 1.7.0 and prior
+FNET, Version 4.6.3
+Nut/Net, Version 5.1 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+The function used in uIP-Contiki-OS to process IPv6 extension headers and extension header options can be forced into an infinite loop state due to unchecked header/option lengths.
+CVE-2020-13984 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    INTEGER WRAPAROUND CWE-190
+The function used in uIP-Contiki-OS to decapsulate RPL extension headers does not check for unsafe integer conversion when parsing the values provided in a header, allowing an attacker to corrupt memory. 
+CVE-2020-13985 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+The function used in uIP-Contiki-OS to decapsulate RPL extension headers does not check the length value of an RPL extension header received, allowing an attacker to cause it to enter an infinite loop.
+CVE-2020-13986 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    OUT-OF-BOUNDS READ CWE-125
+The function in open-iscsi, uIP-Contiki-OS, and uIP that parses incoming transport layer packets (TCP/UDP) does not check the length fields of packet headers against the data available in the packets. Given arbitrary lengths, an out-of-bounds memory read may be performed during the checksum computation.
+CVE-2020-13987 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.2.5    INTEGER OVERFLOW CWE-190
+The function in open-iscsi, uIP-Contiki-OS, and uIP that parses the TCP MSS option does not check the validity of the length field of this option, allowing an attacker to force it into an infinite loop when arbitrary TCP MSS values are supplied.
+CVE-2020-13988 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6    OUT-OF-BOUNDS WRITE CWE-787
+When handling TCP urgent data in open-iscsi, uIP-Contiki-OS, and uIP, there are no sanity checks for the value of the urgent data pointer, allowing an attacker to corrupt memory by supplying arbitrary urgent data pointer offsets within TCP packets.
+CVE-2020-17437 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+3.2.7    OUT-OF-BOUNDS WRITE CWE-787
+The function in open-iscsi and uIP that reassembles fragmented packets does not validate the total length of an incoming packet specified in its IP header, as well as the fragmentation offset value specified in the IP header. This could lead to memory corruption.
+CVE-2020-17438 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:H).
+3.2.8    IMPROPER INPUT VALIDATION CWE-20
+Incoming DNS replies in uIP are parsed by the DNS client even if there were no outgoing queries. The DNS transaction ID is not sufficiently random. Provided that the DNS cache is quite small (four entries), this facilitates DNS cache poisoning attacks.
+CVE-2020-17439 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:L/A:L).
+3.2.9    IMPROPER NULL TERMINATION CWE-170
+When parsing incoming DNS packets in uIP-Contiki-NG, uIP-Contiki-OS, and uIP, there are no checks whether domain names are null-terminated. This allows an attacker to achieve memory corruption with crafted DNS responses.
+CVE-2020-17440 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.10    IMPROPER INPUT VALIDATION CWE-20
+In picoTCP-NG and picoTCP the payload length field of IPv6 extension headers are not checked against the data available in incoming packets, allowing an attacker to corrupt memory.
+CVE-2020-17441 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.11    INTEGER OVERFLOW CWE-190
+The function in picoTCP-NG and picoTCP that processes the hop-by-hop extension header in IPv6 packets and its options lacks any checks against the length field of the header, allowing an attacker to cause the function to enter an infinite loop by supplying arbitrary length values.
+CVE-2020-17442 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.12    INTEGER OVERFLOW CWE-190
+When processing ICMPv6 echo requests in picoTCP-NG and picoTCP, there are no checks for whether the ICMPv6 header consists of at least 8 bytes (set by RFC443). This leads to the function that creates ICMPv6 echo replies based on a received request with a smaller header to corrupt memory.
+CVE-2020-17443 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.2.13    INTEGER OVERFLOW CWE-190
+The function in picoTCP-NG and picoTCP that processes IPv6 headers does not check the lengths of extension header options, allowing an attacker to force this function into an infinite loop with crafted length values.
+CVE-2020-17444 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.14    OUT-OF-BOUNDS READ CWE-125
+The function in picoTCP-NG and picoTCP that processes the IPv6 destination options extension header does not check the validity of its options lengths, allowing an attacker to corrupt memory and/or put the function into an infinite loop with crafted length values.
+CVE-2020-17445 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is  (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.15    OUT-OF-BOUNDS READ CWE-125
+The function in FNET does not check whether domain names are null terminated when parsing Link-local Multicast Name Resolution (LLMNR) requests. This may allow an attacker to read out of bounds.
+CVE-2020-17467 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.2.16    OUT-OF-BOUNDS READ CWE-125
+The function in FNET that processes the IPv6 hop-by-hop extension header does not check the validity of its options lengths, allowing an attacker to corrupt memory.
+CVE-2020-17468 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.17    OUT-OF-BOUNDS READ CWE-125
+The IPv6 packet reassembly function in FNET does not check whether the received fragments are properly aligned in memory, allowing an attacker to perform memory corruption with crafted IPv6 fragmented packets.
+CVE-2020-17469 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is  (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.18    IMPROPER INPUT VALIDATION CWE-20
+The function in FNET that initializes the DNS client interface structure does not set sufficiently random transaction IDs (they will be always set to 1), facilitating DNS cache poisoning attacks.
+CVE-2020-17470 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N).
+3.2.19    OUT-OF-BOUNDS READ CWE-125
+The function in uIP-Contiki-NG, uIP-Contiki-OS, and uIP that processes DNS responses does not check whether the number of responses specified in the DNS packet header correspond to the response data available in the DNS packet, which may allow an attacker to corrupt memory.
+CVE-2020-24334 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is  (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.2.20    OUT-OF-BOUNDS READ CWE-125
+The function in uIP-Contiki-NG, uIP-Contiki-OS, and uIP that parses domain names lacks bounds checks, allowing an attacker to corrupt memory with crafted DNS packets.
+CVE-2020-24335 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.21    OUT-OF-BOUNDS READ CWE-125
+The function in uIP-Contiki-NG and uIP-Contiki-OS for parsing DNS records in DNS response packets sent over NAT64 does not validate the length field of the response records, allowing an attacker to corrupt memory.
+CVE-2020-24336 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.22    LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+The function in picoTCP-NG and picoTCP that processes TCP options does not validate their lengths, allowing an attacker to put the function into an infinite loop with uncommon/unsupported TCP options that have crafted length values.
+CVE-2020-24337 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.23    OUT-OF-BOUNDS WRITE CWE-787
+The function in picoTCP and picoTCP-NG that parses domain names lacks bounds checks, allowing an attacker to corrupt memory with crafted DNS packets.
+CVE-2020-24338 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.24    OUT-OF-BOUNDS READ CWE-125
+The function in picoTCP and picoTCP-NG that processes DNS responses does not check whether the number of responses specified in the DNS packet header correspond to the response data available in the DNS packet, allowing an attacker to perform memory corruption.
+CVE-2020-24339 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.25    OUT-OF-BOUNDS READ CWE-125
+The function in picoTCP and picoTCP-NG that processes DNS responses does not check whether the number of responses specified in the DNS packet header correspond to the response data available in the DNS packet, allowing an attacker to perform memory corruption.
+CVE-2020-24340 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.2.26    OUT-OF-BOUNDS READ CWE-125
+The TCP input data processing function in picoTCP-NG and picoTCP does not validate the length of incoming TCP packets, allowing an attacker to read out of bounds and perform memory corruption.
+CVE-2020-24341 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.2.27    IMPROPER NULL TERMINATION CWE-170
+When parsing incoming DNS packets in FNET, there are no checks whether domain names are null-terminated. This may allow an attacker to achieve memory corruption and/or memory leak.
+CVE-2020-24383 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L).
+3.2.28    OUT-OF-BOUNDS READ CWE-125
+The function in Nut/Net that processes DNS questions/responses has several issues: there is no check on whether a domain name is NULL-terminated; the DNS response data length is not checked (can be set to arbitrary value from a packet); the number of DNS queries/responses (set in DNS header) is not checked against the data present; the length byte of a domain name in a DNS query/response is not checked and is used for internal memory operations.
+CVE-2020-25107 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.29    OUT-OF-BOUNDS WRITE CWE-787
+The function in Nut/Net that processes DNS questions/responses has several issues: there is no check on whether a domain name is NULL-terminated; the DNS response data length is not checked (can be set to arbitrary value from a packet); the number of DNS queries/responses (set in DNS header) is not checked against the data present; the length byte of a domain name in a DNS query/response is not checked and is used for internal memory operations.
+CVE-2020-25108 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.30    OUT-OF-BOUNDS READ CWE-125
+The function in Nut/Net that processes DNS questions/responses has several issues: there is no check on whether a domain name is NULL-terminated; the DNS response data length is not checked (can be set to arbitrary value from a packet); the number of DNS queries/responses (set in DNS header) is not checked against the data present; the length byte of a domain name in a DNS query/response is not checked and is used for internal memory operations.
+CVE-2020-25109 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.2.31    OUT-OF-BOUNDS READ CWE-125
+The function in Nut/Net that processes DNS questions/responses has several issues: there is no check on whether a domain name is NULL-terminated; the DNS response data length is not checked (can be set to arbitrary value from a packet); the number of DNS queries/responses (set in DNS header) is not checked against the data present; the length byte of a domain name in a DNS query/response is not checked and is used for internal memory operations.
+CVE-2020-25110 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+3.2.32    OUT-OF-BOUNDS WRITE CWE-787
+The function in Nut/Net that processes DNS questions/responses has several issues: there is no check on whether a domain name is NULL-terminated; the DNS response data length is not checked (can be set to arbitrary value from a packet); the number of DNS queries/responses (set in DNS header) is not checked against the data present; the length byte of a domain name in a DNS query/response is not checked and is used for internal memory operations.
+CVE-2020-25111 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.33    OUT-OF-BOUNDS WRITE CWE-787
+Vulnerabilities in uIP-Contiki-OS (EOL) provide insufficient checks for the IPv4/IPv6 header length and inconsistent checks for the IPv6 header extension lengths, which may allow an attacker to corrupt memory.
+CVE-2020-25112 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is  (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Various
+
+3.4 RESEARCHER
+Daniel dos Santos, Stanislav Dashevskyi, Jos Wetzels, and Amine Amri of Forescout Research Labs reported these vulnerabilities to CISA.
+4. MITIGATIONS
+
+uIP is EOL (end-of-life). See general recommendations below. 
+uIP-Contiki-OS is EOL. See general recommendations below.
+picoTCP is EOL. See general recommendations below.
+The maintainers of FNET recommend users update to Version 4.7.0 or later. 
+The maintainers of uIP-Contiki-NG recommend users update to the latest version.
+The maintainers of open-iscsi recommend users update to the latest version.
+Contact the maintainers of picoTCP-NG for recommended updates.
+Contact the maintainers of Nut/Net and find the latest version on their website.
+
+Additional vendors affected by the reported vulnerabilities have also released security advisories related to their affected products. Those advisories are as follows:
+
+Devolo
+EMU Electronic AG
+FEIG
+Genetec
+Harting
+Hensoldt
+Microchip
+Nanotec
+NT-Ware
+Tagmaster
+Siemens
+Uniflow
+Yanzi Networks
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+Use an internal DNS server that performs DNS-over-HTTPS for lookups.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

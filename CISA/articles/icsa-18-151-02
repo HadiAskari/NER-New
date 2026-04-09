@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.3
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: GE
+Equipment: MDS PulseNET and MDS PulseNET Enterprise
+Vulnerabilities: Improper Authentication, Improper Restriction of XML External Entity Reference, Relative Path Traversal
+
+2. RISK EVALUATION
+Exploitation of these vulnerabilities may allow elevation of privilege and exfiltration of information on the host platform.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+GE reports that the vulnerabilities affect the following MDS PulseNET products:
+
+PulseNET Version 3.2.1 and prior and,
+PulseNET Enterprise Version 3.2.1 and prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1   IMPROPER AUTHENTICATION CWE-287
+Java Remote Method Invocation (RMI) input port may be exploited to allow unauthenticated users to launch applications and support remote code execution through Web Services.
+CVE-2018-10611 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.2   IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE ('XXE') CWE-611
+Multiple variants of XML External Entity (XXE) attacks may be used to exfiltrate data from the host Windows platform.
+CVE-2018-10613 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.3   RELATIVE PATH TRAVERSAL CWE-23
+Directory traversal may lead to files being exfiltrated or deleted on the host platform.
+CVE-2018-10615 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+Critical Infrastructure Sectors: Energy, Water and Wastewater Systems, and others
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: United States
+
+3.4 RESEARCHER
+rgod reported the vulnerabilities to Zero Day Initiative (ZDI).
+4. MITIGATIONS
+GE has modified the product architecture and software of PulseNET. The latest version mitigates these specific vulnerabilities. GE encourages users to update PulseNET to Version 4.1 or newer to eliminate these vulnerabilities.
+Updates for PulseNET are available at:
+http://www.gegridsolutions.com/Communications/MDS/PulseNET_Download.aspx  
+Updates to PulsetNET Enterprise are available at:
+http://www.gegridsolutions.com/Communications/MDS/PulseNETEnt_Download.aspx  
+In addition, GE recommends securing the PulseNET server using a defense in depth approach. Some key security considerations when deploying the PulseNET application include ensuring:
+
+Electronic and physical access to the PulseNET server is limited to only authorized individuals and clients
+The host server is dedicated to the PulseNET application only
+The PulseNET server is not accessible from the Internet
+The principle of least privilege is applied to the host operating system
+The PulseNET server is appropriately hardened and maintained to the current patch level as prescribed by the OEM
+The PulseNET server is restricted to communicating with MDS hosts only.
+
+GE has published a product bulletin with mitigation for these vulnerabilities on their webpage at the following location:
+http://www.gegridsolutions.com/app/DownloadFile.aspx?prod=pulsenet&type=9&file=1 (login required).
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

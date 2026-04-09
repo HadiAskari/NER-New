@@ -1,0 +1,85 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.2
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: GMS600, PWC600, and Relion 670/650/SAM600-IO
+Vulnerability: Improper Access Controls
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-343-01 Hitachi Energy GMS600, PWC600, and Relion that was published December 9, 2021, on the ICS webpage at cisa.gov/ics. 
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker with user credentials to bypass security controls enforced by the product, which may lead to unauthorized modifications on data/firmware, and/or permanent disabling of the product.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Hitachi Energy GMS600 and PWC600 circuit breaker monitoring systems are affected:
+
+GMS600: Version 1.2.0
+GMS600: Version 1.3.0
+GMS600: Version 1.3.1.0
+PWC600: Version 1.1.0.0
+PWC600: Version 1.1.0.1
+PWC600: Version 1.0.1.0
+PWC600: Version 1.0.1.1
+PWC600: Version 1.0.1.3
+PWC600: Version 1.0.1.4
+Relion 670/650 series: Version 2.2.0, all revisions
+Relion 670/650/SAM600-IO series: Version 2.2.1, all revisions
+Relion 670 series: Version 2.2.2, all revisions
+Relion 670 series: Version 2.2.3, revisions up to 2.2.3.4
+Relion 670/650 series: Version 2.2.4, all revisions
+Relion 670/650/SAM600-IO series: Version 2.2.5, revisions up to 2.2.5.1
+Relion 670/650 series: Version 2.1, all revisions
+Relion 670 series: Version 2.0, all revisions
+Relion 650 series: Version 1.3, all revisions
+Relion 650 series: Version 1.2, all revisions
+Relion 650 series: Version 1.1, all revisions
+Relion 650 series: Version 1.0, all revisions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER ACCESS CONTROLS CWE-284
+An attacker could exploit this vulnerability by first gaining access to credentials of any account or have access to a session ticket issued for an account. After gaining access via the configuration tool that accesses the proprietary Open Data-base Connectivity (ODBC) protocol (TCP 2102), the database table can be manipulated for privilege escalation, which then allows unauthorized modification or permanent disabling of the device.
+CVE-2021-35534 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION:  Switzerland
+
+4.4 RESEARCHER
+A Department of Energy CyTRICS researcher from Idaho National Laboratory reported this vulnerability to Hitachi Energy.
+5. MITIGATIONS
+Hitachi Energy recommends upgrading to the latest version of their software when it becomes available:
+
+Relion 670 series Version 2.2.3: Update to Version 2.2.3.5
+Relion 670/650/SAM600-IO series Version 2.2.5: Update to Version 2.2.5.2
+Relion 650 series Version 1.3: Update to Version 1.3.0.8
+Relion 650 series Version 1.2: Update to Version 1.3
+
+--------- Begin Update A Part 1 of 1 --------- 
+
+Relion 670 series Version 2.2.3 to 2.2.3.4: Update to Version 2.2.3.5 
+Relion 670/650/SAM600-IO series Version 2.2.5 to revision 2.2.5.1: Update to Version 2.2.5.2 
+Relion 670/650 series Version 2.1, all revisions: Update to Version 2.1.0.5 
+
+--------- End Update A Part 1 of 1 --------- 
+For other affected versions, please follow mitigation factors in Hitachi Energy’s advisories.Hitachi Energy recommends the following security practices and firewall configurations to help protect process control networks from attacks that originate from outside the network:Physically protect process control systems from direct access by unauthorized personnel.
+
+Do not directly connect to the Internet.
+Separate from other networks by means of a firewall system that has a minimal number of ports exposed.
+Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails.
+Limit open database connectivity (ODBC) protocol for device configuration within the substation only.
+Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+
+For additional information and support please contact your product provider or Hitachi Energy service organization. For contact information, visit Hitachi Energy contact-centers.
+Please see the Hitachi Energy PWC600, GMS600, and Relion advisories for additional mitigation and update information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

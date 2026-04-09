@@ -1,0 +1,49 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: SAUTER Controls 
+Equipment: Nova 200–220 Series (PLC 6) 
+Vulnerabilities: Missing Authentication for Critical Function, Cleartext Transmission of Sensitive Information 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow unauthorized visibility to sensitive information and remote code execution. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following firmware versions of SAUTER Controls Nova, a series of programmable logic controllers (PLCs), are affected: 
+
+Nova 220 (EYK220F001) DDC with BACnet connection: Firmware version 3.3-006 and prior with BACnetstac version 4.2.1 and prior 
+Nova 230 (EYK230F001) DDC with BACnet connection: Firmware version 3.3-006 and prior with BACnetstac version 4.2.1 and prior 
+Nova 106 (EYK300F001) BACnet communication card: Firmware version 3.3-006 and prior with BACnetstac version 4.2.1 and prior 
+moduNet300 (EY-AM300F001, EY-AM300F002): Firmware version 3.3-006 and prior with BACnetstac version 4.2.1 and prior 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+SAUTER Controls Nova 200–220 Series with firmware version 3.3-006 and prior and BACnetstac version 4.2.1 and prior allows the execution of commands without credentials. As Telnet and file transfer protocol (FTP) are the only protocols available for device management, an unauthorized user could access the system and modify the device configuration, which could result in the unauthorized user executing unrestricted malicious commands. 
+CVE-2023-0052 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+SAUTER Controls Nova 200–220 Series with firmware version 3.3-006 and prior and BACnetstac version 4.2.1 and prior have only FTP and Telnet available for device management. Any sensitive information communicated through these protocols, such as credentials, is sent in cleartext. An attacker could obtain sensitive information such as user credentials to gain access to the system. 
+CVE-2023-0053 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+3.4 RESEARCHER
+Jairo Alonso Ortiz, Aarón Flecha Menéndez and Iñaki Lázaro Ayanz of S21Sec reported these vulnerabilities to CISA.
+4. MITIGATIONS
+SAUTER Controls has stated that this product line is no longer supported, as it was discontinued in 2016. SAUTER Controls recommends users take all necessary measures to protect the integrity of building automation network access, using all appropriate means and policies to minimize risks. Sauter Controls recommends users evaluate and upgrade legacy systems to current solutions where necessary.  
+Affected users should contact SAUTER Controls for instructions on upgrading legacy systems. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

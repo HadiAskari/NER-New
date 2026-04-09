@@ -1,0 +1,39 @@
+
+Overview
+This advisory provides mitigation details for a vulnerability that impacts the Siemens CP 1604 and CP 1616 communication modules.Siemens has identified a vulnerability in the debugging interface of the CP 1604 and CP 1616 communications modules. Independent researchers Christopher Scheuring and Jürgen Bilberger from Daimler TSS GmbH coordinated disclosure of the vulnerability with Siemens. These products are used to connect PCI-104 systems to the PROFINET IO. By default, the debugging interface has been left enabled and can be accessed remotely on both devices. This remote access could lead to compromise of the system by denial of service (DoS), remote code execution, and loss of confidentiality. Siemens has produced a firmware update to mitigate the vulnerability.This vulnerability could be exploited remotely.
+Affected Products
+The following products are affected:
+
+CP 1604 and CP 1604 Microbox package (versions prior to 2.5.2), and
+CP 1604 and CP 1616 Onboard card of SIMANTIC IPCs (versions prior to 2.5.2).
+
+Impact
+The CP 1604 and CP 1616 interface cards have a debugging interface that is enabled by default and could be remotely accessible. By exploiting this vulnerability, an attacker can cause a DoS, remote code execution, and loss of confidentiality on the installed system. This could affect systems in the critical manufacturing, energy, and other sectors.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Siemens is a multinational company headquartered in Munich, Germany. Siemens develops products mainly in the energy, transportation, and healthcare sectors.The affected products, CP 1604 and CP 1616, integrate communications to the PROFINET IO. According to Siemens, these devices are deployed across several sectors including critical manufacturing, oil and gas, electric utilities, and others. Siemens asserts that these products are deployed worldwide.
+Vulnerability Characterization
+Vulnerability Overview
+Improper Access ControlCWE, http://cwe.mitre.org/data/definitions/284.html, CWE-284: Improper Access Control, Web site last accessed March 25, 2013.
+The CP 1604 and CP 1616 interface cards are used for connecting desktop workstations and PCI-104 systems to PROFINET IO. The firmware’s debugging interface is enabled by default, giving remote access to the debugging ports. By sending a specially crafted packet to Port 17185/UDP, an attacker could cause a DoS or execute arbitrary code.
+CVE-2013-0659NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0659, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+This vulnerability could be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a low skill would be able to exploit this vulnerability.
+Mitigation
+Siemens has produced a firmware update to mitigate the vulnerability. The file can be found here:
+
+Firmware update
+Siemens Security Advisory
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—(Update B) Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

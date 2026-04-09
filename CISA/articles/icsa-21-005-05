@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low skill level to exploit
+Vendor: Delta Electronics
+Equipment: DOPSoft
+Vulnerabilities: Out-of-bounds Write, Untrusted Pointer Dereference
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow arbitrary code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of DOPSoft, a software that supports the DOP-100 series HMI screens, are affected:
+
+DOPSoft Version 4.0.8.21 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS WRITE CWE-787
+The affected product is vulnerable to an out-of-bounds write while processing project files, which may allow an attacker to execute arbitrary code.
+CVE-2020-27275 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    UNTRUSTED POINTER DEREFERENCE CWE-822
+The affected product has a null pointer dereference issue while processing project files, which may allow an attacker to execute arbitrary code.
+CVE-2020-27277 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Kimiya, working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Delta Electronics has released an updated version DOPSoft, and recommends users install this update on all affected systems. Delta Electronics recommends the following mitigations:
+
+Update to the latest version of DOPSoft v4.00.10.17 or higher.
+Use DOPSoft v4.00.10.17 to open old project files (*.dpa) then save as new files. Following that, use the new saved project files and discard the old ones.
+Restrict interaction of the application with trusted files.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

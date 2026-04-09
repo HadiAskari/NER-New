@@ -1,0 +1,53 @@
+
+OVERVIEW
+Alexander Bolshev of Digital Security has identified an improper input vulnerability in the CodeWrights GmbH HART Device Type Manager (DTM) library utilized in PEPPERL+FUCHS HART Device DTM. CodeWrights GmbH has addressed the vulnerability with a new library, which Pepperl+Fuchs has begun to integrate.
+AFFECTED PRODUCTS
+The following products were developed with the vulnerable version of CodeWrights GmbH DTMStudio and are affected.
+DTM collection Level Control DTM 1.0.28 and prior for the following products:
+
+Barcon PPC-M / LHC-M,
+LHC-M51 / PPC-M51,
+LHCR-51 / LHCS-51,
+LUC-M,
+LUC-M V4.XX,
+Pulscon LTC, and
+Pulscon LTC V4.XX.
+
+DTM Collection CorrTran DTM Version 1.4.128.8 and prior for the following:
+
+CorrTran MV CMCM, and
+CorrTran AQUA CMCA.
+
+IMPACT
+The vulnerability causes a buffer overflow in the HART Device DTM crashing the Field Device Tool (FDT) Frame Application. The Frame Application must then be restarted. The Frame Application is primarily used for remote configuration. Exploitation of this vulnerability does not result in loss of information, control, or view by the control system of the HART devices on the 4-20 mA HART Loop.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+PEPPERL+FUCHS is an international company with headquarters in Mannheim, Germany. The company maintains offices worldwide. Pepperl+Fuchs manufactures products for fabrication and process automation including sensor manufacturing.
+The affected products are HART-based field devices. According to PEPPERL+FUCHS, these products are deployed across multiple critical infrastructure sectors. PEPPERL+FUCHS estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed February 05, 2015.
+
+Successful injection of specially crafted packets to the Device DTM causes a buffer overflow condition in the Frame Application. The FDT Frame Application becomes unresponsive, and the Device DTM stops functioning.
+CVE-2014-9191NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9191, web site last accessed February 05, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 1.8 has been assigned; the CVSS vector string is (AV:A/AC:H/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:H/Au:N/C:N/I:N/A:P, web site last accessed February 05, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This exploit on the FDT/DTM Frame Application is possible from any adjacent network that receives or passes packets from the HART Device DTM.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+This is a complex vulnerability. Crafting a working exploit for this vulnerability would be difficult. Compromised access that allows access to the packets transmitted to Frame Application is required for exploitation. This exploit also requires a specific timing to crash the Frame Application. This increases the difficulty of a successful exploit.
+MITIGATION
+PEPPERL+FUCHS has updated the software library for the DTM Collection Level Control DTM impacted. The updated software Version 1.0.29 is available at:
+http://www.pepperl-fuchs.com
+The DTM Collection CorrTran DTM does not have a software update at this time. PEPPERL+FUCHS recommends to physically protect CorrTran MV and CorrTran AQUA installations to prevent any malicious connection to the HART loop.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

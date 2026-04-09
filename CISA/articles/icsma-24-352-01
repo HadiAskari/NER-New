@@ -1,0 +1,67 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.0
+ATTENTION: Low attack complexity
+Vendor: Becton, Dickinson and Company (BD)
+Equipment: Diagnostic Solutions Products
+Vulnerability: Use of Default Credentials
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to use default credentials to access, modify, or delete sensitive data, which could impact the availability of the system or cause a system shutdown.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following BD Diagnostic Solutions products are affected:
+
+BD BACTEC Blood Culture System: All versions
+BD COR System: All versions
+BD EpiCenter Microbiology Data Management System: All versions
+BD MAX System: All versions
+BD Phoenix M50 Automated Microbiology System: All versions
+BD Synapsys Informatics Solution: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 USE OF DEFAULT CREDENTIALS CWE-1392
+Default credentials are used in the above listed BD Diagnostic Solutions products. If exploited, threat actors may be able to access, modify, or delete data, including sensitive information such as both protected health information (PHI) and personally identifiable information (PII). Exploitation of this vulnerability may allow an attacker to shut down or otherwise impact the availability of the system.
+CVE-2024-10476 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+BD reported this vulnerability to CISA.
+4. MITIGATIONS
+For each product in scope, a remediation solution has been developed by BD and is in the process of deployment through BD's Field Service Organization. A BD representative will proactively contact all impacted users to schedule remediation. BD expects to schedule the majority of product users in the first half of 2025.
+BD has already communicated to users with affected products and is working with them to update default credentials on affected products. For this vulnerability to be exploited, a threat actor will need direct access, whether logical or physical, into the clinical setting.
+Note: BD Synapsys Informatics Solution is only in scope of this vulnerability when installed on a NUC server. BD Synapsys Informatics Solution installed on a user-provided virtual machine or on the BD Kiestra SCU hardware is not in scope.
+The BD Diagnostic Solutions products' default credentials are intended for use by BD technical support teams for the above-mentioned BD products within the clinical setting. A threat actor would have to compromise the local network and, in some cases, may also need to be physically present at the instrument in order to use these product service credentials.
+The BD RSS platform has not been impacted by and is not in scope of this vulnerability.
+BD strongly recommends users to execute actions which strengthen the controls around the logical and physical environments where Diagnostic Solutions instruments are located. The following best practices are recommended for maintaining strong security measures to protect customer networks and associated medical devices including:
+
+Ensure access to potentially vulnerable devices is limited to authorized personnel
+Inform authorized users of issue, and ensure all relevant passwords are tightly controlled
+Monitor and log network traffic attempting to reach medical device management environments for suspicious activity
+Where possible, isolate affected devices in a secure VLAN or behind firewalls with restricted access that only permits communication with trusted hosts in other networks when needed
+Impacted devices do not require use of RDP ports and these should be disabled or blocked if enabled
+Ensure permissions on file shares are appropriately established and enforced, and monitor and log access for evidence of suspicious activity
+Disconnect devices from the network if connectivity is not necessary
+
+For more information, refer to BD's security bulletin.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely.
+5. UPDATE HISTORY
+
+December 17, 2024: Initial Publication
+January 28, 2025: Update A; Additional information was added to the Mitigation section.
+

@@ -1,0 +1,38 @@
+
+Overview
+Independent researcher Hinge of foofus.net has identified multiple vulnerabilitiesIOServer “Root Directory” Trailing Backslash Web Server Vuln, http://www.foofus.net/?page_id=616, Web site last accessed September 13, 2012. in IOServer’s OPC Server application. IOServer has released a new version of the product that partially mitigates these vulnerabilities. Hinge has tested the new version and found that it partially resolves these vulnerabilities. These vulnerabilities can be exploited remotely. Exploits that target these vulnerabilities are known to be publicly available.
+Affected Products
+The following IOServer OPC Server versions are affected:
+
+IOServer OPC Server 1.0.18.0 and earlier.
+
+Impact
+These vulnerabilities allow an attacker to download any file on the file system without authentication.Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+IOServer is an Australia-based company that produces the affected product, OPC Server, which is designed to exchange data between the human-machine interface and the programmable logic controllers. According to IOServer, OPC Server is deployed across several sectors including manufacturing, building automation, oil and gas, and electric utilities. IOServer estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+Vulnerability Characterization
+Vulnerability Overview
+CVE-2012-4680NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4680, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to these three closely related vulnerabilities. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:N/A:N).
+Insufficient Access ControlsCWE-219: Sensitive Data Under Web Root, http://cwe.mitre.org/data/definitions/219.html, Web site last accessed September 13, 2012.
+The application stores sensitive data under the Web document root with insufficient access control, which might make it accessible to unauthorized parties.
+Directory ListingCWE-538: File and Directory Information Exposure, http://cwe.mitre.org/data/definitions/538.html, Web site last accessed September 13, 2012.
+The product stores sensitive information in files or directories that are accessible to actors outside of the intended control sphere.
+Directory TraversalCWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'), http://cwe.mitre.org/data/definitions/22.html, Web site last accessed September 13, 2012.
+The software uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory. However, the software does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory. This allows arbitrary access to any file on the server.
+Vulnerability Details
+Exploitability
+These vulnerabilities could be exploited remotely.
+Existence of Exploit
+Exploits that target these vulnerabilities are publicly available.
+Difficulty
+An attacker with a low skill would be able to exploit these vulnerabilities.
+Mitigation
+IOServer has created a new version (Version 1.0.19.0IOServer version 1.0.19.0, http://www.ioserver.com/driver19.exe, Web site last accessed September 13, 2012.) to correct the directory traversal vulnerability (Vulnerability #3 above). The researcher has found that this new version still contains insufficient access controls (Vulnerability #1) and allows directory listings (Vulnerability #2) inside the root directory and its subdirectories.In addition to the patch, the researcher recommends that users ensure that the “Root Directory” configuration value has a trailing backslash. This helps to mitigate the remaining issues, although an attacker can still get a directory listing of the root directory itself (but not subdirectories) with this in place.ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01A—Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

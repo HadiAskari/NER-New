@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.3
+
+ATTENTION: Low skill level to exploit
+Vendor: Siemens
+Equipment: TD Keypad Designer
+Vulnerability: Uncontrolled Search Path Element
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a local low-privileged attacker to escalate their privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+According to Siemens the following products are affected:
+
+TD Keypad Designer: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+A DLL hijacking vulnerability exists in all versions of SIEMENS TD Keypad Designer which could allow an attacker to execute code with the permission of the user running TD Designer. The attacker must have write access to the directory containing the TD project file in order to exploit the vulnerability. A legitimate user with higher privileges than the attacker must open the TD project in order for this vulnerability to be exploited.
+CVE-2018-13806 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens ProductCERT reported this vulnerability to NCCIC.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations that users can apply to reduce the risk:
+
+Restrict write permissions to directories with TD project files to authorized users.
+Only open TD projects from trusted sources.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for Industrial Security (Download: https://www.siemens.com/cert/operational-guidelines-industrial-security), and following the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-198330 on their website:
+https://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not remotely exploitable.

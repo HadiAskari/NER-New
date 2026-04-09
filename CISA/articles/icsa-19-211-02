@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Prima Systems
+Equipment: FlexAir
+Vulnerabilities: OS Command Injection, Unrestricted Upload of File with Dangerous Type, Cross-site Request Forgery, Small Space of Random Values, Cross-site Scripting, Exposure of Backup file to Unauthorized Control Sphere, Improper Authentication, Use of Hard-coded Credentials
+
+2. RISK EVALUATION
+Exploitation of these vulnerabilities may allow an attacker to execute commands directly on the operating system, upload malicious files, perform actions with administrative privileges, execute arbitrary code in a user’s browser, discover login credentials, bypass normal authentication, and have full system access.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Prima Systems FlexAir, an access control platform, are affected:
+
+Prima FlexAir Versions 2.3.38 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OS COMMAND INJECTION CWE-78
+The application incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component, which could allow attackers to execute commands directly on the operating system.
+CVE-2019-7670 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.2    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+Improper validation of file extensions when uploading files could allow a remote authenticated attacker to upload and execute malicious applications within the application’s web root with root privileges.
+CVE-2019-7669 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.3    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+An unauthenticated user can send unverified HTTP requests, which may allow the attacker to perform certain actions with administrative privileges if a logged-in user visits a malicious website.
+CVE-2019-7281 has been assigned to this vulnerability. A CVSS v3 base score of 5.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.2.4    SMALL SPACE OF RANDOM VALUES CWE-334
+The session-ID is of an insufficient length and can be exploited by brute force, which may allow a remote attacker to obtain a valid session and bypass authentication.
+CVE-2019-7280 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.5    CROSS-SITE SCRIPTING CWE-79
+Parameters sent to scripts are not properly sanitized before being returned to the user, which may allow an attacker to execute arbitrary code in a user’s browser session in context of an affected site.
+CVE-2019-7671 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N).
+3.2.6    EXPOSURE OF BACKUP FILE TO AN UNAUTHORIZED CONTROL SPHERE CWE-530
+The application generates database backup files with a predictable name, and an attacker can use brute force to identify the database backup file name. A malicious actor can exploit this issue to download the database file and disclose login information, which can allow the attacker to bypass authentication and have full access to the system.
+CVE-2019-7667 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).
+3.2.7    IMPROPER AUTHENTICATION CWE-287
+The application allows improper authentication using the MD5 hash value of the password, which may allow an attacker with access to the database to login as admin without decrypting the password.
+CVE-2019-7666 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.8    USE OF HARD-CODED CREDENTIALS CWE-798
+The flash version of the web interface contains a hard-coded username and password, which may allow an authenticated attacker to escalate privileges.
+CVE-2019-7672 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.9    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The application allows the upload of arbitrary Python scripts when configuring the main central controller. These scripts can be immediately executed because of root code execution, not as a web server user, allowing an authenticated attacker to gain full system access.
+CVE-2019-9189 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Government Facilities, Healthcare and Public Health, Information Technology, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Slovenia
+
+3.4 RESEARCHER
+Gjoko Krstic of Applied Risk reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Prima Systems has released Version 2.5.12 to fix these issues.
+To update to the latest firmware, each user should select the “Check for Upgrade” option in the “Centrals” menu in the GUI. The user’s controller will connect to the Prima Systems server and update to the latest version.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends that users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

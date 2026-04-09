@@ -1,0 +1,65 @@
+
+OVERVIEW
+This advisory is a follow-up to the alert titled ICS-ALERT-15-224-02 Schneider Electric Modicon M340 PLC Station P34 Module VulnerabilitiesICS-CERT ALERT, https://ics-cert.us-cert.gov/alerts/ICS-ALERT-15-224-02, web site last accessed September 3, 2015. that was published August 12, 2015, to the NCCIC/ICS-CERT web site.
+Independent researcher Aditya K. Sood reported these vulnerabilities to ICS-CERT 2 weeks before his public presentation of these vulnerabilities at DEF CON on August 08, 2015. Schneider Electric was already working on resolving these vulnerabilities, because they had been reported earlier by independent researcher Juan Francisco Bolivar. Schneider Electric has released a firmware patch to mitigate these vulnerabilities.
+Exploits that target these vulnerabilities are publicly available.
+AFFECTED PRODUCTS
+Schneider Electric reports that the vulnerabilities affect the following Modicon PLC products:
+
+BMXNOC0401,
+BMXNOE0100,
+BMXNOE0110,
+BMXNOE0110H,
+BMXNOR0200H,
+BMXP342020,
+BMXP342020H,
+BMXP342030,
+BMXP3420302,
+BMXP3420302H, and
+BMXP342030H.
+
+IMPACT
+An attacker exploiting these vulnerabilities can cause the client browser to redirect to a remote file or execute Java script.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric is a Europe-based company that maintains offices in 190 countries worldwide.
+Their programmable logic controller (PLC) products are used in a wide variety of automation and control applications across all industrial, infrastructure, and building sectors. The affected PLC products, Modicon M340, are PLC devices. According to Schneider Electric, Modicon PLCs are deployed across several sectors including Dams; Defense Industrial Base; Energy; Food and Agriculture; Government Facilities; Nuclear Reactors, Materials, and Waste; Transportation Systems; Water and Wastewater Systems; and others. Schneider Electric estimates that these products are used primarily in the United States, China, Russia, and India.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+REMOTE FILE INCLUSIONCWE-98: Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion'), http://cwe.mitre.org/data/definitions/98.html, web site last accessed September 3, 2015.
+Remote File Inclusion allows an attacker to craft a specific URL referencing the PLC web server, which, when launched, will result in the browser redirecting to a remote file via a Java script loaded with the web page.
+CVE-2015-6461NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6461, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 3.2 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:S/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:S/C:P/I:P/A:N, web site last accessed September 3, 2015.
+REFLECTED CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), http://cwe.mitre.org/data/definitions/79.html, web site last accessed September 3, 2015.
+Reflected Cross-Site Scripting (nonpersistent) allows an attacker to craft a specific URL, which contains Java script that will be executed on the client browser.
+CVE-2015-6462NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6462, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 3.2 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:S/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:S/C:P/I:P/A:N, web site last accessed September 3, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities are not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user clicks on the specifically crafted web link.
+EXISTENCE OF EXPLOIT
+Exploits that target these vulnerabilities are publicly available.
+DIFFICULTY
+Crafting a working exploit for these vulnerabilities would be difficult. Social engineering is required to convince a person with HTTP access to the PLC web server to click on the specifically crafted web link. In addition, the attacker must know the IP address of the target PLC in order to craft the link. This decreases the likelihood of a successful exploit.
+MITIGATION
+Schneider Electric released a firmware patch for the listed products to address these vulnerabilities. It will initially only be available through Schneider Electric’s Customer Support teams and will be included in the next scheduled product firmware update.
+In addition, specific modules and firmware versions allow the HTTP/FTP server to be disabled through configuration settings, please consult your product documentation for further information.
+For more information on this vulnerability and detailed instructions, please see SEVD-2015-233-01 at the following location:
+http://www.schneider-electric.com/ww/en/download/document/SEVD-2015-233-01
+For other modules and firmware, Schneider Electric has produced a recommendations document that describes firewall and network architecture settings that can be used to mitigate these types of vulnerabilities (Resolution 207869, Mitigation of Vulnerabilities) available at:
+http://www.schneider-electric.com/ww/en/download/document/Res207869
+To obtain full details on the issues and assistance on how to protect your installation please contact your local Schneider Electric representative.
+ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed September 3, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed September 3, 2015. for more information on social engineering attacks.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+

@@ -1,0 +1,105 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Pepperl+Fuchs
+Equipment: WirelessHART-Gateway
+Vulnerabilities: Use of Hard-coded Credentials, Uncontrolled Resource Consumption, Reliance on Reverse DNS Resolution for a Security-critical Action, Path Traversal, Cross-site Scripting, Exposure of Sensitive Information to an Unauthorized Actor, Cleartext Storage of Sensitive Information in a Cookie, HTTP Request Smuggling, Sensitive Cookie Without 'HttpOnly' Flag, Cryptographic Issues
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may result in a denial-of-service condition, code execution, and code exposure.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of WirelessHART-Gateway industrial networking devices are affected:
+
+WHA-GW-F2D2-0-AS- Z2-ETH: Versions 3.0.7, 3.0.8, 3.0.9
+WHA-GW-F2D2-0-AS- Z2-ETH.EIP: Versions 3.0.7, 3.0.8, 3.0.9
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF HARD-CODED CREDENTIALS CWE-798
+The affected product allows active SSH and telnet services with hard-coded credentials.
+CVE-2021-34565 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+jQuery 3.0.0-rc.1 is vulnerable to a denial-of-service condition due to removing a logic a lowercased attribute names. Any attribute using a mixed-cased name for boolean attributes goes into an infinite recursion, exceeding the stack call limit.
+CVE-2016-10707 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    RELIANCE ON REVERSE DNS RESOLUTION FOR A SECURITY-CRITICAL ACTION CWE-350
+If the application is not externally accessible or uses IP-based access restrictions, attackers can use DNS rebinding to bypass any IP or firewall-based access restrictions by proxying through their target's browser. This vulnerability only affects Versions 3.0.7 through 3.0.8.
+CVE-2021-34561 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The filename parameter is vulnerable to unauthenticated path traversal attacks, enabling read access to arbitrary files on the server. This vulnerability only affects Version 3.0.7.
+CVE-2021-33555 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+jQuery Version 1.4.2 allows remote attackers to conduct cross-site scripting attacks via vectors related to use of the text method.
+CVE-2014-6071 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.6    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+jQuery versions prior to 1.9.0 are vulnerable to cross-site scripting attacks. The jQuery(strInput) function does not differentiate selectors from HTML in a reliable fashion. In vulnerable versions, jQuery determined whether the input was HTML by looking for the '<' character anywhere in the string, giving attackers more flexibility when attempting to deliver a malicious payload. In fixed versions, jQuery only deems the input to be HTML if it explicitly starts with the '<' character, limiting exploitability only to attackers who can control the beginning of a string.
+CVE-2012-6708 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.7    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+jQuery versions prior to 3.0.0 are vulnerable to cross-site scripting (XSS) attacks when a cross-domain Ajax request is performed without the dataType option, causing text/javascript responses to be executed.
+CVE-2015-9251 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.8    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+In jQuery versions between 1.0.3 and 3.5.0, passing HTML containing <option> elements from untrusted sources (even after sanitizing it) to one of jQuery's DOM manipulation methods (i.e., .html(), .append(), and others) may execute untrusted code. This vulnerability is patched in jQuery 3.5.0.
+CVE-2020-11023 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.9    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+In jQuery versions between 1.2 and 3.5.0, passing HTML from untrusted sources (even after sanitizing it) to one of jQuery's DOM manipulation methods (i.e. .html(), .append(), and others) may execute untrusted code. This vulnerability is patched in jQuery 3.5.0.
+CVE-2020-11022 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.10    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+jQuery versions prior to 3.4.0, as used in specific products, mishandles jQuery.extend(true, {}, ...) because of Object.prototype pollution. If an unsanitized source object contained an enumerable __proto__ property, it could extend the native Object.prototype.
+CVE-2019-11358 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.11    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+jQuery versions prior to 1.9.0 allow cross-site scripting attacks via the load method. The load method fails to recognize and remove "<script>" HTML tags that contain a whitespace character, "</script >", which results in the enclosed script logic to be executed.
+CVE-2020-7656 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.12    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The affected product contains a password field with autocomplete enabled. The stored credentials can be captured by an attacker who gains control over the user's computer.
+CVE-2021-34560 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.13    CLEARTEXT STORAGE OF SENSITIVE INFORMATION IN A COOKIE CWE-315
+Cookie stealing vulnerabilities within the application or browser allow an attacker to steal the user's credentials in Version 3.0.9.
+CVE-2021-34564 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.14    INCONSISTENT INTERPRETATION OF HTTP REQUESTS ('HTTP REQUEST SMUGGLING') CWE-444
+In the affected product, Versions 3.0.7 through 3.0.8 have a vulnerability that may allow remote attackers to rewrite links and URLs in cached pages to arbitrary strings.
+CVE-2021-34559 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N).
+3.2.15    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+In the affected product, Version 3.0.8, it is possible to inject arbitrary JavaScript into the application's response.
+CVE-2021-34562 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N).
+3.2.16    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The jQuery framework exchanges data using JavaScript object notation (JSON) without an associated protection scheme, which allows remote attackers to obtain the data via a web page that retrieves the data through a URL in the SRC attribute of a SCRIPT element and captures the data using other JavaScript code, aka "JavaScript Hijacking."
+CVE-2007-2379 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.17    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+jQuery versions prior to 1.6.3 contain a Cross-site scripting (XSS) vulnerability, which when using location.hash to select elements, allows remote attackers to inject arbitrary web script or HTML via a crafted tag.
+CVE-2011-4969 has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:N).
+3.2.18    SENSITIVE COOKIE WITHOUT 'HTTPONLY' FLAG CWE-1004
+In the affected product, Versions 3.0.8 and 3.0.9, the HttpOnly attribute is not set on a cookie, which allows the cookie's value to be read or set by client-side JavaScript.
+CVE-2021-34563 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.19    CRYPTOGRAPHIC ISSUES CWE-310
+The TLS protocol 1.1 and 1.2 and the DTLS protocol 1.0 and 1.2, as used in OpenSSL, OpenJDK, PolarSSL, and other products, do not properly consider timing side-channel attacks on a MAC check requirement during the processing of malformed CBC padding, which allows remote attackers to conduct distinguishing attacks and plaintext-recovery attacks via statistical analysis of timing data for crafted packets, aka the “Lucky Thirteen” issue.
+CVE-2013-0169 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+CERT@VDE coordinated these vulnerabilities with Pepperl+Fuchs.
+4. MITIGATIONS
+Pepperl+Fuchs recommends the following workarounds:
+
+Minimize network exposure for affected products and ensure they are not accessible via the Internet.
+Isolate affected products from the corporate network.
+If remote access is required, use secure methods such as virtual private networks (VPNs).
+
+See CERT@VDE's advisory VDE-2021-027 for more information 
+CISA recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

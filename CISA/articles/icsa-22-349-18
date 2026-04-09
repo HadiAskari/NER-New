@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Siemens 
+Equipment: SCALANCE SC-600 Family 
+Vulnerability: Out-of-bounds Write, Use After Free, Allocation of Resources Without Limits or Throttling 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a denial-of-service condition, corrupt memory, or potentially execute custom code. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siemens SCALANCE SC-600 Family, a software management platform, are affected: 
+
+SCALANCE SC622-2C (6GK5622-2GS00-2AC2): Versions prior to 3.0 
+SCALANCE SC626-2C (6GK5626-2GS00-2AC2): Versions prior to 3.0 
+SCALANCE SC632-2C (6GK5632-2GS00-2AC2): Versions prior to 3.0 
+SCALANCE SC636-2C (6GK5636-2GS00-2AC2): Versions prior to 3.0 
+SCALANCE SC642-2C (6GK5642-2GS00-2AC2): Versions prior to 3.0 
+SCALANCE SC646-2C (6GK5646-2GS00-2AC2): Versions prior to 3.0 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 OUT-OF-BOUNDS WRITE CWE-787 
+Siemens SCALANCE SC-600 Family versions prior to 3.0; the zlib before 1.2.12 allows memory corruption when deflating (i.e., when compressing) if the input has a plethora of distant matches. 
+CVE-2022-25032 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.2 USE AFTER FREE CWE-416
+Siemens SCALANCE SC-600 Family versions prior to 3.0 is vulnerable to a use-after-free in Busybox 1.35-x's awk applet. The vulnerability could cause a denial of service and possible code execution when processing a crafted awk pattern in the copyvar function. 
+CVE-2022-30065 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.3 ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+Siemens SCALANCE SC-600 Family versions prior to 3.0: 
+
+A malicious server can serve excessive amounts of "Set-Cookie:" headers in an HTTP response to curl and curl stores all of them. 
+A sufficiently large amount of (big) cookies submit subsequent HTTP requests to this or other servers to which the cookies match, create requests that become larger than the threshold that curl uses internally to avoid sending large requests and instead returns an error. 
+This may cause a denial-of-service state and might remain for as long as the same cookies are kept, match and haven't expired. 
+
+CVE-2022-32205 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.4 ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+Siemens SCALANCE SC-600 Family versions prior to 3.0 supports "chained" HTTP compression algorithms—meaning that a server response can be compressed multiple times and potentially with different algorithms, allowing a malicious server to insert a virtually unlimited number of compression steps and spending enormous amounts of allocated heap memory that cause out of memory errors. 
+CVE-2022-32206 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA. 
+4. MITIGATIONS
+Siemens has prepared a fix and recommends updating to the following: 
+
+SCALANCE SC622-2C (6GK5622-2GS00-2AC2): Version 3.0 or later
+SCALANCE SC626-2C (6GK5626-2GS00-2AC2): Version 3.0 or later
+SCALANCE SC632-2C (6GK5632-2GS00-2AC2): Version 3.0 or later 
+SCALANCE SC636-2C (6GK5636-2GS00-2AC2): Version 3.0 or later 
+SCALANCE SC642-2C (6GK5642-2GS00-2AC2): Version 3.0 or later 
+SCALANCE SC646-2C (6GK5646-2GS00-2AC2): Version 3.0 or later 
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends  configuring the environment according to Siemens’ operational guidelines for industrial security and following the recommendations in the product manuals. 
+For more information, see Siemens Security Advisory SSA-333517 in HTML or CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

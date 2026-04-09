@@ -1,0 +1,46 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.1
+
+ATTENTION: Exploitable remotely/Low skill level to exploit
+Vendor: AVEVA Software, LLC (AVEVA)
+Equipment: InTouch Access Anywhere
+Vulnerability: Cross-site Scripting
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may allow attackers to obtain sensitive information and/or execute Javascript or HTML code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of InTouch Access Anywhere, remote access software, use the vulnerable jQuery library:
+
+2017 Update 2 and prior.
+
+Vulnerable versions of jQuery are those prior to Version 3.0.0
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+jQuery before Version 3.0.0 is vulnerable to cross-site scripting (XSS) attacks when a cross-domain Ajax request is performed without the dataType option, causing text/javascript responses to be executed.
+CVE-2015-9251 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, and Water and Wastewater
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+3.4 RESEARCHER
+Google’s Security Team reported this vulnerability to AVEVA, who then reported it to NCCIC.
+4. MITIGATIONS
+AVEVA recommends users install update “InTouch Access Anywhere 2017 Update 2b” or later, which can be downloaded from:
+https://softwaresupportsp.schneider-electric.com/#/producthub/details?id=5061 (login required)
+AVEVA has published Security Bulletin LFSEC00000126. It can be found at the following location:
+https://sw.aveva.com/hubfs/assets-2018/pdf/security-bulletin/SecurityBulletin_LFSec126.pdf
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

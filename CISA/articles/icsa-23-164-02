@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+​CVSS v3 7.3
+​ATTENTION: Exploitable remotely/low attack complexity
+​Vendor: Rockwell Automation
+​Equipment: FactoryTalk Services Platform
+​Vulnerabilities: Use of Hard-coded Cryptographic Key, Improper Authentication, Origin Validation Error
+
+2. RISK EVALUATION
+​Successful exploitation of these vulnerabilities could allow an attacker to disclose information, load malicious configuration files, or elevate privileges from a user to an administrator.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+​The following Rockwell Automation products are affected:
+
+​FactoryTalk Policy Manager: v6.11.0
+​FactoryTalk System Services: v6.11.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 ​USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+​Hard-coded cryptographic key vulnerabilities could lead to privilege escalation. FactoryTalk System Services uses a hard-coded cryptographic key to generate administrator cookies. This vulnerability could allow a local authenticated non-admin user to generate an invalid administrator cookie giving them administrative privileges to the FactoryTalk Policy Manger database. The threat actor could make malicious changes to the database to be deployed when a legitimate FactoryTalk Policy Manager user deploys a security policy model. User interaction is required to successfully exploit this vulnerability.
+​CVE-2023-2637 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:H).
+3.2.2 ​IMPROPER AUTHENTICATION CWE-287
+​Improper authorization in FTSSBackupRestore.exe could lead to the loading of malicious configuration archives. FactoryTalk System Services does not verify that backup configuration archives are password protected. This vulnerability could allow a local authenticated non-admin user to craft a malicious backup archive without password protection to be loaded by FactoryTalk System Services as a valid backup when a restore procedure takes place. This vulnerability requires user interaction for successful exploitation.
+​CVE-2023-2638 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:N/I:N/A:H).
+3.2.3 ​ORIGIN VALIDATION ERROR CWE-346
+​Origin validation errors could lead to information disclosure. The underlying feedback mechanism of FactoryTalk System Services that transfers the FactoryTalk Policy Manager rules to relevant devices on the network does not verify that the origin of the communication is from a legitimate local client device. This could allow a threat actor to craft a malicious website that, when visited, would send a malicious script to connect to the local WebSocket endpoint and wait for events as if it was a valid client device. If successfully exploited, this could allow a threat actor to receive information, including whether FactoryTalk Policy Manager is installed or the entire security policy. User interaction is required for successful vulnerability exploitation.
+​CVE-2023-2639 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+​CRITICAL INFRASTRUCTURE SECTORS: Chemical, Commercial Facilities, Critical Manufacturing, Energy, Government Facilities, Water and Wastewater Systems
+​COUNTRIES/AREAS DEPLOYED: Worldwide
+​COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+​Sharon Brizinov of Claroty Research - Team82 reported these vulnerabilities to CISA.
+4. MITIGATIONS
+​Rockwell Automation encourages users to upgrade to the latest version:
+
+​Upgrade to v6.30.00 or later.
+
+​CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+​Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+​Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+​When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+​CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+​CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+​Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+​Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+​No known public exploits specifically target these vulnerabilities.

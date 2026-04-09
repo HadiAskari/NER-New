@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.4
+ATTENTION: Low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC RTLS Locating Manager
+Vulnerabilities: Incorrect Default Permissions, Unquoted Search Path or Element
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a privileged local user to escalate privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports that the vulnerabilities affect the following versions of SIMATIC RTLS Locating Manager: 
+
+SIMATIC RTLS Locating Manager, all versions prior to v2.10.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INCORRECT DEFAULT PERMISSIONS CWE-276
+The start-stop scripts for the services of the affected application could allow a local attacker to include arbitrary commands that are executed when services are started or stopped interactively by system administrators. 
+CVE-2020-10049 has been assigned to this vulnerability. A CVSS v3 base score of 7.9 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N).
+3.2.2    INCORRECT DEFAULT PERMISSIONS CWE-276
+The directory of service executables of the affected application could allow a local attacker to include arbitrary commands that are executed with SYSTEM privileges when the system restarts. 
+CVE-2020-10050 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N).
+3.2.3    UNQUOTED SEARCH PATH OR ELEMENT CWE-428
+Multiple services of the affected application are executed with SYSTEM privileges while the call path is not quoted. This could allow a local attacker to inject arbitrary commands that are executed instead of the legitimate service. 
+CVE-2020-10051 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends that users apply the update of the SIMATIC RTLS Locating Manager: v2.10.2
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Apply security hardening of the Windows Server, where the RTLS Locating Manager is installed on, in accordance with your corporate security policies or up-to-date hardening guidelines.
+Ensure that only trusted persons have access to the system and avoid the configuration of additional local accounts on the server.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for Industrial Security, and following the recommendations in the product manuals.
+Follow this link for additional information on Industrial Security by Siemens.
+For more information on these vulnerabilities and the associated mitigations, please see Siemens security advisory SSA-251935
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

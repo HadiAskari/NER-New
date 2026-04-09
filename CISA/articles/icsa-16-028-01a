@@ -1,0 +1,70 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-16-028-01 Westermo Industrial Switch Hard-Coded Certificate Vulnerability that was published January 28, 2016, on the NCCIC/ICS-CERT web site.
+Independent researcher Neil Smith has identified a hard-coded certificate vulnerability in Westermo’s industrial switches. Westermo has developed an update to allow the web interface certificate to be changed. Neil Smith has tested the update to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely after a successful man-in-the-middle attack.
+AFFECTED PRODUCTS
+The following Westermo Products are affected:
+
+WeOS versions older than Version 4.19.0 (indication, subject to change).
+
+This software is used within the following Westermo Product Lines:
+
+Falcon,
+Lynx,
+Wolverine,
+Corazon,
+Viper, and
+Redfox series.
+
+IMPACT
+Certificates provide a key used by the switch software to encrypt and decrypt communications. The detrimental impact of the certificate being hard coded is that the key cannot be changed. Once the key is compromised, a malicious party has access to the decrypted network traffic from the device. A malicious party can then read and modify traffic that is intercepted and decrypted.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Westermo is a Sweden-based company that maintains offices in several countries around the world, including the US, Austria, Belgium, China, France, Germany, Singapore, Switzerland, Taiwan, and the UK.
+The affected products, industrial switches, are networking devices that route and provide connectivity to SCADA systems. According to Westermo, the switches are deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, Water and Wastewater Systems, and others. These products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+HARD-CODED CREDENTIALSCWE-255: Credentials Management, http://cwe.mitre.org/data/definitions/255.html, web site last accessed January 28, 2016.
+The SSL keys used by the switches to provide secure communications are hard coded. Malicious parties could obtain the key, stage a Man-in-the-Middle attack posing to be a WeOS device, and then obtain credentials entered by the end-user. With those credentials, the malicious party would have authenticated access to that device.
+CVE-2015-7923NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7923, web site last accessed August 23, 2016. has been assigned to this vulnerability. A CVSS v3 base score of 9.0 and a temporal score of 8.2 have been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P/RL:T/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P/RL:T/RC:C, web site last accessed January 28, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely after a successful Man-in-the-Middle attack.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability after first staging a successful Man-in-the-Middle attack.
+MITIGATION
+--------- Begin Update A Part 1 of 1 --------
+Westermo has released a patch that allows changing default certificates to custom certificates. Directions for changing certificates can be found in the WeOS Management Guide Section 7.1.8 or by contacting Westermo Support at +46 16 428000.
+--------- End Update A Part 1 of 1 ----------
+In the meanwhile, users should follow the procedure below to mitigate the vulnerability:
+
+Devices with WeOS versions older than 4.15.2 should be upgraded to the latest release in order to get the capability to replace the default web certificate.
+Upload a custom certificate, preferably from an established internal or external PKI. See Section 7.1.8 in the WeOS Management Guide.
+Login to the CLI (console or SSH).
+Issue the following commands (where <LABEL> is the label defined during Step 2 as described in the WeOS Management Guide):
+
+config
+web
+certificate <LABEL>
+exit
+exit
+copy run start
+
+
+
+Self-signed certificates should be avoided, because they provide a similar attack vector because the keys encrypting traffic are not established until after the first access of the device.
+Web access can either be disabled completely or allowed only from the most secure network as it reduces the exposure of this vulnerability to that network. The attacker must gain access to the more secure network in order to stage an attack.
+ICS-CERT recommends that users change default credentials in devices every 30 to 90 days based on an established period according to the company’s risk appraisal. Certificates should be safeguarded to prevent compromise.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

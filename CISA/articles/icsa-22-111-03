@@ -1,0 +1,73 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: MicroSCADA Pro/X SYS600
+Vulnerabilities: Observable Discrepancy, HTTP Request Smuggling, Classic Buffer Overflow, Improper Certificate Validation, Improper Restriction of Operations within the Bounds of a Memory Buffer, Exposure of Sensitive Information to an Unauthorized Actor
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to eavesdrop on traffic between network source and destination, gain unauthorized access to information, or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of MicroSCADA Pro/X SYS600, a SCADA product, are affected:
+
+SYS600: Versions 10.1.1 and prior (OpenSSL Vulnerability)
+SYS600: Versions 9.4 FP1 through 10.2.1 (Node.js vulnerabilities)
+SYS600: Versions 10.0.0 through 10.2.1 (PostgreSQL vulnerabilities)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OBSERVABLE DISCREPANCY CWE-203
+The Raccoon attack exploits a flaw in the TLS specification that can lead to an attacker being able to compute the pre-master secret in connections which have used a Diffie-Hellman (DH) based ciphersuite. This would result in the attacker being able to eavesdrop on all encrypted communications sent over that TLS connection. The attack can only be exploited if an implementation re-uses a DH secret across multiple TLS connections. Note this vulnerability only impacts DH ciphersuites and not ECDH ciphersuites. This vulnerability affects OpenSSL 1.0.2, which is out of support and no longer receiving public updates. OpenSSL 1.1.1 is not vulnerable to this issue. Fixed in OpenSSL 1.0.2w (Affected 1.0.2-1.0.2v).
+CVE-2020-1968 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2    INCONSISTENT INTERPRETATION OF HTTP REQUESTS ('HTTP REQUEST SMUGGLING') CWE-444
+Node.js versions prior to 10.23.1, 12.20.1, 14.15.4, 15.5.1 allow two copies of a header field in an HTTP request (for example, two transfer-encoding header fields). In this case, Node.js identifies the first header field and ignores the second. This can lead to HTTP request smuggling.
+CVE-2020-8265 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    INCONSISTENT INTERPRETATION OF HTTP REQUESTS ('HTTP REQUEST SMUGGLING') CWE-444
+Node.js versions prior to 10.23.1, 12.20.1, 14.15.4, 15.5.1 allow two copies of a header field in an HTTP request (for example, two transfer-encoding header fields). In this case, Node.js identifies the first header field and ignores the second. This can lead to HTTP request smuggling.
+CVE-2020-8287 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.2.4    INCONSISTENT INTERPRETATION OF HTTP REQUESTS ('HTTP REQUEST SMUGGLING') CWE-444
+Node.js < 12.18.4 and < 14.11 can be exploited to perform HTTP desync attacks and deliver malicious payloads to unsuspecting users. The payloads can be crafted by an attacker to hijack user sessions, poison cookies, perform clickjacking, and a multitude of other attacks depending on the architecture of the underlying system. The attack is possible due to a bug in processing of carrier-return symbols in the HTTP header names.
+CVE-2020-8201 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.5    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The implementation of realpath in libuv < 10.22.1, < 12.18.4, and < 14.9.0 used within Node.js incorrectly determined the buffer size, which can result in a buffer overflow if the resolved path is longer than 256 bytes.
+CVE-2020-8252 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    IMPROPER CERTIFICATE VALIDATION CWE-295
+TLS session reuse can lead to host certificate verification bypass in node version < 12.18.0 and < 14.4.0.
+CVE-2020-8172 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.7    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+napi_get_value_string_*() allows various kinds of memory corruption in node < 10.21.0, 12.18.0, and < 14.4.0.
+CVE-2020-8174 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+A vulnerability was found in postgresql in versions prior to 13.3, 12.7, 11.12, 10.17, and 9.6.22. While modifying certain SQL array values, missing bounds checks let authenticated database users write arbitrary bytes to a wide area of server memory. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability.
+CVE-2021-32027 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.9    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+A flaw was found in postgresql. Using an INSERT ... ON CONFLICT ... DO UPDATE command on a purpose-crafted table, an authenticated database user could read arbitrary bytes of server memory. The highest threat from this vulnerability is to data confidentiality.
+CVE-2021-32028 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends users update to Versions 10.3 or later. For obtaining the update users should contact the Hitachi Energy technical support team. If users don't know who to contact, they should reach the closest Hitachi Energy sales office.
+Hitachi Energy also recommends the following general mitigation factors/workarounds:
+Hitachi Energy recommends security practices and firewall configurations to help protect process control networks from attacks that originate from outside the network. Such practices include physically protecting process control systems from direct access by unauthorized personnel, having no direct connections to the Internet, separating from other networks by means of a firewall system that has a minimal number of ports exposed, and others that must be evaluated case by case. Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails. Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+For more information see Hitachi Energy advisory 8DBD000075
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

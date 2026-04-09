@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity/public exploits are available
+Vendor: Mobile Industrial Robots (MiR)
+Equipment: MiR100, MiR200, MiR250, MiR500, MiR1000, MiR Fleet
+Vulnerabilities: Improper Access Control, Integer Overflow or Wraparound, Exposure of Resource to Wrong Sphere, Missing Authentication for Critical Function, Missing Encryption of Sensitive Data, Exposure of Sensitive Information to an Unauthorized Actor, Weak Encoding for Password, Incorrect Default Permissions, Failure to Handle Incomplete Element
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to privilege escalation, data exfiltration, control of the robot, and a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+MiR reports the vulnerabilities affect the following products: 
+
+MiR100, MiR200, MiR250, MiR500, MiR1000 in MiR Robot Software versions prior to 2.10.2.1
+MiR Fleet in MiR Fleet Software versions prior to 2.10.2.1 
+
+NOTE: the MiR Hook and Shelf Carrier are not affected.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+An authenticated local attacker with an account on the MiR robot operating system can exploit a Linux kernel vulnerability to perform privilege escalation to root or cause a denial-of-service condition.
+CVE-2017-7184 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+A handler in the Linux kernel prior to Version 4.11 allows local users to cause a denial-of-service condition or other unspecified impact(s) via use of a large value.
+CVE-2017-18255 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    EXPOSURE OF RESOURCE TO WRONG SPHERE CWE-668
+Two APIs to the Robot Operating System (ROS) used in MiR robots were accessible from both wired and wireless network interfaces. Using these APIs, an attacker could take control of the robot, cause a denial-of-service condition, and exfiltrate data over the web interface.
+CVE-2020-10271 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Robot Operating System (ROS) default packages are used, which expose the computational graph without any authentication. This could allow an attacker with access to the internal wireless and wired networks to take control of the robot.
+CVE-2020-10272 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+An attacker with physical access to the hard drive, or an attacker with a local account on the robot operating system could extract sensitive data.
+CVE-2020-10273 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.6    IMPROPER ACCESS CONTROL CWE-284
+MiR robots shipped before June 2020 had default passwords set for the SICK safety PLC. An attacker with access to the internal network of the robot could use the default credentials to manipulate the safety PLC, effectively disabling the emergency stop function. 
+CVE-2020-10276 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7    IMPROPER ACCESS CONTROL CWE-284
+MiR robots ship with the option to boot from a connected USB drive. The ability to boot from USB is an insecure default configuration that is changeable by integrators. Integrators are informed and instructed in writing to evaluate disabling USB boot. If left enabled, an attacker with physical access to the robot could abuse this functionality to manipulate or exfiltrate data stored on the robot’s hard drive.
+CVE-2020-10277 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H).
+3.2.8    IMPROPER ACCESS CONTROL CWE-284
+The lack of a BIOS password is an insecure default configuration, changeable by integrators. Integrators are informed and instructed in writing to evaluate BIOS protection. 
+CVE-2020-10278 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.9    INCORRECT DEFAULT PERMISSIONS CWE-276
+MiR software versions prior to v2.8.3 contain system configurations with insecure defaults, allowing an authorized local attacker with access to the robot operating system (ROS) to perform privilege escalation or cause denial-of-service.
+CVE-2020-10279 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.10    FAILURE TO HANDLE INCOMPLETE ELEMENT CWE-239
+The Apache server on Port 80 hosting the web interface is vulnerable to a denial-of-service condition when an attacker spams incomplete HTTP headers, effectively blocking the access to the dashboard.
+CVE-2020-10280 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Healthcare and Public Health, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Denmark
+
+3.4 RESEARCHER
+Victor Mayoral Vilches of Alias Robotics reported these vulnerabilities to CISA.
+4. MITIGATIONS
+MiR recommends users upgrade affected products to the latest version. New software versions can be found on the MiR Distributor portal (login required).
+For more information, refer to MiR’s security advisories page.
+MiR instructs customers to explicitly change default credentials upon configuring the robots, including default SSID and password to the WiFi access point.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.

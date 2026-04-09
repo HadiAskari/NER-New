@@ -1,0 +1,55 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.7
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC HMI Panels
+Vulnerability: Cleartext Transmission of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to access sensitive information under certain circumstances.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SIMATIC HMI Basic Panels 1st Generation (incl. SIPLUS variants): All versions
+SIMATIC HMI Basic Panels 2nd Generation (incl. SIPLUS variants): All versions
+SIMATIC HMI Comfort Panels (incl. SIPLUS variants): All versions
+SIMATIC HMI KTP700F Mobile Arctic: All versions
+SIMATIC HMI Mobile Panels 2nd Generation: All versions
+SIMATIC WinCC Runtime Advanced: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Unencrypted communication between the configuration software and the respective device could allow an attacker to capture potential plain text communication and have access to sensitive information.
+CVE-2020-7592 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Richard Thomas and Tom Chothia of the University of Birmingham reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Avoid program transfer over large networks to prevent an attacker from sniffing potential unencrypted traffic.
+As much as possible, connect the engineering station (or device with the WinCC engineering software) directly to the HMI without using any network device in between.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-364335
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

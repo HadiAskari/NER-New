@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: SAE IT-systems
+Equipment: FW-50 Remote Telemetry Unit (RTU)
+Vulnerabilities: Cross-site Scripting, Path Traversal
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to execute remote code, disclose sensitive information, or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following version of FW-50 RTU, a modular telecontrol system, are affected:
+
+FW-50 RTU, Series: 5 Series; CPU-type: CPU-5B; Hardware Revision: 2; CPLD Revision: 6
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The software does not neutralize or incorrectly neutralizes user-controllable input before it is placed in the output used as a webpage that is served to other users.
+CVE-2020-10630 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H).
+3.2.2    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A specially crafted request could allow an attacker to view the file structure of the affected device and access files that should be inaccessible.
+CVE-2020-10634 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Murat Aydemir of Biznet Bilisim A.S. reported these vulnerabilities to CISA.
+4. MITIGATIONS
+SAE IT-systems has provided two options for a solution.
+
+Users can replace the CPU card with a new one. Find a contact person for information regarding the replacement CPU card. After obtaining a replacement CPU card, program the card with the new version of setIT software.
+All referenced vulnerabilities are related to the web server. Users may also disable the web server port.
+
+SAE IT-systems also recommends if the project web server port is not used, disable the port for security reasons.
+For information regarding disabling the project web server port contact the SAE IT-systems Hotline at:
+Phone: +49 221 / 59 808-55
+Email: service@sae-it.de
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,72 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: AVEVA
+Equipment: Operations Control Logger
+Vulnerabilities: Execution with Unnecessary Privileges, External Control of File Name or Path
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow privilege escalation or denial of service.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+AVEVA has created a security update to address vulnerabilities in the AVEVA Operations Control Logger (formerly known as ArchestrA Logger), impacting the following products:
+
+AVEVA SystemPlatform: 2020 R2 SP1 P01 and prior
+AVEVA Historian: 2020 R2 SP1 P01 and prior
+AVEVA Application Server: 2020 R2 SP1 P01 and prior
+AVEVA InTouch: 2020 R2 SP1 P01 and prior
+AVEVA Enterprise Licensing (formerly known as License Manager): version 3.7.002 and prior
+AVEVA Manufacturing Execution System (formerly known as Wonderware MES): 2020 P01 and prior
+AVEVA Recipe Management: 2020 R2 Update 1 Patch 2 and prior
+AVEVA Batch Management: 2020 SP1 and prior
+AVEVA Edge (formerly known as Indusoft Web Studio): 2020 R2 SP1 P01 and prior
+AVEVA Worktasks (formerly known as Workflow Management): 2020 U2 and prior
+AVEVA Plant SCADA (formerly known as Citect): 2020 R2 Update 15 and prior
+AVEVA Mobile Operator (formerly known as IntelaTrac Mobile Operator Rounds): 2020 R1 and prior
+AVEVA Communication Drivers Pack: 2020 R2 SP1 and prior
+AVEVA Telemetry Server: 2020 R2 SP1 and prior
+
+3.2 Vulnerability Overview
+3.2.1 Execution with Unnecessary Privileges CWE-250
+This privilege escalation vulnerability, if exploited, cloud allow a local OS-authenticated user with standard privileges to escalate to System privilege on the machine where these products are installed, resulting in complete compromise of the target machine.
+CVE-2023-33873 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 External Control of File Name or Path CWE-73
+This external control vulnerability, if exploited, could allow a local OS-authenticated user with standard privileges to delete files with System privilege on the machine where these products are installed, resulting in denial of service.
+CVE-2023-34982 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+3.4 RESEARCHER
+Lukasz Piotrowski from Equinor reported these vulnerabilities to AVEVA.
+4. MITIGATIONS
+AVEVA recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation. Users of affected products should apply security updates as soon as possible.
+In addition to applying security updates, users should follow these general precautions:
+
+Ensure that Guest or Anonymous local OS accounts are disabled.
+Ensure that only trusted users are able to login on the nodes where the Operations Control Logger is running.
+
+Please see AVEVA Security Bulletin number AVEVA-2023-003 for more information and for links for individual security updates and mitigations for each of the affected products.
+AVEVA System Platform 2020 through 2020 R2 SP1 cannot be newly installed on top of other AVEVA products which have been previously patched with the Operations Control Logger v22.1. For additional details please refer to Alert 000038736.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+Exercise principles of least privilege.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+November 14, 2023: Initial Publication
+

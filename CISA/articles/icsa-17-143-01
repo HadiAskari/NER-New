@@ -1,0 +1,57 @@
+
+CVSS v3 9.8
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Moxa
+Equipment: OnCell
+Vulnerabilities: Improper Restriction of Excessive Authentication Attempts, Plaintext Storage of a Password, and Cross-Site Request Forgery
+AFFECTED PRODUCTS
+The following versions of OnCell, a high-speed industrial-grade IP gateway, are affected:
+
+OnCell G3110-HSPA Version 1.3 build 15082117 and previous versions,
+OnCell G3110-HSDPA Version 1.2 Build 09123015 and previous versions,
+OnCell G3150-HSDPA Version 1.4 Build 11051315 and previous versions,
+OnCell 5104-HSDPA,
+OnCell 5104-HSPA, and
+OnCell 5004-HSPA.
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow an attacker to use brute force to determine parameters needed to access the application. An attacker may also obtain credentials by obtaining files that store passwords in clear text.
+MITIGATION
+Moxa recommends the following mitigations:
+
+For OnCell G31x0-HSPA and OnCell 5x04-HSPA devices users should upgrade to the latest official firmware Version 1.4 or above.
+For OnCell G31x0-HSDPA and OnCell 5x04-HSDPA devices users should disable HTTP and use other another console such as HTTPS to access web UI or SNMP/Telnet. Moxa reports that the HSDPA devices have been phased out. If further assistance is needed, please contact Moxa.
+
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+
+An attacker can freely use brute force to determine parameters needed to bypass authentication.
+CVE-2017-7915 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+
+PLAINTEXT STORAGE OF A PASSWORD CWE-256
+
+The application’s configuration file contains parameters that represent passwords in plaintext.
+CVE-2017-7913 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+
+CROSS-SITE REQUEST FORGERY CWE-352
+
+The application does not sufficiently verify if a request was intentionally provided by the user who submitted the request, which could allow an attacker to modify the configuration of the device.
+CVE-2017-7917 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+Independent researcher Maxim Rupp identified the vulnerabilities.
+BACKGROUND
+Critical Infrastructure Sectors: Commercial Facilities, Critical Manufacturing, Energy, Transportation Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Taiwan

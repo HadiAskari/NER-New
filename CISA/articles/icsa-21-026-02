@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.2
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Bachmann Electronic, GmbH
+Equipment: All M-Base Controllers
+Vulnerability: Use of Password Hash with Insufficient Computational Effort
+
+2. REPOSTED INFORMATION
+This updated advisory is a follow-up to the advisory titled ICSA-21-026-02P All Bachmann M1 System Processor Modules, posted to the HSIN ICS library on January 26, 2021. This advisory is now being released to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated remote attacker to gain access to the password hashes of the controller if Security Level 4 is not in use as recommended. In the recommended Security Level 4 setting, an authenticated remote attacker could get access to user credentials.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+
+All M-Base Operating Systems and Middleware versions since MSYS v1.06.14 are affected, which include the following M1 Hardware Controllers:
+
+MX207, MX213, MX220, MC206, MC212, MC220, MH230. This list indicates actively supported controllers.
+
+
+MC205, MC210, MH212, ME203, CS200, MP213, MP226, MPC240, MPC265, MPC270, MPC293, MPE270, CPC210. This list indicates End-of-Life controllers.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF PASSWORD HASH WITH INSUFFICIENT COMPUTATIONAL EFFORT CWE-916
+The affected M-Base Controllers use weak cryptography to protect device passwords. Security Level 0 is set at default from the manufacturer, which could allow an unauthenticated remote attacker to gain access to the password hashes. Security Level 4 is susceptible if an authenticated remote attacker or an unauthenticated person with physical access to the device reads and decrypts the password to conduct further attacks.
+CVE-2020-16231 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Austria
+
+4.4 RESEARCHER
+Ron Brash of Verve Industrial reported this vulnerability to CISA.
+5. MITIGATIONS
+Bachmann recommends its direct users and original equipment manufacturers (OEM) update to Version 4.49-P1, which is available under item number 00036634-90. To obtain Version 3.95R-P8 the end user is required to contact their key account manager or technical support agent at Bachmann. Asset owners should contact their OEM or reseller for patches. Bachmann does not provide support directly to asset owners. Please refer to the Bachmann Customer Information Note for more details. The password “_pC5#3fS@Y8s” is required to access.
+If asset owners are unable to update to the latest version or a patch is not available from the OEM or reseller, Bachmann recommends the following mitigations to be put in place:
+
+Update the default username and password in the default Bachmann login handler for field operations.
+Direct users or OEMs may utilize their own login handler (e.g., LDAP, Radius, etc.) to circumvent the default authentication handler. Security Level 4 is still recommended for field operations.
+Restrict physical access to the device to authorized personnel only.
+
+Default Security Level 0 within Bachmann controllers is inherently insecure and should not be used in field operations. Security Levels 1, 2, and 3 are also not recommended for field operations. The use of Telnet, FTP, and Console access during field operations may result in the exploitation of inherent vulnerabilities such as unauthenticated access or exposure of sensitive information. Bachmann strongly recommends users apply Security Level 4, where communication with the device is limited to TLS protected services and all insecure services are disabled.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

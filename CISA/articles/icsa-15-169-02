@@ -1,0 +1,52 @@
+
+OVERVIEW
+Ivan Sanchez of WiseSecurity Team has identified a fixed search path vulnerability in Schneider Electric’s Wonderware InTouch, Application Server, Historian, and SuiteLink applications, which are part of the Wonderware System Platform suite. Schneider Electric has produced a patch that mitigates this vulnerability. Ivan Sanchez has tested the patch to validate that it resolves the vulnerability.
+AFFECTED PRODUCTS
+The following Schneider Electric products are affected:
+
+Wonderware System Platform 2014 R2 and prior versions.
+
+IMPACT
+Successful exploitation of this vulnerability would require the victim to install and execute malicious code that could result in arbitrary code execution.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric’s corporate headquarters is located in Paris, France, and maintains offices in more than 100 countries worldwide.
+According to Schneider Electric, the Wonderware System Platform, is deployed across several sectors including Chemical, Commercial Facilities, Critical Manufacturing, Energy, Food and Agriculture, and Water and Wastewater Systems. Schneider Electric estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+UNCONTROLLED SEARCH PATH ELEMENTCWE-427: Uncontrolled Search Path Element, http://cwe.mitre.org/data/definitions/427.html, web site last accessed June 18, 2015.
+Successful exploitation of this vulnerability would require the local user to load a malicious DLL that is called using a fixed search path at runtime, which may allow an attacker to execute arbitrary code.
+CVE-2015-3940NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3940, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.2 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:N/C:C/I:C/A:C, web site last accessed June 18, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malicious file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince the user to accept the malicious file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Schneider Electric has released the Wonderware System Platform 2014 R2 Patch 01, which addresses multiple instances of the identified vulnerability. Schneider Electric has identified the severity rating of this vulnerability as high and recommends applying the patch as soon as possible.
+Schneider Electric’s Wonderware System Platform 2014 R2 Patch 01 is available at the following URL:
+https://gcsresource.invensys.com/tracking/ConfirmDownload.aspx?id=21913
+Schneider Electric’s security bulletin, LFSEC00000106, is located at the following URL:
+http://software.schneider-electric.com/support/cyber-security-updates/
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should consider the following defensive measures:
+
+Do not upload and run untrusted files without verifying the integrity of the file.
+Interact with, and only obtain files and software from trusted highly reputable sources.
+Where possible, create isolated accounts using lowest privileges to accomplish minimum required tasks.
+Restrict network and physical access to assets using the Wonderware System Platform suite to authorized personnel.
+Maintain layered physical and logical security to implement defense-in-depth design practices for ICS.
+Ensure that employees with access to the Wonderware System Platform suite are aware of the ongoing potential for social engineering attacks and are trained to identify and avoid social engineering attacks.
+Use application whitelisting to detect and prevent files from executing if they have not been approved. Application whitelisting will not prevent memory-based attacks, such as exploiting buffer overflows vulnerabilities, but it can prevent shell code from running executables that have not been authorized.
+Follow good network design practices that include network separation and segmentation; use DMZs with properly configured firewalls to selectively control and monitor traffic passed between zones and systems.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+Do not click web links or open unsolicited attachments in email messages.Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed June 18, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed June 18, 2015. for more information on social engineering attacks.

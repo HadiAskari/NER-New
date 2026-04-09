@@ -1,0 +1,45 @@
+
+OVERVIEW
+Siemens has identified a web security vulnerability in Siemen’s SCALANCE M-800 and S615 modules. This vulnerability was reported directly to Siemens by Alexander Van Maele and Tijl Deneut from HOWEST. Siemens has produced a new firmware version to mitigate this vulnerability.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following products:
+
+SCALANCE M-800/S615: All versions before V4.02
+
+IMPACT
+Exploitation of this vulnerability could allow an attacker in a privileged network position to obtain web session cookies under certain circumstances.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected products are SCALANCE M-800/S615 modules. SCALANCE M industrial routers are industrial-grade routers used to connect networked industrial components. This product line provides a Web interface to manage the router configuration. The SCALANCE S firewall is used to protect trusted industrial networks from untrusted networks and provides additional security functionality, e.g., VPN tunnels==2E. According to Siemens, SCALANCE M-800/S615 modules are deployed across several sectors including Chemical, Critical Manufacturing, Dams, Defense Industrial Base, Energy, Food and Agriculture, Government Facilities, Transportation Systems, and Water and Wastewater Systems. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+SENSITIVE COOKIE IN HTTPS SESSION WITHOUT "SECURE" ATTRIBUTECWE-614: Sensitive Cookie in HTTPS Session Without 'Secure' Attribute, https://cwe.mitre.org/data/definitions/614.html, web site last accessed September 27, 2016.
+
+The integrated web server delivers session cookies without the “secure” flag. Modern browsers interpreting the flag would mitigate potential data leakage in case of clear text transmission.
+CVE-2016-7090NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7090, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N).CVSS Calculator, http://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N, web site last accessed September 27, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult.
+MITIGATION
+Siemens provides firmware version V4.2 for SCALANCE M-800/S615 to mitigate this vulnerability. The firmware version can be obtained here:
+https://support.industry.siemens.com/cs/ww/en/view/109740858
+Siemens strongly recommends users protect network access to the management interface of SCALANCE M-800/S615 modules with appropriate mechanisms. Siemens also advises that users configure the operational environment according to Siemens overview of the operational guidelines for Industrial Security (with the cell protection concept):
+https://www.siemens.com/cert/operational-guidelines-industrial-security.
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-342135 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

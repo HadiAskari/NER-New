@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.5
+ATTENTION: Low attack complexity
+Vendor: Rockwell Automation
+Equipment: ISaGRAF
+Vulnerability: Improper Restriction of XML External Entity Reference
+
+2.UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-22-088-01 Rockwell Automation ISaGRAF that was published March 29, 2022, to the ICS webpage at www.cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to pass local file data to a remote web server, leading to loss of confidentiality.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Rockwell Automation software products are affected:
+
+Connected Component Workbench: v12.00 and prior
+
+--------- Begin Update A Part 1 of 2 ---------
+
+ISaGRAF Workbench: All versions prior to v6.6.10
+
+--------- End Update A Part 1 of 2 ---------
+
+ISaGRAF Workbench: v6.6.9 and prior
+Safety Instrumented Systems Workstation: v1.1 and prior
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+When opening a malicious solution file provided by an attacker, the application suffers from an XML external entity vulnerability due to an unsafe call within a dynamic link library file. An attacker could exploit this to pass data from local files to a remote web server, leading to a loss of confidentiality.
+CVE-2022-1018 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+kimiya of Trend Micro’s Zero Day Initiative reported this vulnerability to CISA.
+5. MITIGATIONS
+Rockwell Automation encourages users to update to the available software revisions below:
+
+Connected Component Workbench: Update to v13.00
+
+--------- Begin Update A Part 2 of 2 ---------
+
+ISaGRAF Workbench: Update to 6.6.10
+
+--------- End Update A Part 2 of 2 ---------
+
+ISaGRAF Workbench: For now, use mitigations listed until a patch is released. More mitigation actions are planned.
+Safety Instrumented Systems Workstation: Update to v1.2
+
+If an upgrade is not possible or available, users should apply the following mitigations:
+
+Run Connected Components Workbench as a User, not as an Administrator, to minimize the impact of malicious code on the infected system.
+Do not open untrusted files with Connected Component Workbench, ISaGRAF, SISW. Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.
+Use Microsoft AppLocker or other similar allow list application to help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at KnowledgeBase Article QA17329
+Ensure the least-privilege user principle is followed, and user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.
+
+For more information see Rockwell Automation’s security advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

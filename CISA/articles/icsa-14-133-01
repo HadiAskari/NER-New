@@ -1,0 +1,98 @@
+
+OVERVIEW
+Yokogawa reports that several buffer overflow vulnerabilities affect several of its products. Juan Vazquez of Rapid7 Inc.,Rapid7 Inc., http://www.rapid7.com, web site last accessed May 13, 2014. and independent researcher Julian Vilas Diaz reported to CERT/CC that they identified several vulnerabilities for the Yokogawa CENTUM CS 3000 application. In the investigation of this report, Yokogawa found other products that could also be affected. Please see the affected products below for the complete list. CERT/CC, NCCIC/ICS-CERT, and JPCERT have coordinated with Rapid7 and Yokogawa to mitigate these vulnerabilities.
+These vulnerabilities could be exploited remotely. Exploits that target these vulnerabilities are known to be publicly available.
+AFFECTED PRODUCTS
+The following Yokogawa products are affected by all four vulnerabilities:
+
+CENTUM CS 1000 all revisions,
+CENTUM CS 3000 Entry Class R3.09.50 and earlier,
+CENTUM VP R5.03.00 and earlier,
+CENTUM VP Entry Class R5.03.00 and earlier,
+Exaopc R3.71.02 and earlier,
+B/M9000CS R5.05.01 and earlier, and
+B/M9000 VP R7.03.01 and earlier.
+
+The following Yokogawa products are affected only by the first vulnerability listed below:
+
+ProSafe-RS R1.03.00 and earlier,
+Exapilot R3.96.00 and earlier,
+Exaplog R3.40.00 and earlier,
+Exaquantum R2.02.50 to R2.80.00,
+Exasmoc R4.03.20 and earlier,
+Exarqe R4.03.20 and earlier,
+AAASuite R1.20.13 and earlier,
+PRM R3.11.20 and earlier,
+STARDOM FCN/FCJ OPC Server for Windows R3.40.01 and earlier,
+Field Wireless Device OPC Server R2.01.01 and earlier,
+DAQOPC R3.01 and earlier,
+FieldMate R1.03 and earlier,
+EJXMVTool R1.02.00 to R1.02.02,
+RPO Production Supervisor VP R1.03.00 and earlier,
+CENTUM Long-term Trend Historian all versions, and
+CENTUM Event Viewer Package all versions.
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an attacker to perform a denial of service (DoS) or potentially acquire system privileges to execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Yokogawa is a Japan-based company that maintains offices on several continents, including North and Central America, South America, Europe, Middle East, Africa, and parts of Asia.
+
+CENTUM VP is an integrated production control system.
+Exaopc is an OPC server for data access, alarms and events, historical data access, batch information, and a security interface for CENTUM series process control systems.
+B/M9000CS and B/M9000 VP are quality control systems for use in the pulp and paper industry.
+ProSafe-RS is a PLC that functions as a distributed control system and a safety instrumented system.
+Exapilot is an online navigation tool that guides operators step by step through plant operating procedures.
+Exaplog is an event analysis package.
+Exaquantum is a comprehensive plant information management system.
+Exasmoc is a multi-variable control APC suite.
+Exarqe is a software package designed to provide product quality signal as feedback to APC applications.
+AAASuite is an alarm management system.
+PRM is a plant asset management software tool that works with production control systems.
+STARDOM is a network-based control system.
+Field Wireless Device OPC Server provides data from a field wireless gateway to the OPC client via an OPC interface.
+FieldMate is a device management tool.
+
+According to Yokogawa, these products are deployed across several sectors including Critical Manufacturing, Energy, Food and Agriculture, and others. Yokogawa estimates that these systems are deployed worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HEAP-BASED BUFFER OVERFLOWCWE-122: Heap-based Buffer Overflow, http://cwe.mitre.org/data/definitions/122.html, web site last accessed May 13, 2014.
+
+Yokogawa’s “BKCLogSvr.exe” service, started automatically with the system, listens by default on Port 52302/UDP. By sending a specially crafted sequence of packets to Port 52302/UDP, it is possible to trigger a heap-based buffer overflow after a usage of uninitialized data, which allows an attacker to DoS the BKCLogSvr.exe and could allow execution of arbitrary code with system privileges.
+CVE-2014-0781NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0781, web site last accessed May 13, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned by Yokogawa; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed May 13, 2014.
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed May 13, 2014.
+
+Yokogawa’s “BKHOdeq.exe” service, which started when running the FCS /Test Function, listens by default on Ports 20109/TCP, and 20171/TCP. By sending a specially crafted packet to Port 20171/TCP, it is possible to trigger a stack-based buffer overflow, which allows execution of arbitrary code with the privileges of the CENTUM user.
+CVE-2014-0783NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0783, web site last accessed May 13, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 9.0 has been assigned by Yokogawa; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:C, web site last accessed May 13, 2014.
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed May 13, 2014.
+
+Yokogawa’s “BKBCopyD.exe” service, which is started when running the FCS /Test Function, listens by default on Port 20111/TCP. By sending a specially crafted packet to Port 20111/TCP, it is possible to trigger a stack-based buffer overflow, which allows execution of arbitrary code with the privileges of the CENTUM user.
+CVE-2014-0784NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0784, web site last accessed May 13, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned by Yokogawa; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:C, web site last accessed May 13, 2014.
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed May 13, 2014.
+
+Yokogawa’s “BKESimmgr.exe” service that started automatically on the system startup by default, which installed Expanded Test Functions Package, listens on TCP/34205. By sending a specially crafted packet to the Port 34205/TCP, it is possible to trigger a stack-based buffer overflow that allows execution of arbitrary code with the privileges of the CENTUM user.
+CVE-2014-0782NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0782, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:C, web site last accessed May 13, 2014. 
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target these vulnerabilities are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Yokogawa has provided patch software for the latest revisions of the affected products. For details about individual countermeasures by the affected product, please refer to Yokogawa’s Security Advisory Report at the following location: http://www.yokogawa.com/dcs/security/ysar/dcs-ysar-index-en.htm.
+To activate the patch software, the computer needs to be rebooted. In case the system uses earlier versions of the software, than the ones for which the software patches are provided, please upgrade to the revisions/versions as mentioned in the table in the Yokogawa Security Advisory Report and then apply for the software patches.
+Yokogawa also suggests all customers introduce appropriate security measures to the overall system, not just for the vulnerabilities identified.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

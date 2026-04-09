@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1 
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: AFS65x, AFS67x, AFR67x and AFF66x series products
+Vulnerabilities: Use After Free
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to disclose sensitive information or lead to a Denial-of-Service (DoS).  
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Hitachi Energy’s AFS65x, AFS67x, AFR67x and AFF66x series products, are affected: 
+
+AFS660/665S, AFS660/665C, AFS670v2: Firmware 7.1.05 and earlier 
+AFS670/675, AFR67x: Firmware 9.1.07 and earlier 
+AFF660/665: Firmware 03.0.02 and earlier 
+AFS65x: All versions  
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 USE AFTER FREE CWE-416 
+The libexpat library is incorporated in the AFS, AFR and AFF products family. Versions of libexpat before 2.4.9 have a use-after-free in the do-Content function in xmlparse.c. Successful exploitation of this vulnerability could lead to disclosure of sensitive information, addition or modification of data, or a denial-of-service condition.  
+CVE-2022-40674 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 USE AFTER FREE CWE-416 
+The libexpat library is incorporated in the AFS, AFR and AFF products family. In versions of libexpat through 2.4.9, there is a use-after free caused by overeager destruction of a shared DTD in XML_ExternalEntityParserCreate in out-of-memory situations. Successful exploitation of this vulnerability could lead to a denial-of-service condition. 
+CVE-2022-43680 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Hitachi Energy has released the following mitigations/fixes:  
+
+AFS660/665S, AFS660/665C, AFS670v2: Apply mitigation strategy as described in General Mitigation Factors Section or update to upcoming 7.1.08 when available. 
+AFS670/675, AFR67x: Apply mitigation strategy as described in General Mitigation Factors Section or update to 9.1.08. 
+AFS65x: EoL product - only mitigation available, no remediation expected. Apply mitigation strategy as described in General Mitigation Factors Section. 
+AFF660/665: Apply mitigation strategy as described in General Mitigation Factors Section or update to upcoming release. 
+
+Hitachi Energy also recommends general mitigations: 
+
+Recommended security practices and firewall configurations can help protect a process control network from attacks originating from outside the network.  
+Physically protect process control systems from direct access by unauthorized personnel. 
+Ensure process control systems have no direct connections to the internet and are separated from other networks by a firewall system with a minimal number of exposed ports. 
+Do not use process control systems for internet surfing, instant messaging, or receiving emails. 
+Scan portable computers and removable storage media for malware prior connection to a control system.  
+
+For more information, see Hitachi Energy’s Security Advisory: 8DBD000149. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should: 
+
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices. 
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. 
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies. 
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents. 
+No known public exploits specifically target these vulnerabilities.  

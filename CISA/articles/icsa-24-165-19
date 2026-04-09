@@ -1,0 +1,114 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.7
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Motorola Solutions
+Equipment: Vigilant Fixed LPR Coms Box (BCAV1F2-C600)
+Vulnerabilities: Authentication Bypass Using an Alternate Path or Channel, Cleartext Storage in a File or on Disk, Use of Hard-coded Credentials, Insufficiently Protected Credentials, Missing Encryption of Sensitive Data, Authentication Bypass by Capture-replay
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to tamper with the device, access sensitive information and credentials, or perform a replay attack.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Motorola Vigilant License Plate Readers are affected:
+
+Vigilant Fixed LPR Coms Box (BCAV1F2-C600): Versions 3.1.171.9 and prior
+
+3.2 Vulnerability Overview
+3.2.1 AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+The affected product is vulnerable to an attacker modifying the bootloader by using custom arguments to bypass authentication and gain access to the file system and obtain password hashes.
+CVE-2024-38279 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-38279. A base score of 5.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.2 CLEARTEXT STORAGE IN A FILE OR ON DISK CWE-313
+An unauthorized user is able to gain access to sensitive data, including credentials, by physically retrieving the hard disk of the product as the data is stored in clear text.
+CVE-2024-38280 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-38280. A base score of 7.0 has been calculated; the CVSS vector string is (CVSS4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 USE OF HARD-CODED CREDENTIALS CWE-798
+An attacker can access the maintenance console using hard coded credentials for a hidden wireless network on the device.
+CVE-2024-38281 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-38281. A base score of 8.6 has been calculated; the CVSS vector string is (CVSS4.0/AV:A/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.4 INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+Utilizing default credentials, an attacker is able to log into the camera's operating system which could allow changes to be made to the operations or shutdown the camera requiring a physical reboot of the system.
+CVE-2024-38282 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-38282. A base score of 8.5 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.5 MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+Sensitive customer information is stored in the device without encryption.
+CVE-2024-38283 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-38283. A base score of 5.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.6 AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+Transmitted data is logged between the device and the backend service. An attacker could use these logs to perform a replay attack to replicate calls.
+CVE-2024-38284 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-38284. A base score of 8.7 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.7 INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+Logs storing credentials are insufficiently protected and can be decoded through the use of open source tools.
+CVE-2024-38285 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-38285. A base score of 7.0 has been calculated; the CVSS vector string is (CVSS4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Emergency Services
+COUNTRIES/AREAS DEPLOYED: United States
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+The Michigan State Police Michigan Cyber Command Center (MC3) reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Motorola Solutions recommends the following for each identified vulnerability:
+CVE-2024-38279:
+
+Use secure boot implementation with an edit-resistant GRUB partition.
+Additional mitigation consists in limiting the physical access to the device by following the best practices for device mounting.
+
+Edit-resistant grub partition has been remediated for all vulnerable systems. Motorola Solutionswill release a secure boot implementation in Fall 2024. All customers will receive the updatethrough OTA (over the air) mechanisms. No further actions are required by customers.
+CVE-2024-38280:
+
+Apply encryption to all Criminal Justice Information (CJI) data.
+Apply full disk encryption with LUKS encryption standards and add password protectionto the GRUB Bootloader.
+Perform column-level encryption for sensitive data in the database.
+
+All devices shipped after May 10, 2024 are already using full disk encryption. All devices thatare not able to have full disk encryption applied have had all CJI data encrypted. No furtheractions are required by customers.
+CVE-2024-38281:
+
+Remove the hard-coded credential to access the wireless access point and disable theaccess point if not needed.
+Set a unique SSID and password if the access point is needed.
+
+Motorola Solutions has already remediated this vulnerability for all vulnerable systems. No further actions are required by customers.
+CVE-2024-38282:
+
+Remove the hard coded credentials.
+Use a unique CJIS compliant password per device.
+
+Motorola Solutions has already remediated this vulnerability for all vulnerable systems. No further actions are required by customers.
+CVE-2024-38283:
+
+Remove the hotlist data from the device.
+
+Motorola Solutions has already remediated this vulnerability for all vulnerable systems. Nofurther actions are required by customers.
+CVE-2024-38284:
+
+Delete the log files.
+Install updated software not logging the credentialed web request.
+
+Motorola Solutions has already remediated this vulnerability for all vulnerable systems. No further actions are required by customers.
+CVE-2024-38285:
+
+Delete the log files.
+
+Motorola Solutions has already remediated this vulnerability for all vulnerable systems. No further actions are required by customers.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+June 13, 2024: Initial Publication
+

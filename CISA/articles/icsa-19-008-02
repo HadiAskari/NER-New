@@ -1,0 +1,72 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.3
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Schneider Electric
+Equipment: IIoT Monitor
+
+--------- Begin Update A Part 1 of 2 --------
+
+Vulnerabilities: Path Traversal, Unrestricted Upload of File with Dangerous Type, XXE, Cryptographic Issues
+
+--------- End Update A Part 1 of 2 --------
+2.    UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-008-02 Schneider Electric IIoT Monitor that was published January 08, 2019, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker to access files available to system users, arbitrarily upload and execute malicious files, and embed incorrect documents into the system output to expose restricted information.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of IIoT Monitor, a monitoring platform, are affected:
+
+IIoT Monitor Versions 3.1.38 and prior.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A path traversal vulnerability exists, which may allow access to files available to SYSTEM user.
+CVE-2018-7835 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.2    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+An unrestricted upload of a file with dangerous type vulnerability exists in the IIoT Monitor software that could allow the uploading and execution of malicious files.
+CVE-2018-7836 has been assigned to this vulnerability. A CVSS v3 base score of 9.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N).
+4.2.3   IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE ('XXE') CWE-611
+There is an XXE vulnerability in the IIoT Monitor software that may allow the software to resolve documents outside of the intended sphere of control, causing the software to embed incorrect documents into its output and expose restricted information.
+CVE-2018-7837 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+--------- Begin Update A Part 2 of 2 --------
+4.2.4    CRYPTOGRAPHIC ISSUES CWE-310
+There is a hardcoded cryptographic key that may affect the confidentiality of the device.
+CVE-2018-7839 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+--------- End Update A Part 2 of 2 --------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy, Transportation Services
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+4.4 RESEARCHER
+Trend Micro’s Zero Day Initiative working with rgod reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+Schneider Electric recommends that affected users contact Schneider Electric customer support at https://www.schneider-electric.com/en/work/support/contacts.jsp for assistance in migrating to the latest software to resolve the issues.
+Schneider Electric has also released a security notification that can be found at:
+https://www.schneider-electric.com/en/download/document/SEVD-2018-354-03/
+Schneider Electric strongly recommends implementing industry cybersecurity best practices, such as:
+
+Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network.
+Physical controls should be in place so that no unauthorized person would have access to the ICS and safety controllers, peripheral equipment or the ICS and safety networks.
+All controllers should reside in locked cabinets and never be left in the “Program” mode.
+All programming software should be kept in locked cabinets and should never be connected to any network other than the network for the devices that it is intended.
+All methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. should be scanned before use in the terminals or any node connected to these networks.
+Laptops that have connected to any other network besides the intended network should never be allowed to connect to the safety or control networks without proper sanitation.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

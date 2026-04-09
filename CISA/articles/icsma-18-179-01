@@ -1,0 +1,56 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.4
+Vendor: Medtronic 
+Equipment: MyCareLink Patient Monitor
+Vulnerabilities: Use of Hard-coded Password, Exposed Dangerous Method or Function
+
+2. RISK EVALUATION
+If exploited, these vulnerabilities may allow privileged access to the monitor’s operating system. However, physical access to the MyCareLink monitor is required. Additionally, these vulnerabilities may allow a MyCareLink monitor, when operated within close physical proximity of an implantable cardiac device, to read and write arbitrary memory values of that device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following MyCareLink Monitors are affected:
+
+24950 MyCareLink Monitor, all versions,
+24952 MyCareLink Monitor, all versions.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF HARD-CODED PASSWORD CWE-259
+The affected product contains a hard-coded operating system password. An attacker with physical access can remove the case of the device, connect to the debug port, and use the password to gain privileged access to the operating system
+CVE-2018-8870 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned; the CVSS vector string is (AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    EXPOSED DANGEROUS METHOD OR FUNCTION CWE-749
+The affected product contains debug code meant to test the functionality of the monitor’s communication interfaces, including the interface between the monitor and implantable cardiac device. An attacker with physical access to the device can apply the other vulnerabilities within this advisory to access this debug functionality. 
+This debug functionality provides the ability to read and write arbitrary memory values to implantable cardiac devices via inductive or short range wireless protocols. An attacker with close physical proximity to a target implantable cardiac device can use this debug functionality.
+CVE-2018-8868 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been assigned; the CVSS vector string is (AV:P/AC:H/PR:L/UI:N/S:C/C:H/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Dublin, Ireland
+
+3.4 RESEARCHER
+Peter Morgan of Clever Security reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Medtronic will release several rolling over-the-air product updates that will mitigate the vulnerabilities described within this advisory. These updates will be applied to devices automatically as part of standard, reoccurring update processes. In addition, Medtronic has increased security monitoring of affected devices and related infrastructure. 
+Medtronic recommends users take additional defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Maintain good physical controls over the home monitor as the best mitigation to these vulnerabilities.  
+Only use home monitors obtained directly from their healthcare provider or a Medtronic representative to ensure integrity of the system. 
+Report any concerning behavior regarding their home monitor to their healthcare provider or a Medtronic representative. 
+
+Medtronic has released additional patient focused information, at the following location:
+https://www.medtronic.com/security
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. High skill level is needed to exploit.

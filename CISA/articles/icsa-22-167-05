@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: EN100 Ethernet Module
+Vulnerability: Improper Restriction of Operations within the Bounds of a Memory Buffer
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could lead to the product crashing or the creation of a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of EN100 Ethernet Module are affected:
+
+EN100 Ethernet module DNP3 IP variant: all versions
+EN100 Ethernet module IEC 104 variant: all versions
+EN100 Ethernet module IEC 61850 variant: all versions prior to v4.37
+EN100 Ethernet module Modbus TCP variant: all versions
+EN100 Ethernet module PROFINET IO variant: all versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+The affected applications contain a memory corruption vulnerability while parsing specially crafted HTTP packets to /txtrace endpoint. This could allow an attacker to crash the affected application, leading to a denial-of-service condition.
+CVE-2022-30937 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Michael Messner from Siemens Energy reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens recommends updating products, where possible, to the following versions:
+
+EN100 Ethernet module DNP3 IP variant: No fix is currently planned
+EN100 Ethernet module IEC 104 variant: No fix is currently planned
+EN100 Ethernet module IEC 61850 variant: update to  v4.37 or later
+EN100 Ethernet module Modbus TCP variant: No fix is currently planned
+EN100 Ethernet module PROFINET IO variant: No fix is currently planned
+
+Siemens has identified the following specific workarounds and mitigations that customers can apply to reduce the risk:
+
+Disable web service within the device configuration if it is not used
+Block access to Port 80/TCP and 443/TCP (e.g., with an external firewall)
+Apply secure substation concept and Defense-in-Depth or contact customer care to find specific solutions
+
+Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-693555
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

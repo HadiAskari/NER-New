@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: ABB
+Equipment: Relion 670 Series
+Vulnerability: Path Traversal
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may allow an attacker to read and delete files on the device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Relion 670 series, a protection and control device, are affected:
+
+Relion 670 series versions 1p1r26 and prior
+Relion 670 series versions 1.2.3.17 and prior
+Relion 670 series versions 2.0.0.10 and prior (RES670 2.0.0.4 and prior)
+Relion 670 series versions 2.1.0.1 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+An attacker could use specially crafted paths in a specific request to read or delete files from the device outside the intended directory.
+CVE-2019-18253 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Kirill Nesterov of Kaspersky Lab reported this vulnerability to ABB.
+4. MITIGATIONS
+ABB recommends users update to the following or later versions at earliest convenience if IEC 61850 is used:
+
+Relion 670 series version 1p1r27
+Relion 670 series version 1.2.3.18
+Relion 670 series version 2.0.0.11 (RES670 2.0.0.5)
+Relion 670 series version 2.1.0.2
+
+Updates can be ordered by email at: sa.t-supportline@se.abb.com
+The only known workaround for this vulnerability is to disable IEC 61850 protocol when not in use. If this is not possible, ABB recommends having a proper security architecture that divides the system in different security zones, and revising the firewall configurations to limit the usage of MMS protocol to the relevant upper networks.
+IEC 61850 MMS protocol uses Port 102/TCP.
+ABB also recommends that these and other proper security practices and firewall configurations (including VPN) be implemented to help protect a process control network from attacks originating outside the network:
+
+Process control systems are physically protected from direct access by unauthorized personnel.
+Process control systems have no direct connections to the Internet.
+Process control systems are separated from other networks by means of a firewall system that has a minimal number of ports/services exposed.
+Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails.
+Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+If IEC 61850 protocol isn’t used, make sure it is disabled. This removes the vulnerability.
+
+For more information see the ABB Cybersecurity Advisory 1MRG024910
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

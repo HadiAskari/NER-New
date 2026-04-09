@@ -1,0 +1,297 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Mitsubishi Electric Corporation
+Equipment: FA products
+Vulnerability: Missing Authentication for Critical Function
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may allow a remote attacker to execute arbitrary commands by sending specific packets to the affected products.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Mitsubishi Electric reports that the following FA products are affected.However, MELSEC-F series CPU modules are only affected when they are used with Ethernet communication special adapter FX3U-ENET-ADP or Ethernet communication block FX3U-ENET(-L), with the exception of "FX3GE-xMy/z x=24,40, y=T,R, z=ES,ESS,DS,DSS". Some of these products are sold in limited regions. See the Mitsubishi Electric advisory for details:
+
+MELSEC-F series CPU module FX3U-16MT/ES: All versions
+MELSEC-F series CPU module FX3U-32MT/ES: All versions
+MELSEC-F series CPU module FX3U-48MT/ES: All versions
+MELSEC-F series CPU module FX3U-64MT/ES: All versions
+MELSEC-F series CPU module FX3U-80MT/ES: All versions
+MELSEC-F series CPU module FX3U-128MT/ES: All versions
+MELSEC-F series CPU module FX3U-16MR/ES: All versions
+MELSEC-F series CPU module FX3U-32MR/ES: All versions
+MELSEC-F series CPU module FX3U-48MR/ES: All versions
+MELSEC-F series CPU module FX3U-64MR/ES: All versions
+MELSEC-F series CPU module FX3U-80MR/ES: All versions
+MELSEC-F series CPU module FX3U-128MR/ES: All versions
+MELSEC-F series CPU module FX3U-16MT/ESS: All versions
+MELSEC-F series CPU module FX3U-32MT/ESS: All versions
+MELSEC-F series CPU module FX3U-48MT/ESS: All versions
+MELSEC-F series CPU module FX3U-64MT/ESS: All versions
+MELSEC-F series CPU module FX3U-80MT/ESS: All versions
+MELSEC-F series CPU module FX3U-128MT/ESS: All versions
+MELSEC-F series CPU module FX3U-16MT/DS: All versions
+MELSEC-F series CPU module FX3U-32MT/DS: All versions
+MELSEC-F series CPU module FX3U-48MT/DS: All versions
+MELSEC-F series CPU module FX3U-64MT/DS: All versions
+MELSEC-F series CPU module FX3U-80MT/DS: All versions
+MELSEC-F series CPU module FX3U-128MT/DS: All versions
+MELSEC-F series CPU module FX3U-16MR/DS: All versions
+MELSEC-F series CPU module FX3U-32MR/DS: All versions
+MELSEC-F series CPU module FX3U-48MR/DS: All versions
+MELSEC-F series CPU module FX3U-64MR/DS: All versions
+MELSEC-F series CPU module FX3U-80MR/DS: All versions
+MELSEC-F series CPU module FX3U-128MR/DS: All versions
+MELSEC-F series CPU module FX3U-16MT/DSS: All versions
+MELSEC-F series CPU module FX3U-32MT/DSS: All versions
+MELSEC-F series CPU module FX3U-48MT/DSS: All versions
+MELSEC-F series CPU module FX3U-64MT/DSS: All versions
+MELSEC-F series CPU module FX3U-80MT/DSS: All versions
+MELSEC-F series CPU module FX3U-128MT/DSS: All versions
+MELSEC-F series CPU module FX3U-32MR/UA1: All versions
+MELSEC-F series CPU module FX3U-64MR/UA1: All versions
+MELSEC-F series CPU module FX3U-32MS/ES: All versions
+MELSEC-F series CPU module FX3U-64MS/ES: All versions
+MELSEC-F series CPU module FX3U-16MT/ES-A: All versions
+MELSEC-F series CPU module FX3U-32MT/ES-A: All versions
+MELSEC-F series CPU module FX3U-48MT/ES-A: All versions
+MELSEC-F series CPU module FX3U-64MT/ES-A: All versions
+MELSEC-F series CPU module FX3U-80MT/ES-A: All versions
+MELSEC-F series CPU module FX3U-128MT/ES-A: All versions
+MELSEC-F series CPU module FX3U-16MR/ES-A: All versions
+MELSEC-F series CPU module FX3U-32MR/ES-A: All versions
+MELSEC-F series CPU module FX3U-48MR/ES-A: All versions
+MELSEC-F series CPU module FX3U-64MR/ES-A: All versions
+MELSEC-F series CPU module FX3U-80MR/ES-A: All versions
+MELSEC-F series CPU module FX3U-128MR/ES-A: All versions
+MELSEC-F series CPU module FX3UC-16MT/D: All versions
+MELSEC-F series CPU module FX3UC-32MT/D: All versions
+MELSEC-F series CPU module FX3UC-64MT/D: All versions
+MELSEC-F series CPU module FX3UC-96MT/D: All versions
+MELSEC-F series CPU module FX3UC-16MT/DSS: All versions
+MELSEC-F series CPU module FX3UC-32MT/DSS: All versions
+MELSEC-F series CPU module FX3UC-64MT/DSS: All versions
+MELSEC-F series CPU module FX3UC-96MT/DSS: All versions
+MELSEC-F series CPU module FX3UC-16MR/D-T: All versions
+MELSEC-F series CPU module FX3UC-16MR/DS-T: All versions
+MELSEC-F series CPU module FX3UC-32MT-LT: All versions
+MELSEC-F series CPU module FX3UC-32MT-LT-2: All versions
+MELSEC-F series CPU module FX3UC-16MT/D-P4: All versions
+MELSEC-F series CPU module FX3UC-16MT/DSS-P4: All versions
+MELSEC-F series CPU module FX3G-14MT/ES: All versions
+MELSEC-F series CPU module FX3G-24MT/ES: All versions
+MELSEC-F series CPU module FX3G-40MT/ES: All versions
+MELSEC-F series CPU module FX3G-60MT/ES: All versions
+MELSEC-F series CPU module FX3G-14MR/ES: All versions
+MELSEC-F series CPU module FX3G-24MR/ES: All versions
+MELSEC-F series CPU module FX3G-40MR/ES: All versions
+MELSEC-F series CPU module FX3G-60MR/ES: All versions
+MELSEC-F series CPU module FX3G-14MT/ESS: All versions
+MELSEC-F series CPU module FX3G-24MT/ESS: All versions
+MELSEC-F series CPU module FX3G-40MT/ESS: All versions
+MELSEC-F series CPU module FX3G-60MT/ESS: All versions
+MELSEC-F series CPU module FX3G-14MT/DS: All versions
+MELSEC-F series CPU module FX3G-24MT/DS: All versions
+MELSEC-F series CPU module FX3G-40MT/DS: All versions
+MELSEC-F series CPU module FX3G-60MT/DS: All versions
+MELSEC-F series CPU module FX3G-14MR/DS: All versions
+MELSEC-F series CPU module FX3G-24MR/DS: All versions
+MELSEC-F series CPU module FX3G-40MR/DS: All versions
+MELSEC-F series CPU module FX3G-60MR/DS: All versions
+MELSEC-F series CPU module FX3G-14MT/DSS: All versions
+MELSEC-F series CPU module FX3G-24MT/DSS: All versions
+MELSEC-F series CPU module FX3G-40MT/DSS: All versions
+MELSEC-F series CPU module FX3G-60MT/DSS: All versions
+MELSEC-F series CPU module FX3G-14MT/ES-A: All versions
+MELSEC-F series CPU module FX3G-24MT/ES-A: All versions
+MELSEC-F series CPU module FX3G-40MT/ES-A: All versions
+MELSEC-F series CPU module FX3G-60MT/ES-A: All versions
+MELSEC-F series CPU module FX3G-14MR/ES-A: All versions
+MELSEC-F series CPU module FX3G-24MR/ES-A: All versions
+MELSEC-F series CPU module FX3G-40MR/ES-A: All versions
+MELSEC-F series CPU module FX3G-60MR/ES-A: All versions
+MELSEC-F series CPU module FX3GC-32MT/D: All versions
+MELSEC-F series CPU module FX3GC-32MT/DSS: All versions
+MELSEC-F series CPU module FX3GE-24MT/ES: All versions
+MELSEC-F series CPU module FX3GE-40MT/ES: All versions
+MELSEC-F series CPU module FX3GE-24MR/ES: All versions
+MELSEC-F series CPU module FX3GE-40MR/ES: All versions
+MELSEC-F series CPU module FX3GE-24MT/ESS: All versions
+MELSEC-F series CPU module FX3GE-40MT/ESS: All versions
+MELSEC-F series CPU module FX3GE-24MT/DS: All versions
+MELSEC-F series CPU module FX3GE-40MT/DS: All versions
+MELSEC-F series CPU module FX3GE-24MR/DS: All versions
+MELSEC-F series CPU module FX3GE-40MR/DS: All versions
+MELSEC-F series CPU module FX3GE-24MT/DSS: All versions
+MELSEC-F series CPU module FX3GE-40MT/DSS: All versions
+MELSEC-F series CPU module FX3GA-24MT-CM: All versions
+MELSEC-F series CPU module FX3GA-40MT-CM: All versions
+MELSEC-F series CPU module FX3GA-60MT-CM: All versions
+MELSEC-F series CPU module FX3GA-24MR-CM: All versions
+MELSEC-F series CPU module FX3GA-40MR-CM: All versions
+MELSEC-F series CPU module FX3GA-60MR-CM: All versions
+MELSEC-F series CPU module FX3S-10MT/ES: All versions
+MELSEC-F series CPU module FX3S-14MT/ES: All versions
+MELSEC-F series CPU module FX3S-20MT/ES: All versions
+MELSEC-F series CPU module FX3S-30MT/ES: All versions
+MELSEC-F series CPU module FX3S-10MR/ES: All versions
+MELSEC-F series CPU module FX3S-14MR/ES: All versions
+MELSEC-F series CPU module FX3S-20MR/ES: All versions
+MELSEC-F series CPU module FX3S-30MR/ES: All versions
+MELSEC-F series CPU module FX3S-10MT/ESS: All versions
+MELSEC-F series CPU module FX3S-14MT/ESS: All versions
+MELSEC-F series CPU module FX3S-20MT/ESS: All versions
+MELSEC-F series CPU module FX3S-30MT/ESS: All versions
+MELSEC-F series CPU module FX3S-10MT/DS: All versions
+MELSEC-F series CPU module FX3S-14MT/DS: All versions
+MELSEC-F series CPU module FX3S-20MT/DS: All versions
+MELSEC-F series CPU module FX3S-30MT/DS: All versions
+MELSEC-F series CPU module FX3S-10MR/DS: All versions
+MELSEC-F series CPU module FX3S-14MR/DS: All versions
+MELSEC-F series CPU module FX3S-20MR/DS: All versions
+MELSEC-F series CPU module FX3S-30MR/DS: All versions
+MELSEC-F series CPU module FX3S-10MT/DSS: All versions
+MELSEC-F series CPU module FX3S-14MT/DSS: All versions
+MELSEC-F series CPU module FX3S-20MT/DSS: All versions
+MELSEC-F series CPU module FX3S-30MT/DSS: All versions
+MELSEC-F series CPU module FX3S-30MT/ES-2AD: All versions
+MELSEC-F series CPU module FX3S-30MT/ESS-2AD: All versions
+MELSEC-F series CPU module FX3S-30MR/ES-2AD: All versions
+MELSEC-F series CPU module FX3SA-10MT-CM: All versions
+MELSEC-F series CPU module FX3SA-14MT-CM: All versions
+MELSEC-F series CPU module FX3SA-20MT-CM: All versions
+MELSEC-F series CPU module FX3SA-30MT-CM: All versions
+MELSEC-F series CPU module FX3SA-10MR-CM: All versions
+MELSEC-F series CPU module FX3SA-14MR-CM: All versions
+MELSEC-F series CPU module FX3SA-20MR-CM: All versions
+MELSEC-F series CPU module FX3SA-30MR-CM: All versions
+MELSEC iQ-F series FX5U-32MT/ES: All versions
+MELSEC iQ-F series FX5U-64MT/ES: All versions
+MELSEC iQ-F series FX5U-80MT/ES: All versions
+MELSEC iQ-F series FX5U-32MR/ES: All versions
+MELSEC iQ-F series FX5U-64MR/ES: All versions
+MELSEC iQ-F series FX5U-80MR/ES: All versions
+MELSEC iQ-F series FX5U-32MT/DS: All versions
+MELSEC iQ-F series FX5U-64MT/DS: All versions
+MELSEC iQ-F series FX5U-80MT/DS: All versions
+MELSEC iQ-F series FX5U-32MR/DS: All versions
+MELSEC iQ-F series FX5U-64MR/DS: All versions
+MELSEC iQ-F series FX5U-80MR/DS: All versions
+MELSEC iQ-F series FX5U-32MT/ESS: All versions
+MELSEC iQ-F series FX5U-64MT/ESS: All versions
+MELSEC iQ-F series FX5U-80MT/ESS: All versions
+MELSEC iQ-F series FX5U-32MT/DSS: All versions
+MELSEC iQ-F series FX5U-64MT/DSS: All versions
+MELSEC iQ-F series FX5U-80MT/DSS: All versions
+MELSEC iQ-F series FX5UC-32MT/D: All versions
+MELSEC iQ-F series FX5UC-64MT/D: All versions
+MELSEC iQ-F series FX5UC-96MT/D: All versions
+MELSEC iQ-F series FX5UC-32MT/DSS: All versions
+MELSEC iQ-F series FX5UC-64MT/DSS: All versions
+MELSEC iQ-F series FX5UC-96MT/DSS: All versions
+MELSEC iQ-F series FX5UC-32MT/DS-TS: All versions
+MELSEC iQ-F series FX5UC-32MT/DSS-TS: All versions
+MELSEC iQ-F series FX5UC-32MR/DS-TS: All versions
+MELSEC iQ-F series FX5UJ-24MT/ES: All versions
+MELSEC iQ-F series FX5UJ-40MT/ES: All versions
+MELSEC iQ-F series FX5UJ-60MT/ES: All versions
+MELSEC iQ-F series FX5UJ-24MR/ES: All versions
+MELSEC iQ-F series FX5UJ-40MR/ES: All versions
+MELSEC iQ-F series FX5UJ-60MR/ES: All versions
+MELSEC iQ-F series FX5UJ-24MT/ESS: All versions
+MELSEC iQ-F series FX5UJ-40MT/ESS: All versions
+MELSEC iQ-F series FX5UJ-60MT/ESS: All versions
+MELSEC iQ-F series FX5UJ-24MT/DS: All versions
+MELSEC iQ-F series FX5UJ-40MT/DS: All versions
+MELSEC iQ-F series FX5UJ-60MT/DS: All versions
+MELSEC iQ-F series FX5UJ-24MR/DS: All versions
+MELSEC iQ-F series FX5UJ-40MR/DS: All versions
+MELSEC iQ-F series FX5UJ-60MR/DS: All versions
+MELSEC iQ-F series FX5UJ-24MT/DSS: All versions
+MELSEC iQ-F series FX5UJ-40MT/DSS: All versions
+MELSEC iQ-F series FX5UJ-60MT/DSS: All versions
+MELSEC iQ-F series FX5UJ-24MT/ES-A: All versions
+MELSEC iQ-F series FX5UJ-40MT/ES-A: All versions
+MELSEC iQ-F series FX5UJ-60MT/ES-A: All versions
+MELSEC iQ-F series FX5UJ-24MR/ES-A: All versions
+MELSEC iQ-F series FX5UJ-40MR/ES-A: All versions
+MELSEC iQ-F series FX5UJ-60MR/ES-A: All versions
+MELSEC iQ-F series FX5S-30MT/ES: All versions
+MELSEC iQ-F series FX5S-40MT/ES: All versions
+MELSEC iQ-F series FX5S-60MT/ES: All versions
+MELSEC iQ-F series FX5S-80MT/ES: All versions
+MELSEC iQ-F series FX5S-30MR/ES: All versions
+MELSEC iQ-F series FX5S-40MR/ES: All versions
+MELSEC iQ-F series FX5S-60MR/ES: All versions
+MELSEC iQ-F series FX5S-80MR/ES: All versions
+MELSEC iQ-F series FX5S-30MT/ESS: All versions
+MELSEC iQ-F series FX5S-40MT/ESS: All versions
+MELSEC iQ-F series FX5S-60MT/ESS: All versions
+MELSEC iQ-F series FX5S-80MT/ESS: All versions
+MELSEC iQ-F series FX5-40SSC-G: All versions
+MELSEC iQ-F series FX5-80SSC-G: All versions
+MELSEC iQ-F series FX5-40SSC-S: All versions
+MELSEC iQ-F series FX5-80SSC-S: All versions
+MELSEC iQ-R series CPU module R04/08/16/32/120(EN)CPU: All versions
+MELSEC iQ-R series CPU module R08/16/32/120PCPU: All versions
+MELSEC iQ-R series CPU module R16/32/64MTCPU: All versions
+MELSEC iQ-R series RD78G4/8/16/32/64/HV/HW: All versions
+MELSEC iQ-R series RD77MS2/4/8/16: All versions
+MELSEC iQ-R series RD77GF4/8/16/32: All versions
+MELSEC iQ-L series LD78G4/16: All versions
+MELSEC Q series Q172/173DSCPU: All versions
+MELSEC Q series Q170MSCPU: All versions
+MELSEC Q series QD77MS2/4/16: All versions
+MELSEC Q series QD77GF4/8/16: All versions
+MELSEC L LD77MS2/4/16: All versions
+Mitsubishi Electric CNC M800V/M80V series M800VW BND-2051W000-**: All versions
+Mitsubishi Electric CNC M800V/M80V series M800VS BND-2052W000-**: All versions
+Mitsubishi Electric CNC M800V/M80V series M80V BND-2053W000-**: All versions
+Mitsubishi Electric CNC M800V/M80V series M80VW BND-2054W000-**: All versions
+Mitsubishi Electric CNC M800/M80/E80 series M800W BND-2005W000-**: All versions
+Mitsubishi Electric CNC M800/M80/E80 series M800S BND-2006W000-**: All versions
+Mitsubishi Electric CNC M800/M80/E80 series M80 BND-2007W000-**: All versions
+Mitsubishi Electric CNC M800/M80/E80 series M80W BND-2008W000-**: All versions
+Mitsubishi Electric CNC M800/M80/E80 series E80 BND-2009W000-**: All versions
+Mitsubishi Electric CNC M700V/M70V/E70 series M750VW BND-1015W002-**: All versions
+Mitsubishi Electric CNC M700V/M70V/E70 series M730VW/M720VW BND-1015W000-**: All versions
+Mitsubishi Electric CNC M700V/M70V/E70 series M750VS BND-1012W002-**: All versions
+Mitsubishi Electric CNC M700V/M70V/E70 series M730VS /M720VS BND-1012W000-**: All versions
+Mitsubishi Electric CNC M700V/M70V/E70 series M70V BND-1018W000-**: All versions
+Mitsubishi Electric CNC M700V/M70V/E70 series E70 BND-1022W000-**: All versions
+
+3.2 Vulnerability Overview
+3.2.1 Missing Authentication for Critical Function CWE-306
+Arbitrary command execution vulnerability due to missing authentication for critical function exists in Mitsubishi Electric proprietary protocol communication used in the affected products.
+CVE-2023-4699 has been assigned to this vulnerability. A CVSS v3.1 base score of 10.0 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Mitsubishi Electric reported this vulnerability to CISA.
+4. MITIGATIONS
+Mitsubishi Electric recommends that customers take the following mitigation measures to minimize the risk of exploiting this vulnerability:
+
+Use a firewall or virtual private network (VPN), etc. to prevent unauthorized access when Internet access is required.
+Use within a LAN and block access from untrusted networks and hosts through firewalls.
+For MELSEC iQ-F, iQ-R, iQ-L series, and Mitsubishi Electric numerical controller M800V/M80V series and M800/M80/E80 series, use IP filter function to block access from untrusted hosts.For details on the IP filter function, please refer to the following manual for each product."12.1 IP Filter Function" in the MELSEC iQ-F FX5 User's Manual (Ethernet Communication)"3.5 Security/IP filter" in the MELSEC iQ-F FX5 Motion Module User's Manual (CC-Link IE TSN)"1.13 IP Filter" in the MELSEC iQ-R Ethernet User's Manual (Application)"6.2 Security Function/IP filter" in the MELSEC iQ-R Motion Controller Programming Manual (Common)"1.4 Security/IP filter" in the MELSEC iQ-R Motion Module User's Manual (Network)MELSEC iQ-L 运动模块用户手册(网络篇) 1.4 安全 IP滤波器"16. Appendix 3 IP Address Filter Setting Function " M800V/M80V Series Instruction Manual"15. Appendix 2 IP Address Filter Setting Function " M800/M80/E80 Series Instruction Manual
+Restrict physical access to the affected products and the LAN that is connected by them.
+For Mitsubishi Electric numerical controller M800V/M80V series and M800/M80/E80 series, set the parameter "#11094 GX Restriction" to 1 and limit the operation level of the maintenance screen. For details, please refer to the following manual for each product."15 Machine Parameters" M800V/M80V Series Alarm/Parameter Manual"15 Machine Parameters" M800/M80/E80 Series Alarm/Parameter Manual"2.8 Changing the Operation Level (Protect Setting Screen) " M800V/M80V Series Instruction Manual"2.11 Changing the Operation Level (Protect Setting Screen) " M800/M80/E80 Series Instruction Manual
+
+For specific update instructions and additional details see the Mitsubishi Electric advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 02, 2023: Initial Publication
+November 12, 2024: Update A - Added more affected products and mitigations, changed CVSS scoring and vulnerability description.
+

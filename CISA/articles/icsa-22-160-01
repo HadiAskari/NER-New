@@ -1,0 +1,104 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely
+Vendor: Mitsubishi Electric
+Equipment: Air Conditioning Systems
+Vulnerabilities: Use of a Broken or Risky Cryptographic Algorithm, Exposure of Sensitive Information to an Unauthorized Actor, Channel Accessible by Non-Endpoint
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to disclose or tamper data in communication between the air conditioning system and the external computers or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The firmware on the following Mitsubishi Electric products is affected:
+
+G-150AD: Versions 3.21 and prior
+AG-150A-A: Versions 3.21 and prior
+AG-150A-J: Versions 3.21 and prior
+GB-50AD: Versions 3.21 and prior
+GB-50ADA-A: Versions 3.21 and prior
+GB-50ADA-J: Versions 3.21 and prior
+EB-50GU-A: Versions. 7.10 and prior
+EB-50GU-J: Versions 7.10 and prior
+AE-200J: Versions 7.97 and prior
+AE-200A: Versions 7.97 and prior
+AE-200E: Versions 7.97 and prior
+AE-50J: Versions 7.97 and prior
+AE-50A: Versions 7.97 and prior
+AE-50E: Versions 7.97 and prior
+EW-50J: Versions 7.97 and prior
+EW-50A: Versions 7.97 and prior
+EW-50E: Versions 7.97 and prior
+TE-200A: Versions 7.97 and prior
+TE-50A: Versions 7.97 and prior
+TW-50A: Versions 7.97 and prior
+
+See Mitsubishi Electric’s security bulletin for specific correspondence between affected products and vulnerabilities.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+Use of a broken or risky cryptographic algorithm allows a remote unauthenticated attacker to cause a disclosure of an encrypted message from the air conditioning systems by sniffing encrypted communications.
+CVE-2022-24296 has been assigned to this vulnerability. A CVSS v3 base score of 3.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.2    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The DES and Triple DES ciphers, as used in the TLS, SSH, and IPSec protocols and other protocols and products, have a birthday bound of approximately 4 billion blocks. This which makes it easier for remote attackers to obtain cleartext data via a birthday attack against a long duration encrypted session, as demonstrated by an HTTPS session using Triple DES in CBC mode (a.k.a. a “Sweet32” attack).
+CVE-2016-2183 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+The RC4 algorithm, as used in the TLS protocol and SSL protocol, has many single-byte biases that make it easier for remote attackers to conduct plaintext-recovery attacks via statistical analysis of ciphertext in a large number of sessions using the same plaintext.
+CVE-2013-2566 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.4    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+This vulnerability makes it easier for remote attackers to conduct plaintext-recovery attacks against the initial bytes of a stream by sniffing network traffic that relies on keys affected by the Invariance Weakness. An attacker can then use a brute-force approach involving LSB values (a.k.a. the “Bar Mitzvah” issue).
+CVE-2015-2808 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    CHANNEL ACCESSIBLE BY NON-ENDPOINT CWE-300
+The TLS protocol and the SSL Protocol 3.0 and earlier do not properly associate renegotiation handshakes with an existing connection in some third-party products. This allows machine-in-the-middle attackers to insert data into sessions protected by TLS or SSL by sending an unauthenticated request processed retroactively by a server in a post-renegotiation context.
+CVE-2009-3555 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Mitsubishi Electric reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Mitsubishi recommends updating the following air conditioning system’s firmware to the latest versions:
+
+G-150AD: Replace the air conditioning systems to AE-200J, AE-50J or EW-50J Version 7.98 or later
+AG-150A-A: Replace the air conditioning systems to AE-200A, AE-50A or EW-50A Version 7.98 or later
+AG-150A-J: Replace the air conditioning systems to AE-200E, AE-50E or EW-50E Version 7.98 or later
+GB-50AD: Replace the air conditioning systems to AE-200J, AE-50J or EW-50J Version 7.98 or later
+GB-50ADA-A: Replace the air conditioning systems to AE-200A, AE-50A or EW-50A Version 7.98 or later
+GB-50ADA-J: Replace the air conditioning systems to AE-200E, AE-50E or EW-50E Version 7.98 or later
+EB-50GU-A: Update to Version 7.11 or later
+EB-50GU-J: Update to Version 7.11 or later
+AE-200J: Update to Version 7.98 or later
+AE-200A: Update to Version 7.98 or later
+AE-200E: Update to Version 7.98 or later
+AE-50J: Update to Version 7.98 or later
+AE-50A: Update to Version 7.98 or later
+AE-50E: Update to Version 7.98 or later
+EW-50J: Update to Version 7.98 or later
+EW-50A: Update to Version 7.98 or later
+EW-50E: Update to Version 7.98 or later
+TE-200A: Update to Version 7.98 or later
+TE-50A: Update to Version 7.98 or later
+TW-50A: Update to Version 7.98 or later
+
+To minimize the risk of these vulnerabilities being exploited, please make sure air conditioning systems are properly configured as recommended by Mitsubishi Electric. Mitsubishi Electric recommends taking the following mitigation measures:
+
+Restrict the access to air conditioning systems from untrusted networks and hosts.
+Use an anti-virus software and update the OS and the web browser to the latest version on your computer to connect your air conditioning system.
+
+See Mitsubishi Electric’s security bulletin for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity.

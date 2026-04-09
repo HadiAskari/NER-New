@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.6
+
+ATTENTION: Exploitable locally/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC STEP 7 (TIA Portal) and SIMATIC WinCC (TIA Portal)
+Vulnerabilities: Incorrect Default Permissions
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-226-01 Siemens SIMATIC STEP 7 and SIMATIC WinCC that was published August 14, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker with local file write access to manipulate files and cause a denial-of-service-condition, or execute code both on the manipulated installation as well as devices configured using the manipulated installation.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affect the following SIMATIC STEP 7 products: 
+
+SIMATIC STEP 7 (TIA Portal) and WinCC (TIA Portal) v10, v11, v12: All versions,
+
+--------- Begin Update A Part 1 of 2 --------
+
+SIMATIC STEP 7 (TIA Portal) and WinCC (TIA Portal) v13: All versions prior to v13 SP2 Update 2,
+
+--------- End Update A Part 1 of 2 --------
+
+SIMATIC STEP 7 (TIA Portal) and WinCC (TIA Portal) v14: All versions < v14 SP1 Update 6, and
+SIMATIC STEP 7 (TIA Portal) and WinCC (TIA Portal) v15: All versions < v15 Update 2.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INCORRECT DEFAULT PERMISSIONS CWE-276
+Improper file permissions in the default installation of TIA Portal may allow an attacker with local file system access to insert specially crafted files, which may prevent TIA Portal startup (denial-of-service) or lead to local code execution. No special privileges are required, but the victim needs to attempt to start TIA Portal after the manipulation. 
+CVE-2018-11453 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.2    INCORRECT DEFAULT PERMISSIONS CWE-276
+Improper file permissions in the default installation of TIA Portal may allow an attacker with local file system access to manipulate resources, which may be transferred to devices and executed there by a different user. No special privileges are required, but the victim needs to transfer the manipulated files to a device. Execution is caused on the target device rather than on the PG device. 
+CVE-2018-11454 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Younes Dragoni from Nozomi Networks reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 --------
+Siemens recommends users of SIMATIC STEP 7 (TIA Portal) and WinCC (TIA Portal) v10, v11, or v12 upgrade to v13 SP2 Update 2 to resolve these vulnerabilities:
+https://support.industry.siemens.com/cs/ww/en/view/109759753
+Siemens recommends users of SIMATIC STEP 7 (TIA Portal) and WinCC (TIA Portal) v13, v14, or v15 update to the following versions to resolve these vulnerabilities:
+
+v13 SP2 Update 2
+
+https://support.industry.siemens.com/cs/ww/en/view/109759753
+--------- End Update A Part 2 of 2 ----------
+
+v14 SP1 Update 6
+
+https://support.industry.siemens.com/cs/ww/en/view/109747387
+
+v15 Update 2
+
+https://support.industry.siemens.com/cs/ww/en/view/109755826
+Siemens has identified the following specific workarounds and mitigations that users can apply to reduce the risk:
+
+Restrict operating system access to authorized personnel.
+Validate GSD files for legitimacy and process GSD files only from trusted sources.
+
+Siemens strongly recommends users protect network access to devices with appropriate mechanisms. Siemens also advises that users configure the operational environment according to Siemens’ Operational Guidelines for Industrial Security:
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens Security Advisory SSA-979106 at the following location:
+http://www.siemens.com/cert/advisories
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

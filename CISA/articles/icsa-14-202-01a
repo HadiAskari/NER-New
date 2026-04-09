@@ -1,0 +1,63 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-202-01 OleumTech WIO Family Vulnerabilities that was published July 21, 2014, on the NCCIC/ICS-CERT web site.
+--------- Begin Update A Part 1 of 2 --------
+Security researchers Lucas Apa and Carlos Mario Penagos Hollman of IOActive have identified multiple vulnerabilities in OleumTech’s WIO family including the sensors and the DH2 data collector. OleumTech has produced updates that mitigate these vulnerabilities. These vulnerabilities could be exploited remotely.
+--------- End Update A Part 1 of 2 --------
+AFFECTED PRODUCTS
+The following OleumTech Products are affected:
+
+OleumTech WIO DH2 Wireless Gateway and
+All OleumTech Sensor Wireless I/O Modules versions.
+
+IMPACT
+Two identified vulnerabilities may potentially allow a Man-in-the-Middle (MitM) attack to either monitor for reconnaissance or insert specially crafted data packets into the data stream. The third vulnerability can lead to a denial-of-service (DoS) condition under the correct circumstances.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+OleumTech is a US-based company headquartered in Foothill Ranch, California.
+The affected products are part of the OleumTech WIO System, developed to provide end-to-end wireless remote monitoring infrastructure. According to OleumTech WIO products are deployed across several sectors including, Energy, Water and Wastewater Systems and others. OleumTech estimates that these products are used primarily in the United States and Canada.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed July 21, 2014.
+
+If a specially crafted packet is received by the DH2 Gateway with a high value on the battery voltage field, the DH2 Gateway radio receiver crashes. If this scenario is repeated multiple times, a DoS condition could occur. This could allow the attacker to execute arbitrary code.
+CVE-2014-2360NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2360, web site last accessed May 21, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:P, web site last accessed July 21, 2014.
+
+KEY MANAGEMENT ERRORSCWE-320: Key Management Errors, http://cwe.mitre.org/data/definitions/320.html, web site last accessed July 21, 2014.
+
+When connecting any of the devices to BreeZ, it is possible to read the site security key of the device without authentication. This could allow someone, who has stolen a node or has physical access to the device to obtain the site security key to communicate freely with other network devices. However, this key cannot be read remotely when the data system is up and running, only in the manual setup mode. The data flow one way from sensor to gateway collector, and there is no control channel back to the sensor. To reset the key, the device must be taken offline and updated manually.
+CVE-2014-2361NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2361, web site last accessed May 21, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 7.2 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:N/C:C/I:C/A:C, web site last accessed July 21, 2014.
+
+USE OF CRYPTOGRAPHICALLY WEAK PSEUDO-RANDOM NUMBER GENERATORCWE-338: Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG), http://cwe.mitre.org/data/definitions/338.html, web site last accessed July 21, 2014.
+
+The Site Security Key is generated using the function time64() from the standard C library. This is a 4-byte number that corresponds to the project creation calendar time. Using this value as a site security key could allow an unauthenticated device to guess the site key by trying a considerably low number of possible combinations.
+CVE-2014-2362NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2362, web site last accessed May 21, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:P/A:N, web site last accessed July 21, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+--------- Begin Update A Part 2 of 2 --------
+OleumTech has created updates for both BreeZ and the gateway to mitigate all these vulnerabilities. These updates allow users to encrypt their wireless traffic with AES256. To obtain these updates, please log in to the OleumTech download center (http://support.oleumtech.com/) or contact OleumTech tech support:
+Phone: 866-508-8586
+Email: TechSupport@OleumTech.com
+--------- End Update A Part 2 of 2----------
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click Web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed July 21, 2014. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed July 21, 2014. for more information on social engineering attacks.
+

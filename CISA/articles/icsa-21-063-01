@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: 1734-AENTR Series B and Series C
+Vulnerabilities: Improper Access Control, Cross-site Scripting
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to unauthorized data modification on the affected devices.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of 1734-AENTR are affected:
+
+Series B, Versions 4.001 to 4.005, and 5.011 to 5.017 
+Series C, Versions 6.011 and 6.012
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+The web interface of the 1734-AENTR communication module mishandles authentication for HTTP POST requests. A remote, unauthenticated attacker can send a crafted request that may allow for modification of the configuration settings. 
+CVE-2020-14504 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.2    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The web interface of the 1734-AENTR communication module is vulnerable to stored XSS. A remote, unauthenticated attacker could store a malicious script within the web interface that, when executed, could modify some string values on the homepage of the web interface. 
+CVE-2020-14502 has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Adam Eliot of the Loon Security Team reported these vulnerabilities to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation recommends users update to the latest available patches: 
+
+1734-AENTR Series B, update to firmware Version 5.018
+1734-AENTR Series C, update to firmware Version 6.013
+
+Please refer to Rockwell Automation’s security advisory PN1551 (requires login) for detailed information.
+Rockwell Automation recommends the following network-based vulnerability mitigations for embedded products:
+
+Utilize proper network infrastructure controls, such as firewalls, to help ensure that traffic from unauthorized sources are blocked.
+Minimize network exposure for all control system devices and/or systems and ensure that they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, please see Knowledgebase Article PN715
+Locate control system networks and devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. 

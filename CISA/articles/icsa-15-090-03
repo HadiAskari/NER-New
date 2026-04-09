@@ -1,0 +1,59 @@
+
+OVERVIEW
+Independent researcher Billy Rios has identified four vulnerabilities in Hospira’s MedNet server software. Hospira has released a new version of the MedNet software and provided mitigation recommendations that mitigate the reported vulnerabilities.
+Three of the four vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following MedNet software versions are affected:
+
+MedNet software Version 5.8 and prior versions.
+
+IMPACT
+Exploitation of these vulnerabilities may allow an attacker to remotely compromise MedNet servers and push unauthorized modifications to medication libraries and pump configurations.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Hospira is a US-based company that maintains offices in several countries around the world.
+The MedNet server software manages drug libraries, firmware updates, and configurations of Hospira intravenous pumps. The affected products are deployed across the Healthcare and Public Health Sector. Hospira estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HARD-CODED CRYPTOGRAPHIC KEYCWE-321: Use of Hard-coded Cryptographic Key, http://cwe.mitre.org/data/definitions/321.html, web site last accessed March 31, 2015.
+
+The MedNet software uses hard-coded cryptographic keys that could enable an attacker to intercept encrypted traffic from infusion pumps.
+CVE-2014-5403NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5403, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:C/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:C/I:N/A:N, web site last accessed March 31, 2015.
+
+HARD-CODED PASSWORDCWE-259: Use of Hard-coded Password, http://cwe.mitre.org/data/definitions/259.html, web site last accessed March 31, 2015.
+
+The MedNet software contains plaintext storage of passwords for the SQL database that may allow an attacker to compromise the MedNet SQL server and gain administrative access to the workstation.
+CVE-2014-5405NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5405, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:C/I:C/A:C, web site last accessed March 31, 2015.
+
+PASSWORD IN CONFIGURATION FILECWE-260: Password in Configuration File, http://cwe.mitre.org/data/definitions/260.html, web site last accessed March 31, 2015.
+
+The MedNet software stores clear text usernames and passwords on the local file system that were used during the installation process that may allow a malicious user to compromise the MedNet installation.
+CVE-2014-5400NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5400, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:S/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:S/C:C/I:C/A:C, web site last accessed March 31, 2015.
+
+IMPROPER CONTROL OF GENERATION OF CODECWE-94: Improper Control of Generation of Code ('Code Injection'), http://cwe.mitre.org/data/definitions/94.html, web site last accessed March 31, 2015.
+
+The MedNet software uses vulnerable versions of the JBoss Enterprise Application Platform software that may allow unauthenticated users to execute arbitrary code on the target system.
+CVE-2014-5401NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5401, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed March 31, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+Three of the four vulnerabilities could be exploited remotely. The Password in Configuration File vulnerability is locally exploitable.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Hospira has developed a new version of the MedNet software, MedNet 6.1. Hospira reports that MedNet 6.1 no longer uses hard-coded passwords, hard-coded cryptographic keys, and no longer stores passwords in clear text. Existing versions of MedNet can be upgraded to MedNet 6.1.
+Hospira has produced mitigation recommendations that help mitigate the vulnerability in the vulnerable version of JBoss Enterprise Application Platform software, used in the MedNet software. This has been addressed by Hospira through issuance of the following knowledge based articles: Improving Security in Hospira MedNet 5.5 (August 2014) and Improving Security in Hospira MedNet 5.8 (August 2014). For additional information about Hospira’s new releases and mitigation recommendations, contact Hospira’s technical support at 1-800-241-4002.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Maintain layered physical and logical security to implement defense-in-depth security practices for environments operating medical devices.
+Minimize network exposure for all medical devices and/or systems, and ensure that they are not accessible from the Internet.
+Produce an MD5 checksum of key files to identify any changes to files.
+Follow good network design practices that include network separation and segmentation; use DMZs with properly configured firewalls to selectively control traffic; and monitor traffic passed between zones and systems to identify anomalous activity.
+Locate all medical devices and/or systems behind firewalls, and isolate them from the business network. Use the static nature of these isolated environments to look for anomalous activities.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

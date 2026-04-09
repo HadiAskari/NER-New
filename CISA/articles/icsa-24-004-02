@@ -1,0 +1,74 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Mitsubishi Electric
+Equipment: Multiple Factory Automation Products
+Vulnerabilities: Observable Timing Discrepancy, Double Free, Access of Resource Using Incompatible Type ('Type Confusion')
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could disclose information in the product or could cause denial-of-service (DoS) condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Factory Automation products are affected:
+
+GT SoftGOT2000: Versions 1.275M to 1.290C (CVE-2023-0286)
+OPC UA Data Collector: Versions 1.04E and prior (CVE-2023-0286)
+MX OPC Server UA (Software packaged with MC Works64): Versions 3.05F and later (Packaged with MC Works64 Version 4.03D and later) (CVE-2022-4304)
+OPC UA Server Unit: All versions (CVE-2022-4304)
+FX5-OPC: Versions 1.006 and prior (CVE-2022-4304, CVE-2022-4450)
+
+3.2 Vulnerability Overview
+3.2.1 OBSERVABLE TIMING DISCREPANCY CWE-208
+The affected products contain an observable timing discrepancy vulnerability in their RSA decryption implementation. By sending specially crafted packets and performing a Bleichenbacher style attack, an attack method to decrypt ciphertext by observing the behavior when a padding error occurs, an attacker could decrypt the ciphertext and disclose sensitive information.
+CVE-2022-4304 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2 DOUBLE FREE CWE-415
+The affected products contain a double free vulnerability when reading a PEM file. An attacker could cause denial-of-service (DoS) on the product by leading a legitimate user to importing a malicious certificate.
+CVE-2022-4450 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3 ACCESS OF RESOURCE USING INCOMPATIBLE TYPE ('TYPE CONFUSION') CWE-843
+The affected products contain a type confusion vulnerability relating to X.400 address
+processing inside an X.509 GeneralName. An attacker could disclose sensitive information in memory of the product or cause denial-of-service (DoS) on the product by getting to load a specially crafted certificate revocation list (CRL).
+CVE-2023-0286 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Mitsubishi Electric reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Mitsubishi Electric recommends that users update their products to the following versions:
+
+GT SoftGOT2000: Version 1.295H or later
+OPC UA data collector: 1.05F or later
+MX OPC Server UA: Use recommended mitigations/workarounds
+OPC UA server unit: Use recommended mitigations/workarounds
+FX5-OPC: Version 1.010 or later
+
+Mitsubishi Electric recommends that users take the following mitigation measures to minimize the risk of exploiting these vulnerabilities:
+
+GT SoftGOT2000 and OPC UA Data Collector: Do not load untrusted certificate revocation lists (CRLs).
+MX OPC Server UA: Use within a LAN and block access from untrusted networks and hosts through firewalls. Restrict physical access to the product, as well as to computers and network devices located within the same network as the product. Use a firewall or virtual private network (VPN), etc. to prevent unauthorized access when Internet access is required.
+OPC UA Server Unit: Use within a LAN and block access from untrusted networks and hosts through firewalls. Restrict physical access to the product, as well as to computers and network devices located within the same network as the product. Use a firewall or virtual private network (VPN), etc. to prevent unauthorized access when Internet access is required. Set a security policy other than 'None' in security setting function to prevent unauthorized access. For details on security setting function, please refer to the MELSEC iQ-R OPC UA Server Unit User's Manual (Application), section 1.1 "OPC UA Server Function".
+FX5-OPC: Use within a LAN and block access from untrusted networks and hosts through firewalls. Restrict physical access to the product, as well as to computers and network devices located within the same network as the product. Use a firewall or virtual private network (VPN), etc. to prevent unauthorized access when Internet access is required. Use the IP filter function to block access from untrusted hosts. For details on the IP filter function, please refer to the MELSEC iQ-F FX5 OPC UA Module User's Manual section 4.4 "IP Filter." Do not import untrusted certificates.
+
+For additional details, see the [Mitsubishi Electric advisory 2023-018].(https://www.mitsubishielectric.com/en/psirt/vulnerability/pdf/2023-018_en.pdf).
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+January 4, 2024: Initial Publication
+

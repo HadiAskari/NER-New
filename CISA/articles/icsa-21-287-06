@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: Solid Edge, 3D CAD and solid modeling software
+Vulnerabilities: Use After Free, Out-of-bounds Read, Access of Uninitialized Pointer
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead the application to crash or allow arbitrary code execution on the target host system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+Solid Edge SE2021: All versions prior to SE2021MP8
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE AFTER FREE CWE-416
+The IFC adapter in the affected application contains a use-after-free vulnerability, which could be triggered while parsing user-supplied IFC files. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-37202 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    OUT-OF-BOUNDS READ CWE-125
+The plmxmlAdapterIFC.dll contains an out-of-bounds read while parsing user supplied IFC files, which could result in a read past the end of an allocated buffer. This could allow an attacker to cause a denial-of-service condition or read sensitive information from memory locations.
+CVE-2021-37203 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H).
+3.2.3    OUT-OF-BOUNDS READ CWE-125
+The affected application is vulnerable to an out-of-bounds read past the end of an allocated buffer when parsing JT files. An attacker could leverage this vulnerability to leak information in the context of the current process (ZDI-CAN-13565).
+CVE-2021-41533 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.4    OUT-OF-BOUNDS READ CWE-125
+The affected application is vulnerable to an out-of-bounds read past the end of an allocated buffer when parsing JT files. An attacker could leverage this vulnerability to leak information in the context of the current process.
+CVE-2021-41534 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.5    USE AFTER FREE CWE-416
+The affected application contains a use-after-free vulnerability while parsing OBJ files. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-41535 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.6    USE AFTER FREE CWE-416
+The affected application contains a use-after-free vulnerability while parsing OBJ files. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-41536 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.7    USE AFTER FREE CWE-416
+The affected application contains a use-after-free vulnerability while parsing OBJ files. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-41537 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.8     ACCESS OF UNINITIALIZED POINTER CWE-824
+The affected application is vulnerable to information disclosure by access to an uninitialized pointer while parsing user supplied OBJ files. An attacker could leverage this vulnerability to leak information from unexpected memory locations.
+CVE-2021-41538 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.9    USE AFTER FREE CWE-416
+The affected application contains a use-after-free vulnerability while parsing OBJ files. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-41539 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.10    USE AFTER FREE CWE-416
+The affected application contains a use-after-free vulnerability while parsing OBJ files. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-41540 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Xina1i and Trend Micro’s Zero Day Initiative reported these vulnerabilities to Siemens and CISA.
+4. MITIGATIONS
+Siemens recommends upgrading software to the latest version:
+
+Solid Edge SE2021: Update to SE2021MP8 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Avoid opening files from unknown sources in Solid Edge
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for industrial security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-728618
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

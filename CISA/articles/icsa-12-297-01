@@ -1,0 +1,36 @@
+
+Overview
+This advisory is a follow-up to the original advisory titled ICSA-12-297-01P—Tropos Wireless Mesh Routers Insufficient Entropy Vulnerability that was published October 23, 2012, on the ICS-CERT secure Portal library.
+This advisory provides mitigation details for a vulnerability that impacts Tropos Wireless Mesh Routers. An independent research group composed of Nadia Heninger (University of California at San Diego), Zakir Durumeric (University of Michigan), Eric Wustrow (University of Michigan), and J. Alex Halderman (University of Michigan) identified an insufficient entropy vulnerabilityMining Your Ps and Qs: Detection of Widespread Weak Keys in Network Devices, https://factorable.net/paper.html, Web site last accessed December 10, 2012. in SSH key generation in Tropos Networks’s wireless network router product line. By impersonating the device, an attacker can obtain the credentials of administrative users and perform a Man-in-the-Middle (MitM) attack. Tropos has validated the vulnerability and produced an embedded operating software update that mitigates the reported vulnerability. According to Tropos, products are deployed across several sectors including the transportation, energy, water, emergency services, and critical manufacturing concentrated in the United States.
+This vulnerability can be exploited remotely.
+Affected Products
+The following Tropos products are affected:
+
+All wireless mesh routers running Mesh OS versions prior to release 7.9.1.1
+
+Impact
+An attacker can gain unauthorized access to the router by determining the authentication keys from reused or non-unique SSH host keys. By exploiting this vulnerability, the attacker can perform a MitM attack to affect the integrity of the data on the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Tropos Networks is a US-based company. Tropos wireless mesh routers are used to build large scale, communication networks for aggregating multiple smart grids, industrial controllers, and fixed and mobile communication applications. According to Tropos, products are deployed across several sectors including the transportation, energy, water, emergency services, and critical manufacturing sectors. Tropos estimates that these products are used primarily in the United States (79% product deployment) and over 50 additional countries (21% total).
+Vulnerability Characterization
+Vulnerability Overview
+Insufficient EntropyCWE 331, http://cwe.mitre.org/data/definitions/331.html, CWE-331: Insufficient Entropy, Web site last accessed December 10, 2012.
+The Tropos products do not use sufficient entropy when generating keys for SSH connections, thereby making them weak. By calculating private authentication keys, an attacker could perform a MitM attack on the system by knowing the non-unique host key. This could enable the attacker to gain unauthorized access to the system and read information on the device, as well as inject data into the SSH stream compromising the integrity of the data.
+CVE-2012-4898 has been assigned to this vulnerability. A CVSS v2 base score of 6.1 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:N/C:C/I:P/A:N).
+Vulnerability Details
+Exploitability
+This vulnerability can be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a high skill would be able to exploit this vulnerability.
+Mitigation
+Tropos Networks has released customer notification and an update (Tropos Mesh OS 7.9.1.1) for its network device embedded software. This update can be downloaded from the Tropos software download page. Download of the update requires a valid user name and password. The updated firmware fixes the vulnerability by using sufficient entropy to generate unique SSH host keys.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.

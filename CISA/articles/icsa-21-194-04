@@ -1,0 +1,88 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.4
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: SINUMERIK Integrate Operate Client
+Vulnerability: Improper Certificate Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to spoof any SSL server certificate and conduct man-in-the-middle attacks.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SINUMERIK are affected:
+
+SINUMERIK Analyze MyCondition: All versions
+SINUMERIK Analyze MyPerformance: All versions
+SINUMERIK Analyze MyPerformance / OEE-Monitor: All versions
+SINUMERIK Analyze MyPerformance / OEE-Tuning: All versions
+SINUMERIK Integrate Client 02: All versions including v02.00.12 and up to but not including v02.00.18
+SINUMERIK Integrate Client 03: All versions between v03.00.12 and up to but not including v03.00.18
+SINUMERIK Integrate Client 04: Version v04.00.02 and all versions including v04.00.15 up to but not including v04.00.18
+SINUMERIK Integrate for Production 4.1: All versions prior to v4.1 SP10 HF3
+SINUMERIK Integrate for Production 5.1: Version 5.1
+SINUMERIK Manage MyMachines: All versions
+SINUMERIK Manage MyMachines / Remote: All versions
+SINUMERIK Manage MyMachines / Spindel Monitor: All versions
+SINUMERIK Manage MyPrograms: All versions
+SINUMERIK Manage MyResources / Programs: All versions
+SINUMERIK Manage MyResources / Tools: All versions
+SINUMERIK Manage My Tools: All versions
+SINUMERIK Operate v4.8: All versions prior to v4.8 SP8
+SINUMERIK Operate v4.93: All versions prior to v4.93 HF7
+SINUMERIK Operate v4.94: All versions prior to v4.94 HF5
+SINUMERIK Optimize MyProgramming / NX-Cam Editor: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER CERTIFICATE VALIDATION CWE-295
+Due to an error in a third-party dependency, the SSL flags used for setting up a TLS connection to a server are overwritten with wrong settings. This results in a missing validation of the server certificate and thus results in a possible TLS MITM scenario.
+CVE-2021-31892 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has provided remediations for the following affected products. Contact the Siemens representative for information on how to obtain the following updates:
+
+SINUMERIK Analyze MyCondition: Update SINUMERIK Integrate Client
+SINUMERIK Analyze MyPerformance: Update SINUMERIK Integrate Client
+SINUMERIK Analyze MyPerformance / OEE-Monitor: Update SINUMERIK Integrate Client
+SINUMERIK Analyze MyPerformance / OEE-Tuning: Update SINUMERIK Integrate Client
+SINUMERIK Integrate Client 02: Update to v02.00.18
+SINUMERIK Integrate Client 03: Update to v03.00.18
+SINUMERIK Integrate Client 04: Update to v04.00.18
+SINUMERIK Integrate for Production 4.1: Update SINUMERIK Integrate Client
+SINUMERIK Integrate for Production 5.1: Update SINUMERIK Integrate Client
+SINUMERIK Manage MyMachines: Update SINUMERIK Integrate Client
+SINUMERIK Manage MyMachines / Remote: Update SINUMERIK Integrate Client
+SINUMERIK Manage MyMachines / Spindel Monitor: Update SINUMERIK Integrate Client
+SINUMERIK Manage MyPrograms: Update SINUMERIK Integrate Client
+SINUMERIK Manage MyResources / Programs: Update SINUMERIK Integrate Client
+SINUMERIK Manage MyResources / Tools: Update SINUMERIK Integrate Client
+SINUMERIK Manage My Tools: Update SINUMERIK Integrate Client
+SINUMERIK Operate v4.8: Update SINUMERIK Operate to v4.8 SP8 or update included SINUMERIK Integrate Client
+SINUMERIK Operate v4.93: Update SINUMERIK Operate to v4.93 HF7 or update included SINUMERIK Integrate Client
+SINUMERIK Operate v4.94: Update SINUMERIK Operate to v4.94 HF5 or update included SINUMERIK Integrate Client
+SINUMERIK Optimize MyProgramming / NX-Cam Editor: Update SINUMERIK Integrate Client
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens Operational Guidelines for Industrial Security, and to follow the recommendations in the product manuals.
+Additional information on Industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information about this vulnerability and the associated remediations, please see Siemens Security Advisory SSA-729965.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

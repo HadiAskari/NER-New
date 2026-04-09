@@ -1,0 +1,72 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC Communication Processor
+Vulnerability: Authentication Bypass Issues
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-15-335-03 Siemens SIMATIC Communication Processor (Update B) that was published May 3, 2016, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability may allow unauthenticated users to perform administrative operations on the SIMATIC Communication Processor under certain conditions.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports the vulnerability affects the following Communication Processor modules, which are designed to be used with Siemens’ SIMATIC S7-300/S7-400 CPUs: 
+--------- Begin Update C Part 1 of 2 ---------
+
+SIMATIC NET CP 342-5 (incl. SIPLUS variants): All versions
+SIMATIC CP 343-1 Advanced (incl. SIPLUS variants): All firmware versions prior to v3.0.44,
+SIMATIC CP 343-1 Lean (incl. SIPLUS variants): All firmware versions prior to v3.1.1,
+SIMATIC NET CP 343-1 Standard (incl. SIPLUS variants): All versions prior to v3.1.1
+SIMATIC NET CP 443-1 Advanced (incl. SIPLUS variants): All versions prior to v3.2.9
+SIMATIC NET CP 443-1 Standard (incl. SIPLUS variants): All versions prior to v3.2.9
+SIMATIC NET CP 443-5 Basic (incl. SIPLUS variants): All versions
+SIMATIC NET CP 443-5 Extended: All versions
+TIM 3V-IE / TIM 3V-IE Advanced (incl. SIPLUS NET variants): All versions prior to v2.6.0
+TIM 3V-IE DNP3 (incl. SIPLUS NET variants): All versions prior to v3.1.0
+TIM 4R-IE (incl. SIPLUS NET variants): All versions prior to v2.6.0
+TIM 4R-IE DNP3 (incl. SIPLUS NET variants): All versions prior to v3.1.0
+
+--------- End Update C Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Communication Processor module families may allow unauthenticated users to perform administrative operations on the Communication Processor if network access to Port 102/TCP is available and the Communication Processor’s configuration is stored on its corresponding CPUs. 
+CVE-2015-8214 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Lei ChengLin (Z-0ne) from Fengtai Technologies’ Security Research Team and Artem Zinenko from Kaspersky reported this vulnerability to Siemens.
+5. MITIGATIONS
+--------- Begin Update C Part 2 of 2 ---------
+Siemens has released the following updates for Communication Processor (CP) module families CP 343-1/TIM 3VIE/ TIM 4R-IE/CP 443-1 to resolve this issue:
+
+SIMATIC NET CP 343-1 Advanced: Update to v3.0.44
+SIMATIC NET CP 343-1 Lean / Standard: Update to v3.1.1
+SIMATIC NET CP 443-1 Advanced / Standard: Update to v3.2.9
+TIM 3V-IE / TIM 3V-IE Advanced / TIM 4R-IE: Update to v2.6.0
+TIM 3V-IE DNP3: Update to v3.1.0
+TIM 4R-IE DNP3: Update to v3.1.0
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens operational guidelines for industrial security, and following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+--------- End Update C Part 2 of 2 ---------
+For more information on this vulnerability and detailed instructions, please see Siemens Security Advisory SSA-763427
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

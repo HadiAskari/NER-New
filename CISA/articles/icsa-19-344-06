@@ -1,0 +1,95 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC S7-1200 and S7-1500 CPU families
+Vulnerabilities: Use of a Broken or Risky Cryptographic Algorithm, Missing Support for Integrity Check
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-344-06 Siemens SIMATIC S7-1200 and S7-1500 CPU Families (Update A) that was published March 10, 2020, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to modify network traffic or impact the perceived integrity of the user program stored on the CPU.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that these vulnerabilities affect the following SIMATIC products: 
+
+SIMATIC ET200SP (incl. SIPLUS variants) Open Controller CPU 1515SP PC: All versions
+
+--------- Begin Update B Part 1 of 2 ---------
+
+SIMATIC Drive Controller family: All versions (only affected by CVE-2019-10943)
+SIMATIC ET 200SP Open Controller CPU 1515SP PC2 (incl. SIPLUS variants): All versions prior to V20.8
+SIMATIC ET 200SP Open Controller CPU 1515SP PC2 (incl. SIPLUS variants): Versions 20.8 and later (only affected by CVE-2019-10943)
+SIMATIC ET 200SP Open Controller CPU 1515SP PC (incl. SIPLUS variants): All versions
+SIMATIC S7-1200 CPU family (incl. SIPLUS variants): All versions prior to V4.4.0
+SIMATIC S7-1200 CPU family (incl. SIPLUS variants): Versions 4.4.0 and later (only affected by CVE-2019-10943)
+SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants): All versions prior to V2.8.1
+SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants): Versions 2.8.1 and later (only affected by CVE-2019-10943)
+SIMATIC S7-1500 Software Controller: All versions prior to V20.8
+SIMATIC S7-1500 Software Controller Versions 20.8 and later (only affected by CVE-2019-10943)
+SIMATIC S7-PLCSIM Advanced: All versions prior to V3.0
+SIMATIC S7-PLCSIM Advanced: Versions 3.0 and later (only affected by CVE-2019-10943)
+
+--------- End Update B Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+An attacker in a man-in-the-middle position could modify network traffic exchanged on Port 102/TCP, due to certain properties in the calculation used for integrity protection. 
+CVE-2019-10929 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N).
+4.2.2    MISSING SUPPORT FOR INTEGRITY CHECK CWE-353
+An attacker with network access to Port 102/TCP could modify the user program on the PLC in a way that the running code is different from the source code stored on the device. 
+CVE-2019-10943 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Eli Biham, Sara Bitan, Aviad Carmel, and Alon Dankner from Faculty of Computer Science, Technion Haifa; Uriel Malin and Avishai Wool from School of Electrical Engineering, Tel-Aviv University; and Artem Zinenko from Kaspersky reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+Siemens has released updates for the following products and recommends users update to the new version. 
+
+SIMATIC S7 PLCSIM Advanced: Update to v3.0
+
+--------- Begin Update B Part 2 of 2 ---------
+
+SIMATIC S7-1200 CPU family: Update to v4.4.0
+
+--------- End Update B Part 2 of 2 ---------
+
+SIMATIC S7-1500 CPU family: Update to v2.8.1
+SIMATIC S7-1500 Software Controller: Update to v20.8
+SIMATIC ET 200SP Open Controller CPU 1515SP PC2: Update to v20.8
+
+Siemens is preparing further updates and recommends specific countermeasures until patches are available:
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for industrial security, and follow the recommendations in the product manuals. Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+
+
+
+SIMATIC S7-1200 CPU family: Update to v4.4
+
+
+SIMATIC S7-1500 CPU family: Update to v2.8.1
+SIMATIC ET 200SP Open Controller CPU 1515SP PC2: Update to v20.8
+SIMATIC S7-1500 Software Controller: Update to v20.8
+
+
+All affected devices contain a feature called “Access Protection” that prohibits unauthorized modifications of user code. Siemens recommends using access protection to protect affected devices from unauthorized modifications.
+
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+
+

@@ -1,0 +1,56 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on December 16, 2014, and is being released to the NCCIC/ICS-CERT web site.
+Independent security researcher Billy Rios has identified two vulnerabilities in Johnson Controls Metasys building management system. Johnson Controls has produced patches for each affected release that mitigates these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Johnson Controls products, using Metasys Releases 4.1 to 6.5, are affected:
+
+Application and Data Server (ADS),
+Extended Application and Data Server (ADX),
+LonWorks Control Server 85 (LCS8520),
+Network Automation Engine (NAE) 55xx-x models,
+Network Integration Engine (NIE) 5xxx-x models, and
+NxE8500
+
+IMPACT
+The impact of these vulnerabilities could allow an unauthenticated remote attacker to compromise the confidentiality, integrity, and availability of a Metasys system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Johnson Controls is a US-based company that maintains offices in several countries around the world, including the US, UK, Netherlands, Italy, India, Germany, France, Czech Republic, China, and Australia.
+Metasys systems provide traditional building control capabilities with built-in integration to web‑based architecture and wireless technologies. According to Johnson Controls, Metasys systems are deployed across several sectors including Commercial Facilities and Government Facilities. Johnson Controls estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+STORING PASSWORDS IN A RECOVERABLE FORMATCWE-257: Storing Passwords in a Recoverable Format, http://cwe.mitre.org/data/definitions/257.html, web site last accessed March 17, 2015.
+
+A remote attacker may be able to retrieve the password hash for an authorized Metasys user with an unauthenticated post request. Retrieved encrypted passwords could be used by a remote attacker to compromise the Metasys system.
+CVE-2014-5427NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5427, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed March 17, 2015.
+
+UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPECWE-434: Unrestricted Upload of File with Dangerous Type, http://cwe.mitre.org/data/definitions/434.html, web site last accessed March 17, 2015.
+
+The Metasys system makes web services available to unauthenticated remote users that could allow an attacker to upload and execute a shell script to an arbitrary location on the Metasys system, resulting in the compromise of the system.
+CVE-2014-5428NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5428, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, https://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed March 17, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Johnson Controls has developed patches for all affected Metasys releases (4.1, 5.x, and 6.x). Metasys releases prior to Release 4.1 are not affected. Metasys products NxE25/35/45 are also not affected by these vulnerabilities.
+The product patches, along with installation instructions, can be obtained from any local Johnson Controls branch office or Metasys Authorized Building Control Specialists. Johnson Controls recommends that asset owners and operators adhere to IT best practices and guidelines described in the following Metasys installation documents to further reduce the risk associated with these vulnerabilities:
+
+Network and IT Guidance for the IT Professional Technical Bulletin (LIT-1201578) available at: http://cgproducts.johnsoncontrols.com/MET_PDF/1201578.pdf
+Network and IT Guidance for the BAS Professional Technical Bulletin (LIT-12011279) available at: http://cgproducts.johnsoncontrols.com/MET_PDF/12011279.pdf
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

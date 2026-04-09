@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits are available
+Vendor: Philips
+Equipment: iSite and IntelliSpace PACS
+Vulnerabilities: Improper Restriction of Operations within the Bounds of a Memory Buffer, Code/Source Code Vulnerabilities, Information Exposure, Code Injection, Weaknesses in OWASP Top Ten, and Improper Restriction of XML External Entity Reference
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-18-088-01 Philips iSite/IntelliSpace PACS Vulnerabilities that was published March 29, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+If exploited, these vulnerabilities could impact or compromise patient confidentiality, system integrity, and/or system availability. The vulnerabilities may allow attackers of low skill to provide unexpected input into the application, execute arbitrary code, alter the intended control flow of the system, access sensitive information, or cause a system crash.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Philips reports these vulnerabilities affect all versions of iSite and IntelliSpace PACS.
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+Certain languages allow direct addressing of memory locations and do not automatically ensure these locations are valid for the memory buffer being referenced. This can cause read or write operations to be performed on memory locations that may be associated with other variables, data structures, or internal program data. As a result, an attacker may be able to execute arbitrary code, alter the intended control flow, read sensitive information, or cause the system to crash.
+CVSS v3 base scores for these vulnerabilities range from 5.0 (medium) to 10.0 (critical). 
+4.2.2    CODE/SOURCE CODE VULNERABILITIES CWE-17
+The software contains vulnerabilities typically introduced from code development or from the integration of third-party components that might typically be controlled, mitigated, or remediated during design, development, or implementation of the software. Vulnerabilities identified from this category include common weakness, including: data processing (CWE-19), improper input validation (CWE-20), security features (CWE-254), credentials management (CWE-255), not using password aging (CWE-262), permissions/privileges/access controls to restrict access to a resource from an unauthorized actor (CWE-264), authorization (CWE-284), insufficient authentication to fully confirm the claim of identity from an actor (CWE-287), cryptography (CWE-310), inadequate encryption strength (CWE-326), concurrent execution using shared resource with improper synchronization or ‘race condition’ (CWE-362), resource management errors (CWE-399), insufficient controls over system resource consumption (CWE-400), potential use of software memory buffers after the buffer has been freed/removed (CWE-416), NULL pointer dereference (CWE-476), unquoted search path or element (CWE-428), weak password requirements (CWE-521), and use of hard-coded credentials (CWE-798).
+As a result, an attacker may be able to impact the confidentiality, integrity, and/or availability of the system by crafting input into a form that is not expected by the rest of the application; altering control flow of the software, attaining access or control of unauthorized system resources, or causing arbitrary code execution. Moreover, an attacker could direct over-utilization of limited system resources, thus enabling a denial-of-service attack.
+CVSS v3 base scores for these vulnerabilities range from 2.1 (low) to 10.0 (critical).
+--------- Begin Update A Part 1 of 1 --------
+4.2.3    INFORMATION EXPOSURE CWE-200
+An information exposure is the intentional or unintentional disclosure of information to an actor not explicitly authorized to have access to that information. As a result, an attacker may be able to read or enable unauthorized disclosure of sensitive information and/or system information.
+CVSS v3 base scores for these vulnerabilities range from 1.2 (low) to 7.5 (high). 
+--------- End Update A Part 1 of 1 ----------
+4.2.4    IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94
+The software constructs all or part of a code segment using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the syntax or behavior of the intended code segment. As a result, an attacker may be able to execute unauthorized instructions or code.
+CVSS v3 base scores for these vulnerabilities range from 7.5 (high) to 10.0 (critical).
+4.2.5    WEAKNESSES IN OWASP TOP TEN (2013) CWE-928
+The software contains vulnerabilities within this category that include common weakness in improper neutralization of special elements used in an OS command or ‘OS command injection’ (CWE-78), failure to preserve web page structure or ‘cross-site scripting’ (CWE-79), improper authentication (CWE-287), improper certificate validation (CWE-295), clear text transmission of sensitive information (CWE-319), and insufficient session expiration (CWE-613). As a result, an attacker may be able to access unauthorized resources or execute unauthorized instructions or code.
+CVSS v3 base scores for these vulnerabilities range from 2.0 (low) to 10.0 (critical).
+4.2.6    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE ('XXE') CWE-611
+The software processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output.
+As a result, an attacker may cause the system to read the contents of a local file, force the application to make outgoing requests to servers the attacker cannot reach directly, and bypass firewall restrictions or hide the source of attacks such as port scanning.
+CVSS v3 base score for this vulnerability is 5.0 (medium). 
+4.2.7    OTHER THIRD-PARTY COMPONENT VULNERABILITIES
+The software contains other vulnerabilities from third parties, including operating systems, networking equipment, and network time protocol that could enable an attacker to cause a denial-of-service, execute arbitrary code, inject network packets, obtain sensitive information, and/or gain unauthorized privileges to impact system confidentiality, integrity, or availability.
+CVSS v3 base scores for these vulnerabilities range from 5.0 (medium) to 9.3 (critical).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTOR: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+4.4 RESEARCHER
+Philips reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+Philips IntelliSpace PACS runs in a managed service environment to minimize the risk of exploitation (virtual private network, firewall isolation from other networks, no Internet access). In addition, Philips employs an automated antivirus solution that continuously monitors and remediates threats across all systems in the managed service environment. Philips has a monthly recurring patch program in which all IntelliSpace PACS users are encouraged to participate. 
+In addition, in 2016 Philips announced software updates and controlling mitigations on the affected PACS systems to further limit the risk and exploitability of these vulnerabilities. 
+Philips recommends three paths that users may select depending on their particular situation, which are offered by Philips at no charge for full service delivery model contracts:
+
+The simplest and most straightforward option is to enroll in the Philips recurring patching program, which will remediate 86% of all known vulnerabilities.
+A more robust option is to enroll in the Philips recurring patching program and update system firmware. This option will remediate 87% of all known vulnerabilities including all known critical vulnerabilities.
+The most robust option by Philips is to enroll in the recurring patching program and update system firmware and upgrade to IntelliSpace
+
+PACS 4.4.55x with Windows operating system 2012, which addresses product hardening. This option remediates 99.9% of all the known vulnerabilities including all critical vulnerabilities.
+Philips will continue to add cybersecurity vulnerability remediation improvements through its Secure Development Lifecycle (SDL) as threats continue. 
+Users with questions regarding their specific iSite/IntelliSpace PACS solutions are advised by Philips to contact their Customer Success Manager (CSM), local Philips service support team, or regional service support. Philips contact information is available at the following location:
+https://www.usa.philips.com/healthcare/solutions/customer-service-solutions 
+Please see the Philips product security website for the latest security information for Philips products: 
+https://www.philips.com/productsecurity 
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.

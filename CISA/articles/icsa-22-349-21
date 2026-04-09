@@ -1,0 +1,309 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity/public exploits are available  
+Vendor: Siemens  
+Equipment: SCALANCE X-200RNA switch devices before V3.2.7 
+Vulnerabilities: Observable Timing Discrepancy; Race Condition; Improper Restriction of Operations within the Bounds of a Memory Buffer; Improper Input Validation; NULL Pointer Dereference; Use After Free; Cryptographic Issues; Comparison of Incompatible Types; Resource Management Errors; Incorrect Calculation; Exposure of Sensitive Information to an Unauthorized Actor; Permissions, Privileges, and Access Controls; Out-of-bounds Write; Improper Authentication; Integer Overflow or Wraparound; Observable Discrepancy; Out-of-bounds Read; Missing Release of Memory after Effective Lifetime; Uncontrolled Resource Consumption; Untrusted Search Path; Incorrect Permission Assignment for Critical Resource; Incorrect Authorization; Improper Certificate Validation; Improper Encoding or Escaping of Output; Inappropriate Encoding for Output Context; Path Traversal 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a denial-of-service condition or could lead to execution of arbitrary code. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports the following industrial ethernet network access points are affected because they use OpenSSL and OpenSSH (which are affected by these vulnerabilities): 
+
+SCALANCE X204RNA (HSR) (6GK5204-0BA00-2MB2): All versions prior to V3.2.7 
+SCALANCE X204RNA (PRP) (6GK5204-0BA00-2KB2): All versions prior to V3.2.7 
+SCALANCE X204RNA EEC (HSR) (6GK5204-0BS00-2NA3): All versions prior to V3.2.7 
+SCALANCE X204RNA EEC (PRP) (6GK5204-0BS00-3LA3): All versions prior to V3.2.7 
+SCALANCE X204RNA EEC (PRP/HSR) (6GK5204-0BS00-3PA3): All versions prior to V3.2.7 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 OBSERVABLE TIMING DISCREPANCY CWE-208 
+OpenSSH-portable (OpenSSH) 3.6.1p1 and earlier with PAM support enabled immediately sends an error message when a user does not exist, which could allow remote attackers to determine valid usernames via a timing attack. 
+CVE-2003-0190 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N). 
+3.2.2 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+sshd in OpenSSH 3.6.1p2 and earlier, when PermitRootLogin is disabled and when using PAM keyboard-interactive authentication, does not insert a delay after a root login attempt with the correct password; this could allow remote attackers to more easily use timing differences to determine if the password step of a multi-step authentication is successful (a different vulnerability than CVE-2003-0190). 
+CVE-2003-1562 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.3 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+Race condition in the ssl3_get_new_session_ticket function in ssl/s3_clnt.c in OpenSSL before 0.9.8zg, 1.0.0 before 1.0.0s, 1.0.1 before 1.0.1n, and 1.0.2 before 1.0.2b, when used for a multi-threaded client, could allow remote attackers to cause a denial of service (double free and application crash) or have unspecified other impacts by providing a NewSessionTicket during an attempt to reuse a ticket obtained earlier. 
+CVE-2015-1791 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L). 
+3.2.4 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+ssl/s3_clnt.c in OpenSSL 1.0.0 before 1.0.0t, 1.0.1 before 1.0.1p, and 1.0.2 before 1.0.2d, when used for a multi-threaded client, writes the PSK identity hint to an incorrect data structure, which could allow remote servers to cause a denial of service (race condition and double free) via a crafted ServerKeyExchange message. 
+CVE-2015-3196 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.5 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+OpenSSH through 7.7 is prone to a user enumeration vulnerability due to not delaying bailout for an invalid authenticating user until after the packet containing the request has been fully parsed, related to auth2-gss.c, auth2-hostbased.c, and auth2-pubkey.c. 
+CVE-2018-15473 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N). 
+3.2.6 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+The dtls1_clear_queues function in ssl/d1_lib.c in OpenSSL before 0.9.8za, 1.0.0 before 1.0.0m, and 1.0.1 before 1.0.1h frees data structures without considering that application data can arrive between a ChangeCipherSpec message and a Finished message, which could allow remote DTLS peers to cause a denial of service (memory corruption and application crash) or have unspecified other impacts via unexpected application data. 
+CVE-2014-8176 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L). 
+3.2.7 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+The ASN1_item_ex_d2i function in crypto/asn1/tasn_dec.c in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a does not reinitialize CHOICE and ADB data structures, which could allow attackers to cause a denial of service (invalid write operation and memory corruption) by leveraging an application that relies on ASN.1 structure reuse. 
+CVE-2015-0287 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.8 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+Integer underflow in the EVP_DecodeUpdate function in crypto/evp/encode.c in the base64-decoding implementation in OpenSSL before 0.9.8za, 1.0.0 before 1.0.0m, and 1.0.1 before 1.0.1h could allow remote attackers to cause a denial of service (memory corruption) or have unspecified other impacts via crafted base64 data that triggers a buffer overflow. 
+CVE-2015-0292 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L). 
+3.2.9 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+The X509_cmp_time function in crypto/x509/x509_vfy.c in OpenSSL before 0.9.8zg, 1.0.0 before 1.0.0s, 1.0.1 before 1.0.1n, and 1.0.2 before 1.0.2b could allow remote attackers to cause a denial of service (out-of-bounds read and application crash) via a crafted length field in ASN1_TIME data, as demonstrated by an attack against a server that supports client authentication with a custom verification callback. 
+CVE-2015-1789 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.10 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+The roaming_read and roaming_write functions in roaming_common.c in the client in OpenSSH 5.x, 6.x, and 7.x before 7.1p2, when certain proxy and forward options are enabled, do not properly maintain connection file descriptors. This could allow remote servers to cause a denial of service (heap-based buffer overflow) or have unspecified other impacst by requesting many forwardings. 
+CVE-2016-0778 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.11 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+The fmtstr function in crypto/bio/b_print.c in OpenSSL 1.0.1 before 1.0.1s and 1.0.2 before 1.0.2g improperly calculates string lengths, which could allow remote attackers to cause a denial of service (overflow and out-of-bounds read) or have unspecified other impacts via a long string as demonstrated by a large amount of ASN.1 data (a different vulnerability than CVE-2016-2842). 
+CVE-2016-0799 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.12 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+The ssh_packet_read_poll2 function in packet.c in OpenSSH before 7.1p2 could allow remote attackers to cause a denial of service (out-of-bounds read and application crash) via crafted network traffic. 
+CVE-2016-1907 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.13 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+The ASN.1 implementation in OpenSSL before 1.0.1o and 1.0.2 before 1.0.2c could allow remote attackers to execute arbitrary code or cause a denial of service (buffer underflow and memory corruption) via an ANY field in crafted serialized data, aka the "negative zero" issue. 
+CVE-2016-2108 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.14 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+The X509_NAME_oneline function in crypto/x509/x509_obj.c in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h could allow remote attackers to obtain sensitive information from process stack memory or cause a denial of service (buffer over-read) via crafted EBCDIC ASN.1 data. 
+CVE-2016-2176 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H). 
+3.2.15 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+The shared memory manager (associated with pre-authentication compression) in sshd in OpenSSH before 7.4 does not ensure that a bounds check is enforced by all compilers, which could allow local users to gain privileges by leveraging access to a sandboxed privilege-separation process, related to the m_zback and m_zlib data structures. 
+CVE-2016-10012 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.16 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+While parsing an IPAddressFamily extension in an X.509 certificate, it is possible to do a one-byte overread. This could result in an incorrect text display of the certificate. This bug has been present since 2006 and is present in all versions of OpenSSL before 1.0.2m and 1.1.0g. 
+CVE-2017-3735 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N). 
+3.2.17 IMPROPER INPUT VALIDATION CWE-20
+The dtls1_listen function in d1_lib.c in OpenSSL 1.0.2 before 1.0.2a does not properly isolate the state information of independent data streams, which could allow remote attackers to cause a denial of service (application crash) via crafted DTLS traffic, as demonstrated by DTLS 1.0 traffic to a DTLS 1.2 server. 
+CVE-2015-0207 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.18 IMPROPER INPUT VALIDATION CWE-20 
+The SSLv2 implementation in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a could allow remote attackers to cause a denial of service (s2_lib.c assertion failure and daemon exit) via a crafted CLIENT-MASTER-KEY message. 
+CVE-2015-0293 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.19 IMPROPER INPUT VALIDATION CWE-20 
+The ssl3_get_client_key_exchange function in s3_srvr.c in OpenSSL 1.0.2 before 1.0.2a, when client authentication and an ephemeral Diffie-Hellman ciphersuite are enabled, could allow remote attackers to cause a denial of service (daemon crash) via a ClientKeyExchange message with a length of zero. 
+CVE-2015-1787 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.20 IMPROPER INPUT VALIDATION CWE-20
+The monitor component in sshd in OpenSSH before 7.0 on non-OpenBSD platforms accepts extraneous username data in MONITOR_REQ_PAM_INIT_CTX requests, which could allow local users to conduct impersonation attacks by leveraging any SSH login access in conjunction with control of the sshd uid to send a crafted MONITOR_REQ_PWNAM request, related to monitor.c and monitor_wrap.c. 
+CVE-2015-6563 has been assigned to this vulnerability. A CVSS v3 base score of 2.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N). 
+3.2.21 IMPROPER INPUT VALIDATION CWE-20 
+Double free vulnerability in the dsa_priv_decode function in crypto/dsa/dsa_ameth.c in OpenSSL 1.0.1 before 1.0.1s and 1.0.2 before 1.0.2g could allow remote attackers to cause a denial of service (memory corruption) or have unspecified other impacts via a malformed DSA private key. 
+CVE-2016-0705 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.22 IMPROPER INPUT VALIDATION CWE-20 
+Multiple integer overflows in OpenSSL 1.0.1 before 1.0.1s and 1.0.2 before 1.0.2g could allow remote attackers to cause a denial of service (heap memory corruption or NULL pointer dereference) or have unspecified other impacts via a long digit string mishandled by the (1) BN_dec2bn or (2) BN_hex2bn function, related to crypto/bn/bn.h and crypto/bn/bn_print.c. 
+CVE-2016-0797 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.23 IMPROPER INPUT VALIDATION CWE-20 
+The tls_decrypt_ticket function in ssl/t1_lib.c in OpenSSL before 1.1.0 does not consider the HMAC size during validation of the ticket length, which could allow remote attackers to cause a denial of service via a too-short ticket. 
+CVE-2016-6302 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.24 IMPROPER INPUT VALIDATION CWE-20 
+The ssl3_read_bytes function in record/rec_layer_s3.c in OpenSSL 1.1.0 before 1.1.0a could allow remote attackers to cause a denial of service (infinite loop) by triggering a zero-length record in an SSL_peek call. 
+CVE-2016-6305 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.25 IMPROPER INPUT VALIDATION CWE-20 
+The auth_password function in auth-passwd.c in sshd in OpenSSH before 7.3 does not limit password lengths for password authentication, which could allow remote attackers to cause a denial of service (crypt CPU consumption) via a long string. 
+CVE-2016-6515 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.26 NULL POINTER DEREFERENCE CWE-476 
+The ASN.1 signature-verification implementation in the rsa_item_verify function in crypto/rsa/rsa_ameth.c in OpenSSL 1.0.2 before 1.0.2a could allow remote attackers to cause a denial of service (NULL pointer dereference and application crash) via crafted RSA PSS parameters to an endpoint that uses the certificate-verification feature. 
+CVE-2015-0208 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.27 NULL POINTER DEREFERENCE CWE-476 
+The X509_to_X509_REQ function in crypto/x509/x509_req.c in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a could allow attackers to cause a denial of service (NULL pointer dereference and application crash) via an invalid certificate key. 
+CVE-2015-0288 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.28 NULL POINTER DEREFERENCE CWE-476 
+The PKCS#7 implementation in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a does not properly handle a lack of outer ContentInfo, which could allow attackers to cause a denial of service (NULL pointer dereference and application crash) by leveraging an application that processes arbitrary PKCS#7 data and by providing malformed data with ASN.1 encoding, related to crypto/pkcs7/pk7_doit.c and crypto/pkcs7/pk7_lib.c. 
+CVE-2015-0289 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.29 NULL POINTER DEREFERENCE CWE-476 
+The multi-block feature in the ssl3_write_bytes function in s3_pkt.c in OpenSSL 1.0.2 before 1.0.2a on 64-bit x86 platforms with AES NI support does not properly handle certain non-blocking I/O cases, which could allow remote attackers to cause a denial of service (pointer corruption and application crash) via unspecified vectors. 
+CVE-2015-0290 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.30 NULL POINTER DEREFERENCE CWE-476 
+The sigalgs implementation in t1_lib.c in OpenSSL 1.0.2 before 1.0.2a could allow remote attackers to cause a denial of service (NULL pointer dereference and daemon crash) by using an invalid signature_algorithms extension in the ClientHello message during a renegotiation. 
+CVE-2015-0291 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.31 NULL POINTER DEREFERENCE CWE-476 
+The PKCS7_dataDecodefunction in crypto/pkcs7/pk7_doit.c in OpenSSL before 0.9.8zg, 1.0.0 before 1.0.0s, 1.0.1 before 1.0.1n, and 1.0.2 before 1.0.2b could allow remote attackers to cause a denial of service (NULL pointer dereference and application crash) via a PKCS#7 blob that uses ASN.1 encoding and lacks inner EncryptedContent data. 
+CVE-2015-1790 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.32 NULL POINTER DEREFERENCE CWE-476 
+crypto/rsa/rsa_ameth.c in OpenSSL 1.0.1 before 1.0.1q and 1.0.2 before 1.0.2e could allow remote attackers to cause a denial of service (NULL pointer dereference and application crash) via an RSA PSS ASN.1 signature that lacks a mask generation function parameter. 
+CVE-2015-3194 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.33 USE AFTER FREE CWE-416 
+Use after free vulnerability in the d2i_ECPrivateKey function in crypto/ec/ec_asn1.c in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a could allow remote attackers to cause a denial of service (memory corruption and application crash) or have unspecified other impacts via a malformed elliptic curve (EC) private-key file improperly handled during import. 
+CVE-2015-0209 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is  (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L). 
+3.2.34 CRYPTOGRAPHIC ISSUES CWE-310 
+The ssl3_client_hello function in s3_clnt.c in OpenSSL 1.0.2 before 1.0.2a does not ensure that the PRNG is seeded before proceeding with a handshake, which could allow remote attackers to more easily defeat cryptographic protection mechanisms by sniffing the network and then conducting a brute-force attack. 
+CVE-2015-0285 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N). 
+3.2.35 CRYPTOGRAPHIC ISSUES CWE-310 
+The TLS protocol 1.2 and earlier, when a DHE_EXPORT ciphersuite is enabled on a server but not on a client, does not properly convey a DHE_EXPORT choice. This could allow man-in-the-middle attackers to conduct cipher-downgrade attacks by rewriting a ClientHello with DHE replaced by DHE_EXPORT and then rewriting a ServerHello with DHE_EXPORT replaced by DHE, aka the "Logjam" issue. 
+CVE-2015-4000 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N). 
+3.2.36 COMPARISON OF INCOMPATIBLE TYPES CWE-1024 
+The ASN1_TYPE_cmp function in crypto/asn1/a_type.c in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a does not properly perform boolean-type comparisons, which could allow remote attackers to cause a denial of service (invalid read operation and application crash) via a crafted X.509 certificate to an endpoint that uses the certificate-verification feature. 
+CVE-2015-0286 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.37 RESOURCE MANAGEMENT ERRORS CWE-399
+The BN_GF2m_mod_inv function in crypto/bn/bn_gf2m.c in OpenSSL before 0.9.8s, 1.0.0 before 1.0.0e, 1.0.1 before 1.0.1n, and 1.0.2 before 1.0.2b does not properly handle ECParameters structures in which the curve is over a malformed binary polynomial field. This could allow remote attackers to cause a denial of service (infinite loop) via a session that uses an elliptic curve algorithm, as demonstrated by an attack against a server that supports client authentication. 
+CVE-2015-1788 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.38 RESOURCE MANAGEMENT ERRORS CWE-399 
+The do_free_upto function in crypto/cms/cms_smime.c in OpenSSL before 0.9.8zg, 1.0.0 before 1.0.0s, 1.0.1 before 1.0.1n, and 1.0.2 before 1.0.2b could allow remote attackers to cause a denial of service (infinite loop) via vectors that trigger a NULL value of a BIO data structure, as demonstrated by an unrecognized X.660 OID for a hash function. 
+CVE-2015-1792 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.39 RESOURCE MANAGEMENT ERRORS CWE-399 
+Memory leaks in the SRP_VBASE_get_by_user implementation in OpenSSL 1.0.1 before 1.0.1s and 1.0.2 before 1.0.2g could allow remote attackers to cause a denial of service (memory consumption) by providing an invalid username in a connection attempt related to apps/s_server.c and crypto/srp/srp_vfy.c. 
+CVE-2016-0798 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.40 RESOURCE MANAGEMENT ERRORS CWE-399 
+The asn1_d2i_read_bio function in crypto/asn1/a_d2i_fp.c in the ASN.1 BIO implementation in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h could allow remote attackers to cause a denial of service (memory consumption) via a short invalid encoding. 
+CVE-2016-2109 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.41 RESOURCE MANAGEMENT ERRORS CWE-399 
+The DTLS implementation in OpenSSL before 1.1.0 does not properly restrict the lifetime of queue entries associated with unused out-of-order messages, which could allow remote attackers to cause a denial of service (memory consumption) by maintaining many crafted DTLS sessions simultaneously, related to d1_lib.c, statem_dtls.c, statem_lib.c, and statem_srvr.c. 
+CVE-2016-2179 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.42 RESOURCE MANAGEMENT ERRORS CWE-399 
+statem/statem_dtls.c in the DTLS implementation in OpenSSL 1.1.0 before 1.1.0a allocates memory before checking for an excessive length, which could allow remote attackers to cause a denial of service (memory consumption) via crafted DTLS messages. 
+CVE-2016-6308 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.43 RESOURCE MANAGEMENT ERRORS CWE-399 
+** DISPUTED ** The kex_input_kexinit function in kex.c in OpenSSH 6.x and 7.x through 7.3 could allow remote attackers to cause a denial of service (memory consumption) by sending many duplicate KEXINIT requests. NOTE: a third party reports that "OpenSSH upstream does not consider this as a security issue." 
+CVE-2016-8858 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.44 INCORRECT CALCULATION CWE-682 
+The ssl3_get_key_exchange function in ssl/s3_clnt.c in OpenSSL 1.0.2 before 1.0.2e could allow remote servers to cause a denial of service (segmentation fault) via a zero p value in an anonymous Diffie-Hellman (DH) ServerKeyExchange message. 
+CVE-2015-1794 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.45 INCORRECT CALCULATION CWE-682 
+The anti-replay feature in the DTLS implementation in OpenSSL before 1.1.0 mishandles early use of a new epoch number in conjunction with a large sequence number, which could allow remote attackers to cause a denial of service (false-positive packet drops) via spoofed DTLS records, related to rec_layer_d1.c and ssl3_record.c. 
+CVE-2016-2181 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.46 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The Montgomery squaring implementation in crypto/bn/asm/x86_64-mont5.pl in OpenSSL 1.0.2 before 1.0.2e on the x86_64 platform, as used by the BN_mod_exp function, mishandles carry propagation and produces incorrect output. This could allow remote attackers to more easily obtain sensitive private-key information via an attack against use of a Diffie-Hellman (DH) or Diffie-Hellman Ephemeral (DHE) ciphersuite. 
+CVE-2015-3193 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.47 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+The ASN1_TFLG_COMBINE implementation in crypto/asn1/tasn_dec.c in OpenSSL before 0.9.8zh, 1.0.0 before 1.0.0t, 1.0.1 before 1.0.1q, and 1.0.2 before 1.0.2e mishandles errors caused by malformed X509_ATTRIBUTE data, which could allow remote attackers to obtain sensitive information from process memory by triggering a decoding failure in a PKCS#7 or CMS application. 
+CVE-2015-3195 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). 
+3.2.48 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+ssl/s2_srvr.c in OpenSSL 1.0.1 before 1.0.1r and 1.0.2 before 1.0.2f does not prevent use of disabled ciphers, which could allow man-in-the-middle attackers to more easily defeat cryptographic protection mechanisms by performing computations on SSLv2 traffic, related to the get_client_master_key and get_client_hello functions. 
+CVE-2015-3197 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.49 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+The DH_check_pub_key function in crypto/dh/dh_check.c in OpenSSL 1.0.2 before 1.0.2f does not ensure that prime numbers are appropriate for Diffie-Hellman (DH) key exchange, which could allow remote attackers to more easily discover a private DH exponent by making multiple handshakes with a peer that chose an inappropriate number, as demonstrated by a number in an X9.42 file. 
+CVE-2016-0701 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N). 
+3.2.50 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+The MOD_EXP_CTIME_COPY_FROM_PREBUF function in crypto/bn/bn_exp.c in OpenSSL 1.0.1 before 1.0.1s and 1.0.2 before 1.0.2g does not properly consider cache-bank access times during modular exponentiation, which could allow local unauthorized users to more easily discover RSA keys by running a crafted application on the same Intel Sandy Bridge CPU core as a victim and leveraging cache-bank conflicts, aka a "CacheBleed" attack. 
+CVE-2016-0702 has been assigned to this vulnerability. A CVSS v3 base score of 5.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.51 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+The get_client_master_key function in s2_srvr.c in the SSLv2 implementation in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a accepts a nonzero CLIENT-MASTER-KEY CLEAR-KEY-LENGTH value for an arbitrary cipher, which could allow man-in-the-middle attackers to determine the MASTER-KEY value and decrypt TLS ciphertext data by leveraging a Bleichenbacher RSA padding oracle (a related issue to CVE-2016-0800). 
+CVE-2016-0703 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.52 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+An oracle protection mechanism in the get_client_master_key function in s2_srvr.c in the SSLv2 implementation in OpenSSL before 0.9.8zf, 1.0.0 before 1.0.0r, 1.0.1 before 1.0.1m, and 1.0.2 before 1.0.2a overwrites incorrect MASTER-KEY bytes during use of export cipher suites, which could allow remote attackers to more easily decrypt TLS ciphertext data by leveraging a Bleichenbacher RSA padding oracle, a related issue to CVE-2016-0800. 
+CVE-2016-0704 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.53 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+The resend_bytes function in roaming_common.c in the client in OpenSSH 5.x, 6.x, and 7.x before 7.1p2 could allow remote servers to obtain sensitive information from process memory by requesting transmission of an entire buffer, as demonstrated by reading a private key. 
+CVE-2016-0777 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N). 
+3.2.54 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+The AES-NI implementation in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h does not consider memory allocation during a certain padding check, which could allow remote attackers to obtain sensitive cleartext information via a padding-oracle attack against an AES CBC session. NOTE: this vulnerability exists due to an incorrect fix for CVE-2013-0169. 
+CVE-2016-2107 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.55 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+The DES and Triple DES ciphers, as used in the TLS, SSH, and IPSec protocols and other protocols and products, have a birthday bound of approximately four billion blocks. This could allow remote attackers to more easily obtain cleartext data via a birthday attack against a long-duration encrypted session, as demonstrated by an HTTPS session using Triple DES in CBC mode (aka a "Sweet32" attack). 
+CVE-2016-2183 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.56 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+sshd in OpenSSH before 7.3, when SHA256 or SHA512 are used for user password hashing, uses BLOWFISH hashing on a static password when the username does not exist. This could allow remote attackers to enumerate users by leveraging the timing difference between responses when a large password is provided. 
+CVE-2016-6210 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.57 PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264 
+The x11_open_helper function in channels.c in ssh in OpenSSH before 6.9, when ForwardX11Trusted mode is not used, lacks a check of the refusal deadline for X connections. This could allow remote attackers to more easily bypass intended access restrictions via a connection outside of the permitted time window. 
+CVE-2015-5352 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N). 
+3.2.58 PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264 
+The kbdint_next_device function in auth2-chall.c in sshd in OpenSSH through 6.9 does not properly restrict the processing of keyboard-interactive devices within a single connection, which could allow remote attackers to more easily conduct brute-force attacks or cause a denial of service (CPU consumption) via a long and duplicative list in the ssh -oKbdInteractiveDevices option (as demonstrated by a modified client that provides a different password for each pam element on this list). 
+CVE-2015-5600 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H). 
+3.2.59 PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264 
+Use-after-free vulnerability in the mm_answer_pam_free_ctx function in monitor.c in sshd in OpenSSH before 7.0 on non-OpenBSD platforms could allow local users to gain privileges by leveraging control of the sshd uid to send an unexpectedly early MONITOR_REQ_PAM_FREE_CTX request. 
+CVE-2015-6564 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.60 PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264 
+sshd in OpenSSH 6.8 and 6.9 uses world-writable permissions for TTY devices, which could allow local users to cause a denial of service (terminal disruption) or have unspecified other impacts by writing to a device (as demonstrated by writing an escape sequence). 
+CVE-2015-6565 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.61 PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264 
+The do_setup_env function in session.c in sshd in OpenSSH through 7.2p2, when the UseLogin feature is enabled and PAM is configured to read .pam_environment files in user home directories, could allow local users to gain privileges by triggering a crafted environment for the /bin/login program (as demonstrated by an LD_PRELOAD environment variable). 
+CVE-2015-8325 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.62 PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264 
+sshd in OpenSSH before 7.4, when privilege separation is not used, creates forwarded Unix-domain sockets as root. This could allow local users to gain privileges via unspecified vectors related to serverloop.c. 
+CVE-2016-10010 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.63 PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264 
+authfile.c in sshd in OpenSSH before 7.4 does not properly consider the effects of realloc on buffer contents, which could allow local users to obtain sensitive private-key information by leveraging access to a privilege-separated child process. 
+CVE-2016-10011 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N). 
+3.2.64 OUT-OF-BOUNDS WRITE CWE-787 
+A cross-protocol attack was discovered that could allow an attacker to decrypt intercepted TLS sessions by using a server supporting SSLv2 as a Bleichenbacher RSA padding oracle. To exploit the vulnerability, the attacker must have network access to the affected devices and must be in a privileged network position. 
+CVE-2016-0800 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N). 
+3.2.65 OUT-OF-BOUNDS WRITE CWE-787
+The BN_bn2dec function in crypto/bn/bn_print.c in OpenSSL before 1.1.0 does not properly validate division results, which could allow remote attackers to cause a denial of service (out-of-bounds write and application crash) or have unspecified other impacts via unknown vectors. 
+CVE-2016-2182 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.66 OUT-OF-BOUNDS WRITE CWE-787 
+Integer overflow in the MDC2_Update function in crypto/mdc2/mdc2dgst.c in OpenSSL before 1.1.0 could allow remote attackers to cause a denial of service (out-of-bounds write and application crash) or have unspecified other impacts via unknown vectors. 
+CVE-2016-6303 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.67 IMPROPER AUTHENTICATION CWE-287 
+The client in OpenSSH before 7.2 mishandles failed cookie generation for untrusted X11 forwarding and relies on the local X11 server for access-control decisions, which could allow remote X11 clients to trigger a fallback and obtain trusted X11 forwarding privileges by leveraging configuration issues on this X11 server (as demonstrated by lack of the SECURITY extension on this X11 server). 
+CVE-2016-1908 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.68 INTEGER OVERFLOW OR WRAPAROUND CWE-190 
+Integer overflow in the EVP_EncodeUpdate function in crypto/evp/encode.c in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h could allow remote attackers to cause a denial of service (heap memory corruption) via a large amount of binary data. 
+CVE-2016-2105 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.69 INTEGER OVERFLOW OR WRAPAROUND CWE-190 
+Integer overflow in the EVP_EncryptUpdate function in crypto/evp/evp_enc.c in OpenSSL before 1.0.1t and 1.0.2 before 1.0.2h could allow remote attackers to cause a denial of service (heap memory corruption) via a large amount of data. 
+CVE-2016-2106 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.70 INTEGER OVERFLOW OR WRAPAROUND CWE-190 
+OpenSSL through 1.0.2h incorrectly uses pointer arithmetic for heap-buffer boundary checks, which could allow remote attackers to cause a denial of service (integer overflow and application crash) or have unspecified other impacts by leveraging unexpected malloc behavior (related to s3_srvr.c, ssl_sess.c, and t1_lib.c). 
+CVE-2016-2177 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.71 INTEGER OVERFLOW OR WRAPAROUND CWE-190 
+OpenSSH 7.7 through 7.9 and 8.x before 8.1, when compiled with an experimental key type, has a pre-authentication integer overflow if a client or server is configured to use a crafted XMSS key. This could lead to memory corruption and local code execution due to an error in the XMSS key parsing algorithm. NOTE: the XMSS implementation is considered experimental in all released OpenSSH versions, and there is no supported way to enable it when building portable OpenSSH. 
+CVE-2019-16905 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.72 OBSERVABLE DISCREPANCY CWE-203 
+The dsa_sign_setup function in crypto/dsa/dsa_ossl.c in OpenSSL through 1.0.2h does not properly ensure the use of constant-time operations, which could allow unauthorized local users to more easily discover a DSA private key via a timing side-channel attack. 
+CVE-2016-2178 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N). 
+3.2.73 OUT-OF-BOUNDS READ CWE-125 
+The TS_OBJ_print_bio function in crypto/ts/ts_lib.c in the X.509 public key infrastructure time-stamp protocol (TSP) implementation in OpenSSL through 1.0.2h could allow remote attackers to cause a denial of service (out-of-bounds read and application crash) via a crafted time-stamp file mishandled by the "openssl ts" command. 
+CVE-2016-2180 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.74 OUT-OF-BOUNDS READ CWE-125 
+The certificate parser in OpenSSL before 1.0.1u and 1.0.2 before 1.0.2i could allow remote attackers to cause a denial of service (out-of-bounds read) via crafted certificate operations (related to s3_clnt.c and s3_srvr.c). 
+CVE-2016-6306 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.75 MISSING RELEASE OF MEMORY AFTER EFFECTIVE LIFETIME CWE-401 
+Multiple memory leaks in t1_lib.c in OpenSSL before 1.0.1u, 1.0.2 before 1.0.2i, and 1.1.0 before 1.1.0a could allow remote attackers to cause a denial of service (memory consumption) via large OCSP status request extensions. 
+CVE-2016-6304 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.76 UNCONTROLLED RESOURCE CONSUMPTION CWE-400 
+The state-machine implementation in OpenSSL 1.1.0 before 1.1.0a allocates memory before checking for an excessive length, which could allow remote attackers to cause a denial of service (memory consumption) via crafted TLS messages (related to statem/statem.c and statem/statem_lib.c). 
+CVE-2016-6307 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.77 UNTRUSTED SEARCH PATH CWE-426 
+An untrusted search path vulnerability in ssh-agent.c in ssh-agent in OpenSSH before 7.4 could allow remote attackers to execute arbitrary local PKCS#11 modules by leveraging control over a forwarded agent-socket. 
+CVE-2016-10009 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L). 
+3.2.78 INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCE CWE-732 
+The process_open function in sftp-server.c in OpenSSH before 7.6 does not properly prevent write operations in readonly mode, which could allow attackers to create zero-length files. 
+CVE-2017-15906 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N). 
+3.2.79 INCORRECT AUTHORIZATION CWE-863 
+In OpenSSH 7.9, scp.c in the scp client could allow remote SSH servers to bypass intended access restrictions via the filename of . or an empty filename, modifying the permissions of the target directory on the client side. 
+CVE-2018-20685 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N). 
+3.2.80 IMPROPER CERTIFICATE VALIDATION CWE-295 
+OpenSSL has internal defaults for a directory tree where it can find a configuration file and certificates used for verification in TLS. This directory is most commonly referred to as OPENSSLDIR and is configurable with the --prefix / --openssldir configuration options. For OpenSSL versions 1.1.0 and 1.1.1, the mingw configuration targets assume that resulting programs and libraries are installed in a Unix-like environment and the default prefix for program installation as well as for OPENSSLDIR should be '/usr/local'. However, mingw programs are Windows programs, and as such find themselves looking at sub-directories of 'C:/usr/local'; these may be world writable, which enables untrusted users to modify OpenSSL's default configuration, insert CA certificates, modify (or even replace) existing engine modules, etc. For OpenSSL 1.0.2, '/usr/local/ssl' is used as default for OPENSSLDIR on all Unix and Windows targets, including Visual C builds. However, some build instructions for the diverse Windows targets on 1.0.2 encourage users to specify their own --prefix. OpenSSL versions 1.1.1, 1.1.0 and 1.0.2 are affected by this issue. Due to the limited scope of affected deployments, this has been assessed as low severity; therefore, Siemens is not creating new releases at this time. This vulnerability is fixed in OpenSSL 1.1.1d (Affected 1.1.1-1.1.1c), OpenSSL 1.1.0l (Affected 1.1.0-1.1.0k), and OpenSSL 1.0.2t (Affected 1.0.2-1.0.2s). 
+CVE-2019-1552 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N). 
+3.2.81 IMPROPER ENCODING OR ESCAPING OF OUTPUT CWE-116 
+An issue was discovered in OpenSSH 7.9. Due to missing character encoding in the progress display, a malicious server (or man-in-the-middle attacker) could employ crafted object names to manipulate the client output, e.g., by using ANSI control codes to hide additional files being transferred. This affects refresh_progress_meter() in progressmeter.c. 
+CVE-2019-6109 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N). 
+3.2.82 INAPPROPRIATE ENCODING FOR OUTPUT CONTEXT CWE-838 
+In OpenSSH 7.9, due to accepting and displaying arbitrary stderr output from the server, a malicious server (or man-in-the-middle attacker) could manipulate the client output (for example, to use ANSI control codes to hide additional files being transferred). 
+CVE-2019-6110 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N). 
+3.2.83 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22 
+An issue was discovered in OpenSSH 7.9. Due to the scp implementation being derived from 1983 rcp, the server chooses which files/directories are sent to the client. However, the scp client only performs cursory validation of the object name returned (only directory traversal attacks are prevented). A malicious scp server (or man-in-the-middle attacker) could overwrite arbitrary files in the scp client target directory. If recursive operation (-r) is performed, the server can manipulate subdirectories as well (for example, to overwrite the .ssh/authorized_keys file). 
+CVE-2019-6111 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA 
+4. MITIGATIONS
+Siemens released updates for the affected product and recommends updating to the latest version: 
+
+Update to V3.2.7 or later version. 
+
+Siemens identified the following specific workarounds and mitigations customers can apply to reduce the risk: 
+
+Restrict access to the affected systems, especially to ports 22/tcp and 443/tcp to trusted IP addresses only. 
+Deactivate the webserver if not required, and if deactivation is supported by the product. 
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following the recommendations in the product manuals. Siemens provides additional information on industrial security.  
+For further inquiries on security vulnerabilities in Siemens products and solutions, please contact Siemens. 
+For more information, see the associated Siemens security advisory SSA-412672 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+These vulnerabilities are exploitable remotely. These vulnerabilities have a low attack complexity. 

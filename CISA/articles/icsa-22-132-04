@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Cambium Networks
+Equipment: cnMaestro
+Vulnerabilities: OS Command Injection, SQL Injection, Path Traversal, Use of Potentially Dangerous Function
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain remote code execution, sensitive data exfiltration, and complete takeover of the main multi-tenant cloud infrastructure.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of cnMaestro, a Network management system, are affected:
+
+cnMaestro On-Premises: All versions prior to 3.0.3-r32
+cnMaestro On-Premises: All versions prior to 2.4.2-r29
+cnMaestro On-Premises: All versions prior to 3.0.0-r34
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected On-Premise cnMaestro allows an unauthenticated attacker to access the cnMaestro server and execute arbitrary code in the privileges of the web server. This lack of validation could allow an attacker to append arbitrary data to the logger command.
+CVE-2022-1357 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+The affected On-Premise is vulnerable to data exfiltration through improper neutralization of special elements used in an SQL command. This could allow an attacker to exfiltrate and dump all data held in the cnMaestro database.
+CVE-2022-1358 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:N).
+3.2.3    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+The affected On-Premise cnMaestro is vulnerable to a pre-auth data exfiltration through improper neutralization of special elements used in an SQL command. This could allow an attacker to exfiltrate data about other user’s accounts and devices.
+CVE-2022-1361 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.4    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected On-Premise cnMaestro is vulnerable to execution of code on the cnMaestro hosting server. This could allow a remote attacker to change server configuration settings.
+CVE-2022-1360 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:H/A:L).
+3.2.5    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected On-Premise cnMaestro is vulnerable inside a specific route where a user can upload a crafted package to the system. An attacker could abuse this user-controlled data to execute arbitrary commands on the server.
+CVE-2022-1362 has been assigned to this vulnerability. A CVSS v3 base score of 5.0 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:N).
+3.2.6    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The affected On-Premise cnMaestro is vulnerable to an arbitrary file-write through improper limitation of a pathname to a restricted directory inside a specific route. If an attacker supplied path traversal charters (../) as part of a filename, the server will save the file where the attacker chooses. This could allow an attacker to write any data to any file in the server.
+CVE-2022-1359 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:N).
+3.2.7    USE OF POTENTIALLY DANGEROUS FUNCTION CWE-676
+The affected product is vulnerable to a local privilege escalation. By default, a user does not have root privileges. However, a user can run scripts as sudo, which could allow an attacker to gain root privileges when running user scripts outside allowed commands.
+CVE-2022-1356 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Information Technology
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Noam Moshe of Claroty reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Cambium Networks recommends affected users apply one of the following upgrade packages:
+
+3.0.3-r32
+2.4.2-r29
+3.0.0-r34
+
+The security patches are available from Cambium Networks support (login required).
+For users of cnMaestro Cloud, these vulnerabilities have been patched by Cambium Networks and no further action is required.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

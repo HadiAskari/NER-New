@@ -1,0 +1,55 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: low attack complexity
+Vendor: Siemens
+Equipment: NX
+Vulnerabilities: Use After Free, Access of Uninitialized Pointer
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to an access violation and arbitrary code execution on the target system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affects the following NX products: 
+
+NX 1953 Series: All versions prior to v1973.3700
+NX 1980 Series: All versions prior to v1988 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE AFTER FREE CWE-416
+The affected application contains a use-after-free vulnerability while parsing OBJ files. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-41535 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    ACCESS OF UNINITIALIZED POINTER CWE-824
+The affected application is vulnerable to information disclosure by unexpected access to an uninitialized pointer while parsing user-supplied OBJ files. An attacker could leverage this vulnerability to leak information from memory locations.
+CVE-2021-41538 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+xina1i working, with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to Siemens and CISA.
+4. MITIGATIONS
+Siemens has released updates for the NX and recommends updating to the latest version. 
+
+NX 1953 Series: Update to v1973.3700 or later version
+NX 1980 Series: Update to v1988 or later version
+
+Siemens recommends users avoid opening of untrusted files from unknown sources. 
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following the recommendations in the product manuals.
+For more information about this issue, please see Siemens security advisory SSA-328042
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

@@ -1,0 +1,55 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE LPE 4903 and SINUMERIK Edge
+Vulnerability: Out-of-bounds Write
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unprivileged local user to escalate privileges and gain administrative rights.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products and versions are affected:
+
+SCALANCE LPE9403: All versions prior to v2.0
+SINUMERIK Edge: All versions prior to v3.3.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS WRITE CWE-787
+A local privilege escalation vulnerability could allow an attacker to craft environment variables and execute arbitrary code. When successfully executed, the attack can cause a local privilege escalation, giving unprivileged users administrative rights on the target machine.
+CVE-2021-4034 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens recommends users update products to the following versions: 
+
+SCALANCE LPE9403: Update to v2.0 or later.
+SINUMERIK Edge: Update to v3.3.0 or later using the product’s internal update mechanism.
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Restrict system access to authorized personnel and follow a least privilege approach
+Temporary mitigation exists at the expense of pkexec’s capabilities. By removing SUID permissions, the program cannot run processes as root. However, any processes that rely on it for normal operation will be affected
+
+SUID permission can be removed with chmod, as follows: chmod 0755 /usr/bin/pkexec
+
+
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-330556
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

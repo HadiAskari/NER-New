@@ -1,0 +1,155 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.7
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: RUGGEDCOM Devices
+Vulnerability: Inadequate Encryption Strength
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-069-01 Siemens RUGGEDCOM Devices (Update C) that was published November 10, 2022, to the ICS webpage on cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an authorized threat actor to obtain privileges to access passwords.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of RUGGEDCOM, a software platform, are affected:
+The following versions of RUGGEDCOM communication equipment are affected:
+
+RUGGEDCOM ROS i800 V4.X: All Versions
+RUGGEDCOM ROS i801 V4.X: All Versions
+RUGGEDCOM ROS i802 V4.X: All Versions
+RUGGEDCOM ROS i803 V4.X: All Versions
+RUGGEDCOM ROS RMC30 V4.X: All Versions
+RUGGEDCOM ROS RMC8388 V4.X: All Versions
+RUGGEDCOM ROS RP110 V4.X: All Versions
+RUGGEDCOM ROS RS1600 V4.X: All Versions
+RUGGEDCOM ROS RS1600F V4.X: All Versions
+RUGGEDCOM ROS RS1600T V4.X: All Versions
+RUGGEDCOM ROS RS400 V4.X: All Versions
+RUGGEDCOM ROS RS401 V4.X: All Versions
+RUGGEDCOM ROS RS416Pv2 V4.X: All Versions
+RUGGEDCOM ROS RS416v2 V4.X: All Versions
+RUGGEDCOM ROS RS8000 V4.X: All Versions
+RUGGEDCOM ROS RS8000A V4.X: All Versions
+RUGGEDCOM ROS RS8000H V4.X: All Versions
+RUGGEDCOM ROS RS8000T V4.X: All Versions
+RUGGEDCOM ROS RS900 (32M) V4.X: All Versions
+RUGGEDCOM ROS RS900 V4.X: All Versions
+RUGGEDCOM ROS RS900G (32M) V4.X: All Versions
+RUGGEDCOM ROS RS900G V4.X: All Versions
+RUGGEDCOM ROS RS900GP V4.X: All Versions
+RUGGEDCOM ROS RS900L V4.X: All Versions
+RUGGEDCOM ROS RS900M V4.X: All Versions
+RUGGEDCOM ROS RS900W V4.X: All Versions
+RUGGEDCOM ROS RS910 V4.X: All Versions
+RUGGEDCOM ROS RS910L V4.X: All Versions
+RUGGEDCOM ROS RS910W V4.X: All Versions
+RUGGEDCOM ROS RS920L V4.X: All Versions
+RUGGEDCOM ROS RS920W V4.X: All Versions
+RUGGEDCOM ROS RS930L V4.X: All Versions
+RUGGEDCOM ROS RS930W V4.X: All Versions
+RUGGEDCOM ROS RS940G V4.X: All Versions
+RUGGEDCOM ROS RSG2100 (32M) V4.X: All Versions
+RUGGEDCOM ROS RSG2100 V4.X: All Versions
+RUGGEDCOM ROS RSG2100P V4.X: All Versions
+RUGGEDCOM ROS RSG2200 V4.X: All Versions
+RUGGEDCOM ROS RSG2288 V4.X: All Versions
+RUGGEDCOM ROS RSG2300 V4.X: All Versions
+RUGGEDCOM ROS RSG2300P V4.X: All Versions
+RUGGEDCOM ROS RSG2488 V4.X: All Versions
+
+--------- Begin Update D Part 1 of 2---------
+
+RUGGEDCOM ROS RMC8388 V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RS416Pv2 V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RS416v2 V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RS900 (32M) V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RS900G (32M) V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG2100 (32M) V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG2288 V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG2300P V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG2300 V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG2488 V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG907R V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG908C V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG909R V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG910C V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG920P V4.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSG920P V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RSL910 V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RST2228 V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RST2228P V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RST916C V5.X: All Versions prior to v5.7.0
+RUGGEDCOM ROS RST916P V5.X: All Versions prior to v5.7.0
+
+--------- End Update D Part 1 of 2---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INADEQUATE ENCRYPTION STRENGTH CWE-326
+The SSH server on affected devices is configured to offer weak ciphers by default. This could allow an unauthorized attacker in a man-in-the-middle position to read and modify any data passed over the connection between legitimate clients and the affected device.
+CVE-2021-37209 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Michael Messner from Siemens Energy reported this vulnerability to Siemens.
+5. MITIGATIONS
+ 
+--------- Begin Update D Part 2 of 2---------
+Siemens has provided a fix and recommends applying it to the following products:
+
+RUGGEDCOM ROS RMC8388 V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RS416Pv2 V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RS416v2 V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RS900 (32M) V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RS900G (32M) V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG2100 (32M) V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG2288 V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG2300P V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG2300 V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG2488 V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG907R V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG908C V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG909R V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG910C V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG920P V4.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSG920P V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RSL910 V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RST2228 V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RST2228P V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RST916C V5.X: Update to v5.7.0 or later
+RUGGEDCOM ROS RST916P V5.X: Update to v5.7.0 or later
+
+--------- End Update D Part 2 of 2---------
+Siemens has identified the following specific workarounds users can apply to reduce the risk:
+
+Configure the SSH clients to make use of the following strong key exchange ciphers, supported by the ROS SSH server: 
+
+ecdh-sha2-nistp256
+ecdh-sha2-nistp384
+ecdh-sha2-nistp521
+
+
+Add only the trusted SSH client public keys to ROS, and allow only those clients access
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information, see the associated Siemens security advisory SSA-764417 in HTML and CSAF.
+For more information see Siemens Security Advisory SSA-764417
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

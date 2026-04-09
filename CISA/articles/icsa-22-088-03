@@ -1,0 +1,68 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 4.2
+ATTENTION: Exploitable remotely
+Vendor: Hitachi Energy
+Equipment: LinkOne WebView
+Vulnerabilities: Cross-site Scripting, Use of a Password System for Primary Authentication, Configuration, Exposure of Sensitive Information to an Unauthorized Actor 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to modify a victim’s system files or information, disclose application full path, disclose sensitive information to an unauthorized actor, and launch a common web attack.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of LinkOne WebView, an enterprise graphical parts catalog, are affected:
+
+LinkOne WebView v3.20
+LinkOne WebView v3.22
+LinkOne WebView v3.23
+LinkOne WebView v3.24
+LinkOne WebView v3.25
+LinkOne WebView v3.26
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+Multiple stored XSS vulnerabilities exist in the LinkOne application, allowing multiple web attacks and the theft of sensitive information.
+CVE-2021-40337 has been assigned to these vulnerabilities. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N).
+3.2.2    GENERATION OF ERROR MESSAGE CONTAINING SENSITIVE INFORMATION CWE-209
+When an error happens during the query operation in the application due to a misconfiguration in the web server configuration file, debug mode in LinkOne application is activated and shows the full path of the directory.
+CVE-2021-40338 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.3    CONFIGURATION CWE-16
+The LinkOne application is lacking HTTP Headers, allowing an attacker to retrieve sensitive information.
+CVE-2021-40339 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.4    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+Misconfiguration in the ASP server causes server and ASP.net information to be shown. An attacker can use this information as a reconnaissance for further exploitation.
+CVE-2021-40340 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Compañía Minera Doña Inés de Collahuasi SCM reported these vulnerabilities to Hitachi Energy.
+4. MITIGATIONS
+Hitachi Energy recommends applying the available security patch or updating LinkOne to v3.27. Contact Hitachi Energy for more information on applying the security patch or updating LinkOne to v3.27
+Recommended security practices and firewall configurations can help protect the application from attacks that originate from outside the network. Such practices include physically protecting the application from direct access by unauthorized personnel, having no direct connections to the Internet. For the end-user of the application, it is recommended to use the latest browser when accessing the LinkOne application.
+For more information, review Hitachi Energy’s security advisory 8DBD000079
+Additional recommendation is to follow the hardening guidelines published by The Center for Internet Security (CIS) to protect the host Operating System on which the LinkOne is hosted.
+For additional information and support please contact your product provider or Hitachi Energy service.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity.

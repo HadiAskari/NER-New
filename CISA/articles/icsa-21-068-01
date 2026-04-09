@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.5
+ATTENTION: Low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC S7-PLCSIM v5.4
+Vulnerabilities: Infinite Loop, NULL Pointer Dereference, Divide by Zero
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker with local access to craft special project files that may lead to denial-of-service attacks.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SIMATICS S7-PLCSIM v5.4: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+An attacker with local access to the system could cause a denial-of-service condition in the application when it is used to open a specially crafted file. As a result, the application could enter an infinite loop, become unresponsive, and must be restarted to restore the service.
+CVE-2021-25673 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    NULL POINTER DEREFERENCE CWE-476
+An attacker with local access to the system could cause a denial-of-service condition in the application when it is used to open a specially crafted file. As a result, a NULL pointer deference condition could cause the application to terminate unexpectedly and must be restarted to restore the service.
+CVE-2021-25674 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    DIVIDE BY ZERO CWE-369
+An attacker with local access to the system could cause a denial-f-service condition in the application when it is used to open a specially crafted file. As a result, a divide by zero operation could occur and cause the application to terminate unexpectedly and must be restarted to restore the service.
+CVE-2021-25675 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Restrict access to project files on the engineering station to trusted users.
+Only use project files from trusted sources.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-256092
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

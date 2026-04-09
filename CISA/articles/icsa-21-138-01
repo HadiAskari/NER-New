@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Emerson 
+Equipment: Rosemount X-STREAM Gas Analyzer
+Vulnerabilities: Inadequate Encryption Strength, Unrestricted Upload of File with Dangerous Type, Path Traversal, Use of Persistent Cookies Containing Sensitive Information, Cross-site Scripting, Improper Restriction of Rendered UI Layers or Frames
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain sensitive information, modify configuration, or affect the availability of the device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Emerson’s Rosemount X-STREAM gas analysis software, are affected:
+
+X-STREAM enhanced XEGP – all revisions 
+X-STREAM enhanced XEGK – all revisions 
+X-STREAM enhanced XEFD – all revisions 
+X-STREAM enhanced XEXF – all revisions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INADEQUATE ENCRYPTION STRENGTH CWE-326
+The affected products utilize a weak encryption algorithm for storage of sensitive data, which may allow an attacker to more easily obtain credentials used for access.
+CVE-2021-27457 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2     UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The webserver of the affected products allows unvalidated files to be uploaded, which an attacker could utilize to execute arbitrary code.
+CVE-2021-27459 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N).
+3.2.3    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The affected webserver applications allow access to stored data that can be obtained by using specially crafted URLs.  
+CVE-2021-27461 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.4    USE OF PERSISTENT COOKIES CONTAINING SENSITIVE INFORMATION CWE-539
+The affected applications utilize persistent cookies where the session cookie attribute is not properly invalidated, allowing an attacker to intercept the cookies and gain access to sensitive information. 
+CVE-2021-27463 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.5    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The affected applications do not validate webpage input, which could allow an attacker to inject arbitrary HTML code into a webpage. This would allow an attacker to modify the page and display incorrect or undesirable data.
+CVE-2021-27465 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.2.6    IMPROPER RESTRICTION OF RENDERED UI LAYERS OR FRAMES CWE-1021
+The affected product’s web interface allows an attacker to route click or keystroke to another page provided by the attacker to gain unauthorized access to sensitive information.
+CVE-2021-27467 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Chemical 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: United States 
+
+3.4 RESEARCHER
+Emerson reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Emerson recommends users update the firmware of the affected products. A new release that addresses the issues identified in this cybersecurity notification impacting the affected products is available. For information on how to obtain the update, contact TechSupport.Hasselroth@emerson.com
+In addition, Emerson recommends users of affected products continue to utilize current cybersecurity industry best practices and ensure the affected products are connected to a well-protected network and properly segmented from the Internet. For more information see the Emerson Security notifications page.
+One of the cybersecurity best practices should include configuring web browsers to prohibit storage of user information such as login names and passwords.
+ 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

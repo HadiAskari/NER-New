@@ -1,0 +1,88 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.8
+ATTENTION: Low skill level to exploit
+Vendor: Becton, Dickinson and Company (BD)
+Equipment: BD Alaris 8015 PC Unit
+Vulnerabilities: Insufficiently Protected Credentials, Security Features
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSMA-17-017-02 BD Alaris 8015 Insufficiently Protected Credentials Vulnerabilities (Update A) that was published October 19, 2017, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+--------- Begin Update B Part 1 of 6 --------
+Successful exploitation of these vulnerabilities could allow an unauthorized user with physical access to the affected devices to access the host facility’s wireless network authentication credentials and other sensitive technical data, which may compromise the confidentiality, integrity, and availability of the device.
+--------- End Update B Part 1 of 6 --------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Alaris PC unit versions are affected:
+
+Alaris 8015 PC unit, Version 9.5 and prior versions, and 
+Alaris 8015 PC unit, Version 9.7
+
+--------- Begin Update B Part 2 of 6 --------
+
+Alaris 8015 PC unit, Versions 9.33 and prior
+
+--------- End Update B Part 2 of 6 --------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+--------- Begin Update B Part 3 of 6 --------
+An unauthorized user with physical access to an Alaris 8015 PC unit may be able to obtain unencrypted wireless network authentication credentials and other sensitive technical data by removing the external Wi-Fi card from an Alaris 8015 PC unit and connecting a pre-programmed malicious CF (CompactFlash) card to perform the attack. 
+--------- End Update B Part 3 of 6 --------
+CVE-2016-8375 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated; the CVSS vector string is (AV:P/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N).
+4.2.2    SECURITY FEATURES CWE-254
+--------- Begin Update B Part 4 of 6 --------
+An unauthorized user with physical access to an Alaris 8015 PC unit may be able to disassemble the device to access the removable flash memory, allowing read-and-write access to device memory. Physical access to the CF card allows an attacker to overwrite application and internal data (logs, drug library, etc.). Older software versions of the Alaris 8015 PC unit (Version 9.5 and prior) store wireless network authentication credentials and other sensitive technical data on the affected device’s removable flash memory. It is not difficult to obtain this data, but very difficult to interpret and change it to create an exploit that is progressive. In addition, the proprietary nature of the stored data format makes it unlikely modification of the CF card would go undetected. 
+--------- End Update B Part 4 of 6 --------
+CVE-2016-9355 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Dan Regalado, Asher Davila Loranca, and Ryan Dion of Palo Alto reported these vulnerabilities to BD.
+5. MITIGATIONS
+BD has not developed a product fix to address these vulnerabilities, but has issued compensating controls to reduce the risk of exploitation. 
+All Alaris System software versions less than 9.19 are end of life. BD recommends users upgrade Alaris System software when BD releases its next version of software, upon 510(k) clearance.
+BD recommends that users apply the following compensating controls:
+--------- Begin Update B Part 5 of 6 --------
+
+BD recommends hospitals create dedicated medical device wireless networks that only house medical equipment with wireless cards. This could potentially reduce the impact to other devices on the hospital network.
+Users of the Alaris PC unit model 8015 should upgrade to the latest Alaris PC unit software to reduce associated risks.
+
+BD will address this vulnerability through an upcoming version of the BD Alaris PC Unit software, pending 510(k) clearance.
+
+
+
+--------- End Update B Part 5 of 6 --------
+
+Users are advised to follow procedures for clearing wireless network authentication credentials on the Alaris PCU if the device is to be removed from service or it will not be in control of institutional staff. These procedures are outlined in the Alaris System Maintenance Software User Manual (page 13). Properly clearing wireless network authentication credentials is recommended when emergency patient transport is imminent, or when a device may be out of staff control.
+Users are advised to change their wireless network authentication credentials regularly, and immediately if there is evidence of unauthorized physical access to an Alaris device at their facility. Additionally, all wireless credentials should be cleared prior to transferring an Alaris device to another facility. Where feasible, users are encouraged to utilize enterprise-grade authentication methods, (e.g., EAP-TLS).
+Users are strongly encouraged to consider security policy in which wireless credentials are not configured for the Alaris PCU if wireless networking functionality is not being utilized for operation. This will remediate the vulnerability for non-wireless users.
+
+--------- Begin Update B Part 6 of 6 --------
+
+If requesting the Alaris PCU to be enabled in FIPS mode, users are advised to implement a policy of placing tamper-evident seals on the rear access panel and on the grooves of both sides of the Alaris PCU.
+
+--------- End Update B Part 6 of 6 --------
+
+Users may choose to implement Access Control Lists (ACLs) that restrict device access to specific media access control (MAC) and IP addresses, ports, protocols, and services.
+
+BD has released a security bulletin for the Alaris PC unit model 8015.
+For additional information about the identified vulnerabilities or BD’s compensating controls, please contact BD’s Customer Support.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. 

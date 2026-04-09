@@ -1,0 +1,55 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: eSOMS
+Vulnerabilities: Generation of Error Message Containing Sensitive Information, Exposure of Sensitive System Information to an Unauthorized Control Sphere
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to disclose sensitive information related to eSOMS application configuration.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Hitachi Energy products are affected:
+
+eSOMS: v6.3.13 and prior
+
+3.2 Vulnerability Overview
+3.2.1 GENERATION OF ERROR MESSAGE CONTAINING SENSITIVE INFORMATION CWE-209
+The response messages received from the eSOMS report generation using certain parameter queries with full file path can be abused for enumerating the local file system structure.
+CVE-2023-5514 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED CONTROL SPHERE CWE-497
+The responses for web queries with certain parameters disclose internal path of resources. This information can be used to learn internal structure of the application and to further plot attacks against web servers and deployed web applications.
+CVE-2023-5515 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.3 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED CONTROL SPHERE CWE-497
+Poorly constructed webap requests and URI components with special characters trigger unhandled errors and exceptions, disclosing information about the underlying technology and other sensitive information details. The website unintentionally reveals sensitive information including technical details like version info, endpoints, backend server, Internal IP. etc., which could expose additional attack surface containing other vulnerabilities.
+CVE-2023-5516 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends updating eSOMS to a fixed version when available.
+For more information on this issue, see the Hitachi Energy eSOMS Security Advisory 8DBD000175.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 9, 2023: Initial Publication
+

@@ -1,0 +1,54 @@
+
+OVERVIEW
+This advisory is a follow-up to the alert titled ICS-ALERT-13-091-01 Mitsubishi Electric Automation MX Buffer Overflow Vulnerability that was published April 1, 2013, on the ICS-CERT Web siteICSA-13-091-01, http://ics-cert.us-cert.gov/alerts/ICSA-13-091-01, last accessed May 20, 2013.
+Independent researchers Derek Betker and Dr_IDE have identified an ActiveX buffer overflow vulnerability in the Mitsubishi MX Component Version 3 application. This vulnerability could be exploited remotely. Exploits that target this vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+This vulnerability affects Mitsubishi MX Component Version 3 trial software. Affected products:
+
+Mitsubishi Electric Automation MX Component Version 3,
+Other Mitsubishi products that may be based on the same code,
+CitectFacilities v7.10 and previous versions - Release Date: July 2009, and
+CitectSCADA v7.0 and previous versions - Release Date: August 2007.
+
+CitectFacilities and CitectSCADA only distributed a trial version of Mitsubishi MX Component Version 3 as complimentary software, which is not installed by default. It is not licensed by Schneider Electric.
+IMPACT
+This vulnerability could possibly lead to a denial of service (DoS) or potentially allow the execution of arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+MX Component Version 3 is a SCADA product offered by Mitsubishi Electric Automation.
+A complementary trial version of MX Component Version 3 product was bundled with CitectSCADA and CitectFacilities products that are offered by Schneider Electric. These products did not install MX Component Version 3 by default.
+VULNERABILITH CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HEAP-BASED BUFFER OVERFLOWCWE-122: Heap-based Buffer Overflow, http://cwe.mitre.org/data/definitions/122.html, Web site last accessed May 20, 2013.
+
+The overflow condition in the ActUWzd.dll ActiveX control is triggered as user-supplied input is not properly validated when supplied via the WzTitle, WzPassword, WzOutsideLineNumber, WzName, WzHostAddress, WzDialNumber, WzComment, WzCallbackNumber, or WzATCommand methods. This may allow a context‑dependent attacker to cause a heap-based buffer overflow, resulting in a DoS or potentially allowing the execution of arbitrary code.
+CVE-2013-3075NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3075, Web site last accessed May 20, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).
+
+VULNERABILITY DETAILS
+
+
+EXPLOITABILITY
+
+This vulnerability could be exploited remotely.
+
+EXISTENCE OF EXPLOIT
+
+Exploits that target this vulnerability are publicly available.
+
+DIFFICULTY
+
+An attacker with medium skill would be able to exploit this vulnerability.
+MITIGATION
+Mitsubishi recommends upgrading to the latest version (MX Component 4.03) that is not affected by this vulnerability. Customers can contact MitsubishiMitsubishi-Automation Service and Support, http://www.mitsubishi-automation.com/service/support.html, Web site last accessed May 20, 2013. support and service for more information.
+Schneider Electric has released a security notificationImportant security notification – possible vulnerability within Mitsubishi MX Component Version 3 distributed by CitectFacilities, http://www.citect.schneider-electric.com/security-mitsubishi, Web site last accessed May 20, 2013. for CitectFacilities and CitectSCADA products that distributed a complimentary trial version of Mitsubishi MX Component Version 3.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, which is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.
+

@@ -1,0 +1,73 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: Pavilion8
+Vulnerability: Improper Authentication
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to retrieve other user's sessions data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Rockwell Automation Pavilion8, a model predictive control software, are affected:
+
+Pavilion8: versions v5.17.00 and v5.17.01
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER AUTHENTICATION CWE-287
+The JMX Console within the Pavilion is exposed to application users and does not require authentication. If exploited, a malicious user could retrieve other application users' session data and or log users out of their sessions.
+CVE-2023-29463 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Rockwell Automation recommends customers apply the following mitigations:
+
+Update to v5.20
+
+Rockwell Automation encourages customers using the affected software are encouraged to apply the risk mitigations, if possible and to implement the suggested security best practices to minimize the risk of vulnerability.
+If customers are unable to update to v5.20, please follow the instructions below to disable the vulnerability in v5.17.
+
+Open the web.xml file in your Pavilion8® installation folder set during installation and go to "Console\container\webapps\ROOT\WEB-INF;" by default this would be under "C:\Pavilion\Console\container\webapps\ROOT\WEB-INF."
+Search for the text "jmx-console-action-handler" and delete the below lines from web.xml file:
+
+
+/servlet/
+/servlet-name/ jmx-console-action-handler</servlet-name/
+/servlet-class/com.pav.jboss.jmx.HtmlAdaptorServlet</servlet-class/
+/servlet/
+/servlet-mapping/
+/servlet-name/ jmx-console-action-handler</servlet-name/
+/url-pattern /jmx-console/HtmlAdaptor</url-pattern/
+/servlet-mapping/
+
+
+Save the changes and close the file.
+Restart Pavilion8 Console Service.
+Logout and log back into the console and navigate to the URL http:// FQDN /jmx-console to confirm you are getting the error message "HTTP Status 404 – Not Found."
+
+For more information, see Rockwell Automation's Security Advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 14, 2023: Initial Publication
+

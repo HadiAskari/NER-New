@@ -1,0 +1,89 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.4
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: Mendix SAML Module
+Vulnerability: Authentication Bypass by Capture-replay
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA- ICSA-22-258-04 Siemens Mendix SAML Module (Update A) that was published November 10th, 2022 on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow remote attackers to gain unauthenticated access to the application.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reported this vulnerability affects the following versions of Mendix SAML Module, a SAML cloud authentication application:
+
+For CVE-2022-37011
+
+Mendix SAML Module (Mendix 7 compatible): All versions prior to V1.17.0
+Mendix SAML Module (Mendix 8 compatible): All versions prior to V2.3.0
+Mendix SAML Module (Mendix 9 compatible): All versions prior to V3.3.1
+
+
+For CVE-2022-44457
+
+Mendix SAML Module (Mendix 7 compatible): Versions  V1.17.0 and later.
+Mendix SAML Module (Mendix 8 compatible): Versions V2.3.0 and later, up to but not including Version V2.3.2.
+Mendix SAML Module (Mendix 9 compatible): Versions V3.3.1 and later, up to but not including Version V3.3.5.
+
+
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+Affected versions of the module provide insufficient protection from packet capture replay. This could allow unauthorized remote attackers to bypass authentication and access the application.
+CVE-2022-37011 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.2.2    AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+When the non-recommended and non-default option “Allow Idp initiated authentication” is enabled, the affected versions insufficiently protect from packet capture replay.
+CVE-2022-44457 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+5. MITIGATIONS
+Siemens and Mendix recommend users update to the latest versions of the respective devices:
+
+For CVE-2022-37011
+
+Mendix SAML Module (Mendix 7 compatible): Update to version V1.17.0 or later
+Mendix SAML Module (Mendix 8 compatible): Update to version V2.3.0 or later
+Mendix SAML Module (Mendix 9 compatible): Update to version V3.3.1 or later
+
+
+
+
+For CVE-2022-44457
+--------- Begin Update B part 1 of 1 ---------
+
+Mendix SAML Module (Mendix 7 compatible): Update to version V.17.2 or later
+
+
+--------- End Update B part 1 of 1 ---------
+
+Mendix SAML Module (Mendix 8 compatible): Update to version V2.3.2 or later
+Mendix SAML Module (Mendix 9 compatible): Update to version V3.3.5 or later
+
+
+
+For applications upgraded to Mendix 9 from earlier Mendix versions, CVE-2022-37011 was resolved in V3.3.0. CVE-2022-44457 was resolved in V3.3.4.
+For compatibility reasons, the versions listed as fixed for CVE-2022-37011 still contain this issue, but only when the not recommended, non-default configuration option ‘Allow Idp Initiated Authentication’ is enabled.
+CVE-2022-44457 describes the incomplete fix for CVE-2022-37011 in a specific, non-default configuration. The latest version updates also fix the issue for the non-default configuration.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see SSA-638652 in HTML or CSAF formats.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

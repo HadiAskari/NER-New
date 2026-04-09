@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: FANUC Corporation / FANUC America Corporation
+Equipment: ROBOGUIDE 
+Vulnerabilities: Incorrect Permission Assignment for Critical Resource, Improper Access Control, Path Traversal, Improper Restriction of XML External Entity Reference, Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a denial-of-service condition, allow for remote code execution, or provide unauthorized privilege escalation.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of ROBOGUIDE, a simulation platform software suite for FANUC Robots, are affected:
+
+ROBOGUIDE v9.40083.00.05 (Rev T) and earlier 
+
+Note: This offline simulation software program does not provide any control or management of physical devices or processes. It is included because it is used in Industrial Control Systems (ICS).
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCE CWE-732
+The affected product is vulnerable to misconfigured binaries, allowing users on the target PC with SYSTEM level privileges access to overwrite the binary and modify files to gain privilege escalation.
+CVE-2021-38483 has been assigned to this vulnerability. A CVSS v3 base score of 6.0 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:H).
+3.2.2    IMPROPER ACCESS CONTROL CWE-284
+The setup program for the affected product configures its files and folders with full access, which may allow unauthorized users permission to replace original binaries and achieve privilege escalation.
+CVE-2021-43986 has been assigned to this vulnerability. A CVSS v3 base score of 6.0 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:H).
+3.2.3    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE 22
+The affected product is vulnerable to a network-based attack by threat actors utilizing crafted naming conventions of files to gain unauthorized access rights.
+CVE-2021-43988 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:N/A:H).
+3.2.4    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+The affected product is vulnerable to a network-based attack by threat actors supplying a crafted, malicious XML payload designed to trigger an external entity reference call.
+CVE-2021-43990 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:N/A:H).
+3.2.5  UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The affected product is vulnerable to a network-based attack by threat actors sending unimpeded requests to the receiving server, which could cause a denial-of-service condition due to lack of heap memory resources.
+CVE-2021-43933 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan, United States
+
+3.4 RESEARCHER
+Sharon Brizinov with Claroty reported these vulnerabilities to CISA.
+4. MITIGATIONS
+FANUC has created a new version to address these vulnerabilities. Users may obtain and install the new version by downloading ROBOGUIDE v9 Rev U or higher from the FANUC or FANUC America website (login required).
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

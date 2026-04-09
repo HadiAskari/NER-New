@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.7
+ATTENTION: Low attack complexity
+Vendor: Rockwell Automation
+Equipment: Studio 5000 Logix Designer
+Vulnerability: Code Injection
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may allow an attacker to download a modified program to the controller.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports this vulnerability affects the following Studio 5000 Logix Designer design, configuration hardware, and software products:
+
+ControlLogix 5580 controllers
+GuardLogix 5580 controllers
+CompactLogix 5380 controllers
+CompactLogix 5480 controllers
+Compact GuardLogix 5380 controllers
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER CONTROL OF GENERATION OF CODE (CODE INJECTION) CWE-94
+An attacker who achieves administrator access on a workstation running Studio 5000 Logix Designer could inject controller code undetectable to a user.
+CVE-2022-1159 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sharon Brizinov and Tal Keren of Claroty reported this vulnerability to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation recommends users of the affected hardware and software take risk mitigation steps listed below. Users are encouraged, when possible, to combine this guidance with the general security guidelines for a comprehensive defense-in-depth strategy.
+There is no direct mitigation for this vulnerability in the Logix Designer application. However, a detection method is available to determine if the user program residing in the controller is identical to what was downloaded. This user program verification can be done by the following:
+
+On-demand using the Logix Designer application Compare Tool v9 or later
+Scheduled using FactoryTalk AssetCentre v12 or later user program verification (Available Fall 2022)
+
+To leverage these detection capabilities, users are directed to upgrade to:
+
+Studio 5000 v34 software. or later
+Corresponding versions of Logix 5580, 5380, 5480, GuardLogix 5580 and Compact GuardLogix 5380 controller firmware.
+One of the following compare tools
+
+Logix Designer application Compare Tool v9 or later – installed with Studio 5000 Logix Designer
+FactoryTalk AssetCentre v12 or later software (Available Fall 2022)
+
+
+
+This user program comparison must be performed on an uncompromised workstation.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

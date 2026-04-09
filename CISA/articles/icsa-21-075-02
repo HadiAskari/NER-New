@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: GE
+Equipment: UR Family
+Vulnerabilities: Inadequate Encryption Strength, Session Fixation, Exposure of Sensitive Information to an Unauthorized Actor, Improper Input Validation, Unrestricted Upload of File with Dangerous Type, Insecure Default Variable Initialization, Use of Hard-coded Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to access sensitive information, reboot the UR, gain privileged access, or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+GE reports the vulnerabilities affect the following UR family (B30, B90, C30, C60, C70, C95, D30, D60, F35, F60, G30, G60, L30, L60, L90, M60, N60, T35, T60) of advanced protection and control relays:
+
+Vulnerabilities related to SSH Support: firmware versions 7.4x to 8.0x (CyberSentry option)
+Web server vulnerabilities: all firmware versions prior to version 8.1x
+Protection from unintended firmware upload: all firmware versions prior to 8.1x with basic security option
+Provisions to disable Factory Mode: all firmware versions prior to 8.1x with basic security option
+Access to “Last-key pressed” register: all firmware versions prior to 8.1x with basic security option
+Weakness in UR bootloader binary: all bootloader versions prior to 7.03/7.04
+
+Please see GE publication GES-2021-004 (login required) for more information.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INADEQUATE ENCRYPTION STRENGTH CWE-326
+Prior to UR firmware Version 8.1x, UR supported various encryption and MAC algorithms for SSH communication, some of which are weak.
+CVE-2016-2183 and CVE-2013-2566 have been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    SESSION FIXATION CWE-384
+Prior to firmware Version 7.4x, UR supported only SSHv2. Starting from firmware Version 7.4x, UR added support to SSHv1. SSHv1 has known vulnerabilities (SSH protocol session key retrieval and insertion attack).
+CVE-1999-1085 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.2.3    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+Web server interface is supported on UR over HTTP protocol. It allows sensitive information exposure without authentication.
+CVE-2021-27422 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.4    IMPROPER INPUT VALIDATION CWE-20
+UR supports web interface with read-only access. The device fails to properly validate user input, making it possible to perform cross-site scripting attacks, which may be used to send a malicious script. Also, UR Firmware web server does not perform HTML encoding of user-supplied strings.
+CVE-2021-27418 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.2.5    IMPROPER INPUT VALIDATION CWE-20
+UR Firmware web server task does not properly handle receipt of unsupported HTTP verbs, resulting in the web server becoming temporarily unresponsive after receiving a series of unsupported HTTP requests. When unresponsive, the web server is inaccessible. By itself, this is not particularly significant as the relay remains effective in all other functionality and communication channels.
+CVE-2021-27420 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.6    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+UR IED supports upgrading firmware using UR Setup configuration tool – Enervista UR Setup. This UR Setup tool validates the authenticity and integrity of firmware file before uploading the UR IED. An illegitimate user could upgrade firmware without appropriate privileges. The weakness is assessed, and mitigation is implemented in firmware Version 8.10. 
+CVE-2021-27428 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.7    INSECURE DEFAULT VARIABLE INITIALIZATION CWE-453
+UR IED with “Basic” security variant does not allow the disabling of the “Factory Mode,” which is used for servicing the IED by a “Factory” user. 
+CVE-2021-27426 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+UR shares MODBUS memory map as part of the communications guide. GE was made aware a “Last-key pressed” MODBUS register can be used to gain unauthorized information. 
+CVE-2021-27424 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.9    USE OF HARD-CODED CREDENTIALS CWE-798
+UR bootloader binary Version 7.00, 7.01 and 7.02 included unused hardcoded credentials. Additionally, a user with physical access to the UR IED can interrupt the boot sequence by rebooting the UR. 
+CVE-2021-27430 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications, Critical Manufacturing, Energy, Healthcare and Public Health, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+SCADA-X, DOE’s Cyber Testing for Resilient Industrial Control Systems (CyTRICS) program, Verve Industrial, and VuMetric reported these vulnerabilities to GE.
+4. MITIGATIONS
+GE strongly recommends users with impacted firmware versions update their UR devices to UR firmware Version 8.10, or greater to resolve these vulnerabilities. GE provides additional mitigations and information about these vulnerabilities in GE Publication Number: GES-2021-004 (login required).
+GE recommends protecting UR IED by using network defense-in-depth practices. This includes, but is not limited to, placing UR IED inside the control system network security perimeter, and having access controls, monitoring (such as an Intrusion Detection System), and other mitigating technologies in place. 
+GE recommends users refer to the UR Deployment guide for secure configuration of UR IED and system.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

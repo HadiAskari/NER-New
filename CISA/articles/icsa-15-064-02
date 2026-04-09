@@ -1,0 +1,89 @@
+
+OVERVIEW
+Ivan Sanchez from WiseSecurity Team has identified a search path vulnerability in the Siemens SIMATIC ProSave, SIMATIC CFC, SIMATIC STEP 7, SIMOTION Scout, and STARTER applications. Siemens has produced updates for each of these products that mitigates this vulnerability.
+AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SIMATIC ProSave: all versions prior to V13 SP1
+SIMOTION Scout: all versions prior to V4.4
+STARTER: all versions prior to V4.4 HF3
+SIMATIC CFC
+
+
+All versions prior to V8.0 SP4
+CFC V8.0 SP4: all versions prior to V8.0 SP4 Upd 9
+CFC V8.1: all versions prior to V8.1 Upd1
+
+
+ SIMATIC STEP 7 V5.5
+
+
+All versions prior to V5.5 SP1
+STEP 7 V5.5 SP1: all versions prior to V5.5 SP1 HF2
+STEP 7 V5.5 SP2: all versions prior to V5.5 SP2 HF7
+STEP 7 V5.5 SP3: all versions
+STEP 7 V5.5 SP4: all versions prior to V5.5 SP4 HF4
+
+
+SIMATIC PCS 7 (as STEP 7 and CFC are incorporated)
+
+
+All versions prior to V8.0 SP2
+PCS 7 V8.0 SP2: all versions
+PCS 7 V8.1: all versions prior to V8.1 with STEP 7 SP4 HF4 and CFC V8.1 Upd1.
+
+IMPACT
+This vulnerability could allow attackers to execute arbitrary code from files located on the local file system or connected network shares with the privileges of the user running the affected products.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+SIMATIC ProSave is used for backup restore and firmware update for SIMATIC HMI panels. SIMOTION SCOUT is a framework for motion control engineering system tools. STARTER is a drive engineering tool for parameterizing and commissioning. SIMATIC CFC (Continuous Function Chart) is a graphic editor that is a core component of PCS 7 engineering. STEP 7 is Siemens’ engineering software for PLC and hardware configuration. SIMATIC PCS 7 is a distributed control system (DCS) integrating SIMATIC STEP 7 and SIMATIC CFC. According to Siemens, these products are deployed across several sectors including Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNTRUSTED SEARCH PATHCWE-426: Untrusted Search Path, http://cwe.mitre.org/data/definitions/426.html, web site last accessed March 05, 2015.
+
+Insufficiently qualified paths could allow attackers to execute arbitrary code from files located on the local file system or connected network shares with the privileges of the user running the affected products. For successful exploitation an unsuspecting user must be tricked into opening a manipulated application file.
+CVE-2015-1594NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1594, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.9 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:C/I:C/A:C). CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:C/I:C/A:C, web site last accessed March 05, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would require a moderate amount of skill. Social engineering is required to convince the user to accept the malformed file. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Siemens provides updates for the following products and recommends customers to update to the new fixed versions:
+
+The update for SIMATIC ProSave can be obtained here:
+
+https://support.industry.siemens.com/cs/de/en/view/10347815
+
+The update for SIMOTION SCOUT can be obtained here:
+
+https://support.industry.siemens.com/cs/de/en/view/107586911
+
+The update for STARTER can be obtained here:
+
+https://support.industry.siemens.com/cs/ww/en/view/26233208
+
+Updates for SIMATIC STEP 7 and SIMATIC CFC can obtained via customer support at:
+
+http://www.siemens.com/automation/support-request
+For more information on these vulnerabilities and detailed instructions, please see Siemens Security Advisory SSA-451236 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed March 05, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed March 05, 2015. for more information on social engineering attacks.
+
+In addition, ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

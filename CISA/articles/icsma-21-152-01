@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.9
+ATTENTION: Exploitable remotely
+Vendor: Hillrom
+Equipment: Welch Allyn medical device management tools
+Vulnerabilities: Out-of-Bounds Write, Out-of-Bounds Read
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-152-01 Hillrom Medical Device Management (Update B) that was published September 8, 2022, to the ICS webpage at www.cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to cause memory corruption and remotely execute arbitrary code.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Hillrom products, are affected:
+
+Welch Allyn Service Tool: versions prior to v1.10
+Welch Allyn Connex Device Integration Suite – Network Connectivity Engine (NCE): versions prior to v5.3
+Welch Allyn Software Development Kit (SDK): versions prior to v3.2
+Welch Allyn Connex Central Station (CS): versions prior to v1.8.4 Service Pack 01
+Welch Allyn Service Monitor: versions prior to v1.7.0.0
+Welch Allyn Connex Vital Signs Monitor (CVSM): versions prior to v2.43.02
+Welch Allyn Connex Integrated Wall System (CIWS): versions prior to v2.43.02
+Welch Allyn Connex Spot Monitor (CSM): versions prior to v1.52
+Welch Allyn Spot Vital Signs 4400 Device (Spot 4400) / Welch Allyn Spot 4400 Vital Signs Extended Care Device: versions prior to v1.11.00
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    OUT-OF-BOUNDS WRITE CWE-787
+The affected product is vulnerable to an out-of-bounds write, which may result in corruption of data or code execution. 
+CVE-2021-27410 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L).
+4.2.2    OUT-OF-BOUNDS READ CWE-125
+The affected product is vulnerable to an out-of-bounds read, which can cause information leakage leading to arbitrary code execution if chained to the out-of-bounds write vulnerability. 
+CVE-2021-27408 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Itamar Cohen-Matalon of Medigate Research Labs reported these vulnerabilities to Hillrom.
+4. MITIGATIONS
+Hillrom has released software updates for all impacted devices to address these vulnerabilities. New versions of the products that mitigate the vulnerabilities are available as follows:
+
+Welch Allyn Service Tool: v1.10
+Welch Allyn Software Development Kit (SDK): v3.2
+
+--------- Begin Update C Part 1 of 1 ---------
+
+Welch Allyn Connex Central Station (CS): v1.8.4 Service Pack 01 (released November 2022)
+
+--------- End Update C Part 1 of 1 ---------
+
+Welch Allyn Connex Device Integration Suite - Network Connectivity Engine (NCE): v5.3 (released September 2021)
+Welch Allyn Spot Vital Signs 4400 Device (Spot 4400) / Welch Allyn Spot 4400 Vital Signs Extended Care Device: v1.11.00 (Released October 2021)
+Welch Allyn Service Monitor: v1.7.0.0
+Welch Allyn Connex Vital Signs Monitor (CVSM): v2.43.02
+Welch Allen Connex Integrated Wall System (CIWS): v2.43.02
+Welch Allyn Connex Spot Monitor (CSM): v1.52
+Welch Allyn Spot Vital Signs 4400 Device (Spot 4400) / Welch Allyn Spot 4400 Vital Signs Extended Care Device: v1.11.00 (available Fall 2021)
+
+Hillrom recommends users to upgrade to the latest versions of their products. Information on how to update these products to their new versions can be found on the Hillrom disclosure page.
+Hillrom recommends the following workarounds to help reduce risk:
+
+Apply proper network and physical security controls.
+Apply authentication for server access. 
+Apply data execution prevention (DEP) where applicable to help prevent shellcode from running. Address space layout randomization (ASLR) is built into standard Windows and Linux distributions.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have high attack complexity.

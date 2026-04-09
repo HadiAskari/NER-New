@@ -1,0 +1,88 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SICAM MMU, SICAM T and SICAM SGU
+Vulnerabilities: Out-of-bounds Read, Missing Authentication for Critical Function, Missing Encryption of Sensitive Data, Use of Password Hash with Insufficient Computational Effort, Cross-site Scripting, Classic Buffer Overflow, Basic XSS, Authentication Bypass by Capture-replay
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to affect the availability, read sensitive data, and gain remote code execution on the affected devices.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SICAM MMU: All versions prior to 2.05
+SICAM SGU: All versions
+SICAM T: All versions prior to 2.18
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS READ CWE-125
+By performing a flooding attack against the web server, an attacker might be able to gain read access to the device’s memory, and reveal confidential information.
+CVE-2020-10037 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+An attacker with access to the device’s web server might be able to execute administrative commands without authentication. 
+CVE-2020-10038 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+An attacker in a privileged network position between a legitimate user and the web server might be able to conduct a man-in-the-middle attack and gain read and write access to the transmitted data. 
+CVE-2020-10039 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    USE OF PASSWORD HASH WITH INSUFFICIENT COMPUTATIONAL EFFORT CWE-916
+An attacker with local access to the device might be able to retrieve passwords in clear text. 
+CVE-2020-10040 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION (‘CROSS-SITE SCRIPTING) CWE-79
+A stored cross-site-scripting (XSS) vulnerability is present in different locations of the web application.  An attacker might be able to take over a session of a legitimate user.
+CVE-2020-10041 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.6    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW’) CWE-120
+A buffer overflow in various positions of the web application might enable an attacker with access to the web application to execute arbitrary code over the network. 
+CVE-2020-10042 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7    IMPROPER NEUTRALIZATION OF SCRIPT-RELATED HTML TAGS IN A WEB PAGE (BASIC XSS) CWE-80
+The web server could allow cross-site scripting (XSS) attacks if unsuspecting users are tricked into accessing a malicious link. 
+CVE-2020-10043 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:H/A:L).
+3.2.8    MISSING AUTHENTICATION FOR A CRITICAL FUNCTION CWE-306
+An attacker with access to the network could be able to install specially crafted firmware on the device. 
+CVE-2020-10044 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.9    AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+An error in the challenge-response procedure could allow an attacker to replay authentication traffic and gain access to protected areas of the web application. 
+CVE-2020-10045 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens thanks the following parties for their efforts:
+
+Luca Simbürger, Luca Hofschuster, Lukas Kahnert, Jakob Lachermeier, Christian Costa, Simon Huber, Lukas Sas Brunschier, Florian Freiberger, Florian Burger, Marie-Louise Oostveen, Magdalena Thomeczek, and Johann Uhrmann from Landshut University of Applied Sciences.
+Max Hirschberger, Simon Hofmann, and Peter Knauer from Augsburg University of Applied Sciences.
+
+4. MITIGATIONS
+Siemens recommends applying updates, where available:
+
+SICAM MMU: Update to v2.05
+SICAM SGU: For RTU applications, upgrade the discontinued SICAM SGU devices to SICAM A8000 RTUs.
+SICAM T: Update to v2.18
+
+Siemens has identified the following specific workarounds and mitigations that users can apply to reduce the risk:
+
+The firmware updates to SICAM T and SICAM MMU introduce authentication to the web application and remove some unnecessary functionality. The web authentication functionality reduces the risk of access to the device’s web application for executing administrative commands by unauthenticated users.
+Due to hardware constraints, encryption is not possible on the devices. Confidential data such as passwords handled by the devices need to be protected on the network by other means, e.g., by VPN.
+The risk for remote code execution and unauthenticated firmware installation can be mitigated by ensuring encryption and authentication between the user and the device, e.g., by VPN.
+Use a modern and up to date browser.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-305120
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

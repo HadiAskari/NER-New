@@ -1,0 +1,52 @@
+
+CVSS v3 8.8
+ATTENTION: Remotely exploitable/low skill level to exploit. Public exploits are available.
+Vendor: Continental AG
+Equipment: Infineon S-Gold 2 (PMB 8876)
+Vulnerabilities: Stack-Based Buffer Overflow, Improper Restriction of Operations within the Bounds of a Memory Buffer
+AFFECTED PRODUCTS
+All telematics control modules (TCUs) built by Continental AG that contain the S-Gold 2 (PMB 8876) cellular baseband chipset are affected. The S-Gold 2 (PMB 8876) is found in the following vehicles:
+
+BMW several models produced between 2009-2010
+Ford - program to update 2G modems has been active since 2016 and impact is restricted to the limited number of P-HEV vehicles equipped with this older technology that remain in service.
+Infiniti 2013 JX35
+Infiniti 2014-2016 QX60
+Infiniti 2014-2016 QX60 Hybrid
+Infiniti 2014-2015 QX50
+Infiniti 2014-2015 QX50 Hybrid
+Infiniti 2013 M37/M56
+Infiniti 2014-2016 Q70
+Infiniti 2014-2016 Q70L
+Infiniti 2015-2016 Q70 Hybrid
+Infiniti 2013 QX56
+Infiniti 2014-2016 QX 80
+Nissan 2011-2015 Leaf
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow a remote attacker to execute arbitrary code. This may allow an attacker to disable the infotainment system of the vehicle and affect functional features of the vehicle. According to affected auto manufacturers, these vulnerabilities do not directly affect the critical safety features of the vehicle.
+MITIGATION
+Continental has validated the reported vulnerabilities but has not yet identified a mitigation plan.
+Nissan and Infiniti have issued Technical Service Bulletins (TSB) asking dealers to advise customers of the issue and offer a free 2G TCU deactivation. Nissan/Infiniti’s 2G cellular service provider no longer provides 2G services in the U.S. The subject 2G TCUs are no longer connected to telematics services and no longer perform any function in the affected vehicles. Nissan/Infiniti have stated that this campaign is being performed out of abundance of caution to help safeguard against potential cybersecurity issues.
+Nissan/Infiniti proposes that users contact their local Infiniti or Nissan dealers to have the subject 2G TCUs deactivated free of charge.
+BMW has validated the vulnerabilities and will be offering a service measure to affected customers.
+Ford, since 2016, has had a customer satisfaction program to update or disable legacy 2G modems and there are a limited number of vehicles left on the market. Ford is reviewing the researcher’s findings through internal processes and evaluating the need for any additional steps.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+VULNERABILITY OVERVIEW
+
+Stack-based buffer overflow CWE-121
+
+An attacker with a physical connection to the TCU may exploit a buffer overflow condition that exists in the processing of AT commands. This may allow arbitrary code execution on the baseband radio processor of the TCU.
+CVE-2017-9647 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+
+A vulnerability in the temporary mobile subscriber identity (TMSI) may allow an attacker to access and control memory. This may allow remote code execution on the baseband radio processor of the TCU.
+CVE-2017-9633 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+Mickey Shkatov, Jesse Michael, and Oleksandr Bazhaniuk of the Advanced Threat Research Team at McAfee have reported the vulnerabilities.
+BACKGROUND
+Critical Infrastructure Sector: Transportation Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany

@@ -1,0 +1,67 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.5
+ATTENTION: Low attack complexity
+Vendor: Advantech
+Equipment: ADAM-5630
+Vulnerabilities: Use of Persistent Cookies Containing Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to hijack a legitimate user's session, perform cross-site request forgery, or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Advantech's ADAM are affected:
+
+Advantech ADAM-5630: versions prior to v2.5.2
+
+3.2 Vulnerability Overview
+3.2.1 USE OF PERSISTENT COOKIES CONTAINING SENSITIVE INFORMATION CWE-539
+Cookies of authenticated users remain as active valid cookies when a session is closed. Forging requests with a legitimate cookie, even if the session was terminated, allows an unauthorized attacker to act with the same level of privileges of the legitimate user.
+CVE-2024-39275 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-39275. A base score of 8.5 has been calculated; the CVSS vector string is (CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+Cross-site request forgery (CSRF) is a web security vulnerability that allows an attacker to induce users to perform actions that they do not intend to perform. It allows an attacker to partly circumvent the same origin policy, which is designed to prevent different websites from interfering with each other.
+CVE-2024-28948 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-28948. A base score of 8.5 has been calculated; the CVSS vector string is (CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 WEAK ENCODING FOR PASSWORD CWE-261
+User credentials are shared in plain text, between the device and the user source device, during the login process.
+CVE-2024-34542 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.7 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-34542. A base score of 6.9 has been calculated; the CVSS vector string is (CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.4 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The device has built-in commands that can be executed without authenticating the user. These commands allow for restarting the operating system, rebooting the hardware, and stopping the execution. The commands can be sent to a simple HTTP request and are executed by the device automatically, without discrimination of origin or level of privileges of the user sending the commands.
+CVE-2024-39364 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-39364. A base score of 8.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Aarón Flecha Menéndez and Luis Villalba Pérez of S21sec reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Advantech recommends users upgrade their ADAM-5630 devices to version 2.5.2.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+September 26, 2024: Initial Publication
+

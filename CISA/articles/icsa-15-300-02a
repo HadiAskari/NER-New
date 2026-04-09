@@ -1,0 +1,94 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ISCA-15-300-02 Infinite Automation Systems Mango Automation Vulnerabilities that was published October 27, 2015, on the NCCIC/ICS-CERT web site.
+Steven Seeley of Source Incite and Gjoko Krstic of Zero Science Lab have independently identified vulnerabilities in the Infinite Automation Systems Mango Automation application.
+--------- Begin Update A Part 1 of 3 --------
+Infinite Automation Systems has released a new version to mitigate these vulnerabilities. The researchers have tested the new version to validate that it resolves the vulnerabilities.
+--------- End Update A Part 1 of 3 ----------
+These vulnerabilities could be exploited remotely. Exploits that target these vulnerabilities are known to be publicly available.
+AFFECTED PRODUCTS
+The following Mango Automation versions are affected:
+
+Mango Automation Version 2.5.0 through Version 2.6.0 beta (builds prior to 430), and
+
+--------- Begin Update A Part 2 of 3 --------
+
+Mango Automation versions prior to Version 2.7.0 are vulnerable to OS command injection and cross-site request forgery vulnerabilities.
+
+--------- End Update A Part 2 of 3 ----------
+IMPACT
+Successful exploitation of these vulnerabilities may allow a remote attacker to compromise the confidentiality, integrity, and availability of the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Infinite Automation Systems is headquartered in Lafayette, Colorado.
+The affected product, Mango Automation, is a centralized web-based SCADA/HMI and data acquisition software. According to Infinite Automation Systems, Mango Automation is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Food and Agriculture, and Energy. Infinite Automation Systems estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPECWE-434: Unrestricted Upload of File with Dangerous Type, http://cwe.mitre.org/data/definitions/434.html, web site last accessed October 27, 2015.
+
+Improper verification of uploaded image files allows arbitrary files to be uploaded, which may allow for the execution of malicious JSP script files.
+CVE-2015-7904NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7904, web site last accessed December 22, 2015. has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L, web site last accessed October 27, 2015.
+
+OS COMMAND INJECTIONCWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection'), http://cwe.mitre.org/data/definitions/78.html, web site last accessed October 27, 2015.
+
+An authenticated user can issue any OS commands that are not properly sanitized, which could allow for OS command injection and cross-site request forgery attacks.
+CVE-2015-7901NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7901, web site last accessed December 22, 2015. has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L, web site last accessed October 27, 2015.
+
+INFORMATION EXPOSURE THROUGH DEBUG INFORMATIONCWE-215: Information Exposure Through Debug Information, http://cwe.mitre.org/data/definitions/215.html, web site last accessed October 27, 2015.
+
+Application has debugging enabled by default, which automatically updates a publicly available status page when system exceptions occur with a description of the exception and details about session attributes. An attacker could send a malicious URL to a logged in user to instigate a system exception to gather information about the logged in user.
+CVE-2015-7900NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7900, web site last accessed December 22, 2015. has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N, web site last accessed October 27, 2015
+
+SQL INJECTIONCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection'), http://cwe.mitre.org/data/definitions/89.html, web site last accessed October 27, 2015.
+
+The application does not verify SQL queries via HTTP requests, allowing the issuance of arbitrary SQL commands.
+CVE-2015-7903NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7903, web site last accessed December 22, 2015. has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L, web site last accessed October 27, 2015.
+
+CROSS-SITE REQUEST FORGERYCWE-352: Cross-Site Request Forgery (CSRF), http://cwe.mitre.org/data/definitions/352.html, web site last accessed October 27, 2015.
+
+The application does not verify HTTP requests.
+CVE-2015-6493NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6493, web site last accessed December 22, 2015. has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L, web site last accessed October 27, 2015.
+
+CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), http://cwe.mitre.org/data/definitions/79.html, web site last accessed October 27, 2015.
+
+The application fails to properly sanitize user-supplied input, which could allow a remote attacker to execute arbitrary code in a user's browser.
+CVE-2015-6494NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6494, web site last accessed December 22, 2015. has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N, web site last accessed October 27, 2015.
+
+RESPONSE DISCREPANCY INFORMATION EXPOSURECWE-204: Response Discrepancy Information Exposure, http://cwe.mitre.org/data/definitions/204.html, web site last accessed October 27, 2015.
+
+Error messages for failed logon attempts contain information that could be used by an attacker.
+CVE-2015-7902NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7902, web site last accessed December 22, 2015. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N, web site last accessed October 27, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target these vulnerabilities are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+--------- Begin Update A Part 3 of 3 --------
+Infinite Automation Systems has released a new version of the Mango Automation application, Version 2.7.0, to mitigate these vulnerabilities, which include the OS command injection and cross-site request forgery vulnerabilities.
+Infinite Automation Systems offers the following interim mitigation for the cross-site request forgery vulnerability until Version 2.7.0 can be applied:
+
+The REST API can be disabled by setting rest.enabled to false in the env.properties file and restarting the Mango Automation software. Disabling the REST API will disable the following features: User Administration, Brewer’s Dashboard Module, Data Point Details, View Module, Excel Reports Module, and Custom Dashboards Module.
+
+Infinite Automation Systems new version of Mango Automation application, Version 2.7.0 is available at the following location:
+http://infiniteautomation.com/index.php/download
+--------- End Update A Part 3 of 3 ----------
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed October 27, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed October 27, 2015. for more information on social engineering attacks.
+

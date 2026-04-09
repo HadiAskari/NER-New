@@ -1,0 +1,56 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: EN100 Ethernet Module
+Vulnerability: Improper Restriction of Operations within the Bounds of a Memory Buffer.
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to crash the affected application leading to a denial-of-service condition.
+3. TECHNICAL DETAILS
+
+
+3.1 AFFECTED PRODUCTS
+Siemens reports this vulnerability affects the following ethernet modules: 
+
+EN100 Ethernet module DNP3 IP variant: All versions
+EN100 Ethernet module IEC 104 variant: All versions
+EN100 Ethernet module IEC 61850 variant: All versions prior to v4.40
+EN100 Ethernet module Modbus TCP variant: All versions
+EN100 Ethernet module PROFINET IO variant: All versions 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS CWE-119
+Affected applications contain a vulnerability where parsing specially crafted HTTP packets may cause memory corruption.
+CVE-2022-30938 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Michael Messner from Siemens Energy reported this vulnerability.
+4. MITIGATIONS
+Siemens has released an update for the EN100 Ethernet module IEC 61850 variant and recommends updating to the latest version. Siemens recommends specific countermeasures for products where updates are either not implemented or not yet available.
+
+EN100 Ethernet module IEC 61850 variant: Update to v4.40 or later version
+
+Siemens recommends implementing the following specific workarounds and mitigations that customers can apply to reduce the risk:
+
+Disable web service within the device configuration if it is not used 
+Block access to port 80/TCP and 443/TCP e.g., with an external firewall 
+Apply secure substation concept and defense-in-depth or contact customer care to find specific solutions
+
+Operators of critical power systems worldwide are usually required by regulations to build resilience into the power grid by applying multi-level redundant secondary protection schemes. Siemens recommends that operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid’s reliability can thus be minimized by virtue of the grid design.
+Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before application. Trained supervisors should oversee the during the update process as this will ensure that thorough updates are implemented in the target environment.
+As a general security measure Siemens strongly recommends protecting network access with appropriate mechanisms, such as firewalls, segmentation, or a VPN. It is advised to configure the environment according to Siemens’ operational guidelines to run the devices in a protected IT environment.
+Recommended security guidelines can be found at: https://www.siemens.com/gridsecurity 
+For more information on these vulnerabilities and associated software updates, please see Siemens security advisory SSA-865333
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

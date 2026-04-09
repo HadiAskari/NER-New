@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.1
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: Climatix
+Vulnerability: Cross-site Scripting, Basic XSS
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-105-04 Siemens Climatix that was published April 14th, 2020, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker to execute arbitrary code to access confidential information without authentication.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following products of the Climatix product line are affected:
+
+Climatix POL908 (BACnet/IP module); all versions
+
+--------- Begin Update A Part 1 of 2 ---------
+
+Climatix POL909 (AWM module); all versions prior to v11.32
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The affected product could allow an unauthenticated remote attacker to compromise the confidentiality and integrity of other users’ web sessions.
+CVE-2020-7574 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+4.2.2    IMPROPER NEUTRALIZATION OF SCRIPT-RELATED HTML TAGS IN A WEB PAGE (‘BASIC XSS’) CWE-80
+The affected product could allow an unauthenticated remote attacker to compromise the confidentiality and integrity of other users’ web sessions.
+CVE-2020-7575 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Ezequiel Fernandez from Dreamlab Technologies reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Update Climatix POL908 and POL909 to v11.22 or later. This update does not solve the XSS issues, but disables the web interface by default, as it is no longer needed in standard use cases.
+Climatix POL908 is designed to be operated in protected BACnet/IP networks only. Do not connect it to other networks, such as an Office LAN or the Internet. Also consider removing POL908, as the integrated BACnet/IP implementation in newer versions of Climatix 600 controllers is already sufficient for your environment.
+
+--------- Begin Update A Part 2 of 2 ---------
+
+Update Climatix POL909 (AWM module): to v11.32
+
+--------- End Update A Part 2 of 2 ---------
+The following mitigation measures apply only if the web interface is activated (e.g., via the Climatix SCOPE tool):
+
+Climatix POL909: When configuring your custom web application, disable the access to the default webpages provided by POL909.
+Enforce authentication for the web interface and change the default password of the standard ADMIN user.
+Disable JavaScript within the web browser used to access the web server of Climatix POL908.
+Utilize a modern web browser with integrated XSS filtering mechanisms.
+
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For further inquiries on security vulnerabilities in Siemens products and solutions, please contact Siemens ProductCERT.
+For more information on these vulnerabilities, please see Siemens security advisory SSA-886514
+CISA recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

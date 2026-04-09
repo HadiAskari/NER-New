@@ -1,0 +1,88 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: ABB
+Equipment: Central Licensing System (CLS)
+Vulnerabilities: Information Exposure; Improper Restriction of XML External Entity Reference; Uncontrolled Resource Consumption; Permissions, Privilege, and Access Controls; Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to take control of the affected system node remotely and cause an affected CLS Server node to stop or prevent legitimate access to the affected CLS Server.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following ABB CLS products and versions are affected:
+
+ABB Ability System 800xA and related system extensions: Versions 5.1, 6.0, 6.1
+Compact HMI: Versions 5.1, 6.0
+Control Builder Safe: Versions 1.0, 1.1, 2.0
+ABB Ability Symphony Plus – S+ Operations: Versions 3.0 to 3.2
+ABB Ability Symphony Plus – S+ Engineering: Versions 1.1 to 2.2
+Composer Harmony: Versions 5.1, 6.0, 6.1
+Composer Melody (incl. SPE for Melody 1.0 SPx): Versions 5.3, 6.1, 6.2, 6.3
+Harmony OPC Server (HAOPC): Standalone Versions 6.0, 6.1, 7.0
+ABB Ability System 800xA / Advant OCS Control Builder A: Versions 1.3, 1.4
+Advant OCS AC 100 OPC Server: Versions 5.1, 6.0, 6.1
+Composer CTK: Versions 6.1, 6.2
+AdvaBuild: Versions 3.7 SP1, 3.7 SP2
+OPC Server MOD 300 (non-800xA): Version 1.4
+OPC Data Link: Versions 2.1, 2.2
+ABB Ability Knowledge Manager: Versions 8.0, 9.0, 9.1
+ABB Ability Manufacturing Operations Management: Versions 1812, 1909
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INFORMATION EXPOSURE CWE-200
+Confidential data is written in an unprotected file, which may allow an attacker to login to the affected node as a low privileged user and read confidential data from an unprotected file.
+CVE-2020-8481 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+The affected products are vulnerable to an external entity injection, which may allow an attacker to read arbitrary files from the license server and/or from the network. An attacker could also block the license handling.
+CVE-2020-8479 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L).
+3.2.3    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The affected products are vulnerable to a denial-of-service attack, which may allow an attacker to successfully block license handling.
+CVE-2020-8475 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.4    PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264
+The affected products are vulnerable to elevation of privileges, which may allow an attacker to alter licenses assigned to system nodes. This could potentially lead to a situation where legitimate nodes in the system network are denied licenses.
+CVE-2020-8476 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.5    IMPROPER ACCESS CONTROL CWE-284
+The affected products are vulnerable to weak file permissions, which may allow an attacker to block license handling, escalate privileges, and execute arbitrary code.
+CVE-2020-8471 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Dams, Energy, Food and Agriculture, Water and Wastewater
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+William Knowles of Applied Risk reported these vulnerabilities to ABB.
+4. MITIGATIONS
+ABB recommends the following mitigations:
+
+Upgrade ABB CLS to the following versions:
+
+5.1 Rev A (5.1.0.38)
+5.1 Rev E (5.1.0.99)
+6.0 (6.0.0.26)
+6.0.3.3 (6.0.03000.192)
+6.1 RU1 (6.1.00100.417)
+If ABB Central Licensing Server 5.1 (5.1.0.14) or earlier has been used on the currently used hardware, please contact ABB for further assistance.
+
+
+Vulnerabilities pertaining to CVE-2020-8475 and CVE-2020-8476 will be corrected in future product versions. Updates will be added to this advisory once they become available.
+Methods for preventing unauthorized access to nodes on the CLS network include but are not limited to usage of IPSec and by separating the Client Server Network from other networks with firewalls.
+Ensure only authorized individuals have access to user accounts on the system nodes.
+Interactive login to service accounts should be blocked.
+
+For more information, please see ABB's cybersecurity advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

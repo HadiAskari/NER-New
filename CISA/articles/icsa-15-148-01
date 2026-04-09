@@ -1,0 +1,43 @@
+
+OVERVIEW
+Independent researchers Benjamin Kahler and Sebastian Kraemer of HSASec have identified a directory traversal vulnerability in IDS RTU 850C. IDS has produced a new module that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following IDS communications modules in the IDS 850 family are affected:
+
+NC854, and
+NC856.
+
+IMPACT
+An attacker could use this vulnerability to access credentials that could be used to escalate privileges.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+IDS is a German-based company that maintains offices in six countries around the world, including Switzerland, Morocco, Iran, United Arab Emirates, Czech Republic, and Romania.
+The affected products are deployed in several sectors including Communications, Energy, and Water and Wastewater Systems.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+DIRECTORY TRAVERSALCWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'), http://cwe.mitre.org/data/definitions/22.html, web site last accessed May 28, 2015.
+
+Using this vulnerability, an attacker is able to access some files from the internal service interface of the communication module. One of the accessible files contains the credentials (passwords) to access the internal service interface via telnet.
+CVE-2015-3939 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3939, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 8.5 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:N/I:C/A:C).CVSS Calculator, https://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:N/I:C/A:C, web site last accessed May 28, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with high skill would be able to exploit this vulnerability.
+MITIGATION
+The communication modules can be protected against the described vulnerability by disabling the internal web server. This can be made via configuration settings.
+The communication modules “NC854” and “NC856” were discontinued in 2009 and replaced by newer communication modules. Because both communication modules are past end of life, no update or patch will be produced.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

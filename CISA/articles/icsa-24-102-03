@@ -1,0 +1,77 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 6.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: RUGGEDCOM APE1808
+Vulnerabilities: Network Amplification, Exposure of Sensitive System Information to an Unauthorized Control Sphere, External Control of File Name or Path, Cross-site Scripting, Insufficiently Protected Credentials, Externally Controlled Reference to a Resource in Another Sphere
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a network-based attacker to conduct reflected and amplified TCP denial-of-service (RDoS) attacks.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siemens RUGGEDCOM APE1808, an application hosting platform, are affected:
+
+Siemens RUGGEDCOM APE1808: All versions with Palo Alto Networks Virtual NGFW before V11.0.1
+
+3.2 Vulnerability Overview
+3.2.1 INSUFFICIENT CONTROL OF NETWORK MESSAGE VOLUME (NETWORK AMPLIFICATION) CWE-406
+A PAN-OS URL filtering policy misconfiguration could allow a network-based attacker to conduct reflected and amplified TCP denial-of-service (DoS) attacks. The DoS attack would appear to originate from a Palo Alto Networks PA-Series (hardware), VM-Series (virtual) and CN-Series (container) firewall against an attacker-specified target. To be misused by an external attacker, the firewall configuration must have a URL filtering profile with one or more blocked categories assigned to a source zone that has an external facing interface. This configuration is not typical for URL filtering and, if set, is likely unintended by the administrator. If exploited, this issue would not impact the confidentiality, integrity, or availability of our products. However, the resulting denial-of-service (DoS) attack may help obfuscate the identity of the attacker and implicate the firewall as the source of the attack. We have taken prompt action to address this issue in our PAN-OS software. All software updates for this issue are expected to be released no later than the week of August 15, 2022. This issue does not impact Panorama M-Series or Panorama virtual appliances. This issue has been resolved for all Cloud NGFW and Prisma Access customers and no additional action is required from them.
+CVE-2022-0028 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.2 EXPOSURE OF SENSITIVE SYSTEM INFORMATION TO AN UNAUTHORIZED CONTROL SPHERE CWE-497
+A vulnerability in Palo Alto Networks PAN-OS software enables an authenticated administrator to expose the plaintext values of secrets stored in the device configuration and encrypted API keys.
+CVE-2023-0005 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.1 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N).
+3.2.3 EXTERNAL CONTROL OF FILE NAME OR PATH CWE-73
+A file disclosure vulnerability in Palo Alto Networks PAN-OS software enables an authenticated read-write administrator with access to the web interface to export local files from the firewall through a race condition.
+CVE-2023-0008 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N).
+3.2.4 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+A DOM-Based cross-site scripting (XSS) vulnerability in Palo Alto Networks PAN-OS software enables a remote attacker to execute a JavaScript payload in the context of an administrator's browser when they view a specifically crafted link to the PAN-OS web interface.
+CVE-2023-6790 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2023-6790. A base score of 6.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N).
+3.2.5 INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+A credential disclosure vulnerability in Palo Alto Networks PAN-OS software enables an authenticated read-only administrator to obtain the plaintext credentials of stored external system integrations such as LDAP, SCP, RADIUS, TACACS+, and SNMP from the web interface.
+CVE-2023-6791 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2023-6791. A base score of 6.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N).
+3.2.6 EXTERNALLY CONTROLLED REFERENCE TO A RESOURCE IN ANOTHER SPHERE CWE-610
+A vulnerability exists in Palo Alto Networks PAN-OS software that enables an authenticated administrator with the privilege to commit a specifically created configuration to read local files and resources from the system.
+CVE-2023-38046 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+RUGGEDCOM APE1808: Upgrade Palo Alto Networks Virtual NGFW V11.0.1. Contact Siemens customer support to receive patch and update information.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-822518 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this (these) vulnerability(ies), such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+April 11, 2024: Initial Publication
+

@@ -1,0 +1,50 @@
+
+OVERVIEW
+Researchers Timur Yunusov and Sergey Bobrov of Positive Technologies have identified several vulnerabilities in the Siemens WinCC (TIA Portal). A software update has been produced by Siemens that mitigates these vulnerabilities. Siemens has tested the software update to validate that it resolves the vulnerabilities. Exploitation of these vulnerabilities could either allow URL redirection to Web sites that are not trusted or compromise of integrity and availability of the system.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+WinCC (TIA Portal) V11: all versions, and
+WinCC (TIA Portal) V12: all versions < V12 SP1.
+
+IMPACT
+Successful exploitation of these vulnerabilities could either allow URL redirection to Web sites that are not trusted or compromise of integrity and availability of the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected product, Siemens WinCC (TIA Portal), is engineering software used for configuring SIMATIC Panels, SIMATIC industrial personal computers, and standard computers. The WinCC TIA Portal works in conjunction with WinCC Runtime Advanced or the SCADA System WinCC Runtime Professional visualization software. Siemens develops products mainly in the energy, transportation, and healthcare sectors. This software is used in many industries, including food and beverage, water and wastewater, oil and gas, and chemical.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CROSS-SITE REQUEST FORGERYCWE-352: Cross-Site Request Forgery (CSRF),  http://cwe.mitre.org/data/definitions/352.html, Web site last accessed August 01, 2013.
+
+The WinCC Web server of the affected HMI panels is susceptible to reflected cross-site request forgery. Exploitation of this vulnerability may allow an attacker to compromise the integrity and the availability of the system.
+CVE-2013-4911NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4911, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.8 has been assigned by the vendor; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:P/A:P, Web site last accessed August 01, 2013.
+
+URL REDIRECTION TO UNTRUSTED SITECWE-601: URL Redirection to Untrusted Site ('Open Redirect'),  http://cwe.mitre.org/data/definitions/601.html, Web site last accessed August 01, 2013.
+
+The WinCC Web server is susceptible to URL redirection. By using a URL value that causes the Web server to redirect the request to a specified URL, an attacker can cause the user to visit a site that is not trusted.
+CVE-2013-4912NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4912, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned by the vendor; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:P/A:N, Web site last accessed August 01, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens has produced a software update that resolves these vulnerabilities. The update can be applied to all versions of WinCC TIA Portal. Siemens recommends that asset owners and operators contact Siemens customer support to acquire the update.
+Siemens update information is located here:
+http://support.automation.siemens.com/WW/view/en/73947391
+Siemens security advisory is located here:
+http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-064884.pdf
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, which is available for download from the ICS-CERT Web site: http://ics-cert.us-cert.gov/.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

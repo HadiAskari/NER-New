@@ -1,0 +1,85 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: SIMATIC S7-1200 and S7-1500 CPU Families
+Vulnerability: Improper Restriction of Operations within the Bounds of a Memory Buffer
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-152-01 Siemens SIMATIC S7-1200 and S7-1500 CPU Families that was published June 1, 2021, on the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to write arbitrary data and code to protected memory areas or read sensitive data to launch further attacks.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports this vulnerability affects the following SIMATIC S7-1200 and S7-1500 CPU products: 
+--------- Begin Update A Part 1 of 2 ---------
+
+SIMATIC ET 200SP Open Controller CPU 1515SP PC2 (incl. SIPLUS variants): All versions prior to v21.9
+SIMATIC S7-1500 Software Controller: All versions prior to v21.9 
+
+--------- End Update A Part 1 of 2 ---------
+
+SIMATIC Drive Controller family: All versions prior to v2.9.2
+SIMATIC ET 200SP Open Controller CPU 1515SP PC2 (incl. SIPLUS variants): All versions
+SIMATIC ET 200SP Open Controller CPU 1515SP PC (incl. SIPLUS variants): All versions
+SIMATIC S7-1200 CPU family (incl. SIPLUS variants): All versions prior to v4.5.0
+SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants): All versions prior to v2.9.2
+SIMATIC S7-1500 Software Controller: All versions
+SIMATIC S7-PLCSIM Advanced: All versions prior to v4.0
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+Affected devices are vulnerable to a memory protection bypass through a specific operation. A remote, unauthenticated attacker with network access to Port 102/TCP could write arbitrary data and code to protected memory areas or read sensitive data to launch further attacks. 
+CVE-2020-15782 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Tal Keren from Claroty reported this vulnerability to Siemens.
+5. MITIGATIONS
+Siemens has released updates for several affected products and recommends updating to the latest versions. Siemens is preparing further updates and recommends specific countermeasures for products where updates are not, or not yet available.
+--------- Begin Update A Part 2 of 2 ---------
+
+SIMATIC ET 200SP Open Controller CPU 1515SP PC2: Update to v21.9 or later version
+SIMATIC S7-1500 Software Controller: Update to v21.9 or later version
+
+--------- End Update A Part 2 of 2 ---------
+
+SIMATIC Drive Controller family: Update to v2.9.2 or later version
+SIMATIC S7-1200 CPU family (incl. SIPLUS variants): Update to v4.5.0 or later version
+SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants): Update to v2.9.2 or later version
+SIMATIC S7-PLCSIM Advanced: Update to v4.0 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Apply password protection for S7 communication.
+Disallow client connections via the ENDIS_PW instruction of the S7-1200 or S7-1500 CPU (This blocks remote client connections, even when the client can provide the correct password).
+Use the display to configure additional access protection of the S7-1500 CPU (This blocks remote client connections, even when the client can provide the correct password).
+Apply “defense in depth” as outlined on pages 12ff of the operational guidelines for industrial security, especially:
+
+Plant security: Ensure physical prevention of access to critical components.
+Network security: Ensure PLC systems are not connected to untrusted networks.
+System integrity: Configure, maintain, and protect devices by applying applicable compensating controls and using built-in security capabilities.
+
+
+Update the entire solution to TIA Portal v17 and use TLS communication using individual certificates between PLC, HMIs, and PG/PC
+
+For more information about this vulnerability and the associated mitigations, please see SSA-434534
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

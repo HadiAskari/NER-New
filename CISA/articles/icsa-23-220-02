@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+​CVSS v3 7.5
+​ATTENTION: Exploitable remotely/low attack complexity
+​Vendor: Hitachi Energy
+​Equipment: RTU500 series
+​Vulnerabilities: Stack-based Buffer Overflow
+
+2. RISK EVALUATION
+​Successful exploitation of these vulnerabilities could cause a buffer overflow and reboot of the product.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+​Hitachi Energy reports these vulnerabilities affect the following RTU500 series products:
+
+​RTU500 series CMU: Firmware versions 13.3.1–13.3.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 STACK-BASED BUFFER OVERFLOW CWE-121
+​A vulnerability exists in the HCI IEC 60870-5-104 function included in certain versions of the RTU500 series product. The vulnerability can only be exploited if the HCI 60870-5-104 is configured with IEC 62351-5 support and the CMU contains the license feature ‘Advanced security’ which must be ordered separately. If these preconditions are fulfilled, an attacker could exploit the vulnerability by sending a specially crafted message to the RTU500, causing the targeted RTU500 CMU to reboot. The vulnerability is caused by a missing input data validation, which eventually, if exploited, could cause an internal buffer to overflow in the HCI IEC 60870-5-104 function.
+​CVE-2022-2502 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2 ​ STACK-BASED BUFFER OVERFLOW CWE-121
+​A vulnerability exists in HCI IEC 60870-5-104 function included in certain versions of the RTU500 series product. The vulnerability can only be exploited if the HCI 60870-5-104 is configured with support for IEC 62351-3. After session resumption interval is expired, an RTU500 initiated update of session parameters could cause an unexpected restart due to a stack overflow.
+​CVE-2022-4608 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+​CRITICAL INFRASTRUCTURE SECTORS: Energy
+​COUNTRIES/AREAS DEPLOYED: Worldwide
+​COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+​Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+​Hitachi Energy recommends users update to CMU Firmware versions 13.3.3 or 13.4.1.
+​The reported vulnerabilities affect only the RTU500 series with HCI IEC 60870-5-104 and IEC62351-5 or IEC 62351-5 configured and enabled. A possible mitigation is to disable the HCI IEC 60870-5-104 function or its IEC 62351-3 and IEC 62351-5 features if they are not used. By default, the HCI IEC 60870-5-104 and its IEC 62351-3 or IEC 62351-5 support are disabled.
+​Hitachi Energy recommends the following general mitigations:
+
+​Recommended security practices and firewall configurations can help protect a process control network from attacks originating from outside the network.
+​Physically protect process control systems from direct access by unauthorized personnel.
+​Ensure process control systems have no direct connections to the internet and are separated from other networks via a firewall system with minimal exposed ports.
+​Do not use process control systems for internet surfing, instant messaging, or receiving emails.
+​Scan portable computers and removable storage media for malware prior connection to a control system.
+​Enforce proper password policies and processes.
+
+​For more information, see Hitachi Energy’s Security Advisory: 8DBD000121.
+​CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+​CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+​Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+​Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+​No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity.

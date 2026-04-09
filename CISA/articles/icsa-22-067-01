@@ -1,0 +1,102 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: PTC
+Equipment: Axeda agent, Axeda Desktop Server
+Vulnerabilities: Use of Hard-coded Credentials, Missing Authentication for Critical Function, Exposure of Sensitive Information to an Unauthorized Actor, Path Traversal, Improper Check or Handling of Exceptional Conditions
+
+CISA is aware of a public report, known as “Access:7” that details vulnerabilities found in PTC Axeda agent and Axeda Desktop Server. These vulnerabilities can affect medical, Internet of Things (IoT), and embedded devices dependent on the affected product.
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-22-067-01 PTC Axeda agent and Axeda Desktop Server (Update B) that was published March 15, 2022, on the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in full system access, remote code execution, read/change configuration, file system read access, log information access, and a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Axeda agent and Axeda Desktop Server, a remote asset connectivity software used as part of a cloud based IoT platform, are affected:
+
+Axeda agent: All versions
+Axeda Desktop Server for Windows: All versions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF HARD-CODED CREDENTIALS CWE-798
+The affected product uses hard-coded credentials for its UltraVNC installation. Successful exploitation of this vulnerability could allow a remote authenticated attacker to take full remote control of the host operating system.
+CVE-2022-25246 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected product may allow an attacker to send certain commands to a specific port without authentication. Successful exploitation of this vulnerability could allow a remote unauthenticated attacker to obtain full file-system access and remote code execution.
+CVE-2022-25247 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+When connecting to a certain port the affected product supplies the event log of the specific service.
+CVE-2022-25248 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.4    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL')  CWE-22
+The affected product (disregarding Axeda agent v6.9.2 and v6.9.3) is vulnerable to directory traversal, which could allow a remote unauthenticated attacker to obtain file system read access via web server.
+CVE-2022-25249 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.5    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected product may allow an attacker to send a certain command to a specific port without authentication. Successful exploitation of this vulnerability could allow a remote unauthenticated attacker to shut down a specific service.
+CVE-2022-25250 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.6   MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected product may allow an attacker to send certain XML messages to a specific port without proper authentication. Successful exploitation of this vulnerability could allow a remote unauthenticated attacker to read and modify the affected product’s configuration.
+CVE-2022-25251 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.7     IMPROPER CHECK OR HANDLING OF EXCEPTIONAL CONDITIONS CWE-703
+The affected product when receiving certain input throws an exception. Services using said function do not handle the exception. Successful exploitation of this vulnerability could allow a remote unauthenticated attacker to crash the affected product.
+CVE-2022-25252 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Yuval Shoshani and Elad Luz of CyberMDX and Vedere Labs reported these vulnerabilities to PTC
+5. MITIGATIONS
+PTC recommends the following:
+
+Upgrade to Axeda agent Version 6.9.2 build 1049 or 6.9.3 build 1051 when running older versions of the Axeda agent.
+Configure Axeda agent and Axeda Desktop Server (ADS) to only listen on the local host interface 127.0.0.1. Refer to PTC knowledge article CS360255
+Provide a unique password in the AxedaDesktop.ini file for each unit.
+Never use ERemoteServer in production.
+Make sure to delete ERemoteServer file from host device.
+Remove the installation file, for example: Gateway_vs2017-en-us-x64-pc-winnt-vc14-6.9.3-1051.msi
+When running in Windows or Linux, only allow connections to ERemoteServer from trusted hosts and block all others.
+When running the Windows operating system, configure Localhost communications (127.0.0.1) between ERemoteServer and Axeda Builder. Refer to PTC knowledge article CS360255
+Configure the Axeda agent for the authentication information required to log in to the Axeda Deployment Utility. Refer to PTC knowledge article CS360255
+
+PTC recommends upgrading the Axeda Desktop Server (ADS) to Version 6.9 build 215
+The Axeda agent loopback-only configuration is only available in Version 6.9.1 and above. Hence, upgrading to Axeda agent 6.9.1 or above is required.
+For more information refer to PTC Security Advisory and Resolution and Axeda Public Advisory.
+See the following links for more information on products that may be dependent on the affected Axeda agent and Axeda Desktop Server:
+
+Accuray
+Agilent
+BD
+Bayer
+Beckman Coulter
+Elekta (Login Required)
+General Electric
+
+--------- Begin Update C Part 1 of 1 ---------
+
+Hologic
+
+--------- End Update C Part 1 of 1 ---------
+
+
+
+Roche Diagnostics
+Smiths Medical
+Varian
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

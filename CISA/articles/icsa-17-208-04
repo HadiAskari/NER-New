@@ -1,0 +1,91 @@
+
+CVSS v3 8.8
+ATTENTION: Remotely exploitable/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: Allen-Bradley Stratix and ArmorStratix
+Vulnerabilities: SNMP Remote Code Execution Vulnerabilities in Cisco IOS and IOS XE Software
+REPOSTED INFORMATION
+This advisory was originally posted to the NCCIC Portal on July 27, 2017, and is being released to the NCCIC/ICS-CERT web site.
+AFFECTED PRODUCTS
+The following versions of Allen-Bradley Stratix and ArmorStratix switches are affected:
+
+All Versions 15.2(5)EA.fc4 and earlier
+
+Allen-Bradley Stratix 5400 Industrial Ethernet Switches
+Allen-Bradley Stratix 5410 Industrial Distribution Switches
+Allen-Bradley Stratix 5700 and ArmorStratix™ 5700 Industrial Managed Ethernet Switches
+Allen-Bradley Stratix 8000 Modular Managed Ethernet Switches
+
+
+All Versions 15.6(3)M1 and earlier
+
+Allen-Bradley Stratix 5900 Services Router
+
+
+All Versions 15.2(4)EA and earlier
+
+Stratix 8300 Modular Managed Ethernet Switches
+
+
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an authenticated, remote attacker to execute code on an affected system or cause an affected system to crash and reload.
+MITIGATION
+According to Rockwell Automation, multiple Cisco Systems, Inc. vulnerabilities in the Simple Network Management Protocol (SNMP) subsystem of Cisco IO and IOS XE software have been identified which affect certain products in the Allen-Bradley Stratix and ArmorStratix product lines.
+For more information about the SNMP vulnerabilities identified by Cisco, see their advisory at the link below:
+https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170629-snmp
+Rockwell Automation recommends users of affected products consult the suggestions below and, when possible, employ multiple strategies to mitigate their risk:
+For the Stratix 8300 Product Family, Catalog Numbers 1783-RMS, Rockwell Automation suggests updating to v15.2(4a)EA5 or later. This can be found at the following link:
+https://compatibility.rockwellautomation.com/Pages/MultiProductDownload.aspx?famID=15
+Rockwell Automation has provided interim compensating controls for the remaining Allen-Bradley Stratix and ArmorStratix switches to help reduce the risk of exploitation of these vulnerabilities. Rockwell Automation encourages users to evaluate the compensating controls provided below and apply the possible mitigations.
+
+Disable the following Management Information Bases (MIBs) on a device, if they are installed/active on the Stratix device:
+
+
+Stratix 8000, 8300, 5700, 5400, 5410
+
+CISCO-MAC-AUTH-BYPASS-MIB
+
+
+Stratix 5900
+
+ADSL-LINE-MIB
+CISCO-ADSL-DMT-LINE-MIB
+CISCO-BSTUN-MIB
+CISCO-MAC-AUTH-BYPASS-MIB
+CISCO-VOICE-DNIS-MIB
+
+
+
+Details on how to use the Command Line Interface to disable or limit access to SNMP or individual MIBs can be found at Knowledgebase Article ID 1055391. A login is required to view the article.
+Note: The Stratix device may not have all of the MIBs installed/active.
+
+If SNMP is required, use strong SNMP v3 credentials since this attack requires authentication.
+Cisco Talos, Cisco’s threat intelligence organization, has created the following Snort rules (SIDs): 43424, 43425, 43426, 43427, 43428, 43429, 43430, 43431, 43432 to detect exploits utilizing this vulnerability, which can be used on Stratix 5950 Security Appliances positioned appropriately within the network architecture to provide enhanced visibility. The Snort rules (SIDs) are enabled following curated rule sets – “Balanced Security and Connectivity”, “Connectivity over Security,” and “Secure over Connectivity.”
+Use proper network infrastructure controls, such as firewalls, to help ensure that SNMP requests from unauthorized sources are blocked. Firewalls will not block requests from compromised but authorized sources.
+
+As new versions of firmware are released to remediate this vulnerability, Rockwell Automation will provide mitigation updates in their advisory. For more information about these vulnerabilities, mitigation updates, and Rockwell Automation’s general security guidelines, please see Rockwell Automation’s security advisory found at the following link. A login is required to view the advisory.
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1055133
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.
+VULNERABILITY OVERVIEW
+
+SNMP REMOTE CODE EXECUTION VULNERABILITIES CWE-119
+
+Cisco Systems, Inc. has identified multiple SNMP remote code execution vulnerabilities in Cisco IOS and IOS XE Software affecting version of Allen-Bradley Stratix and ArmorStratix. To exploit these vulnerabilities via SNMP v2c or earlier, attacker must know the SNMP read-only community string for the affected system. To exploit these vulnerabilities in SNMP v3, an attacker must authenticate with user credentials. If exploited, this could allow a remote attacker to execute arbitrary code on the affected Stratix and ArmorStratix system.
+CVE-2017-6736, CVE-2017-6737, CVE-2017-6738, CVE-2017-6739, CVE-2017-6740, CVE-2017-6741, CVE-2017-6742, CVE-2017-6743 and CVE-2017-6744 have been assigned to these vulnerabilities. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+Cisco discovered these vulnerabilities during internal testing. Rockwell Automation reported these vulnerabilities to ICS-CERT.
+BACKGROUND
+Critical Infrastructure Sectors: Critical Manufacturing, Energy, and Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Milwaukee, Wisconsin

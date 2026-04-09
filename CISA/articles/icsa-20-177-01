@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits are available
+Vendor: ENTTEC
+Equipment: Datagate Mk2, Storm 24, Pixelator, E-Streamer Mk2
+Vulnerabilities: Use of Hard-coded Cryptographic Key, Cross-site Scripting, Improper Access Control, Incorrect Permission Assignment for Critical Resource
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-177-01 ENTTEC Lighting Controllers that was published June 25, 2020, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain unauthorized SSH/SCP access to devices, inject malicious code, run commands with root privileges, and read, write, and execute files in system directories as any user.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+ENTTEC reports these vulnerabilities affect firmware Version 70044_update_05032019-482 and prior for the following lighting control products: 
+
+Datagate Mk2
+Storm 24
+Pixelator
+
+--------- Begin Update A Part 1 of 2 ---------
+
+E-Streamer Mk2 (End of Life)
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+The lighting controller products include hard-coded SSH keys for remote SSH and SCP access as the root user. 
+CVE-2019-12776 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+Several stored XSS vulnerabilities have been identified in ENTTEC’s Datagate Mk2 web configuration software, which could allow an unauthenticated threat actor to inject malicious code directly into the application. 
+CVE-2019-12774 has been assigned to these vulnerabilities. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+4.2.3    IMPROPER ACCESS CONTROL CWE-284
+The lighting controller products enable high privileged root access via sudo capability without requiring appropriate access control. 
+CVE-2019-12775 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCE CWE-732
+The system replaces permissions by the underlying operating system with highly insecure read, write, and execute directory permissions for all users. 
+CVE-2019-12777 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Australia
+
+4.4 RESEARCHER
+Mark Cross reported these vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 ---------
+ENTTEC has released RevB (June 2020) firmware that provides additional security measures to mitigate these vulnerabilities. ENTTEC recommends the Datagate Mk2, Storm 24, and Pixelator units should be updated to RevB (June 2020) firmware or newer. Once the firmware is updated and the device is configured, ENTTEC recommends locking the unit via the front panel menu. For more information see the ENTTEC Security bulletin. 
+The E-Streamer Mk2 is discontinued and is no longer supported by ENTTEC. ENTTEC recommends upgrading to the S-PLAY to replace this product.
+--------- End Update A Part 2 of 2 ---------
+ENTTEC recommends devices should be located behind appropriate firewalls and network controls, and not accessible from the Internet.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.

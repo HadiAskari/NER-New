@@ -1,0 +1,62 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: FactoryTalk Diagnostics
+Vulnerability: Deserialization of Untrusted Data
+
+2. UPDATE OR REPOSTED INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-051-02-Rockwell Automation FactoryTalk Diagnostics that was published February 20, 2020 on the ICS webpage at cisa.gov/ICS. 
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote unauthenticated attacker to execute arbitrary code with SYSTEM level privileges.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A part 1 of 2 ---------
+The following versions of FactoryTalk Diagnostic software, a subsystem of the FactoryTalk Service Platform, are affected: 
+
+FactoryTalk Diagnostics software: Versions 2.00 to 6.11 
+
+--------- End Update A part 1 of 2 ---------
+
+All versions of FactoryTalk Diagnostics software, a subsystem of the FactoryTalk Services Platform, are affected.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+Factory Talk Diagnostics exposes a .NET Remoting endpoint via RNADiagnosticsSrv.exe at TCPtcp/8082, which can insecurely deserialize untrusted data.
+CVE-2020-6967 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Food and Agriculture, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Trend Micro’s Zero Day Initiative, working with rgod of 9sg, reported this vulnerability to CISA.
+5. MITIGATIONS
+--------- Begin Update A part 2 of 2 ---------
+Rockwell Automation will fully resolve this vulnerability in the next release of the FactoryTalk Service Platform. 
+Rockwell Automation recommends affected users implement the following compensating controls, based on their needs: 
+
+Upgrade to version 6.20 or later for versions that predate version 6.20; this version restricts connection settings to only the local port. 
+Install the patch BF24822 to restrict connections settings to only the local port for versions 2.74, 2.80, 2.81, 2.90, 3.00, 6.10, or 6.11. 
+Upgrade to a more recent version for versions that predate version 2.74. 
+Disable the Remote Diagnostics Service if this service is not in use. Disabling this service does not result in data loss. 
+Use Windows Firewall Configuration to help prevent remote connection to the affected port if the Remote Diagnostics Service is in use. 
+
+--------- End Update A part 2 of 2 ---------
+For more information, please see Rockwell Automation’s security advisory (login required).
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

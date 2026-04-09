@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE X200, X200IRT, X300
+Vulnerabilities: Use of Hard-coded Cryptographic Key
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-012-02 Siemens SCALANCE X Switches (Update B) that was published February 14, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute a man-in-the-middle attack and decrypt previously captured traffic.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SCALANCE X-200 switch family (incl. SIPLUS NET variants): All versions prior to v5.2.5
+
+--------- Begin Update C Part 1 of 2 ---------
+
+SCALANCE X-200RNA switch family: All versions prior to v3.2.7
+
+--------- End Update C Part 1 of 2 ---------
+
+SCALANCE X-200IRT switch family (incl. SIPLUS NET variants): All versions prior to v5.5.0
+SCALANCE X-300 switch family (incl. X408 and SIPLUS NET variants): All versions prior to v4.1.0
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+Devices create a new unique key upon factory reset, except when used with C-PLUG. When used with C-PLUG the devices use the hardcoded private RSA-key shipped with the firmware-image. An attacker could exploit this vulnerability to create a man-in-the-middle situation and decrypt previously captured traffic.
+CVE-2020-28391 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.2.2    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+Devices do not create a new unique private key after factory reset. An attacker could exploit this vulnerability to create a man-in-the-middle situation and decrypt previously captured traffic.
+CVE-2020-28395 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens ProductCERT reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens recommends applying updates where available:
+
+SCALANCE X-200 switch family (incl. SIPLUS NET variants): Update to v5.2.5 or later
+
+--------- Begin Update C Part 2 of 2 ---------
+
+SCALANCE X-200RNA switch family: Update to v3.2.7 or later
+
+--------- End Update C Part 2 of 2 ---------
+
+SCALANCE X-300 switch family (incl. X408 and SIPLUS NET variants): Update to v4.1.0 or later
+SCALANCE X-200IRT switch family (incl. SIPLUS NET variants): Update to v5.5.0 or later
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Update the default self-signed device X.509 certificates with own trusted certificate.
+Update the default hardcoded X.509 certificates from the firmware image (fingerprints SHA-1: F2:C8:3B:8F:86:27:74:AA:60:EC:D4:A0:CF:0D:BE:A6:D1:FE:22:12 and SHA-256: 25:60:DB:B3: F9:07:9D:69:0E:DD:A9:EB:4E:1C:D5:8E:AF:79:16:C3:C8:13:A6:F6:59:AD:05:E4:6F:77:F7:72)
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-274900
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

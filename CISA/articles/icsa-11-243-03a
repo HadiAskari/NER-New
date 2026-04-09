@@ -1,0 +1,62 @@
+
+Overview
+ICS-CERT originally released Advisory ICSA-11-243-03P on the US-CERT secure Portal on August 31, 2011. This web page release was delayed to allow users time to download and install the update.
+ICS-CERT received a report from GE Intelligent Platforms and the Zero Day Initiative concerning a stack-based buffer overflow vulnerability in the GE Intelligent Platforms Proficy Historian Data Archiver.
+--------- Begin Update A Part 1 of 1 --------
+This vulnerability was reported to ZDI by independent security researcher Luigi Auriemma.
+--------- End Update A Part 1 of 1 ----------
+ICS-CERT has coordinated with GE Intelligent Platforms to validate this vulnerability, and GE Intelligent Platforms has created a patch to address the issue. ICS-CERT has verified that the patch fully resolves this issue.
+Affected Products
+This vulnerability affects the following GE Intelligent Platforms products:
+
+Proficy Historian: Versions 4.0 and prior
+Proficy HMI/SCADA—CIMPLICITY: Version 8.1 (If Historian is installed)
+Proficy HMI/SCADA—iFix: Versions 5.0 and 5.1 (If Historian is installed).
+
+Impact
+A vulnerability exists in Proficy Historian that could cause the Historian Data Archiver service to crash and potentially allow an attacker to take control of a system running the affected software.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Proficy Historian is a data historian that collects, archives, and distributes production information. According to GE, the Proficy Historian product is deployed across multiple industries worldwide.
+Vulnerability Characterization
+Vulnerability Overview
+CVE-2011-1918 has been assigned to this vulnerability.
+A stack-based buffer overflow vulnerability exists as a result of the way that the Historian Data Archiver service (ihDataArchiver.exe or ihDataArchiver_x64.exe) processes incoming TCP/IP message traffic on Port 14000/TCP.
+Vulnerability Details
+Exploitability
+This vulnerability is remotely exploitable.
+Existence of Exploit
+No publicly available exploits specifically targeting this vulnerability are known to exist.
+Difficulty
+Exploiting this vulnerability requires a moderate skill set.
+Mitigation
+GE Intelligent Platforms has released security advisories and free product updates Software Improvement Modules (SIMS) to address recently reported security vulnerabilities in Proficy software. GE Intelligent Platforms urges all customers to follow the recommendations in the security advisories, which can be found at http://support.ge-ip.com/support/index?page=kbchannel&id=S:KB14493. A valid GE SSO ID and Customer Service Number are required to access the advisories and updates.
+The following product updates for Proficy Historian address this issue:
+
+Proficy Historian 4.0 SIM 12
+Proficy Historian 3.5 SIM 17
+Proficy Historian 3.1 SIM IH31_11092015699.exe
+
+Note: Proficy SIMS are cumulative. All future SIMS will include these updates.
+GE Intelligent Platforms has provided the following instructions for iFix and CIMPLICITY users:
+iFIX and CIMPLICITY installations:
+Option 1: If Proficy Historian is in use, refer to the information above for Historian SIM applications and apply the appropriate SIM (update) to the installed version of Proficy Historian.
+Option 2: If Proficy Historian is not in use, uninstall Proficy Historian by following the instructions below:
+
+Double click the Add/Remove Programs icon in the Control Panel. The Add/Remove Programs dialog box opens.
+Select Proficy Historian, and click the Remove button.
+
+To uninstall Historian and save the current Historian configuration and data, select Do Not Delete Archives and click Next.
+To uninstall Historian and delete the current Historian configuration and data, select Delete Archives and click Next.
+
+
+The uninstall proceeds and all Historian components are removed.
+
+In addition to applying the patch or uninstalling, ICS-CERT recommends that customers using the affected product should consider taking the following proactive measures to decrease the likelihood of successful exploitation of this vulnerability.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls with properly configured rules addressing Port 14000/TCP and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) provides a recommended practices section for control system security on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

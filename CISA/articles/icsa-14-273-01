@@ -1,0 +1,47 @@
+
+OVERVIEW
+Independent researcher Billy Rios has identified a directory traversal vulnerability in Schneider Electric’s SchneiderWEB, a web HMI. Schneider Electric has produced a firmware update that mitigates this vulnerability. Billy Rios has tested the update to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+There are 22 affected products containing 66 affected part numbers. Please download Schneider‑Electric Security Notification SEVD-14-260-01 for the affected product details.
+IMPACT
+This vulnerability allows an attacker to bypass the basic authentication on the web server, which would allow unauthenticated administrative access and control over the device.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric corporate headquarters is located in Paris, France, and maintains offices in 190 countries worldwide.
+The Schneider-Electric PLC products are used in a wide variety of automation and control applications across all industrial, infrastructure, and building sectors. According to Schneider Electric, the SchneiderWEB product is deployed across several sectors including Communications, Critical Manufacturing, Energy, and Water and Wastewater Systems. Schneider Electric estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+DIRECTORY TRAVERSALCWE-22: Improper Limitation of a Pathname to a Restricted Directory (“Path Traversal”), http://cwe.mitre.org/data/definitions/22.html, web site last accessed September 30, 2014.
+
+Using directory traversals an attacker can bypass the basic authentication mechanism in the web server and gain unauthorized access to protected resources. This vulnerability would require network access to the target device through TCP/IP and particularly HTTP.
+CVE-2014-0754NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0754, NIST uses this advisory to create the CVE web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed September 30, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Please see Schneider Electric’s vulnerability disclosure (SEVD-2014-260-01)Schneider Electric Vulnerability Disclosure – Modicon Ethernet Comm Modules - SEVD-2014-260-01 - http://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2014-260-01, web site last accessed September 30, 2014. for more detailed information on which product part numbers are affected, as well as the complete list of which devices have released firmware updates available.
+This vulnerability disclosure can be downloaded at the following URL:
+http://www.schneider-electric.com/ww/en/download/
+Search downloads for SEVD-14-260-01, then keyword SEVD-14-260-01 to download the vulnerability disclosure. This URL site can also be used to download firmware updates identified in the vulnerability disclosure.
+Schneider Electric also recommends the following measures to mitigate the vulnerability for the remaining affected devices:
+
+Use a deep packet inspection firewall to prevent HTTP requests to the product that contains traversals in the URL.
+Disable Port 80 (HTTP) on modules where it is possible.
+Block Port 80 in firewalls to these devices, except for trusted devices.
+
+Please contact Schneider Electric Customer Care Center for more information.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SINAMICS PERFECT HARMONY GH180
+Vulnerability: Improper Restriction of Operations within the Bounds of a Memory Buffer
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-194-13 Siemens SINAMICS PERFECT HARMONY GH180 that was published July 13, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could result in arbitrary code execution and unauthorized access to sensitive data.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions and models of SINAMICS PERFECT HARMONY are affected:
+--------- Begin Update A Part 1 of 1 ---------
+
+SINAMICS PERFECT HARMONY GH180 Drives manufactured before 2021-8-13
+
+--------- End Update A Part 1 of 1 ---------
+
+6SR5 with options A84, A85, E06, W41 with X30 air to air hex
+6SR4 with option W41 with X30 air to air hex
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+A remote unauthenticated attacker with network access could potentially write arbitrary data and code to protected memory areas or read sensitive data to launch further attacks.
+CVE-2020-15782 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+5. MITIGATIONS
+Siemens has identified the following specific mitigations and workarounds users can apply to reduce the risk:
+
+Avoid compromise of the individually configured access protection password to the S7-1500 or S7-1200 CPU
+Ensure the drive internal network is not externally connected (which is the default configuration in all drives as described in the operational manual)
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens operational guidelines for industrial security, and follow the recommendations in the product manual.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information about this issue, please see Siemens security advisories SSA-434535 and SSA-434534.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

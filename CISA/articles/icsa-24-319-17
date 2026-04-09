@@ -1,0 +1,73 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: 2N
+Equipment: Access Commander
+Vulnerabilities: Path Traversal, Insufficient Verification of Data Authenticity, Use of Hard-coded Cryptographic Key
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to escalate their privileges, execute arbitrary code, or gain root access to the system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of 2N Access Commander, an IP access control system, are affected:
+
+Access Commander: Versions 3.1.1.2 and prior
+Access Commander: Versions 1.14 and prior (CVE-2024-47256)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+In 2N Access Commander Versions 3.1.1.2 and prior, a path traversal vulnerability could allow an attacker to write files on the filesystem to achieve arbitrary remote code execution.
+CVE-2024-47253 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-47253. A base score of 8.6 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+In 2N Access Commander Versions 3.1.1.2 and prior, an insufficient verification of data authenticity vulnerability could allow an attacker to escalate their privileges and gain root access to the system.
+CVE-2024-47254 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-47254. A base score of 5.4 has been calculated; the CVSS vector string is (CVSS:4.0/AV:A/AC:H/AT:N/PR:H/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+In 2N Access Commander Versions 3.1.1.2 and prior, a local attacker can escalate their privileges in the system, which could allow for arbitrary code execution with root permissions.
+CVE-2024-47255 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.7 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-47255. A base score of 5.6 has been calculated; the CVSS vector string is (CVSS:4.0/AV:L/AC:H/AT:N/PR:H/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N).
+3.2.4 USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+In 2N Access Commander Versions 1.14 and prior, an attacker, who needs to have administrative access privileges, can read hardcoded AES passphrases, which may be used for decryption of certain data within backup files of 2N Access Commander Version 1.14 and older.
+CVE-2024-47256 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.0 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-47256. A base score of 8.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:L/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Government Services and Facilities, Commercial Facilities, Communications, Information Technology
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Noam Moshe of Claroty Research - Team82 reported these vulnerabilities to CISA.
+4. MITIGATIONS
+2N has released the following fixes for these vulnerabilities:
+
+Access Commander: Update to Access Commander Version 3.3 from the 2N download center.
+
+Please see 2N's security advisory for additional details.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 14, 2024: Initial Publication
+February 11, 2025: Update A - Adding new vulnerability, affected products, and updating mitigations
+

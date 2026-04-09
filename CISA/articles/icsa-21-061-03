@@ -1,0 +1,109 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: MB connect line
+Equipment: mymbCONNECT24, mbCONNECT24
+Vulnerabilities: Improper Privilege Management, Server-side Request Forgery (SSRF), Cross-site Scripting, Uncontrolled Resource Consumption, Open Redirect, Insecure Default Initialization of Resource, PHP Remote File Inclusion, Use of Hard-coded Credentials, Exposure of Sensitive Information to an Unauthorized Actor, Files or Directories Accessible to External Parties
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker to gain unauthorized access to arbitrary information or allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products and versions are affected:
+
+mymbCONNECT24 v2.6.1 and prior
+mbCONNECT24 v2.6.1 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+Improper access validation may allow a logged-in user to see devices in an account to which they should not have access.
+CVE-2020-12527 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+Improper access validation may allow a logged-in user to kill web2go sessions in an account to which they should not have access.
+CVE-2020-12528 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.3    SERVER-SIDE REQUEST FORGERY (SSRF) CWE-918
+There is a SSRF issue in the LDAP access check, allowing an attacker to scan for open ports.
+CVE-2020-12529 has been assigned to this vulnerability. A CVSS v3 base score of 5.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N).
+3.2.4    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+There is an XSS issue in the redirect.php, allowing an attacker to inject code via a get parameter.
+CVE-2020-12530 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N).
+3.2.5    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+Improper access validation may allow a logged-in user to see devices in the account to which they should not have access.
+CVE-2020-35557 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.6    SERVER-SIDE REQUEST FORGERY (SSRF) CWE-918
+There is a SSRF issue in the MySQL access check, allowing an attacker to scan for open ports and gain information about credentials.
+CVE-2020-35558 has been assigned to this vulnerability. A CVSS v3 base score of 5.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N).
+3.2.7    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+There is an unused function that allows an authenticated attacker to use up all available IPs of an account, preventing the creation of new devices and users.
+CVE-2020-35559 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L).
+3.2.8    URL REDIRECTION TO UNTRUSTED SITE ('OPEN REDIRECT') CWE-601
+There is an unauthenticated open redirect in the redirect.php.
+CVE-2020-35560 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N).
+3.2.9    SERVER-SIDE REQUEST FORGERY (SSRF) CWE-918
+There is a SSRF issue in the HA module allowing an unauthenticated attacker to scan for open ports.
+CVE-2020-35561 has been assigned to this vulnerability. A CVSS v3 base score of 5.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N).
+3.2.10    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+There is an incomplete XSS filter allowing an attacker to inject specially crafted malicious code into the page.
+CVE-2020-35563 has been assigned to this vulnerability. A CVSS v3 base score of 3.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:N).
+3.2.11    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+There is an outdated and unused component, which may allow malicious input of active code.
+CVE-2020-35564 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N).
+3.2.12    INSECURE DEFAULT INITIALIZATION OF RESOURCE CWE-1188
+Brute force detection is disabled by default on the login page.
+CVE-2020-35565 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.13    IMPROPER CONTROL OF FILENAME FOR INCLUDE/REQUIRE STATEMENT IN PHP PROGRAM ('PHP REMOTE FILE INCLUSION') CWE-98
+An attacker can read arbitrary JSON files via local file inclusion.
+CVE-2020-35566 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.14    USE OF HARD-CODED CREDENTIALS CWE-798
+The software uses a secure password for database access, but this password is shared between instances.
+CVE-2020-35567 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.15    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+An incomplete filter applied to a database response allows an authenticated attacker to gain non-public information about other users and devices in the account.
+CVE-2020-35568 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L).
+3.2.16    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+There is a self XSS issue with a crafted cookie in the login page.
+CVE-2020-35569 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N).
+3.2.17    FILES OR DIRECTORIES ACCESSIBLE TO EXTERNAL PARTIES CWE-522
+Improper access validation may allow a logged-in user to kill web2go sessions in the account to which they should not have access.
+CVE-2020-35570 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.18    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+There is a local privilege escalation from the www-data account to the root account.
+CVE-2020-10384 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+OTORIO reported these vulnerabilities to CISA.
+4. MITIGATIONS
+MB connect line recommends users update mymbCONNECT24 and mbCONNECT24 to Version 2.71 or higher to mitigate many of these vulnerabilities. A future release will include mitigations for the remaining vulnerabilities found in CVE-2020-35567, CVE-2020-35565, and CVE-2020-35561.
+Until a patch can be released, the following mitigations are recommended by MB connect line:
+
+CVE-2020-35565: Activate bruteforce detection via Security → Fail2Ban → WebLogin
+CVE-2020-35561: Avoid vulnerable open ports on the LAN side of the server by using a firewall solution
+
+Additional details can be found on MB connect line’s website.
+ 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

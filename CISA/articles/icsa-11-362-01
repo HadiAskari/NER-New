@@ -1,0 +1,48 @@
+
+OVERVIEW
+This advisory is a follow-up to the ICS-CERT alert titled ICS-ALERT-11-255-01—ScadaTEC ScadaPhone/ModbusTagServer Buffer Overflow, which was published September 12, 2011, on the ICS‑CERT Web page.
+On September 12, 2011, independent security researcher Steven Seeley publicly released a report that included proof-of-concept exploit code targeting a buffer overflow vulnerability in the ScadaTEC ScadaPhone and ModbusTagServer products. Currently, the exploit code allows an attacker to bind a shell for remote access.
+According to the report, exploitation of this vulnerability requires a specially crafted ZIP file to be opened using the affected application.
+ScadaTEC has produced a patch that resolves this vulnerability for all affected products and versions. ICS-CERT has validated that these patches fully resolve the vulnerability.
+AFFECTED PRODUCTS
+According to ScadaTEC, the following product versions are affected:
+
+ScadaPhone V5.3.11.1230 and prior
+ModbusTagServer V4.1.1.81 and prior.
+
+IMPACT
+Successful exploitation of this vulnerability may result in arbitrary code execution on the targeted human‑machine interface (HMI) system. Currently, the exploit code allows an attacker to bind a shell for remote access. However simple modifications to this exploit code could result in additional impacts to systems running affected versions of the products.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+According to ScadaTEC, ScadaPhone is a notification application that alerts owners and operators concerning the condition of their supervisory control and data acquisition (SCADA) systems; it can also write values to the SCADA system.
+ScadaTEC’s ModbusTagServer is an OPC server that communicates directly with field devices and makes data available to OPC clients.
+According to ScadaTEC, both products are used primarily in the Water Sector but are also used in the Critical Manufacturing and Chemical Sectors in the United States and Australia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+The published exploit takes advantage of a buffer overflow vulnerability in Abbrevia 3.05 Beta versions.Abbrevia is an open-source compression toolkit. The buffer overflow vulnerability has been fixed in the current version (4.0): http://sourceforge.net/projects/tpabbrevia/, website last accessed December 20, 2011. Abbrevia is a ZIP file handling component that was incorporated into the affected ScadaTEC products.
+This vulnerability can be exploited by using the application to open a specially crafted ZIP file. The buffer overflow causes the program to crash or possibly allows arbitrary code execution.
+CVE-2011-4535http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4535. NIST uses this advisory to create the CVE website report. This website will be active sometime after publication of this advisory.  has been assigned to this vulnerability.
+VULNERABILITY DETAILS
+Exploitability
+This vulnerability is remotely exploitable.
+Existence of Exploit
+Public exploits are known that specifically target this vulnerability.
+Difficulty
+Crafting a working exploit for this vulnerability would require moderate skill.
+MITIGATION
+ScadaTEC has produced a patch that resolves this vulnerability. ScadaTEC recommends this update be applied to all systems running affected versions of the ScadaPhone and ModbusTagServer.
+To obtain the patch, customers should contact ScadaTEC directly for download information by calling their support number: 775-348-7336.
+In addition to applying the available patch, ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.
+In addition, ICS‑CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in e-mail messages
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, website last accessed December 15, 2011. for more information on avoiding e-mail scams
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, website last accessed December 20, 2011. for more information on social engineering attacks.
+

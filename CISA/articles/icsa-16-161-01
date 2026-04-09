@@ -1,0 +1,47 @@
+
+OVERVIEW
+Siemens has identified a denial-of-service vulnerability in the SIMATIC S7-300 CPU family. The vulnerability was reported directly to Siemens by Mate J. Csorba of DNV GL, Marine Cybernetics Services, and Amund Sole of Norwegian University of Science and Technology. Siemens has produced a firmware update to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following products:
+
+SIMATIC S7-300 CPUs with Profinet support: All versions prior to V3.2.12, and
+SIMATIC S7-300 CPUs without Profinet support: All versions prior to V3.3.12.
+
+IMPACT
+An exploit of this vulnerability could cause the affected device to go into defect mode, requiring a cold restart to recover the system.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected product, SIMATIC S7-300 CPU, has been designed for process control in industrial environments. This product is deployed across several sectors including Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems. Siemens estimates that this product is used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER CONTROL OF A RESOURCE THROUGH ITS LIFETIMECWE-664: Improper Control of a Resource Through its Lifetime, http://cwe.mitre.org/data/definitions/664.html, web site last accessed June 09, 2016.
+
+Specially crafted packets sent to Port 102/TCP (ISO-TSAP) or via Profibus could cause the affected device to go into defect mode. A cold restart is required to recover the system.
+CVE-2016-3949NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-3949, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H, web site last accessed June 09, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Siemens has released SIMATIC S7-300 firmware Versions V3.2.12 and V3.3.12, which fix the vulnerability, and recommends users update to the latest version. Users can find this firmware at the following location:
+https://support.industry.siemens.com/cs/ww/en/ps/13752
+For more information on this vulnerability and detailed instructions, please see Siemens Security Advisory SSA-818183 at the following location:
+http://www.siemens.com/cert/advisories
+As a general security measure Siemens strongly recommends keeping firmware up-to-date and to protect network access to the S7-300 CPUs with appropriate mechanisms. It is advised to configure the environment according to Siemens’ operational guidelines in order to run the devices in a protected IT environment.
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

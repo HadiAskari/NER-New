@@ -1,0 +1,70 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable from adjacent network/low attack complexity
+Vendor: AVEVA Software, LLC
+Equipment: System Platform
+Vulnerabilities: Missing Authentication for Critical Function, Uncaught Exception, Path Traversal, Origin Validation Error, Improper Verification of Cryptographic Signature
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-180-05 AVEVA System Platform that was published June 29, 2021, on the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities, if exploited and chained together, could allow a malicious entity to achieve arbitrary code execution with system privileges or cause a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+
+AVEVA reports the vulnerability affects AVEVA System Platform versions 2017 through 2020 R2 P01 (inclusive)
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The software does not perform any authentication for functionality that requires a provable user identity.
+CVE-2021-33008 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    UNCAUGHT EXCEPTION CWE-248
+An exception is thrown from a function, but it is not caught, which may cause a denial-of-service condition.
+CVE-2021-33010 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+--------- Begin Update A Part 1 of 1 ---------
+4.2.3    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The software uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the software does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.
+CVE-2021-32981 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    ORIGIN VALIDATION ERROR CWE-346
+The software does not properly verify that the source of data or communication is valid.
+CVE-2021-32985 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.5    IMPROPER VERIFICATION OF CRYPTOGRAPHIC SIGNATURE CWE-347
+The software does not verify, or incorrectly verifies, the cryptographic signature for data.
+CVE-2021-32977 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+--------- End Update A Part 1 of 1 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+4.4 RESEARCHER
+Sharon Brizinov of Claroty reported these vulnerabilities to AVEVA.
+5. MITIGATIONS
+AVEVA recommends organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+AutoBuild service is intended to be used only on the GR Node of System Platform during configuration. If the AutoBuild service is enabled on any Runtime nodes, it should be disabled. Furthermore, if the AutoBuild functionality is not used on the GR Node, the AutoBuild service can be disabled on the GR Node as an alternative mitigation that does not require patching.
+AVEVA recommends users who need to continually use the AutoBuild functionality and cannot disable it in System Platform Versions 2017 through 2020 R2 P01 (inclusive) are affected by the vulnerabilities and should first upgrade to one of the System Platform versions listed below, then apply the corresponding security update:
+
+System Platform 2020 R2 P01, 2020 R2, 2020: Apply AVEVA Communication Drivers Pack 2020 R2.1
+System Platform 2017 U3 SP1 P01: 
+
+
+First apply AVEVA Communication Drivers Pack 2020 R2  AVEVA notes that Activated Licensing is required to apply AVEVA Communication Drivers Pack 2020 R2 on top of System Platform 2017 U3 SP1 P01. For information on AVEVA license compatibility, please contact AVEVA Customer Support
+Then apply AVEVA Communication Drivers Pack 2020 R2.1
+
+Please see AVEVA’s security bulletin AVEVA-2021-002 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

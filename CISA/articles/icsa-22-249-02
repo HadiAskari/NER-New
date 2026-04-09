@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: AVEVA
+Equipment: AVEVA Edge 2020 R2 SP1 and all prior versions
+Vulnerabilities: Insufficient UI Warning of Dangerous Operations, Uncontrolled Search Path Element, Deserialization of Untrusted Data, Improper Restriction of XML External Entity Reference
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in arbitrary code execution, information disclosure, or denial of service.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of AVEVA Edge, an industrial software system, are affected:
+
+AVEVA Edge: 2020 R2 SP1 and all prior versions 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSUFFICIENT UI WARNING OF DANGEROUS OPERATIONS CWE-357
+The scripting capability provided by AVEVA Edge is unrestricted; a user could abuse this to achieve arbitrary code execution.
+CVE-2022-36970 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+A vulnerability exists in AVEVA Edge that could allow a malicious actor with access to the file system to achieve arbitrary code execution and cause escalation by tricking AVEVA Edge into loading an unsafe DLL.
+CVE-2022-28686 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+A vulnerability exists in AVEVA Edge that could allow a malicious actor with access to the file system to achieve arbitrary code execution and cause escalation by tricking AVEVA Edge into loading an unsafe DLL.
+CVE-2022-28687 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+A vulnerability exists in AVEVA Edge that could allow a malicious actor with access to the file system to achieve arbitrary code execution and cause escalation by tricking AVEVA Edge into loading an unsafe DLL.
+CVE-2022-28688 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+A vulnerability exists in AVEVA Edge that, if exploited, could allow a user to tamper with project files to achieve arbitrary code execution.
+CVE-2022-28685 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.6    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+This vulnerability, if exploited, could allow a malicious actor to cause a denial-of-service condition in AVEVA Edge or to extract arbitrary files from the host running AVEVA Edge.
+CVE-2022-36969 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+3.4 RESEARCHER
+Chris Anastasio from Incite Team; Piotr Bazydło, Pedro Ribeiro, and Radek Domanski from Flashback Team; Daan Keuper and Thijs Alkemade from Computest; and Aaron Ferber reported these vulnerabilities to Trend Micro Zero Day Initiative.
+4. MITIGATIONS
+AVEVA recommends organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation. 
+AVEVA recommends applying security fixes for the affected products:
+
+For AVEVA Edge 2020 R2 SP1, users should apply security fix HF 2020.2.00.40 (login required). 
+For AVEVA Edge 2020 R2 and all prior versions (formerly known as InduSoft Web Studio), users should first upgrade to AVEVA Edge 2020 R2 SP1 (login required) and then apply security fix HF 2020.2.00.40
+
+AVEVA advises the following precautions should be taken throughout the lifetime of AVEVA Edge projects:
+
+Access Control Lists (ACLs) should be applied to all folders in which users save and load project files.
+Maintain a trusted chain-of-custody on project files during creation, modification, distribution, and use.
+Train users to always verify the source of a project before opening or executing it.
+
+For additional details, users can refer to the supplied help file in HF 2020.2.00.40 (login required).
+For more information on this vulnerability, including security updates, users should see security bulletin AVEVA-2022-005
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

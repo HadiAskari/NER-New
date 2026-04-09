@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: AutomationDirect
+Equipment: C-more EA9 HMI
+Vulnerabilities: Uncontrolled Search Path Element, Cleartext Transmission of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a loss of sensitive information and the ability to run code execution with elevated privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of C-more EA9, an industrial touch screen HMI, are affected:
+
+C-more EA9 with the following part numbers, all versions prior to 6.73: 
+
+EA9-T6CL
+EA9-T6CL-R
+EA9-T7CL
+EA9-T7CL-R
+EA9-T8CL
+EA9-T10CL
+EA9-T10WCL
+EA9-T12CL
+EA9-T15CL
+EA9-T15CL-R
+EA9-RHMI
+EA9-PGMSW 
+
+
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+The affected product has a DLL vulnerability in the install directory that may allow an attacker to execute code during the installation process.
+CVE-2022-2006 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The affected products’ HTTP webserver uses an insecure mechanism to transport credentials from client to web server, which may allow an attacker to obtain the login credentials and login as a valid user.
+CVE-2022-2005 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sam Hanson of Dragos reported these vulnerabilities to CISA.
+4. MITIGATIONS
+AutomationDirect recommends users upgrade to firmware Version 6.73 or later, which supports TLS security options for the webserver.
+While automation networks and systems have built-in password protection schemes, this is only one step in securing the affected systems. Automation control system networks must incorporate data protection and security measures at least as robust as a typical business computer system. AutomationDirect recommends users of PLCs, HMI products, and other SCADA system products perform independent network security analysis to determine the proper level of security required for the application.
+AutomationDirect has identified the following mitigations for instances where systems cannot be upgraded to Version 6.73 or later:
+
+The Webserver feature can be disabled on the HMI using the programming software.
+Place the HMI panel behind a VPN: Access to and from critical control system assets in the modern environment is usually LAN based, but still should be considered remote if the operator is traversing across different networks. virtual private networking (VPN) is often considered the best approach in securing trans-network communication.
+
+Please refer to the following link for supporting information related to security considerations.
+For additional information, please refer to AutomationDirect Product Advisory.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.

@@ -1,0 +1,67 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-070-01 Yokogawa CENTUM CS 3000 Vulnerabilities that was published March 11, 2014, on the NCCIC/ICS-CERT web site.
+Juan Vazquez of Rapid7 Inc.,Rapid7 Inc., http://www.rapid7.com, web site last accessed March 11, 2014. and independent researcher Julian Vilas Diaz have identified several buffer overflow vulnerabilities and released proof-of-concept (exploit) code for the Yokogawa CENTUM CS 3000 application. CERT/CC, ICS-CERT, and JPCERT have coordinated with Rapid7 and Yokogawa to mitigate these vulnerabilities.
+--------- Begin Update A Part 1 of 4 --------
+Since the initial report of vulnerabilities in CENTUM CS 3000, Yokogawa has investigated the scope of additional products that could also be affected. This effort has resulted in the creation of advisory ICSA-14-133-01 Yokogawa Multiple Products Vulnerabilities.
+--------- End Update A Part 1 of 4 ----------
+These vulnerabilities could be exploited remotely. Exploits that target these vulnerabilities are known to be publicly available.
+AFFECTED PRODUCTS
+The following Yokogawa CENTUM 3000 versions are affected:
+
+CENTUM CS 3000 R3.09.50 and earlier.
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an attacker to perform a denial of service (DoS) or even potentially get system privileges to execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Yokogawa is a Japan-based company that maintains offices in several countries around the world, including North and Central America, South America, Europe, Middle East, Africa, South Asia, and East Asia.
+The affected products, CENTUM CS 3000, are Windows-based control systems. According to Yokogawa, these products are deployed across several sectors including Critical Manufacturing, Energy, Food and Agriculture, and others. Yokogawa estimates that there are 7,600 systems worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HEAP-BASED BUFFER OVERFLOWCWE-122: Heap-based Buffer Overflow, http://cwe.mitre.org/data/definitions/122.html, web site last accessed March 11, 2014.
+
+CENTUM’s BKCLogSvr.exe service, started automatically with the system, listens by default on Port 52302/UDP. By sending a specially crafted sequence of packets to Port 52302/UDP, it is possible to trigger a heap-based buffer overflow after a usage of uninitialized data, which allows an attacker to DoS the BKCLogSvr.exe and could allow execution of arbitrary code with system privileges.
+CVE-2014-0781NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0781, web site last accessed May 13, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned by Yokogawa; the CVSS vector string is AV:N/AC:M/Au:N/C:C/I:C/A:C.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed March 11, 2014.
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed March 11, 2014.
+
+--------- Begin Update A Part 2 of 4 --------
+CENTUM’s BKHOdeq.exe service, which started when running the FCS/Test Function, listens by default on Ports 20109/TCP and 20171/TCP. By sending a specially crafted packet to Port 20171/TCP, it is possible to trigger a stack-based buffer overflow, which allows execution of arbitrary code with the privileges of the CENTUM user.
+--------- End Update A Part 2 of 4 ----------
+CVE-2014-0783NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0783, web site last accessed May 13, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 9.0 has been assigned by Yokogawa; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:C, web site last accessed March 11, 2014.
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed March 11, 2014.
+
+CENTUM’s BKBCopyD.exe service, which is started when running the FCS /Test Function, listens by default on Port 20111/TCP. By sending a specially crafted packet to Port 20111/TCP, it is possible to trigger a stack-based buffer overflow, which allows execution of arbitrary code with the privileges of the CENTUM user.
+CVE-2014-0784NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0784, web site last accessed May 13, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned by Yokogawa; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:C, web site last accessed March 11, 2014.
+--------- Begin Update A Part 3 of 4 --------
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed May 13, 2014. 
+
+CENTUM’s BKESimmgr.exe service, started automatically on the system startup by default which installed Expanded Test Functions Package, listens on Port 34205/TCP. By sending a specially crafted packet to the Port 34205/TCP, it is possible to trigger a stack-based buffer overflow that allows execution of arbitrary code with the privileges of the CENTUM user.
+CVE-2014-0782NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0782, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory.  has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:C, web site last accessed May 13, 2014. 
+--------- End Update A Part 3 of 4 ----------
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target these vulnerabilities are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+--------- Begin Update A Part 4 of 4 --------
+Yokogawa has created a patch (CENTUM CS 3000 R3.09.73 and R3.09.75) to mitigate the reported vulnerabilities. To activate the patch software, the computer needs to be rebooted. Older versions of the CENTUM CS 3000 will need to be updated to the latest version of R3.09.50 before installing the patch software.
+--------- End Update A Part 4 of 4 ----------
+Yokogawa also suggests all customers introduce appropriate security measures to the overall system, not just for the vulnerabilities identified.
+For more information, please see the advisory that Yokogawa has published regarding this issue here: http://www.yokogawa.com/dcs/security/ysar/dcs-ysar-index-en.htm.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

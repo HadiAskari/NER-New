@@ -1,0 +1,59 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity  
+Vendor: Siemens 
+Equipment: Simcenter Femap 
+Vulnerabilities: Out-of-bounds Read, Out-of-bounds Write 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute code in the context of the current process.  
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following software from Siemens is affected: 
+
+Simcenter Femap: All versions prior to V2023.1 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 OUT-OF-BOUNDS READ CWE-125 
+The affected application contains an out-of-bounds read past the end of an allocated structure while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process. 
+CVE-2022-39157 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.2 OUT-OF-BOUNDS WRITE CWE-787 
+The affected application contains an out-of-bounds write past the end of an allocated buffer while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process. 
+CVE-2022-43397 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing  
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Trend Micro Zero Day Initiative reported these vulnerabilities to Siemens. Siemens reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk: 
+
+Simcenter Femap: Update to V2023.1 or a later version 
+Simcenter Femap: Avoid opening untrusted X_T files in Simcenter Femap 
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for Industrial Security and to follow the recommendations in the product manuals. Additional information on Industrial Security by Siemens can be found at the Siemens Industrial Security webpage. 
+For further inquiries on security vulnerabilities in Siemens products and solutions, users should contact the Siemens ProductCERT. 
+For more information, see the associated Siemens security advisory SSA-565356 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. 

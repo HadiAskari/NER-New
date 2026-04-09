@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: LOGO! CMR2020, LOGO! CMR2040 and SIMATIC RTU 3000 family
+Vulnerabilities: Incorrect Calculation of Buffer Size, Improper Certificate Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker with access to any of the interfaces of an affected device to impact the availability or to communicate with invalid certificates.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of LOGO! CMR and SIMATIC RTU 3000 are affected:
+
+LOGO! CMR2020 all versions prior to v2.2
+LOGO! CMR2040 all versions prior to v2.2
+SIMATIC RTU 3000 family all versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INCORRECT CALCULATION OF BUFFER SIZE CWE-131
+The calculations performed in the third-party component Mbed TLS are not limited. Supplying overly large parameters could lead to denial-of-service condition when generating Diffie-Hellman key pairs.
+CVE-2020-36475 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    IMPROPER CERTIFICATE VALIDATION CWE-295
+The affected product is vulnerable to a stack-based buffer overflow, which may allow an attacker to remotely execute arbitrary code.
+CVE-2020-36478 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+For LOGO! CMR2020, Siemens recommends affected users update to v2.2 or later. 
+For LOGO! CMR2040, Siemens recommends affected users update to v2.2 or later.
+For the SIMATIC RTU 3000 family, Siemens recommends affected users use the certificate projection feature to pin the valid certificates of external servers providing services to the RTU/CMR devices. Refer to the product manual for further information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

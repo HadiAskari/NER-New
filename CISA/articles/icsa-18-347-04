@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.4
+
+ATTENTION: Low skill level to exploit
+Vendor: GE
+Equipment: Mark VIe, EX2100e, EX2100e_Reg, and LS2100e 
+Vulnerability: Path Traversal
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to access system data, which could result in escalation of privilege and unauthorized access to the controller.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the Mark Vie, a distributed control system, and associated products are affected:
+
+Mark VIe Versions 03.03.28C to 05.02.04C,
+EX2100e All versions prior to v04.09.00C,
+EX2100e_Reg All versions prior to v04.09.00C, and
+LS2100e All versions prior to v04.09.00C
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The affected versions of the application have a path traversal vulnerability that fails to restrict the ability of an attacker to gain access to restricted information. 
+CVE-2018-19003 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States 
+
+3.4 RESEARCHER
+Can Demirel of Biznet Bilisim reported this vulnerability to NCCIC.
+4. MITIGATIONS
+The path traversal vulnerability has been corrected by GE. GE recommends users upgrade to the current version of ControlST software as described in CSB25378, which is available to registered users via the GE Power ServiceNow portal (https://gepowerpac.service-now.com).
+In applications where the controller-hosted web server is not required, GE recommends turning off the web server. For all other applications, GE recommends updating the controller to the latest firmware version available in the current ControlST release. 
+With respect to EX2100e, GE recommends that all standalone excitation controls be segmented from other networks using a firewall installed inside the Excitation panels. External communication should be exclusively restricted to only those protocols specifically required for command and control, such as Modbus. Other services including HTTP must be blocked from external access. 
+To minimize the risk of exposure to this and any other vulnerabilities, GE recommends a defense-in-depth approach to protecting critical process control equipment. Guidance on technology and best practices to secure GE controllers from cyber attack are provided in the Mark VIe Control Systems Secure Deployment Guide (GEH-6839), which can be requested through GE Technical Support.
+Additionally, GE recommends that users of affected versions take the following mitigating actions while awaiting an upgrade: 
+
+Maintain tight physical access control to all critical controllers. 
+Limit network availability to only the most critical needs and implement tight firewall restrictions.
+Disable any unnecessary network related functions or enable only on an as needed basis. 
+
+GE provides additional up to date information concerning this issue at the following location (requires customer account/login): 
+https://gepowerpac.service-now.com/nav_to.do?uri=%2Fkb_knowledge.do%3Fsys_id%3D62034effdb8daf0056729d67b99619d6
+Or contact GE PSIRT through https://www.ge.com/security
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

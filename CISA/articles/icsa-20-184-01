@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Nortek
+Equipment: Linear eMerge 50P/5000P
+Vulnerabilities: Path Traversal, Command Injection, Unrestricted Upload of File with Dangerous Type, Cross-site Request Forgery, Improper Authentication
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker to gain full system access.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Linear eMerge products are affected:
+
+Linear eMerge 50P/5000P Versions 4.6.07 (revision 79330) and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    PATH TRAVERSAL CWE-35
+The software uses external input to construct a pathname that should be within a restricted directory, but does not properly neutralize sequences such as “../” that can resolve to a location that is outside of that directory. This allows attackers to traverse the file system to access files or directories that are outside of the restricted directory.
+CVE-2019-7267 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+The application constructs an OS command using externally influenced input from an upstream component, but incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component. This could allow attackers to execute dangerous commands directly on the operating system.
+CVE-2019-7269 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.3    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The vulnerability exists due to the absence of file extension validation when uploading files through the firmware upgrade upload script. A remote, unauthenticated attacker can upload files with arbitrary extensions into a directory within the application’s web root and execute them with privileges of the web server.
+CVE-2019-7268 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.4    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+The affected application allows users to perform certain actions via HTTP requests without performing any validity checks to verify the requests. This can be exploited to perform certain actions with administrative privileges if a logged-in user visits a malicious website.
+CVE-2019-7270 has been assigned to this vulnerability. A CVSS v3 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.2.5    IMPROPER AUTHENTICATION CWE-287
+The vulnerability exists due to insufficient validation of input data in authentication mechanism. A remote attacker can send a specially crafted HTTP request abusing the Cookie header value traversing to an arbitrary session file that bypasses authentication checks and gains unauthorized access to the application.
+CVE-2019-7266 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+ 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Italy
+
+
+
+3.4 RESEARCHER
+Gjoko of Applied Risk reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Nortek has released v32-09a. For more information please contact Nortek customer support.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

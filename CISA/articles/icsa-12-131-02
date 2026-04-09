@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: GE
+Equipment: Intelligent Platforms
+Vulnerabilities: Stack-based Buffer Overflow, Command Injection
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-12-131-02 GE Intelligent Platforms Proficy HTML Help Vulnerabilities that was published June 27, 2012, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+By luring a user into visiting a malicious website, an attacker could exploit these vulnerabilities and execute arbitrary code on the client, or place or replace files on the client.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following GE Intelligent Platforms products are affected:
+
+Proficy Historian: Versions 4.5, 4.0, 3.5, and 3.1
+Proficy HMI/SCADA – iFIX: Versions 5.1 and 5.0
+Proficy Pulse: Version 1.0
+Proficy Batch Execution: Version 5.6
+SI7 I/O Driver: Versions between 7.20 and 7.42
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+A remote stack-based buffer overflow condition exists in the KeyHelp.ocx control because it fails to perform adequate boundary checks on user-supplied input.
+CVE-2012-2515 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+The stack-based buffer overflow vulnerability has been identified, which may allow remote code execution.
+CVE-2012-2516 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Andrea Micalizzi working with Trend Micro’s Zero Day Initiative reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+GE Intelligent Platforms recommends that the KeyHelp.ocx ActiveX control be unregistered and deleted to eliminate these vulnerabilities. GE Intelligent Platforms has recommended specific control removal instructions for each of the affected products to ensure it continues to function properly once the control is removed.
+--------- Begin Update A Part 1 of 1 --------
+Please see GE Security Advisory GEIP12-04 at the following location:
+https://ge-ip.force.com/communities/en_US/Article/GE-Intelligent-Platforms-Security-Advisory-GEIP12-04
+--------- End Update A Part 1 of 1 ----------
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

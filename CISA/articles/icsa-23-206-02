@@ -1,0 +1,47 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: ThinManager ThinServer
+Vulnerability: Relative Path Traversal
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote actor to leverage the privileges of the server’s file system and read arbitrary files stored in it.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports this vulnerability affects the following versions of ThinManager ThinServer, a thin client and remote desktop protocol (RDP) server management software:
+
+ThinManager ThinServer: versions 13.0.0—13.0.2 and 13.1.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 Relative Path Traversal CWE-23
+An executable used in the affected products can be configured to enable an API feature in the HTTPS server settings. This feature is disabled by default. When the API is enabled and handling requests, a path traversal vulnerability exists that could allow a remote actor to leverage the server’s file system privileges and read arbitrary files stored in it. A malicious user could exploit this vulnerability by executing a path that contains manipulating variables.
+CVE-2023-2913 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+Critical Infrastructure Sectors: Critical Manufacturing
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported this vulnerability to CISA.
+4. MITIGATIONS
+Rockwell Automation encourages users of the affected software to apply risk mitigations, if possible, and encourages customers to implement their suggested security best practices to minimize the potential risk of vulnerability:
+
+Update to the corrected software versions: 13.0.3 and 13.1.1 or later.
+Disable the API feature and use a service account with appropriate access for the application.
+
+For more information, users should see Rockwell Automation’s security advisory (login required).
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is exploitable remotely. This vulnerability has low attack complexity.

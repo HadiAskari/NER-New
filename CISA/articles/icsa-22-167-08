@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SICAM GridEdge Essential ARM
+Vulnerabilities: Missing Authentication for Critical Function, Resource Leak
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker access to critical API functions, cross-origin resource sharing, and credentials.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SICAM GridEdge Essential ARM: All versions prior to v2.6.6
+SICAM GridEdge Essential Intel: All versions prior to v2.6.6
+SICAM GridEdge Essential with GDS ARM: All versions prior to v2.6.6
+SICAM GridEdge Essential with GDS Intel: All versions prior to v2.6.6
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected software does not require authenticated access for privileged functions. This could allow an unauthenticated attacker to change the data of a user.
+CVE-2022-30229 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+ 3.2.2    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected software does not require authenticated access for privileged functions. This could allow an unauthenticated attacker to create a new user with administrative permissions.
+CVE-2022-30230 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.3    TRANSMISSION OF PRIVATE RESOURCES INTO A NEW SPHERE ('RESOURCE LEAK') CWE-402
+The affected software discloses password hashes of other users upon request. This could allow an authenticated user to retrieve another user’s password hash.
+CVE-2022-30231 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Abian Blome from Siemens Energy reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens recommends updating to the latest version of its software:
+
+SICAM GridEdge Essential ARM: Update to v2.6.6 or later
+SICAM GridEdge Essential Intel: Update to v2.6.6 or later
+SICAM GridEdge Essential with GDS ARM: Update to v2.6.6 or later
+SICAM GridEdge Essential with GDS Intel: Update to v2.6.6 or later
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Limit access to Port 8900/TCP trusted users and systems only
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-631336
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

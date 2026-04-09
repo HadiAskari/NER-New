@@ -1,0 +1,108 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 5.6
+ATTENTION: Low attack complexity
+Vendor: Emerson
+Equipment: PACSystem, Fanuc
+Vulnerabilities: Cleartext Transmission of Sensitive Information, Insufficient Verification of Data Authenticity Insufficiently Protected Credentials, Download of Code Without Integrity Check
+
+CISA is aware of a public report, known as "OT:ICEFALL", detailing vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution, loss of sensitive information, or a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Emerson products are affected:
+
+PAC Machine Edition: All versions (CVE-2022-30263, CVE-2022-30265)
+PACSystem RXi: All versions (CVE-2022-30263, CVE-2022-30268, CVE-2022-30266)
+PACSystem RX3i: All versions (CVE-2022-30263, CVE-2022-30268, CVE-2022-30265)
+PACSystem RSTi-EP: All versions (CVE-2022-30263, CVE-2022-30268, CVE-2022-30266, CVE-2022-30265)
+PACSystem VersaMax: All versions (CVE-2022-30263, CVE-2022-30265)
+Fanuc VersaMax: All versions (CVE-2022-30263, CVE-2022-30268, CVE-2022-30266)
+
+3.2 Vulnerability Overview
+3.2.1 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The affected product utilizes a protocol that allows cleartext transmission of credentials. This could allow an attacker to retrieve these over the network and gain control of the PLC, but cryptographically secure authentication using the SRP-6a protocol is supported and recommended. Enabling authentication on the PLC prevents replay attacks, and requires the attacker to intercept and modify an active connection. Implementation of a non-routing control network also requires compromise of the network topology before SRTP packets can be intercepted.
+CVE-2022-30263 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.9 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2022-30263. A base score of 4.4 has been calculated; the CVSS vector string is (CVSS4.0/AV:P/AC:L/AT:P/PR:N/UI:A/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N)
+3.2.2 INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+The affected products use the Winloader utility to manage firmware updates by serial port or a serial-over-Ethernet link that were found to not use authentication. This could allow an attacker to push malicious firmware images to the controller and cause a denial-of-service condition or allow remote code execution. This vulnerability only effects version of the CPE302, 205, and 310 that were produced before the "-Bxxx" hardware revisions.
+CVE-2022-30268 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.9 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L).
+A CVSS v4 score has also been calculated for CVE-2022-30268. A base score of 5.2 has been calculated; the CVSS vector string is (CVSS4.0/AV:P/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N)
+3.2.3 INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The affected product uses a simple hashing scheme by client-side JavaScript. This could allow an attacker to intercept the hashes and strip the hashing scheme to obtain the credentials in plaintext. These credentials are only valid for 5 minutes due to the TLS protocol used, and also requires physical presence to press a button on the device, limiting this attack to being physically present and in a very short window. If this is accomplished, this only allows the attacker to upgrade or downgrade the firmware version. Due to this threat of Man-in-the-Middle attack, documentation recommends limiting physical access to networking equipment, and disabling IP routing on control networks. This vulnerability does not apply to older PLCs without a network-based update process.
+CVE-2022-30266 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.0 has been calculated; the CVSS vector string is (AV:P/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2022-30266. A base score of 4.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:P/AC:H/AT:N/PR:N/UI:A/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N)
+3.2.4 DOWNLOAD OF CODE WITHOUT INTEGRITY CHECK CWE-494
+Control logic downloaded to the PLC, which can be either written in one of the IEC 61131-3 languages or written in C and supplied as an ELF binary block, is not cryptographically authenticated.
+CVE-2022-30265 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.4 has been calculated; the CVSS vector string is AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2022-30265. A base score of 5.6 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:L/AT:P/PR:H/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N)
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Daniel dos Santos and Jos Wetzels from Forescout Technologies reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Emerson recommends the following:
+
+For CVE-2022-30263, see the following sections of PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):
+
+2.4 General Recommendations
+4.3.3 Secure Login
+4.3.4 Recommendations, Paragraph 2
+If SRP6-a is not being used to secure authentication, see Section 2.4 General Recommendations and Section 6.1 Reference Architecture
+5.2.1.1 Disabling Ethernet Services
+
+
+For CVE-2022-30268, see the following sections of PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):
+
+4.3 Authentication
+4.3.4 Recommendations, Paragraph 3
+4.3.4.1 Personnel Security Protection
+4.3.4.2 Physical Security Perimeter Protection
+
+
+
+Emerson has updated the Fanuc VersaMax Secure Deployment Guide (GFK-2955D) to include the above recommendations for CVE-2022-30268.
+
+For CVE-2022-30266, see the following sections of PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):
+
+2.4 General Recommendations
+5.2.1.1 Disabling Ethernet Services
+6.1 Reference Architecture
+
+
+For CVE-2022-30265, see the following sections of the PACSystems RXi, RX3i and RSTi-EP Secure Deployment Guide (GFK-2830Y):
+
+4.3.4.1 Personnel Security Protection
+4.3.4.2 Physical Security Perimeter Protection
+
+
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+June 6, 2024: Initial Publication
+

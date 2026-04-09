@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: SINEMA Remote Connect Server
+Vulnerabilities: Improper Restriction of Excessive Authentication Attempts, Information Exposure, Cross-Site Request Forgery, Use of Password Hash with Insufficient Computational Effort
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker unauthorized access to the web interface, improper access to privileged user and device information, and may allow successful CSRF attacks.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SINEMA Remote Connect Server are affected:
+
+SINEMA Remote Connect Server versions prior to 2.0 SP1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+The web interface has no means to prevent password guessing attacks. This vulnerability could be exploited by an attacker with network access to the vulnerable software, requiring no privileges and no user interaction. Exploitation could allow full access to the web interface.
+CVE-2019-13918 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    INFORMATION EXPOSURE CWE-200
+Some pages that should only be accessible by a privileged user can also be accessed by a nonprivileged user. This vulnerability could be exploited by an attacker with network access and valid credentials for the web interface. No user interaction is required. Exploitation could allow an attacker to access information they should not be able to read. The information affected by this vulnerability does not include passwords.
+CVE-2019-13919 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.3    CROSS-SITE REQUEST FORGERY CWE-352
+Some parts of the web application are not protected against cross-site request forgery (CSRF) attacks. This vulnerability could be exploited by an attacker who is able to trigger requests of a logged-in user to the application. Exploitation could allow switching the connectivity state of a user or a device.
+CVE-2019-13920 has been assigned to this vulnerability. A CVSS v3 base score of 3.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:L/A:N).
+3.2.4    USE OF PASSWORD HASH WITH INSUFFICIENT COMPUTATIONAL EFFORT CWE-916
+An attacker with administrative privileges can obtain the hash of a connected device’s password. The security vulnerability could be exploited by an attacker with network access to the SINEMA Remote Connect Server and administrative privileges.
+CVE-2019-13922 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:C/C:N/I:L/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Agriculture and Food, Chemical, Critical Manufacturing Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Hendrik Derre and Tijl Deneut from HOWEST reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens recommends users upgrade to Versions 2.0 SP1 or later for the affected products.
+The v2.0 SP1 update can be obtained at the following location:
+https://support.industry.siemens.com/cs/ww/en/view/109770899
+For more information on these vulnerabilities and associated software updates, please see Siemens’ security advisory SSA-884497 at: https://www.siemens.com/cert/advisories.
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Restrict network access to the SINEMA Remote Connect web interface
+Do not access links from untrusted sources while logged in at SINEMA Remote Connect
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. High skill level is needed to exploit.

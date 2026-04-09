@@ -1,0 +1,48 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Sierra Wireless
+Equipment: AirVantage
+Vulnerabilities: Improper Authentication, Exposure of Sensitive Information to an Unauthorized Actor
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to configure devices and to receive sensitive device information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Sierra Wireless AirVantage, a cloud management platform, are affected:
+
+AirVantage Platform
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER AUTHENTICATION CWE-287
+The AirVantage platform is vulnerable to an unauthorized attacker registering previously unregistered devices on the AirVantage platform if the user had not disabled the AirVantage Management Service on the devices. This could enable an attacker to configure, manage, and execute AT commands on an unsuspecting user’s devices.
+CVE-2023-31279 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H).
+3.2.2 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The AirVantage online Warranty Checker tool had an exposure of sensitive information vulnerability that could allow an attacker to perform bulk enumeration of IMEI and Serial Numbers and could use this information to perform exploits. 
+CVE-2023-31280 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Canada
+
+3.4 RESEARCHER
+Roni Gavrilov of Otorio reported these issues to Sierra Wireless.
+4. MITIGATIONS
+Sierra Wireless has updated the AirVantage Warranty Checker so it does not return the IMEI and Serial Number in addition to the warranty status when the Serial Number or IMEI is used to look up warranty status, preventing the disclosure of additional information not necessary to confirm the warranty status.
+Sierra Wireless encourages users to register their devices on the AirVantage platform to enable remote management capabilities for those devices, preventing the possibility of unauthorized device activation or to disable the AirVantage Management Service on devices if management via the AirVantage platform will not be used, eliminating any risk of unauthorized device access.
+Sierra Wireless encourages anyone with a security concern related to Sierra Wireless products to directly contact Sierra Wireless.
+For more information, see Sierra Wireless’s security bulletins here.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

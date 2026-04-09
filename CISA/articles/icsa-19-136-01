@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 5.4
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Schneider Electric
+Equipment: Modicon M580, Modicon M340, Modicon Premium, and Modicon Quantum
+Vulnerability: Use of Insufficiently Random Values
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to hijack TCP connections or cause information leakage.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Modicon products are affected:
+
+Modicon M580 firmware versions prior to Version 2.30
+Modicon M340 firmware, all versions
+Modicon Premium, all firmware versions
+Modicon Quantum, all firmware versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+The device has predictable TCP initial sequence numbers that allow attackers to hijack TCP connections carrying unsecured communications.
+CVE-2019-6821 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+David Formby and Raheem Beyah of Fortiphyd Logic and Georgia Tech reported this vulnerability to NCCIC.
+4. MITIGATIONS
+Schneider Electric reports the following mitigations:
+
+Modicon M580 firmware Version 2.80 is available for download. For more information see Schneider Electric advisory SEVD-2019-134-03
+Modicon M340: currently, no fix is available.
+
+Schneider Electric recommends that affected users set up network segmentation and implement a firewall to block all remote/external access to TCP ports.
+Configure the Access Control List following the recommendations of the user manual “Modicon M340 for Ethernet Communications Modules and Processors User Manual,” in the chapter titled “Messaging Configuration Parameters,” which is available here: https://download.schneiderelectric.com/files?p_enDocType=User+guide&p_File_Name=31007131_K01_000_16.pdf&p_Doc_Ref=31007131K01000
+
+
+Modicon Premium and Modicon Quantum
+
+Set up network segmentation and implement a firewall to block all unauthorized access to all TCP ports.
+
+
+
+In December 2018, Schneider Electric reported that the Modicon Premium and Quantum controllers reached the End of Commercialization life cycle. For more information, please see Schneider Electric advisory SEVD-2019-134-03
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

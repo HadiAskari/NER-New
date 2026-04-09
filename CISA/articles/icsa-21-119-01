@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Texas Instruments
+Equipment: SimpleLink Wi-Fi, MSP432, CC13XX, CC26XX, CC32XX, CC3100
+Vulnerabilities: Stack-based Buffer Overflow, Integer Overflow or Wraparound
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in memory corruption, allowing remote code execution and causing a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Texas Instruments products are affected:    
+
+SimpleLink MSP432E4 SDK: v4.20.00.12 and prior
+SimpleLink CC32XX SDK: v4.30.00.06 and prior
+SimpleLink CC13X0 SDK: versions prior to v4.10.03
+SimpleLink CC13X2 SDK: versions prior to v4.40.00
+SimpleLink CC26XX SDK: versions prior to v4.40.00
+CC3200 SDK: v1.5.0 and prior
+CC3100 SDK: v1.3.0 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+An integer overflow exists in the APIs of the host MCU while trying to connect to a WIFI network may lead to issues such as a denial-of-service condition or code execution.
+CVE-2021-22677 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    STACK-BASED BUFFER OVERFLOW CWE-121
+The affected product is vulnerable to stack-based buffer overflow while processing over-the-air firmware updates from the CDN server, which may allow an attacker to remotely execute code.
+CVE-2021-22673 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+The affected product is vulnerable to integer overflow while parsing malformed over-the-air firmware update files, which may allow an attacker to remotely execute code.
+CVE-2021-22675 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+The affected product is vulnerable to an integer overflow while processing HTTP headers, which may allow an attacker to remotely execute code.
+CVE-2021-22679 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Multiple integer overflow issues exist while processing long domain names, which may allow an attacker to remotely execute code.
+CVE-2021-22671 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+David Atch and Omri Ben Bassat from Microsoft reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Texas Instruments recommends users upgrade to the latest software version.
+exas Instruments also recommends users only connect to trusted Wi-Fi networks.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

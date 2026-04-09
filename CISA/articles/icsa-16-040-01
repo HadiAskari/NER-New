@@ -1,0 +1,77 @@
+
+OVERVIEW
+Independent researcher Maxim Rupp has identified vulnerabilities in Tollgrade Communications, Inc.’s SmartGrid LightHouse Sensor Management System (SMS) Software EMS. Tollgrade Communications, Inc. has produced an update to mitigate these vulnerabilities. Maxim Rupp has tested the update to validate that it resolves the vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following LightHouse SMS Software versions are affected:
+
+Version 4.1.0 Build 16, and
+Versions older than Version 5.1
+
+IMPACT
+Four vulnerabilities were uncovered by the researcher:
+
+Cross-site Scripting,
+Disclosure of Information,
+Cross-site Request Forgery (CSRF), and
+Insecure Credentials.
+
+Cross-site Scripting presents one entry point for attackers to access and manipulate control systems networks. It takes advantage of web servers that return dynamically generated web pages. Cross-site scripting also allows users to post viewable content in order to execute arbitrary HTML and active content, such as JavaScript, ActiveX, and VBScript, on a remote machine browsing the site within the context of a client-server session. This potentially allows the attacker to redirect the web page to a malicious location, hijack the client-server session, engage in network reconnaissance, and plant backdoor programs. Please refer to the NCCIC/ICS-CERT Abstract on Cross-Site Scripting for more information and additional mitigations.
+A CSRF attack may allow the web browser to perform an unwanted action on a trusted site for which the user is currently authenticated. The SMS Software web server application does not use CSRF tokens anywhere and, therefore, allows any application function to be silently executed. This includes the ability to create new users or change passwords.
+The SMS Software discloses to unauthenticated users access to sensitive files like reports and usernames (in the files).
+An authenticated user with limited privileges can change the password of another user, and thus obtain access to his or her account.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Tollgrade Communications, Inc. is a United States-based company that maintains offices in the United Kingdom and Germany.
+The affected product, LightHouse SMS Software, is a web-based distribution monitoring system. According to Tollgrade Communications, Inc., LightHouse SMS Software is deployed across the Energy Sector. Tollgrade Communications, Inc. estimates that this product is used primarily in North America, Europe, and South America.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CROSS-SITE REQUEST FORGERY (CSRF)CWE-352: Cross-Site Request Forgery (CSRF), http://cwe.mitre.org/data/definitions/352.html, web site last accessed February 9, 2016.
+
+The affected versions of the  LightHouse SMS Software are missing protections from CSRF, allowing a malicious party to execute commands on an authenticated active connection without the user being aware.
+CVE-2016-0863NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0863, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.8 and a temporal score of 7.9 have been assigned; the CVSS vector string is (CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C, web site last accessed February 9, 2016.
+
+DISCLOSURE OF INFORMATIONCWE-200: Information Exposure, http://cwe.mitre.org/data/definitions/200.html, web site last accessed February 9, 2016.
+
+Unauthenticated parties may access the devices with affected software and obtain sensitive information including reports and usernames.
+CVE-2016-0864NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0864, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 and a temporal score of 4.8 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:P/RL:O/RC:C , web site last accessed February 9, 2016.
+
+INSECURE CREDENTIALSCWE-522: Insufficiently Protected Credentials, http://cwe.mitre.org/data/definitions/522.html, web site last accessed February 9, 2016.
+
+An authenticated user with limited privileges can change the password of another user on affected software, and thus obtain access to his or her account.
+CVE-2016-0865NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0865, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.8 and a temporal score of 7.9 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C, web site last accessed February 9, 2016.
+
+CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation (‘Cross-site Scripting’), http://cwe.mitre.org/data/definitions/79.html, web site last accessed February 9, 2016.
+
+The affected software allows for manipulation of the dynamic URLs used by the web server, allowing a malicious party to control the web server to redirect web page to a malicious location, hijack the client-server session, engage in network reconnaissance, and/or plant backdoor programs.
+CVE-2016-0866NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-0866, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.1 and a temporal score of 5.5 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RL:O/RC:C, web site last accessed February 9, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+Crafting a working exploit for these vulnerabilities would be moderately difficult. Social engineering is required to convince the user to click on or open their browser to a malicious URL.
+MITIGATION
+Tollgrade Communications, Inc. released the updated software which resolves these vulnerabilities. Users should contact Tollgrade Communications, Inc. for support at the numbers below.
+Tollgrade Communications, Inc.Toll Free: 1 800-777-5405Phone: 1 724-720-1480
+Updated software may be found on their support site at:
+http://customersupport.tollgrade.com
+ICS-CERT recommends that asset owners follow the vendor’s recommendations on patching the impacted products. Internet accessible control system devices should be isolated and located within protected areas of the asset owners control system network to prevent exploitation from the vulnerabilities listed in this advisory and potentially similar vulnerabilities that have not been uncovered. In addition, users of the control system software should be trained to recognize potential social engineering threats and avoid clicking on links or using a browser or email connection while connected to the SCADA control software.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed February 9, 2016. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed February 9, 2016. for more information on social engineering attacks.
+

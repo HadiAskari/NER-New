@@ -1,0 +1,163 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the updated advisory titled ICSA-15-169-01A Wind River VxWorks TCP Predictability Vulnerability in ICS Devices that was published November 5, 2015, on the NCCIC/ICS-CERT web site.
+Raheem Beyah, David Formby, and San Shin Jung of Georgia Tech, via a research project partially sponsored by the Georgia Tech National Electric Energy Testing Research and Applications Center, have identified a TCP predictability vulnerability that exists in Wind River’s VxWorks embedded software. Wind River has produced patches for several versions of VxWorks that mitigates this vulnerability. The researchers have verified that Schneider Electric’s SAGE RTU patch, which uses Wind River’s VxWorks Version 6.9.4.4, resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following versions of VxWorks are affected:
+
+Wind River VxWorks, Version 7, released prior to February 13, 2015,
+Wind River VxWorks, Version 6.9 releases prior to Version 6.9.4.4,
+Wind River VxWorks, Version 6.8 releases prior to Version 6.8.3,
+Wind River VxWorks, Version 6.7 releases prior to Version 6.7.1.1, and
+Wind River VxWorks, Version 6.6 and prior versions, but NOT to include Version 5.5.1 with PNE2.2 and Version 6.0 through Version 6.4.
+
+The following versions of VxWorks Cert are affected:
+
+Wind River VxWorks Cert, Version 6.6.3,
+Wind River VxWorks Cert, Version 6.6.4, and
+Wind River VxWorks Cert, Version 6.6.4.1.
+
+--------- Begin Update B Part 1 of 3 --------
+The following versions of VxWorks 653 are affected:
+
+Wind River VxWorks 653 Platform/Platform for Safety Critical ARINC 653, Version 3.0,
+Wind River VxWorks 653 Platform/Platform for Safety Critical ARINC 653, Version 2.5,
+Wind River VxWorks 653 Platform/Platform for Safety Critical ARINC 653, Version 2.4,
+Wind River VxWorks 653 Platform/Platform for Safety Critical ARINC 653, Version 2.3, and
+Wind River VxWorks 653 Platform/Platform for Safety Critical ARINC 653, Version 2.2.
+
+--------- End Update B Part 1 of 3 ----------
+Wind River’s VxWorks is widely used in ICS-related devices. NCCIC/ICS-CERT has notified many ICS vendors in the US and abroad of the predictable TCP sequence vulnerability in the VxWorks software. The identified ICS vendor responded to ICS-CERT’s notification and coordinated with ICS-CERT to remediate the identified product vulnerability.
+The following Schneider Electric SAGE RTUs, which use CPU card C3412 are affected:
+
+Schneider Electric SAGE 1210 RTU,
+Schneider Electric SAGE 1230 RTU,
+Schneider Electric SAGE 1250 RTU, and
+Schneider Electric SAGE 2200 RTU.
+
+The following Schneider Electric SAGE RTUs, which use CPU card C3413 are affected:
+
+Schneider Electric SAGE 1310 RTU,
+Schneider Electric SAGE 1330 RTU,
+Schneider Electric SAGE 1350 RTU,
+Schneider Electric SAGE 2300 RTU, and
+Schneider Electric SAGE 3030 RTU.
+
+The following Schneider Electric SAGE RTUs, which use CPU card C3414 LX-800 with firmware versions prior to C3414-500-S02J2 are affected:
+
+Schneider Electric SAGE 1410 RTU,
+Schneider Electric SAGE 1430 RTU,
+Schneider Electric SAGE 1450 RTU,
+Schneider Electric SAGE 2400 RTU,
+Schneider Electric SAGE 3030 Magnum RTU, and
+Schneider Electric SAGE LANDAC2 Upgrade Kit.
+
+ICS-CERT will update the list of affected products as vendors identify their product patches and new product versions.
+IMPACT
+Successful exploitation of this vulnerability may allow an attacker to spoof or disrupt TCP connections of affected devices.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Wind River is a US-based company that sells products around the world. Wind River is a wholly owned subsidiary of Intel Corporation.
+The affected product, VxWorks, is a real time operating system that is used in a wide variety of products.
+--------- Begin Update B Part 2 of 3 --------
+Wind River VxWorks 653 Platform is a real-time operating system for safety-critical applications and is primarily used in avionics applications.
+--------- End Update B Part 2 of 3 ----------
+Wind River VxWorks Cert Platform is a real-time operating system for safety-critical applications that require certification evidence in avionics, transportation, industrial automation, and medical device industries. Wind River’s VxWorks is deployed across several sectors including Communications, Critical Manufacturing, Energy, Healthcare and Public Health, Transportation Systems, Water and Wastewater Systems, and others. Wind River estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+PREDICTABLE VALUE RANGE FROM PREVIOUS VALUESCWE-343: Predictable Value Range from Previous Values, http://cwe.mitre.org/data/definitions/343.html, web site last accessed June 18, 2015.
+The VxWorks software generates predictable TCP initial sequence numbers that may allow an attacker to predict the TCP initial sequence numbers from previous values, which may allow an attacker to spoof or disrupt TCP connections.
+CVE-2015-3963NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3963, web site last accessed November 5, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 5.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:P).CVSS Calculator, https://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:P , web site last accessed June 18, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a medium skill would be able to exploit this vulnerability.
+MITIGATION
+Wind River has released patches and new versions to address the TCP predictability vulnerability for several versions of VxWorks.
+
+A patch for VxWorks, Version 7 released prior to February 13, 2015, has been released, which can be downloaded with Wind River’s Workbench maintenance tool. The RPM package is ipnet_coreip 1.2.2.0.
+A new version of VxWorks, Version 6.9 has been released; VxWorks, Version 6.9.4.4 can be downloaded with Wind River’s Workbench maintenance tool. Wind River recommends that asset owners using versions of VxWorks, Version 6.9 prior to Version 6.9.4.4, update to Version 6.9.4.4 or contact Wind River.
+A patch for VxWorks, Version 6.8 has been released; the patch for VxWorks, Version 6.8.3 is available at the following URL with a valid account:
+  14.00
+
+
+https://knowledge.windriver.com/en-us/000_Products/000/020/020/050/030/000_VxWorks_6.8.3_Cumulative_Networking_Source_Patch_20150211_for_GPP_and_MSP.
+The vulnerability is resolved in VxWorks, Version 6.8.3.1 and later versions. Wind River recommends that asset owners using versions of VxWorks, Version 6.8 prior to Version 6.8.3, update to Version 6.8.3.1 or contact Wind River.
+
+A patch for VxWorks, Version 6.7 has been released; the patch for VxWorks, Version 6.7.1 is available at the following URL with a valid account:
+
+https://knowledge.windriver.com/en-us/000_Products/000/020/030/050/020/000_VxWorks_6.7.1_Cumulative_Networking_Patch_20150404.
+The vulnerability is resolved in VxWorks, Version 6.7.1.1 and later versions. Wind River recommends that asset owners using versions of VxWorks, Version 6.7 prior to Version 6.7.1, update to Version 6.7.1.1 or contact Wind River.
+
+
+  Normal
+  0
+  false
+  false
+  false
+  EN-US
+  JA
+  X-NONE
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}A patch for VxWorks, Version 5.5 has been released, which is available at the following URL, with a valid account:
+
+https://knowledge.windriver.com/en-us/000_Products/000/020/0B0/000/090/000_VxWorks_5.5.1_Source_Point_Patch_for_Defect_VXW5-11090.
+The vulnerability is resolved in VxWorks, Version 5.5.2 and later versions. Wind River recommends that asset owners using versions of VxWorks, Version 5.5 prior to Version 5.5.1, update to 5.5.2 or contact Wind River.
+
+A patch for VxWorks Cert, Version 6.6.4.1 (IPNet Cumulative Patch 2015102209) has been released, which is available at the following URL with a valid account:
+
+https://knowledge.windriver.com/en-us/000_Products/000/040/000/050/000_Cert_6.6.4.1_IPNET_CP_1_patch.
+
+A patch for Wind River VxWorks Cert, Version 6.6.4.1 (DO-178B Network Stack Patch) is available on request.
+
+--------- Begin Update B Part 3 of 3 --------
+
+A patch for Wind River VxWorks 653, Version 2.5 has been released and is available in VxWorks 653, Version 2.5.0.1 and later versions. VxWorks 653, Version 2.5.0.1 can be downloaded with Wind River’s Workbench maintenance tool.
+A patch for Wind River VxWorks 653, Version 3.0 has been released and is available in VxWorks 653, Version 3.0.1 and later versions. VxWorks 653, Version 3.0.1 can be downloaded with Wind River’s Workbench maintenance tool. The RPM package is 6.6.7.1-vxworks653_20151020 and later versions.
+
+--------- End Update B Part 3 of 3 ----------
+Wind River has stated that they will not provide patches or support for versions of VxWorks that are at end-of-life; however, they will work with customers to discuss options. Wind River’s security advisory is available at the following URL with a valid account:
+https://knowledge.windriver.com/@api/deki/files/234042/StandardSupportMaintenanceTerms-PremAdd-010615-FINAL.pdf.
+For more information about Wind River’s patches or new versions of VxWorks, contact Wind River’s customer support at: http://windriver.com/support/.
+Additional information about weaknesses in TCP initial sequence number generation is available in CERT/CC’s Vulnerability Note, VU#498440 Multiple TCP/IP Implementations May Use Statistically Predictable Initial Sequence Numbers, which is available at:
+https://www.kb.cert.org/vuls/id/498440.
+ICS VENDOR MITIGATIONS
+Schneider Electric has released patch, C3414-500-S02YZ - Secure Firmware Version J2 that mitigates the vulnerability in CPU card, C3414 LX-800, which is used in multiple Schneider Electric RTUs. Customers may obtain this patch by contacting Schneider Electric’s customer service department at: 1-713-920-6832.
+For all other SAGE RTU models, contact Schneider Electric’s customer service department at:1-713-920-6832.
+Schneider Electric has released Security Notification, SEVD-2015-162-01, which is available at the following URL:
+http://www.schneider-electric.com/ww/en/download/document/SEVD-2015-162-01
+Schneider Electric recommends the following interim mitigations until patches can be applied:
+
+Enable SAGE RTU security features, so that network traffic is encrypted and authenticated,
+Use strong passwords, and
+Implement extensive logging of network traffic.
+
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Implement a bump-in-the-wire solution that can provide secure communication between endpoints, which may enhance security.
+Effectively segment networks and implement demilitarized zones (DMZs) with properly configured firewalls to selectively control and monitor traffic passed between zones.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+  14.00

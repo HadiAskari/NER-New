@@ -1,0 +1,49 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on March 3, 2015, and is being released to the NCCIC/ICS-CERT web site.
+Ivan Sanchez of NullCode & Evilcode Team has identified multiple DLL Hijacking vulnerabilities in a software component included with Rockwell Automation’s FactoryTalk View Studio product. Rockwell Automation determined a similar vulnerability also affects the FactoryTalk Services Platform used with other FactoryTalk-branded software. Rockwell Automation has produced a patch that mitigates the vulnerabilities in the affected products.
+AFFECTED PRODUCTS
+The following FactoryTalk software is affected:
+
+FactoryTalk Services Platform, all versions prior to 2.71.00, and
+FactoryTalk View Studio Version 8.00.00 and all versions prior.
+
+IMPACT
+Exploitation of DLL Hijack vulnerabilities gives an attacker access to the system with the same privilege level as the application that utilizes the malicious DLL.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Rockwell Automation, which is a US-based company, provides industrial automation control and information products worldwide across a wide range of industries.
+The affected products, FactoryTalk Services Platform and FactoryTalk View Studio, are used in the design and operation of a variety of industrial control systems. According to Rockwell Automation, the software products are applied across several sectors including Chemical, Commercial Facilities, Critical Manufacturing, Energy, Government Facilities, Water and Wastewater Systems, and others. The products are used globally.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNCONTROLLED SEARCH PATH ELEMENTCWE-427: Uncontrolled Search Path Element, http://cwe.mitre.org/data/definitions/427.html, web site last accessed March 19, 2015.
+
+A successful exploit of these vulnerabilities requires the local user to load a crafted DLL on the victim machine. The View Studio Clean Utility Application loads the DLL and gives the attacker access at the same privilege level as the application.
+CVE-2014-9209NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9209, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to these vulnerabilities. A CVSS v2 base score of 6.9 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:C/I:C/A:C, web site last accessed March 19, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities are not exploitable remotely without user interaction. The exploits are only triggered when a local user runs the vulnerable application, and it loads the malformed DLL file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+Crafting a working exploit for these vulnerabilities would be difficult. Social engineering is required to convince the user to accept the malformed file. This further decreases the likelihood of a successful exploit.
+MITIGATION
+Rockwell Automation recommends users log into their web site, review their advisory notice, and apply patch software located at:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/646323
+ICS-CERT recommends that users utilize least privilege measures, including running the operating system and applications with non-administrative accounts and escalating privileges only as required to perform necessary operations.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against these and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed March 19, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed March 19, 2015. for more information on social engineering attacks.
+

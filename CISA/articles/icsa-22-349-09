@@ -1,0 +1,58 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity/public exploits available
+Vendor: Siemens 
+Equipment: Calibre ICE, Mcenter, SCALANCE X-200RNA switch family, SICAM GridPass, SIMATIC RTLS Locating Manager 
+Vulnerabilities: Classic Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow for a denial of service or remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products from Siemens are affected:
+
+Calibre ICE: Versions 2022.4 and after
+Mcenter: Versions 5.2.1.0 and after
+SCALANCE X-200RNA switch family: Versions 3.2.7 and after
+SICAM GridPass (6MD7711-2AA00-1EA0): Versions 1.80 and after
+SIMATIC RTLS Locating Manager (6GT2780-0DA00): Versions 2.13 and after
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+An attacker could craft a malicious email address to overflow four attacker-controlled bytes on the stack. This buffer overflow could result in a crash (causing a denial-of-service condition) or potential remote code execution. In a TLS client, this can be triggered by connecting to a malicious server. In a TLS server, this can be triggered if the server requests client authentication while a malicious client connects. Fixed in OpenSSL 3.0.7 (Affected versions 3.0.0, 3.0.1,3.0.2,3.0.3,3.0.4,3.0.5,3.0.6).
+CVE-2022-3602 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)
+3.2.2    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+An attacker could craft a malicious email address in a certificate to overflow an arbitrary number of bytes containing the `.' character (decimal 46) on the stack. This buffer overflow could result in a crash (causing a denial-of-service) condition. In a TLS client, this can be triggered by connecting to a malicious server. In a TLS server, this can be triggered if the server requests client authentication and a malicious client connects. This vulnerability is fixed in OpenSSL 3.0.7 (Affected versions 3.0.0, 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.0.5, 3.0.6).
+CVE-2022-3786 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing  
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Calibre ICE: Current distribution of the affected version is only "beta"; users are recommended to wait for the update version, which will also patch OpenSSL.
+Mcenter: Ensure only trusted (CA) certificates are contained in the Machine Agent's truststore.
+SICAM GridPass (6MD7711-2AA00-1EA0): In the truststore, do not add CA certificates that contain a nameConstraint-extension with punycode-encoded internationalized domain names.
+Siemens products contain inga vulnerable TLS server and have certificate-based client authentication enabled: do not configure trust for CA certificates with a nameConstraint-extension with punycode-encoded internationalized domain names
+Siemens products containing a vulnerable TLS client: where this option is configured, ensure TLS server certificate verification is turned; do not configure trust for CA certificates with a nameConstraint-extension with punycode-encoded internationalized domain names
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to follow the recommendations in the product manuals.
+For more information, see the associated Siemens security advisory SSA-408105 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.

@@ -1,0 +1,47 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 4.3
+Vendor: Multiple Trailer and Brake Manufacturers
+Equipment: Power Line Communications Bus / PLC4TRUCKS / J2497
+Vulnerability: Exposure of Sensitive Information Through Sent Data
+
+2. RISK EVALUATION
+The National Motor Freight Traffic Association (NMFTA) and Assured Information Security (AIS) have released research detailing a vulnerability within trailer Power Line Communications (PLC) signals. Their research indicates it is possible to read PLC signals using active antennas reliably at 6 feet and up to 8 feet away, subject to environmental conditions. The researchers expect to be able to push this reception distance further with receiver improvements. The impact of this issue depends heavily on what information is being sent by ECUs on the trailer PLC bus. Typical trailer traffic is only ABS fault messages and will thus have minimal loss of confidentiality. CISA is publishing this advisory to bring awareness to trailer and brake manufacturers who may be seeking to leverage PLC for sensitive information: e.g., air weigh axles or key exchange in setting up high-speed wireless links in future tractor-trailer interfaces.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+All trailer power line communications are affected. 
+3.2 VULNERABILITY OVERVIEW
+3.2.1    EXPOSURE OF SENSITIVE INFORMATION THROUGH SENT DATA CWE-201
+PLC bus traffic can be sniffed reliably via an active antenna up to 6 feet away. Further distances are also possible, subject to environmental conditions and receiver improvements. 
+CVE-2020-14514 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+
+3.4 RESEARCHER
+National Motor Freight Traffic Association (NMFTA) researcher Ben Gardiner, NMFTA motor freight carriers, and Assured Information Security researchers Dan Salloum, Chris Poore, and Eric Thayer reported this vulnerability to CISA.
+4. MITIGATIONS
+No current mitigations have been developed alongside this research. Future designs can mitigate this issue by reducing radiated emissions using shorter lengths of PLC buses and reduced transmit voltage. The goal of this advisory is to bring awareness of the issue to the transportation systems sector.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Assess expected confidentiality of PLC traffic that is present on trailers.
+
+Theoretical examples to consider:
+
+Air weigh systems on trailer PLC could expose business intelligence
+Trailer brake controllers configured to stream values could expose business intelligence
+Trailer telematics systems which use PLC, while rare, could be exposing network information that should remain confidential
+
+
+
+
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

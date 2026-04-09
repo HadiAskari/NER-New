@@ -1,0 +1,58 @@
+
+CVSS V3 10
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Carlo Gavazzi
+Equipment: VMU-C EM, VMU-C PV
+Vulnerabilities: Access Control Flaws, CSRF, Sensitive Information Stored In Clear Text
+AFFECTED PRODUCTS
+Carlo Gavazzi reports that the vulnerabilities affect the following versions:
+
+VMU-C EM prior to firmware Version A11_U05, and
+VMU-C PV prior to firmware Version A17
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow the attacker to execute configuration parameter changes and saving modified configuration.
+MITIGATION
+Carlo Gavazzi has created firmware updates that mitigate these vulnerabilities. Carlo Gavazzi recommends upgrading to the following firmware versions:
+
+VMU-C EM A11_U05 for VMUC EM, and
+VMU-C PV A17 for VMUC PV.
+
+The relevant firmware versions are available either by means of the firmware update function embedded in the VMU-C or by downloading them from Carlo Gavazzi’s web site. Please open the link:
+http://www.gavazzi-automation.com/nsc/HQ/EN/energy_efficiency_monitoring,
+Then:
+
+Click on “Select the Product.”
+Choose “Web-Server” from the “FUNCTION” column.
+A list including both VMU-C EM and VMU-C PV will appear; select the target VMU-C model from the list.
+From the “downloads” section on the right, click on the “Software” icon to start downloading the updated firmware package.
+
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. Remotely exploitable. Low skill level is needed to exploit.
+VULNERABILITY OVERVIEW
+
+ACCESS CONTROL CWE 284
+
+The access control flaw allows access to most application functions without authentication.
+CVE-2017-5144 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+
+CROSS-SITE REQUEST FORGERY (CSRF) CWE 352
+
+Successful exploitation of this vulnerability can allow execution of unauthorized actions on the device such as configuration parameter changes, and saving modified configuration.
+CVE-2017-5145 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+
+INFORMATION EXPOSURE CWE 200
+
+Sensitive information stored in clear-text.
+CVE-2017-5146 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+RESEARCHER
+Karn Ganeshen has reported these vulnerabilities.

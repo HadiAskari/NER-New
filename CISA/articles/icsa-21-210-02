@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Wibu-Systems AG
+Equipment: CodeMeter Runtime
+Vulnerabilities: Buffer Over-read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to read data from the heap of the CodeMeter Runtime network server, or crash the CodeMeter Runtime Server (i.e., CodeMeter.exe).
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of CodeMeter Runtime, a license manager, are affected:
+
+CodeMeter Runtime: All versions prior to v7.21a
+
+This license manager is used in the products of many different vendors.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    BUFFER OVER-READ CWE-126
+An attacker could send a specially crafted packet to the CodeMeter Runtime CmWAN server to cause a denial-of-service condition.
+CVE-2021-20094 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    BUFFER OVER-READ CWE-126
+An attacker could send a specially crafted packet that could crash the server or direct the CodeMeter Runtime Network Server to send back packets containing data from the heap.
+CVE-2021-20093 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Tenable, Inc., reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Wibu-Systems recommends the following mitigations:
+
+Update to Version 7.21a or later.
+
+CVE-2021-20093:
+
+Run CodeMeter as client only and use localhost as binding for the CodeMeter communication. With binding to localhost an attack is no longer possible via remote network connection. The network server is disabled by default.
+If it is not possible to disable the network server, using a host-based firewall to restrict access to the CmLAN port can reduce the risk. 
+
+CVE-2021-20094:
+
+The CmWAN server is disabled by default. Check if CmWAN is enabled and disable the feature if it is not needed.
+Run the CmWAN server only behind a reverse proxy with user authentication to prevent attacks from unauthenticated users.
+The risk of an unauthenticated attacker can be further reduced by using a host-based firewall that only allows the reverse proxy to access the CmWAN port.
+
+For more information on this issue, please see Wibu security advisories: WIBU-210423-01, WIBU-210423-02 
+For more information on products dependent on the affected CodeMeter see the following vendor security advisories. As new instances are discovered/reported, they will be added to this list:
+
+Siemens: SSA-675303
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

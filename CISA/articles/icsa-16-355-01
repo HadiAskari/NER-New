@@ -1,0 +1,53 @@
+
+OVERVIEW
+Siemens has released a firmware update to mitigate an insufficient entropy vulnerability that affects Siemens Desigo PX Web modules. Marcella Hastings, Joshua Fried, and Nadia Heninger from the University of Pennsylvania coordinated this vulnerability directly with Siemens.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Siemens reports that this vulnerability affects the following Desigo PX Web modules and versions:
+
+Desigo PX Web modules PXA40-W0, PXA40-W1, PXA40-W2 for Desigo PX automation controllers PXC00-E.D, PXC50-E.D, PXC100-E.D, PXC200-E.D: All firmware versions prior to V6.00.046, and
+Desigo PX Web modules PXA30-W0, PXA30-W1, PXA30-W2 for Desigo PX automation controllers PXC00-U, PXC64-U, PXC128-U: All firmware versions prior to V6.00.046
+
+IMPACT
+A successful exploitation of this vulnerability could allow an attacker to recover private keys used for HTTPS in the integrated web server.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected products, Desigo PX modules, control and monitor building automation systems. According to Siemens, Desigo PX Web modules are deployed in the Commercial Facilities sector. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INSUFFICIENT ENTROPY IN PSEUDO-RANDOM NUMBER GENERATOR (PRNG)CWE-332: Insufficient Entropy in Pseudo-random Number Generator (PRNG), https://cwe.mitre.org/data/definitions/332.html, web site last accessed December 20, 2016.
+
+The affected devices use a pseudo random number generator with insufficient entropy to generate certificates for HTTPS, potentially allowing remote attackers to reconstruct the corresponding private key.
+CVE-2016-9154NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9154, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N, web site last accessed December 20, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult.
+MITIGATION
+Siemens provides firmware update V6.00.046 for the affected devices, which fixes the vulnerability. Siemens recommends that all users operating an affected device apply the update.
+The firmware updates for Desigo PX Web modules can be obtained from:
+https://support.industry.siemens.com/cs/ww/en/view/109742824
+Until patches can be applied, Siemens recommends the following:
+
+Protect network access.
+Apply a defense-in-depth strategies.
+Restrict access to Port 443/TCP of Desigo PX-Web modules.
+Disable the web server.
+
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-856492 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

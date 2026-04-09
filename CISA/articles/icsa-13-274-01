@@ -1,0 +1,63 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on October 01, 2013, and is now being released to the ICS-CERT-Web page.
+Siemens has identified an authentication bypass vulnerability in the SCALANCE X-200 switch product family. Researcher Eireann Leverett of IOActive coordinated disclosure of the vulnerability with Siemens. This issue only applies to switches using older firmware versions and has been fixed from firmware V4.5.0 (non-IRT) and V5.1.0 (IRT) on. Siemens has reported the resolution to ICS-CERT.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following versions:
+
+SCALANCE X-200 switch family with firmware version prior to V4.5.0.
+SCALANCE X-200IRT (Isochronous Real-Time) switch family with firmware version prior to V5.1.0.
+
+Alternatively, the affected products may be identified by using their Machine-Readable Product Designation (MLFB). Products with the following MLFBs may be affected:
+
+SCALANCE X-200 MLFBs:
+
+6GK5224-0BA00-2AA3      6GK5216-0BA00-2AA3      6GK5212-2BB00-2AA3
+6GK5212-2BC00-2AA3      6GK5208-0BA10-2AA3      6GK5206-1BB10-2AA3
+6GK5206-1BC10-2AA3      6GK5204-2BB10-2AA3      6GK5204-2BC10-2AA3
+6GK5208-0HA10-2AA6      6GK5204-0BA00-2AF2      6GK5208-0BA00-2AF2
+6GK5206-1BC00-2AF2      6GK5204-2BC00-2AF2      6GK5204-2BB10-2CA2
+
+SCALANCE X-200IRT MLFBs:
+
+6GK5201-3JR00-2BA6       6GK5204-0BA00-2BF2      6GK5204-0JA00-2BA6
+6GK5202-2JR00-2BA6       6GK5202-2BH00-2BA3      6GK5201-3BH00-2BA3
+6GK5200-4AH00-2BA3      6GK5202-2BB00-2BA3      6GK5204-0BA00-2BA3
+IMPACT
+Successful exploitation of this vulnerability may allow attackers to perform administrative operations over the network without authentication.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is an international company headquartered in Munich, Germany. Siemens develops products mainly in the energy, transportation, and healthcare sectors.
+The affected products, SCALANCE X-200 switches, are used to connect industrial components such as PLCs or HMIs. These switches use a Web-based interface that enables administrators to change device configuration using an Internet browser.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+AUTHENTICATION BYPASS ISSUESCWE-592: Authentication Bypass Issues, http://cwe.mitre.org/data/definitions/592.html, Web site last accessed October 03, 2013.
+
+The integrated Web server of SCALANCE X-200 switches might allow attackers to perform administrative operations over the network without authentication.
+CVE-2013-5944NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-5944, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, Web site last visited October 03, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Siemens recommends upgrading to the current SCALANCE X-200 firmware versions V5.0.1 (non-IRT) and V5.1.2 (IRT). These versions are not vulnerable to the authentication bypass issue.
+The firmware update for SCALANCE X-200 can be obtained here:
+http://support.automation.siemens.com/WW/view/en/78458674
+The firmware update for SCALANCE X-200IRT can be obtained here:
+http://support.automation.siemens.com/WW/view/en/78454417
+Siemens security advisory is located here:
+http://www.siemens.com/innovation/pool/de/forschungsfelder/siemens_security_advisory_ssa-176087.pdf
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed October 03, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed October 03, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

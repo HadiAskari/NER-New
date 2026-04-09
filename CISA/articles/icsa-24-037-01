@@ -1,0 +1,71 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.9
+ATTENTION: Exploitable locally
+Vendor: HID Global
+Equipment: iCLASS SE, OMNIKEY
+Vulnerability: Improper Authorization
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to read data from reader configuration cards and credentials. Reader configuration cards contain credential and device administration keys which could be used to create malicious configuration cards or credentials.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following HID products are affected when configured as an encoder:
+
+iCLASS SE CP1000 Encoder: All versions
+iCLASS SE Readers: All versions
+iCLASS SE Reader Modules: All versions
+iCLASS SE Processors: All versions
+OMNIKEY 5427CK Readers: All versions
+OMNIKEY 5127CK Readers: All versions
+OMNIKEY 5023 Readers: All versions
+OMNIKEY 5027 Readers: All versions
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER AUTHORIZATION CWE-1188
+Certain configuration available in the communication channel for encoders could expose sensitive data when reader configuration cards are programmed. This data could include credential and device administration keys.
+CVE-2024-22388 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.9 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+HID Global reported this vulnerability to CISA.
+4. MITIGATIONS
+HID advises users to take the following steps to mitigate these threats.
+Protect your reader configuration cards.
+
+A malicious encoder or reader must be physically close to the reader configuration cards to communicate with them and extract information. Elite Key and Custom Key users that have kept their configuration cards secure should continue to be vigilant and restrict access to those cards.HID standard key users and other users who are concerned their keys may be compromised should consider steps to update the readers and credentials with new keys. To assist in this effort, HID will be introducing a free upgrade to the Elite Key program. Contact your HID representative for more information.
+
+Protect your credentials and disable legacy technologies.
+
+Reading the PACS data from a credential is not enough to clone the credential for modern technologies like Seos and DESFire. These technologies use a credential key for authentication. However, if a system's readers still support legacy technologies (i.e., HID Prox, MiFARE Classic, etc.), then it may be possible to insert the credential information into a legacy technology credential that would be accepted by those readers. Users are encouraged to disable legacy credential technologies in their readers.Further, physical credentials should always be kept safe by their users, and site managers should remind their users to be vigilant with their credentials and report missing or stolen cards.
+
+Harden your iCLASS SE Readers from configuration changes
+
+iCLASS SE Readers using firmware firmware version 8.6.04 or higher can use the HID Reader Manager application to prevent the readers from accepting configuration changes from configuration cards. After this is complete, users may then securely destroy their reader configuration cards.If you need assistance, or if the reader firmware has not been updated to 8.6.04 or higher, contact HID Technical Support.
+
+Harden your HID OMNIKEY Readers, HID iCLASS SE Reader Modules, HID iCLASS SE Processors from configuration changes
+
+Contact HID to receive a "Shield Card" that will prevent further configuration changes using reader configuration cards. After this is complete, users may then securely destroy their reader configuration cards.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely. This vulnerability has a high attack complexity.
+5. UPDATE HISTORY
+
+February 6, 2024: Initial Publication
+

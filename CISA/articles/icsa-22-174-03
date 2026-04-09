@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.9
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Secheron
+Equipment: SEPCOS Control and Protection Relay
+Vulnerabilities: Improper Enforcement of Behavioral Workflow, Lack of Administrator Control over Security, Improper Privilege Management, Insufficiently Protected Credentials, Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain full, root access over the device in multiple ways. Initial footholds through S-Web interface software vulnerabilities could allow an attacker to obtain a level of control over the PLC's functions only the vendor typically has access to. This includes the ability to reset the PLC, upload arbitrary files / execute code, and change parameters for protective functions that can pose a range of availability and safety risks to the power system the PLC is configured to control (based on the specific implementation). Further exploitation of the underlying PLC misconfigurations can allow an attacker to trivially escalate privileges to OS root through either the S-Web vulnerabilities or FTP and SSH misconfigurations.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following firmware versions of the Secheron SEPCOS Control and Protection Relay are affected:
+
+SEPCOS Single Package firmware (1.23.xx feature level): All versions prior to 1.23.21
+SEPCOS Single Package firmware (1.24.xx feature level): All versions prior to 1.24.8
+SEPCOS Single Package firmware (1.25.xx feature level): All versions prior to 1.25.3
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ENFORCEMENT OF BEHAVIORAL WORKFLOW CWE-841
+Client-side JavaScript controls may be bypassed to change user credentials and permissions without authentication, including a “root” user level meant only for the vendor. Web server root level access allows for changing of safety critical parameters.
+CVE-2022-2105 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H).
+3.2.2    IMPROPER ENFORCEMENT OF BEHAVIORAL WORKFLOW CWE-841
+Client-side JavaScript controls may be bypassed by directly running a JS function to reboot the PLC (e.g., from the browser console) or by loading the corresponding, browser accessible PHP script.
+CVE-2022-1667 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    IMPROPER ENFORCEMENT OF BEHAVIORAL WORKFLOW CWE-841
+Controls limiting uploads to certain file extensions may be bypassed. This could allow an attacker to intercept the initial file upload page response and modify the associated code. This modified code can be forwarded and used by a script loaded later in the sequence, allowing for arbitrary file upload into a location where PHP scripts may be executed.
+CVE-2022-2102 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H).
+3.2.4    WEAK PASSWORD REQUIREMENTS CWE-521
+Weak default root user credentials allow remote attackers to easily obtain OS superuser privileges over the open TCP port for SSH.
+CVE-2022-1668 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    IMPROPER ACCESS CONTROL CWE-284
+An attacker with weak credentials could access the TCP port via an open FTP port, allowing an attacker to read sensitive files and write to remotely executable directories.
+CVE-2022-2103 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+The www-data (Apache web server) account is configured to run sudo with no password for many commands (including /bin/sh and /bin/bash).
+CVE-2022-2104 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.7    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The default password for the web application’s root user (the vendor’s private account) was weak and the MD5 hash was used to crack the password using a widely available open-source tool.
+CVE-2022-1666 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Anthony Candarini of AECOM, Clark Bradley of Elliott Davis, Mike Curnow of AECOM, and Balakrishna Subramoney of SAM Analytic Solutions reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Secheron recommends updating its software to the latest version:
+
+SEPCOS Single Package firmware (1.23.xx feature level): Update to 1.23.22 or higher version
+SEPCOS Single Package firmware (1.24.xx feature level): Update to 1.24.8 or higher version
+SEPCOS Single Package firmware (1.25.xx feature level): Update to 1.25.3 or higher version
+
+This version contains updates that resolve the discovered vulnerabilities for each feature level (SP1.23.xx, SP1.24.xx, and SP1.25.xx).
+System integrators and asset owners should contact a Secheron representative for further information on how to obtain updates.
+Additional workarounds are suggested to help reduce the risk:
+
+Configure the network such that PLC communications are strictly limited to only the devices required to perform its functions.
+Limit remote access and close Ports 80 and 443 at the switch level.
+Only use approved devices to connect to the PLCs. Do not connect personal peripherals (USB sticks, hotspots) to approved devices.
+Check device logs during periodic maintenance for unauthorized changes or access.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this these vulnerabilities.

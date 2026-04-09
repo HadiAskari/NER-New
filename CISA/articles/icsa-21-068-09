@@ -1,0 +1,68 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low skill level to exploit
+Vendor: Siemens
+Equipment: Solid Edge
+Vulnerabilities: Out-of-bounds Write, Improper Restriction of XML External Entity Reference, Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to a denial-of-service condition, and could lead to arbitrary code execution or data extraction on the target host system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siemens Solid Edge, a portfolio of software tools, are affected:
+
+Solid Edge SE2020: All versions before SE2020MP13
+Solid Edge SE2021: Versions SE2021MP3 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS WRITE CWE-787
+Affected applications lack proper validation of user-supplied data when parsing DFT files. This could result in an out-of-bounds write past the end of an allocated structure. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2020-28385 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+When opening a specially crafted SEECTC XML file, the application could disclose arbitrary files to remote attackers. This is because of the passing of specially crafted content to the underlying XML parser without taking proper restrictions such as prohibiting an external dtd.
+CVE-2020-28387 has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:L).
+3.2.3    OUT-OF-BOUNDS WRITE CWE-787
+Affected applications lack proper validation of user-supplied data when parsing PAR files. This could result in an out-of-bounds write past the end of an allocated structure. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-27380 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    OUT-OF-BOUNDS READ CWE-125
+Affected applications lack proper validation of user-supplied data when parsing PAR files. This could result in an out-of-bounds read past the end of an allocated structure. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-27381 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Francis Provencher {PRL} and rgod, working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released updates, which are recommended to be applied when possible:
+
+Solid Edge SE2020: Update to SE2020MP13 or later (login required)
+Solid Edge SE2021: Update to SE2021MP3 or later (login required)
+Update SE2021MP3 only mitigates CVE-2020-28387 and CVE-2021-27381
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Avoid opening untrusted files from unknown sources in Solid Edge.
+Applying a defense-in-depth concept can help to reduce the probability that untrusted code is run on the system.
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for industrial security, and follow the recommendations in the product manual.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information about this issue, please see Siemens security advisory SSA-715184
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

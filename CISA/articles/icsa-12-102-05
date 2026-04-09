@@ -1,0 +1,51 @@
+
+Overview
+ICS-CERT has received a report from Siemens regarding two security vulnerabilities in the Scalance S Security Module firewall. This vulnerability was reported to Siemens by Adam Hahn and Manimaran Govindarasu for coordinated disclosure.
+The first issue is a brute-force credential guessing vulnerability in the web configuration interface of the firewall. The second issue is a stack-based buffer overflow vulnerability in the Profinet DCP protocol stack.
+Siemens has published a patch that resolves both of the identified vulnerabilities.
+Affected Products
+The following Scalance S Security Modules are affected:
+
+Scalance S602 V2
+Scalance S612 V2
+Scalance S613 V2
+
+Impact
+Successful exploitation of the brute-force vulnerability may allow an attacker to perform an arbitrary number of authentication attempts using different password and eventually gain access to the targeted account.
+Successful exploitation of the stack-based buffer overflow against the Profinet DCP protocol may lead to a denial of service (DoS) condition or possible arbitrary code execution.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+The Scalance S product is a security module that includes a Stateful Inspection Firewall for industrial automation network applications. This security module is intended to protect automation devices and industrial networks against unauthorized access and to secure Ethernet-based industrial communication.
+This Siemens product is intended to protect trusted industrial networks from outside facing or untrusted networks. All Scalance S Security Modules provide filtering of incoming and outgoing network connections with stateful packet inspection. This product is used predominately in Europe and Asia with a small US footprint. The primary sectors deploying Scalance S are Automotive, Defense Industrial Base, Energy, Critical Manufacturing, Transportation Systems, Chemical, and Water.
+Vulnerability Characterization
+Vulnerability Overview
+Brute-Force Vulnerabilityhttp://cwe.mitre.org/data/definitions/307.html, CWE-307: Improper Restriction of Excessive Authentication Attempts, website last accessed April 11, 2012.
+The web server in the Scalance S Security Module does not implement sufficient measures to prevent rapid multiple authentication attempts within a short timeframe, making it susceptible to brute-force attacks by attackers with access to the web server. If the administrative password is found, the attackercan manipulate the configuration and gain access to the trusted network.
+CVE-2012-1799 has been assigned to this vulnerability. A CVSS V2 base score of 10.0 has also been assigned.
+Stack-Based Overflowhttp://cwe.mitre.org/data/definitions/121.html , CWE-1121: Stack-based buffer Overflow, website last accessed April 11, 2012
+The Scalance S DCP protocol stack crashes when a specially crafted DCP frame is received, which may renders the firewall unresponsive and interrupts established VPN tunnels. Successful exploitation of this vulnerability may lead to a denial of service (DoS) condition or possible arbitrary code execution.
+CVE-2012-1800 has been assigned to this vulnerability. Siemens has assigned a CVSS V2 base score of 6.1.
+Vulnerability Details
+Exploitability
+These vulnerabilities are remotely exploitable.
+Existence of Exploit
+No known exploits specifically target these vulnerabilities.
+Difficulty
+An attacker with a moderate skill level would be able to exploit these vulnerabilities.
+Mitigation
+Siemens has published a patch that resolves both of the identified vulnerabilities and strongly recommends installing the updates by using the following links:
+
+Siemens Security Advisory
+firmware update
+information about industrial security by Siemens
+recommended security practices by US-CERT
+
+For further inquiries on vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

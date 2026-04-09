@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: JTTK and JT Utilities
+Vulnerabilities: Out-of-bounds Write, Use after Free, Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead the application to crash or potentially lead to arbitrary code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of JT Open Toolkit (JTTK), an application programming interface, and JT Utilities, a series of command line utilities, are affected:
+
+JT Utilities: All versions prior to v13.0.3.0
+JTTK: All versions prior to v11.0.3.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS WRITE CWE-787
+JTTK library in affected products contains an out-of-bounds write past the end of an allocated structure while parsing specially crafted JT files, which could allow an attacker to execute code in the context of the current process.
+CVE-2021-44446 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    USE AFTER FREE CWE-416
+JTTK library in affected products contains a use after free vulnerability that could be triggered while parsing specially crafted JT files, which an attacker could leverage to execute code in the context of the current process.
+CVE-2021-44447 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    OUT-OF-BOUNDS READ CWE-125
+JTTK library in affected products is vulnerable to an out-of-bounds read past the end of an allocated buffer when parsing JT files, which an attacker could leverage to leak information in the context of the current process.
+CVE-2021-44448 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Bentley Systems Incorporated coordinated these vulnerabilities with Siemens.
+4. MITIGATIONS
+Siemens recommends updating to the latest versions, specifically:
+
+JT Utilities: Update to v13.0.3.0 or later version
+JTTK: Update to v11.0.3.0 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Avoid opening untrusted files from unknown sources using JTTK
+Avoid opening untrusted files from unknown sources using JT Utilities
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security, and follow the recommendations in the product manuals.
+For more information about these vulnerabilities, please see Siemens security advisory SSA-352143
+For further inquiries on security vulnerabilities in Siemens products and solutions, please contact Siemens ProductCERT.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.7
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Schneider Electric
+Equipment: EcoStruxure Building Operation
+Vulnerabilities: Unrestricted Upload of File with Dangerous Type, Cross-site Scripting, Improper Restriction of XML External Entity Reference, Improper Access Control, Windows Unquoted Search Path
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow unauthorized file uploads and command execution by a remote user, which could result in loss of availability, confidentiality, and integrity of the workstation. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric reports these vulnerabilities affect the following EcoStruxure Building Operation products:
+
+WebReports v1.9 - v3.1
+WebStation v2.0 - v3.1
+Enterprise Server installer v1.9 - v3.1
+Enterprise Central installer v2.0 - v3.1
+
+Note: Please see SEVD-2020-315-04 to see which vulnerabilities affect each specific product.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+An unrestricted upload of a file with dangerous type vulnerability could allow an authenticated remote user to upload arbitrary files due to incorrect verification of user supplied files and achieve remote code execution.
+CVE-2020-7569 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:L).
+3.2.2    CROSS-SITE SCRIPTING CWE-79
+An improper neutralization of an input during webpage generation vulnerability could allow an authenticated remote user to inject arbitrary web script or HTML due to incorrect sanitization of user-supplied data and achieve a stored cross-site scripting attack against other WebReport users.
+CVE-2020-7570 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:L/A:L).
+3.2.3    CROSS-SITE SCRIPTING CWE-79
+Multiple improper neutralizations of an input during webpage generation vulnerabilities could allow a remote attacker to inject arbitrary web script or HTML due to incorrect sanitization of user supplied data and achieve a reflected cross-site scripting attack against other WebReport users.
+CVE-2020-7571 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.4    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+An improper restriction of XML external entity reference vulnerability could allow an authenticated remote user to inject arbitrary XML code and obtain disclosure of confidential data, cause a denial-of-service condition, or execute server-side request forgery due to improper configuration of the XML parser.
+CVE-2020-7572 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:L/A:H).
+3.2.5    IMPROPER ACCESS CONTROL CWE-284
+An improper access control vulnerability could allow a remote attacker access to restricted web resources due to improper access control.
+CVE-2020-7573 has been assigned to this vulnerability. A CVSS v3 base score of 5.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.2.6    UNQUOTED SEARCH PATH OR ELEMENT CWE-428
+An unquoted search path vulnerability could allow any local Windows user with write permissions on at least one of the subfolders of the connect agent service binary path to gain the privilege of the user who started the service. 
+By default, the Enterprise Server and Enterprise Central is always installed at a location requiring Administrator privileges, so this vulnerability is only valid if the application has been installed on a non-secure location.
+CVE-2020-28209 has been assigned to this vulnerability. A CVSS v3 base score of 2.0 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:R/S:U/C:L/I:N/A:N).
+3.2.7    CROSS-SITE SCRIPTING CWE-79
+An improper neutralization of an input during webpage generation vulnerability could allow an attacker to inject HTML and JavaScript code into the user's browser.
+CVE-2020-28210 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Energy, Food and Agriculture, Government Facilities, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Luis Vázquez, Francisco Palma, and Diego León of Zerolynx in coordination with INCIBE and Alessandro Bosco, Luca Di Giuseppe, Alessandro Sabetta, and Massimiliano Brolli of TIM Security Red Team Research reported these vulnerabilities to Schneider Electric.
+4. MITIGATIONS
+Schneider Electric recommends users upgrade to Version 3.2 of EBO as it is not impacted by any of these vulnerabilities. For assistance in upgrading, contact Schneider Electric Customer Care Center or your Schneider Electric representative.
+For versions prior to 3.2, fixes are now available in the form of a hotfix patch. Please refer to SEVD-2020-315-04 for specific information about how to apply the patch.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

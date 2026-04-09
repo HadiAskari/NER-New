@@ -1,0 +1,178 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 4.6
+ATTENTION: Low attack complexity 
+Vendor: Siemens 
+Equipment: S7-1500 CPU product family  
+Vulnerability: Missing Immutable Root of Trust in Hardware 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker with physical access to the device to replace the boot image of the device and execute arbitrary code. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports this vulnerability affects the following CPU products: 
+
+SIMATIC Drive Controller CPU 1504D TF (6ES7615-4DF10-0AB0): All versions 
+SIMATIC Drive Controller CPU 1507D TF (6ES7615-7DF10-0AB0): All versions 
+SIMATIC S7-1500 CPU 1510SP F-1 PN (6ES7510-1SJ00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1510SP F-1 PN (6ES7510-1SJ01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1510SP-1 PN (6ES7510-1DJ00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1510SP-1 PN (6ES7510-1DJ01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511-1 PN (6ES7511-1AK00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511-1 PN (6ES7511-1AK01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511-1 PN (6ES7511-1AK02-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511C-1 PN (6ES7511-1CK00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511C-1 PN (6ES7511-1CK01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511F-1 PN (6ES7511-1FK00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511F-1 PN (6ES7511-1FK01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511F-1 PN (6ES7511-1FK02-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511T-1 PN (6ES7511-1TK01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1511TF-1 PN (6ES7511-1UK01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1512C-1 PN (6ES7512-1CK00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1512C-1 PN (6ES7512-1CK01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1512SP F-1 PN (6ES7512-1SK00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1512SP F-1 PN (6ES7512-1SK01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1512SP-1 PN (6ES7512-1DK00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1512SP-1 PN (6ES7512-1DK01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1513-1 PN (6ES7513-1AL00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1513-1 PN (6ES7513-1AL01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1513-1 PN (6ES7513-1AL02-0AB0): All versions 
+SIMATIC S7-1500 CPU 1513F-1 PN (6ES7513-1FL00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1513F-1 PN (6ES7513-1FL01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1513F-1 PN (6ES7513-1FL02-0AB0): All versions 
+SIMATIC S7-1500 CPU 1513R-1 PN (6ES7513-1RL00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1515-2 PN (6ES7515-2AM00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1515-2 PN (6ES7515-2AM01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1515-2 PN (6ES7515-2AM02-0AB0): All versions 
+SIMATIC S7-1500 CPU 1515F-2 PN (6ES7515-2FM00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1515F-2 PN (6ES7515-2FM01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1515F-2 PN (6ES7515-2FM02-0AB0): All versions 
+SIMATIC S7-1500 CPU 1515R-2 PN (6ES7515-2RM00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1515T-2 PN (6ES7515-2TM01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1515TF-2 PN (6ES7515-2UM01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1516-3 PN/DP (6ES7516-3AN00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1516-3 PN/DP (6ES7516-3AN01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1516-3 PN/DP (6ES7516-3AN02-0AB0): All versions 
+SIMATIC S7-1500 CPU 1516F-3 PN/DP (6ES7516-3FN00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1516F-3 PN/DP (6ES7516-3FN01-0AB0): All versions 
+SIMATIC S7-1500 CPU 1516F-3 PN/DP (6ES7516-3FN02-0AB0): All versions 
+SIMATIC S7-1500 CPU 1516T-3 PN/DP (6ES7516-3TN00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1516TF-3 PN/DP (6ES7516-3UN00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1517-3 PN/DP (6ES7517-3AP00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1517F-3 PN/DP (6ES7517-3FP00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1517H-3 PN (6ES7517-3HP00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1517T-3 PN/DP (6ES7517-3TP00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1517TF-3 PN/DP (6ES7517-3UP00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1518-4 PN/DP (6ES7518-4AP00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0): All versions 
+SIMATIC S7-1500 CPU 1518-4F PN/DP (6ES7518-4FP00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1518F-4 PN/DP MFP (6ES7518-4FX00-1AB0): All versions 
+SIMATIC S7-1500 CPU 1518HF-4 PN (6ES7518-4JP00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1518T-4 PN/DP (6ES7518-4TP00-0AB0): All versions 
+SIMATIC S7-1500 CPU 1518TF-4 PN/DP (6ES7518-4UP00-0AB0): All versions 
+SIMATIC S7-1500 CPU S7-1518-4 PN/DP ODK (6ES7518-4AP00-3AB0): All versions 
+SIMATIC S7-1500 CPU S7-1518F-4 PN/DP ODK (6ES7518-4FP00-3AB0): All versions 
+SIMATIC S7-1500 ET 200pro: CPU 1513PRO F-2 PN (6ES7513-2GL00-0AB0): All versions 
+SIMATIC S7-1500 ET 200pro: CPU 1513PRO-2 PN (6ES7513-2PL00-0AB0): All versions 
+SIMATIC S7-1500 ET 200pro: CPU 1516PRO F-2 PN (6ES7516-2GN00-0AB0): All versions 
+SIMATIC S7-1500 ET 200pro: CPU 1516PRO-2 PN (6ES7516-2PN00-0AB0): All versions 
+SIPLUS ET 200SP CPU 1510SP F-1 PN (6AG1510-1SJ01-2AB0): All versions 
+SIPLUS ET 200SP CPU 1510SP F-1 PN RAIL (6AG2510-1SJ01-1AB0): All versions 
+SIPLUS ET 200SP CPU 1510SP-1 PN (6AG1510-1DJ01-2AB0): All versions 
+SIPLUS ET 200SP CPU 1510SP-1 PN (6AG1510-1DJ01-7AB0): All versions 
+SIPLUS ET 200SP CPU 1510SP-1 PN RAIL (6AG2510-1DJ01-4AB0): All versions 
+SIPLUS ET 200SP CPU 1510SP-1 PN RAIL (6AG2510-1DJ01-1AB0): All versions 
+SIPLUS ET 200SP CPU 1512SP F-1 PN (6AG1512-1SK00-2AB0): All versions 
+SIPLUS ET 200SP CPU 1512SP F-1 PN (6AG1512-1SK01-2AB0): All versions 
+SIPLUS ET 200SP CPU 1512SP F-1 PN (6AG1512-1SK01-7AB0): All versions 
+SIPLUS ET 200SP CPU 1512SP F-1 PN RAIL (6AG2512-1SK01-1AB0): All versions 
+SIPLUS ET 200SP CPU 1512SP F-1 PN RAIL (6AG2512-1SK01-4AB0): All versions 
+SIPLUS ET 200SP CPU 1512SP-1 PN (6AG1512-1DK01-2AB0): All versions 
+SIPLUS ET 200SP CPU 1512SP-1 PN (6AG1512-1DK01-7AB0): All versions 
+SIPLUS ET 200SP CPU 1512SP-1 PN RAIL (6AG2512-1DK01-4AB0): All versions 
+SIPLUS ET 200SP CPU 1512SP-1 PN RAIL (6AG2512-1DK01-1AB0): All versions 
+SIPLUS S7-1500 CPU 1511-1 PN (6AG1511-1AK00-2AB0): All versions 
+SIPLUS S7-1500 CPU 1511-1 PN (6AG1511-1AK01-2AB0): All versions 
+SIPLUS S7-1500 CPU 1511-1 PN (6AG1511-1AK02-2AB0): All versions 
+SIPLUS S7-1500 CPU 1511-1 PN (6AG1511-1AK01-7AB0): All versions 
+SIPLUS S7-1500 CPU 1511-1 PN (6AG1511-1AK02-7AB0): All versions 
+SIPLUS S7-1500 CPU 1511-1 PN T1 RAIL (6AG2511-1AK01-1AB0): All versions 
+SIPLUS S7-1500 CPU 1511-1 PN T1 RAIL (6AG2511-1AK02-1AB0): All versions 
+SIPLUS S7-1500 CPU 1511-1 PN TX RAIL (6AG2511-1AK01-4AB0): All versions 
+SIPLUS S7-1500 CPU 1511-1 PN TX RAIL (6AG2511-1AK02-4AB0): All versions 
+SIPLUS S7-1500 CPU 1511F-1 PN (6AG1511-1FK00-2AB0): All versions 
+SIPLUS S7-1500 CPU 1511F-1 PN (6AG1511-1FK01-2AB0): All versions 
+SIPLUS S7-1500 CPU 1511F-1 PN (6AG1511-1FK02-2AB0): All versions 
+SIPLUS S7-1500 CPU 1513-1 PN (6AG1513-1AL00-2AB0): All versions 
+SIPLUS S7-1500 CPU 1513-1 PN (6AG1513-1AL01-7AB0): All versions 
+SIPLUS S7-1500 CPU 1513-1 PN (6AG1513-1AL01-2AB0): All versions 
+SIPLUS S7-1500 CPU 1513-1 PN (6AG1513-1AL02-2AB0): All versions 
+SIPLUS S7-1500 CPU 1513-1 PN (6AG1513-1AL02-7AB0): All versions 
+SIPLUS S7-1500 CPU 1513F-1 PN (6AG1513-1FL00-2AB0): All versions 
+SIPLUS S7-1500 CPU 1513F-1 PN (6AG1513-1FL01-2AB0): All versions 
+SIPLUS S7-1500 CPU 1513F-1 PN (6AG1513-1FL02-2AB0): All versions 
+SIPLUS S7-1500 CPU 1515F-2 PN (6AG1515-2FM01-2AB0): All versions 
+SIPLUS S7-1500 CPU 1515F-2 PN (6AG1515-2FM02-2AB0): All versions 
+SIPLUS S7-1500 CPU 1515F-2 PN RAIL (6AG2515-2FM02-4AB0): All versions 
+SIPLUS S7-1500 CPU 1515F-2 PN T2 RAIL (6AG2515-2FM01-2AB0): All versions 
+SIPLUS S7-1500 CPU 1515R-2 PN (6AG1515-2RM00-7AB0): All versions 
+SIPLUS S7-1500 CPU 1515R-2 PN TX RAIL (6AG2515-2RM00-4AB0): All versions 
+SIPLUS S7-1500 CPU 1516-3 PN/DP (6AG1516-3AN00-2AB0): All versions 
+SIPLUS S7-1500 CPU 1516-3 PN/DP (6AG1516-3AN00-7AB0): All versions 
+SIPLUS S7-1500 CPU 1516-3 PN/DP (6AG1516-3AN01-7AB0): All versions 
+SIPLUS S7-1500 CPU 1516-3 PN/DP (6AG1516-3AN01-2AB0): All versions 
+SIPLUS S7-1500 CPU 1516-3 PN/DP (6AG1516-3AN02-2AB0): All versions 
+SIPLUS S7-1500 CPU 1516-3 PN/DP (6AG1516-3AN02-7AB0): All versions 
+SIPLUS S7-1500 CPU 1516-3 PN/DP RAIL (6AG2516-3AN02-4AB0): All versions 
+SIPLUS S7-1500 CPU 1516-3 PN/DP TX RAIL (6AG2516-3AN01-4AB0): All versions 
+SIPLUS S7-1500 CPU 1516F-3 PN/DP (6AG1516-3FN00-2AB0): All versions 
+SIPLUS S7-1500 CPU 1516F-3 PN/DP (6AG1516-3FN02-2AB0): All versions 
+SIPLUS S7-1500 CPU 1516F-3 PN/DP (6AG1516-3FN01-2AB0): All versions 
+SIPLUS S7-1500 CPU 1516F-3 PN/DP RAIL (6AG2516-3FN02-2AB0): All versions 
+SIPLUS S7-1500 CPU 1516F-3 PN/DP RAIL (6AG2516-3FN02-4AB0): All versions 
+SIPLUS S7-1500 CPU 1517H-3 PN (6AG1517-3HP00-4AB0): All versions 
+SIPLUS S7-1500 CPU 1518-4 PN/DP (6AG1518-4AP00-4AB0): All versions 
+SIPLUS S7-1500 CPU 1518-4 PN/DP MFP (6AG1518-4AX00-4AC0): All versions 
+SIPLUS S7-1500 CPU 1518F-4 PN/DP (6AG1518-4FP00-4AB0): All versions 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 MISSING IMMUTABLE ROOT OF TRUST IN HARDWARE CWE-1326
+The affected devices do not contain an immutable root of trust in hardware. Due to this, the integrity of the code executed on the device cannot be validated during load-time. An attacker with physical access to the device could use this to replace the boot image of the device and execute arbitrary code. 
+CVE-2022-38773 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated. the CVSS vector string is (CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Yuanzhe Wu and Ang Cui from Red Balloon Security reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens identified the following specific workarounds and mitigations users can apply to reduce risk: 
+
+Restrict physical access to affected devices to trusted personnel to avoid hardware tampering, such as placing devices in locked control cabinets. 
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security, and follow the recommendations in the product manuals. Siemens has published additional information on industrial security. 
+Siemens has released the following new hardware versions of the S7-1500 product family, which contain a new secure boot mechanism that resolves the vulnerability: 
+
+SIMATIC S7-1500 CPU 1511-1 PN (6ES7511-1AL03-0AB0) 
+SIMATIC S7-1500 CPU 1513-1 PN (6ES7513-1AM03-0AB0) 
+SIMATIC S7-1500 CPU 1511F-1 PN (6ES7511-1FL03-0AB0) 
+SIMATIC S7-1500 CPU 1513F-1 PN (6ES7513-1FM03-0AB0) 
+SIMATIC S7-1500 CPU 1513R-1 PN (6ES7513-1RM03-0AB0) 
+SIMATIC S7-1500 CPU 1515R-2 PN (6ES7515-2RN03-0AB0) 
+
+Siemens is working on new hardware versions for additional PLC types to address this vulnerability further.  
+For further inquiries on security vulnerabilities in Siemens products and solutions, users should contact Siemens ProductCERT. 
+For more information, see the associated Siemens security advisory SSA-482757 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should: 
+
+Ensure the least-privilege user principle is followed. 
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. This vulnerability has a low attack complexity. 

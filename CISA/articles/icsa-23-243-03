@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: PTC
+Equipment: Kepware KepServerEX
+Vulnerabilities: Uncontrolled Search Path Element, Improper Input Validation, Insufficiently Protected Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain elevated privileges, execute arbitrary code, and obtain server hashes and credentials.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Kepware KepServerEX, an industrial automation control platform, are affected:
+
+Kepware KepServerEX: version 6.14.263.0 and prior
+ThingWorx Kepware Server: version 6.14.263.0 and prior
+ThingWorx Industrial Connectivity: version 8.0 to 8.5
+
+3.2 Vulnerability Overview
+3.2.1 UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+The installer application of KEPServerEX is vulnerable to DLL search order hijacking. This could allow an adversary to repackage the installer with a malicious DLL and trick users into installing the trojanized software. Successful exploitation could lead to code execution with administrator privileges.
+CVE-2023-29444 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H).
+3.2.2 UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+KEPServerEX binary is vulnerable to DLL search order hijacking. A locally authenticated adversary could escalate privileges to administrator by planting a malicious DLL in a specific directory.
+CVE-2023-29445 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H).
+3.2.3 IMPROPER INPUT VALIDATION CWE-20
+KEPServerEx is vulnerable to UNC path injection via a malicious project file. By tricking a user into loading a project file and clicking a specific button in the GUI, an adversary could obtain Windows user NTLMv2 hashes, and crack them offline.
+CVE-2023-29446 has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.4 INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The KEPServerEX Configuration web server uses basic authentication to protect user credentials. An adversary could perform a man-in-the-middle (MitM) attack via ARP spoofing to obtain the web server's plaintext credentials.
+CVE-2023-29447 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sam Hanson of Dragos reported these vulnerabilities to CISA.
+4. MITIGATIONS
+PTC is aware of these vulnerabilities and is developing patches to address them. PTC expects these issues to be addressed by November 2023. This advisory will be updated when these patches are ready.
+PTC recommends users follow the directions in the secure configuration documentation.
+Users are encouraged to refer to PTC's security advisory on these vulnerabilities for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation that specifically targets these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+August 31, 2023: Initial Publication
+October 12, 2023: Update A - Fixed ThingWorx Kepware Server affected version and added Thingworx Industrial Connectivity to Affected Products
+

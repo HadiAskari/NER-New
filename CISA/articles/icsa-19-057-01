@@ -1,0 +1,92 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Moxa
+Equipment: IKS, EDS
+Vulnerabilities: Classic Buffer Overflow, Cross-site Request Forgery, Cross-site Scripting, Improper Access Controls, Improper Restriction of Excessive Authentication Attempts, Missing Encryption of Sensitive Data, Out-of-bounds Read, Unprotected Storage of Credentials, Predictable from Observable State, Uncontrolled Resource Consumption
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-057-01 Moxa IKS, EDS that was published February 26, 2019, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow the reading of sensitive information, remote code execution, arbitrary configuration changes, authentication bypass, sensitive data capture, reboot of the device, device crash, or full compromise of the device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 1 of 3 ---------
+The following Moxa industrial switches are affected:
+
+IKS-G6824A series Version 5.6 and prior
+EDS-405A series Version 3.8 and prior
+EDS-408A series Version 3.8 and prior
+EDS-510A series Version 3.8 and prior
+
+Please note that some of these models are not affected by all the vulnerabilities listed below. See Moxa’s security advisory for further details.
+--------- End Update A Part 1 of 3 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    CLASSIC BUFFER OVERFLOW CWE-120
+Several buffer overflow vulnerabilities have been identified, which may allow remote code execution.
+CVE-2019-6557 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+A cross-site request forgery has been identified, which may allow for the execution of unauthorized actions on the device.
+CVE-2019-6561 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.3    CROSS-SITE SCRIPTING CWE-79
+The device fails to properly validate user input, giving unauthenticated and authenticated attackers the ability to perform XSS attacks, which may be used to send a malicious script.
+CVE-2019-6565 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.4    IMPROPER ACCESS CONTROL CWE-284
+The device does not properly check authority on server side, which results in a read-only user being able to perform arbitrary configuration changes.
+CVE-2019-6520 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.5    IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+The devices do not implement sufficient measures to prevent multiple failed authentication attempts, which may allow an attacker to discover passwords via brute force attack.
+CVE-2019-6524 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.6    MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+The devices use plaintext transmission of sensitive data, which may allow an attacker to capture sensitive data such as an administrative password.
+CVE-2019-6526 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.7    OUT-OF-BOUNDS READ CWE-125
+Failure to properly check array bounds may allow an attacker to read device memory on arbitrary addresses, which may allow an attacker to retrieve sensitive data or cause device reboot.
+CVE-2019-6522 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.8    UNPROTECTED STORAGE OF CREDENTIALS CWE-256
+The devices store plaintext passwords, which may allow sensitive information to be read by someone with access to the device.
+CVE-2019-6518 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.9    PREDICTABLE FROM OBSERVABLE STATE CWE-341
+The software generates a predictable cookie calculated with an MD5 hash, allowing an attacker to capture the administrator's password, which could lead to a full compromise of the device.
+CVE-2019-6563 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.10    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The devices allow remote authenticated users to cause a denial of service via a specially crafted packet, which may cause the switch to crash.
+CVE-2019-6559 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, and Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+4.4 RESEARCHER
+--------- Begin Update A Part 2 of 3 ---------
+Ivan B, Sergey Fedonin, Vyacheslav Moskvin, Ilya Karpov, Evgeny Druzhinin, and Georgy Zaytsev of Positive Technologies Security reported these vulnerabilities to CISA.
+--------- End Update A Part 2 of 3 ---------
+5. MITIGATIONS
+--------- Begin Update A Part 3 of 3 ---------
+Moxa recommends users implement the following measures to mitigate these vulnerabilities.
+
+Install firmware patch. Patches may be requested from Moxa Customer Service (login required):
+Set EDS series Web configuration as "https only” to reduce predictable session ID concern. 
+
+--------- End Update A Part 3 of 3 ---------
+Please see Moxa’s security advisory for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

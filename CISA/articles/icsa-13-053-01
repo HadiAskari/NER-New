@@ -1,0 +1,36 @@
+
+Overview
+This advisory was originally posted to the US-CERT secure portal library on February 22, 2013, and is now being released to the ICS-CERT Web page. This advisory provides mitigation details for a vulnerability that impacts the Emerson DeltaV MD and SD controllers.Independent researcher Joel Langill has identified an uncontrolled resource consumption vulnerability in Emerson’s DeltaV MD and SD controllers that could lead to a denial of service (DoS). Emerson has produced a hotfix that mitigates this vulnerability. Exploitation of this vulnerability could cause loss of availability.
+Affected Products
+The following Emerson products are affected:
+
+DeltaV SE3006 SD Plus Controller Version 11.3.1 and earlier,
+DeltaV VE3005 Controller MD Hardware Version 10.3.1 and earlier,
+DeltaV VE3005 Controller MD Hardware Version 11.3.1 and earlier,
+DeltaV VE3006 Controller MD PLUS Hardware Version 10.3.1 and earlier, and
+DeltaV VE3006 Controller MD PLUS Hardware Version 11.3.1 and earlier.
+
+Impact
+Successful exploitation of this vulnerability could result in a DoS. This could also affect process controls as the controller restarts.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Emerson is a global manufacturing and technology company offering multiple products and services in the industrial, commercial, and consumer markets through its network power, process management, industrial automation, climate technologies, and tools and storage businesses.Emerson’s DeltaV is a general purpose process control system that is used worldwide primarily in the oil and gas and chemical industries.
+Vulnerability Characterization
+Vulnerability Overview
+Uncontrolled Resource ConsumptionCWE-400: Uncontrolled Resource Consumption, http://cwe.mitre.org/data/definitions/400.html, Web site last accessed March 06, 2013.
+Publicly available network mapping tools can be used to produce a list of available ports including 23/tcp, 513/tcp, and 161/udp. Sending a specially crafted packet to these ports could result in a restart of the controller causing a DoS.CVE-2012-4703NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4703, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.1 has been assigned; the CVSS vector string is (AV:A/AC:L/Au:N/C:N/I:N/A:C).
+Vulnerability Details
+Exploitability
+This vulnerability can be exploited using commonly available network mapping tools. This vulnerability is not exploitable remotely.
+Existence of Exploit
+Public exploits may exist that could target this vulnerability.
+Difficulty
+An attacker with a low skill would be able to exploit this vulnerability.
+Mitigation
+Emerson has created a hotfix that resolves this vulnerability. Customer notification KBA_NK-1300-0007 will be sent to customers who own a DeltaV control system. The notification provides details of the vulnerability, recommended mitigations, and instructions on obtaining and installing the hotfix. Emerson recommends that customers using DeltaV v7.x, v8.x, v9.3.x, v10.3, and v11.3 or earlier update to DeltaV v10.3.1 or v11.3.1 or install the DeltaV Controller Firewall to mitigate this vulnerability. Customers can obtain the customer notification by contacting their Emerson sales office.According to Emerson and confirmed by Joel Langill, the DeltaV Controller Firewall mitigates this vulnerability; however, Emerson recommends that all users install the hotfix.ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://www.us-cert.gov/control_systems/practices/Recommended_Practices.html, Web site last accessed March 06, 2013. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.Target Cyber Intrusion Detection and Mitigation Strategies, http://www.us-cert.gov/control_systems/pdf/ICS-TIP-12-146-01B.pdf, Web site last accessed March 06, 2013.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

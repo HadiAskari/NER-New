@@ -1,0 +1,61 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on November 1, 2016, and is being released to the NCCIC/ICS-CERT web site.
+Smiths Medical has reported two vulnerabilities in Smiths Medical’s CADD-Solis Medication Safety Software that were identified by Andrew Gothard of Newcastle Upon Tyne Hospitals NHS Foundations Trust. Smiths Medical has produced new versions to mitigate these vulnerabilities. Smiths Medical reports that an independent security expert has tested the new versions to validate that they resolve the identified vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following CADD-Solis Medication Safety Software versions are affected:
+
+Smiths Medical CADD-Solis Medication Safety Software, Version 1.0;
+Smiths Medical CADD-Solis Medication Safety Software, Version 2.0;
+Smiths Medical CADD-Solis Medication Safety Software, Version 3.0; and
+Smiths Medical CADD-Solis Medication Safety Software, Version 3.1
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow an authenticated user to add users, delete users, and to modify permissions via the CADD-Solis Medication Safety Software. Drug libraries can also be modified in the CADD-Solis Medication Safety Software. However, to update the drug libraries on a pump, a laptop with the CADD-Solis Medication Safety Software would have to be physically plugged into one of two different types of pumps, the CADD-Prizm System and the CADD-Solis Ambulatory Infusion Pump.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment and specific clinical usage.
+BACKGROUND
+Smiths Medical is headquartered in Plymouth, Minnesota, and is a subsidiary of Smiths Group plc, which is a UK-based company.
+The affected product, the CADD-Solis Medication Safety Software, is an application that is used to set dosage limits for infusion pumps. According to Smiths Medical, the CADD-Solis Medication Safety Software can interface with the CADD-Prizm System and the CADD-Solis Ambulatory Infusion Pump, which are deployed across the Healthcare and Public Health sector. Smiths Medical estimates that this product is sold worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCECWE-732: Incorrect Permission Assignment for Critical Resource, https://cwe.mitre.org/data/definitions/732.html, web site last accessed December 01, 2016.
+
+CADD-Solis Medication Safety Software grants an authenticated user elevated privileges on the SQL database, which would allow an authenticated user to modify drug libraries, add and delete users, and change user permissions. According to Smiths-Medical, physical access to the pump is required to install drug library updates.
+CVE-2016-8355NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8355, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H, web site last accessed December 01, 2016.
+
+MAN-IN-THE-MIDDLECWE-300: Channel Accessible by Non-Endpoint (‘Man-in-the-Middle’), https://cwe.mitre.org/data/definitions/300.html, web site last accessed December 01, 2016.
+
+The affected software does not verify the identities at communication endpoints, which may allow a remote attacker to gain access to the communication channel between endpoints.
+CVE-2016-8358NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8358, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.5 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H, web site last accessed December 01, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Smiths Medical has released new versions of the CADD-Solis Medication Safety Software, which mitigates the identified vulnerabilities. The new versions of Smiths Medical’s CADD-Solis Medication Safety Software are Version 3.2, which is distributed within the continental US, and Version 4.1, which is released outside the continental US.
+Smiths Medical recommends that CADD-Solis Medication Safety Software users install the applicable new version. In addition, Smiths Medical also recommends that users take the following additional security measures:
+
+Apply strict password standards across systems to include, requiring the use of upper case, lower case, special characters, and a minimum password length of 8 characters.
+Establish and effectively manage an Active directory.
+Create an SQL Express database account with managed permissions for use with the CADD-Solis Medication Safety Software.
+Establish and assign managed Services Accounts for all servers and medical infusion pumps.
+Use Virtual Local Area Network (VLAN) tagging.
+Implement server hardening procedures for both SQL and Windows servers.
+
+For additional information about the identified vulnerabilities or to obtain the new version of the CADD-Solis Medication Safety Software, contact Smiths Medical Technical Support at:
+Telephone: +1 (800) 258 5361 or +01 614 210 7300;
+Email: info.asd@smiths-medical.com.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all medical devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate all medical devices and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable from adjacent network/low attack complexity
+Vendor: Host Engineering
+Equipment: H0-ECOM100 Communications Module
+Vulnerability: Stack-based Buffer overflow
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could crash the device being accessed, leading to a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following firmware versions of H0-ECOM100 Communications Module, a module to communicate with programmable logic controllers, are affected:
+
+Firmware v5.0.155 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+Using custom code, an attacker can write into name or description fields on the affected product larger than the appropriate buffer size causing a stack-based buffer overflow. This may allow an attacker to crash the affected device or cause it to become unresponsive.
+CVE-2022-3228 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+David Formby and Caleb Purcell of Fortiphyd Logic reported this vulnerability to CISA.
+4. MITIGATIONS
+Host Engineering recommends the following to mitigate the risk:
+To update the firmware in the H0-ECOM100 to version v5.0.156 or later, use the free program utility called NetEdit3, downloadable from Host Engineering’s Website, then use the follow steps:
+
+In the NetEdit3 software's menu, select File --> Download Newest Firmware (Live Update).... This pulls up the Live Update dialog
+In the Live Update dialog, press the <Go!> button, and the window will indicate which files were uploaded and their storage locations (there are default locations).
+Press the <OK> button to exit the Live Update dialog. Upon exiting this dialog, NetEdit3 will scan the network for new devices and only the Host Engineering Ethernet devices (like the H0-ECOM100) will respond and be displayed in a list.
+Host Engineering recommends ceasing all communication with the H0-ECOM100 before attempting to update its firmware. Specifically, the PLC in should be placed in Stop mode and/or disconnecting all other devices, such as HMIs or other ECOM100s, potentially communicating with it.
+Once the list displays in NetEdit3, right-click H0-ECOM100 and select, Update Firmware.... This will pull up an Open file dialog. However, in the File name parameter, the latest firmware file will already be selected.
+Press the <Open> button. This will pull up the Confirm Update dialog asking a user to continue.
+Press the <Yes> button to update the firmware.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

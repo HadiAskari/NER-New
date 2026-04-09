@@ -1,0 +1,77 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Mitsubishi Electric
+Equipment: GOT2000 compatible HMI software, CC-Link IE TSN Industrial Managed Switch, MELSEC iQ-R Series OPC UA Server Module
+Vulnerabilities: Infinite Loop, OS Command Injection
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-22-221-01 Mitsubishi Electric Multiple Factory Automation Products (Update C) that was published November 01, 2022, to the ICS webpage on cisa.gov/ics. 
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could create a denial-of-service condition or enable arbitrary code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following version of GT SoftGOT2000 is affected:
+
+GOT2000 compatible HMI software (GT SoftGOT2000): Version 1.275M 
+CC-Link IE TSN Industrial Managed Switch (NZ2MHG-TSNT8F2, NZ2MHG-TSNT4): Version 03 and prior [affected by CVE-2022-0778 only] 
+MELSEC iQ-R Series OPC UA Server Module (RD81OPC96): Version 08 and prior [affected by CVE-2022-0778 only] 
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+A vulnerability in OpenSSL creates the potential for an infinite loop in the affected product, which could lead to a denial-of-service condition.
+CVE-2022-0778 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+A vulnerability in OpenSSL creates the potential for OS command injection in the affected product, which could lead to arbitrary code execution.
+CVE-2022-1292 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Mitsubishi Electric reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Mitsubishi Electric recommends the following mitigations for the affected products:
+
+GOT2000 compatible HMI software: Mitsubishi Electric has released a patch for these issues and recommends users update affected products to Version 1.280S or later. Users should contact Mitsubishi Electric to obtain the patch. 
+
+
+CC-Link IE TSN Industrial Managed Switch: Mitsubishi Electric has released fixed firmware for these issues and recommends users update affected products to Version 04 or later. Users should contact Mitsubishi Electric to obtain the fixed firmware version. 
+
+To update affected CC-Link IE TSN Industrial Managed Switch products, log into the product with the web interface and go to [System] → [System Management] → [Firmware Upgrade] from the Function menu after obtaining the updated firmware file. 
+
+
+
+
+CC-Link IE TSN Industrial Managed Switch: Mitsubishi Electric recommends users to log into NZ2MHG-TSNT8F2 or NZ2MHG-TSNT4 with the web interface and change the username and password from their default setting in [Account Management] on the function menu. They are also recommended to set proper access permissions for different users. 
+
+--------- Begin Update D part 1 of 1 ---------
+
+
+MELSEC iQ-R Series OPC UA Server Module: Mitsubishi Electric has released the fixed firmware for these issues and recommends users update affected products to Version 09 or later. Users should contact Mitsubishi Electric to obtain the fixed firmware version. Mitsubishi Electric recommends users ensure the OPC UA Client is updated to the latest version and to use legitimate certificates on the OPC UA Client side. 
+
+
+To update the firmware of the affected device, use an SD card and refer to the “MELSEC iQ-R Module Configuration Manual (SH-081262ENG)”. 
+
+
+
+
+--------- End Update D part 1 of 1 ---------
+For instructions on how to check the product version and more information regarding contacting Mitsubishi Electric, refer to Mitsubishi Electric’s security advisory.
+Mitsubishi Electric recommends users take the following precautions to minimize the risk of these vulnerabilities being exploited:
+
+When internet access is required, use a virtual private network (VPN) to prevent unauthorized access.
+Use the products within a LAN and block access from untrusted networks and hosts.
+For GOT2000 compatible HMI software: Update the OPC UA server to the latest version available.
+For GOT2000 compatible HMI software: Install antivirus software on computers running the affected software.
+Restrict physical access to computers running the affected software.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

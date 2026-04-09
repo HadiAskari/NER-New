@@ -1,0 +1,59 @@
+
+OVERVIEW
+This advisory provides mitigation details for vulnerabilities that impact the Siemens Scalance X200 IRT.
+Siemens has identified multiple vulnerabilities in Siemens Scalance X200 IRT. Siemens has produced an update that mitigates these vulnerabilities. Siemens has tested the update to validate that it resolves the vulnerabilities. Exploitation of these vulnerabilities could allow an attacker to execute privileged commands using an unprivileged account. This could affect multiple industries, including food and beverage, water and wastewater, oil and gas, and chemical sectors worldwide.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SCALANCE X204IRT versions < V5.1.0
+SCALANCE X204IRT PRO versions < V5.1.0
+SCALANCE X202-2IRT versions < V5.1.0
+SCALANCE X202-2P IRT versions < V5.1.0
+SCALANCE X202-2P IRT PRO versions < V5.1.0
+SCALANCE X201-3P IRT versions < V5.1.0
+SCALANCE X201-3P IRT PRO versions < V5.1.0
+SCALANCE X200-4P IRT versions < V5.1.0
+SCALANCE XF204IRT versions < V5.1.0
+
+IMPACT
+Successful exploitation of these vulnerabilities may result in an attacker executing privileged commands using an unprivileged account.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany. Siemens develops products mainly in the energy, transportation, and healthcare sectors.
+Scalance X switches are used to connect industrial components like PLCs or HMIs. These switches have a Web interface to enable administrators to change the configuration using a common Web browser.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLSCWE-264: Permissions, Privileges, and Access Controls,  http://cwe.mitre.org/data/definitions/264.html, Web site last accessed June 18, 2013.
+
+The Scalance X200 IRT user privileges for the Web interface are verified properly on the client side but not properly verified on the server side. This could allow the attacker to execute privileged commands using an unprivileged account.
+CVE-2013-3633NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3633, Web site last accessed June 18, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 8.0 has been assigned by the vendor; the CVSS vector string is (AV:N/AC:L/Au:S/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:P/I:P/A:C, Web site last accessed June 18, 2013.
+
+PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLSa
+
+The Scalance SNMPv3 does not properly check user credentials. This could allow the attacker to execute privileged SNMP commands while only having unprivileged credentials.
+CVE-2013-3634NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3634, Web site last accessed June 18, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 7.5 has been assigned by the vendor; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P, Web site last accessed June 18, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens has produced a software update, Scalance X-200IRT V5.1.0 that resolves these vulnerabilities. Siemens recommends that asset owners and operators contact Siemens customer support to acquire the update.
+Siemens update information is located here:
+http://support.automation.siemens.com/WW/view/en/73470284
+Siemens security advisory is located here:
+http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-170686.pdf
+Siemens suggests that if it is not possible to install the update, a workaround for CVE-2013-3634 is either to disable SNMP or to completely disable any read-write access.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, , http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed June 18, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed June 18, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

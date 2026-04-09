@@ -1,0 +1,84 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIPROTEC 4, SIPROTEC Compact, DIGSI 4, and EN100 Ethernet module
+Vulnerabilities: Missing Authentication for Critical Function, Inadequate Encryption Strength
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the updated advisory titled ICSA-18-067-01 Siemens SIPROTEC 4, SIPROTEC Compact, DIGSI 4, and EN100 Ethernet Module (Update C) that was published March 12, 2019, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to upload a modified device configuration that could overwrite access authorization passwords, or allow an attacker to capture certain network traffic that could contain authorization passwords.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that the vulnerabilities affect the following products:
+
+DIGSI 4: All versions prior to v4.92
+EN100 Ethernet module IEC 61850 variant: All versions prior to v4.30
+EN100 Ethernet module PROFINET IO variant: All versions
+EN100 Ethernet module Modbus TCP variant: All versions
+
+--------- Begin Update D Part 1 of 2 --------
+
+EN100 Ethernet module DNP3 variant: All versions prior to v1.05.00
+
+--------- End Update D Part 1 of 2 --------
+
+EN100 Ethernet module IEC 104 variant: All versions
+SIPROTEC Compact 7SJ80: All versions prior to v4.77. Only affected by CVE-2018-4839
+SIPROTEC Compact 7SK80: All versions prior to v4.77. Only affected by CVE-2018-4839
+SIPROTEC 4 7SJ61, 7SJ62, and 7SJ64: All versions prior to v4.96. Only affected by CVE-2018-4839
+SIPROTEC 4 7SJ66: All versions prior to v4.30. Only affected by CVE-2018-4839
+SIPROTEC 4 7SD80: All versions prior to v4.70. Only affected by CVE-2018-4839
+Other SIPROTEC Compact relays: All versions. Only affected by CVE-2018-4839
+Other SIPROTEC 4 relays: All versions. Only affected by CVE-2018-4839
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1   MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Successful exploitation of this vulnerability could allow an attacker to upload a modified device configuration, allowing an overwrite of access authorization passwords.
+CVE-2018-4840 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.2   INADEQUATE ENCRYPTION STRENGTH CWE-326
+Successful exploitation of this vulnerability could allow an attacker with local access to the engineering system or in a privileged network position to capture certain network traffic, and possibly reconstruct access authorization passwords.
+CVE-2018-4839 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Ilya Karpov and Dmitry Sklyarov from Positive Technologies reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+Siemens has provided the following updates for mitigations:
+
+DIGSI 4:  Update to v4.92.
+EN100 Ethernet module IEC 61850 variant:  Update to v4.30.
+
+--------- Begin Update D Part 2 of 2 --------
+
+EN100 Ethernet module DNP3 variant: Update to v4.30 and configure DIGSI 4 connection password.
+
+--------- End Update D Part 2 of 2 --------
+
+SIPROTEC Compact 7SJ80:  Update to v4.77.
+SIPROTEC Compact 7SK80: Update to v4.77.
+SIPROTEC 4 7SJ61, 7SJ62, and 7SJ64: Update to v4.96.
+SIPROTEC 4 7SJ66:  Update to v4.30.
+SIPROTEC 4 7SD80:  Update to v4.70.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+Recommended security guidelines to secure substations and defense in depth can be found at:  https://www.siemens.com/gridsecurity.
+For more information on these vulnerabilities and associated software updates, please see Siemens security advisory SSA-203306
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the technical information paper, ICS-TIP-12-146-01B Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,49 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on June 24, 2014, and is being released to the NCCIC/ICS-CERT web site.
+Martin Jartelius of Outpost24 has identified an authentication bypass vulnerability in Honeywell FALCON XLWeb controllers. Juan Francisco Bolivar has identified cross-site scripting vulnerabilities in Honeywell FALCON XLWeb controllers. Honeywell has produced an update that mitigates both vulnerabilities. Mr. Jartelius has tested the update to validate that it resolves the vulnerability that he reported. These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Honeywell FALCON XLWeb controller versions are affected:
+
+FALCON Linux 2.04.01 or older
+FALCON XLWebExe 2.02.11 or older.
+
+IMPACT
+An attacker may use these vulnerabilities to generate a valid login for an administrative user on the Honeywell FALCON XLWeb controller giving the attacker full administrator access to the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Honeywell is a US-based company that maintains offices worldwide.
+The affected products, FALCON XLWeb controllers, are web-based SCADA systems. According to Honeywell, FALCON XLWeb controllers are deployed across several sectors including Critical Manufacturing, Energy, Water and Wastewater Systems, and others. According to Honeywell, the affected controllers are used by customers primarily in Europe and the Middle East.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+FILE ACCESSIBLE TO EXTERNAL PARTIESCWE-552: Files or Directories Accessible to Parties, http://cwe.mitre.org/data/definitions/552.html, web site last accessed July 22, 2014.
+
+The change password page can be accessed without a valid session or authentication. This page can be used to disclose a user’s password hash or login as a user without knowing the user’s password, making it possible for an attacker to login as an administrative user.
+CVE-2014-2717NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2717, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.6 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:H/Au:N/C:C/I:C/A:C, web site last accessed July 22, 2014.
+
+CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation (“Cross-site Scripting”), http://cwe.mitre.org/data/definitions/79.html, web site last accessed July 22, 2014.
+
+The web server is vulnerable to several cross-site scripting attacks. By sending invalid input through the XL Web controllers, an attacker can execute arbitrary HTML and script code in another user’s browser session.
+CVE-2014-3110NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3110, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:N, web site last accessed July 22, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit these vulnerabilities.
+MITIGATION
+Honeywell posted a Security Bulletin on Centraline PartnerwebCentraline by Honeywell login page, https://www.centraline.com/index.php?id=1, web site last accessed July 22, 2014. (login required) that tells how to update FALCON controllers to the latest version.
+Honeywell also offers the following advice:
+
+FALCON controllers (referred to as “XLWeb”) can be found unprotected in the Internet. Because this poses the risk of unauthorized access, immediate action should be taken in order to protect them from unauthorized access.
+All Internet facing FALCON controllers should be operated either in internal networks, or use a coded VPN connection for internet access, in order to limit unauthorized access.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Advantech
+Equipment: WebAccess/SCADA
+Vulnerabilities: Path Traversal, Stack-based Buffer Overflow, Heap-based Buffer Overflow, Out-of-bounds Read, Out-of-bounds Write, Untrusted Pointer Dereference
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow information disclosure, deletion of files, and remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of WebAccess/SCADA, a SCADA software platform, are affected:
+
+WebAccess/SCADA Versions 8.3.5 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A path traversal vulnerability is caused by a lack of proper validation of a user-supplied path prior to use in file operations. An attacker can leverage this vulnerability to delete files while posing as an administrator.
+CVE-2019-10985 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)
+3.2.2    STACK-BASED BUFFER OVERFLOW CWE-121
+Multiple stack-based buffer overflow vulnerabilities are caused by a lack of proper validation of the length of user-supplied data. Exploitation of these vulnerabilities may allow remote code execution.
+CVE-2019-10991 has been assigned to these vulnerabilities. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    HEAP-BASED BUFFER OVERFLOW CWE-122
+Multiple heap-based buffer overflow vulnerabilities are caused by a lack of proper validation of the length of user-supplied data. Exploitation of these vulnerabilities may allow remote code execution.
+CVE-2019-10989 has been assigned to these vulnerabilities. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    OUT-OF-BOUNDS READ CWE-125
+An out-of-bounds read vulnerability is caused by a lack of proper validation of user-supplied data. Exploitation of this vulnerability may allow disclosure of information.
+CVE-2019-10983 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.5    OUT-OF-BOUNDS WRITE CWE-787
+Multiple out-of-bounds write vulnerabilities are caused by a lack of proper validation of the length of user-supplied data. Exploitation of these vulnerabilities may allow remote code execution.
+CVE-2019-10987 has been assigned to these vulnerabilities. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.6    UNTRUSTED POINTER DEREFERENCE CWE-822
+Multiple untrusted pointer dereference vulnerabilities may allow a remote attacker to execute arbitrary code.
+CVE-2019-10993 has been assigned to these vulnerabilities. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: East Asia, United States, Europe
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Mat Powell, Natnael Samson (@NattiSamson) and EljahLG, working with Trend Micro’s Zero Day Initiative (ZDI), reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Advantech has released Version 8.4.1 of WebAccess/SCADA to address the reported vulnerabilities. Users can download the latest version of WebAccess/SCADA at the following location (registration required):
+https://support.advantech.com/support/DownloadSRDetail_New.aspx?SR_ID=1-MS9MJV&Doc_Source=Download
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks
+
+No known public exploits specifically target these vulnerabilities.

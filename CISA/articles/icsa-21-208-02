@@ -1,0 +1,54 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.9
+ATTENTION: Exploitable remotely
+Vendor: Mitsubishi Electric
+Equipment: GOT2000 series and GT SoftGOT2000
+Vulnerability: Missing Synchronization
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Mitsubishi Electric reports this vulnerability affects the MODBUS/TCP slave communication function of following products:
+
+GOT2000 models GT27, GT25, GT23: All communication driver versions between 01.19.000 and 01.39.010. These versions are affected when using the “MODBUS/TCP Slave, Gateway” communication driver.
+GT SoftGOT2000: All versions between 1.170C and 1.256S. These versions are affected when configured to use “MODBUS/TCP Slave” communication.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING SYNCHRONIZATION CWE-820
+A malicious attacker can stop the communication function of products by rapidly and repeatedly connecting and disconnecting to and from the MODBUS/TCP communication port on GOT, which may cause a denial-of-service condition. Restart of hardware and software is required to recover.
+CVE-2021-20592 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Parul Sindhwad and Dr. Faruk Kazi of COE-CNDS Lab, VJTI reported this vulnerability to CISA.
+4. MITIGATIONS
+Mitsubishi Electric recommends users upgrade to the following versions:
+
+GOT2000 models GT27, GT25, GT23: Update communication driver to version 01.40.000 or later (Fixed communication driver is included in GT Designer3 Version1(GOT2000) Version 1.260W or later)
+GT SoftGOT2000: Update to Version 1.26W or later
+
+For specific update instructions and additional details see the Mitsubishi Electric advisory.
+Mitsubishi Electric recommends users take the following mitigations to minimize the risk of this vulnerability:
+
+When connecting the products to the Internet, use a firewall or virtual private network (VPN), etc. to prevent unauthorized access.
+Use the products within the LAN and block access from untrusted networks and hosts.
+Install antivirus software on your computer that can access the product.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

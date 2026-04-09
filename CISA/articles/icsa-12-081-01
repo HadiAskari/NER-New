@@ -1,0 +1,60 @@
+
+Overview
+ICS-CERT originally released Advisory ICSA-12-081-01P on the US-CERT secure portal on March 21, 2012. This web page release was delayed to allow users time to download and install the update.
+Independent researcher Celil Unuver from SignalSec Corporation has identified two buffer overflow vulnerabilities in the WWCabFile component of the Wonderware System Platform, which is used by multiple applications that run on the platform. Invensys has produced a patch that resolves these vulnerabilities. Mr. Unuver has tested the patch and verified that it resolves the vulnerabilities.
+Affected Products
+The following Invensys products and versions are affected:
+
+Wonderware Application Server 2012 and all prior versions
+Foxboro Control Software Version 3.1 and all prior versions
+InFusion CE/FE/SCADA 2.5 and all prior versions
+Wonderware Information Server 4.5 and all prior versions
+ArchestrA Application Object Toolkit 3.2 and all prior versions
+InTouch 10.0 to 10.5 only (earlier versions of InTouch are not affected).
+
+NOTE: The Wonderware Historian is part of the System Platform but is not affected by this Security Update.
+Impact
+Successfully exploiting these vulnerabilities will cause a buffer overflow that may allow remote code execution.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on theiroperational environment, architecture, and product implementation.
+Background
+Wonderware System Platform, along with the Foxboro Control Software, is used for designing, building, deploying, and maintaining standardized applications for manufacturing and infrastructure operations.
+The Wonderware Information Server is a component of the System Platform and is used for aggregating and presenting plant production and performance data.
+Vulnerability Characterization
+Vulnerability Overview
+Heap-Based Buffer Overflowhttp://cwe.mitre.org/data/definitions/122.html, website last accessed March 30, 2012.
+A heap-based overflow can be used to overwrite function pointers that exist in memory with pointers to the attacker’s code. Applications that do not explicitly use function pointers are still vulnerable, as unrelated run-time programs can leave operational function pointers in memory.
+The heap-based buffer overflow in WWCabFile ActiveX Component can be exploited by sending a long string of data to the “Open” member of the WWCabFile component.
+Common Vulnerabilities and Exposures (CVE) Identifier CVE-2012-0257 has been assigned to this vulnerability. According to Invensys, a CVSS V2 base score of 6.0 has also been assigned.
+Heap-Based Buffer Overflow
+The heap-based buffer overflow can be exploited by sending a long data string to the “AddFile” member of the WWCabFile component.
+CVE Identifier CVE-2012-0258 has been assigned to this vulnerability. According to Invensys, a CVSS V2 base score of 6.0 has also been assigned.
+Vulnerability Details
+Exploitability
+These vulnerabilities require user interaction to exploit, possibly by social engineering.
+Existence of Exploit
+No known public exploits specifically target these vulnerabilities.
+Difficulty
+Invensys has rated these vulnerabilities as a medium concern based on exploit difficulty and the potential that social engineering may be required.
+Mitigation
+Invensys encourages users affected by these vulnerabilities to follow the instructions in their security bulletin.
+Installation of the Security Update does not require a reboot. If multiple products are installed on the same node, the customer need only install the Security Update once.
+To install the update, Invensys recommends users to follow the instructions found in the ReadMe file for the product and component being installed. In general, Invensys recommends that users:
+
+Back up the Galaxy Database
+Back up the Wonderware Information Server Database
+Run the Security Update Utility.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in e-mail messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding e-mail scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

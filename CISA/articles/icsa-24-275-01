@@ -1,0 +1,53 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.3
+ATTENTION: Exploitable remotely/Low attack complexity
+Vendor: Optigo Networks
+Equipment: ONS-S8 - Spectra Aggregation Switch
+Vulnerabilities: Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion'), Weak Authentication
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to achieve remote code execution, arbitrary file upload, or bypass authentication.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of ONS-S8 - Spectra Aggregation Switch, an OT network management device, are affected:
+
+ONS-S8 - Spectra Aggregation Switch: 1.3.7 and prior
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER CONTROL OF FILENAME FOR INCLUDE/REQUIRE STATEMENT IN PHP PROGRAM ('PHP REMOTE FILE INCLUSION') CWE-98
+The web service for ONS-S8 - Spectra Aggregation Switch includes functions which do not properly validate user input, allowing an attacker to traverse directories, bypass authentication, and execute remote code.
+CVE-2024-41925 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-41925. A base score of 9.3 has been calculated; the CVSS vector string is (AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 WEAK AUTHENTICATION CWE-1390
+The web server for ONS-S8 - Spectra Aggregation Switch includes an incomplete authentication process, which can lead to an attacker authenticating without a password.
+CVE-2024-45367 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-45367. A base score of 9.3 has been calculated; the CVSS vector string is (AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Canada
+
+3.4 RESEARCHER
+Claroty Team82 reported this vulnerability to CISA.
+4. MITIGATIONS
+Optigo Networks recommends users always use a unique management VLAN for the port on the ONS-S8 that is used to connect to OneView.
+Optigo Networks also recommends users implement at least one of the following additional mitigations:
+
+Use a dedicated NIC on the BMS computer and exclusively this computer for connecting to OneView to manage your OT network configuration.
+Set up a router firewall with a white list for the devices permitted to access OneView.
+Connect to OneView via secure VPN.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+October 1, 2024: Initial Publication
+

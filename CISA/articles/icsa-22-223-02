@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Teamcenter
+Vulnerabilities: Command Injection, Infinite Loop
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to command injection and denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Teamcenter, a product lifecycle management software, are affected:
+
+Teamcenter v12.4: All versions prior to v12.4.0.15
+Teamcenter v13.0: All versions prior to v13.0.0.10
+Teamcenter v13.1: All versions prior to v13.1.0.10
+Teamcenter v13.2: All versions prior to v13.2.0.9
+Teamcenter v13.3: All versions prior to v13.3.0.5
+Teamcenter v14.0: All versions prior to v14.0.0.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND (’COMMAND INJECTION’) CWE-77
+The affected product is vulnerable to command injection, which may allow an attacker to remotely execute arbitrary code.
+CVE-2022-34660 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:R/S:C/C:H/I:H/A:H).
+3.2.2    LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+The affected product is vulnerable to an attack that causes the product to enter an infinite loop and use CPU cycles. This could allow an attacker to cause a denial-of-service condition.
+CVE-2022-34661 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Han Lee from Apple Information Security reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has identified the following workarounds and mitigations users can apply to reduce risk:
+
+Harden the application’s host to prevent local access by untrusted or unauthorized personnel.
+Limit access to port 4544/tcp to known, trusted IP addresses with a firewall.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-759952
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

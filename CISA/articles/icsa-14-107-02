@@ -1,0 +1,45 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on April 17, 2014, and is now being released to the NCCIC/ICS-CERT web site.
+ICS-CERT received a report from the Zero Day Initiative (ZDI) concerning a Directory Traversal vulnerability affecting the InduSoft Web Studio application. This vulnerability was reported to ZDI by security researcher John Leitch. Successful exploitation of this vulnerability could allow remote execution of arbitrary code.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following InduSoft Web Studio version is affected:
+
+Web Studio Version 7.1
+
+IMPACT
+Successful exploitation of the reported vulnerability could allow an attacker to read files outside the web root and possibly perform arbitrary code execution. These actions can result in adverse application conditions and ultimately impact the production environment on which the supervisory control and data acquisition (SCADA) system is used.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+InduSoft is based in Austin, Texas.
+InduSoft Web Studio is a collection of automation tools to develop human-machine interfaces, SCADA systems, and embedded instrumentation systems.
+InduSoft Web Studio is often integrated as a third-party component in other vendors’ products. According to InduSoft, Web Studio is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, Food and Agriculture, Healthcare and Public Health, and Water and Wastewater Systems.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+PATH TRAVERSALCWE-22: Improper Limitation of a Pathname to a Restricted Directory (‘Path Traversal’), http://cwe.mitre.org/data/definitions/22.html, web site last accessed April 24, 2014.
+
+The NTWebServer (test web server installed with InduSoft Web Studio) contains a flaw that enables a malicious user to read files outside the web root. This can be exploited to read APP files that may contain application passwords. It may be possible to achieve remote code execution by exfiltrating credentials for Web Studio itself, then using them to remotely administer the targeted instance to deploy attacker controlled server-side code.
+CVE-2014-0780NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0780, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.5 has been assigned; the CVSS vector string is AV:N/AC:L/Au:N/C:P/I:P/A:P.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P, web site last accessed April 24, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+InduSoft did not intend for this web server to be used in real applications. It was provided as demonstration/training software (as stated in user manuals). They have created a mitigation for this vulnerability in InduSoft Web Studio v7.1+Service Pack 2+ Patch 4. Users may obtain this patch at the following location (you must be logged into your InduSoft account):
+http://download.indusoft.com/71.2.4/IWS71.2.4.zip
+InduSoft technical support can be contacted at:
+support@indusoft.com.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

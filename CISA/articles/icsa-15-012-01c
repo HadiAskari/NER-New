@@ -1,0 +1,53 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the updated advisory titled ICSA-15-012-01B CodeWrights GmbH HART DTM Vulnerability that was published January 27, 2015, on the NCCIC/ICS-CERT web site.
+Alexander Bolshev of Digital Security has identified an improper input validation vulnerability in CodeWrights GmbH HART Device Type Manager (DTM) libraries. CodeWrights GmbH produces DTM libraries for vendors of HART Device DTM products. CodeWrights GmbH has updated the libraries that mitigate this vulnerability. Using CodeWrights GmbH’s updated library for HART Device DTM, Emerson has tested the new library to validate that it resolves the vulnerability.
+AFFECTED PRODUCTS
+--------- Begin Update C Part 1 of 2 --------
+Any DTM written by CodeWrights GmbH DTMStudio prior to Version 1.5.151 is impacted. These libraries can be identified by a filename DDCH*Lib, where “*” is a wildcard string. Libraries prior to Version 1.4.181 are impacted.
+CodeWrights GmbH’s customers include the following vendor companies:
+
+ABB, (Please refer to the ABB web page, http://www.abb.com/cawp/abbzh254/2c9d1261d9fa1dcfc1257950002e4fbf.aspx, where ABB will publish notifications if any products are found to be affected by this vulnerability.)
+Berthold Technologies,
+Emerson,
+Endress+Hauser,
+Honeywell,
+Magnetrol, and
+Pepperl+Fuchs.
+
+Other companies may be impacted, and ICS-CERT will issue advisories for each vendor identified as remediation efforts are addressed. This advisory will be updated as necessary.
+IMPACT
+The vulnerability causes a buffer overflow in the HART Device DTM crashing the Field Device Tool (FDT) Frame Application. The Frame Application must then be restarted. The Frame Application is primarily used for remote configuration. Exploitation of this vulnerability does not result in loss of information, control, or view by the control system of the HART devices on the 4-20 mA HART Loop.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+--------- End Update C Part 1 of 2 --------
+BACKGROUND
+CodeWrights GmbH is a German-based company that provides device integration and management solutions. The affected library is a component within the FDT/DTM application used to integrate HART devices.
+CodeWrights GmbH supplies components that are used in DTMs of other vendors. HART Device DTM is deployed across several sectors including Chemical, Commercial Facilities, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems, and other sectors. CodeWrights GmbH estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+--------- Begin Update C Part 2 of 2 --------
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed January 12, 2015.
+
+Successful injection of specially crafted packets to the Device DTM causes a buffer overflow condition in the Frame Application. The FDT Frame Application becomes unresponsive, and the Device DTM stops functioning.
+CVE-2014-9191NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9191, web site last accessed January 12, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 1.8 has been assigned; the CVSS vector string is (AV:A/AC:H/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:H/Au:N/C:N/I:N/A:P, web site last accessed January 12, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This exploit on the FDT/DTM Frame Application is possible from any adjacent network that receives or passes packets from the HART Device DTM.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+This is a complex vulnerability. Crafting a working exploit for this vulnerability would be difficult. Compromised access that allows access to the packets transmitted to Frame Application is required for exploitation. This exploit also requires a specific timing to crash the Frame Application. This increases the difficulty of a successful exploit.
+--------- End Update C Part 2 of 2 --------
+MITIGATION
+CodeWrights GmbH has developed an updated library to address this vulnerability. These libraries are being provided to its customers (vendors) with current support agreements.
+ICS-CERT recommends contacting the vendor if using HART DTM technology to determine if the products are vulnerable and what remediation steps should be taken.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

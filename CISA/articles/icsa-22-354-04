@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: MicroLogix 1100 and 1400
+Vulnerabilities: Cross-site Scripting, Improper Restriction of Rendered UI Layers or Frames
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could create a denial-of-service condition or allow for remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of MicroLogix—a line of programmable logic controllers (PLCs)—are affected:
+
+MicroLogix 1100: all versions
+MicroLogix 1400 A: Versions 7.000 and prior
+MicroLogix 1400 B/C: Versions 21.007 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The affected products have an unauthenticated stored cross-site scripting vulnerability in the embedded webserver. The payload is transferred to the controller over simple network management protocol (SNMP) and is rendered on the homepage of the embedded website. Exploitation of this vulnerability could result in unauthenticated remote code execution.
+CVE-2022-46670 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L).
+3.2.2    IMPROPER RESTRICTION OF RENDERED UI LAYERS OR FRAMES CWE-1021
+The affected products have a clickjacking vulnerability where an attacker with network access to the affected systems could send TCP packets to the webserver, closing it abruptly. This could cause a denial-of-service condition for the web server application on the device.
+CVE-2022-3166 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Rockwell Automation recommends users of the affected products to take the following actions:
+
+Disable the web server, if possible (This component is an optional feature and disabling it will not disrupt the intended use of the device) 
+Configure firewalls to disallow network communication through HTTP/Port 802
+Upgrade to the MicroLogix 800 or MicroLogix 850 as this device does not have the web server component
+
+Rockwell Automation also recommends users to employ cybersecurity best practices, as outlined in their Knowledgebase article.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

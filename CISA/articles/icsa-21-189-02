@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: MDT Software
+Equipment: MDT AutoSave
+Vulnerabilities: Inadequate Encryption Strength, SQL Injection, Relative Path Traversal, Command Injection, Uncontrolled Search Path Element, Generation of Error Message Containing Sensitive Information, Unrestricted Upload of File with Dangerous Type
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities by an attacker with detailed understanding of the product architecture and database structure could lead to full remote execution on the Remote MDT Server without an existing user or password.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+MDT Software reports the vulnerabilities affect the following MDT Autosave products:
+
+MDT AutoSave versions prior to v6.02.06
+MDT AutoSave v7.00-7.04
+AutoSave for System Platform (A4SP) versions prior to 4.01
+A4SP Version 5.00
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INADEQUATE ENCRYPTION STRENGTH CWE-326
+An attacker could decipher the encryption and gain access to the system.
+CVE-2021-32945 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    SQL INJECTION CWE-89
+An attacker could utilize SQL commands to create a new user in the system and update the user’s permissions, granting the attacker the ability to login.
+CVE-2021-32953 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    RELATIVE PATH TRAVERSAL CWE-23
+An attacker could utilize a function that permits changing a designated path to another path and traversing the directory, allowing the replacement of an existing file with a malicious file.
+CVE-2021-32949 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.4    COMMAND INJECTION CWE-77
+An attacker could leverage an API to pass along a malicious file that could then manipulate the process creation command line and run a command line argument. This could then be leveraged to run a malicious process.
+CVE-2021-32933 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.5    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+A function is used to retrieve system information for a specific process, and this information collection executes multiple commands and summarizes the information into an XML. This function and subsequent process gives full path to the executable and is therefore vulnerable to binary hijacking.
+CVE-2021-32957 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.6    GENERATION OF ERROR MESSAGE CONTAINING SENSITIVE INFORMATION CWE-209
+An attacker can gain knowledge of a session temporary working folder where the getfile and putfile commands are used. An attacker can leverage this knowledge to provide a malicious command to the working directory where the read and write activity can be initiated.
+CVE-2021-32937 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.7    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+A getfile function enables a user to supply an optional parameter, resulting in the processing of a request in a special manner. This can result in the execution of an unzip command and place a malicious .exe file in one of the locations the function looks for and get execution capabilities.
+CVE-2021-32961 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+ 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Healthcare and Public Health, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Amir Preminger of Claroty Research reported these vulnerabilities to MDT Software.
+4. MITIGATIONS
+Updated versions of MDT AutoSave and AutoSave for System Platform (A4SP) were developed to address these vulnerabilities as follows:
+
+MDT AutoSave 6.x version: Version 6.02.06 (Released January 2021)
+MDT AutoSave 7.x version: Version 7.05 (Released December 2020)
+A4SP 4.x version: Version 4.01 (Released June 2021)
+A4SP 5.x version: Version 5.01 (Released May 2021)
+
+For more information about these vulnerabilities, and to obtain and install the new versions, please contact MDT Software customer support.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

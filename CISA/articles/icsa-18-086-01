@@ -1,0 +1,54 @@
+
+CVSS v3 5.9
+ATTENTION: Exploitable remotely/low skill level to exploit.
+Vendor: Schneider Electric
+Equipment: Modicon Premium, Modicon Quantum, Modicon M340, and Modicon BMXNOR0200
+Vulnerabilities: Stack-based Buffer Overflow, Use of Hard-coded Credentials, Use of a Broken or Risky Cryptographic Algorithm.
+AFFECTED PRODUCTS
+The following versions of Modicon PLCs are affected:
+
+Modicon Premium all versions,
+Modicon Quantum all versions,
+Modicon M340 all versions, and
+Modicon X80 RTU (BMXNOR0200H) all versions.
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow a remote unauthorized attacker access to the file transfer service on the device, which could result in arbitrary code execution or malicious firmware installation.
+MITIGATION
+Schneider Electric recommends that users follow the instructions outlined in the Modicon Controllers Platform - Cyber Security, Reference Manual to install Modicon PLCs securely.
+Schneider Electric also recommends that affected users disable FTP services on the device during times when maintenance or configuration activities are not needed.
+For more information please see Schneider Electric’s security notification SEVD-2018-081-01 at:
+https://www.schneider-electric.com/en/download/document/SEVD-2018-081-01/
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERFLOW CWE-121
+
+The FTP server does not limit the length of a command parameter which may cause a buffer overflow condition.
+CVE-2018-7240 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:H).
+
+USE OF HARD-CODED CREDENTIALS CWE-798
+
+The FTP servers contain a hard-coded account, which could allow unauthorized access.
+CVE-2018-7241 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:H).
+
+USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+
+The FTP server does not limit the length of a command parameter, which may cause a buffer overflow condition.
+CVE-2018-7242 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:H).
+RESEARCHER
+Nikita Maximov, Alexey Stennikov, and Kirill Chernyshov of Positive Technologies reported the vulnerabilities to Schneider Electric. Meng Leizi and Zhang Daoquan reported the vulnerabilities to NCCIC.
+BACKGROUND
+Critical Infrastructure Sector: Critical Manufacturing
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: France

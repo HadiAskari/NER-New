@@ -1,0 +1,52 @@
+
+OVERVIEW
+Schneider Electric Wonderware’s Cyber Security Team has identified an OpenSSL Heartbleed vulnerability in the Wonderware Intelligence application, caused by a third-party component. Schneider Electric Wonderware has produced a patch that mitigates this vulnerability.
+This vulnerability could be exploited remotely. Exploits that target this vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+The latest release of Schneider Electric Wonderware Intelligence Version 1.5 SP1 is not susceptible to the OpenSSL vulnerability. However, users have been known to reinstall Tableau Server, the vulnerable third-party component that is affected. Therefore, Schneider Electric Wonderware has issued a patch and a security bulletin addressing this vulnerability in all versions.
+TableauTableau Software release notes http://www.tableausoftware.com/support/releases, last accessed May 15, 2014. has been identified as the third-party component vendor that has product vulnerable to the OpenSSL Heartbleed bug. The following Tableau products susceptible to the OpenSSL vulnerability used in the Schneider Electric Wonderware Intelligence product are:
+
+Tableau Server ver 8.0.6 through 8.0.9
+​Tableau Server ver 8.1.0 through 8.1.5.
+
+IMPACT
+A missing bounds check in the handling of the TLS Heartbeat extension can be used to reveal up to 64kB of memory on a connected device. An attacker who successfully exploits this vulnerability may obtain the user credentials and cryptographic keys used to access the device.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric corporate headquarters is located in Paris, France, and maintains offices in more than 100 countries worldwide.
+Schneider Electric Wonderware Intelligence is a real-time operations management software distributed by Schneider Electric. Schneider Electric provides automation and information technologies and systems.
+According to Schneider Electric, Wonderware Intelligence is deployed across several sectors including Critical Manufacturing, Energy, Healthcare and Public Health, and Water and Wastewater Systems. Schneider Electric states that these products are used worldwide.
+VULNERABILITY CHARACTIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer,  http://cwe.mitre.org/data/definitions/119.html, web site last accessed May 15, 2014.
+
+The Heartbleed bug could allow attackers to read unallocated memory of OpenSSL running processes. This could reveal data like transmitted data, passwords, or private keys. The attacker must have network access to the affected devices to exploit this vulnerability.
+CVE-2014-0160NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160, web site last accessed May 15, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:N/A:N, web site last accessed May 15, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Schneider Electric Wonderware has issued Security Advisory “Tableau OpenSSL Vulnerability (LFSEC00000098),” available at (user registration required to access this site):
+https://wdn.wonderware.com/sites/WDN/Pages/Security%20Central/CyberSecurityUpdates.aspx
+Tableau has released several firmware update fixes for the OpenSSL vulnerability. Schneider Electric Wonderware has incorporated and successfully tested Wonderware Intelligence Security patch LFSec00000098 (registration required). Tableau has released the following maintenance Versions 8.1.6 and 8.0.10 on its primary and alternate download sites.
+The Tableau primary customer download site (User registration required to access this site) is located here:
+https://auth.tableausoftware.com/user/login?
+The Tableau alternate download site, where Version 8.1.6 for Desktop and Server (4/10/2014) is available, is located here:
+https://licensing.tableausoftware.com/esdalt/
+Schneider Electric Wonderware recommends customers who have enabled SSL using Tableau Server Versions 8.0.6 through 8.0.9 or 8.1.0 through 8.1.5 should apply the security update to all nodes where the Tableau Dashboard Server is installed. The process consists of uninstalling the Dashboard Server and installing the new version. The server configuration and published dashboards will be preserved during the installation of the new version.
+Any certificates used to configure the SSL communications are revoked, new certificates re‑acquired, and used after patching the vulnerability.
+Any passwords used for accessing the server should also be changed after applying the update.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

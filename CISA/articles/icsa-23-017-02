@@ -1,0 +1,97 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.9
+ATTENTION: Exploitable remotely 
+Vendor: Mitsubishi Electric 
+Equipment: MELSEC iQ-F and iQ-R Series products 
+Vulnerability: Predictable Seed in Pseudo-Random Number Generator (PRNG) 
+
+2. UPDATE OR REPOSTED INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-23-017-02 Mitsubishi Electric MELSEC iQ-F, iQ-R Series (Update A) that was published January 17, 2023, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to access the WEB server function by guessing the random numbers used for authentication. 
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Mitsubishi Electric MELSEC products are affected:
+
+MELSEC iQ-F Series with serial number 17X**** or later: 
+
+FX5U-xMy/z x=32,64,80, y=T,R, z=ES,DS,ESS,DSS: Versions 1.280 and prior
+FX5UC-xMy/z x=32,64,96 y=T, z=D,DSS: Versions 1.280 and prior
+
+
+MELSEC iQ-F Series with serial number 179**** and prior: 
+
+FX5U-xMy/z x=32,64,80, y=T,R, z=ES,DS,ESS,DSS: Versions 1.074 and prior
+FX5UC-xMy/z x=32,64,96 y=T, z=D,DSS: Versions 1.074 and prior
+
+
+MELSEC iQ-F Series FX5UC-32MT/DS-TS, FX5UC-32MT/DSS-TS, FX5UC-32MR/DS-TS: Versions 1.280 and prior
+FX5UJ-xMy/z x=24,40,60, y=T,R, z=ES,ESS: Versions 1.042 and prior
+FX5UJ-xMy/ES-A* x=24,40,60, y=T,R: Versions 1.043 and prior
+FX5S-xMy/z x=30,40,60,80, y=T,R, z=ES,ESS: Versions 1.003 and prior
+
+--------- Begin Update B Part 1 of 3 ---------
+
+MELSEC iQ-R Series R00/01/02CPU: Versions 33 and prior 
+MELSEC iQ-R Series R04/08/16/32/120(EN)CPU: Versions 66 and prior 
+
+--------- End Update B Part 1 of 3 ---------
+* These products are available in limited regions.
+4.2 VULNERABILITY OVERVIEW
+4.2.1 PREDICTABLE SEED IN PSEUDO-RANDOM NUMBER GENERATOR (PRNG) CWE-337 
+Mitsubishi Electric MELSEC iQ-F and iQ-R Series products both contain an authentication bypass vulnerability in the WEB server function due to predictable seed in the pseudo-random number generator. 
+CVE-2022-40267 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N). 
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Japan 
+
+4.4 RESEARCHER
+Matt Wiseman of Cisco Talos reported this vulnerability to Mitsubishi Electric. 
+5. MITIGATIONS
+Mitsubishi Electric has fixed the following products and recommends users apply the latest firmware update to the follow products: 
+
+MELSEC iQ-F Series with serial number 17X**** or later:
+
+FX5U-xMy/z x=32,64,80, y=T,R, z=ES,DS,ESS,DSS: Update to v1.281 or later
+FX5UC-xMy/z x=32,64,96 y=T, z=D,DSS: Update to v1.281 or later
+
+
+MELSEC iQ-F Series with serial number 179**** and prior:
+
+FX5U-xMy/z x=32,64,80, y=T,R, z=ES,DS,ESS,DSS: Update to v1.075 or later
+FX5UC-xMy/z x=32,64,96 y=T, z=D,DSS: Update to v1.075 or later
+
+
+MELSEC iQ-F Series FX5UC-32MT/DS-TS, FX5UC-32MT/DSS-TS, FX5UC-32MR/DS-TS: Update to v1.281 or later
+FX5UJ-xMy/z x=24,40,60, y=T,R, z=ES,ESS: Update to v1.044 or later
+FX5UJ-xMy/ES-A* x=24,40,60, y=T,R: Update to v1.045 or later
+FX5S-xMy/z x=30,40,60,80, y=T,R, z=ES,ESS: Update to v1.004 or later
+
+--------- Begin Update B part 2 of 3 ---------
+
+MELSEC iQ-R Series R00/01/02CPU: Versions 34 or later 
+MELSEC iQ-R Series R04/08/16/32/120(EN)CPU: Versions 67 or later 
+
+--------- End Update B part 2 of 3 ---------
+* These products are available in limited regions. Users should contact Mitsubishi Electric to receive fixed versions.
+Refer to the following product manual for updating the firmware: 
+"5 FIRMWARE UPDATE FUNCTION" in the MELSEC iQ-F FX5 User's Manual (Application) 
+--------- Begin Update B part 3 of 3 ---------
+MELSEC iQ-R Module Configuration Manual “Appendix 2 Firmware Update Function” 
+--------- End Update B part 3 of 3 ---------
+Mitsubishi Electric recommends users take the following mitigation measures to minimize the risk of exploiting this vulnerability:  
+
+Use a firewall or virtual private network (VPN), etc. to prevent unauthorized access when internet access is required. 
+Use products inside a local area network (LAN) and block access from untrusted networks and hosts through firewalls.  
+Use the IP filter function* to block access from untrusted hosts.  For details on the IP filter function, refer to the manuals for each product: 
+"12.1 IP Filter Function" in the MELSEC iQ-F FX5 User's Manual (Ethernet Communication)  
+"1.13 Security" - "IP filter" in the MELSEC iQ-R Ethernet User’s Manual (Application) 
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity. 

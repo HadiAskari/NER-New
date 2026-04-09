@@ -1,0 +1,58 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on November 6, 2014, and is being released to the NCCIC/ICS-CERT web site.
+Independent researcher Andrea Micalizzi working through ZDI has identified two custom ActiveX Component vulnerabilities in Rockwell Automation’s Connected Components Workbench (CCW) application. Rockwell Automation has produced, tested, and released a new software version that mitigates these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+Computers with the following Rockwell Automation CCW software product installed are affected:
+
+Rockwell Automation CCW Version 6.01.00 and earlier.
+
+IMPACT
+Successful exploitation of these vulnerabilities can result in an attacker being allowed to write arbitrary code to the address of an object not normally accessible or allowable.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Rockwell Automation, which is a US-based company, provides industrial automation control and information products worldwide across a wide range of industries.
+The affected product, Rockwell Automation’s CCW software, is a design and configuration application and HMI editor for programming certain micro controllers and component-class industrial products. According to Rockwell Automation, CCW software is used globally across multiple sectors in a variety of industrial applications.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+EXPOSED UNSAFE ACTIVEX METHODCWE-618: Exposed Unsafte ActiveX method, http://cwe.mitre.org/data/definitions/618.html, web site last accessed November 11, 2014.
+
+The reported CCW ActiveX vulnerabilities are the result of a software coding error that was further compounded by the use of an older version of a compiler used to create the custom ActiveX components. The vulnerabilities allow an attacker to send an arbitrary, out of range values to a particular property of an affected ActiveX component, crashing its operation; then potentially allow for an execution of unauthorized code on the computer hosting the software.
+Neither the CCW software, nor the vulnerable ActiveX components necessarily need to be running for an attack to be successful.
+The attack vector to exploit these vulnerabilities requires a user with local access to the computer containing both a susceptible ActiveX component and a container to either knowingly or unknowingly execute some form of malicious code. Such code could likely be delivered via the loading of an infected web page or some document opened in a web browser or other container capable of running ActiveX controls. A plausible attack scenario could begin with a phishing attack, whereby a victim is convinced to open and run a malicious HTML file or other such infected file, or to visit a maliciously altered web page that has been tailored to specifically exploit these vulnerabilities in an affected ActiveX component.
+CVE-2014-5424NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5424, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to these two ActiveX vulnerabilities. A CVSS v2 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P, web site last accessed November 11, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited both locally and remotely via a successful social engineering attack.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Rockwell Automation has verified the validity of the vulnerabilities and released a new software build, Version 7.00.00, to address associated risk. This new software version resolves the vulnerabilities present in previous versions of CCW software. All customers using CCW software prior to Version 7.00.00 are strongly encouraged to upgrade to Version 7.00.00 or higher at their earliest convenience.
+The Rockwell Automation Support Center has published “626689 – Connected Components Workbench (CCW) ActiveX Component Vulnerability.” This document contains technical information about these vulnerabilities, risk mitigation, remediation actions, a URL link to obtain the new software, and installation instructions. You must be a registered user to access this web site:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/626689
+Rockwell Automation directs concerned customers to refer to the following URL for comprehensive information about implementing best practices and recommendations on validated architectures:
+http://www.rockwellautomation.com/rockwellautomation/products-technologies/network-technology/architectures.page
+Rockwell Automation also recommends concerned customers to continue to monitor:
+
+Rockwell Automation’s Security Advisory Index (AID:54102) - https://rockwellautomation.custhelp.com/app/answers/detail/a_id/54102
+http://www.rockwellautomation.com/security for new and relevant information relating to this matter.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed November 11, 2014. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed November 11, 2014. for more information on social engineering attacks.
+

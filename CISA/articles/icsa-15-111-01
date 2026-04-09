@@ -1,0 +1,52 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on April 21, 2015, and is being released to the NCCIC/ICS-CERT web site.
+Emerson Process Management has identified an SQL injection vulnerability in its AMS Device Manager application. Emerson has produced a patch that mitigates this vulnerability.
+AFFECTED PRODUCTS
+Emerson reports that the vulnerability affects the following product:
+
+AMS Device Manager, V12.5 and earlier.
+
+IMPACT
+The vulnerability allows privilege escalation by an anonymous user that can result in access to administrative functions of the application.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Emerson Process Management is a global manufacturing and technology company offering multiple products and services in the industrial, commercial, and consumer markets through its network power, process management, industrial automation, climate technologies, and tools and storage businesses.
+Emerson AMS Device Manager is a software package used to monitor and manage the status of field devices. Emerson reports the software is used worldwide primarily in the oil and gas and chemical industries.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+SQL INJECTIONCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection'), http://cwe.mitre.org/data/definitions/89.html, web site last accessed April 21, 2015.
+
+To be able to exploit the SQL injection vulnerability, an attacker must supply malformed input to the AMS Device Manager software. Successful attack results in administrative access to the application and its data files but not to the underlying computer system.
+CVE-2015-1008NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1008, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. Emerson has calculated a CVSS v2 base score of 4.3; the CVSS vector string is (AV:L/AC:L/Au:S/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:S/C:P/I:P/A:P , web site last accessed April 21, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with medium skill would be able to exploit this vulnerability.
+MITIGATION
+Emerson recommends that systems using the AMS Device Manager application take the following steps soon to eliminate exposure to this vulnerability.
+
+AMS Device Manager application v12.5
+
+Apply the patch according to the instructions in Knowledge Base Article NK-1400-0504 (http://www3.emersonprocess.com/Systems/Support/Home/index.aspx, login required), upgrade to v13, or apply the workaround below.
+
+Versions prior to AMS Device Manager v12.5
+
+The AMS Device Manager software can be configured to add another user (e.g., ADMIN1) with full administrative privileges and make the default administrative user have read-only privileges.
+Please see DeltaV PSIRT advisory notification DSN15003-2 for more details on this issue at the following location (may require membership account):
+http://community.emerson.com/process/emerson-exchange/operateandmanage/deltav/deltav_security/b/securitynotificationblog/archive/2015/04/16/dsn15003-2-ams-device-management-sql-injection-vulnerability
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Limit user privileges on machines running ICS software.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

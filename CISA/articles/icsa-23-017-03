@@ -1,0 +1,91 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.9
+ATTENTION: Exploitable remotely/low attack complexity  
+Vendor: Siemens 
+Equipment: SINEC INS 
+Vulnerabilities: OS Command Injection, Inadequate Encryption Strength, Out-of-bounds Write, HTTP Request Smuggling, Inadequate Encryption Strength, Use of Insufficiently Random Values, Authentication Bypass by Spoofing, Path Traversal, Command Injection 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to read and write arbitrary files from the file system of the affected component and to ultimately execute arbitrary code on the device. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affect the following network services application: 
+
+SINEC INS: versions prior to V1.0 SP2 Update 1 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 OS COMMAND INJECTION CWE-78 
+In addition to the c_rehash shell command injection identified in CVE-2022-1292, code review found further circumstances where the c_rehash script does not properly sanitize shell metacharacters to prevent command injection. When CVE-2022-1292 was fixed, code review did not discover other places in the script where the file names of hashed certificates were possibly passed to a command executed through the shell. This script is distributed by some operating systems in a manner where it is automatically executed. On such operating systems, an attacker could execute arbitrary commands with the privileges of the script. Use of the c_rehash script is considered obsolete and should be replaced by the OpenSSL rehash command line tool. 
+CVE-2022-2068 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 OS COMMAND INJECTION CWE-78 
+An OS command injection vulnerability exists in Node.js versions <14.20.0, <16.16.0, <18.5.0 due to an insufficient IsAllowedHost check that could easily be bypassed because IsIPAddress does not properly check if an IP address is invalid before making DBS requests allowing rebinding attacks. 
+CVE-2022-32212 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.3 INADEQUATE ENCRYPTION STRENGTH CWE-326 
+AES OCB mode for 32-bit x86 platforms using the AES-NI assembly optimized implementation will not encrypt the entirety of the data under some circumstances. This could reveal sixteen bytes of unwritten data preexisting in the memory. “In place" encryption could reveal sixteen bytes of the plaintext. Because OpenSSL does not support OCB based cipher suites for TLS and DTLS, they are both unaffected. 
+CVE-2022-2097 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N). 
+3.2.4 OUT-OF-BOUNDS WRITE CWE-787 
+The OpenSSL 3.0.4 release introduced a serious bug in the RSA implementation for X86_64 CPUs supporting the AVX512IFMA instructions. This issue leads to incorrect RSA implementation with 2048-bit private keys on such machines, and memory corruption will happen during the computation. Due to memory corruption, an attacker could trigger remote code execution on the machine performing the computation. This issue affects SSL/TLS servers or other servers using 2048-bit RSA private keys running on machines supporting AVX512IFMA instructions of the X86_64 architecture. 
+CVE-2022-2274 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.5 HTTP REQUEST SMUGGLING CWE-444
+The llhttp parser <v14.20.1, <v16.17.1, and <v18.9.1 in the http module in Node.js do not correctly parse and validate transfer-encoding headers and could lead to HTTP request smuggling (HRS). 
+CVE-2022-32213 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N). 
+3.2.6 HTTP REQUEST SMUGGLING CWE-444 
+The llhttp parser <v14.20.1, <v16.17.1, and <v18.9.1 in the http module in Node.js do not correctly handle multi-line transfer-encoding headers. This could lead to HTTP request smuggling (HRS). 
+CVE-2022-32215 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N). 
+3.2.7 INADEQUATE ENCRYPTION STRENGTH CWE-326 
+A cryptographic vulnerability exists on Node.js on Linux in versions 18.x prior to 18.40.0, which allows a default path for openssl.cnf that could be accessible by a non-admin user under some circumstances, instead of /etc/ssl, as was the case in versions prior to the upgrade to OpenSSL 3. 
+CVE-2022-32222 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N). 
+3.2.8 USE OF INSUFFICIENTLY RANDOM VALUES CWE-330 
+Node.js makes calls to EntropySource() in SecretKeyGenTraits::DoKeyGen() in src/crypto/crypto_keygen.cc. However, it does not check the return value; it assumes EntropySource() always succeeds, but it can (and sometimes will) fail. 
+CVE-2022-35255 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.9 AUTHENTICATION BYPASS BY SPOOFING CWE-290 
+The llhttp parser in the http module in Node.js v18.7.0 does not correctly handle header fields that are not terminated with CLRF. This could result in HRS. 
+CVE-2022-35256 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.10 PATH TRAVERSAL CWE-22 
+An authenticated remote attacker with access to the affected product’s web-based management (443/TCP) could potentially read and write arbitrary files to and from the device's file system. An attacker could leverage this to trigger remote code execution on the affected component. 
+CVE-2022-45092 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H). 
+3.2.11 PATH TRAVERSAL CWE-22 
+An authenticated remote attacker with access to the web-based management (443/TCP) of the affected product, as well as with access to the secure file transfer protocol (SFTP) server of the affected product (22/TCP), could potentially read and write arbitrary files to and from the device's file system. An attacker could leverage this to trigger remote code execution on the affected component. 
+CVE-2022-45093 has been assigned to this vulnerability. A CVSS v3 base score of 8.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H). 
+3.2.12 COMMAND INJECTION CWE-77 
+An authenticated remote attacker with access to the affected product’s web-based management (443/TCP) could potentially inject commands into the affected product’s DHCPD configuration. An attacker could leverage this to trigger remote code execution on the affected component. 
+CVE-2022-45094 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Siemens released V1.0 SP2 Update 1 for SINEC INS and recommends updating to the latest version. 
+Siemens identified the following specific workarounds and mitigations users can apply to reduce risk: 
+
+CVE-2022-45094: Disable the DHCP service of the affected product, if not required. 
+CVE-2022-45093: Disable the SFTP service of the affected product, if not required. 
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following the recommendations in the product manuals. Siemens has published additional information on industrial security. 
+For further inquiries on security vulnerabilities in Siemens products, users should contact Siemens ProductCERT.  
+For more information, see the associated Siemens security advisory SSA-332410 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Ensure the least-privilege user principle is followed.
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have a low attack complexity. 

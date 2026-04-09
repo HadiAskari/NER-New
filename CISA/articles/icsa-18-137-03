@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.5
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SINAMIC S7-400 CPU
+Vulnerability: Improper Input Validation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-137-03 Siemens SIMATIC S7-400 CPU that was published May 17, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could cause a denial-of-service condition of the CPU. The CPU will remain in DEFECT mode until a manual restart is performed.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of SIMATIC S7-400, a CPU used for process controls, are affected:
+
+SIMATIC S7-400 (incl. F) CPU all hardware versions prior to, including, hardware v4.0,
+SIMATIC S7-400 (incl. F) CPU hardware v5.0 with firmware versions prior to v5.2, and
+SIMATIC S7-400H CPU all hardware versions prior to v4.5
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1 IMPROPER INPUT VALIDATION CWE-20
+The affected CPUs improperly validate S7 communication packets, which could cause a denial-of-service condition of the CPU. The CPU will remain in DEFECT mode until manual restart.
+Successful exploitation requires an attacker to be able to send a specially crafted S7 communication packet to a communication interface of the CPU. This includes Ethernet, PROFIBUS, and multi-point interfaces (MPI). No user interaction or privileges are required to exploit the security vulnerability. This vulnerability could allow causing a denial-of-service condition of the core functionality of the CPU, compromising the availability of the system.
+CVE-2018-4850 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany
+
+4.4 RESEARCHER
+Siemens ProductCERT reported this vulnerability to NCCIC.
+5. MITIGATIONS
+Siemens has released updates for several affected products and recommends users update to the new version.
+
+SIMATIC S7-400 (incl. F) CPU all hardware versions prior to, and including, hardware v4.0: Upgrade to hardware v5.0 or newer.
+
+https://support.industry.siemens.com/cs/ww/en/view/109483507
+
+SIMATIC S7-400 (incl. F) CPU hardware v5.0 with firmware versions prior to v5.2: Update to firmware v5.2 or newer.
+
+https://support.industry.siemens.com/cs/ww/en/view/109474827
+
+SIMATIC S7-400H CPU all hardware versions prior to v4.5: Upgrade to hardware v6.0 or newer.
+
+https://support.industry.siemens.com/cs/ww/en/view/75407031
+--------- Begin Update A Part 1 of 1 --------
+Siemens has identified the following specific workarounds and mitigations that users can apply to reduce the risk:
+
+Apply cell protection concept: https://www.siemens.com/cert/operational-guidelines-industrial-security
+Use VPN for protecting network communication between cells.
+Apply Defense-in-Depth: https://www.siemens.com/cert/operational-guidelines-industrial-security
+
+--------- End Update A Part 1 of 1 --------
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to run the devices in a protected IT environment, Siemens specifically recommends users configure the environment according to Siemens’ Operational Guidelines for Industrial Security and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-914382 on their website:
+https://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

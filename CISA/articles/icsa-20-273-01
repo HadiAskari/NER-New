@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: MB connect line
+Equipment: mymbCONNECT24, mbCONNECT24
+Vulnerabilities: SQL Injection, Cross-site Request Forgery, Command Injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker to gain unauthorized access to arbitrary information or allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products and versions are affected:
+
+mymbCONNECT24 v2.6.1 and prior
+mbCONNECT24 v2.6.1 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+There is a blind SQL injection vulnerability in the knximport component that allows logged in attackers access to arbitrary information. 
+CVE-2020-24569 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L).
+3.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+There is a blind SQL injection vulnerability in the lancompenent component that allows logged in attackers to access arbitrary information. 
+CVE-2020-24568 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L).
+3.2.3    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+There is a SSRF and CSRF vulnerability in the com_mb24proxy module that allows an attacker to steal session information from logged in users with a specifically crafted link. 
+CVE-2020-24570 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+An attacker could use an outdated and unused third-party software bundled with the software to gain Remote Code Execution via an exploit chain.
+No CVE has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Alik Koldobsky, Ofir Manzur, Hay Mizrachi, Nikolay Sokolik, and Haviv Vaizman from OTORIO reported these vulnerabilities to CISA.
+4. MITIGATIONS
+MB connect line recommends users update mymbCONNECT24 and mbCONNECT24 to Version 2.6.2 or higher.
+Additional details can be found on the MB connect line website.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

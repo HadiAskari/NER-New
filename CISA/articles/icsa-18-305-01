@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: AVEVA Software, LLC. (AVEVA)
+Equipment: InduSoft Web Studio and InTouch Edge HMI (formerly InTouch Machine Edition)
+Vulnerabilities: Stack-based Buffer Overflow, Empty Password in Configuration File
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an unauthenticated user to remotely execute code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+AVEVA reports that these vulnerabilities affect the following products:
+
+InduSoft Web Studio versions prior to 8.1 SP2, and
+InTouch Edge HMI (formerly InTouch Machine Edition) versions prior to 2017 SP2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+A remote attacker could send a carefully crafted packet to exploit a stack-based buffer overflow vulnerability during tag, alarm, or event related actions such as read and write, with potential for code to be executed. If InduSoft Web Studio remote communication security was not enabled, or a password was left blank, a remote user could send a carefully crafted packet to invoke an arbitrary process, with potential for code to be executed. The code would be executed under the privileges of the InduSoft Web Studio or InTouch Edge HMI runtime and could lead to a compromise of the InduSoft Web Studio or InTouch Edge HMI server machine.
+CVE-2018-17916 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    EMPTY PASSWORD IN CONFIGURATION FILE CWE-258
+This vulnerability could allow an unauthenticated user to remotely execute code with the same privileges as that of the InduSoft Web Studio or InTouch Edge HMI (formerly InTouch Machine Edition) runtime.
+CVE-2018-17914 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy, Transportation Systems, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+3.4 RESEARCHER
+Tenable reported these vulnerabilities to AVEVA.
+4. MITIGATIONS
+AVEVA recommends that users upgrade to InduSoft Web Studio v8.1 SP2 and InTouch Edge HMI (formerly InTouch Machine Edition) 2017 SP2 as soon as possible. Software updates can be downloaded from the Global Customer Support “Software Download” area or from the links below:
+
+InduSoft Web Studio prior to v8.1 SP2:
+
+http://download.indusoft.com/81.2.0/IWS81.2.0.zip
+
+InTouch Edge HMI (formerly InTouch Machine Edition) prior to 2017 SP2 (login required):
+
+https://softwaresupportsp.schneider-electric.com/#/producthub/details?id=5223
+AVEVA recommends that users update existing projects to enable the security features of InduSoft Web Studio and InTouch Edge HMI:
+
+Enable the new encrypted channel for communication and disable the unencrypted channel.
+Set a strong Master Project password.
+Set a strong password for the built-in account. By default, the built-in account is named Guest.
+Set strong passwords for all other non-built-in accounts.
+
+AVEVA has published Security Bulletin LFSEC00000130 on their website at the following location:
+https://sw.aveva.com/hubfs/assets-2018/pdf/security-bulletin/SecurityBulletin_LFSec130.pdf
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

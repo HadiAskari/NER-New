@@ -1,0 +1,85 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE W1750D
+Vulnerabilities: Improper Restriction of Operations Within the Bounds of a Memory Buffer, Command Injection, Path Traversal
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-315-06 Siemens SCALANCE W1750D that was published November 11, 2022, to the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute code on the affected devices, read arbitrary files, or create a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of SCALANCE W1750D, a wireless access point, are affected:
+
+SCALANCE W1750D: All versions prior to v8.7.1.3
+
+--------- Begin Update A part 1 of 3 ---------
+
+SCALANCE W1750D: Versions from 8.7.1.3 to those prior to v8.7.1.9 (only affected by CVE-2021-37727, CVE-2021-37730, and CVE-2021-37734)
+
+--------- End Update A part 1 of 3 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+A remote buffer overflow vulnerability was discovered in HPE Aruba Instant (IAP). Successful exploitation could allow for unauthenticated remote code execution, potentially resulting in the execution of arbitrary code as a privileged user on the underlying system.
+CVE-2021-37726 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+A remote arbitrary command execution vulnerability was discovered in HPE Aruba Instant (IAP) command line interface. Successful exploitation could result in the ability to execute arbitrary commands as a privileged user on the underlying OS, potentially compromising the system.
+CVE-2021-37727 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+A remote arbitrary command execution vulnerability was discovered in HPE Aruba Instant (IAP) command line interface. Successful exploitation could result in the ability to execute arbitrary commands as a privileged user on the underlying OS, potentially compromising the system.
+CVE-2021-37730 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+A remote arbitrary command execution vulnerability was discovered in HPE Aruba Instant (IAP) web-based management user interface. Successful exploitation could result in the ability to execute arbitrary commands as a privileged user on the underlying OS, potentially compromising the system.
+CVE-2021-37732 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.5    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+An authenticated arbitrary file read access vulnerability was discovered in Aruba Instant Access Points. Successful exploitation could lead to an attacker reading any file off the underlying filesystem, including system sensitive files.
+CVE-2021-37734 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N).
+4.2.6    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A remote denial of service vulnerability was discovered in Aruba Instant through the command line interface. Successful exploitation could create a denial-of-service condition, leading to a temporary loss of service until the next reboot.
+CVE-2021-37735 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens recommends upgrading their products to the latest version:
+
+SCALANCE W1750D: Update to v8.7.1.3 or later.
+
+--------- Begin Update A part 2 of 3 ---------
+
+SCALANCE W1750D: Update to v8.7.1.9 or later
+
+--------- End Update A part 2 of 3 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Block access to the Aruba Instant Command Line Interface from all untrusted users.
+Block access to the Aruba Instant web-based management interface from all untrusted users.
+Enable the Enhanced PAPI Security feature, where available, to prevent exploitation of these vulnerabilities. For assistance from the Siemens Technical Assistance Center (TAC), please contact Siemens (login required).
+Block access for Aruba Instant device on Port UDP/8211 from all untrusted users.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+--------- Begin Update A part 3 of 3 ---------
+For more information see Siemens Security Advisory SSA-917476 in HTML or CSAF.
+--------- End Update A part 3 of 3 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

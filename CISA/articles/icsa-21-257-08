@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.2
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Teamcenter
+Vulnerability: Privilege Defined with Unsafe Actions, Authorization Bypass Through User-Controlled Key, Improper Restriction of XML External Entity Reference
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to view sensitive files, bypass authorization, or take over another account.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Teamcenter, a virtualization platform, are affected:
+Teamcenter 12.4: All versions prior to 12.4.0.8
+Teamcenter 13.0: All versions prior to 13.0.0.7
+Teamcenter 13.1: All versions prior to 13.1.0.5
+Teamcenter 13.2: All versions prior to 13.2.0.2
+3.2 VULNERABILITY OVERVIEW
+3.2.1    PRIVILEGE DEFINED WITH UNSAFE ACTIONS CWE-267
+The “surrogate” functionality on the user profile of the application does not perform sufficient access control, which may allow an account takeover. Any profile on the application can perform this attack and access any other user assigned tasks via the “inbox/surrogate tasks.”
+CVE-2021-40354 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N).
+3.2.2    AUTHORIZATION BYPASS THROUGH USER-CONTROLLED KEY CWE-639
+The affected application contains an insecure direct object reference (IDOR) vulnerability, which may allow an attacker to use user-supplied input to access objects directly.
+CVE-2021-40355 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+The application contains an XML external entity injection (XXE) vulnerability, which may allow an attacker to view files on the application server filesystem.
+CVE-2021-40356 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Nicolas Verdier from TEHTRIS reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has released updates for the affected products and recommends updating to the latest versions at https://support.sw.siemens.com/ (login required): 
+
+Teamcenter 12.4: Update to v12.4.0.8 or later
+Teamcenter 13.0: Update to v13.0.0.7 or later
+Teamcenter 13.1: Update to v13.1.0.5 or later
+Teamcenter 13.2: Update to v13.2.0.2 or later
+
+Siemens has identified the following specific workarounds and mitigations that users can apply to reduce the risk:
+
+Avoid opening untrusted files in Teamcenter
+Harden the application’s host to prevent local access by untrusted personnel
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to the Siemens operational guidelines for industrial security, and to follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information about this issue, please see Siemens Security Advisory SSA-987403
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability.

@@ -1,0 +1,63 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-13-282-01, Alstom e‑terracontrol DNP3 Master Improper Input Validation, which was posted to the NCCIC/ICS‑CERT Web site October 09, 2013.
+Adam Crain of Automatak and independent researcher Chris Sistrunk have identified an improper input validation in the Alstom e-terracontrol software. Alstom has produced a patch that mitigates this vulnerability. Adam Crain and Chris Sistrunk have tested the patch to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Alstom product is affected:
+
+e-terracontrol, Version 3.5, 3.6, and 3.7
+
+IMPACT
+--------- Begin Update A Part 1 of 4 --------
+The master can be sent into an infinite loop by sending a specially crafted TCP packet from the outstation on an IP-based network. If the device is connected via a serial connection, the same attack can be accomplished with physical access to the master station. The device must be shut down and restarted to reset the loop state.
+--------- End Update A Part 1 of 4 ----------
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Alstom is a France-based company that maintains offices worldwide.
+The affected product, Alstom e-terracontrol software, is used on SCADA systems to monitor and control electrical energy systems. According to Alstom, e-terracontrol software is deployed across the electric energy sector. Alstom estimates that these products are used primarily in the US and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+--------- Begin Update A Part 2 of 4 --------
+As this vulnerability affects Internet Protocol-connected and Serial-connected devices, two CVSS scores have been calculated.
+
+IMPROPER INPUT VALIDATION-IP-BASEDCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed October 09, 2013.
+
+The Alstom e-terracontrol DNP Master Driver incorrectly validates input. An attacker could cause the software to go into an infinite loop with a specifically crafted TCP packet, causing the process to crash. If the Alstom e-terracontrol settings are configured to automatically restart, the DNP3 service will automatically restart and resume communications. Otherwise, the system must be restarted manually.
+The following scoring is for IP-connected devices.
+CVE-2013-2787NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2787, Web site last accessed October 21, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed October 09, 2013.
+
+IMPROPER INPUT VALIDATION-SERIAL-BASEDCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed October 21, 2013.
+
+The Alstom e-terracontrol DNP Master Driver incorrectly validates input. An attacker could cause the software to go into an infinite loop, causing the process to crash. If the Alstom e‑terracontrol settings are configured to automatically restart, the DNP3 service will automatically restart and resume communications. Otherwise, the system must be restarted manually.
+The following scoring is for serial-connected devices.
+CVE- 2013-2818NVD, http://Web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2818, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.7 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed October 21, 2013.
+--------- End Update A Part 2 of 4 ----------
+VULNERABILITY DETAILS
+EXPLOITABILITY
+--------- Begin Update A Part 3 of 4 --------
+The IP-based vulnerability could be exploited remotely.
+The serial-based vulnerability is not exploitable remotely. Local access to the serial-based outstation is required.
+--------- End Update A Part 3 of 4 ----------
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+--------- Begin Update A Part 4 of 4 --------
+An attacker with a moderate skill could craft an IP packet that would be able to exploit the vulnerability for an IP-based device.
+An attacker with a high skill could exploit the serial-based vulnerability because physical access to the device or some amount of social engineering is required.
+--------- End Update A Part 4 of 4 ----------
+MITIGATION
+Alstom has produced a patch that is available for download from the Alstom Grid Customer Wise portal. Customers are encouraged to contact their Alstom representative for download information.
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+In addition, the researchers' suggest the following mitigations:
+
+Block DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DPN3-specific rule sets.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web site. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed October 09, 2013. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed October 09, 2013. that is available for download from the NCCIC/ICS-CERT Web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

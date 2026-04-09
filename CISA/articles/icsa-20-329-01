@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/Low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: FactoryTalk Linx
+Vulnerabilities: Improper Input Validation, Heap-based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a denial-of-service condition, remote code execution, or leak information that could be used to bypass address space layout randomization (ASLR).
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of FactoryTalk Linx are affected:
+
+FactoryTalk Linx: Version 6.11 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+A flaw exists in the Ingress/Egress checks routine of FactoryTalk Linx. This vulnerability could allow a remote, unauthenticated attacker to specifically craft a malicious packet resulting in a denial-of-service condition on the device.
+CVE-2020-27253 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap overflow vulnerability exists within FactoryTalk Linx. This vulnerability could allow a remote, unauthenticated attacker to send malicious port ranges, which could result in remote code execution. 
+CVE-2020-27251 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap overflow vulnerability exists within FactoryTalk Linx. This vulnerability could allow a remote, unauthenticated attacker to send malicious set attribute requests, which could result in the leaking of sensitive information. This information disclosure could lead to the bypass of address space layout randomization (ASLR). 
+CVE-2020-27255 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sharon Brizinov of Claroty reported these vulnerabilities to Rockwell Automation PSIRT.
+4. MITIGATIONS
+Rockwell Automation recommends users of the affected FactoryTalk Linx update to an available software revision that addresses the associated risk. 
+
+FactoryTalk Linx v6.10/6.11 (see Patch Answer ID 1126433). Additionally, the user could move to v6.20, which is available on PCDC (login required).
+
+Rockwell Automation recommends users who are unable to update the following mitigations or workarounds to further reduce risk. Users are encouraged, when possible, to combine these with general security guidelines to employ multiple strategies simultaneously:
+
+Run all software as “user” (not as “administrator”) to minimize the impact of malicious code on the infected system. 
+Use of Microsoft AppLocker or other similar whitelisting application can help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at Knowledgebase Article ID 546989 (login required).
+Confirm that the least-privilege user principle is followed, and user/service account access to shared resources (such as a database) is only granted with a minimum amount of rights as needed. 
+Use trusted software, software patches, antivirus/antimalware programs, and interact only with trusted websites and attachments.
+Minimize network exposure for all control system devices and/or systems and confirm that they are not accessible from the Internet. For further information about the risks of unprotected Internet-accessible control systems, please see Knowledgebase Article ID 494865 (login required).
+Locate control system networks and devices behind firewalls and isolate them from the business network. 
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices. 
+
+For more information refer to Rockwell’s Industrial Security Advisory ID 1128684 (login required).
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

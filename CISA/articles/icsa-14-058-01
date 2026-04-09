@@ -1,0 +1,50 @@
+
+OVERVIEW
+Schneider Electric had become aware of an “unquoted service path” vulnerability in the Schneider Electric Floating License Manager, produced a patchSchneider Electric Security Notification SEVD 2014-015-01_v3, http://www.downloads.schneider-electric.com/?p_Conf=&p_localesFilter=&p_docTypeFilter=1555899,&p_docTypeGroupFilter=3541958, web site last accessed February 27, 2014. that mitigates this vulnerability, and notified NCCIC/ICS-CERT.
+AFFECTED PRODUCTS
+The following Schneider Electric Floating License Manager versions are affected:
+
+Schneider Electric Floating License Manager Versions V1.0.0 through V1.4.0
+
+This license manager is used in five Schneider Electric Products.
+IMPACT
+The unquoted service path vulnerability affects one of the services installed by the Floating License Manager. This vulnerability could allow attackers to start malicious programs as Windows services.
+This license manager is used in the following Schneider Electric products:
+
+Power Monitoring Expert,
+Struxureware process Expert (PES),
+Struxureware process Expert libraries,
+Vijeo Citect (SCADA), and
+Vijeo Citect Historian.
+
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric is a European-based company that maintains offices in 190 countries worldwide.
+These products are industrial active energy management control products, deployed across several sectors including the Commercial Facilities, Energy, Food and Agriculture, Government Facilities, Transportation Systems, and Water and Wastewater Systems. Schneider Electric estimates that these products are used primarily in the United States and North America.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNQUOTED SEARCH PATH OR ELEMENTCWE-428: Unquoted Search Path or Element, http://cwe.mitre.org/data/definitions/428.html, web site last accessed February 27, 2014.
+
+The Schneider Electric Floating License Manager has an “unquoted service path” vulnerability. When the executable path of a service contains blanks, attackers can exploit this to execute malicious programs.
+CVE-2014-0759NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0759 , NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.9 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:C/I:C/A:C, web site last accessed February 27, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application, and the executable path of a service contains blanks. Attackers can exploit this to start malicious programs as Windows service. To avoid this, such service paths in the registry must be surrounded with quotes.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+Deployment of the Schneider Electric products using the vulnerable floating license manager are designed to be automatically updated via the Schneider Electric Software Update system.
+Schneider Electric’s latest download patches and known vulnerabilities are available here:
+http://www2.schneider-electric.com/sites/corporate/en/support/cybersecurity/cybersecurity.page
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

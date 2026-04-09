@@ -1,0 +1,72 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: B&R Automation
+Equipment: Automation Studio
+Vulnerabilities: Improper Privilege Management, Missing Required Cryptographic Step, Path Traversal
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to delete arbitrary files from this system, fetch arbitrary files, or perform arbitrary write operations.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+B&R Automation reports the vulnerabilities affect the following versions of Automation Studio:
+
+Automation Studio, Versions 4.0.x
+Automation Studio, Versions 4.1.x
+Automation Studio, Versions 4.2.x
+Automation Studio, versions prior to 4.3.11SP
+Automation Studio, versions prior to 4.4.9SP
+Automation Studio, versions prior to 4.5.4SP
+Automation Studio, versions prior to 4.6.3SP
+Automation Studio, versions prior to 4.7.2
+Automation Studio, versions prior to 4.8.1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+A privilege escalation vulnerability in the upgrade service in B&R Automation Studio could allow authenticated users to delete arbitrary files via an exposed interface.
+CVE-2019-19100 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:C/C:N/I:H/A:H).
+3.2.2    MISSING REQUIRED CRYPTOGRAPHIC STEP CWE-325
+A missing secure communication definition and an incomplete TLS validation in the upgrade service in B&R Automation Studio enable unauthenticated users to perform MITM attacks via the B&R upgrade server.
+CVE-2019-19101 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N).
+3.2.3    PATH TRAVERSAL CWE-22
+A directory traversal vulnerability in SharpZipLib used in the upgrade service in B&R Automation Studio allow unauthenticated users to write to certain local directories. The vulnerability is also known as “zip slip.”
+CVE-2019-19102 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Austria
+
+3.4 RESEARCHER
+Yehuda Anikster and Amir Preminger of Claroty reported these vulnerabilities to B&R Industrial Automation.
+4. MITIGATIONS
+B&R recommends applying product updates at the earliest convenience. Users of Automation Studio Versions 4.0.x, 4.1.x, and 4.2.x are advised to upgrade to a newer version of Automation Studio.
+
+The upgrade service now operates with reduced privileges. Additionally, the deletion process is restricted to Automation Studio downloaded files and directories.
+B&Rs upgrade server now serves HTTPS links in the configuration files. Additionally, Microsoft .NET Framework certificate checks are now being used in the Automation Studio upgrade service.
+Automation Studio 4.3 and later should be switched from the SharpZipLib to the .NET Framework, provided native ZIP archive implementation. For these versions the issue is not reproducible. For prior versions of Automation Studio, it is recommended to update the installation.
+
+B&R recommends the following workarounds until users can upgrade to a newer version:
+
+Access to zip archives is controlled and access of the zip archive is limited to trusted parties only.
+Checksums may be used to detect tampering of zip archives, e.g., transferring them between different contexts.
+It is possible to manually adjust the permissions of the Automation Studio upgrade. Access to the Automation Studio installation and the device it is used on should be restricted.
+
+Users may approach their local B&R service organization in case of questions.
+For more information related to these vulnerabilities, please refer to the B&R advisory.
+For additional information and support, please contact B&R service.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

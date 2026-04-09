@@ -1,0 +1,48 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.2
+ATTENTION: Low attack complexity
+Vendor: Interlogix is a part of Carrier Global Corporation
+Equipment: Hills ComNav
+Vulnerabilities: Improper Restriction of Excessive Authentication Attempts, Inadequate Encryption Strength
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to log in to modify the system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Carrier reports these vulnerabilities affect the following Hills ComNav remote access integration modules: 
+
+Hills ComNav: versions prior to 3002-19
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+There is no limit to the number of attempts to authenticate for the local configuration pages for the Hills ComNav Version 3002-19 interface, which allows local attackers to brute-force credentials. 
+CVE-2022-26519 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    INADEQUATE ENCRYPTION STRENGTH CWE-326
+Hills ComNav Version 3002-19 suffers from a weak communication channel. Traffic across the local network for the configuration pages can be viewed by a malicious actor. The size of certain communications packets is predictable. These issues could allow an attacker to learn the state of the system if they can observe the traffic. This would be possible even if the traffic was encrypted (e.g., using WPA2, as the packet sizes would remain observable).
+CVE-2022-1318 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Australia
+COMPANY HEADQUARTERS LOCATION:  United States
+
+3.4 RESEARCHER
+Jacob Thompson of Flinders University, Dr. Paul Gardner-Stephen of Flinders University and DEWC Systems, and Dr. Samuel Chenoweth of Defence Science and Technology Group reported these vulnerabilities to Carrier.
+4. MITIGATIONS
+Carrier recommends users upgrade to Version 4000-12 or later, which is the latest supported version at the time of this publication.  Please contact the Hills distributor to acquire the firmware update.
+More information on this issue can be found in Carrier product security advisory CARR-PSA-002-1121.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. 

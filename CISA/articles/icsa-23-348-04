@@ -1,0 +1,72 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.6
+ATTENTION: Low Attack Complexity
+Vendor: Siemens
+Equipment: LOGO! and SIPLUS LOGO! Products
+Vulnerability: Improper Protection against Electromagnetic Fault Injection (EM-FI)
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could cause an electromagnetic fault injection, which would allow an attacker to dump and debug the firmware including memory manipulation.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens, are affected:
+
+LOGO! 12/24RCE (6ED1052-1MD08-0BA1): Versions v8.3 and prior
+LOGO! 12/24RCEo (6ED1052-2MD08-0BA1): Versions v8.3 and prior
+LOGO! 24CE (6ED1052-1CC08-0BA1): Versions v8.3 and prior
+LOGO! 24CEo (6ED1052-2CC08-0BA1): Versions v8.3 and prior
+LOGO! 24RCE (6ED1052-1HB08-0BA1): Versions v8.3 and prior
+LOGO! 24RCEo (6ED1052-2HB08-0BA1): Versions v8.3 and prior
+LOGO! 230RCE (6ED1052-1FB08-0BA1): Versions v8.3 and prior
+LOGO! 230RCEo (6ED1052-2FB08-0BA1): Versions v8.3 and prior
+SIPLUS LOGO! 12/24RCE (6AG1052-1MD08-7BA1): Versions v8.3 and prior
+SIPLUS LOGO! 12/24RCEo (6AG1052-2MD08-7BA1): Versions v8.3 and prior
+SIPLUS LOGO! 24CE (6AG1052-1CC08-7BA1): Versions v8.3 and prior
+SIPLUS LOGO! 24CEo (6AG1052-2CC08-7BA1): Versions v8.3 and prior
+SIPLUS LOGO! 24RCE (6AG1052-1HB08-7BA1): Versions v8.3 and prior
+SIPLUS LOGO! 24RCEo (6AG1052-2HB08-7BA1): Versions v8.3 and prior
+SIPLUS LOGO! 230RCE (6AG1052-1FB08-7BA1): Versions v8.3 and prior
+SIPLUS LOGO! 230RCEo (6AG1052-2FB08-7BA1): Versions v8.3 and prior
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER PROTECTION AGAINST ELECTROMAGNETIC FAULT INJECTION (EM-FI) CWE-1319
+Affected devices are vulnerable to an electromagnetic fault injection. This could allow an attacker to dump and debug the firmware, including the manipulation of memory. Further actions could allow to inject public keys of custom created key pairs which are then signed by the product Certificate Authority (CA). The generation of a custom certificate allows communication with, and impersonation of, any device of the same version.
+CVE-2022-42784 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been assigned; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+The vulnerability is related to the specific hardware architecture of the LOGO! V8.3 BM. Siemens has released new hardware versions with the LOGO! V8.4 BM product family for several affected devices in which the vulnerability is fixed and the Product CA private key is rotated. Siemens is working on new hardware versions for the SIPLUS devices to address this issue further. Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Use HTTPS communication only in trusted networks without unknown network devices.
+If possible, connect the Base Module directly with LOGO! Soft Comfort and the Web Browser.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-844582 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely.
+5. UPDATE HISTORY
+
+December 14, 2023: Initial Publication
+

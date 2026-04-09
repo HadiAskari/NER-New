@@ -1,0 +1,63 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC CN 4100
+Vulnerabilities: Use of Hard-coded Credentials, Use of Hard-coded Password, Missing Immutable Root of Trust in Hardware
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to compromise the device, gain root access of the device, or gain complete read/write access to the file system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siemens SIMATIC CN 4100, a communication node, are affected:
+
+SIMATIC CN 4100: All versions prior to V3.0
+
+3.2 Vulnerability Overview
+3.2.1 USE OF HARD-CODED CREDENTIALS CWE-798
+The affected device contains undocumented users and credentials. An attacker could misuse the credentials to compromise the device locally or over the network.
+CVE-2024-32740 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-32740. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 USE OF HARD-CODED PASSWORD CWE-259
+The affected device contains hard coded password which is used for the privileged system user root and for the boot loader GRUB by default. An attacker who manages to crack the password hash gains root access to the device.
+CVE-2024-32741 has been assigned to this vulnerability. A CVSS v3.1 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-32741. A base score of 10.0 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H).
+3.2.3 MISSING IMMUTABLE ROOT OF TRUST IN HARDWARE CWE-1326
+The affected device contains an unrestricted USB port. An attacker with local access to the device could potentially misuse the port for booting another operating system and gain complete read/write access to the filesystem.
+CVE-2024-32742 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-32742. A base score of 8.6 has been calculated; the CVSS vector string is (CVSS4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Michael Klassen and Martin Floeck from BASF Security Team reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+SIMATIC CN 4100: Update to V3.0 or later version
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-273900 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+May 16, 2024: Initial Publication
+

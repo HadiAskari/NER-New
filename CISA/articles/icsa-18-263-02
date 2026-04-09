@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: RSLinx Classic
+Vulnerabilities: Stack-based Buffer Overflow, Heap-based Buffer Overflow, Resource Exhaustion
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could crash the device being accessed or allow arbitrary code execution on the device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of RSLinx Classic, a software platform that allows Logix5000 Programmable Automation Controllers to connect to a wide variety of Rockwell Software applications, are affected:
+
+RSLinx Classic Versions 4.00.01 and prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+This vulnerability may allow a remote threat actor to intentionally send a malformed CIP packet to Port 44818, causing the software application to stop responding and crash. This vulnerability also has the potential to exploit a buffer overflow condition, which may allow the threat actor to remotely execute arbitrary code.
+CVE-2018-14829 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+This vulnerability may allow a remote, unauthenticated threat actor to intentionally send a malformed CIP packet to Port 44818, causing the RSLinx Classic application to terminate. The user will need to manually restart the software to regain functionality.
+CVE-2018-14821 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    UNCONTROLLED RESOURCE CONSUMPTION ('RESOURCE EXHAUSTION') CWE-400
+A remote, unauthenticated threat actor may intentionally send specially crafted Ethernet/IP packets to Port 44818, causing the software application to stop responding and crash. The user must restart the software to regain functionality.
+CVE-2018-14827 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation, working with Tenable and Younes Dragoni and Alessandro Di Pinto of Nozomi Networks, reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Rockwell Automation has released a new version of the software that can found at Rockwell Automation knowledgebase article KB 1075712 (login is required):
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1075712
+Rockwell Automation also reports that users can disable Port 44818 if it is not utilized during system operation. For more details on how to disable the port and for Rockwell Automation’s general security guidelines, please visit knowledgebase article KB 1075747 (login is required):
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1075747
+Please see Rockwell Automation’s industrial security advisory at the following location on their website for further details (login is required):
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1075747
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,46 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Advantech
+Equipment: WebAccess/SCADA
+Vulnerabilities: Cross-site Scripting (XSS), Relative Path Traversal, Stack-based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to hijack a user’s cookie/session tokens, gain unauthorized access to files and directories, and execute arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of WebAccess/SCADA, a browser-based SCADA software package, are affected:
+
+WebAccess/SCADA versions prior to 8.4.5
+WebAccess/SCADA versions prior to 9.0.1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+UserExcelOut.asp within WebAccess/SCADA is vulnerable to cross-site scripting (XSS), which could allow an attacker to send malicious JavaScript code. This could result in hijacking of cookie/session tokens, redirection to a malicious webpage, and unintended browser action.
+CVE-2021-22676 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N). 
+3.2.2    RELATIVE PATH TRAVERSAL CWE-23
+The affected product is vulnerable to a relative path traversal condition, which may allow an attacker access to unauthorized files and directories.
+CVE-2021-22674 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.3    STACK-BASED BUFFER OVERFLOW CWE-121
+The affected product is vulnerable to a stack-based buffer overflow, which may allow an attacker to remotely execute arbitrary code.
+CVE-2021-32943 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: East Asia, Europe, United States
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Chizuru Toyama of TXOne IoT/ICS Security Research Labs, working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Advantech recommends users running version 8 of the software to update to Version 8.4.5
+Advantech recommends users running version 9 of the software to update to Version 9.0.1
+CISA recommends users take defensive measures to minimize the risk of the exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,87 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.6
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: ABB
+Equipment: eSOMS
+Vulnerabilities: Use of Web Browser Cache Containing Sensitive Information, Improper Restriction of Rendered UI Layers or Frames, Improper Neutralization of HTTP Headers for Scripting Syntax, Sensitive Cookie Without ‘HttpOnly’ Flag, Protection Mechanism Failure, Sensitive Cookie in HTTPS Session Without ‘Secure’ Attribute, Exposure of Sensitive Information to an Unauthorized Actor, External Control of Critical State Data, Weak Password Requirements, SQL Injection, Cross-site Scripting, Cleartext Storage of Sensitive Information, Inadequate Encryption Strength
+
+2. RISK EVALUATION
+In the most severe case, an attacker who successfully exploited these vulnerabilities could take over a user’s browser session, discover session-based information, or affect the confidentiality of sensitive information within the application.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of eSOMS are affected:
+
+eSOMS 6.02 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF WEB BROWSER CACHE CONTAINING SENSITIVE INFORMATION CWE-525
+For ABB eSOMS 6.0.3 and earlier, The Cache-Control and Pragma HTTP header(s) have not been properly configured within the application response. This can potentially allow browsers and proxies to cache sensitive information.
+CVE-2019-19000 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.2.2    IMPROPER RESTRICTION OF RENDERED UI LAYERS OR FRAMES CWE-1021
+For ABB eSOMS Versions 6.0.2 and earlier, the X-Frame-Options header is not configured in HTTP response. This can potentially allow 'ClickJacking' attacks where an attacker can frame parts of the application on a malicious website, revealing sensitive user information such as authentication credentials.
+CVE-2019-19001 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.3    IMPROPER NEUTRALIZATION OF HTTP HEADERS FOR SCRIPTING SYNTAX CWE-644
+For ABB eSOMS Versions 6.0.2 and earlier, the X-XSS-Protection HTTP response header is not set in responses from the web server. For older web browser not supporting Content Security Policy, this might increase the risk of cross-site scripting.
+CVE-2019-19002 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:L/A:N).
+3.2.4    SENSITIVE COOKIE WITHOUT 'HTTPONLY' FLAG CWE-1004
+For ABB eSOMS Versions 6.0.2 and earlier, the HTTPOnly flag is not set. This can allow JavaScript to access the cookie contents, which in turn might enable Cross-site Scripting.
+CVE-2019-19003 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.5    PROTECTION MECHANISM FAILURE CWE-693
+For ABB eSOMS Versions 6.0.3 and earlier, the X-Content-Type-Options Header is missing in the HTTP response, potentially causing the response body to be interpreted and displayed as different content type other than declared. A possible attack scenario would be unauthorized code execution via text interpreted as JavaScript.
+CVE-2019-19089 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.2.6    SENSITIVE COOKIE IN HTTPS SESSION WITHOUT 'SECURE' ATTRIBUTE CWE-614
+For ABB eSOMS Versions 6.0.2 and earlier, the Secure Flag is not set in the HTTP response header. Unencrypted connections might access the cookie information, thus making it susceptible to eavesdropping.
+CVE-2019-19090 has been assigned to this vulnerability. A CVSS v3 base score of 3.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N).
+3.2.7    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+For ABB eSOMS Versions 6.0.3 and earlier, HTTPS responses contain comments with sensitive information about the application. An attacker might use this detail information to specifically craft the attack.
+CVE-2019-19091 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.8    EXTERNAL CONTROL OF CRITICAL STATE DATA CWE-642
+ABB eSOMS Versions 6.0.3 and earlier use ASP.NET Viewstate without Message Authentication Code (MAC). Alterations to Viewstate might thus not be noticed.
+CVE-2019-19092 has been assigned to this vulnerability. A CVSS v3 base score of 3.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N).
+3.2.9    WEAK PASSWORD REQUIREMENTS CWE-521
+eSOMS versions before 6.0.3 do not enforce password complexity settings, potentially resulting in lower access security due to insecure user passwords.
+CVE-2019-19093 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.2.10    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+Lack of input checks for SQL queries in ABB eSOMS Versions 6.0.3 and earlier might allow an attacker SQL injection attacks against the backend database.
+CVE-2019-19094 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L).
+3.2.11    IMPROPER NEUTRALIZATION OF INPUT DURING WEBPAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+Lack of adequate input/output validation for ABB eSOMS Versions 6.0.2 and earlier might allow an attacker to attack, such as stored cross-site scripting by storing malicious content in the database.
+CVE-2019-19095 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N).
+3.2.12    CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+The Redis data structure component used in ABB eSOMS Versions 6.0.2 and earlier is storing credentials in clear text. If an attacker has file system access, this can potentially compromise the credential’s confidentiality.
+CVE-2019-19096 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N).
+3.2.13    INADEQUATE ENCRYPTION STRENGTH CWE-326
+ABB eSOMS Versions 6.0.3 and earlier accept connections using medium strength ciphers. If a connection is enabled using such a cipher, an attacker might be able to eavesdrop and/or intercept the connection. 
+CVE-2019-19097 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+ABB reported these vulnerabilities to CISA.
+4. MITIGATIONS
+ABB recommends users update their version of eSOMS to 6.0.3 or 6.1.
+For additional information and support please contact an ABB service organization. For contact information, see https://new.abb.com/contact-centers or see ABB security advisory number ABBVU-PGGA-2018035.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

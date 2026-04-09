@@ -1,0 +1,53 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 5.1
+ATTENTION: Low attack complexity
+Vendor: CODESYS GmbH
+Equipment: OSCAT Basic Library
+Vulnerability: Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability allows an local, unprivileged attacker to access limited internal data of the PLC, which may lead to a crash of the affected service.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions CODESYS OSCAT, are affected:
+
+CODESYS OSCAT Basic Library: Version 3.3.5.0
+oscat.de OSCAT Basic Library: Versions 3.3.5 and prior
+oscat.de OSCAT Basic Library: Versions 335 and prior
+
+3.2 Vulnerability Overview
+3.2.1 OUT-OF-BOUNDS READ CWE-125
+The affected product is vulnerable to an out-of-bounds read in the OSCAT Basic Library, which allows a local, unprivileged attacker to access limited internal data of the PLC which may lead to a crash of the affected service.
+CVE-2024-6876 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L).
+A CVSS v4 score has also been calculated for CVE-2024-6876. A base score of 5.1 has been calculated; the CVSS vector string is (CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Corban Villa, Hithem Lamri, Constantine Doumanidis, Michail Maniatakos of Modern Microprocessors Architecture (MoMA) Lab at NYU Abu Dhabi reported this vulnerability to CERT@VDE and CODESYS.
+4. MITIGATIONS
+CODESYS GmbH recommends users update OSCAT Basic Library to address the security vulnerability:
+
+Update the OSCAT Basic Library to Version 3.3.5.
+
+To make the fix effective for existing CODESYS projects, the user also must adjust the version of the OSCAT Basic library to be used in the Library Manager of the CODESYS project to Version 3.3.5.0. Then the user must update the CODESYS application on the PLC by download or online change and rebuild/download the boot application.
+Without an update, the vulnerability can be prevented by validating all values in the PLC program before they are passed to the affected function. In particular, negative values must be blocked as function parameters of MONTH_TO_STRING.
+Regardless of whether the OSCAT Basic library in the programming system was updated or the security vulnerability in the PLC program was mitigated, a download or online change must be performed to update the application on the PLC. CODESYS reminds users to rebuild/download the boot project.
+For more information see the associated CERT@VDE security advisory.
+For a list of system environments the library has been validated against see OSCAT's library documentation.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely.
+5. UPDATE HISTORY
+
+November 21, 2024: Initial Publication
+

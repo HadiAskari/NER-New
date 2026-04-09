@@ -1,0 +1,48 @@
+
+CVSS v3 6.7
+ATTENTION: Low skill level to exploit.
+Vendor: Schneider Electric
+Equipment: Ampla MES
+Vulnerabilities: Cleartext Transmission of Sensitive Information, Inadequate Encryption Strength
+AFFECTED PRODUCTS
+Schneider Electric reports that the vulnerability affects the following Ampla Manufacturing Execution System (MES) operational efficiency products:
+
+Ampla MES versions 6.4 and prior.
+
+IMPACT
+Successful exploitation of this vulnerability could compromise credentials used to connect to third party databases or compromise credentials of Ampla users configured with Simple Security.
+MITIGATION
+Schneider Electric recommends that users of Ampla MES versions 6.4 and prior should upgrade to Ampla MES version 6.5 as soon as possible. Software updates can be downloaded from Schneider Electric’s Ampla Support “Shopping Kiosk” area or from the link below:
+http://shoppingkiosk.schneider-electric.com/doc_info.aspx?DocRef=Ampla2016R1Software&isdvd=False&df=12&gid=411131
+For more information, users of affected products can read Schneider Electric’s Ampla Security Bulletin LFSEC00000118 at the following location:
+http://software.schneider-electric.com/pdf/security-bulletin/lfsec00000118/
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+
+Ampla MES provides capability to interact with data from third party databases. When connectivity to those databases is configured to use a SQL user name and password, an attacker may be able to sniff details from the connection string.
+Note that when the third party database connectivity is configured with Windows Integrated Security as opposed to SQL username and password, the software is not vulnerable.
+CVE-2017-9637 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+
+INADEQUATE ENCRYPTION STRENGTH CWE-326
+
+Ampla MES provides capability to configure users and their privileges. When Ampla MES users are configured to use Simple Security, a weakness in the password hashing algorithm could be exploited to reverse the user’s password.
+Note that when Ampla MES is configured to use Windows Integrated Security as opposed to Simple Security, the software is not vulnerable.
+CVE-2017-9635 has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L).
+RESEARCHER
+Ilya Karpov from Positive Technologies reported these vulnerabilities to Schneider Electric.
+BACKGROUND
+Critical Infrastructure Sectors: Critical Manufacturing, Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: France

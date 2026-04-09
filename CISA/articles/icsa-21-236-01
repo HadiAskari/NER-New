@@ -1,0 +1,90 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Low attack complexity
+Vendor: Hitachi ABB Power Grids
+Equipment: TropOS
+Vulnerabilities: Injection, Inadequate Encryption Strength, Missing Authentication for Critical Function, Improper Authentication, Improper Validation of Integrity Check Value, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to direct a client that is connected to a TropOS Wi-Fi access point to fake websites and extract sensitive data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi ABB Power Grids reports these vulnerabilities affect the following products:
+
+TropOS: Firmware Version 8.9.4.8 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+The 802.11 standard that underpins Wi-Fi protected access (WPA, WPA2, and WPA3) and wired equivalent privacy (WEP) does not require received fragments be cleared from memory after (re)connecting to a network. Under the right circumstances, when another device sends fragmented frames encrypted using WEP, CCMP, or GCMP, this vulnerability can be exploited to inject arbitrary network packets and/or exfiltrate user data.
+CVE-2020-24586 has been assigned to this vulnerability. A CVSS v3 base score of 3.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.2    INADEQUATE ENCRYPTION STRENGTH CWE-326
+The 802.11 standard that underpins Wi-Fi protected access (WPA, WPA2, and WPA3) and wired equivalent privacy (WEP) does not require all fragments of a frame are encrypted under the same key. An adversary could exploit this vulnerability to decrypt selected fragments when another device sends fragmented frames and the WEP, CCMP, or GCMP encryption key is periodically renewed.
+CVE-2020-24587 has been assigned to this vulnerability. A CVSS v3 base score of 2.6 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.3    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The 802.11 standard that underpins Wi-Fi protected access (WPA, WPA2, and WPA3) and wired equivalent privacy (WEP) does not require the A-MSDU flag in the plaintext QoS header field be authenticated. Against devices that support receiving non-SSP A-MSDU frames (which is mandatory as part of 802.11n), an adversary could exploit this vulnerability to inject arbitrary network packets.
+CVE-2020-24588 has been assigned to this vulnerability. A CVSS v3 base score of 3.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.4    IMPROPER AUTHENTICATION CWE-287
+An access point (AP) forwards EAPOL frames to other clients even though the sender has not yet successfully authenticated to the AP. This might be abused in projected Wi-Fi networks to launch denial-of-service attacks against connected clients and makes it easier to exploit other vulnerabilities in connected clients.
+CVE-2020-26139 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+The WEP, WPA, WPA2, and WPA3 implementations accept plaintext frames in a protected Wi-Fi network. An adversary can exploit this vulnerability to inject arbitrary data frames independent of the network configuration.
+CVE-2020-26140 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.6    IMPROPER VALIDATION OF INTEGRITY CHECK VALUE CWE-354
+The Wi-Fi implementation does not verify the message integrity check (authenticity) of fragmented TKIP frames. An adversary can exploit this vulnerability to inject and decrypt packets in WPA or WPA2 networks that support the TKIP data-confidentiality protocol.
+CVE-2020-26141 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.7    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+The WEP, WPA, WPA2, and WPA3 implementations treat fragmented frames as full frames. An adversary can exploit this vulnerability to inject arbitrary network packets independent of the network configuration.
+CVE-2020-26142 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.8    IMPROPER INPUT VALIDATION CWE-20
+The WEP, WPA, WPA2, and WPA3 implementations accept fragmented plaintext frames in a protected Wi-Fi network. An adversary can exploit this vulnerability to inject arbitrary data frames independent of the network configuration.
+CVE-2020-26143 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.9    IMPROPER INPUT VALIDATION CWE-20
+The WEP, WPA, WPA2, and WPA3 implementations accept plaintext A-MSDU frames as long as the first eight bytes correspond to a valid RFC1042 (i.e., LLC/SNAP) header for EAPOL. An adversary can exploit this vulnerability to inject arbitrary network packets independent of the network configuration.
+CVE-2020-26144 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.10    IMPROPER INPUT VALIDATION CWE-20
+The WEP, WPA, WPA2, and WPA3 implementations accept second (or subsequent) broadcast fragments when sent in plaintext and process them as full unfragmented frames. An adversary can exploit this vulnerability to inject arbitrary network packets independent of the network configuration.
+CVE-2020-26145 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.11    IMPROPER INPUT VALIDATION CWE-20
+The WPA, WPA2, and WPA3 implementations reassemble fragments with non-consecutive packet numbers. An adversary can exploit this vulnerability to exfiltrate selected fragments. This vulnerability is exploitable when another device sends fragmented frames and the WEP, CCMP, or GCMP data-confidentiality protocol is used. Note: WEP is vulnerable to this attack by design.
+CVE-2020-26146 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.12    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+The WEP, WPA, WPA2, and WPA3 implementations reassemble fragments even though some of them were sent in plaintext. An adversary can exploit this vulnerability to inject packets and/or exfiltrate selected fragments when another device sends fragmented frames and the WEP, CCMP, or GCMP data-confidentiality protocol is used.
+CVE-2020-26147 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi ABB Power Grids reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi ABB Power Grids recommends updating to firmware v8.9.4.9 or later, which resolves these vulnerabilities. For additional information on these vulnerabilities, including update instructions, please see the Hitachi ABB Power Grids security advisory.
+Hitachi ABB Power Grids has tested and recommends the following mitigation actions, which help block known attack vectors:
+
+Disable the Wi-Fi access on any TropOS unit where local Wi-Fi access is not required. This is achieved by NOT enabling (or disabling) the local access SSID.
+Where Wi-Fi access is required, wherever possible ensure physical access to the local area is restricted to approved staff only.
+Use the Wi-Fi whitelist capability to restrict Wi-Fi access to only approved personnel.
+As the FragAttacks vulnerability is targeted at an end-user device and generally involves redirection to fraudulent websites, the installation of comprehensive firewall capabilities on company end-user devices and servers will significantly reduce the likelihood of negative outcomes.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+These vulnerabilities are not exploitable remotely. No known public exploits specifically target these vulnerabilities.
+ 

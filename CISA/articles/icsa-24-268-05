@@ -1,0 +1,63 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 6.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Moxa
+Equipment: MXview One, MXview One Central Manager Series
+Vulnerabilities: Cleartext Storage In A File or On Disk, Path Traversal, Time-of-Check Time-of-Use Race Condition
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to expose local credentials and write arbitrary files to the system, resulting in execution of malicious code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Moxa products are affected:
+
+MXview One Series: Versions 1.4.0 and prior
+MXview One Central Manager Series: Version 1.0.0
+
+3.2 Vulnerability Overview
+3.2.1 CLEARTEXT STORAGE IN A FILE OR ON DISK CWE-313
+The configuration file stores credentials in cleartext. An attacker with local access rights can read or modify the configuration file, potentially resulting in the service being abused because of sensitive information exposure.
+CVE-2024-6785 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-6785. A base score of 6.8 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:L/SI:N/SA:N).
+3.2.2 PATH TRAVERSAL: '../filedir' CWE-24
+The vulnerability allows an attacker to craft MQTT messages that include relative path traversal sequences, enabling them to read arbitrary files on the system. This could lead to the disclosure of sensitive information, such as configuration files and JWT signing secrets.
+CVE-2024-6786 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-6786. A base score of 6.0 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.3 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+This vulnerability occurs when an attacker exploits a race condition between the time a file is checked and the time it is used (TOCTOU). By exploiting this race condition, an attacker can write arbitrary files to the system. This could allow the attacker to execute malicious code and potentially cause file losses.
+CVE-2024-6787 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-6787. A base score of 6.0 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Noam Moshe of Claroty Research - Team82 reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Moxa recommends the following to address the vulnerabilities:
+
+MXview One Series: Upgrade to v1.4.1
+MXview One Cerntral Manager Series: Upgrade to v1.0.3
+Minimize network exposure to ensure the device is not accessible from the Internet.
+Change the default credentials immediately upon first login to the service. This helps enhance security and prevent unauthorized access.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this these vulnerabilities, such as:
+
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 24, 2024: Initial Publication
+

@@ -1,0 +1,74 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.7
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SINEC Traffic Analyzer
+Vulnerabilities: Improper Privilege Management, Improper Restriction of Excessive Authentication Attempts, Improper Access Control, Use of Cache Containing Sensitive Information, Improperly Implemented Security Check for Standard
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to alter the container's filesystem leading to unauthorized modifications and data corruption, conduct brute force attacks against legitimate user credentials or keys, get access to sensitive information, read and modify data stored in the local cache, or make the servers more prone to clickjacking attack.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens, are affected:
+
+Siemens SINEC Traffic Analyzer (6GK8822-1BG01-0BA0): versions prior to V2.0
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER PRIVILEGE MANAGEMENT CWE-269
+The affected application mounts the container's root filesystem with read and write privileges. This could allow an attacker to alter the container's filesystem leading to unauthorized modifications and data corruption.
+CVE-2024-41903 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-41903. A base score of 7.5 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:H/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+The affected application does not properly enforce restriction of excessive authentication attempts. This could allow an unauthenticated attacker to conduct brute force attacks against legitimate user credentials or keys.
+CVE-2024-41904 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-41904. A base score of 8.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.3 IMPROPER ACCESS CONTROL CWE-284
+The affected application does not have access control for accessing the files. This could allow an authenticated attacker with low privileges to get access to sensitive information.
+CVE-2024-41905 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-41905. A base score of 7.6 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N).
+3.2.4 USE OF CACHE CONTAINING SENSITIVE INFORMATION CWE-524
+The affected application does not properly handle cacheable HTTP responses in the web service. This could allow an attacker to read and modify data stored in the local cache.
+CVE-2024-41906 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-41906. A base score of 6.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N).
+3.2.5 IMPROPERLY IMPLEMENTED SECURITY CHECK FOR STANDARD CWE-358
+The affected application is missing general HTTP security headers in the web server. This could allow an attacker to make the servers more prone to clickjacking attacks.
+CVE-2024-41907 has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-41907. A base score of 2.1 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released a [new version (V2.0 or later version)](https://support.industry.siemens.com/cs/ww/en/view/109972409/ for SINEC Traffic Analyzer and recommends users update to the latest version.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-716317 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as virtual private networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+August 15, 2024: Initial Publication
+

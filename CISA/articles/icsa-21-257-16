@@ -1,0 +1,68 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIPROTEC 5
+Vulnerability: Improper Input Validation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-257-16 Siemens SIPROTEC 5 that was published September 14, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow unauthorized users to cause a denial-of-service condition by sending maliciously crafted web requests.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SIPROTEC 5 relays with CPU variants CP050: All versions prior to v8.80
+SIPROTEC 5 relays with CPU variants CP100: All versions prior to v8.80
+
+--------- Begin Update A Part 1 of 1 ---------
+
+SIPROTEC 5 relays with CPU variants CP200: All versions
+
+--------- End Update A Part 1 of 1 ---------
+
+SIPROTEC 5 relays with CPU variants CP300: All versions prior to v8.80
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1   IMPROPER INPUT VALIDATION CWE-20
+Received web packets are not properly processed. An unauthenticated remote attacker with access to any of the Ethernet interfaces could send specially crafted packets to force a restart of the target device.
+CVE-2021-37206 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Yuriy Strela from GAI NetConsult GmbH reported this vulnerability to Siemens.
+5. MITIGATIONS
+Siemens recommends applying updates where available:
+
+SIPROTEC 5 relays with CPU variants CP050: Update to v8.80 or later version
+SIPROTEC 5 relays with CPU variants CP100: Update to v8.80 or later version
+SIPROTEC 5 relays with CPU variants CP300: Update to v8.80 or later version
+
+For remaining products, Siemens has identified the following specific workaround and mitigation users can apply to reduce the risk:
+
+Block access to Port 4443/TCP, such as with an external firewall.
+
+Operators of critical power systems (e.g., TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. Therefore, Siemens recommends operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid’s reliability can thus be minimized by virtue of the grid design.
+Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment.
+As a general security measure Siemens strongly recommends protecting network access with appropriate mechanisms (e.g., firewalls, segmentation, VPN). It is advised users configure the environment according to Siemens operational guidelines for Digital Grid Products. in order to run the devices in a protected IT environment. 
+For additional information, please refer to Siemens Security Advisory SSA-500748
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

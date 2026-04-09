@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Kunbus
+Equipment: PR100088 Modbus gateway
+
+Vulnerabilities: Improper Authentication, Information Exposure Through Query Strings in GET Request, Missing Authentication for Critical Function, Improper Input Validation, Cleartext Storage of Sensitive Information
+
+
+2.   UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-19-036-05 (Update A) Kunbus PR100088 Modbus Gateway that was published February 7, 2019, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to achieve remote code execution and/or cause a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of PR100088 Modbus gateway are affected:
+
+PR100088 Modbus gateway: All versions prior to Release R02 (or Software Version 1.1.13166)
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER AUTHENTICATION CWE-287
+An attacker may be able change the password for an admin user who is currently or previously logged in, provided the device has not been restarted.
+CVE-2019-6527 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+4.2.2    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Registers used to store Modbus values can be read and written from the web interface without authentication.
+CVE-2019-6533 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H)
+4.2.3    IMPROPER INPUT VALIDATION CWE-20
+An attacker could specially craft an FTP request that could crash the device.
+CVE-2019-6529 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).
+4.2.4    INFORMATION EXPOSURE THROUGH QUERY STRINGS IN GET REQUEST CWE-598
+An attacker could retrieve passwords from an HTTP GET request if the attacker is in an MITM position.
+CVE-2019-6531 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+4.2.5    CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+An attacker could retrieve plain-text credentials stored in an XML file through FTP.
+CVE-2019-6549 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Nicolas Merle of Applied Risk reported these vulnerabilities to NCCIC. NCCIC coordinated these vulnerabilities with BSI Germany.
+5. MITIGATIONS
+Kunbus recommends the following:
+--------- Begin Update B Part 1 of 1 ---------
+
+Update to Version R03: the updated file can be downloaded from here (Install instructions can be found in the readme file included in the download): https://www.kunbus.de/sicherheitshinweise/update-ii-sicherheitshinweis-f%C3%BCr-gateway-modul-modbus-tcp-slave-art-nr-100088.html?file=files/media/bugfixes/SU_100088_R03.zip
+
+--------- End Update B Part 1 of 1 ---------
+
+These devices are not intended to be used in a public network. Rather, these devices are intended for use in an industrial environment with a protected network architecture.
+
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

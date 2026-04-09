@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+
+--------- Begin Update A Part 1 of 3 ---------
+
+Equipment: Nucleus NET, Nucleus Source Code, Capital VSTAR
+
+--------- End Update A Part 1 of 3 ---------
+
+Vulnerabilities: Out-of-bounds Write, Use of Out-of-Range Pointer Offset
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-103-04 Siemens Nucleus Products DNS Module that was published April 13, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a denial-of-service condition or for the execution of code remotely.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Nucleus products are affected:
+--------- Begin Update A Part 2 of 3 ---------
+
+Nucleus NET: All versions prior to v5.2
+Nucleus Source Code: Versions including affected DNS modules
+Capital VSTAR: Versions including affected DNS modules
+
+--------- End Update A Part 2 of 3 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    OUT-OF-BOUNDS WRITE CWE-787
+The DNS domain name label parsing functionality does not properly validate the names in DNS-responses. The parsing of malformed responses could result in a write past the end of an allocated structure. An attacker with a privileged position in the network could leverage this vulnerability to execute code in the context of the current process or cause a denial-of-service condition.
+CVE-2020-15795 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+ 
+4.2.2    USE OF OUT-OF-RANGE POINTER OFFSET CWE-823
+The DNS domain name record decompression functionality does not properly validate the pointer offset values. The parsing of malformed responses could result in a write past the end of an allocated structure. An attacker with a privileged position in the network could leverage this vulnerability to execute code in the context of the current process or cause a denial-of-service condition.
+CVE-2020-27009 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Daniel dos Santos, from Forescout Technologies, and Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens has published security advisory SSA-185699 and released the following mitigations for the affected products:
+--------- Begin Update A Part 3 of 3 ---------
+
+Nucleus NET: Update to the latest version of Nucleus ReadyStart v3 or v4. Note the latest version of Nucleus NET (v5.2) is not affected by the vulnerabilities but is already beyond the end of software support. Contact customer support or a Nucleus Sales team for mitigation advice. 
+Nucleus Source Code: Contact customer support to receive patch and update information.
+Capital VSTAR: Contact customer support to receive patch and update information.
+
+--------- End Update A Part 3 of 3 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Avoid using DNS client of affected versions.
+For additional mitigation advice contact Siemens customer support or a Nucleus Sales team.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens’ Operational Guidelines for Industrial Security, and to follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity 
+For further inquiries on security vulnerabilities in Siemens’ products and solutions, contact Siemens ProductCERT.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

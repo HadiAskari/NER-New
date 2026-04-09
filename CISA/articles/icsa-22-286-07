@@ -1,0 +1,71 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Nucleus Real-Time Operating System (RTOS) FTP Server
+Vulnerability: Uncontrolled Resource Consumption
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-286-07 Siemens Nucleus RTOS FTP Server that was published October 13, 2022, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote attacker to generate a denial-of-service condition on devices running the affected software.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Nucleus RTOS components contain the affected File Transport Protocol (FTP) server:
+
+Nucleus NET: All versions
+
+--------- Begin Update A Part 1 of 4 --------- 
+
+Nucleus ReadyStart V3: All versions
+
+--------- End Update A Part 1 of 4 --------- 
+
+Nucleus Source Code: Versions including affected FTP server
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+--------- Begin Update A Part 2 of 4 --------- 
+The FTP server does not properly release memory resources reserved for incomplete connection attempts by FTP clients. This could allow a remote attacker to generate a denial-of-service condition on devices incorporating a vulnerable version of the FTP server.
+--------- End Update A Part 2 of 4 --------- 
+CVE-2022-38371 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+5. MITIGATIONS
+Siemens recommends updating to the latest version of its software where available:
+
+Nucleus NET: No fix available – users should follow general security measures for mitigation.
+
+--------- Begin Update A Part 3 of 4 --------- 
+
+Nucleus ReadyStart V3: Update to V2017.02.4 and apply the patch "2017.02.4_patch_CVE-2022-38371"
+
+--------- End Update A Part 3 of 4 --------- 
+
+Nucleus Source Code: Contact Siemens (login required) to receive update information
+
+--------- Begin Update A Part 4 of 4 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Configure TCP_MAX_KEEPALIVES to a lower value such as 3.
+Configure TCP_KEEPALIVE_INTERVAL and TCP_KEEPALIVE_DELAY be set to 3 seconds.
+Rebuild the application.
+
+--------- End Update A Part 4 of 4 --------- 
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens Security Advisory in HTML or CSAF formats.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.4
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: LOGO! CMR, SIMATIC RTU 3000
+Vulnerability: Use of Insufficiently Random Values
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-257-13 Siemens LOGO! CMR and SIMATIC RTU 3000 that was published September 14, 2021, on the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker with network access to the LAN interface of an affected device to hijack an ongoing connection or spoof a new one.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of LOGO! controllers and SIMATIC monitors are affected:
+--------- Begin Update A Part 1 of 2 ---------
+
+LOGO! CMR2020 (6GK7142-7BX00-0AX0): All versions prior to v2.2
+LOGO! CMR2040 (6GK7142-7EX00-0AX0): All versions prior to v2.2
+SIMATIC RTU 3000 family: All versions
+SIMATIC RTU3010C (6NH3112-0BA00-0XX0): All versions prior to v4.0.9
+SIMATIC RTU3030C (6NH3112-3BA00-0XX0): All versions prior to v4.0.9
+SIMATIC RTU3031C (6NH3112-3BB00-0XX0): All versions prior to v4.0.9
+SIMATIC RTU3041C (6NH3112-4BB00-0XX0): All versions prior to v4.0.9
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+The underlying TCP/IP stack does not properly calculate the random numbers used as ISN (Initial Sequence Numbers). An adjacent attacker with network access to the LAN interface could interfere with traffic, spoof the connection, and gain access to sensitive information.
+CVE-2021-37186 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+5. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+LOGO! CMR2020 and CMR2040: Update to v2.2 or later version
+
+--------- Begin Update A Part 2 of 2 ---------
+
+SIMATIC RTU 3000 family: Update to v4.0.9 or later version
+
+--------- End Update A Part 2 of 2 ---------
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information about this issue, please see Siemens Security Advisory SSA-316383
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

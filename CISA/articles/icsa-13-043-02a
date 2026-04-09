@@ -1,0 +1,55 @@
+
+Overview
+This updated advisory is a follow-up to the original advisory titled ICSA-13-043-02—WellinTech KingView KingMess Buffer Overflow that was published February 12, 2013, on the ICS-CERT Web page.
+This updated advisory provides mitigation details for a vulnerability that impacts the WellinTech KingView KingMess application.
+Researchers Lucas Apa and Carlos Mario Penagos Hollman of IOActive have identified a buffer overflow vulnerability in WellinTech’s KingView KingMess application. WellinTech produced and released a patch on November 15, 2012, that mitigates this vulnerability. The researchers have validated that this patch fixes the vulnerability. Exploitation of this vulnerability could allow loss of confidentiality and integrity.
+This vulnerability could be exploited remotely.
+--------- Begin Update A Part 1 of 2 --------
+Exploits that target this vulnerability are publicly available. A Metaspoit module for this vulnerability has been released.
+--------- End Update A Part 1 of 2 ----------
+Affected Products
+The following KingView versions are affected:
+
+KingView 6.52 (kingMess.exe 65.20.2003.10300),
+KingView 6.53 (kingMess.exe 65.20.2003.10400), and
+KingView 6.55 (kingMess.exe 65.50.2011.18049).
+
+Impact
+Successful exploitation of this vulnerability will allow an attacker to execute arbitrary code as the running user. This vulnerability could impact multiple sectors, including power, water, and manufacturing.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+WellinTech is a China-based company that maintains offices in several countries around the world, including the US, Japan, Singapore, Taiwan, and Europe.
+The affected product, KingView, is a Web-based SCADA application for Windows-based control, monitoring, and data collection. According to WellinTech, KingView is deployed across several sectors and is widely used in power, manufacturing, water and wastewater, building automation, mining, environmental protection, metallurgy, and others.
+Vulnerability Characterization
+Vulnerability Overview
+Memory Corruption Buffer OverflowCWE, http://cwe.mitre.org/data/definitions/119.html, CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, Web site last accessed March 27, 2013.
+The KingMess application in KingView has a memory corruption vulnerability where the application handles exception information incorrectly. An attacker could send a specially crafted packet to KingView, and the KingMess application would handle the packet incorrectly, causing a memory buffer overflow. This could allow the attacker to execute arbitrary code as the currently running user, which would affect confidentiality, integrity, and availability.
+CVE-2012-4711 has been assigned to this vulnerability. A CVSS v2 base score of 10 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+This vulnerability could be exploited remotely.
+Existence of Exploit
+--------- Begin Update A Part 2 of 2 --------
+There is a publicly available Metasploit module for this vulnerability.
+--------- End Update A Part 2 of 2 ----------
+Difficulty
+An attacker with a high skill level would be able to exploit this vulnerability.
+Mitigation
+WellinTech recommends that all customers using KingView 6.52, 6.53, or 6.55 download the patch for their version of KingView that mitigates this vulnerability.
+The following new versions are available at WellinTech’s Web sited
+
+KingView 6.55 (Chinese version),
+KingView 6.53 (Chinese version),
+KingView 6.52 (Chinese version),
+KingView 6.53 (English version), and
+KingView 6.52 (English version).
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

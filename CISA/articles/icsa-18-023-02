@@ -1,0 +1,93 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.5
+
+ATTENTION: Exploitable from an adjacent network/low skill level to exploit
+Vendor: Siemens
+Equipment: Industrial Products
+Vulnerabilities: Improper Input Validation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-023-02 Siemens Industrial Products that was published January 23, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could cause the targeted device to enter a denial-of-service condition, which may require human interaction to recover the system.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that this vulnerability affects the following products using PROFINET DCP:
+
+SIMATIC CP 1242-7 GPRS v2: All versions prior to v2.1.82,
+SIMATIC CP 1243-7 LTE EU/US: All versions prior to v2.1.82,
+SIMATIC CP 1243-8: All versions prior to v2.1.82,
+
+--------- Begin Update A Part 1 of 2 --------
+
+SIMATIC CP 1626: All versions prior to v1.1,
+
+--------- End Update A Part 1 of 2 ----------
+
+Extension Unit 12” PROFINET: All versions prior to v01.01.01,
+Extension Unit 15” PROFINET: All versions prior to v01.01.01,
+Extension Unit 19” PROFINET: All versions prior to v01.01.01, and
+Extension Unit 22” PROFINET: All versions prior to v01.01.01.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER INPUT VALIDATION CWE-20
+Specially crafted PROFINET DCP broadcast packets could cause a denial-of-service condition of affected products on a local Ethernet segment (Layer 2). Human interaction is required to recover the systems. PROFIBUS interfaces are not affected.
+CVE-2017-2680 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported this vulnerability to NCCIC.
+5. MITIGATIONS
+The attacker must have network access to the local Ethernet segment (Layer 2).
+Siemens recommends upgrading latest firmware versions. This vulnerability is resolved in the following versions for each product listed:
+
+v01.01.01(https://support.industry.siemens.com/cs/document/109750351):
+
+Extension Unit 12” PROFINET
+Extension Unit 15” PROFINET
+Extension Unit 19” PROFINET
+Extension Unit 22” PROFINET
+
+
+v2.1.82 (https://support.industry.siemens.com/cs/ww/en/view/109749515):
+
+SIMATIC CP 1242-7 GPRS V2
+SIMATIC CP 1243-7 LTE EU/US
+SIMATIC CP 1243-8 IRC
+
+
+
+--------- Begin Update A Part 2 of 2 ---------
+
+v1.1(https://support.industry.siemens.com/cs/ww/en/view/109763307):
+
+SIMATIC CP 1626
+
+
+
+--------- End Update A Part 2 of 2 ---------
+Siemens has identified the following specific workarounds and mitigations that customers can apply to reduce the risk:
+
+Apply cell protection concept
+Use VPN for protecting network communication between cells
+Apply defense-in-depth
+
+As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to run the devices in a protected IT environment, Siemens particularly recommends to configure the environment according to Siemens’ Operational Guidelines for Industrial Security and to follow the recommendations in the product manuals. The Operational Guidelines for Industrial Security can be found at:https://www.siemens.com/cert/operational-guidelines-industrial-security
+Additional information on Industrial Security by Siemens can be found at:  https://www.siemens.com/global/en/home/company/topic-areas/future-of-manufacturing/industrial-security.html
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-284673 at the following location:http://www.siemens.com/cert/en/cert-security-advisories.htm
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

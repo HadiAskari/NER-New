@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Low skill level to exploit
+Vendor: Siemens
+Equipment: SCALANCE W700 and W1700
+Vulnerability: Improper Enforcement of Message Integrity During Transmission in a Communication Channel
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to access confidential data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SCALANCE W700 and W1700, wireless communication devices, are affected:
+
+SCALANCE W700 Versions 6.3 and prior
+SCALANCE W1700 Versions 1.0 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER ENFORCEMENT OF MESSAGE INTEGRITY DURING TRANSMISSION IN A COMMUNICATION CHANNEL CWE-924
+Under certain conditions, the integrity of EAPOL-key messages might not be checked, leading to a decryption oracle. This could be exploited by an attacker within range of the access point, which could allow the abuse of the vulnerability to access confidential data.
+CVE-2018-14526 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens recommends installing the following software updates to address this vulnerability:
+
+SCALANCE W700: Update to v6.4 or later
+SCALANCE W1700: Update to v1.1 or later
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Whenever possible, use AES-CCMP instead of TKIP in the WPA/WPA2 networks. This can be configured for both the SCALANCE W-700 and W-1700 families over the Web Based Management (web server). For more information, go for the respective Manual.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for Industrial Security and to follow the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens security advisory SSA-344983 at the following location:
+http://www.siemens.com/cert/advisories
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

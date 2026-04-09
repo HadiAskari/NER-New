@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: RUGGEDCOM ROX
+
+--------- Begin Update A Part 1 of 2 ---------
+
+Vulnerabilities: Improper Privilege Management, Execution with Unnecessary Privileges, Improper Handling of Insufficient Permissions or Privileges
+
+--------- End Update A Part 1 of 2 ---------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-259-01 Siemens RUGGEDCOM ROX that was published September 16, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain root access to the affected devices.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of RUGGEDCOM ROX are affected:
+
+RUGGEDCOM ROX MX5000: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1400: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1500: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1501: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1510: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1511: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1512: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1524: All versions prior to v2.14.1
+RUGGEDCOM ROX RX1536: All versions prior to v2.14.1
+RUGGEDCOM ROX RX5000: All versions prior to v2.14.1 
+
+4.2 VULNERABILITY OVERVIEW
+--------- Begin Update A Part 2 of 2 ---------
+4.2.1    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+The command line interface of affected devices insufficiently restricts file read and write operations for low privileged users. This could allow an authenticated remote attacker to escalate privileges and gain root access to the device.
+CVE-2021-37173 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+--------- End Update A Part 2 of 2 ---------
+4.2.2    EXECUTION WITH UNNECESSARY PRIVILEGES CWE-250
+The affected devices have a privilege escalation vulnerability that could allow an attacker to gain root user access.
+CVE-2021-37174 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    IMPROPER HANDLING OF INSUFFICIENT PERMISSIONS OR PRIVILEGES CWE-280
+The affected devices do not properly handle permissions to traverse the file system. If exploited, an attacker could gain access to an overview of the overview of the complete file system on the affected devices.
+CVE-2021-37175 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Michael Messner from Siemens Energy reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+Siemens has released an update and recommends users update to v2.14.1 or later version.
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Apply the principle of least privileges for accounts configured on the affected devices.
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for industrial security and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information about this issue, please see Siemens Security Advisory SSA-150692
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

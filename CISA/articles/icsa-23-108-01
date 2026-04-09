@@ -1,0 +1,64 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Omron 
+Equipment: SYSMAC CS/CJ Series 
+Vulnerability: Missing Authentication for Critical Function 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to access sensitive information in the file system and memory. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Omron CS/CJ series, programmable logic controllers, are affected: 
+
+SYSMAC CJ2H-CPU6[]-EIP: all versions 
+SYSMAC CJ2H-CPU6[]: all versions 
+SYSMAC CJ2M-CPU[][]: all versions 
+SYSMAC CJ1G-CPU[][]P: all versions 
+SYSMAC CS1H-CPU[][]H: all versions 
+SYSMAC CS1G-CPU[][]H: all versions 
+SYSMAC CS1D-CPU[][]HA: all versions 
+SYSMAC CS1D-CPU[][]H: all versions 
+SYSMAC CS1D-CPU[][]SA: all versions 
+SYSMAC CS1D-CPU[][]S: all versions 
+SYSMAC CS1D-CPU[][]P: all versions 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306 
+Omron CS/CJ series programmable logic controllers are missing authentication for the file system. This could allow an attacker to access the file system (via memory card or EM file memory) and obtain all available sensitive information.  
+CVE-2022-45794 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Japan 
+
+3.4 RESEARCHER
+Reid Wightman of Dragos reported this vulnerability to CISA. 
+4. MITIGATIONS
+OMRON recommends users take the following mitigation measures to minimize the risk of exploitation of these vulnerabilities. 
+
+Enable the FINS write protection function. 
+Minimize connection of control systems and equipment to open networks preventing untrusted devices from accessing them. 
+Implement firewalls: 
+Shut down unused communications ports 
+Limit communications hosts 
+Limit access to FINS port (9600)  
+Isolate control systems and equipment from the IT network. 
+Use a virtual private network (VPN) for remote access to control systems and equipment. 
+Use strong passwords and change them frequently. 
+Install physical controls, only permitting authorized personnel access to control systems and equipment. 
+Use malware scanning tools to ensure safety of any USB drives or other portable devices before connecting them to control systems and devices. 
+Enforce multifactor authentication on all devices with remote access to control systems and equipment when possible. 
+Protect hosts with access to the control system against malware and Ensure installation and maintenance of up-to-date, antivirus software on hosts with access to control systems. 
+Complete validation processing, such as backup and range checks, to cope with unintentional modification of input/output data to control systems and devices. 
+Complete periodical data backup and maintenance to prepare for data loss. 
+
+For more information, see Omron’s Advisory. 
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.  

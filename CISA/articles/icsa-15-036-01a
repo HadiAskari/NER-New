@@ -1,0 +1,68 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-15-036-01 GE and MACTek HART Device DTM Vulnerability that was published February 5, 2015, on the NCCIC/ICS-CERT web site.
+Alexander Bolshev and Svetlana Cherkasova of Digital Security have identified an improper input vulnerability in the HART Device Type Manager (DTM) library utilized in GE and MACTek’s HART Device DTM. GE has addressed the vulnerability with a new library, which both companies have begun to integrate. GE has tested the new library to validate that it resolves the vulnerability.
+AFFECTED PRODUCTS
+The following products use the vulnerable HART DTM library and are affected:
+
+MACTek’s Bullet DTM 1.00.0,
+GE’s Vector DTM 1.00.0,
+GE’s SVi1000 Positioner DTM 1.00.0,
+GE’s SVI II AP Positioner DTM 2.00.1, and
+GE’s 12400 Level Transmitter DTM 1.00.0.
+
+IMPACT
+The vulnerability causes a buffer overflow in the HART Device DTM crashing the Field Device Tool (FDT) Frame Application. The Frame Application must then be restarted. The Frame Application is primarily used for remote configuration. Exploitation of this vulnerability does not result in loss of information, control, or view by the control system of the HART devices on the 4-20 mA HART Loop.
+--------- Begin Update A Part 1 of 3 --------
+The buffer overflow exploited could be used to execute arbitrary code on the system running the Frame Application. The researcher has provided proof of concept to ICS-CERT and the vendor. The updated HART Device DTM provided by the GE and MACTek will resolve this issue. Successful exploitation requires that the Frame Application is running and connected to a DTM‑configured HART‑based device at the time of the exploit.
+--------- End Update A Part 1 of 3 ----------
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+GE is a US-based company that maintains offices in several countries around the world.
+MACTek is a US-based company headquartered in Ohio.
+The affected product is the DTM library used by GE and MACTek HART-based field devices in the FDT/DTM Frame Application. According to MACTek and GE, these products are deployed across multiple critical infrastructure sectors. MACTek and GE estimate that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+--------- Begin Update A Part 2 of 3 --------
+
+BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed March 24, 2015./IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed February 5, 2015.
+
+Successful injection of specially crafted packets to the Device DTM causes a buffer overflow condition in the Frame Application. The FDT Frame Application becomes unresponsive, and the Device DTM stops functioning. Overflow involved could be used to execute arbitrary code on the system running the Frame Application.
+CVE-2014-9203NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9203, web site last accessed March 24, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:A/AC:H/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:H/Au:N/C:C/I:C/A:C, web site last accessed February 5, 2015.
+--------- End Update A Part 2 of 3 ----------
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This exploit on the FDT/DTM Frame Application is possible from any adjacent network that receives or passes packets from the HART Device DTM.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+This is a complex vulnerability. Crafting a working exploit for this vulnerability would be difficult. Compromised access that allows access to the packets transmitted to Frame Application is required for exploitation. This exploit also requires a specific timing to crash the Frame Application. This increases the difficulty of a successful exploit.
+MITIGATION
+GE has released an advisory and update addressing the GE HART Device DTMs.
+The advisory can be found here:
+http://www.geoilandgas.com/securityadvisory
+The update can be downloaded here:
+http://www.ge-mcs.com/en/download.html
+MACTek has released its update at the following location:
+https://mactekcorp.com/download.php
+The updated DTM versions are as follows:
+
+Bullet DTM 1.00.1,
+Vector DTM 1.00.1,
+SVi1000 DTM 1.00.1,
+SVI II AP Positioner DTM 2.10.1, and
+12400 DTM 1.00.1.
+
+--------- Begin Update A Part 3 of 3 --------
+Device DTM software with the identified vulnerable versions listed as impacted should be used only within an offline secure network until patched. ICS-CERT strongly recommends performing configuration changes in a nonproduction environment where proper testing and risk evaluation can be performed. ICS-CERT also recommends that asset owners employ a least privilege practice and avoid unnecessary services within their production environment.
+Some processes may require continual configuration changes. ICS-CERT recommends asset owners maintain all software with the latest security releases, limit connections outside the control process, and monitor approved connections for suspicious traffic.
+--------- End Update A Part 3 of 3 ----------
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

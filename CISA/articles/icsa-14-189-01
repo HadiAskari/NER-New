@@ -1,0 +1,57 @@
+
+OVERVIEW
+Researcher group Rapid7 has identified a buffer overflow vulnerability in Yokogawa CENTUM products. Yokogawa has produced a patch that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Yokogawa reports that the vulnerability affects the following products:
+
+CENTUM CS 1000 all revisions,
+CENTUM CS 3000 R3.09.50 or earlier,
+CENTUM CS 3000 Entry Class R3.09.50 or earlier,
+CENTUM VP R5.03.20 or earlier,
+CENTUM VP Entry Class R5.03.20 or earlier,
+Exaopc R3.72.00 or earlier,
+B/M9000CS R5.05.01 or earlier, and
+B/M9000 VP R7.03.01 or earlier.
+
+IMPACT
+Successful exploitation of this vulnerability may allow remote attackers to execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Yokogawa is a company based in Japan that maintains offices on several continents, including North and Central America, South America, Europe, Middle East, Africa, and parts of Asia.
+
+CENTUM VP is an integrated production control system.
+Exaopc is an OPC server for data access, alarms and events, historical data access, batch information, and a security interface for CENTUM series process control systems.
+B/M9000CS and B/M9000 VP are quality control systems for use in the pulp and paper industry.
+
+According to Yokogawa, these products are deployed across several sectors including Critical Manufacturing, Energy, Food and Agriculture, and others. Yokogawa estimates that these systems are deployed worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed July 08, 2014.
+
+The “BKFSim_vhfd.exe” service, started when running the “FCS/Test Function” for extended virtual testing, listens by default on Port 20010 (TCP and UDP). By sending a specially crafted packet to the Port 20010/UDP, it’s possible to trigger a stack-based buffer overflow, which allows execution of arbitrary code with the privileges of the CENTUM user.
+CVE-2014-3888NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3888, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:C , web site last accessed July 08, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+Yokogawa provides patch software for the latest revisions of the affected products. This vulnerability can be corrected by installing the patch software. The computer must be rebooted to activate the patch software. If the system uses earlier versions of the software than the ones for which the software patches are provided, Yokgawa recommends that users upgrade to the latest revisions/versions and then apply the software patches.
+For details about individual countermeasures by the affected product, please refer to “YSAR-14-0002E: Buffer Overflow Vulnerability in CENTUM systems and Exaopc” on the Yokogawa Security Advisory Report website:
+http://www.yokogawa.com/dcs/security/ysar/dcs-ysar-index-en.htm
+Yokogawa strongly suggests all customers to introduce appropriate security measures not only for the vulnerabilities identified but also to the overall systems.
+For questions related to this vulnerability or how to obtain the patch software, please contact Yokogawa service department at the following web address for more details:
+https://plus.yokogawa.co.jp/gw/gw.po?c-id=000498
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

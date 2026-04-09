@@ -1,0 +1,46 @@
+
+Overview
+This advisory is a follow-up to the ICS-CERT alert titled ICS-ALERT-11-283-02 – Certec atvise webMI Vulnerabilities, released to the ICS-CERT web page on October 10, 2011.
+Independent researcher Luigi Auriemma has identified vulnerabilities in Certec’s webMI2ADS application. These vulnerabilities and proof of concept code were disclosed without coordination with ICS-CERT, the vendor, or any other coordinating entity. Certec has produced an update that resolves these vulnerabilities. Mr. Auriemma has verified that the update resolves the identified vulnerabilities.
+Affected Products
+Certec webMI2ADS – All versions prior to Version 2.0.2 are affected.
+Impact
+Successful exploitation of these vulnerabilities may allow an attacker to cause a denial of service (DoS) or could lead to data leakage.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+Certec EDV GmbH is an Austrian-based company with regional partners in Germany, Switzerland, Italy, and Israel.
+Certec webMI2ADS is the server component of a browser-based HMI system. WebMI2ADS is used primarily in factory and building automation.
+Vulnerability Characterization
+Vulnerability Overview
+Directory Traversalb. http://cwe.mitre.org/data/definitions/22.html, website last accessed April 10, 2012.
+The web server in webMI does not implement sufficient measurers to prevent reading files from an unauthorized directory. An attacker could exploit this vulnerability by sending a specially crafted request to the web server on Port 80/TCP. A successful attack may result in data leakage.
+CVE-2011-4880 has been assigned to this vulnerability. A CVSS V2 base score of 5.0 has also been assigned.
+Null Pointerd. http://cwe.mitre.org/data/definitions/476.html, website last accessed April 10, 2012.
+The web server in webMI does not implement checks on a return value from a function . An attacker could exploit this vulnerability by sending a specially crafted request to the web server on Port 80/TCP. A successful attack would result in a DoS condition.
+CVE-2011-4881 has been assigned to this vulnerability. A CVSS V2 base score of 5.0 has also been assigned.
+Termination of the Softwaref. http://cwe.mitre.org/data/definitions/732.html, website last accessed April 10, 2012.
+An attacker could use a non-authenticated command via the web interface on Port 80/TCP to shut down the application. A successful attack would result in a DoS condition.
+CVE-2011-4882 has been assigned to this vulnerability. A CVSS V2 base score of 5.0 has also been assigned.
+Resources Consumptionh. http://cwe.mitre.org/data/definitions/400.html, website last accessed April 10, 2012.
+The web server in webMI does not implement checks for invalid values in an HTTP request. An attacker could exploit this vulnerability by sending a specially crafted request to the web server on Port 80/TCP. Successful attack would result in a DoS condition.
+Vulnerability Details
+Exploitability
+These vulnerabilities are remotely exploitable.
+Existence of Exploit
+Public exploits are known to target these vulnerabilities.
+Difficulty
+An attacker with a low skill level may cause a DoS condition or access sensitive data.
+Mitigation
+Certec has released version 2.0.2 of webMI2ADS which fixes these vulnerabilities. Customers can download version 2.0.2 of webMI2ADS.
+Users will need to be registered in order to download the new product.
+Certec and ICS-CERT recommend that owners of vulnerable versions of the webMI2ADS product download and install the updated version as soon as possible.
+ICS-CERT also encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+

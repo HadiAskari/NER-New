@@ -1,0 +1,49 @@
+
+OVERVIEW
+Schneider Electric has reported to NCCIC/ICS-CERT a Stack Buffer Overflow vulnerability supplied with the Schneider Electric OPC Factory Server (OSF). Independent researcher (known as) 0x7A240E67 submitted the vulnerability to ZDI, who provided coordination with the vendor and ICS-CERT.
+AFFECTED PRODUCTS
+The following Schneider Electric OFS Test Client versions are affected:
+
+TLXCDSUOFS33 - V3.35,
+TLXCDSTOFS33 – V3.35,
+TLXCDLUOFS33 – V3.35,
+TLXCDLTOFS33 – V3.35, and
+TLXCDLFOFS33 – V3.35 
+
+IMPACT
+The parsing of the sample configuration file exposes a buffer overflow vulnerability that may lead to remote code execution. This client was supplied for demonstration purposes only and is not recommended for use in a production environment.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric is a European-based company that maintains offices in 190 countries worldwide.
+These products are industrial active energy management control products, deployed across several sectors including the Energy, Water and Wastewater Systems, Commercial Facilties, Government Facilities, Food and Agriculture, and Transportation Systems. Schneider Electric estimates that these products are used primarily in the United States and North America.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+STACK BUFFER OVERFLOWCWE-121: Stack Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, , web site last accessed February 27, 2014.
+
+When a malformed configuration file is parsed by the demonstration client, it may cause a buffer overflow allowing the configuration file to start malicious programs or execute code on the PC.
+Schneider Electric provided a demonstration client with the OFS program for training purposes and did not intend for use in a production environment.
+CVE-2014-0774NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0774, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:S/C:C/I:C/A:C)CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:S/C:C/I:C/A:C, web site last visited February 27, 2014..
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction with the demonstration client. The exploit is only triggered when the demonstration client opens a specially modified sample client configuration file to execute malicious programs or execute code on the PC.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill and physical access would be able to exploit this vulnerability.
+MITIGATION
+Schneider Electric has a product upgrade as well as a workaround solutionSchneider Electric Security Notification SEVD 2014-031-01,”Vulnerability Disclosure – OPC Factory Server V3.35,” http://www.downloads.schneider-electric.com/?p_Conf=&p_localesFilter=&p_docTypeFilter=1555899,&p_docTypeGroupFilter=3541958 , web site last accessed February 27, 2014 that mitigates this vulnerability.
+
+The security announcements affecting the OPC Factory Server are available here:
+http://www2.schneider-electric.com/sites/corporate/en/support/cybersecurity/cybersecurity.page
+Schneider Electric recommends customers to upgrade to OFS v3.4 or later (Version v3.5 is currently available). Customers that cannot upgrade are directed to remove the demonstration client from affected computers, provided it is not required for operations.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+ 

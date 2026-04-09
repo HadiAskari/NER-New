@@ -1,0 +1,84 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendors: Siemens and PKE
+Equipment: SiNVR/SiVMS Video Server
+Vulnerabilities: Cleartext Storage in a File or on Disk, Path Traversal, Improper Input Validation, Weak Cryptography for Passwords
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-20-070-01 Siemens SiNVR 3 (Update A) that was published April 20, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in unauthorized access to server data and possible denial-of-service conditions.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of SiNVR/SiVMS Video Server, a video management solution, are affected:
+
+SiNVR 3 Central Control Server (CCS): All versions Moved to SSA-761844 and ICSA-21-103-10
+SiNVR/SiVMS Video Server: All versions prior to v5.0.0
+SiNVR/SiVMS Video Server: v5.0.0 and later is affected by CVE-2019-19298 and CVE-2019-19299
+
+--------- Begin Update B Part 1 of 2 ---------
+
+SiNVR/SiVMS Video Server: v5.0.0 and later is affected by CVE-2019-19299
+
+--------- End Update B Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+CVE-2019-19290, CVE-2019-19292, CVE-2019-19293, CVE-2019-19294, and CVE-2019-19295 have been moved to SSA-761844 and ICSA-21-103-10
+4.2.1    CLEARTEXT STORAGE IN A FILE OR ON DISK CWE-313
+The FTP services of the SiNVR/SiVMS Video Server maintain log files that store login credentials in cleartext. In configurations where the FTP service is enabled, authenticated remote attackers could extract login credentials of other users of the service.
+CVE-2019-19291 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string  is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N). 
+4.2.2    PATH TRAVERSAL CWE-22
+Successful exploitation could allow an authenticated remote attacker to access and download arbitrary files from the server if the FTP services are enabled.
+CVE-2019-19296 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string  is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N).
+4.2.3    PATH TRAVERSAL CWE-22
+Successful exploitation could allow an authenticated remote attacker to access and download arbitrary files from the server.
+CVE-2019-19297 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string  is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.4    IMPROPER INPUT VALIDATION CWE-20
+Successful exploitation could allow an unauthenticated remote attacker to cause a denial-of-service condition by sending malformed HTTP requests.
+CVE-2019-19298 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string  is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.5    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+The affected product contains weak cryptography when exposing device passwords. This could allow an unauthenticated remote attacker to read and decrypt the passwords and conduct further attacks.
+CVE-2019-19299 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string  is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+•    CRITICAL INFRASTRUCTURE SECTORS: Information Technology
+•    COUNTRIES/AREAS DEPLOYED: Worldwide
+•    COMPANY HEADQUARTERS LOCATION: Germany
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+--------- Begin Update B Part 2 of 2 ---------
+Siemens and PKE recommend users to update to v5.0.0 or later.
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Apply ACL/firewall configuration on the video servers to ensure only legitimate systems can access the configured server ports.
+Harden all systems accordingly to prevent unauthorized access.
+Consider applying encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).
+Disable the two FTP services of the video server.
+The update to v5.0.2 also provides an additional authentication feature that allows users to protect access to the streaming service via individual account names and passwords for every stream recorder. Users are encouraged to configure this feature accordingly. For details, see the release notes of v5.0.2
+
+--------- End Update B Part 2 of 2 ---------
+As a general security measure Siemens strongly recommends protecting network access to affected products with appropriate mechanisms. Siemens advises users to follow recommended security practices to run the devices in a protected IT environment.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens security advisory SSA-844761 and PKE security advisory. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+Exercise principles of least privilege.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

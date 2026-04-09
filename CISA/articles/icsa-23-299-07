@@ -1,0 +1,76 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity/public exploits are available
+Vendor: Sielco
+Equipment: PolyEco1000
+Vulnerabilities: Session Fixation, Improper Restriction of Excessive Authentication Attempts, Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to escalate privileges, access restricted pages, or hijack sessions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Sielco PolyEco1000, a FM transmitter, are affected:
+
+PolyEco1000: CPU:2.0.6 FPGA:10.19
+PolyEco1000: CPU:1.9.4 FPGA:10.19
+PolyEco1000: CPU:1.9.3 FPGA:10.19
+PolyEco500: CPU:1.7.0 FPGA:10.16
+PolyEco300: CPU:2.0.2 FPGA:10.19
+PolyEco300: CPU:2.0.0 FPGA:10.19
+
+3.2 Vulnerability Overview
+3.2.1 SESSION FIXATION CWE-384
+Sielco PolyEco1000 is vulnerable to a session hijack vulnerability due to the cookie being vulnerable to a brute force attack, lack of SSL, and the session being visible in requests.
+CVE-2023-0897 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2 IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+Sielco PolyEco1000 uses a weak set of default administrative credentials that can be easily guessed in remote password attacks and gain full control of the system.
+CVE-2023-5754 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.3 IMPROPER ACCESS CONTROL CWE-284
+Sielco PolyEco1000 is vulnerable to an attacker escalating their privileges by modifying passwords in POST requests.
+CVE-2023-46661 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 IMPROPER ACCESS CONTROL CWE-284
+Sielco PolyEco1000 is vulnerable to an information disclosure vulnerability due to improper access control enforcement. An unauthenticated remote attacker can exploit this via a specially crafted request to gain access to sensitive information.
+CVE-2023-46662 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5 IMPROPER ACCESS CONTROL CWE-284
+Sielco PolyEco1000 is vulnerable to an attacker bypassing authorization and accessing resources behind protected pages. The application interface allows users to perform certain actions via HTTP requests without performing any validity checks to verify the requests.
+CVE-2023-46663 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.6 IMPROPER ACCESS CONTROL CWE-284
+Sielco PolyEco1000 is vulnerable to an improper access control vulnerability when the application provides direct access to objects based on user-supplied input. As a result of this vulnerability attackers can bypass authorization and access resources behind protected pages.
+CVE-2023-46664 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.7 IMPROPER ACCESS CONTROL CWE-284
+Sielco PolyEco1000 is vulnerable to an authentication bypass vulnerability due to an attacker modifying passwords in a POST request and gain unauthorized access to the affected device with administrative privileges.
+CVE-2023-46665 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Italy
+
+3.4 RESEARCHER
+CISA discovered a public proof of concept as authored by Gjoko Krstic of ZeroScience.
+4. MITIGATIONS
+Sielco has not responded to requests to work with CISA to mitigate these vulnerabilities. Users of affected versions of Sielco PolyEco FM Transmitter are invited to contact Sielco customer support for additional information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+5. UPDATE HISTORY
+
+October 26, 2023: Initial Publication
+

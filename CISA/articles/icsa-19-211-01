@@ -1,0 +1,111 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Wind River
+Equipment: VxWorks
+Vulnerabilities: Stack-based Buffer Overflow, Heap-based Buffer Overflow, Integer Underflow, Improper Restriction of Operations within the Bounds of a Memory Buffer, Race Condition, Argument Condition or Modification, Null Pointer Dereference, Argument Injection or Modification
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-211-01 Wind River VxWorks that was published July 30, 2019, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Wind River reports the following versions of VxWorks are affected:
+
+All versions of VxWorks under CURRENT support (6.9.4.11, Vx7 SR540, Vx7 SR610) are affected by one or more of the CVE numbers detailed below.
+Older, End-of-Life versions of VxWorks back to 6.5 are also affected by one or more of the CVE numbers below.
+All versions of the discontinued product Advanced Networking Technology (ANT) are likely affected by one or more of the CVE numbers below.
+The VxWorks bootrom network stack leverages the same IPnet source as VxWorks and, as a result, is also technically vulnerable to CVE-2019-12256. The same patches and mitigations apply to VxWorks and the bootrom network stack. However, the bootrom normally uses statically assigned IP-addresses, not DHCP. If that is true, then the defects related to those protocols do not apply in practice. Also a successful exploit of the bootrom network stack has a more difficult timing component. In typical applications, the bootrom does not listen to TCP-ports, which means that the TCP-related issues must be timed with the target downloading data from the network.
+VxWorks 653 MCE 3.x may be affected. Contact Wind River customer support (support@windriver.com) for more details.
+
+The following VxWorks products are not affected:
+
+The latest release of VxWorks, VxWorks 7 SR620, is NOT affected by any of these CVEs
+VxWorks 5.3 through VxWorks 6.4 inclusive are NOT affected.
+VxWorks Cert versions are NOT affected.
+VxWorks 653 Versions 2.x and earlier are NOT affected.
+VxWorks 653 MCE 3.x Cert Edition and later are NOT affected.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+This vulnerability resides in the IPv4 option parsing and may be triggered by IPv4 packets containing invalid options.
+The most likely outcome of triggering this defect is that the tNet0 task crashes. This vulnerability can result in remote code execution.
+CVE-2019-12256 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+DHCP packets may go past the local area network (LAN) via DHCP-relays, but are otherwise confined to the LAN.
+The DHCP-client may be used by VxWorks and in the bootrom. Bootrom, using DHCP/BOOTP, is only vulnerable during the boot-process.
+This vulnerability may be used to overwrite the heap, which could result in a later crash when a task requests memory from the heap. This vulnerability can result in remote code execution.
+CVE-2019-12257 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    INTEGER UNDERFLOW (WRAP OR WRAPAROUND) CWE-191
+An attacker can either hijack an existing TCP-session and inject bad TCP-segments or establish a new TCP-session on any TCP-port listened to by the target.
+This vulnerability could lead to a buffer overflow of up to a full TCP receive-window (by default, 10k-64k depending on version). The buffer overflow occurs in the task calling recv()/recvfrom()/recvmsg().
+Applications that pass a buffer equal to or larger than a full TCP-window are not susceptible to this attack. Applications passing a stack-allocated variable as a buffer are the easiest to exploit.
+The most likely outcome is a crash of the application reading from the affected socket, which could result in remote code execution.
+CVE-2019-12255 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+This vulnerability could lead to a buffer overflow of up to a full TCP receive-window (by default, 10k-64k depending on version). The buffer overflow happens in the task calling recv()/recvfrom()/recvmsg().
+Applications that pass a buffer equal to or larger than a full TCP-window are not susceptible to this attack. Applications passing a stack-allocated variable as a buffer are the easiest to exploit.
+The most likely outcome is a crash of the application reading from the affected socket, which could result in remote code execution.
+CVE-2019-12260 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.5    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+The impact of this vulnerability is a buffer overflow of up to a full TCP receive-window (by default, 10k-64k depending on version). The buffer overflow happens in the task calling recv()/recvfrom()/recvmsg().
+Applications that pass a buffer equal to or larger than a full TCP-window are not susceptible to this attack. Applications passing a stack-allocated variable as a buffer are the easiest to exploit.
+The most likely outcome is a crash of the application reading from the affected socket, which could result in remote code execution.
+CVE-2019-12261 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.6    CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362
+This vulnerability relies on a race-condition between the network task (tNet0) and the receiving application. It is very difficult to trigger the race on a system with a single CPU-thread enabled, and there is no way to reliably trigger a race on SMP targets.
+CVE-2019-12263 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.7    ARGUMENT INJECTION OR MODIFICATION CWE-88
+An attacker with the source and destination TCP-port and IP-addresses of a session can inject invalid TCP-segments into the flow, causing the TCP-session to be reset.
+An application will see this as an ECONNRESET error message when using the socket after such an attack.
+The most likely outcome is a crash of the application reading from the affected socket.
+CVE-2019-12258 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.8    NULL POINTER DEREFERENCE CWE-476
+This vulnerability requires that at least one IPv4 multicast address has been assigned to the target in an incorrect way (e.g., using the API intended for assigning unicast-addresses).
+An attacker may use CVE-2019-12264 to incorrectly assign a multicast IP-address.
+An attacker on the same LAN as the target system may use this vulnerability to cause a NULL-pointer dereference, which most likely will crash the tNet0 task.
+CVE-2019-12259 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H).
+4.2.9    ARGUMENT INJECTION OR MODIFICATION CWE-88
+An attacker residing on the LAN can send reverse-ARP responses to the victim system to assign unicast IPv4 addresses to the target.
+CVE-2019-12262 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+4.2.10    ARGUMENT INJECTION OR MODIFICATION CWE-88
+An attacker residing on the LAN may choose to hijack a DHCP-client session that requests an IPv4 address. The attacker can send a multicast IP-address in the DHCP offer/ack message, which the victim system then incorrectly assigns.
+This vulnerability can be combined with CVE-2019-12259 to create a denial-of-service condition.
+CVE-2019-12264 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H).
+4.2.11    ARGUMENT INJECTION OR MODIFICATION CWE-88
+The IGMPv3 reception handler does not expect packets to be spread across multiple IP-fragments.
+CVE-2019-12265 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Information Technology, Healthcare and Public Health, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Wind River, working with Armis researchers Gregory Vishnepolsky, Dor Zusman, and Ben Seri, reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Wind River has produced controls and patches to mitigate the reported vulnerabilities. To obtain patches, email PSIRT@windriver.com and indicate the VxWorks major version for which you need source patches.
+For more detailed information on the vulnerabilities and the mitigating controls, please see the Wind River advisory at: https://www.windriver.com/security/announcements/tcp-ip-network-stack-ipnet-urgent11/
+Additional vendors affected by the reported vulnerabilities have also released security advisories related to their affected products. Those advisories are as follows:
+Rockwell Automation (login required) - https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1088561
+Xerox - https://security.business.xerox.com/en-us/news/wind-river-vxworks-ipnet-tcp-ip-stack-vulnerabilities/
+--------- Begin Update A Part 1 of 1 ---------
+Dräger – https://static.draeger.com/security
+Schneider Electric – https://www.se.com/ww/en/download/document/SESB-2019-214-01/
+--------- End Update A Part 1 of 1 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

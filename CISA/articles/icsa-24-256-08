@@ -1,0 +1,72 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).  
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 6.9
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Industrial Products
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote attacker to causedenial-of-service condition in the affected products.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports that the following industrial products are affected:
+
+AI Model Deployer: versions prior to V1.1
+Data Flow Monitoring Industrial Edge Device User Interface (DFM IED UI): versions prior to V0.0.6
+LiveTwin Industrial Edge app (6AV2170-0BL00-0AA0): versions prior to V2.4
+SIMATIC PCS neo V4.1: versions prior to V4.1 Update 2
+SIMATIC PCS neo V5.0: all versions
+SIMATIC WinCC Runtime Professional V17: all versions
+SIMATIC WinCC Runtime Professional V18: all versions
+SIMATIC WinCC Runtime Professional V19: all versions
+SIMATIC WinCC Runtime Professional V20: all versions
+SIMATIC WinCC V7.4 with installed WebRH: All versions
+SIMATIC WinCC V7.5: all versions
+SIMATIC WinCC V8.0: all versions
+TIA Administrator: versions prior to V3.0 SP3
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER INPUT VALIDATION CWE-20
+Socket.IO is an open source, real-time, bidirectional, event-based, communication framework. A specially crafted Socket.IO packet can trigger an uncaught exception on the Socket.IO server, thus killing the Node.js process. This issue is fixed by commit 15af22fc22 which has been included in socket.io@4.6.2 (released in May 2023). The fix was backported in the 2.x branch as well with commit d30630ba10. Users are advised to upgrade. Users unable to upgrade may attach a listener for the "error" event to catch these errors.
+CVE-2024-38355 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+A CVSS v4 score has also been calculated for CVE-2024-38355. A base score of 6.9 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has released new versions for several affected products and recommends to update to the latest versions. Siemens is preparing further fix versions and recommends countermeasures for products where fixes are not, or not yet available.
+
+AI Model Deployer: Update to V1.1 or later version
+Data Flow Monitoring Industrial Edge Device User Interface (DFM IED UI): Update to V0.0.6 or later version
+LiveTwin Industrial Edge app (6AV2170-0BL00-0AA0): Update to V2.4 or later version
+SIMATIC PCS neo V4.1: Update to V4.1 Update 2 or later version
+TIA Administrator: Update to V3.0 SP3 or later version
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-773256 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as virtual private networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 12, 2024: Initial Publication
+

@@ -1,0 +1,44 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.0
+ATTENTION: Public exploits available/exploitable remotely/low attack complexity 
+Vendor: Delta Electronics 
+Equipment: DX-2100-L1-CN 
+Vulnerabilities: OS Command Injection, Cross-site Scripting 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker with low privileges to gain root access or allow an unauthenticated attacker to perform remote code execution. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of DX-2100-L1-CN, an industrial ethernet router, are affected: 
+
+DX-2100-L1-CN: Version 1.5.0.10 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78 
+The web configuration service of the affected device contains an authenticated command injection vulnerability. It can be used to execute system commands on the operating system (OS) from the device in the context of the user "root." If the attacker has credentials for the web service, then the device could be fully compromised.
+CVE-2022-42140 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79 
+The affected device contains a stored cross-site scripting vulnerability in the "net diagnosis" function in the web configuration service. This can be exploited in the context of a victim's session. An attacker could deliver a large variety of payloads that could lead to possibilities, such as remote code execution. 
+CVE-2023-0432 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Taiwan 
+
+3.4 RESEARCHER
+CISA discovered a public Proof of Concept (PoC) as authored by T. Weber of CyberDanube Security Research, who reported it to Delta Electronics. 
+4. MITIGATIONS
+Delta Electronics patched this vulnerability in Version 1.5.0.12 and recommends all users update device firmware to that version or later. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.

@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Medtronic
+Equipment: Valleylab FT10, Valleylab FX8
+Vulnerabilities: Use of Hard-coded Credentials, Reversible One-way Hash, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to overwrite files or remotely execute code, resulting in a remote, non-root shell on the affected products. By default, the network connections on these devices are disabled. Additionally, the Ethernet port is disabled upon reboot. However, it is known that network connectivity is often enabled.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Medtronic Valleylab products, are affected:
+
+Valleylab Exchange Client, Version 3.4 and below
+Valleylab FT10 Energy Platform (VLFT10GEN) software Version 4.0.0 and below
+Valleylab FX8 Energy Platform (VLFX8GEN) software Version 1.1.0 and below
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 USE OF HARD-CODED CREDENTIALS CWE-798
+The affected products use multiple sets of hard-coded credentials. If discovered, they can be used to read files on  the device.
+CVE-2019-13543 has been assigned to this vulnerability. A CVSS v3 base score of 5.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N).
+3.2.2 REVERSIBLE ONE-WAY HASH CWE-328
+The affected products use the descrypt algorithm for OS password hashing. While interactive, network-based logons are disabled, and attackers can use the other vulnerabilities within this report to obtain local shell access and access these hashes.
+CVE-2019-13539 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3 IMPROPER INPUT VALIDATION CWE-20
+The affected products use a vulnerable version of the rssh utility in order to facilitate file uploads. This could provide an attacker with administrative access to files or the ability to execute arbitrary code.
+CVE-2019-3464, and CVE-2019-3463 have been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+3.4 RESEARCHER
+Medtronic reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Software patches are currently available for the FT10 platform and will be available in early 2020 for the FX8 platform. Until these updates can be applied, Medtronic recommends to either disconnect affected products from IP networks or to segregate those networks, such that the devices are not accessible from an untrusted network (e.g., Internet). Patches can be downloaded at the following location:
+https://www.medtronic.com/covidien/en-us/support/software.html
+Medtronic has released additional patient focused information, at the following location:
+https://www.medtronic.com/security
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all medical devices and/or systems.
+Locate medical devices behind firewalls and isolate them where possible.
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable any unnecessary accounts, protocols and services.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA at the following location: https://www.fda.gov/medical-devices/digital-health/cybersecurity
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

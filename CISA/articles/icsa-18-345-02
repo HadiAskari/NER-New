@@ -1,0 +1,111 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SINUMERIK Controllers
+Vulnerabilities: Heap-based Buffer Overflow, Integer Overflow or Wraparound, Protection Mechanism Failure, Permissions, Privileges, and Access Controls, Stack-based Buffer Overflow, Uncaught Exception
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-345-02 Siemens SINUMERIK Controllers that was published December 11, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause denial-of-service conditions, privilege escalation, or allow remote code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports the vulnerabilities affect the following versions of the SINUMERIK CNC controllers:
+--------- Begin Update A Part 1 of 2 ---------
+
+SINUMERIK 808D v4.7 all versions prior to v4.91,
+SINUMERIK 808D v4.8 all versions prior to v4.91,
+
+--------- End Update A Part 1 of 2 ---------
+
+SINUMERIK 828D v4.7 all versions prior to v4.7 SP6 HF1,
+SINUMERIK 840D sl v4.7 all versions prior to v4.7 SP6 HF5, and
+SINUMERIK 840D sl v4.8 all versions prior to v4.8 SP3
+
+Some products are not affected by all of the vulnerabilities. Please see Siemens advisory SSA-170881 for additional details.
+4.2 VULNERABILITY OVERVIEW
+4.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+Sending specially crafted network requests to Port 4842/TCP of the integrated web server could allow a remote attacker to execute code with privileged permissions.
+This vulnerability is only exploitable if Port 4842/TCP is manually opened in the firewall configuration of network Port X130.
+CVE-2018-11457 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Sending specially crafted network requests to Port 5900/TCP of the integrated VNC server could allow a remote attacker to execute code with privileged permissions.
+This vulnerability is only exploitable if Port 5900/TCP is manually opened in the firewall configuration of network Port X130.
+CVE-2018-11458 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    PROTECTION MECHANISM FAILURE CWE-693
+A local attacker could modify a user-writeable configuration file so that after reboot or manual initiation, the attacker-controlled code is executed with elevated privileges.
+CVE-2018-11459 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    PROTECTION MECHANISM FAILURE CWE-693
+A local attacker with elevated user privileges (manufact) could modify a CRAMFS archive so that after reboot, the system loads the modified CRAMFS file and attacker-controlled code is executed with root privileges.
+CVE-2018-11460 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.5    PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264
+A local attacker with user privileges could use the service command application for privilege escalation to an elevated user, but not root.
+CVE-2018-11461 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:L).
+4.2.6    PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264
+By sending a specially crafted authentication request to affected systems, a remote attacker could escalate privileges to an elevated user account, but not to root.
+CVE-2018-11462 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.7    STACK-BASED BUFFER OVERFLOW CWE-121
+A buffer overflow in the service command application could allow a local attacker to execute code with elevated privileges.
+CVE-2018-11463 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.8    UNCAUGHT EXCEPTION CWE-248
+The integrated VNC server on Port 5900/TCP of the affected products could allow a remote attacker to cause a denial-of-service condition of the VNC server.
+This vulnerability is only exploitable if Port 5900/TCP is manually opened in the firewall configuration of network Port X130. 
+CVE-2018-11464 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.9    UNCAUGHT EXCEPTION CWE-248
+A local attacker could use ioctl calls to do out of bounds reads, arbitrary writes, or execute code in kernel mode.
+CVE-2018-11465 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.10    UNCAUGHT EXCEPTION CWE-248
+Specially crafted network packets sent to Port 102/TCP (ISO-TSAP) could allow a remote attacker to cause a denial-of-service condition of the integrated software firewall, or allow to execute code in the context of the software firewall. 
+CVE-2018-11466 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+•    CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing•    COUNTRIES/AREAS DEPLOYED: Worldwide•    COMPANY HEADQUARTERS LOCATION: Germany
+4.4 RESEARCHER
+Siemens working with Anton Kalinin, Danila Parnishchev, Dmitry Sklyar, Gleb Gritsai, Kirill Nesterov, Radu Motspan, and Sergey Sidorov from Kaspersky Lab reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 ---------
+Siemens recommends updating affected devices as soon as possible. See below for details.
+
+SINUMERIK 808D v4.7 all versions prior to v4.91
+SINUMERIK 808D v4.8 all versions prior to v4.91
+
+--------- End Update A Part 2 of 2 ---------
+
+SINUMERIK 828D v4.7: Update to v4.7 SP6 HF1
+SINUMERIK 840D sl v4.7: Update to v4.7 SP6 HF5
+SINUMERIK 840D sl v4.8: Update to v4.8 SP3
+
+Contact a Siemens account manager to obtain updates for SINUMERIK software.Siemens recommends affected users implement the following specific workarounds and mitigations to reduce risk:
+
+Check and restore default settings (4842/TCP and 5900/TCP blocked) for firewall on network Port X130
+Restrict system access to authorized personnel and follow a least privilege approach
+Apply cell protection concept
+Use VPN for protecting network communication between cells
+Apply defense-in-depth
+
+For additional information see Siemens’ security advisory SSA-170881 at the following location:
+http://www.siemens.com/cert/en/cert-security-advisories.htm
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security, and following the recommendations in the product manuals.
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+Additional information on Industrial Security by Siemens can be found at: 
+https://www.siemens.com/Industrialsecurity
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. 

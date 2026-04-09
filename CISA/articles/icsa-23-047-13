@@ -1,0 +1,42 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Sub-IoT project 
+Equipment: DASH 7 Alliance Protocol stack implementation 
+Vulnerability: Out-of-bounds Write 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to create an out-of-bounds write condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the Sub-IoT implementation of the Dash7 Alliance protocol, a low power, sub-GHz Internet of Things (IoT) communication protocol, are affected: 
+
+Sub-IoT DASH 7 Alliance protocol implementation: All versions prior to 0.5.0 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 OUT-OF-BOUNDS WRITE CWE-787 
+The Sub-IoT implementation of the DASH 7 Alliance protocol has a vulnerability that can lead to an out-of-bounds write. If the protocol has been compiled using default settings, this will only grant the attacker access to allocated but unused memory. However, if it was configured using non-default settings, there is the possibility that exploiting this vulnerability could lead to system crashes and remote code execution. 
+CVE-2023-0847 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: N/A 
+
+3.4 RESEARCHER
+Behrang Fouladi of Firmalyzer reported this vulnerability to CISA. 
+4. MITIGATIONS
+Sub-IoT recommends users reinstall with version 0.5.0 or later. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

@@ -1,0 +1,100 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE X-300 switch family devices
+Vulnerabilities: Improper Input Validation, Use of Insufficiently Random Values, Stack-based Buffer Overflow, Cross-site Request Forgery, Improper Access Control, Basic XSS, Classic Buffer Overflow, Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an unauthenticated attacker to reboot, cause denial-of-service conditions, and impact the system by other means through buffer overflow vulnerabilities.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SCALANCE X302-7 EEC: All versions prior to v4.1.4
+SCALANCE X304-2FE: All versions prior to v4.1.4
+SCALANCE X306-1LD FE: All versions prior to v4.1.4
+SCALANCE X307-2 EEC: All versions prior to v4.1.4
+SCALANCE X307-3: All versions prior to v4.1.4
+SCALANCE X307-3LD: All versions prior to v4.1.4
+SCALANCE X308-2: All versions prior to v4.1.4
+SCALANCE X308-2LD: All versions prior to v4.1.4
+SCALANCE X308-2LH: All versions prior to v4.1.4
+SCALANCE X308-2LH+: All versions prior to v4.1.4
+SCALANCE X308-2M: All versions prior to v4.1.4
+SCALANCE X308-2M POE: All versions prior to v4.1.4
+SCALANCE X308-2M TS: All versions prior to v4.1.4
+SCALANCE X310: All versions prior to v4.1.4
+SCALANCE X310FE: All versions prior to v4.1.4
+SCALANCE X320-1 FE: All versions prior to v4.1.4
+SCALANCE X320-1-2LD FE: All versions prior to v4.1.4
+SCALANCE X408-2: All versions prior to v4.1.4
+SCALANCE XR324-4M EEC: All versions prior to v4.1.4
+SCALANCE XR324-4M PoE: All versions prior to v4.1.4
+SCALANCE XR324-4M PoE TS: All versions prior to v4.1.4
+SCALANCE XR324-12M: All versions prior to v4.1.4
+SCALANCE XR324-12M TS: All versions prior to v4.1.4
+SIPLUS NET SCALANCE X308-2: All versions prior to v4.1.4
+Smart Security Manager: Versions 1.5 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+Affected devices do not properly validate the HTTP headers of incoming requests. This could allow an unauthenticated remote attacker to crash affected devices.
+CVE-2022-25751 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:H).
+3.2.2    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+The webserver of affected devices calculates session ids and nonces in an insecure manner. This could allow an unauthenticated remote attacker to brute-force session ids and hijack existing sessions.
+CVE-2022-25752 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    STACK-BASED BUFFER OVERFLOW CWE-121
+The handling of arguments such as IP addresses in the CLI of affected devices is prone to buffer overflows. This could allow an authenticated remote attacker to execute arbitrary code on the device.
+CVE-2022-25753 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+The integrated web server of the affected device could allow remote attackers to perform actions with the permissions of a victim user, provided the victim user has an active session and is induced to trigger the malicious request.
+CVE-2022-25754 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H).
+3.2.5    IMPROPER ACCESS CONTROL CWE-284
+The webserver of an affected device is missing specific security headers. This could allow a remote attacker to extract confidential session information under certain circumstances.
+CVE-2022-25755 has been assigned to this vulnerability. A CVSS v3 base score of 2.6 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.2.6    IMPROPER NEUTRALIZATION OF SCRIPT-RELATED HTML TAGS IN A WEB PAGE (BASIC XSS) CWE-80
+The integrated web server could allow Cross-Site Scripting (XSS) attacks if unsuspecting users are tricked into accessing a malicious link. This can be used by an attacker to trigger a malicious request on the affected device.
+CVE-2022-25756 has been assigned to this vulnerability. A CVSS v3 base score of 7.9 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.7    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW') CWE-120
+Affected devices do not properly validate the GET parameter XNo of incoming HTTP requests. This could allow an unauthenticated remote attacker to crash affected devices.
+CVE-2022-26334 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:H).
+3.2.8    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW') CWE-120
+Affected devices do not properly validate the URI of incoming HTTP GET requests. This could allow an unauthenticated remote attacker to crash affected devices.
+CVE-2022-26335 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.9    OUT-OF-BOUNDS READ CWE-125
+Affected devices do not properly validate if a certain SNMP key exists. An attacker could use this to trigger a reboot of an affected device by requesting specific SNMP information from the device.
+CVE-2022-26380 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Michael Messner and Abian Blome of Siemens Energy coordinated the disclosure of CVE-2022-25751 and CVE-2022-25756 to CISA.
+4. MITIGATIONS
+Siemens recommends upgrading all X-300 switch family devices to v4.1.4 or later.
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Restrict access to the affected systems, especially to Ports 22/TCP, 161/UDP, and 443/TCP and use trusted IP addresses only.
+Disable SNMP service, if possible.
+Deactivate the webserver if not required, and if deactivation is supported by the product.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to the Siemens operational guidelines for industrial security and follow the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-836527
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

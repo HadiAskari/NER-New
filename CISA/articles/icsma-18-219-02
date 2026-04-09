@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+
+Vendor: Medtronic
+
+
+--------- Begin Update A Part 1 of 3 --------
+
+Equipment: Medtronic MiniMed MMT-500 and MMT-503 Remote Controllers
+
+--------- End Update A Part 1 of 3 --------
+
+Vulnerabilities: Cleartext Transmission of Sensitive Information, Authentication Bypass by Capture-replay
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-18-219-02 Medtronic MiniMed MMT-500 and MMT-503 Remote Controllers that was published August 7, 2018, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to replay captured wireless communications and cause an insulin (bolus) delivery. This is only possible when non-default options are configured. Additionally, the pump will annunciate this by providing a physical alert, and the user has the capability to suspend the bolus delivery.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 2 of 3 --------
+The following supported Medtronic products are affected:
+MMT-500 Remote Controller 
+
+MMT-508 MiniMed pump
+
+MMT-503 Remote Controller 
+
+MMT-511 pump Paradigm
+MMT-512 / MMT-712 Paradigm x12 
+MMT-515 / MMT-715 Paradigm x15  
+MMT-522 / MMT-722 Paradigm REAL-TIME
+MMT-522(K) / MMT-722(K) Paradigm REAL-TIME 
+MMT-523 / MMT-723 Paradigm Revel 
+MMT-523(K) / MMT-723(K) Paradigm
+MMT-554 / MMT-754 MiniMed Veo 
+MMT-551 / MMT-751 MiniMed 530G
+
+--------- End Update A Part 2 of 3 --------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Communications between the pump and wireless accessories are transmitted in cleartext. A sufficiently skilled attacker could capture these transmissions and extract sensitive information, such as device serial numbers.
+CVE-2018-10634 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N).
+4.2.2    AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+The models identified above, when paired with a remote controller and having the “easy bolus” and “remote bolus” options enabled (non-default), are vulnerable to a capture-replay attack. An attacker can capture the wireless transmissions between the remote controller and the pump and replay them to cause an insulin (bolus) delivery.
+CVE-2018-14781 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+4.4 RESEARCHER
+Billy Rios, Jesse Young, and Jonathan Butts of Whitescope LLC reported these vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update A Part 3 of 3 --------
+The remote option is turned off in the pump by default.  
+Medtronic is directing all users to stop using their remote controllers, disable the remote option on their insulin pump, and to return the remote controllers to Medtronic. 
+Medtronic has released additional patient focused information.
+Additionally, Medtronic will be sending a letter to patients who may still be actively using the remotes in order to inform patients about these security risks, and request patients stop using the remote and return them to Medtronic. 
+--------- End Update A Part 3 of 3 --------
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. High skill level is needed to exploit.

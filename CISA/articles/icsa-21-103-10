@@ -1,0 +1,88 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.9
+ATTENTION: Exploitable remotely/low attack complexity
+Vendors: Siemens/PKE
+Equipment: Control Center Server (CCS)
+Vulnerabilities: Cleartext Storage of Sensitive Information in GUI, Improper Authentication, Relative Path Traversal, Use of a Broken or Risky Cryptographic Algorithm, Exposed Dangerous Method or Function, Path Traversal, Cleartext Storage in a File or on Disk, SQL Injection, Cross-site Scripting, Insufficient Logging
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to read and write arbitrary files and sensitive data and execute commands and arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of CCS, a video management platform, are affected:
+
+CCS: All versions prior to v1.5.0
+CCS: v1.5.0 and later are affected by CVE-2019-18340
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CLEARTEXT STORAGE OF SENSITIVE INFORMATION IN GUI CWE-317
+The user configuration menu in the web interface of CCS transfers user passwords in clear to the client (browser).
+CVE-2019-13947 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    IMPROPER AUTHENTICATION CWE-287
+CCS contains an authentication bypass vulnerability in its XML-based communication protocol as provided by default on Ports 5444/TCP and 5440/TCP.
+CVE-2019-18337 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    RELATIVE PATH TRAVERSAL CWE-23
+CCS contains a directory traversal vulnerability in its XML-based communication protocol as provided by default on Ports 5444/TCP and 5440/TCP.
+CVE-2019-18338 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).
+3.2.4    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+CCS stores user and device passwords by applying weak cryptography.
+CVE-2019-18340 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    IMPROPER AUTHENTICATION CWE-287
+The SFTP service (default Port 22/TCP) of CCS contains an authentication bypass vulnerability.
+CVE-2019-18341 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.6    EXPOSED DANGEROUS METHOD OR FUNCTION CWE-749
+The SFTP service (default Port 22/TCP) of CCS does not properly limit its capabilities to the specified purpose.
+CVE-2019-18342 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.7    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY (‘PATH TRAVERSAL’) CWE-22
+A specific section in the web interface of CCS contains a path traversal vulnerability that could allow an authenticated remote attacker to access and download arbitrary files from the server where CCS is installed.
+CVE-2019-19290 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.8    CLEARTEXT STORAGE IN A FILE OR ON DISK CWE-313
+The FTP services of CCS maintain log files that store login credentials in cleartext. In configurations where the FTP service is enabled, authenticated remote attackers could extract login credentials of other users of the service.
+CVE-2019-19291 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.9    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+CCS is vulnerable to an SQL injection in its XML-based communication protocol as provided by default on Ports 5444/TCP and 5440/TCP. An authenticated remote attacker could exploit this vulnerability to read or modify the CCS database and potentially execute administrative database operations or operating system commands.
+CVE-2019-19292 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.10    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION (‘CROSS-SITE SCRIPTING’) CWE-79
+The web interface of CCS contains a reflected cross-site scripting (XSS) vulnerability that could allow an unauthenticated remote attacker to steal sensitive data or execute administrative actions on behalf of a legitimate administrator of the CCS web interface.
+CVE-2019-19293 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:H/A:N).
+3.2.11    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION (‘CROSS-SITE SCRIPTING’) CWE-79
+The web interface of CCS contains multiple stored XSS vulnerabilities in several input fields. This could allow an authenticated remote attacker to inject malicious JavaScript code into the CCS web application that is later executed in the browser context of any other user who views the relevant CCS web content.
+CVE-2019-19294 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:C/C:N/I:H/A:N).
+3.2.12    INSUFFICIENT LOGGING CWE-778
+CCS does not enforce logging of security-relevant activities in its XML-based communication protocol as provided by default on Ports 5444/TCP and 5440/TCP. An authenticated remote attacker could exploit this vulnerability to perform covert actions not visible in the application log.
+CVE-2019-19295 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Raphaël Rigo of Airbus Security Lab reported some of these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens recommends users update to v1.5.0 or later.
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+General (applies to all vulnerabilities listed in this advisory) – Apply ACL/firewall configuration on the CCS server to ensure that only legitimate systems can access the configured CCS server ports. Harden the CCS server accordingly to prevent unauthorized access. Consider applying encryption and authentication on the network (e.g., via TLS on application level or via IPSec on host level).
+Harden the CCS server to prevent local access by unauthorized users.
+Disable the web interface of CCS if not used. Alternatively, restrict access from localhost only, or only to trusted hosts of CCS administrators. Enable TLS for the web interface of CCS.
+Disable the FTP service of the CCS.
+
+As a general security measure Siemens strongly recommends protecting network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices to run the devices in a protected IT environment.
+For more information see SSA-761844
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Monitor traffic on Ports 5444/TCP and 5440/TCP.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

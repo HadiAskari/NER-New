@@ -1,0 +1,68 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.3
+ATTENTION: Exploitable remotely/Low attack complexity
+Vendor: Rockwell Automation
+Equipment: ThinManager ThinServer
+Vulnerabilities: Improper Privilege Management, Incorrect Permission Assignment for Critical Resource, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to read arbitrary files and execute arbitrary code with system privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Rockwell Automation ThinManager ThinServer, a client management software, are affected:
+
+ThinManager ThinServer: Versions 11.1.0 to 11.1.7
+ThinManager ThinServer: Versions 11.2.0 to 11.2.8
+ThinManager ThinServer: Versions 12.0.0 to 12.0.6
+ThinManager ThinServer: Versions 12.1.0 to 12.1.7
+ThinManager ThinServer: Versions 13.0.0 to 13.0.4
+ThinManager ThinServer: Versions 13.1.0 to 13.1.2
+ThinManager ThinServer: Versions 13.2.0 to 13.2.1
+
+3.2 Vulnerability Overview
+3.2.1 Improper Privilege Management CWE-269
+A vulnerability exists in the affected products that allows a threat actor to disclose sensitive information. A threat actor can exploit this vulnerability by abusing the ThinServer service to read arbitrary files by creating a junction that points to the target directory.
+CVE-2024-7986 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-7986. A base score of 6.8 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.2 Incorrect Permission Assignment for Critical Resource CWE-732
+A remote code execution vulnerability exists in the affected products that allows a threat actor to execute arbitrary code with System privileges. To exploit this vulnerability and a threat actor must abuse the ThinServer service by creating a junction and use it to upload arbitrary files.
+CVE-2024-7987 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-7987. A base score of 8.5 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:).
+3.2.3 Improper Input Validation CWE-20
+A remote code execution vulnerability exists in the affected products that allows a threat actor to execute arbitrary code with System privileges. This vulnerability exists due to the lack of proper data input validation, which allows files to be overwritten.
+CVE-2024-7988 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-7988. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Nicholas Zubrisky (@NZubrisky) of Trend Micro reported these vulnerabilities to Rockwell Automation .
+4. MITIGATIONS
+Rockwell Automation has created new software versions to address these issues. Users are encouraged to update their software to one of the following versions (or newer): 11.1.8, 11.2.9, 12.0.7, 12.1.8, 13.0.5, 13.1.3, 13.2.2
+Rockwell Automation encourages users with the affected software to implement their suggested security best practices to minimize the risk of vulnerability.
+
+Security Best Practices
+
+For more information see the Rockwell Automation Security Advisory SD1692.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+August 29, 2024: Initial Publication
+

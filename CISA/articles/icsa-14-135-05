@@ -1,0 +1,102 @@
+
+OVERVIEW
+This advisory is a follow-up to the updated alert titled ICS-ALERT-14-099-01E Situational Awareness Alert for OpenSSL Vulnerability that was published April 29, 2014, on the NCCIC/ICS-CERT web site.
+The OpenSSL (Heartbleed) vulnerability was independently identified by both Neel Mehta of Google Security on April 1, 2014, and 2 days later by a team of security engineers Riku, Antti, and Matti at Codenomicon. https://www.openssl.org/news/secadv_20140407.txt, web site last accessed May 15, 2014. http://heartbleed.com/, web site last accessed May 15, 2014. The OpenSSL (Heartbleed) vulnerability has been identified in OpenSSL Versions 1.0.1 through 1.0.1f and 1.0.2-beta1 that contain a flaw in the implementation of the transport layer security/datagram transport layer security (TLS/DTLS) heartbeat functionality. OpenSSL Version 1.0.1g addresses and mitigates this vulnerability.
+This vulnerability could be exploited remotely. Exploits that target this vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+The following OpenSSL libraries are affected:
+
+OpenSSL Versions 1.0.1 through 1.0.1f and 1.0.2-beta1
+
+ICS-CERT has produced an OpenSSL affected/unaffected products list that specifies which vendors, products, and product versions are affected by the OpenSSL vulnerability. This document also contains a list of vendors, products, and product versions that has evaluated their products and have asserted that their products are not affected by the OpenSSL vulnerability. This document will be updated as needed. The location of this document is as follows:
+https://ics-cert.us-cert.gov/file_attach/ICSA-14-135-05.xlsx
+IMPACT
+A missing bounds check in the handling of the TLS heartbeat extension can be used to reveal up to 64 kB of memory on a connected device. An attacker who successfully exploits this vulnerability may obtain the user credentials and cryptographic keys used to access the device.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+The OpenSSL Project is an ongoing volunteer-driven collaborative multinational development effort for the Open Source toolkit, implementing the secure sockets layer (SSL) and TLS protocols, as well as a general purpose cryptography library. The Open Source toolkit is known to be deployed in some secure communication devices used in ICS networks.
+The ideal ICS network is isolated from the enterprise network and contains little to no external communication connections; however, business demands are requiring increased communication with the ICS network from external networks. These external communication connections are susceptible to the OpenSSL vulnerability, which could be used to exfiltrate credentials for access to components on the ICS network. The OpenSSL vulnerability can be present in hosts, clients, and client software. If ICS network credentials are exfiltrated, which can be done with the successful exploitation of the OpenSSL vulnerability, it is possible for an attacker to exercise substantial control over an ICS network. It is extremely common for a set of ICS credentials to have nearly unlimited access throughout the ICS network, which is different from IT networks that typically limit user access to execute job specific duties.
+External connections commonly used in the ICS network include VPN connections, database and web interfaces, and secure FTP and other secure data transfer connections. There are three general guidelines that can be applied to determine a starting point for evaluating ICS networks for the OpenSSL vulnerability:
+
+Any component connected to the ICS network that offers secure external communication should be evaluated;
+Any component connected to the ICS network that was deployed or last updated prior to 2012 will not have the OpenSSL vulnerability because the OpenSSL vulnerability did not exist prior to 2012; and
+Any component connected to the ICS network that is based on Microsoft technologies may not be vulnerable because Microsoft does not typically use OpenSSL.
+
+Specific types of networking equipment have been determined to be more likely to contain the OpenSSL vulnerability and they are as follows:
+
+Network gear that is managed;
+Communication gear that encrypts;
+PLCs with built in Ethernet/web cards with secure web connections;
+PLCs with add-on Ethernet/web cards with secure web connections;
+Database and web interfaces to customers, vendors, and enterprise resource planning interfaces;
+Secure data transfer servers; and
+Virtual private network connections directly into ICS networks or routed through the enterprise firewalls into ICS networks.
+
+Asset owners and operators that are unsure of the vulnerability of ICS networking equipment or if they suspect networking equipment of containing the OpenSSL vulnerability, should contact their product vendor.
+ICS-CERT is tracking products affected by the OpenSSL vulnerability in the OpenSSL affected/unaffected products list. In regards to the products ICS-CERT is currently working with, the ratio of affected products to products not affected is small; however, the OpenSSL vulnerability is known to affect a large number of traditional IT-based secure communication equipment. The OpenSSL toolkit is deployed globally.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+OUT OF BOUNDS READCWE-125: Out of Bounds Read, https://cwe.mitre.org/data/definitions/125.html, web site last accessed May 15, 2014.
+
+A flaw in the implementation of OpenSSL could allow the private key used in SSL to be exposed. An attacker could then decrypt and read any secure data passed on the network link.
+The vulnerability exists in the Heartbeat extension (RFC6520) of OpenSSL’s TLS and the DTLS protocols. The Heartbeat extension is functionally a “keep-alive” between end-users and the secure server. It works by sending periodic “data pulses” of 64 KB in size to the secure server, and once the server receives that data; it reciprocates by resending the same data at the same size.CVE, https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160, web site last accessed May 15, 2014.
+The out-of-bounds “read” vulnerability exists because the Heartbeat extension does not properly validate the data being sent from the end-user. As a result, a malicious actor could send a specially crafted Heartbeat request to the vulnerable server and obtain sensitive information stored in memory on the server. Furthermore, even though each heartbeat only allows requests to have a data size limited to 64 kB segments, it is possible to send repeated requests to retrieve more 64 kB segments, which could include encryption keys used for certificates, passwords, usernames, and even sensitive content that were stored at the time. An attacker could harvest enough data from the 64 kB segments to piece together larger groupings of information, which could help an attacker develop a broader understanding of the information being acquired.SANS OpenSSL Vulnerability, http://digital-forensics.sans.org/blog/2014/04/10/heartbleed-links-simulcast-etc/, web site last accessed May 15, 2014.
+CVE-2014-0160CVE, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160, web site last accessed May 15, 2014. has been assigned. A CVSS score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:N/A:N).NVD, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:N/A:N, web site last accessed May 15, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low skill level would be able to exploit this vulnerability with publicly available information, tutorials, and exploit tools.
+MITIGATION
+OpenSSL Version 1.0.1g has addressed and mitigates this vulnerability. Asset owners and operators should contact their product vendor to check for availability of updates. Any system that may be affected by this vulnerability should regenerate any credential information (secret keys, passwords, etc.) with the assumption that an attacker has already used this vulnerability to obtain those items.
+Older versions of OpenSSL may not be vulnerable to the Heartbleed attacks, but have other known vulnerabilities that could be exploited. ICS-CERT strongly suggests that asset owners and operators verify what versions are running in the products being used in their facilities and then reference the following web site to determine which patched versions of OpenSSL should be used for the most secure operation. If there are still questions about what version is being used, contact the product vendor for verification.
+http://www.openssl.org/news/vulnerabilities.html
+
+DEVELOPERS
+
+Upgrade affected TLS/TDLS clients and servers to OpenSSL Version 1.0.1g. Alternatively, affected versions of OpenSSL may be recompiled with the option“-DOPENSSL_NO_HEARTBEATS” to mitigate the vulnerability until an upgrade can be performed.
+
+OPENSSL SCANNING IN ICS ENVIRONMENTS
+
+Asset owners and operators may need to scan the devices used in their ICS environment if they implement end-of-life devices or their vendor is not communicating with them on this issue. Scanning can be completed in two different ways, active and passive scanning. Both scanning methods are dangerous when used in an ICS environment due to the sensitive nature of these devices. ICS-CERT advises that all scanning of ICS devices for Heartbleed be done in an isolated test laboratory, not in the production environment. If a test environment is not available then the device vendor should be contacted. When it is possible to scan the device, it is possible that device could be put into invalid state causing unexpected results and possible failure of safety safeguards.
+Scanning of the VPN used to connect into ICS environments should be the highest priority. If a VPN is vulnerable to Heartbleed, it is possible for an attacker to retrieve the information required to hijack a current user’s session and circumvent any form of authentication used by the VPN, including two-factor authentication.
+Actively attempting to exploit the OpenSSL vulnerability is the quickest and most reliable method for identifying vulnerable systems, but it is also the most dangerous method of scanning. Multiple tools and scripts have been written to only request 16 kB and to check if a longer than normal Heartbeat request is returned. There are numerous OpenSSL scanning tools available and three free to use active-scanning tools that accurately identify the presence of the OpenSSL vulnerability include: CrowdStrike Heartbleed Scanner, Nmap NSE Script for Heartbleed, and Heartbleed-POC.py.
+The CrowdStrike Heartbleed Scanner (http://www.crowdstrike.com/community-tools/index.html) is a Windows application that scans multiple hosts concurrently and provides a clear vulnerable/not-vulnerable indicator for each host scanned. An Nmap NSE Script for Heartbleed is available for Windows, OS X, and Linux/Unix (ICS-CERT has only tested the script on Linux) allowing for testing a large number of hosts at once. Finally, an open source python script called “Heartbleed-POC.py” provides a method of scanning a single host. The latter two scripts can be found at (https://github.com/sensepost/heartbleed-poc).
+A lower-risk method is passively scanning for devices that are susceptible to this attack. This approach could involve submitting devices’ firmware and SSL applications to online code scanners or capturing and analyzing network traffic. Codenomicon released a web application that will scan small firmware updates or applications to determine if a vulnerable version of OpenSSL is used. This is the only method known to be safe for ICS environments but requires knowledge of the firmware version used on all devices and the ability to download those versions from vendors.
+Uncovering the existence of the OpenSSL vulnerability is difficult through network monitoring unless it can be determined that a device or application is being actively exploited. To make this effort even more difficult, researchers have suggested some methods to obfuscate attack traffic. Considering these challenges, a few criteria can be used to possibly determine if a host is likely vulnerable. Unfortunately, this cannot be used to ascertain if the host is not vulnerable unless it was produced or last updated before March 2012. The criteria are as follows:
+
+Host is using OpenSSL (unknown version);
+No patching has been done since April 4th;
+Host has been produced or updated since March 2012; and
+Heartbeat extension is supported (packet filters can be used to detect heartbeat messages).
+
+It should also be noted that capturing network traffic from an ICS environment can cause increases in network delays that may result in process malfunction.
+
+DETECTION SIGNATURES
+
+Contact equipment vendors for specific mitigation information as the implementations may vary. In addition, IDS signatures are available that may provide awareness of an attack of this nature occurring. An example of these rule sets can be found hereIDS signature examples, http://blog.fox-it.com/2014/04/08/openssl-heartbleed-bug-live-blog/, web site last accessed May 15, 2014.:
+alert tcp any [!80,!445] -> any [!80,!445] (msg:"FOX-SRT - Suspicious - SSLv3 Large Heartbeat Response"; flow:established,to_client; content:"|18 03 00|"; depth: 3; byte_test:2, >, 200, 3, big; byte_test:2, <, 16385, 3, big; threshold:type limit, track by_src, count 1, seconds 600; reference:cve,2014-0160; classtype:bad-unknown; sid: 1000000; rev:4;)
+Additional Snort signatures have been provided by the FBI, Mitigation against Open Secure Socket Layer Heartbeat Extension Vulnerability, at:
+http://ics-cert.us-cert.gov/sites/default/files/documents/FBI%20Private%20Industry%20Notice-140416-002.pdf
+Snort community rules can be found at:
+http://www.snort.org/snort-rules/#community.
+Additional indicators of compromise are available on the Control Systems compartment of the US-CERT secure portal for owners and operators of critical infrastructure. ICS-CERT encourages U.S. asset owners and operators to join the Control Systems compartment of the US‑CERT secure portal. Send your name, email address, and company affiliation toics-cert@hq.dhs.gov.
+NOTE: ICS-CERT has not tested the validity or efficacy of these rule sets and cautions users to thoroughly test these solutions before implementing them into production environments!
+
+USE OF SPECIALIZED SEARCH ENGINES
+
+Even prior to the discovery of the OpenSSL vulnerability, Internet facing devices have been a serious concern over the past few years with remote access demands giving way to insecure or vulnerable configurations. Tools; such as SHODAN, Google, and other search engines; enable researchers and adversaries to easily discover and identify a variety of ICS devices that were not intended to be Internet facing. This is due in part to ICS terminology and search terms that have become widely available because of an increasing public body of knowledge with detailed ICS information. Adding to the threat landscape is SHODAN’s linkages to exploit databases as well as continuous scanning and cataloguing of devices with emerging vulnerabilities such as DNP3 and OpenSSL. The availability of public information coupled with the aforementioned tools, lowers the level of knowledge required to successfully locate Internet facing control systems. In many cases, these devices have not been configured with adequate authentication mechanisms, thereby further increasing the chances of both opportunistic and targeted attempts to directly access these components.
+Tools such as SHODAN may be proactively used by owners, operators, and security personnel to audit their networks and devices to locate Internet facing control system devices that may be susceptible to compromise. Asset owners are encouraged to query various search engines using the vendor product, model, and version of a device, to determine if their IP address block is found within the search results. If control systems devices are found using these tools, asset owners should take the necessary steps to remove these devices from direct or unsecured Internet access as soon as possible.
+As tools and adversary capabilities advance, ICS-CERT expects that exposed systems will be more effectively discovered, and targeted. It has become more important than ever for asset owners and operators to audit their network configurations and properly install their ICS devices behind patched VPNs or firewalls.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.ICS-CERT ALERT, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-10-301-01, web site last accessed May  15, 2014.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT also provides a recommended practices section for control systems on the ICS-CERT web site (http://ics-cert.us-cert.gov). Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+

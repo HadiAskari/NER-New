@@ -1,0 +1,54 @@
+
+OVERVIEW
+This updated advisory was originally posted to the US-CERT secure Portal library on August 02, 2013, and is now being released to the ICS-CERT Web page.
+Adam Crain of Automatak and independent researcher Chris Sistrunk have identified an improper input validation vulnerability in MatrikonOPC’s SCADA DNP3 OPC Server application. MatrikonOPC has produced a patch that mitigates this vulnerability. The researchers tested the patch to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following MatrikonOPC SCADA DNP3 OPC Server versions are affected:
+
+MatrikonOPC SCADA DNP3 OPC Server 1.2.0 and above.
+
+IMPACT
+An attacker could potentially use this vulnerability to craft an exploit to cause the application on the master server to crash, causing the application to exit cleanly and disrupt OPC communication with the outstation device.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+MatrikonOPC is a US-based company that maintains offices in several countries around the world, including the US, Canada, Germany, Russia, Australia, Singapore, Norway, Brazil, UK, India, Spain, Portugal, and Costa Rica.
+The affected product, SCADA DNP3 OPC Server, is Microsoft Windows-based software that facilitates connectivity to multiple DNP3 compliant devices such as remote terminal units, programmable logic circuits, and meters. According to MatrikonOPC, the SCADA DNP3 OPC Server is deployed across several sectors including oil and gas, mining, power and utilities, petrochemical, and others. MatrikonOPC products are primarily used in the US, Canada, and UK.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+--------- Begin Update A Part 1 of 2 --------
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation  http://cwe.mitre.org/data/definitions/20.html, Web site last accessed August 29, 2013.
+
+The susceptible versions of MatrikonOPC contain a specific vulnerability that may cause the server to exit and cause communications to stop. This only happens after the server (master station) successfully connects to a device (outstation) and that device returns a malformed DNP3 packet.
+CVE-2013-2791NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2791 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed August 29, 2013.
+--------- End Update A Part 1 of 2 ----------
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+MatrikonOPC recommends that customers obtain and install the fix as follows.
+
+Visit http://www.opcsupport.com/ics/support/default.asp?deptID=4590, click on the Product Advisory section, and read the posted Security Notice.
+Contact OPC Support to obtain the new version of the OPC server for DNP3.
+Install the new version of the OPC Server for DNP3.
+
+--------- Begin Update A Part 2 of 2--------
+The researchers suggest the following mitigation:
+
+Block DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DPN3-specific rule sets.
+
+--------- End Update A Part 2 of 2----------
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed August 29, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed August 29, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

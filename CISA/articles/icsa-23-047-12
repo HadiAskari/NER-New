@@ -1,0 +1,71 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity 
+Vendor: Siemens 
+Equipment: JT Open Toolkit, JT Utilities, and Parasolid 
+Vulnerabilities: Stack-based Buffer Overflow, Improper Restriction of Operations within the Bounds of a Memory Buffer, Out-of-bounds Read 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a malicious cyber actor to open a JT file with any of the affected products, leading to application crash or arbitrary code execution. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens software is affected: 
+
+JT Open: All versions prior to V11.2.3.0 (only affected by CVE-2022-47936, CVE-2022-47977) 
+JT Utilities: All versions prior to V13.2.3.0 (only affected by CVE-2022-47936, CVE-2022-47977) 
+Parasolid V34.0: All versions prior to V34.0.252 (only affected by CVE-2022-47936) 
+Parasolid V34.0: All versions prior to V34.0.254 (only affected by CVE-2022-25140) 
+Parasolid V34.1: All versions prior to V34.1.242 (only affected by CVE-2022-47936, CVE-2023-25140) 
+Parasolid V35.0: All versions prior to V35.0.170 (only affected by CVE-2022-47936, CVE-2023-25140) 
+Parasolid V35.1: All versions prior to V35.1.150 (only affected by CVE-2022-47936, CVE-2023-25140) 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 STACK-BASED BUFFER OVERFLOW CWE-121 
+Versions of JT Open, JT Utilities, and Parasolid software are affected by a stack overflow vulnerability while parsing specially crafted JT files. A malicious cyber actor could execute code in the context of the current process. 
+CVE-2022-47936 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.2 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119 
+Versions of JT Open and JT Utilities software are affected by a memory corruption vulnerability while parsing specially crafted JT files. A malicious cyber actor could execute code in the context of the current process. 
+CVE-2022-47977 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.3 OUT-OF-BOUNDS READ CWE-125 
+Versions of JT Open, JT Utilities, and Parasolid software are affected by an out-of-bounds read past the end of an allocated structure while parsing specially crafted PAR files. A malicious cyber actor could execute code in the context of the current process. 
+CVE-2023-25140 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens and Michael Heinzl reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Siemens has released updates for the affected products and recommends users update to the latest versions: 
+
+Parasolid V34.0: Update to V34.0.254 or later version 
+Parasolid V35.1: Update to V35.1.150 or later version 
+Parasolid V35.0: Update to V35.0.170 or later version 
+Parasolid V34.1: Update to V34.1.242 or later version 
+Parasolid V34.0: Update to V34.0.252 or later version 
+JT Utilities: Update to V13.2.3.0 or later version 
+JT Open: Update to V11.2.3.0 or later version 
+
+Siemens recommends users take appropriate action to mitigate risk: 
+
+Do not open untrusted files using Parasolid, JT Open Toolkit, or JT Utilities 
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security, and follow the recommendations in the product manuals. Additional information on industrial security by Siemens can be found on the Siemens Industrial Security webpage. 
+For further inquiries on security vulnerabilities in Siemens products and solutions, users should contact the Siemens ProductCERT. 
+For more information, see the associated Siemens security advisory SSA-836777 in HTML and CSAF. 
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

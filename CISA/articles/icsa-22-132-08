@@ -1,0 +1,77 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC NET PC, SITOP Manager, TeleControl Server Basic
+Vulnerability: Null Pointer Dereference
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-132-08 Siemens Industrial Products with OPC UA that was published May 12, 2022, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could crash the device by sending uncertain status code in a response message.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens industrial products are affected:
+
+SIMATIC NET PC Software v14: All versions prior to 14 SP1 Update 14
+SIMATIC NET PC Software v15: All versions
+SIMATIC NET PC Software v16: All versions prior to 16 Update 6 
+SIMATIC NET PC Software v17: All versions prior to 17 SP1
+SITOP Manager: All versions
+
+--------- Begin Update C Part 1 of 3 ---------
+
+SIMATIC HMI Comfort Outdoor Panels 7” and 15” (including SIPLUS variants): All versions prior to 17 Update 5
+SIMATIC HMI Comfort Panels 4” to 22” (including SIPLUS variants): All versions prior to 17 Update 5
+SIMATIC HMI KTP Mobile Panels KTP400F, KTP700, KTP700F, KTP900 and KTP900F: All versions prior to 17 Update 5
+
+--------- End Update C Part 1 of 3 ---------
+
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    NULL POINTER DEREFERENCE CWE-476
+The OPC UA ANSIC stack (also called Legacy C-stack) was reported to crash when an unexpected OPC UA response message status code was accessed via the synchronous Client API. The vulnerability was found in generated code of the OPC Foundation C-stack. An unexpected status code in response messages will result in null pointer dereference, leading to a ping-of-death crash. This affects a client, but it might also affect a server when it uses OpcUa_ClientApi_RegisterServer (e.g., register at Local Discovery Server). A specially crafted UA server or machine-in-the-middle attacker can cause the OPC UA application to crash by sending uncertain status code in response messages.
+CVE-2021-45117 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+5. MITIGATIONS
+Siemens has recommended the following:
+
+SIMATIC NET PC Software v14, update to v14 SP1 Update 14 or later
+SIMATIC NET PC Software v15, no fix is currently planned 
+SIMATIC NET PC Software v16, update to v16 Update 6 or later
+SIMATIC NET PC Software v17, update to v17 SP1 or later
+SITOP Manager, no fix is currently planned
+
+--------- Begin Update C Part 2 of 3 ---------
+
+SIMATIC HMI Comfort Outdoor Panels 7” and 15” (including SIPLUS variants), update to v17 Update 5 or later
+SIMATIC HMI Comfort Panels 4” to 22” (including SIPLUS variants), update to v17 Update 5 or later
+SIMATIC HMI KTP Mobile Panels KTP400F, KTP700, KTP700F, KTP900 and KTP900F, update to v17 Update 5 or late
+
+ 
+--------- End Update C Part 2 of 3 ---------
+Siemens has identified the following specific workarounds and mitigations to reduce risk:
+
+Do not use OPC client feature to connect via untrusted networks or to untrusted OPC-UA communication partners.
+Use VPN for protecting network communication between cells.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following the recommendations in the product manuals.
+--------- Begin Update C Part 3 of 3 ---------
+For additional information, please refer to Siemens Security Advisory SSA-285795 in HTML or CSAF.
+--------- End Update C Part 3 of 3 ---------
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

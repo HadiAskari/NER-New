@@ -1,0 +1,69 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely, low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE LPE9403
+Vulnerabilities: Multiple
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause crashes and unrestricted file access, impacting the product’s confidentiality, integrity, and availability.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SCALANCE LPE9403 (Local Processing Engine), a processing power extension for the SCALANCE family of products, are affected:
+
+All versions prior to v2.0
+The vulnerabilities exist within the third-party components CivetWeb, Docker, Linux kernel and system, which are part of the SCALANCE LPE9403.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1     IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The CivetWeb web library does not validate uploaded filepaths when running on an OS other than Windows when using the built-in HTTP form-based file upload mechanism, via the mg_handle_form_request API. Web applications using the file upload form handler, as well as those that use parts of the user-controlled filename in the output path, are susceptible to directory traversal.
+CVE-2020-27304 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER INITIALIZATION CWE-665
+A corrupted timer tree caused the task wakeup to be missing in the timerqueue_add function in lib/timerqueue.c. This flaw allows a local attacker with special user privileges to cause a denial-of-service condition, slowing and eventually stopping the system while running OSP.
+CVE-2021-20317 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).
+3.2.3     ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+The use of alloca function with an uncontrolled size in function unit_name_path_escape allows a local attacker, able to mount a filesystem on a very long path, to crash systemd and the whole system by allocating a large space in the stack.
+CVE-2021-33910 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362
+A race condition vulnerability exists in Go. The incoming requests’ bodies are not closed after the handler panic, which could lead to a Reverse Proxy crash.
+CVE-2021-36221 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5     ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+The fix for CVE-2021-33196 can be bypassed by crafted inputs. As a result, the NewReader and OpenReader functions in archive/zip can still cause a panic or an unrecoverable fatal error when reading an archive that claims to contain a large number of files, regardless of its actual size.
+CVE-2021-39293 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6    IMPROPER PRESERVATION OF PERMISSIONS CWE-281
+A vulnerability exists in Moby (Docker Engine) where attempting to copy files using docker cp into a specially crafted container can result in UNIX file permission changes for existing files in the host’s filesystem, widening access to others. This does not directly allow files to be read, modified, or executed without an additional cooperating process.
+CVE-2021-41089 has been assigned to this vulnerability. A CVSS v3 base score of 2.8 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:C/C:L/I:N/A:N).
+3.2.7    INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCE CWE-732
+A vulnerability exists in Moby (Docker Engine) where the data directory contains subdirectories with insufficiently restricted permissions, allowing otherwise unprivileged Linux users to traverse directory contents and execute programs.
+CVE-2021-41091 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L).
+3.2.8     EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+A vulnerability exists in the Docker CLI where running docker login my-private-registry.example.com with a misconfigured configuration file would result in any provided credentials being sent to registry-1.docker.io rather than the intended private registry.
+CVE-2021-41092 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:R/S:C/C:H/I:N/A:N).
+3.2.9    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY (‘PATH TRAVERSAL’) CWE-22
+A vulnerability exists in container where container root directories and some plugins have insufficiently restricted permissions, allowing otherwise unprivileged Linux users to traverse directory contents and execute programs.
+CVE-2021-41103 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.10    IMPROPER PRESERVATION OF PERMISSIONS CWE-281
+A vulnerability exists in the “flags” member of the new pipe buffer structure in the Linux kernel and could contain stale values. An unprivileged local user could use this to write to pages in the page cache backed by read only files and as such escalate their privileges on the system.
+CVE-2022-0847 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends users of the affected product update to Version 2.0 or later.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-222547
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

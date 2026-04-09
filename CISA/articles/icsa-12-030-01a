@@ -1,0 +1,121 @@
+
+Overview
+This advisory is a follow-up to a previous advisory titled “ICSA-11-356-01 – Siemens HMI Authentication Vulnerabilities” that was published December 22, 2011, and an alert titled "ICS-ALERT-11-332-02A – Siemens SIMATIC WinCC Flexible Vulnerabilities" that was published December 2, 2011.
+ICS-CERT has received reports from independent security researchers Billy Rios, Terry McCorkle, Shawn Merdinger, and Luigi Auriemma detailing several vulnerabilities in Siemens SIMATIC WinCC Human-Machine Interface (HMI) application. ICS-CERT has coordinated with these researchers and Siemens to validate these vulnerabilities and include mitigation strategies in the latest Siemens service packs.Siemens ProductCERT advisories, http://www.siemens.com/cert/advisories/ website last accessed April 16, 2012.
+Affected Products
+According to Siemens, the following software packages are vulnerable:
+
+WinCC flexible versions 2004, 2005, 2007, 2008
+WinCC V11 (TIA portal)
+Multiple SIMATIC HMI panels (TP, OP, MP, Comfort Panels, Mobile Panels)
+WinCC V11 Runtime Advanced
+WinCC flexible Runtime.
+
+The following related products are not affected:
+
+WinCC V11 (TIA Portal) Basic
+WinCC V11 (TIA Portal) Runtime Professional
+WinCC V6.x and V7.x.
+
+Impact
+Successful exploitation of these vulnerabilities could allow an attacker to log on to a vulnerable system as a user or administrator with the ability to execute arbitrary code or obtain full access to files on the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+Siemens SIMATIC HMI is a software package used as an interface between the operator and the programmable logic controllers (PLCs) controlling the process. SIMATIC HMI performs the following tasks: process visualization, operator control of the process, alarm display, process value and alarm archiving, and machine parameter management. This software is used in many industries, including food and beverage, water and wastewater, oil and gas, and chemical.
+Vulnerability Characterization
+Vulnerability Overview
+Insecure Authentication Token GenerationCWE-287: Improper Authentication, http://cwe.mitre.org/data/definitions/287.html, website last accessed April 16, 2012.
+When a user (or administrator) logs on, the application sets predictable authentication token/cookie values. This can allow an attacker to bypass authentication checks and escalate privileges.
+CVE-2011-4508 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSSVersion 2.0NVD Common Vulnerability Scoring System Support v2, http://nvd.nist.gov/cvss.cfm, website last accessed April 16, 2012. calculator rates a CVSS Base Score of 9.3.
+Weak Default PasswordsCWE-255: Credentials Management, http://cwe.mitre.org/data/definitions/255.html, website last accessed April 16, 2012.
+The default administrator password is weak and easily brute forced. Siemens has changed the documentation to encourage users to change the password at first login.
+CVE-2011-4509 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSSVersion 2.0 calculator rates a CVSS Base Score of 10.0.
+Cross-Site Scripting VulnerabilityCWE-79: Cross-site Scripting, http://cwe.mitre.org/data/definitions/79.html, website last accessed April 16, 2012.
+SIMATIC HMI Smart Options web server is vulnerable to two separate cross-site scripting attacks that may allow elevation of privileges, data theft, or service disruption.
+CVE-2011-4510 and CVE-2011-4511 have been assigned to these vulnerabilities. Siemens’ assessment of the vulnerabilities using the CVSSVersion 2.0 calculator rates a CVSS Base Score of 4.3.
+Header Injection VulnerabilityCWE-94: Code Injection, http://cwe.mitre.org/data/definitions/94.html, website last accessed April 16, 2012.
+The HMI web server is vulnerable to header injection that may allow elevation of privileges, data theft, or service disruption.
+CVE-2011-4512 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSSVersion 2.0 calculator rates a CVSS Base Score of 4.3.
+Client-Side Attack via Specially Crafted FilesCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, website last accessed April 16, 2012.
+This vulnerability can allow an attacker to execute arbitrary code via specially crafted project files. This may require social engineering to get the operator to download the files and execute them.
+CVE-2011-4513 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSSVersion 2.0 calculator rates a CVSS Base Score of 10.0.
+Lack of Telnet Daemon AuthenticationCWE-255: Credentials Management, http://cwe.mitre.org/data/definitions/255.html, website last accessed April 16, 2012.
+SIMATIC panels include a telnet daemon by default; however, the daemon does not include any authentication functions.
+CVE-2011-4514 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSSVersion 2.0 calculator rates a CVSS Base Score of 10.0.
+String Stack OverflowCWE-134: Uncontrolled Format String, http://cwe.mitre.org/data/definitions/134.html, website last accessed April 16, 2012.
+The runtime loader listens on Ports 2308/TCP or 50523/TCP while transfer mode is activated but does not properly validate the length of data segments and Unicode strings, which may cause a stack overflow. This vulnerability may lead to remote code execution.
+CVE-2011-4875 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSS Version 2.0 calculator rates a CVSS Base Score of 9.3.
+Directory TraversalCWE-22: Path Traversal, http://cwe.mitre.org/data/definitions/22.html, website last accessed April 16, 2012.
+The runtime loader listens on Ports 2308/TCP or 50523/TCP while transfer mode is activated but does not properly validate incoming strings. This allows an attacker full access (read, write, and execute) to any file within the file system.
+CVE-2011-4876u has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSS Version 2.0 calculator rates a CVSS Base Score of 9.3.
+Denials of ServiceCWE-399: Resource Management Errors, http://cwe.mitre.org/data/definitions/399.html, website last accessed April 16, 2012.
+The runtime loader listens on Ports 2308/TCP or 50523/TCP while transfer mode is activated but does not sufficiently validate incoming data. Multiple vulnerabilities allow a denial-of-service (DoS) attack, which leads to a program crash.
+CVE-2011-4877 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSS Version 2.0 calculator rates a CVSS Base Score of 7.1.
+Directory TraversalCWE-22: Path Traversal, http://cwe.mitre.org/data/definitions/22.html, website last accessed April 16, 2012.
+The HMI web server does not properly validate URLs within HTTP requests on Ports 80/TCP and 443/TCP. By manipulating URLs with encoded backslashes, directory traversal is possible. This allows an attacker read access for all files within the file system.
+CVE-2011-4878 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSS Version 2.0 calculator rates a CVSS Base Score of 7.8.
+Arbitrary Memory Read AccessCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, website last accessed April 16, 2012.
+The HMI web server does not properly validate HTTP requests. By manipulating the first byte within a URL, the server switches to a special interpretation of the URL. This allows an attacker to read the application process memory and perform a DoS attack by specifying invalid memory locations.
+CVE-2011-4879 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSS Version 2.0 calculator rates a CVSS Base Score of 8.5.
+Vulnerability Details
+Exploitability
+An attacker would need user interaction to exploit vulnerability #5.
+The remaining vulnerabilities can be exploited remotely.
+Existence of Exploit
+Publicly available exploits are known to specifically target vulnerabilities #1, #2, and #7 through #11.
+No known publicly available exploits specifically target vulnerabilities #3 through #6.
+Difficulty
+These vulnerabilities would be very simple for a skilled attacker to exploit.
+Exploiting vulnerability #5 requires social engineering to convince the user to accept and load the malformed file. This decreases the likelihood of a successful exploit.
+Mitigation
+Each of the reported vulnerabilities has been addressed by Siemens, as follows:
+
+Insecure authentication token generation (#1), cross-site scripting (#3), header injection vulnerability (#4), HMI web server directory traversal (#10), and arbitrary memory read access vulnerabilities (#11).
+
+Patches are included in Siemens’ WinCC V11 (TIA Portal) SP2 Update 1WinCC V11 (TIA Portal) SP2 Update 1, http://support.automation.siemens.com/WW/view/en/58112582 website last accessed April 16, 2012. cc. WinCC V11 (TIA Portal) SP2 Update 1, http://support.automation.siemens.com/WW/view/en/58112587 website last accessed April 16, 2012.and WinCC flexible 2008 SP3.WinCC flexible 2008 SP3,http://support.automation.siemens.com/WW/view/en/57267466 website last accessed April 16, 2012.
+
+
+Weak default passwords (#2).
+
+Product documentation contained in WinCC V11 (TIA Portal) SP2 Update 1, and WinCC flexible 2008 SP3 has been updated to tell the user how to set a proper password during initial setup.
+
+
+Client-side attack via specially crafted files (#5), runtime loader string stack overflow (#7), runtime loader directory traversal (#8), runtime loader DoS (#9).
+
+Siemens recommends that users deactivate the transfer mode after device configuration, because the transport mode provides full access to the device.ee The transport mode was implemented under the assumption that the software would be running in a protected industrial environment. Siemens strongly recommends that users protect systems according to recommended security practicesSiemens Operational Guidelines for Industrial Security, v1.1, http://www.industry.siemens.com/topics/global/en/industrial-security/Documents/industrial_security_operational_guidelines_en.pdf website last accessed April 16, 2012.Siemens Industrial Security homepage, http://www.siemens.com/industrialsecurity website last accessed April 16, 2012. and configure the environment according to the operational guidelines.
+
+
+
+--------- Begin Update A Part 1 of 1 --------  
+
+Lack of telnet daemon authentication (#6).
+
+Because telnet is a clear text protocol, customers are advised to be aware of corresponding risks. The telnet daemon is disabled by default in product versions WinCC flexible 2008 SP3 and newer, as well as WinCC V11 (TIA Portal) SP2 and newer. Siemens recommends disabling the telnet function on SIMATIC panels when telnet is not actively being used.
+
+
+
+ICS-CERT tested WinCC V11 (TIA Portal) SP2 Update 1hh,WinCC V11 (TIA Portal) SP2 Update 1, http://support.automation.siemens.com/WW/view/en/58112587 website last accessed April 16, 2012. and WinCC flexible 2008 SP3WinCC flexible 2008 SP3, http://support.automation.siemens.com/WW/view/en/57267466 website last accessed April 16, 2012.
+
+Insecure authentication token generation (#1) and found that it successfully resolves the following vulnerabilities:
+Cross-site scripting (#3)
+Header injection vulnerability (#4)
+HMI web server directory traversal (#10)
+Arbitrary memory read access vulnerabilities (#11).
+
+The remaining vulnerabilities are addressed in documentation and a new FAQ entry on Siemens website. If unable to implement these changes, product users should contact their integrator or Siemens product support for assistance.
+--------- End Update A Part 1 of 1 ----------
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in e-mail messages.
+Refer to Recognizing and Avoiding Email Scams  for more information on avoiding e-mail scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+

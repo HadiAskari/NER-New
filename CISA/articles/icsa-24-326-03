@@ -1,0 +1,95 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 7.7
+ATTENTION: Exploitable remotely
+Vendor: Schneider Electric
+Equipment: Modicon M340, MC80, and Momentum Unity M1E
+Vulnerabilities: Improper Enforcement of Message Integrity During Transmission in a Communication Channel, Authentication Bypass by Spoofing
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to retrieve password hashes or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Schneider Electric Modicon M340, MC80, and Momentum Unity M1E are affected:
+
+Modicon M340 CPU (part numbers BMXP34*): All versions (CVE-2024-8933)
+Modicon M340 CPU (part numbers BMXP34*): versions after SV3.60 (CVE-2024-8935)
+Modicon MC80 (part numbers BMKC80): All versions (CVE-2024-8933)
+Modicon Momentum Unity M1E Processor (171CBU*): All versions (CVE-2024-8933)
+
+3.2 Vulnerability Overview
+3.2.1 Improper Enforcement of Message Integrity During Transmission in a Communication Channel CWE-924
+A vulnerability exists that could cause retrieval of password hash that could lead to denial of service and loss of confidentiality and integrity of controllers. To be successful, the attacker needs to inject themselves inside the logical network while a valid user uploads or downloads a project file into the controller.
+CVE-2024-8933 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-8933. A base score of 7.5 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:H/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 Authentication Bypass by Spoofing CWE-290
+A vulnerability exists that could cause a denial of service and loss of confidentiality and integrity of controllers when conducting a Man-In-The-Middle attack between the controller and the engineering workstation while a valid user is establishing a communication session. This vulnerability is inherent to the Diffie Hellman algorithm which does not protect against Man-In-The-Middle attacks.
+CVE-2024-8935 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-8935. A base score of 7.7 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Schneider Electric reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Schneider Electric is establishing a remediation plan for all future versions of Modicon M340 that will include a fix for CVE-2024-8933 vulnerability and a mitigation for CVE-2024-8935.
+Additionally, Schneider Electric will update this document when the remediation is available. Until then, users should immediately apply the following mitigations to reduce the risk of exploit:
+
+Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP
+Configure the Access Control List following the recommendations of the user manuals: "Modicon M340 for Ethernet Communications Modules and Processors User Manual" in chapter "Messaging Configuration Parameters"
+Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections. For more details refer to "Modicon Controller Systems Cybersecurity, User Guide"
+Ensure the M340 CPU is running with the memory protection activated by configuring the input bit to a physical input, for more details refer to the following guideline "Modicon Controller Systems Cybersecurity, User Guide" chapter "Controler Memory Protection"
+
+Schneider Electric is also establishing a remediation plan for all future versions of Modicon MC80 that will include a fix for CVE-2024-8933. Schneider Electric will update this document when the remediation is available. Until then, users should immediately apply the following mitigations to reduce the risk of exploit:
+
+Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP
+Configure the Access Control List following the recommendations of the user manuals: "MC80 Programmable Logic Controller(PLC), User Manual" in the section "Access Control List (ACL)"
+Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections. For more details refer to "Modicon Controller Systems Cybersecurity, User Guide"
+
+Schneider Electric is also establishing a remediation plan for all future versions of Modicon Momentum that will include a fix for CVE-2024-8933. Schneider Electric will update this document when the remediation is available. Until then, users should immediately apply the following mitigations to reduce the risk of exploit:
+
+Setup network segmentation and implement a firewall to block all unauthorized access to port 502/TCP
+Configure the Access Control List following the recommendations of the user manuals: "Momentum for EcoStruxure™ Control Expert -171CBU78090, 171CBU98090, 171CBU98091 Processors, User Guide" in the section "Controlling Access"
+Consider use of external firewall devices such as EAGLE40-07 from Belden to establish VPN connections. For more details refer to "Modicon Controller Systems Cybersecurity, User Guide"
+
+To ensure you are informed of all updates, including details on affected products and remediation plans, subscribe to Schneider Electric's security notification service here.
+General Security RecommendationsSchneider Electric strongly recommend the following industry cybersecurity best practices.
+
+Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.
+Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.
+Place all controllers in locked cabinets and never leave them in the "Program" mode.
+Never connect programming software to any network other than the network intended for that device.
+Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.
+Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.
+Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.
+
+For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.
+For more information see the associated Schneider Electric Security Notification SEVD-2024-317-02 in PDF and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities have a high attack complexity.
+5. UPDATE HISTORY
+
+November 21, 2024: Initial Publication
+

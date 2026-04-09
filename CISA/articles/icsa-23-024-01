@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.3
+ATTENTION: Low attack complexity/public exploits are available 
+Vendor: XINJE 
+Equipment: XINJE XD Programing Tool 
+Vulnerabilities: Relative Path Traversal, Uncontrolled Search Path Element 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to write arbitrary project files to a programmable logic controller (PLC) and gain code execution privileges.  
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of XINJE XD are affected: 
+
+Version 3.5.1 and prior 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 RELATIVE PATH TRAVERSAL CWE-23 
+A zip slip vulnerability in XINJE XD/E Series PLC Program Tool up to version v3.5.1 could provide an attacker with arbitrary file write privilege when opening a specially crafted project file. This vulnerability can be triggered by manually opening an infected project file, or by initiating an upload program request from an infected Xinje PLC. This can result in remote code execution, information disclosure, and denial-of-service of the system running the XINJE XD/E Series PLC Program Tool.  
+CVE-2021-34605 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H). 
+3.2.2 UNCONTROLLED SEARCH PATH ELEMENT CWE-427 
+A vulnerability exists in XINJE XD/E Series PLC Program Tool in versions up to v3.5.1 that could allow an authenticated local attacker to load a malicious DLL. The potential attacker must have access to the system and sufficient file-write privileges to successfully exploit this vulnerability. If exploited, the attacker could place a malicious DLL file on the system, which could allow the attacker to execute arbitrary code with the privileges of another user's account when running the XINJE XD/E Series PLC Program Tool.  
+CVE-2021-34606 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).  
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide  
+COMPANY HEADQUARTERS LOCATION: China 
+
+3.4 RESEARCHER
+Mashav Sapir of Claroty reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Xinje has not responded to requests to provide mitigations for these vulnerabilities. Users of the affected product are encouraged to contact Xinje Technical Support. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+These vulnerabilities are not exploitable remotely.  

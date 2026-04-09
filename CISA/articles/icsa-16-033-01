@@ -1,0 +1,54 @@
+
+OVERVIEW
+Martin Jartelius and John Stock of Outpost24 have identified three vulnerabilities in Sauter’s moduWeb Vision application. Sauter has produced a new firmware version to mitigate these vulnerabilities. The researchers have tested the new firmware version to validate that it resolves the vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Sauter moduWeb Vision applications are affected:
+
+EY-WS505F0x0 moduWeb Vision Versions prior to 1.6.0.
+
+IMPACT
+Two of the vulnerabilities pertain to vulnerabilities in the insecure storage and transmission of credentials for the application. These vulnerabilities could allow a malicious party to bypass the authentication mechanisms of the application and allow for unauthorized use of the system. Leaked credentials are securely hashed, but the same method is used for storage of authentication tokens, providing attackers a possibility of privilege escalation.
+Cross-site scripting presents one entry point for attackers to access and manipulate control systems networks. It takes advantage of web servers that return dynamically generated web pages. This potentially allows the attacker to redirect the web page to a malicious location, hijack the client-server session, engage in network reconnaissance and plant backdoor programs.
+Cross-site scripting vulnerabilities in the platform are persistent and located in modules primarily exposed to administrators. Please refer to the NCCIC/ICS-CERT Abstract: Cross-Site Scripting RP for more information and additional mitigations.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Sauter is a Switzerland-based company that maintains offices in several countries around the world.
+The affected product, Sauter moduWeb Vision, is an embedded, web-based SCADA system for HVAC. According to Sauter, moduWeb Vision is deployed across several sectors including Commercial Facilities. Sauter estimates that these products are used primarily in Europe and Americas with a small percentage in the United States and Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INSECURE CREDENTIAL STORAGECWE-311: Missing Encryption of Sensitive Data, http://cwe.mitre.org/data/definitions/311.html, web site last accessed February 2, 2016.
+
+The moduWeb Vision stores credential elements in an encrypted format that imply the same encryption scheme as the authentication mechanism, allowing for use of a pass-the-hash attack against the system. This would allow an attack to use these elements to bypass authentication and use the system without authorization.
+CVE-2015-7914NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7914, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 10.0 and a temporal score of 9.0 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P/RL:O/RC:C, web site last accessed February 2, 2016.
+
+INSECURE TRANSMISSION OF CREDENTIALSCWE-319: Cleartext Transmission of Sensitive Information, http://cwe.mitre.org/data/definitions/319.html, web site last accessed February 2, 2016.
+
+The moduWeb Vision application transmits information in plain text including credentials. This allows malicious parties with access to the transmitted data to obtain credentials and bypass authentication.
+CVE-2015-7915NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7915 , NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 10.0 and a temporal score of 9.0 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:P/RL:O/RC:C, web site last accessed February 2, 2016.
+
+CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation (‘Cross-site Scripting’), http://cwe.mitre.org/data/definitions/79.html, web site last accessed February 2, 2016.
+
+The web server of the moduWeb Vision application allows for certain queries that would allow an attacker to obtain and change protected information from the system. A malicious user could add or modify accounts and credentials or potentially redirect other users of the application to malicious locations or sites.
+CVE-2015-7916NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7916, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.4 and a temporal score of 6.7 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L/E:P/RL:O/RC:C).C VSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L/E:P/RL:O/RC:C, web site last accessed February 2, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Sauter has released a new firmware version 1.6.0 to mitigate these vulnerabilities.
+It can be downloaded and installed using the Sauter commissioning tool CASE Sun.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

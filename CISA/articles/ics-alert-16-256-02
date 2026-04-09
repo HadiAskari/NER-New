@@ -1,0 +1,67 @@
+
+
+Description
+
+NCCIC/ICS-CERT is aware of a public report of a cross site request forgery (CSRF) vulnerability with proof-of-concept (PoC) exploit code affecting Schneider Electric’s ION Power Meter products. According to this report, exploitation of this vulnerability can allow unauthorized actions on the device, such as configuration parameter changes and saving modified configuration. This report was released while ICS-CERT was working with Schneider Electric to mitigate the vulnerability. Schneider Electric reports that the vulnerability affects the following products: ION 73xx, ION 75xx, ION 76xx, ION 8650, ION 8800, and PM5xxx. Schneider Electric has identified mitigations for this and other issues and will notify their customers. ICS-CERT is issuing this alert to provide early notice of the report and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+SUMMARY
+NCCIC/ICS-CERT is aware of a public report of a cross site request forgery (CSRF) vulnerability with proof-of-concept (PoC) exploit code affecting Schneider Electric’s ION Power Meter products. According to this report, exploitation of this vulnerability can allow unauthorized actions on the device, such as configuration parameter changes and saving modified configuration. This report was released while ICS-CERT was working with Schneider Electric to mitigate the vulnerability. Schneider Electric reports that the vulnerability affects the following products: ION 73xx, ION 75xx, ION 76xx, ION 8650, ION 8800, and PM5xxx. Schneider Electric has identified mitigations for this and other issues and will notify their customers. ICS-CERT is issuing this alert to provide early notice of the report and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+The report included vulnerability details and PoC exploit code for the following vulnerability:
+
+
+
+Vulnerability Type
+Remotely Exploitable
+Impact
+
+
+CSRF
+Yes
+Possible unauthorized configuration changes
+
+
+
+ION Power Meter products are used in energy management applications such as feeder monitoring and sub-metering. They interface with power monitoring software or other energy management or automations systems for real-time information for monitoring and analysis.
+Schneider Electric also acknowledges that these devices do not force a change of password upon installation of the device. This is not a vulnerability but a deployment issue. ICS-CERT and Schneider Electric recommend that users of these devices (or any other control system device) change passwords from the default settings upon installation of the product. Documentation on security configuration and device password management is available at the following link:
+http://www.schneider-electric.us/en/download/document/70012-0260-00/
+For further information on vulnerabilities in Schneider Electric’s products, please visit Schneider Electric’s cybersecurity web page at:
+http://www2.schneider-electric.com/sites/corporate/en/support/cybersecurity/cybersecurity.page
+FOLLOW-UP
+ICS-CERT released the follow-up advisory titled ICSA-16-308-03 Schneider Electric IONXXXX Series Power Meter Vulnerabilities on November 3, 2016, on the ICS-CERT web site.
+MITIGATION
+Schneider Electric offers the following mitigation advice:
+
+Configuration parameter changes, as well as saving modified configuration can be prevented for a meter by setting the “Webserver Config Access” register to “Disabled.” This register determines whether you can configure your meter through a browser. Valid entries are Enable or Disable. This register is set to Enable by default.
+There is also an “Enable Webserver” register. This register enables or disables the webserver entirely. Values for this register are YES and NO. The webserver is enabled by default (the value is set to YES).
+Some power meters may be revenue locked, which further protects unauthorized meter configuration parameter changes, except Owner, Tag1 and Tag2 string registers.
+
+ICS-CERT recommends, as quality assurance, that users test the update in a test development environment that reflects their production environment prior to installation. In addition, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT also provides a control systems recommended practices page on the ICS-CERT web site. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

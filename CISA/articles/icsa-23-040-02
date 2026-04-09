@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: LS ELECTRIC, LS Industrial Systems (LSIS) Co. Ltd 
+Equipment: XBC-DN32U 
+Vulnerabilities: Missing Authentication for Critical Function, Improper Access Control, Cleartext Transmission of Sensitive Information, Access of Memory Location After End of Buffer 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to steal Programmable Logic Controller (PLC) information, cause users to lose communication with the PLC, modify PLC code, obtain credentials, and create a denial-of-service condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following version of XBC-DN32U, a PLC performance module, is affected: 
+
+XBC-DN32U: Operating System Version 01.80 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306 
+LS ELECTRIC XBC-DN32U with operating system version 01.80 is missing authentication to perform critical functions to the PLC. This could allow an attacker to change the PLC's mode arbitrarily. 
+CVE-2023-22803 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.2 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306 
+LS ELECTRIC XBC-DN32U with operating system version 01.80 is missing authentication to create users on the PLC. This could allow an attacker to create and use an account with elevated privileges and take control of the device. 
+CVE-2023-22804 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H). 
+3.2.3 IMPROPER ACCESS CONTROL CWE-284 
+LS ELECTRIC XBC-DN32U with operating system version 01.80 has improper access control to its read prohibition feature. This could allow a remote attacker to remotely set the feature to lock users out of reading data from the device. 
+CVE-2023-22805 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H). 
+3.2.4 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319 
+LS ELECTRIC XBC-DN32U with operating system version 01.80 transmits sensitive information in cleartext when communicating over its XGT protocol. This could allow an attacker to gain sensitive information, such as user credentials. 
+CVE-2023-22806 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.5 IMPROPER ACCESS CONTROL CWE-284 
+LS ELECTRIC XBC-DN32U with operating system version 01.80 does not properly control access to the PLC over its internal XGT protocol. An attacker could control and tamper with the PLC by sending packets to the PLC over its XGT protocol. 
+CVE-2023-22807 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.6 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306 
+LS ELECTRIC XBC-DN32U with operating system version 01.80 is missing authentication for its deletion command. This could allow an attacker to delete arbitrary files. 
+CVE-2023-0102 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H). 
+3.2.7 ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788 
+If an attacker were to access memory locations of LS ELECTRIC XBC-DN32U with operating system version 01.80 outside of the communication buffer, the device could stop operating. This could allow an attacker to cause a denial-of-service condition. 
+CVE-2023-0103 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: South Korea 
+
+3.4 RESEARCHER
+HeeA Go, JinYoung Kim, JeongHoon Bae, HyeokJong Yun and YiJoon Jung of the hellOT team reported CVE-2023-22803 and CVE-2023-22804 to CISA. HeeA Go of Dankook University reported CVE-2023-22805, CVE-2023-22806, CVE-2023-22807, CVE-2023-0102, CVE-2023-0103 to CISA.
+4. MITIGATIONS
+LS ELECTRIC is developing mitigations (to be released tentatively by the end of 2023) and recommends users follow the provided workarounds to reduce the risk of exploitation: 
+
+Restrict communication to the PLC to only trusted IP addresses and trusted devices by enabling the “Host Table” option in the configuration window of the PLC. 
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.  

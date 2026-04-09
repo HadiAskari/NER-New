@@ -1,0 +1,60 @@
+
+OVERVIEW
+Digi International has identified five products that are vulnerable to the OpenSSL Heartbleed bug. Digi International has produced downloadable firmware upgrade versions that mitigate this vulnerability.
+This vulnerability could be exploited remotely. Exploits that target this vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+The following Digi International products are affected:
+
+ConnectPort LTS,
+ConnectPort X2e,
+Digi Embedded Linux 5.9,
+Digi Embedded Yocto 1.4, and
+Wireless Vehicle Bus Adapter (WVA).
+
+IMPACT
+A missing bounds check in the handling of the TLS Heartbeat extension can be used to reveal up to 64kB of memory on a connected device. An attacker who successfully exploits this vulnerability may obtain the user credentials and cryptographic keys used to access the device.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Digi International is a US-based company located in Minnetonka, Minnesota. It maintains offices in Europe, Middle East, Africa, Asia, and Latin America.
+Digi International is a provider of machine-to-machine (M2M) cloud products and services, using both wired and wireless technologies. Digi International acquired Etherios in 2013. Digi International uses vulnerable versions of OpenSSL.
+The affected Digi International products are wireless web/mesh-based SCADA communication systems. According to Digi International, their products are deployed across several sectors including Commercial Facilities, Communications, Critical Manufacturing, Energy, Transportation Systems, and others.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed May 08, 2014.
+
+The Heartbleed bug could allow attackers to read unallocated memory of OpenSSL running processes. This could reveal data like transmitted data, passwords, or private keys.
+CVE-2014-0160NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160, web site last accessed May 08, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:N/A:N , web site last accessed May 08, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+Digi International published a Security Notice OpenSSL “Heartbleed” on April 14, 2014, updated on April 18, 2014, at the following URL:
+http://www.digi.com/support/kbase/kbaseresultdetl?id=3564
+Recommended firmware updates for most vulnerable Digi International devices are located on the Digi International technical support site, at URL:
+www.digi.com/support
+The Digi OpenSSL Heartbleed fix for Digi Embedded Yocto 1.4 is available in the github repositories, and instructions for this update are at URL:
+http://www.digi.com/support/kbase/kbaseresultdetl?id=3566
+All products vulnerable to the OpenSSL Heartbleed bug can also be accessed via Device Cloud by Etherios. Device Cloud is a management platform providing the capability to perform device management functions to installed base of devices regardless of location.
+Digi International also recommends subscribing to the RSS feed on the support site for Digi International products to get immediate notice of any new firmware or document releases specific to Digi International product updates.
+Digi International recommends the following defensive measures:
+
+Update Firmware. The recommended fix for Heartbleed for Digi International devices is to update to a fixed firmware version update, available on the www.digi.com/support web site.
+Change Certificates. If HTTPS service is enabled, and the user has deployed a private key and certificate to the web interface (highly recommended), change the certificate at this time and update to an unaffected firmware version prior to changing the private key certificates.
+Change Passwords. If HTTPS service is enabled, change all passwords associated with the affected device, including device user passwords. If using TACACS or RADIUS, change the user passwords as well as the shared secret. If VPN is used in this configuration, change the passwords and/or tokens.
+Disable the Web Service. Disabling the HTTPS service and still maintaining manageability on the device can be accomplished in a number of ways. Manage the device through a command line service like SSH, or use a Device Cloud account to centrally manage all the devices. Further, if HTTPS service is enabled and on a public IP on the Internet, restrict or disable the HTTPS web interface to specific IPs.
+Check Services. If any HTTPS services have been implemented within Python, please evaluate the code and make sure that it is not impacted. If shell scripting uses the OpenSSL commands, please ensure to mitigate the Heartbeat TLS extension.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

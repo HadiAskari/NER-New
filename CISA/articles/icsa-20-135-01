@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Opto 22
+Equipment: SoftPAC Project
+Vulnerabilities: External Control of File Name or Path, Improper Verification of Cryptographic Signature, Improper Access Control, Uncontrolled Search Path Element, Improper Authorization
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow arbitrary file write access with system access, start or stop service, allow remote code execution, and limit system availability.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Opto 22 SoftPAC Project, a virtual PLC, are affected:
+
+SoftPAC Project Version 9.6 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    EXTERNAL CONTROL OF FILE NAME OR PATH CWE-73
+Paths specified within the zip files used to update the SoftPAC firmware are not sanitized. As a result, an attacker with user privileges can gain arbitrary file write access with system access.
+CVE-2020-12042 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.2.2    IMPROPER VERIFICATION OF CRYPTOGRAPHIC SIGNATURE CWE-347
+SoftPAC’s firmware files’ signatures are not verified upon firmware update. This allows an attacker to replace legitimate firmware files with malicious files. 
+CVE-2020-12046 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:N).
+3.2.3    IMPROPER ACCESS CONTROL CWE-284
+SoftPACAgent communicates with SoftPACMonitor over network Port 22000. However, this port is open without any restrictions. This allows an attacker with network access to control the SoftPACAgent service including updating SoftPAC firmware, starting or stopping service, or writing to certain registry values.
+CVE-2020-10612 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.2.4    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+SoftPAC does not specify the path of multiple imported .dll files. Therefore, an attacker can replace them and execute code whenever the service starts.
+CVE-2020-10616 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N).
+3.2.5    IMPROPER AUTHORIZATION CWE-285
+SoftPAC communication does not include any credentials. This allows an attacker with network access to directly communicate with SoftPAC, including, for example, stopping the service remotely.
+CVE-2020-10620 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Information Technology, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Mashav Sapir of Claroty reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Opto 22 released PAC Project 10.3; it is available for download by selecting one of the following links:
+PAC Project Professional
+PAC Project Basic
+Questions concerning this release can be emailed to: support@opto22.com
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Monitor or restrict Port 22000 at the firewall.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

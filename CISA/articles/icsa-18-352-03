@@ -1,0 +1,62 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: 3S-Smart Software Solutions GmbH
+Equipment: CODESYS Control V3 products
+Vulnerability: Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow unauthorized access and exfiltration of sensitive data including user credentials.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+3S-Smart Software Solutions GmbH reports the vulnerability affects all variants of CODESYS Control V3 products containing the CmpSecureChannel or CmpUserMgr components prior to Version 3.5.14.0 of the following products, regardless of the CPU type or operating system:
+
+Control for BeagleBone,
+CODESYS Control for BeagleBone,
+CODESYS Control for emPC-A/iMX6,
+CODESYS Control for IOT2000,
+CODESYS Control for Linux,
+CODESYS Control for PFC100,
+CODESYS Control for PFC200,
+CODESYS Control for Raspberry Pi,
+CODESYS Control RTE V3,
+CODESYS Control RTE V3 (for Beckhoff CX),
+CODESYS Control Win V3 (also part of the CODESYS setup),
+CODESYS V3 Simulation Runtime (part of the CODESYS Development System),
+CODESYS Control V3 Runtime System Toolkit, and
+CODESYS HMI V3.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1   IMPROPER ACCESS CONTROL CWE-284User access management and communication encryption is not enabled by default, which could allow an attacker access to the device and sensitive information, including user credentials.CVE-2018-10612 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Yury Serdyuk of Kaspersky Lab reported this vulnerability to CODESYS, who then reported it to NCCIC.
+4. MITIGATIONS
+3S-Smart Software Solutions GmbH recommends activating the CODESYS Control online user management and encryption of the online communication.3S-Smart Software Solutions GmbH recommends updating to the latest software Version 3.5.14.0 or newer.  The new software can be downloaded at the following location:https://www.codesys.com/download/3S-Smart Software Solutions GmbH also recommends updating the CODESYS Development System to the latest version.For more information, all public CODESYS advisories can be found at:https://www.codesys.com/security/security-reports.htmlIn general, 3S-Smart Software Solutions GmbH recommends, as part of the mitigation strategy, the following defensive measures to reduce the risk of exploitation of this vulnerability:
+
+Use controllers and devices only in a protected environment to minimize network exposure and ensure controllers are not accessible from outside
+Use firewalls to protect and separate the control system network from other networks
+Use VPN (Virtual Private Networks) tunnels if remote access is required
+Activate and apply user management and password features
+Limit the access to both development and control system by physical means, operating system features, etc.
+Protect both development and control system by using up-to-date virus detecting solutions.
+
+For more information and general recommendations for protecting machines and plants, see also the CODESYS Security Whitepaper:https://customers.codesys.com/fileadmin/data/customers/security/CODESYS-Security-Whitepaper.pdf
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

@@ -1,0 +1,54 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.4
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: B&R Industrial Automation GmbH
+Equipment: Automation Studio and Automation Runtime
+Vulnerability: Improper Authorization
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may allow a remote attacker to modify the configuration of affected devices.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of B&R products are affected:
+
+Automation Studio Versions 2.7, 3.0.71, 3.0.80, 3.0.81, 3.0.90, 4.0.x to 4.6.4, and 4.7.2
+Automation Runtime Versions 2.96, 3.00, 3.01, 3.06, 3.07, 3.08 to 3.10, 4.00 to 4.03, 4.04 to 4.03, 4.04 to 4.63, 4.72 and above.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER AUTHORIZATION CWE-285
+The affected products are vulnerable to a weakness in SNMP service, which allows unauthenticated users to modify the configuration via the service.
+CVE-2019-19108 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Austria
+
+3.4 RESEARCHER
+Yehuda Anikster and Amir Preminger of Claroty reported this vulnerability to CISA.
+4. MITIGATIONS
+B&R reports product-technical reasons disallow the changing of SNMP credentials. To reduce risk from this vulnerability, the following Automation Studio versions disable the SNMP service by default in newly created AS projects:
+
+AS 4.6.5 (Planned release date: 2020-03-27) and higher
+AS 4.7.3 (Planned release date: 2020-04-10) and higher
+AS 4.8.2 (Planned release date: 2020-06-11) and higher
+
+B&R reports the above-mentioned dates denoted as planned are preliminary and may be subject to change. Registered users may approach their local B&R service organization in case of questions.
+B&R recommends that affected users evaluate their need for the SNMP service and disable it if possible.
+For more information related to this vulnerability please refer to the B&R advisory.
+For additional information and support, please contact B&R service.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

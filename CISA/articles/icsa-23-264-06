@@ -1,0 +1,59 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: FactoryTalk View Machine Edition
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to execute code remotely with specially crafted malicious packets or by using a self-made library to bypass security checks.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Rockwell Automation products are affected:
+
+FactoryTalk View Machine Edition: v13.0
+FactoryTalk View Machine Edition: v12.0 and prior
+
+3.2 Vulnerability Overview
+3.2.1 Improper Input Validation CWE-20
+FactoryTalk View Machine Edition on the PanelView Plus, improperly verifies user's input, which allows unauthenticated attacker to achieve remote code executed via crafted malicious packets. The device has the functionality, through a CIP class, to execute exported functions from libraries. There is a routine that restricts it to execute specific functions from two dynamic link library files. By using a CIP class, an attacker can upload a self-made library to the device which allows the attacker to bypass the security check and execute any code written in the function.
+CVE-2023-2071 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Yuval Gordon, CPS Research, and the Microsoft Threat Intelligence Community reported this vulnerability to Rockwell Automation.
+4. MITIGATIONS
+Rockwell recommends updating FactoryTalk View Machine Edition with v12.0 & v13.0 patch
+Users of the affected versions are encouraged by Rockwell Automation to upgrade to corrected firmware revisions. Users are also strongly encouraged to implement Rockwell Automation's suggested security best practices to minimize the risk of the vulnerability.
+
+Install the security patches for the respective versions
+Security Best Practices
+
+For more information and to see Rockwell's detection rules, see Rockwell Automation's Security Advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+September 21, 2023: Initial Publication

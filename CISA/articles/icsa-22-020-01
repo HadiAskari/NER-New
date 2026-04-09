@@ -1,0 +1,103 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: ICONICS and Mitsubishi Electric
+Equipment: ICONICS Product Suite, Mitsubishi Electric MC Works64
+Vulnerabilities: Cross-site Scripting, Incomplete List of Disallowed Inputs, Plaintext Storage of a Password, Buffer Over-read 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in unauthorized access to information, unauthorized access to GENESIS64 and MC Works64 functionality, or the disabling of SQL Server.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+These vulnerabilities can affect the following HMI SCADA products:
+
+ICONICS Suite including GENESIS64, Hyper Historian, AnalytiX, and MobileHMI
+
+For CVE-2022-23127 (Cross-site Scripting CWE-79)
+
+All versions up to and including 10.96.2
+
+
+For CVE-2022-23128 (Incomplete List of Disallowed Inputs CWE-184)
+
+All versions from 10.95.3 to 10.97
+
+
+For CVE-2022-23129 (Plaintext Storage of a Password CWE-256)
+
+All versions from 10.90 to 10.97
+
+
+For CVE-2022-23130 (Buffer Over-read CWE-126)
+
+All versions up to and including 10.97
+
+
+
+
+Mitsubishi Electric MC Works64
+
+For CVE-2022-23127 (Cross-site Scripting CWE-79)
+
+All versions prior to 4.04E (10.95.210.01)
+
+
+For CVE-2022-23128 (Incomplete List of Disallowed Inputs CWE-184)
+
+MC Works64: Version 4.00A (v10.95.201.23) to 4.04E (v10.95.210.01)
+
+
+For CVE-2022-23129 (Plaintext Storage of a Password CWE-256)
+
+All versions prior to 4.04E (10.95.210.01)
+
+
+For CVE-2022-23130 (Buffer Over-read CWE-126)
+
+MC Works64: Version 4.00A (v10.95.201.23) to 4.04E (v10.95.210.01)
+
+
+
+
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+ICONICS MobileHMI and Mitsubishi Electric MC Mobile products lack proper validation checks on user input and external data when they are used to render a page to the client.
+CVE-2022-23127 has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N).
+3.2.2    INCOMPLETE LIST OF DISALLOWED INPUTS CWE-184
+The FrameWorX Server in all ICONICS Suite and Mitsubishi Electric MC Works64 products can allow an attacker to bypass GENESIS64 /MC Works64 security when opening a communication channel to the WebSocket endpoint (Port 80 or 443) of the FrameWorX Server.
+CVE-2022-23128 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    PLAINTEXT STORAGE OF A PASSWORD CWE-256
+The GENESIS64 and MC Works64 Workbench “export to CSV” function may expose a password in plain text when used to export the GridWorX Server configuration.
+CVE-2022-23129 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H).
+3.2.4    BUFFER OVER-READ CWE-126
+A coding error in the SQL query engine memory allocation code makes it possible to execute a series of SQL commands in a GENESIS64 system or a MC Works64 system, which could cause a crash of the SQL Query Engine and result in the disabling of the SQL Server.
+CVE-2022-23130 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:H/UI:R/S:C/C:N/I:L/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: ICONICS is headquartered in the United States; Mitsubishi Electric is headquartered in Japan
+
+3.4 RESEARCHER
+ICONICS and Mitsubishi Electric reported these vulnerabilities to CISA.
+4. MITIGATIONS
+ICONICS and Mitsubishi Electric are releasing critical fixes rollups or patches for these products. GENESIS64 Version 10.97.1 and later will not be vulnerable to these exploits.
+ICONICS and Mitsubishi Electric recommend users of these products take the following mitigation steps:
+
+Use a firewall. Place control system networks and devices behind firewalls and isolate them from the business network.
+Minimize network exposure for all control system devices. Control system devices should not directly face the Internet.
+Do not click web links or open unsolicited attachments in e-mail messages.
+Install the applicable critical fixes/rollup releases when available.
+
+Users can find additional information and useful links related to the GENESIS64 security updates on the ICONICS website.
+Users can find additional information and useful links related to the MC Work64 security updates on the Mitsubishi Electric website. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

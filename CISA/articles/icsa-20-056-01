@@ -1,0 +1,98 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Moxa
+Equipment: MB3170 series, MB3180 series, MB3270 series, MB3280 series, MB3480 series, and MB3660 series
+Vulnerabilities: Stack-based Buffer Overflow, Integer Overflow to Buffer Overflow, Cross-site Request Forgery, Use of a Broken or Risky Cryptographic Algorithm, Information Exposure, Cleartext Transmission of Sensitive Information, Weak Password Requirements, Cleartext Storage of Sensitive Information, Incorrectly Specified Destination in a Communication Channel
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could crash the device, cause a buffer overflow, allow remote execution of arbitrary code, or allow access to sensitive information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Moxa reports these vulnerabilities affects the following protocol gateways:
+
+MB3170 series firmware, Version 4.0 or lower
+MB3270 series firmware, Version 4.0 or lower
+MB3180 series firmware, Version 2.0 or lower
+MB3280 series firmware, Version 3.0 or lower
+MB3480 series firmware, Version 3.0 or lower
+MB3660 series firmware, Version 2.2 or lower
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+Two separate issues cause a buffer overflow in the built-in web server that may allow a remote attacker to initiate a DoS attack and execute arbitrary code.
+CVE-2019-9099 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    INTEGER OVERFLOW TO BUFFER OVERFLOW CWE-680
+An integer overflow causes unexpected memory allocation that can lead to a buffer overflow.
+CVE-2019-9098 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    CROSS-SITE REQUEST FORGERY CWE-352
+A predictable mechanism of generating tokens allows remote attackers to bypass the cross-site request forgery (CSRF) protection mechanism.
+CVE-2019-9102 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+A weak cryptographic algorithm with predictable variables may allow sensitive information to be revealed.
+CVE-2019-9095 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    INFORMATION EXPOSURE CWE-200
+An attacker can access sensitive information and usernames via the built-in web service without proper authorization
+CVE-2019-9103 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.6    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Sensitive information is transmitted over some web applications in clear text.
+CVE-2019-9101 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AAV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.7    WEAK PASSWORD REQUIREMENTS CWE-521
+Weak password requirements may allow an attacker to gain access by using brute force.
+CVE-2019-9096 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8    CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+Sensitive information is stored in configuration files without encryption, which may allow an attacker to access an administrative account.
+CVE-2019-9104 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.9    INCORRECTLY SPECIFIED DESTINATION IN A COMMUNICATION CHANNEL CWE-941
+The web service may become temporarily unavailable if an attacker is able to overload the system to cause the service to crash.
+CVE-2019-9097 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Ilya Karpov and Evgeniy Druzhinin from Rostelecom-Solar, and Maxim Kozhevnikov from Positive Technologies reported these vulnerabilities to Moxa.
+4. MITIGATIONS
+Moxa has developed the following solutions to address the vulnerabilities:
+
+MB3170 Series: Download the new firmware.
+MB3270 Series: Download the new firmware.
+MB3180 Series: Download the new firmware.
+
+Moxa also recommends users follow below instructions to mitigate potential risks: 
+
+Upgrade to the latest firmware and disable HTTP and Telnet communications.
+Use Moxa utilities (MGate Manager, NPort Administration Suite Utility) to change device configurations or monitor the device status remotely.
+Use a VPN tunnel for a secure and protected connection between the devices and host PC.
+
+
+
+
+MB3280 Series: Download the new firmware.
+MB3480 Series: Download the new firmware.
+MB3660 Series: Download the new firmware.
+
+Please see Moxa’s security advisory for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

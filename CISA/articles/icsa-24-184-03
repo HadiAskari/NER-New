@@ -1,0 +1,78 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.0
+ATTENTION: Exploitable remotely
+Vendor: ICONICS, Mitsubishi Electric
+Equipment: ICONICS Product Suite, Mitsubishi Electric MC Works64
+Vulnerabilities: Allocation of Resources Without Limits or Throttling, Improper Verification of Cryptographic Signature, Uncontrolled Search Path Element, Improper Authentication, Unsafe Reflection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in denial of service, improper privilege management, or potentially remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+ICONICS reports that the following versions of ICONICS and Mitsubishi Electric Products are affected:
+
+ICONICS Suite including GENESIS64, Hyper Historian, AnalytiX, and MobileHMI: Version 10.97.2 (CVE-2023-2650, CVE-2023-4807)
+AlarmWorX Multimedia (AlarmWorX64 MMX): All versions prior to 10.97.3 (CVE-2024-1182)
+MobileHMI: All versions prior to 10.97.3 (CVE-2024-1573)
+ICONICS Suite including GENESIS64, Hyper Historian, AnalytiX, and MobileHMI: All versions prior to 10.97.3 (CVE-2024-1574)
+Mitsubishi Electric MC Works64: all versions (CVE-2024-1182, CVE-2024-1573, CVE-2024-1574)
+
+3.2 VULNEARABILITY OVERVIEW
+3.2.1 Allocation of Resources Without Limits or Throttling CWE-770
+A denial-of-service vulnerability due to an allocation of resources without limits or throttling.
+CVE-2023-2650 has been assigned to this vulnerability. A CVSS v3.1 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.2 Improper Verification of Cryptographic Signature CWE-347
+A bug in OpenSSL that might corrupt the internal state of the application on the Windows 64 platform when running on newer X86_64 processors supporting the AVX512-IFMA instructions.
+CVE-2023-4807 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3 Uncontrolled Search Path Element CWE-427
+An uncontrolled search path element in the AlarmWorX64 MMX Pager agent can provide the potential for DLL hijacking.
+CVE-2024-1182 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.0 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 Improper Authentication CWE-287
+The GENESIS64 Automatic Login feature, when used with MobileHMI in a certain specific condition, can result in improper privileges being given to a non-logged-in user.
+CVE-2024-1573 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.5 Unsafe Reflection CWE-470
+Use of externally-controlled input to select classes or code (‘unsafe reflection') condition in the licensing service (used by ICONICS licensing) can result in an improper authorization condition.
+CVE-2024-1574 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.7 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: ICONICS is headquartered in the United States. Mitsubishi Electric is headquartered in Japan.
+
+3.4 RESEARCHER
+Asher Davila and Malav Vyas of Palo Alto Networks reported AlarmWorX64 MMX Pager Agent vulnerability to ICONICS.
+4. MITIGATIONS
+ICONICS Product Suite versions 10.97.3 and later have mitigations for these vulnerabilities. ICONICS and Mitsubishi Electric recommends that users of its products take the following mitigation steps:
+
+Use the 10.97.3 version.
+If planning to use the AlarmWorX64 MMX Pager agent, follow the guidelines provided in the ICONICS Whitepaper on Security Vulnerabilities June 2024 edition.
+
+ICONICS and Mitsubishi Electric recommends updating the ICONICS Suite with the latest security patches as they become available. ICONICS Suite security patches may be found here (login required).
+ICONICS is releasing security updates as critical fixes/rollup releases. Refer to the ICONICS whitepaper on security vulnerabilities, the most recent version of which can be found here.
+MC Works64 users should take the mitigations described in the Mitsubishi Electric security advisory, since there are no plans to release a fix version.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities have a high attack complexity.
+5. UPDATE HISTORY
+
+July 2, 2024: Initial Publication
+December 3, 2024: Update A - Added Mitsubishi Electric MC Works64, re-categorized CVE-2023-4807 as CWE-347.
+

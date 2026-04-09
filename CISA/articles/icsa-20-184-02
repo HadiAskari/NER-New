@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: ABB
+Equipment: System 800xA Information Manager
+Vulnerability: Cross-site Scripting
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to inject and execute arbitrary code on the information manager server.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of System 800xA Information Manager are affected:
+
+Versions prior to 5.1 Rev E/5.1 FP4 Rev E TC6
+Versions prior to 6.0.3.3 RU1
+Versions prior to 6.1 RU1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION (‘CROSS-SITE SCRIPTING’) CWE-79
+The affected product is vulnerable to a remote code execution attack that may allow an attacker to remotely execute arbitrary code. Successful exploitation of this vulnerability requires luring a user (on a host with the vulnerable IM component installed) to access a malicious website that instructs the user’s browser to load the vulnerable component before passing malicious input. This could cause the Display Services functionality to stop or malfunction.
+CVE-2020-8477 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H)
+ 
+3.3 BACKGROUND
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Dams, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+3.4 RESEARCHER
+William Knowles of Applied Risk reported this vulnerability to ABB.
+4. MITIGATIONS
+ABB’s recommendations:
+
+This vulnerability was corrected in System 800xA of the following versions:
+
+5.1 Rev E/5.1 FP4 E TC6, ABB recommends users on the 5.1 track to install this TC, which can be obtained from technical support upon request.
+6.0.3.3 RU1, ABB recommends users on the 6.0.3 LTS track to update 6.0.3.3 and install RU1 for IM.
+6.1 RU1, ABB recommends users on the 6.1 track to update to this version.
+
+
+The above-mentioned updates are recommended regardless of whether the previously described manual removal of the vulnerable component has been done or not. The IM rollups for 6.0.3.3 and 6.1 can be downloaded from My ABB/My Control System.
+Please note this vulnerability can be exploited by remote and unauthenticated users, so users are recommended to ensure only authorized persons have access to plant assets and network and that web browsing from system nodes to external networks is restricted, especially from an IM node.
+Check that the usage of the Access Enable key in AC 800M HI and the configured access level of SIL variables corresponds to the risk analysis.
+
+Successful exploitation of this vulnerability requires luring a user to a malicious website. Recommended baseline security practices and firewall configurations can help protect a network and its attached devices from attacks that originate from outside the network.
+Recommended baseline security practices and firewall configurations can help protect a network and its attached devices from attacks that originate from outside the network. For example, common practices are for process control systems to be physically protected from direct access by unauthorized personnel, have no direct connections to the Internet, and are separated from other networks by means of a firewall system that has a minimal number of ports exposed, and others that must be evaluated case by case.
+Process control and automation systems should not be used for general business functions (e.g., Internet browsing, email, etc.) that are not critical industrial processes. Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+Recommended practices include that process control systems are physically protected, have no direct connections to the Internet, and are separated from other networks by means of a firewall system with a minimal number of ports exposed.
+For more information please refer to ABB’s Cybersecurity Advisory.
+ 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

@@ -1,0 +1,59 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.9
+ATTENTION: Low attack complexity
+Vendor: Fujitsu Software
+Equipment: Infrastructure Manager
+Vulnerability: Cleartext Storage of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could result in an attacker retrieving the password for the proxy server that is configured in ISM from the maintenance data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Infrastructure Manager are affected:
+
+Infrastructure Manager: Advanced Edition V2.8.0.060
+Infrastructure Manager: Advanced Edition for PRIMEFLEX V2.8.0.060
+Infrastructure Manager: Essential Edition V2.8.0.060
+
+3.2 Vulnerability Overview
+3.2.1 Cleartext Storage of Sensitive Information CWE-312
+An issue was discovered in Fujitsu Software Infrastructure Manager (ISM) before 2.8.0.061. The ismsnap component (in this specific case at /var/log/fujitsu/ServerViewSuite/ism/FirmwareManagement/FirmwareManagement.log) allows insecure collection and storage of authorization credentials in cleartext. That occurs when users perform any ISM Firmware Repository Address setup test (Test the Connection), or regularly authorize against an already configured remote firmware repository site, as set up in ISM Firmware Repository Address. A privileged attacker is therefore able to potentially gather the associated ismsnap maintenance data, in the same manner as a trusted party allowed to export ismsnap data from ISM. The preconditions for an ISM installation to be generally vulnerable are that the Download Firmware (Firmware Repository Server) function is enabled and configured, and that the character \ (backslash) is used in a user credential (i.e., user/ID or password) of the remote proxy host / firmware repository server.
+CVE-2023-39903 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Fujitsu Technology Solutions GmbH and the Fujitsu PSIRT (Europe) reported the vulnerability to MITRE and Fujitsu Limited. Fujitsu Limited and JPCERT/CC reported this vulnerability to CISA.
+4. MITIGATIONS
+Fujitsu Software recommends updating the software to version V2.8.0.061, which has been released to fix this vulnerability.
+Fujitsu Software recommends, as a workaround, using a user ID and/or a password for the proxy server not including "\" (backslash) character, when downloading firmware.
+Fujitsu Software recommends, as a workaround, storing the maintenance data in a trusted location, and deleting when unnecessary.
+JPCERT/CC published JVN#38847224 regarding this issue.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely.
+5. UPDATE HISTORY
+
+September 12, 2023: Initial Publication
+

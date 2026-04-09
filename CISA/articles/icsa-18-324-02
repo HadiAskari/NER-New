@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.2
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Schneider Electric
+Equipment: Modicon M221
+Vulnerability: Insufficient Verification of Data Authenticity
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could cause a change of IPv4 configuration (IP address, mask, and gateway) when remotely connected to the device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric reports that the vulnerability affects the following Modicon products: 
+
+Modicon M221, all versions.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+Improper implementation of the network configuration module in UMAS protocol, which may allow an attacker to intercept a target PLC’s network traffic by remotely modifying configuration parameters. 
+CVE-2018-7798 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Eran Goldstein of CRITIFENCE reported this vulnerability to NCCIC.
+4. MITIGATIONS
+Schneider Electric recommends the following mitigations to reduce the risk:
+
+Set up a firewall blocking all remote/external access to Port 502. 
+Within the Modicon M221 application, users should disable all unused protocols, especially programming protocol, as described in section “Configuring Ethernet Network” of SoMachine Basic online help. This will prevent remote programming of the M221 PLC.
+
+Schneider Electric’s security notice SEVD-2018-270-01 is available at the following location:
+https://www.schneider-electric.com/en/download/document/SEVD-2018-270-01/
+Schneider Electric also recommends the following industry cybersecurity practices:
+
+Locate control and safety system networks and remote devices behind firewalls, and isolate them from the business network. 
+Physical controls should be in place so that no unauthorized person would have access to the ICS and safety controllers, peripheral equipment or the ICS and safety networks. 
+All controllers should reside in locked cabinets and never be left in the “Program” mode. 
+All programming software should be kept in locked cabinets and should never be connected to any network other than the network for the devices that it is intended. 
+All methods of mobile data exchange with the isolated network such as CDs, USB drives, etc., should be scanned before use in the terminals or any node connected to these networks. 
+Laptops that have connected to any other network besides the intended network should never be allowed to connect to the safety or control networks without proper sanitation. 
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet. 
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices. 
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

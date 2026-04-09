@@ -1,0 +1,62 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC Software Products
+Vulnerability: Classic Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to manipulate project files, create a denial-of-service condition or remotely execute code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports this vulnerability affects the following SIMATIC software products:
+
+SIMATIC PCS 7 v8.2 and earlier: All versions
+SIMATIC PCS 7 v9.0: All versions prior to 9.0 SP3
+SIMATIC PDM: All versions prior to v9.2
+SIMATIC STEP 7 v5.X: All versions prior to v5.6 SP2 HF3
+SINAMICS STARTER (containing STEP 7 OEM version): All versions prior to v5.4 HF2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT (‘CLASSIC BUFFER OVERFLOW') CWE-120
+The affected software contains a buffer overflow vulnerability while handling certain files that may allow a local attacker to trigger a denial-of-service condition or potentially lead to remote code execution.
+CVE-2021-31893 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Uri Katz from Claroty reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens has released updates for the following products:
+
+SIMATIC PCS 7 v9.0: Update to v9.0 SP3 or later (To obtain SIMATIC PCS 7 v9.0 SP3 contact your local customer support)
+SIMATIC PDM: Update to v9.2 or later
+SIMATIC STEP 7 V5.X: Update to v5.6 SP2 HF3 or later
+SINAMICS STARTER (containing STEP 7 OEM version): Update to v5.4 HF2 or later
+
+Siemens has identified the following specific workarounds and mitigations customers can apply to reduce the risk:
+
+Restrict access to project files on the engineering station to trusted users
+Only use project files from trusted sources
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens Operational Guidelines for Industrial Security and following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+Please see Siemens Security Advisory ssa-641963 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

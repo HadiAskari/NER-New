@@ -1,0 +1,100 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the advisory update titled ICSA-16-103-01B Siemens Industrial Products glibc Library Vulnerability that was published July 14, 2016, on the NCCIC/ICS-CERT web site.
+Siemens reports that a buffer overflow vulnerability in the glibc library could affect several of its industrial products.
+--------- Begin Update C Part 1 of 3 --------
+Siemens has produced updates to mitigate this vulnerability in ROX II, APE devices, SINEMA Remote Connect, Basic RT V13, and SCALANCE M-800/S615.
+--------- End Update C Part 1 of 3 ----------
+This vulnerability could be exploited remotely. Exploits that target this vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following products:
+
+ROX II: V2.3.0-V2.9.0 (inclusive),
+APE (Linux): All versions,
+SINEMA Remote Connect: All versions prior to Version 1.2,
+
+--------- Begin Update C Part 2 of 3 --------
+
+SCALANCE M-800/S615: All versions prior to version 4.02, and
+
+--------- End Update C Part 2 of 3 ----------
+
+Basic RT V13: All versions prior to V13 SP1 Update 9
+
+IMPACT
+An attacker who successfully exploits this vulnerability may be able to cause a denial-of-service condition in the affected devices or possibly execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+Siemens ROX-based devices are used to connect devices that operate in harsh environments such as electric utility substations and traffic control cabinets. RUGGEDCOM APE is a utility-grade computing platform that plugs directly into any member of the RUGGEDCOM RX1500 family and makes it possible to run third-party software applications without an external industrial PC. SINEMA Remote Connect is a management platform for remote networks allowing users to manage and maintain tunnel connections (VPN) between networks, machines, and sites. SCALANCE security modules provide filtering of incoming and outgoing network connections with stateful packet inspection.
+According to Siemens, the affected devices are deployed across several sectors including Chemical, Communications, Critical Manufacturing, Dams, Energy, Food and Agriculture, Government Facilities, Healthcare and Public Health, Transportation Systems, and Water and Wastewater Systems. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed April 12, 2016.
+
+There is a stack-based buffer overflow vulnerability in the glibc library’s DNS client side resolver.
+CVE-2015-7547NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7547, web site last accessed April 12, 2016. has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed April 12, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult.
+MITIGATION
+Siemens provides updates for the following products and encourages customers to update their products:
+
+ROX II: Update to version 2.9.1
+
+
+Submit a support request online
+
+https://www.siemens.com/automation/support-request
+
+Call a local hotline center:
+
+https://w3.siemens.com/aspa_app/
+
+APE (Linux): Follow update process provided in the corresponding application note:
+
+http://support.automation.siemens.com/WW/view/en/109485761
+
+
+Basic RT V13: Update to Version V13 SP 1 Update 9:
+
+
+            https://support.industry.siemens.com/cs/ww/en/view/109311724
+
+SINEMA Remote Connect software update for Version 1.2 is available at the following link:
+
+https://support.industry.siemens.com/cs/ww/en/view/109737963
+--------- Begin Update C Part 3 of 3 --------
+ 
+
+SCALANCE M-800/S615: Update to V4.02:
+
+https://support.industry.siemens.com/cs/ww/en/view/109740858
+Siemens recommends applying the following mitigations until patches can be applied:
+--------- End Update C Part 3 of 3 --------
+
+Disable use of DNS on affected devices if possible.
+Use trusted DNS servers, trusted networks/providers, and known trusted DNS domains in device configuration.
+
+OR
+
+Limit size of DNS responses to 512 bytes for UDP messages, and 1024 bytes for TCP messages on network border.
+
+As a general security measure, Siemens strongly recommends to protect network access to nonperimeter devices with appropriate mechanisms. It is advised to configure the environment according to Siemens operational guidelines in order to run the devices in a protected IT environment.
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-301706 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

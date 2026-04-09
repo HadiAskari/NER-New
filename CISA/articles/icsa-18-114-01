@@ -1,0 +1,87 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.8
+
+
+--------- Begin Update A Part 1 of 6 ---------
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+
+--------- End Update A Part 1 of 6 ---------
+
+Vendor: Vecna Technologies, Inc. (Vecna)
+Equipment: VGo Robot
+
+--------- Begin Update A Part 2 of 6 ---------
+
+Vulnerabilities: OS Command Injection, Cleartext Transmission of Sensitive Information, Improper Authorization, Improper Access Control, Insufficiently Protected Credentials
+
+--------- End Update A Part 2 of 6 ---------
+2    UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-114-01 Vecna VGo Robot that was published April 24, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+--------- Begin Update A Part 3 of 6 ---------
+Successful exploitation of these vulnerabilities could allow an attacker to capture firmware updates through network traffic, extract credentials from the firmware, record video conversations, and may allow remote code execution with root privileges.
+--------- End Update A Part 3 of 6 ---------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 4 of 6 ---------
+The following versions of VGo Robot, a remote controlled robot, are affected:VGo Robot: Versions 3.0.3.52164 and 3.0.3.53662. Prior versions may also be affected.
+--------- End Update A Part 4 of 6 ---------
+4.2 VULNERABILITY OVERVIEW
+
+4.2.1   IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+An attacker on an adjacent network could perform command injection.
+CVE-2018-8866 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+
+4.2.2   CLEAR TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+An attacker may be able to capture firmware updates through the adjacent network. 
+CVE-2018-8860 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+--------- Begin Update A Part 5 of 6 ---------
+4.2.3    IMPROPER AUTHORIZATION CWE-285
+User accounts may be able to execute commands that are outside the scope of their privileges and within the scope of an admin account. If an attacker has access to VGo XAMPP Client credentials, they may be able to execute admin commands on the connected robot.
+CVE-2018-17933 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    IMPROPER ACCESS CONTROL CWE-284
+If an attacker has physical access to the VGo Robot they may be able to alter scripts, which may allow code execution with root privileges.
+CVE-2018-17931 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.5    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+If an attacker has access to the firmware they may be able to extract credentials.
+CVE-2018-8858  has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N)
+--------- End Update A Part 5 of 6 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Dan Regalado from Zingbox reported this vulnerability to NCCIC.
+5. MITIGATIONS
+Vecna has released a recommended update to mitigate the vulnerabilities. Vecna recommends the following update process:
+
+By default, VGo has automatic updates enabled so all updates are performed automatically when Internet access is available. If the VGo is powered off or in use, a message will appear on the screen asking if it can be updated when the VGo is next used.
+If a VGo unit has automatic updates turned off, the update will not be downloaded (however, a notice about the update will be displayed on the VGo’s screen). Vecna recommends that automatic updates be turned on. Select “settings” from the main menu then “advanced settings” then “automatic updates.”
+
+--------- Begin Update A Part 6 of 6 ---------
+Vecna may have released an update for CVE-2018-8858.
+Vecna has not addressed CVE-2018-17931 and CVE-2018-17933.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Create strong credentials for the VGo XAMPP Client accounts.
+Minimize who has access to the device.
+Place physical locks over the USB ports. If possible, disable USB ports when not in use.      
+
+--------- End Update A Part 6 of 6 ---------
+NCCIC recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

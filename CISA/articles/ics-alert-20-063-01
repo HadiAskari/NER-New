@@ -1,0 +1,206 @@
+
+
+Description
+
+This ALERT details vulnerabilities in SweynTooth's Bluetooth Low Energy (BLE) proof-of-concept (PoC) exploit code. This report was released without coordination with some of the affected vendors and without advance coordination with CISA. CISA has notified some of the affected vendors of the report and has asked the vendors to confirm the vulnerabilities and identify mitigations.
+1    EXECUTIVE SUMMARY
+CISA is aware of a public report of multiple Bluetooth Low Energy (BLE) vulnerabilities with proof-of-concept (PoC) exploit code affecting a large number of IOT, Smart-home, wearable, and medical devices from vendors who utilize BLE wireless communication technology. This report was released without coordination with some of the affected vendors and without advance coordination with CISA. CISA has notified some of the affected vendors of the report and has asked the vendors to confirm the vulnerabilities and identify mitigations. CISA continues to attempt to notify affected vendors and will update as information is made available. CISA is issuing this Alert to provide notice of the report and identify baseline mitigations for reducing risks to these and other cybersecurity attacks. The report included vulnerability details and PoC exploit code for the following vulnerabilities:
+
+
+
+
+
+Vulnerability Type
+
+
+Exploitable
+			Remotely
+
+
+Impact
+
+
+
+
+
+
+Crash from Link Layer Length Overflow
+CVE-2019-16336
+
+
+No
+
+
+An attacker can crash the device by triggering hard faults. If crash occurs, device may restart. The capability to restart depends on correct hard-fault handling mechanisms being implemented in the product using devices with the vulnerable BLE System on Chip (SoC).
+
+
+
+
+Crash from Link Layer Length Overflow
+CVE-2019-17519
+
+
+No
+
+
+And attacker can crash the device by triggering hard faults. This could initially result in a denial-of-service condition.
+
+
+
+
+Crash from Truncated L2CAP
+CVE-2019-17517
+
+
+No
+
+
+An attacker in radio range can use this attack to cause a denial-of-service condition and crash the device.
+
+
+
+
+Crash from Silent Length Overflow 
+CVE-2019-17518
+
+
+No
+
+
+An attacker in radio range can use this attack to cause a denial-of-service condition and crash the device.
+
+
+
+
+Unexpected Public Key Crash
+CVE-2019-17520
+
+
+No
+
+
+An attacker in radio range can exploit this vulnerability to cause a denial-of-service condition. The product may not properly handle hard faults and enter a deadlock state. This may require a manual restart.
+
+
+
+
+Crash from Invalid L2CAP Fragment
+CVE-2019-19195
+
+
+No
+
+
+An attacker can crash the device by triggering hard faults. If crash occurs, device may restart. The capability to restart depends on correct hard-fault handling mechanisms being implemented in the product using the vulnerable BLE SoC.
+
+
+
+
+Crash from Key Size Overflow
+CVE-2019-19196
+
+
+No
+
+
+This vulnerability allows an attacker in radio range to perform buffer overflow and crash products with pairing support enabled, which is common practice in several BLE products. In the worst case, it could be possible to overwrite buffers that store encryption nonce, which could allow the attacker to bypass encryption and leak user information.
+
+
+
+
+Link Layer LLID deadlock
+CVE-2019-17061
+
+
+No
+
+
+The availability of the BLE connection can be affected without causing a hard fault or memory corruption and can result in deadlock. Crashes originating from hard faults, if not properly handled, can become a deadlock if the device is not automatically restarted. In most cases, when a deadlock occurs, the user is required to manually power off and power on the device to re-establish proper BLE communication.
+
+
+
+
+Link Layer LLID deadlock
+CVE-2019-17060
+
+
+No
+
+
+The availability of BLE products could be critically impaired, likely requiring the user to manually perform a power cycle on the product to re-establish BLE communication.
+
+
+
+
+Sequential ATT Deadlock
+CVE-2019-19192
+
+
+No
+
+
+This vulnerability can leave the product in a deadlock state and would require a restart either manually or by mechanisms built into the firmware.
+
+
+
+
+Deadlock from Invalid Connection Request
+CVE-2019-19193
+
+
+No
+
+
+An attacker in radio range can cause a denial-of-service condition in the affected products using the vulnerable SoCs. Crashes originating from hard faults, if not properly handled, can become a deadlock if the device is not automatically restarted. In most cases, when a deadlock occurs, the user is required to manually power off and power on the device to re-establish proper BLE communication.
+
+
+
+
+Security bypass from Zero LTK Installation
+CVE-2019-19194 
+
+
+No
+
+
+Allows attackers in radio range to bypass the latest secure pairing mode of BLE, i.e., the Secure Connections pairing mode. An attacker in radio range may have arbitrary read or write access to the device’s functions. 
+
+
+
+
+The vulnerability family titled SweynTooth was discovered by Matheus E. Garbelini, Sudipta Chattopadhyay, and Chundong Wang of the Singapore University of Technology and Design. It is a collection of 12 vulnerabilities with the potential for more to be identified and released. These vulnerabilities are reported to affect at least seven different BLE SoC manufacturers utilizing various affected software development kits (SDK). According to information released by the researchers, the BLE SoC manufacturers include Texas Instruments, NXP Semiconductors, Cypress, Dialog Semiconductors, Microchip, STMicroelectronics, and Telink Semiconductor. The vulnerabilities expose flaws in specific BLE SoC implementations that allow an attacker in radio range to trigger deadlocks, crashes, buffer overflows, or the complete bypass of security. It is reported that smart-home devices, wearables, environmental tracking or sensing devices, and several medical and logistics products could be affected. The affected medical devices may include pacemakers, blood glucose monitors, and others using affected BLE SDKs.
+The researchers’ PoC and report have been published at the following location: https://asset-group.github.io/disclosures/sweyntooth/
+Please report any issues affecting control systems in critical infrastructure environments to CISA.
+
+
+Mitigations
+
+Mitigation
+CISA is currently coordinating with multiple stakeholders to identify any potential mitigations.
+The BLE SoC manufacturers reported to use affected software development kits (SDK) have issued the following user notifications or provided the following patches for device manufacturers. Additional notifications and patches are pending and will be updated as they become available.
+CISA will update this list of vendors that have released user notifications and patches as additional information becomes available.
+Cypress:
+https://www.cypress.com/documentation/component-datasheets/psoc-creator-component-datasheet-bluetooth-low-energy-ble
+https://www.cypress.com/documentation/component-datasheets/bluetooth-low-energy-blepdl
+Dialog Semiconductors (login required):
+https://support.dialog-semiconductor.com/system/files/restricted/SDK_10.0.8.105.zip
+https://support.dialog-semiconductor.com/system/files/restricted/DA1468x_DA15xxx_SDK_1.0.14.1081_hotfix_001.zip
+Microchip:
+http://www.microchip.com/sweyntooth
+NXP Semiconductors (login required):
+https://community.nxp.com/community/wireless-connectivity/security-updates/
+https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools/mcuxpresso-software-development-kit-sdk:MCUXpresso-SDK?tab=Design_Tools_Tab
+Texas Instruments:
+https://e2e.ti.com/support/wireless-connectivity/bluetooth/f/538/t/881879 
+https://e2e.ti.com/support/wireless-connectivity/bluetooth/f/538/t/881881
+CISA recommends, as quality assurance, that users test the update in a test development environment that reflects their production environment prior to installation. In addition, users should:
+
+Where feasible, evaluate the possibility and safety of disabling the use of the affected wireless communications protocol.
+Apply available recommendations from individual SoC manufacturers.
+Update, or create a plan to update, to the latest available patch level to mitigate vulnerabilities for affected devices.
+Vendors of affected devices and products should provide users with information about affected products and recommendations on how to mitigate the vulnerabilities.
+For additional information on how these vulnerabilities may affect medical devices please see the safety communication from the FDA: SweynTooth Cybersecurity Vulnerabilities May Affect Certain Medical Devices
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.

@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Omron
+Equipment: PLC CJ and CS Series
+Vulnerabilities: Authentication Bypass by Spoofing, Authentication Bypass by Capture-replay, Unrestricted Externally Accessible Lock
+
+2. UPDATE
+This updated advisory is a follow-up to the original advisory titled ICSA-19-346-02 Omron PLC CJ and CS Series (Update A) published November 29, 2022, on the ICS webpage at cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to pose as an authorized user to obtain the status information of the PLC.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Omron Programmable Logic Controllers are affected:
+
+Omron PLC CJ series, all versions
+Omron PLC CS series, all versions
+Omron PLC NX1P2 series, all versions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    AUTHENTICATION BYPASS BY SPOOFING CWE-290
+An attacker could spoof arbitrary messages or execute commands.
+CVE-2019-18259 has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L).
+
+4.2.2    AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+An attacker could monitor traffic between the PLC and the controller, and replay requests that could result in the opening and closing of industrial valves.
+CVE-2019-13533 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:H).
+--------- Begin Update B Part 1 of 1 ---------
+4.2.3 UNRESTRICTED EXTERNALLY ACCESSIBLE LOCK CWE-412 
+Omron’s CS and CJ series PLCs have an unrestricted externally accessible lock vulnerability. 
+CVE-2019-18269 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H). 
+--------- End Update B Part 1 of 1 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Jipeng You (XDU) and n0b0dy reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Omron recommends the following mitigation measures:
+
+Filter FINS port: Protect access to Omron’s PLC with a firewall and blocking unnecessary remote access to FINS port (default: 9600).
+Filter IP addresses: Protect access to Omron’s PLC with a firewall and filtering devices connected to the PLC by IP address.
+
+For more information provided by Omron on these vulnerabilities refer to Vulnerabilities in Omron CS and CJ series CPU PLCs.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

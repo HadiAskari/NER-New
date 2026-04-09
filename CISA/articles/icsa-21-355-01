@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: mySCADA 
+Equipment: myPRO
+Vulnerabilities: Authentication Bypass Using an Alternate Path or Channel, Use of Password Hash with Insufficient Computational Effort, Hidden Functionality, OS Command Injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to completely compromise the products.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of myPRO, an HMI/SCADA system, are affected:
+
+myPRO: Versions 8.20.0 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+An unauthenticated remote attacker can access the application without any form of authentication or authorization.
+CVE-2021-43985 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.2    USE OF PASSWORD HASH WITH INSUFFICIENT COMPUTATIONAL EFFORT CWE-916
+The affected product stores passwords using MD5, which may allow an attacker to crack the previously retrieved password hashes.
+CVE-2021-43989 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3    HIDDEN FUNCTIONALITY CWE-912
+An additional, nondocumented administrative account exists in the affected product that is not exposed through the web interface, which cannot be deleted or changed through the regular web interface.
+CVE-2021-43987 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected product has a vulnerable debug interface which includes a ping utility, which may allow an attacker to inject arbitrary operating system commands.
+CVE-2021-44453 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.5    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected product has a feature where the API password can be specified, which may allow an attacker to inject arbitrary operating system commands through a specific parameter.
+CVE-2021-22657 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.6    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected product has a feature where the password can be specified, which may allow an attacker to inject arbitrary operating system commands through a specific parameter.
+CVE-2021-23198 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.7    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected product has a feature to send emails, which may allow an attacker to inject arbitrary operating system commands through a specific parameter.
+CVE-2021-43981 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.8    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected product has a feature where the firmware can be updated, which may allow an attacker to inject arbitrary operating system commands through a specific parameter.
+CVE-2021-43984 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Food and Agriculture, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Czech Republic
+
+3.4 RESEARCHER
+Michael Heinzl reported these vulnerabilities to CISA.
+4. MITIGATIONS
+mySCADA recommends users upgrade to Version 8.22.0 or higher. For more information, contact mySCADA technical support. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

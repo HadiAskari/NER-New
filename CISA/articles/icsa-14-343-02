@@ -1,0 +1,52 @@
+
+OVERVIEW
+An anonymous researcher working with HP’s Zero Day Initiative has identified an integer overflow vulnerability in Trihedral Engineering Ltd’s VTScada application. Trihedral Engineering Limited has produced a patch that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following VTS and VTScada versions are affected:
+
+VTS Version 6.5 through 9.1.19
+VTS Version 10 through 10.2.21
+VTScada Version 11.0 through 11.1.07
+
+IMPACT
+An attacker can exploit this vulnerability to cause an integer overflow, resulting in an attempt to allocate an excessively large memory block. The failure of which would terminate the VTScada server.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Trihedral Engineering Ltd. is a Canada-based company that maintains offices in the United States and the United Kingdom.
+The affected products, VTScada (also known as VTS prior to 2013), are Windows-based SCADA systems with a web interface option. According to Trihedral Engineering Limited, VTScada is deployed across several sectors including Chemical, Critical Manufacturing, Communications, Energy, Food and Agriculture, Transportation Systems, Water and Wastewater Systems, and other sectors. Trihedral Engineering Ltd. estimates that these products are used primarily in North America and Europe.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INTEGER OVERFLOWCWE-190: Integer Overflow, http://cwe.mitre.org/data/definitions/190.html, web site last accessed December 09, 2014.
+
+An attacker can cause VTScada to crash on an Internet server if a specifically crafted malformed network request is made to VTScada, even if that attacker does not have security credentials on the server. The malformed network request causes an integer overflow resulting in the attempted allocation of an excessively large buffer. The failure to allocate this buffer will terminate the VTScada server. The crash would not occur accidentally as a result of normal use. This vulnerability has existed in versions of VTScada and VTS since Version 6.5.
+CVE-2014-9192NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9192, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:C, web site last accessed December 09, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Trihedral Engineering Limited has created three updated versions of software. These software updates are available from Trihedral Engineering Ltd.’s FTP site:
+ftp://ftp.trihedral.com/VTS/
+Version Information:
+
+11.1.09 – Latest build including newest features and fixes. Any installation key with a maintenance expiration date after January 1, 2014, will work this installation.
+10.2.22 –Recommended for all users of VTS 10. Any installation key with a maintenance expiration date after December 1, 2010, will work with this installation.
+09.1.20 – Recommended for all users prior to 10.0. Any installation key with a maintenance expiration date after December 1, 2009, will work with this installation.
+
+Help file notes for upgrading VTScada/VTS can be found at:
+http://www.trihedral.com/help/#Op_Welcome/Wel_UpgradeNotes.htm
+If you have any questions or any difficulties with installing one of these updates, please call Trihedral Tech Support:1-855-887-22321-902-835-1575+44 (0) 1224 258910 for the United Kingdom
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

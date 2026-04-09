@@ -1,0 +1,54 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.4
+
+ATTENTION: Exploitable remotely
+Vendor: Tridium
+Equipment: Niagara
+Vulnerabilities: Path Traversal, Improper Authentication
+
+2. REPOSTED INFORMATION
+This advisory was originally posted to the HSIN ICS-CERT library on July 10, 2018, and is being released to the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to read, write, and delete sensitive files to gain administrator privileges on the Niagara system.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Tridum Niagara are affected while running on the Microsoft Windows operating system:
+
+Niagara AX Framework Version 3.8 and prior, and
+Niagara 4 Framework Versions 4.4 and prior.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY (‘PATH TRAVERSAL’) CWE-22
+A path traversal vulnerability in Tridium Niagara AX and Niagara 4 systems installed on Microsoft Windows Systems can be exploited by leveraging valid platform (administrator) credentials.
+CVE-2017-16744 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    IMPROPER AUTHENTICATION CWE-287
+An attacker can log into the local Niagara platform using a disabled account name and a blank password, granting the attacker administrator access to the Niagara system.
+CVE-2017-16748 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Jonathon Gaines, Christopher Mazzei, and Leet Cyber Security reported these vulnerabilities to Tridium.
+5. MITIGATIONS
+Tridium has recommended the following mitigation:
+
+Niagara AX v3.8: Apply Update 4 release (3.8.401), and
+Niagara 4 Framework v4.4: Apply Update 1 release (4.4.92.2.1).
+
+For more information about these updates, please refer to the provided link:
+https://www.tridium.com/~/media/tridium/library/documents/niagara%20ax%2038%20update%204niagara%2044%20update%201.ashx?la=en
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. High skill level is needed to exploit.

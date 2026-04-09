@@ -1,0 +1,47 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on October 22, 2015, and is being released to the ICS-CERT web site.
+David Formby and Raheem Beyah of Georgia Tech have identified a vulnerability caused by an Institute of Electrical and Electronics Engineers (IEEE) conformance issue involving improper frame padding in an earlier version of Eaton’s Cooper Power Systems Form 6 controls and Idea/IdeaPLUS relays equipped with Ethernet. Eaton’s Cooper Power Systems has already released a revision that eliminates this vulnerability (see ICSA-15-006-01 Eaton’s Cooper Power Series Form 6 Control and Idea/IdeaPlus Relays with Ethernet VulnerabilityICSA-15-006-01 - Eaton’s Cooper Power Series Form 6 Control and Idea/IdeaPlus Relays with Ethernet Vulnerability, https://ics-cert.us-cert.gov/advisories/ICSA-15-006-01, web site last accessed November 24, 2015.). This advisory serves as a notification of a new vulnerability in the previous software version. The researchers have tested the revision to validate that it resolves the reported vulnerability.
+AFFECTED PRODUCTS
+Eaton’s Cooper Power Systems reports that the vulnerability affects the following versions:
+
+Previous versions of Eaton’s Cooper Power Series Form 6 control and Idea/IdeaPLUS relays with Ethernet using Pro View 4.0 through Pro View 5.0 firmware versions.
+
+IMPACT
+IEEE 802 specifies that packets have a minimum size of 56 bytes. The Ethernet driver is expected to fill the data field with octets of zero for padding when packets are less than 56 bytes. Resident memory and other data are used for padding in some implementations that could cause information leakage. This attack is passive; the attacker can only see data that the affected devices sent out as part of a packet.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Eaton’s Cooper Power Systems division is a US-based company that maintains offices worldwide.
+The affected products, Form 6 control and Idea/IdeaPLUS relay protection platforms, are deployed by power grid operators to apply protection and communications support for overcurrent devices such as reclosers and circuit breakers. According to Eaton’s Cooper Power Systems division, these products are used primarily in the Energy Sector. Eaton’s Cooper Power Systems division estimates these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER ETHERNET FRAME PADDINGCWE-226: Sensitive Information Uncleared Before Release, http://cwe.mitre.org/data/definitions/226.html, web site last accessed November 24, 2015.       
+The data padding within the data field of the Ethernet pack should be all zeros. The previous implementation of firmware allowed other data from a known area of memory to be used in this field and could exfiltrate or leak data.
+
+CVE-2015-6471NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6471, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. as been assigned to this vulnerability. A CVSS v3 base score of 5.3 and a temporal score of 5.1 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:H/RL:O/RC:C, web site last accessed November 24, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The attacker would need to be the receiver of the packet (that contains leaked data) or along the path (e.g., on a local network that doesn’t use encryption).
+EXISTENCE OF EXPLOIT
+ICS-CERT is unaware of any exploits that target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability. This is a passive attack; the attacker can only access the data that are contained within the packet.
+MITIGATION
+Eaton’s Cooper Power Systems division has already developed and deployed ProView 5.1 firmware that mitigates this vulnerability, and the Form 6 control version was released on June 12, 2015. Idea/IdeaPLUS relay ProView software versions began to be posted on June 30, 2015. Information on how to obtain and install new firmware versions is available at:
+http://www.cooperindustries.com/content/public/en/power_systems/resources/securitysupport.html
+Eaton’s Cooper Power Systems recommends that asset owners using these products take the proper steps to ensure systemwide defense-in-depth strategies, as outlined in Eaton’s whitepaper WP152002EN. This whitepaper can be downloaded at:
+http://www.eaton.com/ecm/idcplg?IdcService=GET_FILE&allowInterrupt=1&RevisionSelectionMethod=LatestReleased&Rendition=Primary&dDocName=WP152002EN
+For additional technical information, please contact Eaton’s Cooper Power Systems at:
+www.eaton.com/cybersecurity
+A previous ICS-CERT advisory, ICSA-15-006-01 Eaton’s Cooper Power Series Form 6 Control and Idea/IdeaPlus Relays with Ethernet Vulnerability,a recommends this same firmware version to mitigate a separate vulnerability.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices . Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

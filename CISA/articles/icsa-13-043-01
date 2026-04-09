@@ -1,0 +1,48 @@
+
+Overview
+This advisory provides mitigation details for a vulnerability that impacts the Schneider Electric Accutech Manager.
+Independent researcher Aaron Portnoy of Exodus Intelligence has identified a heap-based buffer overflow vulnerability in Schneider Electric’s Accutech Manager application. Schneider Electric has produced an update that mitigates this vulnerability. This researcher has tested the update and verified that it fixes the vulnerability. Exploitation of this vulnerability could allow an attacker to execute code with administrator privileges. This vulnerability could affect the energy, water and wastewater, and critical manufacturing sectors.
+This vulnerability could be exploited remotely.
+Exploit code for this vulnerability has recently been published by another researcher who was not part of any coordinated effort with the vendor, ICS-CERT, or Exodus Intelligence.
+Affected Products
+The following Schneider Electric versions are affected:
+
+Accutech Manager 2.00.1 and older.
+
+Impact
+This buffer overflow will cause the Accutech Manager application to crash and could be exploited to allow an attacker to execute arbitrary code with administrator privilege. Because this vulnerability can be exploited remotely, there is a potential for an attacker to gain control of the host computer.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Schneider Electric is a Europe-based company that maintains offices in 190 countries worldwide. Their products address various markets including renewable energy, process control, monitoring and control, motor controls, lighting controls, electrical distribution, and security systems.
+The affected product, Accutech Manager, is a management component of a network-based sensor monitoring system. Accutech Manager is used in applications where remote sensor data are gathered, monitored, displayed, and archived over time. It can be used in a broad range of low-level applications ranging from long-term multi-sensor monitoring on a large network to single PC implementations for technicians.
+According to Schneider Electric, Accutech Manager is deployed across several sectors including energy, water and wastewater, and critical manufacturing.
+Vulnerability Characterization
+Vulnerability Overview
+Heap-Based Buffer OverflowCWE, http://cwe.mitre.org/data/definitions/122.html, CWE-122: Heap-based Buffer Overflow, Web site last accessed February 12, 2013.
+The RFManagerService.exe process binds to Ports 2536/TCP and 2537/TCP by default. By sending an HTTP request outside the bounds of the buffer to Port 2537/TCP, an attacker can cause a heap-based buffer resulting in loss of confidentiality, integrity, and availability.
+CVE-2013-0658 has been assigned to this vulnerability. ICS-CERT has assigned a base CVSS score of 10.0; the CVSS vector string is: (AV:N/AC:L/Au:N/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+This vulnerability could be exploited remotely.
+Existence of Exploit
+Exploit code for this vulnerability has been recently published.
+Difficulty
+An attacker with a low skill would be able to exploit this vulnerability.
+Mitigation
+Schneider Electric has released an update that mitigates this vulnerability. The researcher has tested the update and verified that it fixes the vulnerability.
+This update is available at the Schneider Electric Website.
+Schneider Electric also recommends that users implement the following steps until the update can be applied.
+
+Close the Accutech Manager software tool’s server component when not in use.
+Obtain guidance from Schneider Electric’s cybersecurity recommendations Web page.
+Check with Schneider Electric, and apply the maintenance update as soon as it becomes available.
+
+One specific strategy that can mitigate the risk associated with the vulnerability is to ensure that the vulnerable port (2537/TCP) is not accessible from the Internet.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network. When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

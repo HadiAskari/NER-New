@@ -1,0 +1,132 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the updated advisory titled ICSA-13-291-01A DNP3 Implementation Vulnerability that was published November 21, 2013, on the NCCIC/ICS-CERT web site.
+Adam Crain of Automatak and Chris Sistrunk, Sr. Consultant for Mandiant, reported an improper input validation vulnerability to ICS-CERT that was evident in numerous slave and/or master station software products. The researchers emphasize that the vulnerability is not with the DNP3 stack but with the implementation.
+The research showed that some implementations were third-party components in other software packages. ICS-CERT wants to bring greater awareness to developers and consumers of the third‑party components for mitigation purposes.
+This vulnerability can be exploited remotely (over an IP-based implementation) as well as from the local system (through a serial-based implementation).
+Below is a nonexhaustive list of advisories that ICS-CERT has produced in conjunction with the vendors who are producing patches or updates to mitigate the reported vulnerability.
+--------- Begin Update B Part 1 of 1 --------
+
+DNP3 IMPROPER INPUT VALIDATION VULNERABILITY
+
+
+Advisory Number
+Vendor
+
+
+ICSA-13-282-01A 
+Alstrom
+
+
+ICSA-13-297-01 
+Catapult Software
+
+
+ICSA-13-346-01 
+Cooper Power Systems
+
+
+ICSA-13-346-02 
+Cooper Power Systems/Cybectec
+
+
+ICSA-13-337-01 
+Elecsys
+
+
+ICSA-13-297-02 
+GE
+
+
+ICSA-13-161-01 
+IOServer
+
+
+ICSA-13-213-03 
+IOServer
+
+
+ICSA-13-226-01 
+Kepware Technologies
+
+
+ICSA-13-213-04A 
+MatrikonOPC
+
+
+ICSA-13-352-01 
+NovaTech
+
+
+ICSA-14-098-01 
+OSISoft
+
+
+ICSA-14-006-01 
+Schneider Electric
+
+
+ICSA-14-014-01 
+Schneider Electric
+
+
+ICSA-13-219-01 
+Schweitzer Engineering Laboratories
+
+
+ICSA-13-234-02 
+Software Toolbox
+
+
+ICSA-13-252-01 
+SUBNET Solutions
+
+
+ICSA-13-240-01 
+Triangle MicroWorks
+
+
+
+--------- End Update B Part 1 of 1 ----------
+IMPACT
+The outstation/slave can be sent into an infinite loop or Denial of Service condition by sending a specially crafted TCP packet from the master station on an IP-based network. If the device is connected via a serial connection, the same attack can be accomplished with physical access to the master station. The device must be shut down and restarted to reset the loop state.
+The master station can be sent into an infinite loop by sending a specially crafted TCP packet from the outstation/slave on an IP-based network. If the device is connected via a serial connection, the same attack can be accomplished with physical access to the outstation. The device must be shut down and restarted to reset the loop state.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Adam Crain of Automatak, working with Chris Sistrunk, Sr. Consultant for Mandiant, disclosed this vulnerability as part of a larger research project. Their outreach stems from their work with the DNP3 Standards Working group.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+As this vulnerability affects Internet protocol-connected and serial-connected devices, two CVSS scores have been calculated.
+
+IMPROPER INPUT VALIDATION-IP-BASEDCWE-20: Improper Input Validation,  http://cwe.mitre.org/data/definitions/20.html, web site last accessed October 18, 2013.
+
+An attacker could cause the software to go into an infinite loop with a specifically crafted TCP packet, causing the process to crash. The system must be restarted manually to clear the condition.
+The following scoring is for IP-connected devices.
+A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, web site last accessed October 18, 2013.
+
+IMPROPER INPUT VALIDATION-Serial-BASEDCWE-20: Improper Input Validation,  http://cwe.mitre.org/data/definitions/20.html, web site last accessed October 18, 2013.
+
+An attacker could cause the software to go into an infinite loop, causing the process to crash. The system must be restarted manually to clear the condition.
+The following scoring is for serial-connected devices.
+A CVSS v2 base score of 4.7 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:N/I:N/A:C, web site last accessed October 18, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The IP-based vulnerability could be exploited remotely.
+The serial-based vulnerability is not exploitable remotely. Local access to the serial-based outstation is required.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill could craft an IP packet that would be able to exploit this vulnerability for an IP-based device.
+An attacker with a high skill could exploit the serial-based vulnerability because physical access to the device or some amount of social engineering is required.
+MITIGATION
+Because this vulnerability is identified with fuzzing tools, the researchers suggest developers use extensive negative testing during quality control of products. The researchers also suggest blocking DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DNP3-specific rule sets.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+

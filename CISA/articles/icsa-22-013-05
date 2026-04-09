@@ -1,0 +1,84 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: COMOS
+Vulnerabilities: Basic XSS, Relative Path Traversal, SQL Injection, Cross-site Request Forgery
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-22-013-05 Siemens COMOS Web (Update A) that was published February 10, 2022, to the ICS webpage on www.cisa.gov/uscert. This advisory contains mitigations for Basic XSS, Relative Path Traversal, SQL Injection, and Cross-site Request Forgery vulnerabilities in the Siemens COMOS Web unified data platform.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to conduct code injections, store data in undesired locations, execute arbitrary SQL statements, and run cross-site request forgery attacks.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of COMOS Web, a unified data platform, are affected:
+
+COMOS v10.2: All versions (only if web components are used)
+
+--------- Begin Update B Part 1 of 2 ---------
+
+COMOS v10.3: All versions prior to v10.3.3.3 (only if web components are used)
+COMOS v10.3: All versions prior to v10.3.3.3 (only if web components are used) (only affected by CVE-2021-37196)
+
+--------- End Update B Part 1 of 2 ---------
+
+COMOS v10.4: All versions prior to v10.4.1 (only if web components are used)
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The COMOS Web component of COMOS allows to upload and store arbitrary files at the webserver. This could allow an attacker to store malicious files.
+CVE-2021-37194 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N).
+4.2.1    IMPROPER NEUTRALIZATION OF SCRIPT-RELATED HTML TAGS IN A WEB PAGE (BASIC XSS) CWE-80
+The COMOS Web component of COMOS accepts arbitrary code as attachments to tasks, which could allow an attacker to inject malicious code that is then executed when loading the attachment.
+CVE-2021-37195 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:N).
+4.2.2    RELATIVE PATH TRAVERSAL CWE-23
+The COMOS Web component of COMOS unpacks specially crafted archive files to relative paths, which could allow an attacker to store files in any folder accessible by the COMOS Web webservice.
+CVE-2021-37196 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+4.2.3    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+The COMOS Web component of COMOS is vulnerable to SQL injections, which could allow an attacker to execute arbitrary SQL statements.
+CVE-2021-37197 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+The COMOS Web component of COMOS uses a flawed implementation of CSRF prevention, which an attacker could exploit to perform cross-site request forgery attacks.
+CVE-2021-37198 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Sandro Poppi reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+Siemens has released an update for COMOS and recommends users update to the latest version:
+--------- Begin Update B Part 2 of 2 ---------
+
+COMOS v10.3: Update to v10.3.3.3 or later
+COMOS v10.3 all versions prior to v10.3.3.3 (only if web components are used) (only affected by CVE-2021-37196): Currently no fix is planned
+
+--------- End Update B Part 2 of 2 ---------
+
+COMOS v10.4 (only if web components are used): Update to v10.4.1 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+For COMOS v10.4.1 / v10.3.3.2.14 and CVE-2021-37194: Use the new whitelisting feature, to specify the filetypes that are allowed to be uploaded.
+CVE-2021-37196 can be mitigated in all versions by making the root directory of the web server read only.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for industrial security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-995338
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Ensure the least-privilege user principle is followed.
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

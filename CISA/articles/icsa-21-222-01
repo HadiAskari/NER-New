@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: JT2Go & Teamcenter Visualization
+Vulnerabilities: Use After Free, Out-of-bounds Write, Out-of-bounds Read, NULL Pointer Dereference
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to crash an application or execute arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+JT2Go: All versions prior to v13.2.0.1
+Teamcenter Visualization: All versions prior to v13.2.0.1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE AFTER FREE CWE-416
+A use-after-free issue exists in the DGN file-reading procedure in the Open Design Alliance Drawings SDK, all versions prior to 2022.4, resulting from the lack of proper validation of user-supplied data. This can result in a memory corruption or arbitrary code execution, allowing attackers to cause a denial-of-service condition or execute code in the context of the current process.
+CVE-2021-32944 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    OUT-OF-BOUNDS WRITE CWE-787
+An out-of-bounds write issue exists in the DXF file-recovering procedure in the Open Design Alliance Drawings SDK, all versions prior to 2022.4, resulting from the lack of proper validation of user-supplied data. This can result in a write past the end of an allocated buffer and allow attackers to cause a denial-of-service condition or execute code in the context of the current process.
+CVE-2021-32936 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    OUT-OF-BOUNDS WRITE CWE-787
+An out-of-bounds write issue exists in the DWG file-recovering procedure in the Open Design Alliance Drawings SDK, all versions prior to 2022.4, resulting from the lack of proper validation of user-supplied data. This can result in a write past the end of an allocated buffer and allow attackers to cause a denial-of-service condition or execute code in the context of the current process.
+CVE-2021-32948 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    OUT-OF-BOUNDS READ CWE-125
+Open Design Alliance Drawings SDK, all versions prior to 2022.4, are vulnerable to an out-of-bounds read due to parsing of DWG files resulting from the lack of proper validation of user-supplied data. This can result in a read past the end of an allocated buffer and allows attackers to cause a denial-of-service condition or read sensitive information from memory.
+CVE-2021-32938 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H).
+3.2.5    OUT-OF-BOUNDS READ CWE-125
+An out-of-bounds read issue exists in the DWG file-recovering procedure in the Open Design Alliance Drawings SDK, all versions prior to 2022.4, resulting from the lack of proper validation of user-supplied data. This can result in a read past the end of an allocated buffer and allow attackers to cause a denial-of-service condition or read sensitive information from memory.
+CVE-2021-32940 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H).
+3.2.6    OUT-OF-BOUNDS READ CWE-125
+An out-of-bounds read issue exists in the DXF files in the Open Design Alliance Drawings SDK, all versions prior to 2022.4, resulting from the lack of proper validation of user-supplied data. This can result in a read past the end of an allocated buffer and allow attackers to cause a denial-of-service condition or read sensitive information from memory.
+CVE-2021-32950 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H).
+3.2.7    NULL POINTER DEREFERENCE CWE-476
+When parsing specially crafted CGM files, a NULL pointer dereference condition could cause the application to crash. The application must be restarted to restore the service. An attacker could leverage this vulnerability to cause a denial-of-service condition in the application.
+CVE-2021-33717 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Mat Powell and Brian Gorenc of Trend Micro’s Zero Day Initiative, Kai Wang from Codesafe Team of Legendsec at Qi’anxin Group, and Open Design Alliance reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released updates for the following products:
+
+JT2Go: Update to v13.2.0.1 or later
+Teamcenter Visualization: Update to v13.2.0.1 or later (login required)
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Avoid opening untrusted files from unknown sources in JT2Go and Teamcenter Visualization
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for industrial security and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information about this issue, please see Siemens Security Advisory SSA-365397
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

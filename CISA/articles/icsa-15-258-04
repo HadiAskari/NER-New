@@ -1,0 +1,41 @@
+
+OVERVIEW
+Ivan Sanchez from Nullcode Team has identified a stack-based buffer overflow vulnerability in Advantech’s WebAccess application. Advantech has produced a new version to mitigate this vulnerability. Ivan Sanchez has tested the new version to validate that it resolves the vulnerability.
+AFFECTED PRODUCTS
+The following WebAccess versions are affected:
+•      WebAccess Version 8.0 and prior versions.
+IMPACT
+An attacker may be able to exploit this vulnerability to crash the WebAccess application or to execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Advantech is based in Taiwan and has distribution offices in 21 countries worldwide.
+The affected product, WebAccess, formerly known as BroadWin WebAccess, is a web-based SCADA and human-machine interface product. According to Advantech, WebAccess is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, and Government Facilities. Advantech estimates that these products are used globally.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed September 15, 2015.
+
+A specially crafted file could be used to overflow the stack buffer by providing overly long strings to functions in the affected DLL. An attacker may then be able to crash the application or run arbitrary code by getting a user to execute the specially crafted file.
+CVE-2014-9202NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9202, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.9 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:C/I:C/A:C, web site last accessed September 15, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince the user to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Advantech has released a new version of WebAccess, Version 8.0_20150816, which addresses the reported vulnerability. WebAccess, Version 8.0_20150816, is available at the following URL:
+http://www.advantech.com/industrial-automation/webaccess
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed September 15, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed September 15, 2015. for more information on social engineering attacks.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

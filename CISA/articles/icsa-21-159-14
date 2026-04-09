@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: JT2Go and Teamcenter Visualization
+Vulnerability: Out-of-bounds Write
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to execute code in the context of the current process.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports the vulnerability affects the following products:
+
+JT2Go: All versions prior to 13.1.0.3
+Teamcenter Visualization: All versions prior to 13.1.0.3
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS WRITE CWE-787
+The TIFF_loader.dll library in affected applications lacks proper validation of user-supplied data when parsing TIFF files, which could result in an out-of-bounds write past the end of an allocated structure and may allow an attacker to execute code in the context of the current process.
+CVE-2021-27390 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Trend Micro’s Zero Day Initiative reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens recommends updating to the following versions:
+
+JT2Go: Update to v13.1.0.3 or later
+Teamcenter Visualization: Update to v13.1.0.3 or later (Login Required)
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Avoid opening untrusted files from unknown sources in JT2Go and Teamcenter Visualization.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for Industrial Security and following the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+Please see Siemens Security Advisory SSA-645530 for more information.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

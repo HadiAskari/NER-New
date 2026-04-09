@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.6
+
+ATTENTION: Exploitable remotely/Low skill level to exploit
+Vendor: Emerson
+Equipment: DeltaV DCS Workstations
+Vulnerabilities: Uncontrolled Search Path Element, Relative Path Traversal, Improper Privilege Management, Stack-Based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow arbitrary code execution, malware injection, or malware to spread to other workstations.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of DeltaV, a Distributed Control System (DCS), are affected:
+
+DeltaV: v11.3.1, v12.3.1, v13.3.0, v13.3.1, R5
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+A specially crafted DLL file may be placed in the search path and loaded as an internal and valid DLL, which may allow arbitrary code execution.
+CVE-2018-14797 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H).
+3.2.2    RELATIVE PATH TRAVERSAL CWE-23
+Improper path validation may allow an attacker to replace executable files.
+CVE-2018-14795 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+Non-administrative users are able to change executable and library files on the affected products.
+CVE-2018-14791 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H).
+3.2.4    STACK-BASED BUFFER OVERFLOW CWE-121
+An open communication port could be exploited to allow arbitrary code execution.
+CVE-2018-14793 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, EnergyCOUNTRIES/AREAS DEPLOYED: WorldwideCOMPANY HEADQUARTERS LOCATION: United States
+3.4 RESEARCHER
+Younes Dragoni and Alessandro Di Pinto of Nozomi Networks, Pavel Cheremushkin and Roland Sako of Kaspersky Lab, Ori Perez of CyberX, and Emerson discovered these vulnerabilities.
+4. MITIGATIONS
+Emerson recommends users patch the affected products listed below:
+
+DeltaV DCS Versions 11.3.1, 12.3.1, 13.3.0, 13.3.1, and R5: Apply patch from vendor.
+
+Software patches are available to users with access to the Guardian Support Portal at https://guardian.emersonprocess.com/. Please refer to the Knowledge Base Article AK-1800- 0042 (DSN18003) for more information.
+Vulnerabilities CVE-2018-14797, CVE-2018-14795, and CVE-2018-14791 cannot be exploited if application whitelisting is implemented since it would prevent files from being overwritten.
+To limit exposure to these and other vulnerabilities, Emerson recommends deploying and configuring DeltaV systems and related components as described in the DeltaV Security Manual, which is available in Emerson’s Guardian Support Portal.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

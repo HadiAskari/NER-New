@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.9
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: SCALANCE XM-400 and XR-500
+Vulnerability: Improper Validation of Integrity Check Value
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated remote attacker to cause interruptions in the network.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SCALANCE X industrial switches are affected:
+
+XM408-4C: All versions prior to v6.5
+XM408-4C (L3 int.): All versions prior to v6.5
+XM408-8C: All versions prior to v6.5
+XM408-8C (L3 int.): All versions prior to v6.5
+XM416-4C: All versions prior to v6.5
+XM416-4C (L3 int.): All versions prior to v6.5
+XR524-8C, 1x230V: All versions prior to v6.5
+XR524-8C, 1x230V (L3 int.): All versions prior to v6.5
+XR524-8C, 2x230V: All versions prior to v6.5
+XR524-8C, 2x230V (L3 int.): All versions prior to v6.5
+XR524-8C, 24V: All versions prior to v6.5
+XR524-8C, 24V (L3 int.): All versions prior to v6.5
+XR526-8C, 1x230V: All versions prior to v6.5
+XR526-8C, 1x230V (L3 int.): All versions prior to v6.5
+XR526-8C, 2x230V: All versions prior to v6.5
+XR526-8C, 2x230V (L3 int.): All versions prior to v6.5
+XR526-8C, 24V: All versions prior to v6.5
+XR526-8C, 24V (L3 int.): All versions prior to v6.5
+XR528-6M: All versions prior to v6.5
+XR528-6M (2HR2): All versions prior to v6.5
+XR528-6M (2HR2, L3 int.): All versions prior to v6.5
+XR528-6M (L3 int.): All versions prior to v6.5
+XR552-12M: All versions prior to v6.5
+XR552-12M (2HR2): All versions prior to v6.5
+XR552-12M (2HR2): All versions prior to v6.5
+XR552-12M (2HR2, L3 int.): All versions prior to v6.5
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER VALIDATION OF INTEGRITY CHECK VALUE CWE-354
+The OSPF protocol implementation in affected devices fails to verify the checksum and length fields in the OSPF LS update messages. Successful exploitation requires OSPF to be enabled on an affected device and could allow an unauthenticated remote attacker to cause network interruptions.
+CVE-2021-37182 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+For all affected products, Siemens recommends updating to v6.5 or later.
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Disable OSPF in the layer 3 configuration menu (note OSPF is disabled by default). The vulnerability is not exploitable when OSPF is disabled.
+If OSPF is used, set a password for the OSPF interface, and enable MD5 authentication.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-145224
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

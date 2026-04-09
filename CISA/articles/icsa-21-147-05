@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Mitsubishi Electric
+Equipment: MELSEC iQ-R Series
+Vulnerability: Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may prevent legitimate clients from connecting to an affected product.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following MELSEC iQ-R series CPU modules are affected:
+
+R00/01/02CPU: All versions
+R04/08/16/32/120(EN)CPU: All versions
+R08/16/32/120SFCPU: All versions
+R08/16/32/120PCPU: All versions
+R08/16/32/120PSFCPU: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+Due to improper session management, an attacker may prevent legitimate clients from connecting to an affected product by not properly closing a connection. If multiple MELSOFT transmission ports (TCP/IP) are open, the other ports are not affected. Sequence control is not affected by this vulnerability.
+CVE-2021-20591 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Younes Dragoni of Nozomi Networks reported this vulnerability to CISA.
+4. MITIGATIONS
+Mitsubishi Electric recommends the following mitigations:
+
+Use a firewall, a virtual private network (VPN), etc., to prevent unauthorized access when Internet access is required.
+Use within a LAN and block access from untrusted networks and hosts through firewalls.
+Use the IP filter function to restrict the connectable IP addresses. See MELSEC iQ-R Ethernet User’s Manual (Application) 1.13 Security “IP filter” for more information.
+Use the MELSOFT transmission port (UDP/IP).
+If Port 5007 of the MELSOFT transmission port (TCP/IP) is not used, set b2 to "1" in advance. See MELSEC iQ-R Ethernet User’s Manual (Application) Appendix 3, Buffer Memory for more information.
+
+If this vulnerability is exploited, legitimate users can recover by first disabling the port with the forced connection invalidation function and then re-enabling the port. For an example see MELSEC iQ-R Ethernet User’s Manual (Application) Appendix 3, Buffer Memory.
+Please refer to the Mitsubishi Electric advisory for further details. 
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

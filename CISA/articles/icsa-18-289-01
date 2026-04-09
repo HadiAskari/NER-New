@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: LCDS – Leão Consultoria e Desenvolvimento de Sistemas LTDA ME
+Equipment: LAquis SCADA
+Vulnerabilities: Untrusted Pointer Dereference, Out-of-Bounds Read, Integer Overflow to Buffer Overflow, Path Traversal, Out-of-bounds Write, and Stack-based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary code, crash the system, or write controlled content to the target system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of LAquis SCADA, an industrial automation software, are affected:
+
+Smart Security Manager Versions 4.1.0.3870 and prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1   UNTRUSTED POINTER DEREFERENCE CWE-822
+An untrusted pointer dereference vulnerability has been identified, which may allow remote code execution. 
+CVE-2018-17893 has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.2    OUT-OF-BOUNDS READ CWE-125
+Several out-of-bounds read vulnerabilities have been identified, which may allow remote code execution. 
+CVE-2018-17895 has been assigned to these vulnerabilities. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.3    INTEGER OVERFLOW TO BUFFER OVERFLOW CWE-680
+Several integer overflow to buffer overflow vulnerabilities have been identified, which may allow remote code execution. 
+CVE-2018-17897 has been assigned to these vulnerabilities. A CVSS v3 base score of 5.6 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.4    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A path traversal vulnerability has been identified, which may allow remote code execution. 
+CVE-2018-17899 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.2.5   OUT-OF-BOUNDS WRITE CWE-787
+When processing project files the application fails to sanitize user input prior to performing write operations on a stack object, which may allow an attacker to execute code under the current process. 
+CVE-2018-17901 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.2.6   STACK-BASED BUFFER OVERFLOW CWE-121
+Several stack-based buffer overflow vulnerabilities have been identified, which may allow remote code execution. 
+CVE-2018-17911 has been assigned to these vulnerabilities. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Commercial Facilities, Energy, Food and Agriculture, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: South America
+COMPANY HEADQUARTERS LOCATION: Brazil
+
+3.4 RESEARCHER
+Mat Powell of Trend Micro Zero Day Initiative, rgod of 9SG Security Team, Esteban Ruiz (mr_me) of Source Incite, b0nd @garage4hackers, and Ashraf Alharbi (Ha5ha5hin) working with Trend Micro’s Zero Day Initiative reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+LCDS recommends that users update to Version 4.1.0.4114, which can be found at the following location:
+http://laquisscada.com/instale1.php
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

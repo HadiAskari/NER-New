@@ -1,0 +1,70 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: MachineSense LLC.
+Equipment: MachineSense FeverWarn
+Vulnerabilities: Missing Authentication for Critical Function, Use of Hard-coded Credentials, Improper Access Control, OS Command Injection, Improper Restriction of Operations within the Bounds of a Memory Buffer
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain user data from devices, execute remote code on devices, or gain control over devices to perform malicious actions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following components of the FeverWarn ecosystem, an IoT-based skin temperature scanning system, are affected:
+
+FeverWarn: ESP32
+FeverWarn: RaspberryPi
+FeverWarn: DataHub RaspberryPi
+
+3.2 Vulnerability Overview
+3.2.1 Missing Authentication for Critical Function CWE-306
+The cloud provider MachineSense uses for integration and deployment for multiple MachineSense devices, such as the programmable logic controller (PLC), PumpSense, PowerAnalyzer, FeverWarn, and others is insufficiently protected against unauthorized access. An attacker with access to the internal procedures could view source code, secret credentials, and more.
+CVE-2023-6221 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).
+3.2.2 Use of Hard-coded Credentials CWE-798
+Multiple MachineSense devices have credentials unable to be changed by the user or administrator.
+CVE-2023-46706 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.3 Missing Authentication for Critical Function CWE-306
+The MachineSense application programmable interface (API) is improperly protected and can be accessed without authentication. A remote attacker could retrieve and modify sensitive information without any authentication.
+CVE-2023-49617 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N).
+3.2.4 Missing Authentication for Critical Function CWE-306
+MachineSense devices use unauthenticated MQTT messaging to monitor devices and remote viewing of sensor data by users.
+CVE-2023-49115 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5 Improper Access Control CWE-284
+MachineSense FeverWarn devices are configured as Wi-Fi hosts in a way that attackers within range could connect to the device's web services and compromise the device.
+CVE-2023-47867 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6 Improper Input Validation CWE-20
+MachineSense FeverWarn Raspberry Pi-based devices lack input sanitization, which could allow an attacker on an adjacent network to send a message running commands or could overflow the stack.
+CVE-2023-49610 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health Sector
+COUNTRIES/AREAS DEPLOYED: United States
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Vera Mens of Claroty Research reported these vulnerabilities to CISA.
+4. MITIGATIONS
+FeverWarn and the associated cloud service were pandemic-specific products for elevated body temperature scanning, discontinued by MachineSense prior to the end of the pandemic. They are no longer available, and there will be no future availability or upgrades. MachineSense is not aware of any current users of FeverWarn. Users of the affected product are encouraged to contact MachineSense for additional information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+January 25, 2024: Initial Publication
+

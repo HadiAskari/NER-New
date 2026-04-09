@@ -1,0 +1,55 @@
+
+CVSS v3 10.0
+ATTENTION: Remotely exploitable/low skill level to exploit. Public exploits are available.
+Vendor: Schneider Electric
+Equipment: Modicon M221 PLCs and SoMachine Basic
+Vulnerability: Use of Hard-Coded Cryptographic Key, Protection Mechanism Failure
+UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-17-103-02 Schneider Electric Modicon M221 PLCs and SoMachine Basic that was published April 13, 2017, on the NCCIC/ICS-CERT web site.
+AFFECTED PRODUCTS
+Schneider Electric reports that these vulnerabilities affect the following PLCs and tools for configuring and developing automation machinery:
+--------- Begin Update A Part 1 of 2 --------
+
+All Modicon M221 PLCs with firmware version up to v1.5.0.1 and associated SoMachine Basic software (up to v1.5).
+
+--------- End Update A Part 1 of 2 ----------
+IMPACT
+One vulnerability may allow an attacker to extract a protected project file from the controller to obtain sensitive project information. The second vulnerability may allow a user with access to a protected project file to decrypt it in order to obtain sensitive information without authorization.
+MITIGATION
+Schneider Electric recommends that users store project files in secure, access-restricted locations and encrypt project files with reputable third party file encryption tools.
+--------- Begin Update A Part 2 of 2 --------
+On June 14, 2017, Schneider Electric released firmware v1.5.1.0 and associated SoMachineBasic V1.5SP1. The new version uses an enhanced encryption mechanism and prevents M221 from returning the password. Users may download SoMachineBasic V1.5SP1 (including firmware v1.5.1.0) from the Schneider Electric web site at the following location:
+http://www.schneider-electric.com/en/download/document/SOMBASAP15SP1SOFT/
+or by using Schneider Electric Software Update tool.
+--------- End Update A Part 2 of 2 ----------
+Schneider Electric’s security notice SEVD-2017-097-01 is available at the following location:
+http://www.schneider-electric.com/en/download/document/SEVD-2017-097-01/
+Schneider Electric’s security notice SEVD-2017-097-02 is available at the following location:
+http://www.schneider-electric.com/en/download/document/SEVD-2017-097-02/
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+VULNERABILITY OVERVIEW
+
+USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+
+Project files, including user-defined project passwords, are encrypted with a hardcoded password.
+CVE-2017-7574 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:L).
+
+PROTECTION MECHANISM FAILURE CWE-693
+
+An attacker can send a specifically crafted command via Modbus over TCP port 502 to the logic controller to discover an application protection password.
+CVE-2017-7575 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:L).
+RESEARCHER
+Simon Heming, Maik Brüggemann, Hendrik Schwartke, and Ralf Spenneberg of Open Source Security discovered these vulnerabilities.
+BACKGROUND
+Critical Infrastructure Sector: Commercial Facilities
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Paris, France

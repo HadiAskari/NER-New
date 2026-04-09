@@ -1,0 +1,96 @@
+
+
+Overview
+
+This advisory was originally posted to the US-CERT secure Portal library on April 23, 2013, and is now being released to the ICS-CERT Web page.
+This advisory provides mitigation details for multiple vulnerabilities that impact the Invensys Wonderware Information Server (WIS) software.
+Researchers Gleb Gritsai, Nikita Mikhalevsky, Timur Yunusov, Denis Baranov, Alexey Osipov, Vyacheslav Egoshin, Dmitry Serebryannikov, Ivan Poliyanchuk, Evgeny Ermakov, and Ilya Karpov of the Positive Technologies Research Team have identified multiple vulnerabilities in the Invensys WIS software. Invensys has produced an update that mitigates these vulnerabilities. The Positive Technologies Research Team has tested the update and validated that it fixes the vulnerabilities. Exploitation of these vulnerabilities could impact systems deployed in the critical manufacturing, energy, food and beverage, chemical, and water and wastewater sectors.
+These vulnerabilities could be exploited remotely.
+
+Affected Products
+
+The following Invensys WIS versions are affected:
+
+WIS 4.0 SP1SP1 and 4.5– Portal, and
+WIS 5.0– Portal.
+
+
+Impact
+
+Successful exploitation of these vulnerabilities could allow an attacker to execute remote code, disclose information, or perform session credential high jacking of the Invensys WIS.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+
+Background
+
+Invensys is a global technology company that works with industrial, commercial, rail operators, and appliance operators in over 180 countries. Invensys develops software, systems, and equipment that enable users to monitor, automate, and control their processes.
+The Invensyshttp://www.invensys.com/, Web site last accessed May 07, 2013. WIS software is used in many industries worldwide, including critical manufacturing, energy, food and beverage, chemical, and water and wastewater.
+WIS provides industrial information content including process graphics, trends, and reports on a single Web page. WIS Web clients allow access to real-time dashboards, predesigned reports of industrial activities, and provide analysis or write back capabilities to the process.
+
+Vulnerability Characterization
+
+
+Vulnerability overview
+
+
+Cross-site ScriptingCWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), http://cwe.mitre.org/data/definitions/79.html, Web site last accessed May 07, 2013.
+
+This vulnerability enables an attacker to inject client-side script into Web pages viewed by other users or bypass client-side security mechanisms imposed by modern Web browsers. This vulnerability, if exploited, could allow arbitrary code execution and may require social engineering to exploit.
+CVE-2013-0688 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0688, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C)
+
+SQL InjectionCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection'), http://cwe.mitre.org/data/definitions/89.html, Web site last accessed May 07, 2013.
+
+This vulnerability can be used by an attacker to perform database operations that were unintended by the Web application designer and, in some instances, can lead to total compromise of the database server. This vulnerability, if exploited, could allow arbitrary code execution.
+CVE-2013-0684NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0684 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory.nknown Object has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).
+
+Improper Input Validation CWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed May 07, 2013.
+
+WIS allows access to local resources (files and internal resources) via unsafe parsing of XML external entities. By using specially crafted XML files, an attacker can cause WIS to send the contents of local or remote resources to the attacker’s server or cause a denial of service (DoS) of the system.
+CVE-2013-0686NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0686 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.3 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:C/I:N/A:C).
+
+Resource ExhaustionCWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion'), http://cwe.mitre.org/data/definitions/400.html, Web site last accessed May 07, 2013.
+
+WIS does not properly restrict the size or amount of resources that are requested, allowing the attacker to consume more resources than intended. This vulnerability, if exploited, could allow remote code execution and DoS.
+CVE-2013-0685 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0685 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).
+
+VULNERABILITY Details
+
+
+Exploitability
+
+These vulnerabilities could be exploited remotely.
+
+Existence of Exploit
+
+No known public exploits specifically target these vulnerabilities.
+
+Difficulty
+
+An attacker with a medium skill would be able to exploit these vulnerabilities.
+
+Mitigation
+
+Invensys has developed an update to the WIS software that mitigates these vulnerabilities. The Positive Technologies Research Team has tested the update and validated that it fixes the vulnerabilities. Instructions to download and install the update are found on the Invensys download page at the following link:
+https://wdn.wonderware.com/sites/WDN/Pages/Downloads/Software.aspx
+According to Invensys, any machine running one or more of the products listed above is affected and should be patched. No other components of the WIS installed products are affected. Users should install the update using instructions provided in the ReadMe file for the product and component being installed. Invensys recommends that users should set the Security level settings in the Internet browser to “Medium – High” to minimize the risks presented by these vulnerabilities.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed May 07, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Target Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed May 07, 2013. that is available for download from the ICS-CERT Web page (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.
+
+ICS-CERT CONTACT
+
+For any questions related to this report, please contact ICS-CERT at:
+Email: ics-cert@hq.dhs.govToll Free: 1-877-776-7585For industrial control systems security information and incident reporting: www.ics-cert.org
+ICS-CERT continuously strives to improve its products and services. You can help by answering a short series of questions about this product at the following URL: https://forms.us-cert.gov/ncsd-feedback/.
+
+DOCUMENT FAQ
+
+What is an ICS-CERT Advisory? An ICS-CERT Advisory is intended to provide awareness or solicit feedback from critical infrastructure owners and operators concerning ongoing cyber events or activity with the potential to impact critical infrastructure computing networks.
+When is vulnerability attribution provided to researchers? Attribution for vulnerability discovery is always provided to the vulnerability reporter unless the reporter notifies ICS-CERT that they wish to remain anonymous. ICS-CERT encourages researchers to coordinate vulnerability details before public release. The public release of vulnerability details prior to the development of proper mitigations may put industrial control systems and the public at avoidable risk.
+I see that this document is labeled as TLP = WHITE. May I distribute this to other people? According to the International Critical Information Infrastructure Protection (CIIP) Traffic Light ProtocolTraffic Light ProtocolInternational CIIP Directory, Issue 21, September 2009., US-CERT, http://www.us-cert.gov/tlp/, Web site last accessed May 07, 2013.warning, this document is subject to standard copyright rule and may be distributed freely without restriction.
+TLP = WHITE:    Unlimited

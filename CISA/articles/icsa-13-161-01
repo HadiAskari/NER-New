@@ -1,0 +1,66 @@
+
+OVERVIEW
+Adam Crain of Automatak and independent researcher Chris Sistrunk have identified improper input validation in IOServer’s DNP3 driver software. IOServer has produced an updated software version that mitigates this vulnerability. Adam Crain and Chris Sistrunk updated and tested this version and validated that this vulnerability is resolved.
+This vulnerability could be exploited remotely.
+
+AFFECTED PRODUCTS
+
+The following IOServer product is affected:
+
+Supported drivers, v1.0.19.0
+
+
+IMPACT
+
+The outstation can be sent into an infinite loop by sending a specially crafted TCP packet, known as “TCP Connection Hijacking.” The device must be shut down and restarted to reset the loop state.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+
+BACKGROUND
+
+IOServer is a small software company based in New Zealand. The IOServer DNP3 drivers allow communication between the master and slave outstations as well as interpretation for some historical and configuration functions. According to IOServer, this software is deployed across several sectors including manufacturing, building automation, oil and gas, pipeline, electric utilities, and others. IOServer estimates that these products are used primarily in the Europe, Asia, South America, and Australia. The product has some use in the United States and Canada.
+VULNERABILITY CHARACTERIZATION
+
+VULNERABILITY OVERVIEW
+
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed June 10, 2013.
+
+The IOServer driver product does not validate or incorrectly validate input on Port 20000/TCP that can affect the control flow or data flow of a program. When this software does not validate input properly, an attacker is able to craft the input in a form that is not expected by the rest of the application. This will lead to parts of the system receiving unintended input, which may result in altered control flow or arbitrary control of a resource.
+As a result, the IOServer enters an infinite loop condition without an exit. The system must then be restarted manually.
+CVE-2013-2783NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2783 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=(AV:N/AC:M/Au:N/C:N/I:N/A:C), Web site last visited June 10, 2013.
+
+VULNERABILITY DETAILS
+
+
+EXPLOITABILITY
+
+This vulnerability could be exploited remotely.
+
+EXISTENCE OF EXPLOIT
+
+No known public exploits specifically target this vulnerability.
+
+DIFFICULTY
+
+Crafting a working exploit for this vulnerability would take some work from a moderately skilled attacker.
+MITIGATION
+IOServer has produced an updated beta driver package that is available on their Web site:
+http://www.ioserver.com/beta2040.exe
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+In addition, the researchers' suggest the following mitigations:
+Block DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DPN3-specific rule sets.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, which is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.  
+In addition, ICS‑CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click Web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, Web site last accessed June 10, 2013. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, Web site last accessed June 10, 2013. for more information on social engineering attacks.
+
+

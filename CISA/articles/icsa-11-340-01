@@ -1,0 +1,51 @@
+
+Overview
+This Advisory is a follow-up to the Alert, “ICS-ALERT-11-271-01 - ARC Informatique PcVue HMI/SCADA ActiveX Vulnerabilities.”ICS-CERT is aware of publicly and privately disclosed reports of four vulnerabilities in ARC Informatique’s PcVue application. These vulnerabilities include:
+
+potential to write memory
+possible file corruption
+remote code execution
+denial of service.
+
+Independent researcher Kuang-Chun Hung of Security Research and Service Institute Information and Communication Security Technology Center (ICST) privately identified a buffer overflow vulnerability in ARC Informatique’s PcVue application.Independent researcher Luigi Auriemma publicly disclosed four vulnerabilities along with proof-of-concept (PoC) exploit code, including the vulnerability privately disclosed by ICST, without coordination with ARC Informatique, ICS-CERT, or any other coordinating entity known to ICS-CERT.ARC Informatique has confirmed these vulnerabilities and has released a patch to address the issue. Researcher Kuang-Chun Hung has tested the patch and validated that it resolves these vulnerabilities.
+Affected Products
+According to ARC Informatique the following products are affected:
+
+PcVue-All versions from 6.xx onward
+FrontVue-All versions
+PlantVue-All versions.
+
+Impact
+Successful exploitation of these vulnerabilities could result in denial of service, write to memory, file corruption, or remote code execution.Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+ARC Informatique is a French-based company that develops human-machine interface/supervisory control and data acquisition (HMI/SCADA) software that is used to interface with control systems.According to ARC Informatique, PcVue is deployed across several sectors including manufacturing, building automation, chemical, banking and finance, electric utilities, and others. ARC Informatique estimates these products are used primarily in Europe but are also used in the US and around the world.
+Vulnerability Characterization
+Vulnerability Overview
+Arbitrary Code Execution
+A malicious user can directly control the function pointer in SVUIGrd.ocx.CVE-2011-4042http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4042, NIST uses this advisory to create the CVE website report. This website will be active sometime after publication of this advisory. has been assigned to this vulnerability.
+Buffer Overflow
+An overly large integer value input to a particular parameter in SVUIGrd.ocx will cause a buffer overflow that will allow remote attackers to execute arbitrary code and gain the privileges equivalent to currently logged in user.CVE-2011-4043http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4043, NIST uses this advisory to create the CVE website report. This website will be active sometime after publication of this advisory. has been assigned to this vulnerability.
+Vulnerability Details
+By convincing a user to view a specially crafted HTML document or HTML e-mail message, an attacker could remotely execute arbitrary code on the targeted system with the privileges of the logged-in user. The affected software does not need to be running for this vulnerability to be exploited.
+Existence of Exploit
+Publicly released PoC code exists for these vulnerabilities.
+Difficulty
+Crafting a working exploit for this vulnerability would require a moderate skill level. Exploiting the vulnerabilities would likely require social engineering to lure the target to the malicious site.
+Mitigation
+ARC Informatique has released a patch to their customers to address these vulnerabilities. Users of vulnerable versions of ARC Informatique’s PcVue should deploy the patch. For more information, please refer to the ARC Informatique security bulletin.
+For more information about securing Internet Explorer web browsers with regard to ActiveX execution, please refer to the following US-CERT document Securing your Web browser.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control system security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in e-mail messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding e-mail scams.
+Refer to Avoiding Social Engineering and Phishing Attacks  for more information on social engineering attacks.
+
+

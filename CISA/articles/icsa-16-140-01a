@@ -1,0 +1,52 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-16-140-01 Resource Data Management Intuitive 650 TBD Controller Vulnerabilities that was published May 19, 2016, on the NCCIC/ICS-CERT web site.
+Independent researcher Maxim Rupp has identified a privilege escalation vulnerability and a cross-site request forgery (CSRF) vulnerability in Resource Data Management’s Intuitive 650 TDB Controller. Resource Data Management has produced a new version to mitigate these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Intuitive 650 TDB Controller versions are affected:
+
+Intuitive 650 TDB Controller Version 2.1 and earlier.
+
+IMPACT
+Privilege escalation allows an attacker to gain elevated access to resources that are normally protected from an application or user. This includes altering logs and parameters.
+A CSRF attack may allow the web browser to perform an unwanted action on a trusted site for which the user is currently authenticated.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Resource Data Management is a UK-based company that maintains offices in several countries around the world, including the UK, US, and Asia.
+The affected product, Intuitive 650 TDB Controller, is a network communication connection device. According to Resource Data Management, Intuitive 650 TDB Controller is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Healthcare and Public Health, and others. Resource Data Management estimates that these products are used primarily in the United States, United Kingdom, and Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+PRIVILEGE ESCALATIONCWE-269: Improper Privilege Escalation, http://cwe.mitre.org/data/definitions/269.html, web site last accessed May 19, 2016.
+
+A valid user can change the password for any other user, including administrators, to increase their privileges on the system.
+CVE-2016-4505NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4505, web site last accessed December 22, 2016. has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H, web site last accessed May 19, 2016.
+
+--------- Begin Update A Part 1 of 1 --------
+CROSS-SITE REQUEST FORGERYCWE-352: Cross-Site Request Forgery (CSRF), http://cwe.mitre.org/data/definitions/352.html, web site last accessed December 22, 2016.
+A CSRF attack occurs when a malicious program causes a web browser to perform an unwanted action on a trusted site for which the user is currently authenticated.
+CVE-2016-4506NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4506, web site last accessed December 22, 2016. has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H, web site last accessed December 22, 2016.
+--------- End Update A Part 1 of 1 ----------
+
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities. 
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Resource Data Management has developed RDM TDB Control Editor 2 (v2.1.24) that fixes both these vulnerabilities.
+Customers can download Version 2.1.24 at:
+https://www.resourcedm.com/en-us/support/software
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

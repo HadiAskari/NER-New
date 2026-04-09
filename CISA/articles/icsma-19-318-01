@@ -1,0 +1,64 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.3
+ATTENTION: Low skill level to exploit
+Vendor: Philips
+Equipment: IntelliBridge EC40 and EC80
+Vulnerability: Inadequate Encryption Strength
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-19-318-01 Philips IntelliBridge EC40/80 that was published November 14, 2019, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability may allow an attacker unauthorized access to the IntelliBridge EC40/80 hub and may allow access to execute software, modify system configuration, or view/update files, including unidentifiable patient data.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of IntelliBridge are affected:
+
+IntelliBridge EC40 Hub, all versions
+IntelliBridge EC80 Hub, all versions
+
+The IntelliBridge EC40/80 is intended to transfer medical device data from one format to another according to preset specifications. It performs data transfer without controlling or altering the function or parameters of any connected medical devices. The EC40/80 is not intended for use in connection with active patient monitoring. If data is not received from the hub a notification is generated on the PIC iX Central Station and customers are advised to refer to the source medical device.
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INADEQUATE ENCRYPTION STRENGTH CWE-326
+The SSH server running on the affected products is configured to allow weak ciphers. This could enable an unauthorized attacker with access to the network to capture and replay the session and gain unauthorized access to the EC40/80 hub.
+CVE-2019-18241 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+4.4 RESEARCHER
+The Medical Technology Solutions team of NewYork-Presbyterian Hospital reported this vulnerability to Philips.
+5. MITIGATIONS
+Philips plans a new release to remediate this vulnerability by the end of Q3 2020.
+As an interim mitigation to this vulnerability, Philips recommends the following:
+
+Users should operate all Philips deployed and supported products within Philips authorized specifications, including Philips approved software, software configuration, system services, and security configuration.
+The medical device network should be logically or physically isolated from the hospital network as specified in the Philips Patient Monitoring System Security for Clinical Networks guide, available on Philips InCenter. There is no clinical requirement for these devices to communicate outside of the Philips clinical network.
+
+--------- Begin Update A Part 1 of 1 ---------
+
+SSH is not meant to be used for clinical purposes or for supporting this product. Utilizing network security controls (e.g., ACL on switch access port, firewall rules), users can block network access to/from the SSH port of the Philips EC40/EC80 device without affecting EC40/80 functionality. NOTE: Philips’ network infrastructure devices (router/switches and firewalls) use SSH (Port 22) for access and maintenance. If these devices are part of the network fabric, care must be taken to ensure Port 22 is only blocked for EC40/80 and not for other devices that need it.
+
+--------- End Update A Part 1 of 1 ---------
+Users with questions about their specific EC40/80 product should contact a Philips service support team or regional service support.
+The Philips advisory is available at the following URL: http://www.philips.com/productsecurity
+Please see the Philips product security website for the latest security information for Philips products:
+https://www.philips.com/productsecurity
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable unnecessary accounts and services.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA that can be found at the following location:
+
+https://www.fda.gov/MedicalDevices/DigitalHealth/ucm373213.htm
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is exploitable from an adjacent network.

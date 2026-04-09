@@ -1,0 +1,85 @@
+
+Overview
+This Advisory is a follow-up to the Alert titled “ICS-ALERT-11-256-04 Measuresoft ScadaPro” that was published September 13, 2011, on the ICS-CERT website.
+ICS-CERT is aware of a public report of three vulnerabilities with proof-of-concept (PoC) exploit code affecting Measuresoft ScadaPro. According to the report, the vulnerabilities include a stack buffer overflow, an insecure method call, and a path traversal, which are all remotely exploitable through Port 11234/UDP. This report was released publicly without coordination with either the vendor or ICS-CERT.
+Attribution for the discovery of these vulnerabilities is not provided in this advisory because no prior coordination occurred with the vendor, ICS-CERT, or other coordinating body. ICS-CERT encourages researchers to coordinate vulnerability details before public release. The public release of vulnerability details prior to the development of proper mitigations may put industrial control systems (ICSs) and the public at avoidable risk.
+ICS-CERT has coordinated with Measuresoft, which has produced a fix that resolves these vulnerabilities. The fix has been tested to validate that it resolves the vulnerabilities.
+Affected Products
+The following Measuresoft ScadaPro versions are affected:
+
+ScadaPro Version 4.0.0.0 and earlier.
+
+Impact
+The stack overflow vulnerability could allow an attacker to cause a denial of service (DoS) or to remotely execute code on the affected machine. The insecure method call and the path traversal vulnerabilities could allow information leakage.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their environment, architecture, and product implementation.
+Background
+ScadaPro is a supervisory control and data acquisition (SCADA) system used in the power generation, oil and gas, pharmaceuticals, and manufacturing sectors. According to Measuresoft, ScadaPro is sold in multiple countries by various third-party distributors, making total deployment difficult to quantify.
+Measuresoft Development Ltd. is headquartered in Louth, Ireland, with an office in Missouri City, Texas.
+Vulnerability Characterization
+Vulnerability Overview
+
+
+
+Vulnerability Type
+Exploitability
+Impact
+
+
+
+
+
+Stack Overflow
+
+
+Remote
+
+
+Denial of Service / Possible Remote Code Execution
+
+
+
+
+Insecure Method Call
+
+
+Remote
+
+
+Information Leak / Disclosure
+
+
+
+
+Path Traversal 
+
+
+Remote
+
+
+Information Leak / Disclosure
+
+
+
+
+ 
+MITRE has assigned numbers CVE-2011-3490, CVE-2011-3495, CVE-2011-3496, and CVE-2011-3497 to these vulnerabilities in the Common Vulnerabilities and Exposures
+Vulnerability Details
+Exploitability
+These vulnerabilities are remotely exploitable.
+Existence of Exploit
+Public exploits are known to exist that target these vulnerabilities.
+Difficulty
+An attacker with a low skill level can create a DoS, traverse directories, or extract data; only a more skilled attacker would be able to execute arbitrary code on affected systems.
+Mitigation
+Measuresoft has provided a new version (4.0.1), which is available without cost to all licensed customers who are currently running Version 4.0.0. Measuresoft has resolved the reported issues by disabling Port 11234/UDP by default. According to Measuresoft, alternative network communication methods are already in place and will be used instead.
+According to Measuresoft, Version 4.0.1 of ScadaPro Server is now available for download from the Measuresoft website.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks. Asset owners should consider the following measures:
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+The Control Systems Security Program (CSSP) also provides a section for control system security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+

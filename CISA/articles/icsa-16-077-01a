@@ -1,0 +1,61 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-16-077-01 ABB Panel Builder 800 DLL Hijacking Vulnerability that was published March 17, 2016, on the NCCIC/ICS-CERT web site.
+Ivan Sanchez from Nullcode Team has identified a DLL Hijacking vulnerability in the ABB Panel Builder 800 Version 5.1 application.
+--------- Begin Update A Part 1 of 4 -------- 
+Panel Builder Version 6.0 is not affected by this vulnerability.
+--------- End Update A Part 1 of 4 ---------- 
+AFFECTED PRODUCTS
+The following ABB product is affected:
+
+Panel Builder 800 Version 5.1
+
+IMPACT
+The vulnerability could allow an attacker who successfully exploits it to insert and run arbitrary code on an affected system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+ABB is a Switzerland-based company that maintains offices in several countries around the world.
+--------- Begin Update A Part 2 of 4 -------- 
+The affected product, Panel Builder 800, is the engineering and configuration tool with which Panel 800 HMIs can be engineered and configured.
+--------- End Update A Part 2 of 4 ---------- 
+According to ABB, Panel Builder 800s are deployed across several sectors including Critical Manufacturing, Energy, and Transportation Systems. ABB estimates that these products are deployed worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNCONTROLLED SEARCH PATH ELEMENT CWE-427: Uncontrolled Search Path Element, http://cwe.mitre.org/data/definitions/427.html, web site last accessed March 17, 2016
+
+If an application calls a DLL without specifying an absolute path Windows will conduct a search for the DLL file in various set locations.
+CVE-2016-2281NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-2281, web site last accessed March 22, 2016. has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:H/UI:R/S:C/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:H/PR:H/UI:R/S:C/C:H/I:H/A:H, web site last accessed March 17, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. An attacker must get malicious code to a specific directory in the file system of a computer where the Panel Builder 800 Version 5.1 is used, then get a legitimate user of the Panel Builder 800 Version 5.1 to execute it. This decreases the likelihood of a successful exploit.
+MITIGATION
+ABB recommends that any new projects use Panel Builder 800 Version 6.0.
+--------- Begin Update A Part 3 of 4 -------- 
+Files transferred between computers should be carefully inspected, including scanning with up-to-date antivirus software and plausibility checks for the file types to be transferred, e.g., by a file transfer proxy enforcing restrictions.
+User account management, appropriate authentication, and permission management use the principle of least privilege.
+--------- End Update A Part 3 of 4 ----------
+ABB has developed and tested the following workaround. It will not correct the underlying vulnerability, but it will block the known attack vector:
+Remove the association of .pba files with the Panel Builder 800 Version 5.1.
+This can be done via:
+Control Panel\Programs\Default Programs\Set Associations
+This workaround has the impact that it will no longer be possible to start the Panel Builder 800 Version 5.1 by a double click of a panel 800 project file. The Panel Builder 800 Version 5.1 will need to be started from a link provided by the product installation, e.g., in the Windows Start menu.
+--------- Begin Update A Part 4 of 4 -------- 
+ABB has produced an advisory for this vulnerability:
+https://library.e.abb.com/public/ad52594ac29c4b088a62f199f04ab3b3/3BSE086156_-_en_SECURITY_Advisory_-_Panel_Builder_800_5.x_vulnerability.pdf
+--------- End Update A Part 4 of 4 ----------
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed March 17, 2016. for more information on social engineering attacks.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

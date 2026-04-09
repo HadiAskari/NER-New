@@ -1,0 +1,56 @@
+
+OVERVIEW
+Adam Crain of Automatak and independent researcher Chris Sistrunk have identified an improper input validation vulnerability in multiple Triangle MicroWorks’ products and third‑party components. Triangle MicroWorks has produced an update that mitigates this vulnerability. Adam Crain has tested the update to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Triangle MicroWorks products are affected:
+
+SCADA Data Gateway, v2.50.0309 through v3.00.0616
+DNP3 .NET Protocol components, v3.06.0.171 through v3.15.0.369
+DNP3 ANSI C source code libraries, v3.06.0000 through v3.15.0000
+
+IMPACT
+The outstation can be sent into an infinite loop by sending a specially crafted TCP packet from the master station on an IP-based network. If the device is connected via a serial connection, the same attack can be accomplished with physical access to the master station. The device must be shut down and restarted to reset the loop state.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Triangle MicroWorks is a US-based company with headquarters in North Carolina.
+The affected Triangle MicroWorks products are stand-alone or are third-party components, which communicate to outstation/slave devices using various transmission protocols (e.g., OPC Client, IEC 60870-6 (TASE.2/ICCP) Client, IEC 60870-5, DNP3, and/or Modbus). According to Triangle MicroWorks, the products are deployed across several sectors including electric utilities, transportation systems, water, and government facilities. Triangle MicroWorks estimates that these products are used primarily in the United States and Europe/Asia with a small percentage in South America and Australia/New Zealand.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+As this vulnerability affects Internet Protocol-connected and Serial-connected devices, two CVSS scores have been calculated.
+
+IMPROPER INPUT VALIDATION-IP-BASEDCWE-20: Improper Input Validation,  http://cwe.mitre.org/data/definitions/20.html, Web site last accessed August 28, 2013.
+
+The Triangle MicroWorks software incorrectly validates input. An attacker could cause the software to go into an infinite loop with a specifically crafted TCP packet, causing the process to crash. The system must be restarted manually to clear the condition.
+The following scoring is for IP-connected devices.
+CVE- 2013-2793NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2793, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, Web site last visited August 28, 2013.
+
+IMPROPER INPUT VALIDATION-SERIAL-BASEDa
+
+The Triangle MicroWorks software incorrectly validates input. An attacker could cause the software to go into an infinite loop, causing the process to crash. The system must be restarted manually to clear the condition.
+The following scoring is for serial-connected devices.
+CVE- 2013-2794NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2794, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.7 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed August 28, 2013.
+VULNERABILITY DETAILS 
+EXPLOITABILITY
+The IP-based vulnerability could be exploited remotely.
+The serial-based vulnerability is not remotely exploitable. Local access to the serial-based outstation is required.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill level could craft an IP packet that would be able to exploit this vulnerability for an IP-based device.
+An attacker with a high skill level could exploit the serial-based vulnerability because physical access to the device or some amount of social engineering is required.
+MITIGATION
+Triangle MicroWorks has produced an update and release notes describing the mitigation. Please contact Triangle MicroWorks Support for details on specific platform updates here:
+http://www.trianglemicroworks.com/SupportPage.htm
+Release notes are found here:
+http://www.trianglemicroworks.com/documents/sdnp_scl_whats_new.pdf
+Triangle MicroWorks recommends following the International Electrotechnical Commission (IEC) Technical Specification TS 62351 to reduce the risk from vulnerability. More information on recommended implementation practices for Triangle MicroWorks products is available by contacting your product representative.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed August 28, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation StrategiesTargeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed August 28, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

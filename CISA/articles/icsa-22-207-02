@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.7
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Honeywell
+Equipment: Safety Manager
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow for configuration and firmware manipulation or remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Safety Manager, a safety solution of the Experion Process Knowledge System, are affected:
+
+Safety Manager: (CVE-2022-30315, CVE-2022-30313, and CVE-2022-30316) All versions
+Safety Manager: (CVE-2022-30314) Versions prior to R160.1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+The affected product uses the unauthenticated Safety Builder protocol, which does not validate or authenticate the download logic. This could allow an attacker to preform remote code execution on the CPU module.
+CVE-2022-30315 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.2    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected product utilizes the Safety Builder protocol, which does not have native authentication. An attacker capable of invoking the protocols' functionalities could cause configuration and system changes.
+CVE-2022-30313 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L).
+3.2.3    USE OF HARD-CODED CREDENTIALS CWE-798
+The affected product access to the boot configuration is controlled by credentials hard-coded in the Safety Manger firmware. This could allow an attacker with serial interface access to control the boot process and manipulate the firmware image.
+CVE-2022-30314 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N).
+3.2.4    INSUFFICIENT VERIFICTION OF DATA AUTHENTICITY CWE-345
+The affected product firmware images are not signed and only rely on insecure checksums for regular integrity checks. This could allow an attacker with access to the serial interface to control the boot process or push malicious firmware.
+CVE-2022-30316 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Daniel dos Santos and Jos Wetzels from Forescout Technologies reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Honeywell recommends the following:
+
+For CVE-2022-30315 and CVE2022-30313:
+
+Safety Manager and FSC use a key switch control to prevent users from downloading unauthorized safety logic. When the key switch is in the locked state, users cannot download any logic whatsoever. 
+Safety builder should reside on a station with restrictive access controls. Network controls should be in place to limit the nodes permitted to communicate the builder protocol to the safety manager.
+Users are advised to follow the Safety Manager release documentation.
+
+
+For CVE-2022-30314:
+
+Safety Manager R160.1 and later releases include a remediation for this item. R160.1 was introduced in October 2014. Users are advised to operate on the latest release and point release.
+Customers should isolate process control networks following our security best practices.
+Users are advised to follow the Safety Manager Release documentation; see the section “Security Recommendations and Best Practices”.
+
+
+For CVE-2022-30316:
+
+The Safety Manager key switch prevents unauthorized firmware from being installed. Users are advised to monitor the key switch position.
+Users are advised to follow the Safety Manager Release documentation; see the section “Security Recommendations and Best Practices”.
+		 
+
+
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

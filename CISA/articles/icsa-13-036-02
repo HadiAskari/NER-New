@@ -1,0 +1,38 @@
+
+Overview
+This advisory provides mitigation details for a vulnerability that impacts the Ecava IntegraXor application. Independent researcher Andrew Brooks has identified a buffer overflow vulnerability in Ecava’s IntegraXor application.
+Ecava has produced a patch that mitigates this vulnerability. The researcher has tested the patch to validate that it resolves this vulnerability.
+Exploitation of this vulnerability would allow an attacker to execute arbitrary code or cause a denial of service (DoS).This vulnerability could be exploited remotely.
+Affected Products
+The following IntegraXor versions are affected:
+
+IntegraXor SCADA Server 4.00 build 4250.0 and earlier.
+
+Impact
+Successfully exploiting this vulnerability could lead to a DoS for the application or could allow an attacker to execute arbitrary code. This could impact multiple sectors, including critical manufacturing.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Ecava Sdn Bhd is a Malaysia-based software development company that provides the IntegraXor SCADA product. Ecava specializes in factory and process automation solutions.
+IntegraXor is a suite of tools used to create and run a Web-based human-machine interface for a SCADA system. IntegraXor is currently used in several areas of process control in 38 countries with the largest installation based in the United Kingdom, United States, Australia, Poland, Canada, and Estonia.
+Vulnerability Characterization
+Vulnerability Overview
+PE3DO32A.OCX Buffer OverflowCWE, http://cwe.mitre.org/data/definitions/119.html, CWE-119: Buffer Overflow, Web site last accessed February 05, 2013.
+The vulnerability originates from buffer overflows in the PE3DO32A.ocx service component and can occur in multiple locations of the module. An attacker would need to create a specially crafted Web page or file with an ActiveX component for the client to open. This could allow anattacker to cause a crash or to execute arbitrary code.
+CVE-2012-4700 has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=(AV:N/AC:M/Au:N/C:C/I:C/A:C), Web site last accessed February 05, 2013.
+Vulnerability Details
+Exploitability
+This vulnerability is remotely exploitable.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+Social engineering is required to convince a user to go to a specially crafted Web page to exploit the vulnerability remotely. An attacker with a moderate skill level would be able to exploit the buffer overflow.
+Mitigation
+Ecava has issued a customer notification that details this vulnerability and provides mitigations to its customers.
+Ecava recommends users download and install the update, IntegraXor SCADA Server 4.00.4280, from their download Web site. The vendor also recommends that users disable ActiveX on systems where the application is being used.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.

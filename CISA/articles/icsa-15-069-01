@@ -1,0 +1,49 @@
+
+OVERVIEW
+Ivan Sanchez of Wise Security has identified a DLL Hijacking vulnerability in the CIMON CmnView.exe application. CIMON, Inc. has produced a patch that mitigates this vulnerability.
+This vulnerability could be exploited remotely with social engineering and requires local user input.
+AFFECTED PRODUCTS
+The following CIMON CmnView.exe application versions are affected:
+
+CmnView Version 2.14.0.1, and
+CmnView Version 3.x.
+
+IMPACT
+This DLL Hijacking vulnerability requires that someone with local access play a part in the exploitation. The vulnerability will allow a malicious user to have the access on the victim machine with the same privileges as the application or DLL exploited.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+CIMON, Inc. is a South Korean-based company that maintains offices in South Korea and the United States.
+The affected application, CmnView, is a web-based SCADA application. According to CIMON, Inc., CmnView is deployed across several sectors including Critical Manufacturing, Energy, Water and Wastewater Systems, and others. CIMON, Inc. estimates that these products are used primarily in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+DLL HIJACKINGCWE-427: DLL Hijacking, http://cwe.mitre.org/data/definitions/427.html, web site last accessed March 10, 2015.
+
+The CmnView application calls DLLs without specifying an absolute path; this causes Windows to search for the DLL allowing potentially malicious DLLs to be loaded.
+CVE-2014-9207NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9207, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed March 10, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely with social engineering and requires local user input. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed file.
+EXISTENCE OF EXPLOIT
+General exploits are publicly available that utilize this attack vector. However, ICS-CERT is not aware of any specific exploits that target the CmnView application.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would take some effort. Social engineering and local user interaction is required for the malformed file to exploit the victim machine running the vulnerable application.
+MITIGATION
+CIMON, Inc. has produced a patch that mitigates the DLL vulnerability. The updated UltimateAccess Version 3.02 corrects the vulnerability of the CmnView application and is free of charge to users by logging in to the CIMON, Inc. web site at:
+http://www.cimon.com
+Asset owners may wish to consider the use of anti-exploitation software like Microsoft’s Enhanced Mitigation Experience Toolkit. Products like this offer additional protections to the system memory and operating system functions that may protect against unknown software vulnerabilities.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed March 10, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed March 10, 2015. for more information on social engineering attacks.
+

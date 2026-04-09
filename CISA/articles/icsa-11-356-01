@@ -1,0 +1,50 @@
+
+Overview
+ICS-CERT is aware of a public report by independent security researchers Billy Rios and Terry McCorkle concerning authentication bypass vulnerabilities affecting Siemens SIMATIC HMI products which are supervisory control and data acquisition/human-machine interface (SCADA/HMI) products.
+According to this report, systems running affected versions of this product are accessible using a default username and password. These systems also generate an insecure authentication token for browser sessions. Prior to public disclosure, the researchers notified ICS-CERT of the vulnerabilities. ICS-CERT is continuing to coordinate mitigations with the researchers and Siemens.
+Siemens was previously aware of these vulnerabilities and intends to address them in Service Packs to be released in January 2012. Please see mitigation section of this document for additional information regarding the release of the Service Packs. Siemens has also updated its product documentation with instructions for configuring a strong password and removing default passwords during initial setup.
+Affected Products
+According to Siemens, the following software packages are vulnerable:
+
+martAccess option package for SIMATIC WinCC flexible RT 2004, 2005, 2005 SP1, 2007, 2008, 2008 SP1, and 2008 SP2
+SIMATIC WinCC Runtime Advanced V11, V11 SP1, and V11 SP2
+Multiple SIMATIC Panels (TP, OP, MP, Mobile, Comfort)
+
+Impact
+Successful exploitation of these vulnerabilities could allow an attacker to log on to a vulnerable system as a user or administrator with the ability to execute arbitrary code or obtain full access to files on the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+The Siemens SIMATIC HMI product family is used as an interface between operators and corresponding PLCs. SIMATIC HMI does the following tasks: process visualization, operator control of the process, display of alarms, archiving of process values and alarms and management of machine parameters. This software is used in many industries including: food and beverage, water and wastewater, oil and gas, and chemical.
+Vulnerability Characterization
+Vulnerability Overview
+Insecure Authentication Token GenerationCWE-287: Improper Authentication, http://cwe.mitre.org/data/definitions/287.html, website last accessed April 16, 2012.
+The authentication token/cookie values set when a user (administrator) logs are predictable when non-encrypted HTTP communication is used. This can allow for an attacker to bypass authentication checks and escalate privileges.
+CVE-2011-4508 has been assigned to this vulnerability. Siemens’ assessment of the vulnerabilities using the CVSSVersion 2.0NVD Common Vulnerability Scoring System Support v2, http://nvd.nist.gov/cvss.cfm, website last accessed April 16, 2012. calculator rates an Overall CVSS Score of 6.5.
+Weak Default PasswordsCWE-255: Credentials Management, http://cwe.mitre.org/data/definitions/255.html, website last accessed April 16, 2012.
+There is a default administrator password, which is weak and easily bruteforced or guessed. Siemens has changed the documentation to encourage the user to change the password upon first login.
+CVE-2011-4509 has been assigned to this vulnerability.
+Vulnerability Details
+Exploitability
+This vulnerability can be exploited remotely against installations that are not following security practices recommended by Siemens and ICS-CERT.
+Existence of Exploit
+No known exploits specifically target these vulnerabilities.
+Difficulty
+It would be very simple to exploit the default password, it would require a greater amount of work and knowledge to exploit the insecure token generation vulnerability.
+Mitigation
+The authentication token generation vulnerability will be addressed by Siemens in its “SIMATIC WinCC V11.0 SP 2 Update 1,” which is to be released on January 13, 2012 or “SIMATIC WinCC flexible 2008 SP3” which is to be released on January 18, 2012.
+Product documentation has been updated to tell the user how to set a proper password during initial setup to remove the risk of the default password vulnerability.
+Siemens has published a statement on their Industrial Security web pages that addresses these issues.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in e-mail messages.
+Refer to Recognizing and Avoiding Email Scams  for more information on avoiding e-mail scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

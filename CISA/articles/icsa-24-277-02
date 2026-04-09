@@ -1,0 +1,66 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/Low attack complexity
+Vendor: Subnet Solutions Inc.
+Equipment: PowerSYSTEM Center
+Vulnerabilities: Server-Side Request Forgery (SSRF), Inefficient Regular Expression Complexity, Cross-Site Request Forgery (CSRF)
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in an attacker bypassing a proxy, creating a denial-of-service condition, or viewing sensitive information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of PowerSYSTEM Center are affected:
+
+PowerSYSTEM Center: PSC 2020 v5.21.x and prior
+
+3.2 Vulnerability Overview
+3.2.1 SERVER-SIDE REQUEST FORGERY (SSRF) CWE-918
+Vulnerable versions of PowerSYSTEM Center utilize Axios NPM package 0.21.0, which contains a Server-Side Request Forgery (SSRF) vulnerability where an attacker is able to bypass a proxy by providing a URL that responds with a redirect to a restricted host or IP address.
+CVE-2020-28168 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2 INEFFICIENT REGULAR EXPRESSION COMPLEXITY CWE-1333
+Vulnerable versions of PowerSYSTEM Center utilize Axios, which is vulnerable to Inefficient Regular Expression Complexity.
+CVE-2021-3749 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+Vulnerable versions of PowerSYSTEM Center utilize Axios 1.5.1, which can inadvertently reveal the confidential XSRF-TOKEN stored in cookies by including it in the HTTP header X-XSRF-TOKEN for every request made to any host, allowing attackers to view sensitive information.
+CVE-2023-45857 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Canada
+
+3.4 RESEARCHER
+Subnet Solutions Inc. reported this vulnerability to CISA.
+4. MITIGATIONS
+Subnet Solutions Inc. recommends users update to PowerSYSTEM Center 2020 Update 22, which can be located in the PowerSYSTEM Center by accessing Settings > Overview > Version. Users may also contact Subnet Solution's Customer Service.
+Subnet Solutions Inc. strongly recommends users update to the latest version. If this is not possible, the following paragraphs describe the security control compensation(s), mitigation(s), or workaround(s) available for identified vulnerabilities:
+
+For all vulnerabilities, users can disable usage of previous UI extensions.
+For CVE-2020-28168 and CVE-2023-45857, users can limit outbound connection requests from the PowerSYSTEM Center security zone to external websites.
+For CVE-2023-45857 and CVE-2021-3749, users can disable PowerSYSTEM Center Client Access Server user's ability to access the browser's F12 Developer Tools to limit user ability to see HTTP headers and corresponding XSRF-TOKEN, and to manipulate requests to the PowerSYSTEM Center website.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+October 3, 2024: Initial Publication
+

@@ -1,0 +1,45 @@
+
+OVERVIEW
+Siemens has identified a BEAST (Browser Exploit Against SSL/TLS) attack vulnerability in Siemens Ruggedcom WIN products. This vulnerability was originally reported directly to Siemens ProductCERT by Dan Frein and Paul Cotter of West Monroe Partners. Siemens has produced a firmware update that fixes compatibility issues with BEAST mitigations of current browser versions.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens Ruggedcom WIN product lines are affected:
+
+WIN7000: all versions prior to v4.4,
+WIN7200: all versions prior to v4.4,
+WIN5100: all versions prior to v4.4, and
+WIN5200: all versions prior to v4.4.
+
+IMPACT
+An attacker who successfully exploits a system using this vulnerability may be able to access the session ID of the user’s current web session. If combined with a social engineering attack, the attacker may be able to read traffic exchanged between the user and the device.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The Ruggedcom WIN product line is a family of products compliant with the WiMAX 802.16e Wave 2 mobile broadband wireless standard. The product family includes a variety of base stations and subscriber stations. Siemens estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed April 08, 2014.
+
+The SSL/TLS secured web interface of the affected products is vulnerable to the BEAST attack. As it uses SSL libraries, which are not compatible with 1/n-1 record splitting, some newer browser versions are not able to connect to the web interface.
+CVE-2011-3389NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-3389, web site last accessed April 08, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:N, web site last accessed April 08, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+Siemens has provided a firmware update (Ruggedcom WIN v4.4) that supports the mitigation technique and recommends customers to update to this version. The update does not fix the BEAST vulnerability itself. After the update, it is possible for customers to securely access the web interface with current version browsers, as the mitigation for the BEAST attack is contained in the browser code.
+For more information on this vulnerability and detailed instructions, please see Siemens Security Advisory SSA-353456 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

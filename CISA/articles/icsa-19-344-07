@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: EN100 Ethernet Module
+Vulnerabilities: Improper Restriction of Operations within the Bounds of a Memory Buffer, Cross-site Scripting, Relative Path Traversal
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-344-07 Siemens EN100 Ethernet Module that was published December 10, 2019, to the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute remote code, cause a denial-of-service condition, and obtain sensitive information about the device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of EN100, an ethernet module, are affected:
+
+EN100 Ethernet module for IEC 61850: versions prior to 4.37
+EN100 Ethernet module for PROFINET IO: all versions
+EN100 Ethernet module for Modbus TCP: all versions
+EN100 Ethernet module for DNP3: all versions 
+EN100 Ethernet module for IEC104: all versions
+
+--------- Begin Update A Part 1 of 2 ---------
+The above EN100 modules are included in SIPROTEC 4, SIPROTEC Compact, Reyrolle, and SWT3000 devices.
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+An attacker could exploit a buffer overflow vulnerability in the webserver. Specially crafted packets could cause a denial-of-service condition, and if certain conditions are met, affected devices must be restarted manually to fully recover. 
+CVE-2019-13942 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION (‘CROSS-SITE SCRIPTING’) CWE-79
+The web interface could allow cross-site scripting (XSS), causing the application to behave in unexpected ways for legitimate users.
+CVE-2019-13943 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:L/A:L).
+4.2.3    RELATIVE PATH TRAVERSAL CWE-23
+A vulnerability in the integrated web server of the affected devices could allow unauthorized attackers to obtain sensitive information about the device, including logs and configurations. 
+CVE-2019-13944 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens has released updates for several affected products, is working on updates for the remaining affected products, and recommends specific countermeasures until fixes are available.
+--------- Begin Update A Part 2 of 2 ---------
+
+EN100 Ethernet module for IEC 61850: Update to v4.37
+
+--------- End Update A Part 2 of 2 ---------
+For all other affected devices, Siemens recommends users block access to Port 80/TCP and 443/TCP (e.g., with an external firewall).
+Siemens recommends operators check whether appropriate resilient protection measures are in place as the risk of cyber incidents impacting the grid’s reliability can thus be minimized by virtue of the grid design.
+Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment.
+As a general security measure, Siemens strongly recommends protecting network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised to configure the environment according to Siemens’ operational guidelines in order to run the devices in a protected IT environment.
+Recommended security guidelines to Secure Substations can be found at https://www.siemens.com/gridsecurity
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens security advisory SSA-418979 at the following location:
+http://www.siemens.com/cert/advisories
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

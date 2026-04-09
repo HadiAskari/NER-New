@@ -1,0 +1,56 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Mendix
+Vulnerability: Incorrect Authorization
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow unauthorized users bypass write permissions to attributes of objects.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Mendix Applications are affected:
+
+Mendix Applications using Mendix 7: All versions prior to v7.23.22
+Mendix Applications using Mendix 8: All versions prior to v8.18.7
+Mendix Applications using Mendix 9: All versions prior to v9.3.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INCORRECT AUTHORIZATION CWE-863
+Write access checks of attributes of an object could be bypassed, if user has write permission to the first attribute of this object.
+CVE-2021-33718 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific mitigations and workarounds users can apply to reduce the risk:
+
+Update Mendix Applications using Mendix 7 to v7.23.22 or later
+Update Mendix Applications using Mendix 8 to v8.18.7 or later
+Update Mendix Applications using Mendix 9 to v9.3 or later
+Make the first attribute of the object non-writeable
+Add a new read attribute and move this up to become the first in the entity attribute table
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens operational guidelines for industrial security, and follow the recommendations in the product manual.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity 
+For more information about this issue, please see Siemens security advisory SSA-352521.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

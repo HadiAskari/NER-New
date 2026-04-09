@@ -1,0 +1,77 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Moxa
+Equipment: EDS-G516E series, and EDS-510E series
+Vulnerabilities: Stack-based Buffer Overflow, Use of a Broken or Risky Cryptographic Algorithm, Use of Hard-coded Cryptographic Key, Use of Hard-coded Credentials, Classic Buffer Overflow, Cleartext Transmission of Sensitive Information, Weak Password Requirements
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could crash the device, execute arbitrary code, and allow access to sensitive information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Moxa reports the vulnerabilities affect the following Ethernet switches:
+
+EDS-G516E Series firmware, Version 5.2 or lower
+EDS-510E Series firmware, Version 5.2 or lower
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+The attacker may execute arbitrary codes or target the device, causing it to go out of service.
+CVE-2020-7007 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+The affected products use a weak cryptographic algorithm, which may allow confidential information to be disclosed.
+CVE-2020-7001 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+The affected products use a hard-coded cryptographic key, increasing the possibility that confidential data can be recovered.
+CVE-2020-6979 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    USE OF HARD-CODED CREDENTIALS CWE-798
+An attacker may gain access to the system without proper authentication.
+CVE-2020-6981 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    CLASSIC BUFFER OVERFLOW CWE-120
+Some of the parameters in the setting pages do not ensure text is the correct size for its buffer.
+CVE-2020-6999 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.6    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Sensitive information is transmitted over some web applications in cleartext.
+CVE-2020-6997 has been assigned to this vulnerability. A CVSS v3 base score of 4.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:N/A:N).
+3.2.7    WEAK PASSWORD REQUIREMENTS CWE-521
+Weak password requirements may allow an attacker to gain access using brute force.
+CVE-2020-6991 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Ilya Karpov and Evgeniy Druzhinin from Rostelecom-Solar and Georgy Zaytsev of Positive Technologies reported these vulnerabilities to Moxa.
+4. MITIGATIONS
+Moxa has developed the following solutions to address the vulnerabilities:
+
+EDS-G516E Series: Download the new firmware.
+EDS-510E Series: please contact Moxa Technical Support for assistance.
+Enable password on configuration file from “Configuration File Encryption” setting to eliminate the potential risk.
+Enable HTTPS from the “Management Interface” setting.
+Enable “Account Login Failure Lockout” functions to eliminate the potential risk.
+
+Please see Moxa’s security advisory for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

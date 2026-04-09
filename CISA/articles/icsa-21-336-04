@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: RTU500 series Bidirectional Communication Interface (BCI)
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote attacker to reboot the device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following firmware versions of RTU500 series, a remote terminal unit, are affected:
+
+RTU500 series CMU Firmware Version 12.0: All versions
+RTU500 series CMU Firmware Version 12.2: All versions
+RTU500 series CMU Firmware Version 12.4: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+An issue exists in the BCI IEC 60870-5-104 function included in the affected products. If BCI IEC 60870-5-104 is enabled and configured, an attacker could exploit the vulnerability by sending a specially crafted message to the affected product, causing it to reboot. This vulnerability is caused by the validation error in the APDU parser of the BCI IEC 60870-5-104 function.
+CVE-2021-35533 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported this vulnerability to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends the following:
+
+Disable BCI IEC 60870-5-104 function by configuration if it is not used. Note: By default, the BCI IEC 60870-5-104 is disabled.
+Update to RTU500 series CMU Firmware Version 12.6.5.0 or later (e.g., RTU500 CMU Firmware Version 12.7.* or CMU Firmware Version 13.2.* or later).
+
+Please see Hitachi Energy advisory 8DBD000063 for additional mitigation and update information.
+Hitachi Energy recommends the following security practices and firewall configurations to help protect process control networks from attacks that originate from outside the network:
+
+Physically protect process control systems from direct access by unauthorized personnel.
+Do not directly connect to the Internet.
+Separated from other networks by means of a firewall system with a minimal number of ports exposed.
+Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails.
+Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

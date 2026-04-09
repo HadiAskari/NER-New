@@ -1,0 +1,60 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 6.0
+ATTENTION: Low attack complexity
+Vendor: Philips
+Equipment: Vue PACS
+Vulnerabilities: Allocation of Resources Without Limits or Throttling, Use of Default Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain access to the database, which could impact system availability and data integrity or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Philips products are affected:
+
+Vue PACS: Versions prior to 12.2.8.410
+
+3.2 Vulnerability Overview
+3.2.1 ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+Attackers can exploit this vulnerability by making numerous requests or sending large amounts of data to the application, leading to resource exhaustion (e.g., memory, CPU), which can cause the application to crash or become unresponsive. This vulnerability does not expose patient data or allow for its modification. It allows an attacker, with access to the hospital's private network, which is protected by security controls (e.g., firewalls, VPNs), to send messages to the server, leading to potential CPU overload and a denial-of-service (DoS) condition. No response is sent back to the attacker, and patient information remains secure.
+CVE-2021-28165 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2021-28165. A base score of 6.0 has been calculated; the CVSS vector string is (CVSS4.0/AV:A/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N).
+3.2.2 USE OF DEFAULT CREDENTIALS CWE-1392
+The product does not require unique and complex passwords to be created during installation. Using Philips's default password could jeopardize the PACS system if the password was hacked or leaked. An attacker could gain access to the database impacting system availability and data integrity.
+CVE-2023-40704 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2023-40704. A base score of 5.7 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:H/AT:N/PR:H/UI:N/VC:H/VI:L/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+3.4 RESEARCHER
+TAS Health NZ and Camiel van Es reported these vulnerabilities to Philips.
+4. MITIGATIONS
+Philips recommends the following mitigations:
+
+For CVE-2021-28165, Philips recommends configuring the Vue PACS environment per D000763414 – Vue_PACS_12_Ports_Protocols_Services_Guide available on Incenter. Vue PACS version 12.2.8.410* released in October 2023 prevents this vulnerability.
+For CVE-2023-40704, Philips recommends no action needed due to low risk of exploitability, but customers can request that Philips update database password(s).
+
+For managed services users, new releases will be made available upon resource availability. Releases are subject to country specific regulations. Users with questions regarding their specific Philips Vue PACS installations and new release eligibility should contact their local Philips sales representative or submit a request in the Philips Informatics Support portal.
+Refer to the Philips advisory for more details.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+July 18, 2024: Initial Publication
+November 26, 2024: Update A - Vulnerabilities removed due to further analysis by Philips showing they did not affect the device or had no security impact.
+

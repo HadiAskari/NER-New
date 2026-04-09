@@ -1,0 +1,114 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Mitsubishi Electric Corporation
+Equipment: MELSEC Series CPU module
+Vulnerability: Classic Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote attacker to cause a denial-of-service condition or execute malicious programs on a target product by sending specially crafted packets.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Mitsubishi Electric reports this vulnerability affects the following MELSEC Series CPU module components. The following manuals show how to check the firmware version: "17.3 Troubleshooting Using the Engineering Tool"-"Module diagnostics" in the MELSEC iQ-F FX5S/FX5UJ/FX5U/FX5UC User's Manual (Hardware) and "Appendix 1: Checking Production Information and Firmware Version" in the MELSEC iQ-R Module Configuration Manual:
+
+MELSEC iQ-F Series FX5U-32MT/ES, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-32MT/DS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-32MT/ESS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-32MT/DSS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-32MR/ES, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-32MR/DS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-64MT/ES, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-64MT/DS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-64MT/ESS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-64MT/DSS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-64MR/ES, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-64MR/DS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-80MT/ES, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-80MT/DS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-80MT/ESS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-80MT/DSS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-80MR/ES, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5U-80MR/DS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5UC-32MT/D, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5UC-32MT/DSS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5UC-64MT/D, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5UC-64MT/DSS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5UC-96MT/D, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5UC-96MT/DSS, Serial number 17X**** or later: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5UC-32MT/DS-TS: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5UC-32MT/DSS-TS: version 1.220 up to and including 1.281
+MELSEC iQ-F Series FX5UC-32MR/DS-TS: version 1.220 up to and including 1.281
+MELSEC iQ-R Series R00CPU: versions 35 and prior
+MELSEC iQ-R Series R01CPU: versions 35 and prior
+MELSEC iQ-R Series R02CPU: versions 35 and prior
+MELSEC iQ-R Series R04(EN)CPU: version 12 up to and including 68
+MELSEC iQ-R Series R08(EN)CPU: version 12 up to and including 68
+MELSEC iQ-R Series R16(EN)CPU: version 12 up to and including 68
+MELSEC iQ-R Series R32(EN)CPU: version 12 up to and including 68
+MELSEC iQ-R Series R120(EN)CPU: version 12 up to and including 68
+MELSEC iQ-R Series R08SFCPU: version 26 up to and including 31
+MELSEC iQ-R Series R16SFCPU: version 26 up to and including 31
+MELSEC iQ-R Series R32SFCPU: version 26 up to and including 31
+MELSEC iQ-R Series R120SFCPU: version 26 up to and including 31
+MELSEC iQ-R Series R08PCPU: version 3 up to and including 37
+MELSEC iQ-R Series R16PCPU: version 3 up to and including 37
+MELSEC iQ-R Series R32PCPU: version 3 up to and including 37
+MELSEC iQ-R Series R120PCPU: version 3 up to and including 37
+
+3.2 Vulnerability Overview
+3.2.1 Classic Buffer Overflow CWE-120
+A vulnerability due to copying buffers without checking size of input exists in these MELSEC Series CPU modules. Exploitation may allow denial of service and malicious code execution.
+CVE-2023-1424 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2023-1424. A base score of 10.0 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Matt Wiseman of Cisco Talos reported this vulnerability to Mitsubishi Electric.
+4. MITIGATIONS
+Mitsubishi Electric created the following firmware versions to address this issue and encourages users to update:
+
+MELSEC iQ-F Series: firmware version 1.290.
+MELSEC iQ-R Series R00/01/02CPU: firmware version 36 or later.
+MELSEC iQ-R Series R04/08/16/32/120(EN)CPU: firmware version 69 or later.
+MELSEC iQ-R Series R08/16/32/120SFCPU: firmware version 32 or later.
+MELSEC iQ-R Series R08/16/32/120PCPU: firmware version 38 or later.
+
+In case of using the affected MELSEC iQ-R Series R08/16/32/120SFCPU, take mitigations and workarounds measures because updating the product to the fixed version is not available.
+Users should refer to the following manuals when updating:
+
+"9 FIRMWARE UPDATE FUNCTION" in the MELSEC iQ-F FX5 User's Manual (Application).
+MELSEC iQ-R Module Configuration Manual "Appendix 2: Firmware Update Function."
+
+Mitsubishi Electric recommends that customers take the following mitigation measures to minimize the risk of exploiting this vulnerability:
+
+Use a firewall or virtual private network (VPN), etc. to prevent unauthorized access when Internet access is required.
+Use within a LAN and block access from untrusted networks and hosts through firewalls.
+Restrict physical access to the LAN that is connected by affected products.
+Use IP filter function to block access from untrusted hosts. For details regarding the IP filter function, users can refer to:
+
+"13.1 IP Filter Function" in the MELSEC iQ-F FX5 User's Manual (Communication).
+"1.13 Security"-"IP filter" in the MELSEC iQ-R Ethernet User's Manual (Application).
+
+
+
+For specific update instructions and additional details see the Mitsubishi Electric advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+May 23, 2023: Initial Publication.
+July 06, 2023: Update A - changes to affected products and mitigations.
+September 12, 2023: Update B - Added information about affected and fixed versions.
+March 14, 2024: Update C - Added information about affected and fixed versions.
+April 25, 2024: Update D - Added description in mitigation section.
+

@@ -1,0 +1,73 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.7
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Eaton
+Equipment: Intelligent Power Manager (IPM)
+Vulnerabilities: SQL Injection, Eval Injection, Improper Input Validation, Unrestricted Upload of File with Dangerous Type, Code Injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow attackers to change certain settings, upload code, delete files, or execute commands.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Eaton reports these vulnerabilities affect the following Intelligent Power Manager products:
+
+Eaton Intelligent Power Manager (IPM) – All versions prior to 1.69
+Eaton Intelligent Power Manager Virtual Appliance (IPM VA) – All versions prior to 1.69
+Eaton Intelligent Power Protector (IPP) – All versions prior to 1.68
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    SQL INJECTION CWE-89
+Eaton Intelligent Power Manager (IPM) prior to 1.69 is vulnerable to authenticated SQL injection. A malicious user can send a specially crafted packet to exploit this vulnerability. Successful exploitation of this vulnerability can allow attackers to add users in the data base.
+CVE-2021-23276 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    EVAL INJECTION CWE-95
+Eaton Intelligent Power Manager (IPM) prior to 1.69 is vulnerable to an unauthenticated eval injection vulnerability. The software does not neutralize code syntax from users before using in the dynamic evaluation call in the “loadUserFile” function under scripts/libs/utils.js. Successful exploitation can allow attackers to control the input to the function and execute attacker-controlled commands.
+CVE-2021-23277 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.3    IMPROPER INPUT VALIDATION CWE-20
+Eaton Intelligent Power Manager (IPM) prior to 1.69 is vulnerable to an authenticated arbitrary file delete vulnerability induced due to improper input validation at server/maps_srv.js with the “removeBackground” function and server/node_upgrade_srv.js with the “removeFirmware” function. An attacker can send specially crafted packets to delete the files on the system where IPM software is installed.
+CVE-2021-23278 has been assigned to this vulnerability. A CVSS v3 base score of 8.7 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:H).
+3.2.4    IMPROPER INPUT VALIDATION CWE-20
+Eaton Intelligent Power Manager (IPM) prior to 1.69 is vulnerable to an unauthenticated arbitrary file delete vulnerability induced due to improper input validation in meta_driver_srv.js class with the “saveDriverData” function using invalidated driverID. An attacker can send specially crafted packets to delete the files on the system where IPM software is installed.
+CVE-2021-23279 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:H).
+3.2.5    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+Eaton Intelligent Power Manager (IPM) prior to 1.69 is vulnerable to an authenticated arbitrary file upload vulnerability. IPM’s maps_srv.js allows an attacker to upload a malicious NodeJS file using the “uploadBackground” function. An attacker can upload a malicious code or execute any command using a specially crafted packet to exploit the vulnerability.
+CVE-2021-23280 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.6    CODE INJECTION CWE-94
+Eaton Intelligent Power Manager (IPM) prior to 1.69 is vulnerable to an unauthenticated remote code execution vulnerability. IPM software does not sanitize the date provided via the “coverterCheckList” function in meta_driver_srv.js class. Attackers can send a specially crafted packet to make IPM connect to rouge SNMP server and execute attacker-controlled code.
+CVE-2021-23281 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+3.4 RESEARCHER
+Amir Preminger from Claroty research reported these vulnerabilities to Eaton.
+4. MITIGATIONS
+Eaton has patched these security issues and new versions of the affected software are released. The latest versions can be downloaded from the locations below:
+
+Eaton IPM v1.69: Download | IPM | Eaton
+Eaton IPP v1.68: Download software | Power management | Eaton
+
+To prevent the exploitation of the issues and safeguard the software from malicious entities, Eaton recommends blocking Ports 4679 and 4680 at the enterprise network or home network where Intelligent Power Manager (IPM) software is installed and used.
+Please see Eaton vulnerability advisory number ETN-VA-2021-1000 for more information.
+Eaton recommends the following general security best practices:
+
+Restrict exposure to external networks for all control system devices and/or systems and ensure they are not directly accessible from the open Internet.
+Deploy control system networks and remote devices behind barrier devices (e.g., firewalls, data diodes) and isolate them from business networks.
+Remote access to control system networks should be made available on a strict need-to-use basis. Remote access should use secure methods, such as virtual private networks (VPNs) updated to the most current version available.
+Regularly update/patch software/applications to latest versions available, as applicable.
+Enable audit logs on all devices and applications.
+Disable/deactivate unused communication channels, TCP/UDP ports and services (e.g., SNMP, FTP, BootP, DHCP, etc.) on networked devices.
+Create security zones for devices with common security requirements using barrier devices (e.g., firewalls, data diodes).
+Change default passwords following initial startup. Use complex secure passwords or passphrases.
+Perform regular security assessments and risk analysis of networked control systems.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Advantech
+Equipment: WISE-PaaS/RMM
+Vulnerabilities: Path Traversal, Missing Authorization, Improper Restriction of XML External Entity Reference, SQL Injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow information disclosure, remote code execution, and compromise system availability.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of WISE-PaaS/RMM, an IoT device remote monitoring and management platform, are affected:
+
+WISE-PaaS/RMM Versions 3.3.29 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+Path traversal vulnerabilities are caused by a lack of proper validation of a user-supplied path prior to use in file operations. An attacker can leverage these vulnerabilities to remotely execute code while posing as an administrator.
+CVE-2019-13551 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    MISSING AUTHORIZATION CWE-862
+There is an unsecured function that allows anyone who can access the IP address to use the function without authentication.
+CVE-2019-13547 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)
+3.2.3    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+XXE vulnerabilities exist that may allow disclosure of sensitive data.
+CVE-2019-18227 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N)
+3.2.4    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+Lack of sanitization of user-supplied input cause SQL injection vulnerabilities. An attacker can leverage these vulnerabilities to disclose information.
+CVE-2019-18229 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+•    CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water
+•    COUNTRIES/AREAS DEPLOYED: East Asia, Europe, United States
+•    COMPANY HEADQUARTERS LOCATION: Taiwan
+3.4 RESEARCHER
+rgod of 9sg Security Team and trendytofu working with Trend Micro’s Zero Day Initiative reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Advantech phased out WISE-PaaS/RMM in July of 2019 and replaced this product with EdgeSense and DeviceOn. Advantech has provided notification to their PSM’s, sales managers, RSM’s and partners of the phase out to replace the old WISE-PaaS/RMM software bundle with EdgeSense and DeviceOn.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Ensure the least-privilege user principle is followed.
+Monitor or block Port 1880/TCP.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,69 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-16-224-02 Rockwell Automation RSLogix 500 and RSLogix Micro File Parser Buffer Overflow Vulnerability that was published September 15, 2016, on the NCCIC/ICS-CERT web site.
+--------- Begin Update A Part 1 of 3 --------
+Ariele Caltabiano (kimiya) working with Trend Micro’s Zero Day Initiative has identified a parser buffer overflow vulnerability in Rockwell Automation’s RSLogix Starter Lite. Rockwell Automation investigated the matter and found that it also affected RSLogix 500 and other versions of RSLogix Micro. Rockwell Automation has released a new version of software, v11.00.00, which resolves the vulnerability.
+--------- End Update A Part 1 of 3 ----------
+AFFECTED PRODUCTS
+--------- Begin Update A Part 2 of 3 --------
+Rockwell Automation reports that the vulnerability affects the following products:
+
+RSLogix Micro Starter Lite, Version 10.00.00 or prior;
+RSLogix Micro Developer, Version 10.00.00 or prior;
+RSLogix 500 Starter Edition, Version 10.00.00 or prior;
+RSLogix 500 Standard Edition, Version 10.00.00 or prior; and
+RSLogix 500 Professional Edition, Version 10.00.00 or prior.
+
+--------- End Update A Part 2 of 3 ----------
+IMPACT
+A successful attack may potentially allow malicious code to execute on the target computer at the same privilege level as the logged-in user. The impact to the user’s environment is highly dependent on both the type of malicious code included in the attack and the mitigations that the user may already employ.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Rockwell Automation, which is a US-based company, provides industrial automation control and information products worldwide across a wide range of industries.
+The affected products, RSLogix 500 and RSLogix Micro, are design and configuration software used with certain Rockwell Automation products. According to Rockwell Automation, the software is for use in systems deployed across several sectors, including Chemical, Critical Manufacturing, Food and Agriculture, Water and Wastewater Systems, and others. Rockwell Automation estimates that this product is used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CLASSIC BUFFER OVERFLOWCWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow'), http://cwe.mitre.org/data/definitions/120.html, web site last accessed August 11, 2016.
+
+The discovered vulnerability exists in the code that opens and parses the RSLogix 500 and RSLogix Micro project files with an RSS extension. In order for attackers to exploit this vulnerability in RSLogix 500 and RSLogix Micro, they must create a malicious RSS file. The buffer overflow condition is exploited if an affected version of the product opens a malicious project file. If the attack is successful, the malicious code will run at the same privilege level as the user who is logged into the machine.
+CVE-2016-5814NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5814, web site last accessed February 16, 2017. has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H, web site last accessed August 11, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed RSS file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be easy. An exploit would require social engineering to convince the user to accept the malformed RSS file. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Rockwell Automation recommends the following precautionary measures as additional risk mitigation strategies for this type of attack. If possible, employ multiple strategies simultaneously.
+--------- Begin Update A Part 3 of 3 --------
+
+Users using affected versions of RSLogix 500 and RSLogix Micro are encouraged to update to Version 11.00.00 that addresses associated risk and includes added improvements to further harden the software and enhance its resilience against similar malicious attacks. Version 11.00.00 can be found on Rockwell Automation’s web site at the following URL with a valid account:http://compatibility.rockwellautomation.com/Pages/MultiProductDownload.aspx?Keyword=rslogix%20500&crumb=112
+
+Users of RSLogix Micro Version 8.40.00 or RSLogix 500 Version 8.40.00 may apply patch KB878490 until they are able to update to Version 11.00.00. This patch can be found on Rockwell Automation’s web site at the following URL with a valid account:https://rockwellautomation.custhelp.com/app/answers/detail/a_id/878490
+
+
+
+--------- End Update A Part 3 of 3 ----------
+
+Do not open untrusted RSS files with RSLogix 500 and RSLogix Micro.
+Run all software as user, not as an administrator to minimize the impact of malicious code on the infected system.
+Use trusted software, software patches, and anti-virus/anti-malware programs, and interact only with trusted web sites and attachments.
+Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.
+Use of Microsoft AppLocker or other similar whitelisting application can help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at the following URL with a valid account: https://rockwellautomation.custhelp.com/app/answers/detail/a_id/546989.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+For more information on this issue, please see Rockwell Automation’s publication 898582 on its web site at: https://rockwellautomation.custhelp.com/app/answers/detail/a_id/898582
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed August 11, 2016. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed August 11, 2016. for more information on social engineering attacks.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

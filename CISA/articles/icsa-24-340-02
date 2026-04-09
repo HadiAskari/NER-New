@@ -1,0 +1,57 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.3
+ATTENTION: Exploitable remotely/Low attack complexity
+Vendor: Planet Technology
+Equipment: Planet WGS-804HPT
+Vulnerabilities: Stack-based Buffer Overflow, Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection'), Integer Underflow (Wrap or Wraparound)
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Planet WGS-804HPT, an industrial switch, are affected:
+
+Planet WGS-804HPT: Version v1.305b210531
+
+3.2 Vulnerability Overview
+3.2.1 STACK-BASED BUFFER OVERFLOW CWE-121
+The affected product is vulnerable to a stack-based buffer overflow. An unauthenticated attacker could send a malicious HTTP request that the webserver fails to properly check input size before copying data to the stack, potentially allowing remote code execution.
+CVE-2024-48871 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-48871. A base score of 9.3 has been calculated; the CVSS vector string is (AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The affected product is vulnerable to a command injection. An unauthenticated attacker could send commands through a malicious HTTP request which could result in remote code execution.
+CVE-2024-52320 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-52320. A base score of 9.3 has been calculated; the CVSS vector string is (AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 INTEGER UNDERFLOW (WRAP OR WRAPAROUND) CWE-191
+The affected product is vulnerable to an integer underflow. An unauthenticated attacker could send a malformed HTTP Requesty, which could allow the attacker to crash the program.
+CVE-2024-52558 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+A CVSS v4 score has also been calculated for CVE-2024-52558. A base score of 6.9 has been calculated; the CVSS vector string is (AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Tomer Goldschmidt of Claroty Research - Team82 reported this vulnerability to CISA.
+4. MITIGATIONS
+Planet Technology recommends users upgrade to version 1.305b241111 or later.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+December 05, 2024: Initial Publication
+

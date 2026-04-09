@@ -1,0 +1,82 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).  
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 5.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SINEMA
+Vulnerabilities: Use After Free, Improper Input Validation, Improper Certificate Validation, Missing Release of Resource after Effective Lifetime, Improper Validation of Certificate with Host Mismatch, Insufficient Session Expiration, Insertion of Sensitive Information into Log File
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to bypass Multi-Factor Authentication or to compromise the confidentiality of other users' configuration data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens are affected:
+
+SINEMA Remote Connect Client: Versions prior to V3.2 SP2
+
+3.2 Vulnerability Overview
+3.2.1 USE AFTER FREE CWE-416
+Use after free in OpenVPN version 2.6.0 to 2.6.6 may lead to undefined behavior, leaking memory buffers or remote execution when sending network buffers to a remote peer.
+CVE-2023-46850 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 IMPROPER INPUT VALIDATION CWE-20
+When a protocol selection parameter option disables all protocols without adding any then the default set of protocols would remain in the allowed set due to an error in the logic for removing protocols. The below command would perform a request to curl.se with a plaintext protocol which has been explicitly disabled. curl --proto -all,-http http://curl.se The flaw is only present if the set of selected protocols disables the entire set of available protocols, in itself a command with no practical use and therefore unlikely to be encountered in real situations. The curl security team has thus assessed this to be low severity bug.
+CVE-2024-2004 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L).
+3.2.3 IMPROPER CERTIFICATE VALIDATION CWE-295
+libcurl skips the certificate verification for a QUIC connection under certain conditions, when built to use wolfSSL. If told to use an unknown/bad cipher or curve, the error path accidentally skips the verification and returns OK, thus ignoring any certificate problems.
+CVE-2024-2379 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N).
+3.2.4 MISSING RELEASE OF RESOURCE AFTER EFFECTIVE LIFETIME CWE-772
+When an application tells libcurl it wants to allow HTTP/2 server push, and the amount of received headers for the push surpasses the maximum allowed limit (1000), libcurl aborts the server push. When aborting, libcurl inadvertently does not free all the previously allocated headers and instead leaks the memory. Further, this error condition fails silently and is therefore not easily detected by an application.
+CVE-2024-2398 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5 IMPROPER VALIDATION OF CERTIFICATE WITH HOST MISMATCH CWE-297
+libcurl did not check the server certificate of TLS connections done to a host specified as an IP address, when built to use mbedTLS. libcurl would wrongly avoid using the set hostname function when the specified hostname was given as an IP address, therefore completely skipping the certificate check. This affects all uses of TLS protocols (HTTPS, FTPS, IMAPS, POPS3, SMTPS, etc).
+CVE-2024-2466 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N).
+3.2.6 INSUFFICIENT SESSION EXPIRATION CWE-613
+The affected application does not expire the user session on reboot without logout. This could allow an attacker to bypass Multi-Factor Authentication.
+CVE-2024-32006 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-32006. A base score of 5.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N).
+3.2.7 INSERTION OF SENSITIVE INFORMATION INTO LOG FILE CWE-532
+The affected application inserts sensitive information into a log file which is readable by all legitimate users of the underlying system. This could allow an authenticated attacker to compromise the confidentiality of other user's configuration data.
+CVE-2024-42344 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:L).
+A CVSS v4 score has also been calculated for CVE-2024-42344. A base score of 4.8 has been calculated; the CVSS vector string is (CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+SINEMA Remote Connect Client: Update to V3.2 SP2 or later version
+For (CVE-2024-32006): Instead of using the TOTP-based two-factor authentication mechanism, consider login with Smartcard/User certificate
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-417159 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 12, 2024: Initial Publication
+

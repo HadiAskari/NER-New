@@ -1,0 +1,72 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.3
+
+ATTENTION: Low skill level to exploit
+Vendor: Omron 
+Equipment: CX-Supervisor
+
+--------- Begin Update A Part 1 of 3 --------
+
+Vulnerabilities: Code Injection, Command Injection, Use After Free, Type Confusion, Access of Uninitialized Pointer, Out-of-bounds Read
+
+--------- End Update A Part 1 of 3 ----------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-017-01 Omron CX-Supervisor that was published January 17, 2019, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in a denial-of-service condition, and/or allow an attacker to achieve code execution with privileges within the context of the application.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of CX-Supervisor are affected:
+
+CX-Supervisor: Versions 3.42 and prior
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94
+The application can execute code that has been injected into a project file. An attacker could exploit this to execute code under the privileges of the application.
+CVE-2018-19011 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+4.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+An attacker could inject commands to delete files and/or delete the contents of a file on the device through a specially crafted project file.
+CVE-2018-19013 has been assigned to this vulnerability. A CVSS v3 base score of 5.0 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:L/A:H).
+4.2.3    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+An attacker could inject commands to launch programs and create, write, and read files on the device through a specially crafted project file. An attacker could exploit this to execute code under the privileges of the application.
+CVE-2018-19015 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+4.2.4    USE AFTER FREE CWE-416
+Several use after free vulnerabilities have been identified. When processing project files, the application fails to check if it is referencing freed memory. An attacker could use a specially crafted project file to exploit and execute code under the privileges of the application.
+CVE-2018-19017 has been assigned to these vulnerabilities. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+4.2.5    ACCESS OF RESOURCE USING INCOMPATIBLE TYPE ('TYPE CONFUSION') CWE-843
+A type confusion vulnerability exists when processing project files. An attacker could use a specially crafted project file to exploit and execute code under the privileges of the application.
+CVE-2018-19019 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+--------- Begin Update A Part 2 of 3 --------
+4.2.6    ACCESS OF UNINITIALIZED POINTER CWE-824
+An access of uninitialized pointer vulnerability could lead to type confusion when processing project files. An attacker could use a specially crafted project file to exploit and execute code under the privileges of the application.
+CVE-2018-19018 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H).
+4.2.7    OUT-OF-BOUNDS READ CWE-125
+When processing project files and tampering with the value of an offset, an attacker can force the application to read a value outside of an array.
+CVE-2018-19020 has been assigned to this vulnerability. A CVSS v3 base score of 2.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N)
+--------- End Update A Part 2 of 3 ----------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan 
+
+4.4 RESEARCHER
+--------- Begin Update A Part 3 of 3 --------
+Michael DePlante of Trend Micro’s Zero Day Initiative and Esteban Ruiz (mr_me) of Source Incite, working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to NCCIC.
+--------- End Update A Part 3 of 3 ----------
+
+5. MITIGATIONS
+Omron has released Version 3.5.0.11 of CX-Supervisor to address the reported vulnerabilities. To be protected, development projects must be upgraded and saved in the new format, then rebuilt in the latest 3.5.0.11 format. Information on downloading the latest version of CX-Supervisor can be found at the following location: 
+https://www.myomron.com/index.php?action=kb&article=1711
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

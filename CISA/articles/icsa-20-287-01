@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: MOXA
+Equipment: NPort IAW5000A-I/O Series
+Vulnerabilities: Session Fixation, Improper Privilege Management, Weak Password Requirements, Cleartext Transmission of Sensitive Information, Improper Restriction of Excessive Authentication Attempts, Exposure of Sensitive Information to an Unauthorized Actor
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain access to and hijack a session; allow an attacker with user privileges to perform requests with administrative privileges; allow the use of weak passwords; allow credentials of third-party services to be transmitted in cleartext; allow the use of brute force to bypass authentication on an SSH/Telnet session; or allow access to sensitive information without proper authorization.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following software versions on NPort IAW5000A-I/O, an integrated serial device server, are affected:
+
+NPort: Firmware Version 2.1 or lower
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    SESSION FIXATION CWE-384
+The built-in WEB server has incorrectly implemented protections from session fixation, which may allow an attacker to gain access to a session and hijack it by stealing the user’s cookies.
+CVE-2020-25198 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+The built-in WEB server has improper privilege management, which may allow an attacker with user privileges to perform requests with administrative privileges.
+CVE-2020-25194 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    WEAK PASSWORD REQUIREMENTS CWE-521
+The built-in web service does not require users to have strong passwords.
+CVE-2020-25153 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The built-in web server stores and transmits the credentials of third-party services in cleartext.
+CVE-2020-25190 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5    IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+The built-in web server allows SSH/Telnet sessions, which may be vulnerable to brute force attacks to bypass authentication.
+CVE-2020-25196 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The built-in web service allows sensitive information to be displayed without proper authorization.
+CVE-2020-25192 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy Sector
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Evgeniy Druzhinin and Ilya Karpov of Rostelecom-Solar reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Moxa has released an updated firmware version for the NPort IAW5000A-I/O Series and recommends users install this update on all affected systems.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

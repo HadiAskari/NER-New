@@ -1,0 +1,88 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Yokogawa
+Equipment: CENTUM and Exaopc
+Vulnerabilities: Use of Hard-coded Credentials, Relative Path Traversal, Improper Output Neutralization for Logs, OS Command Injection, Permissions, Privileges, and Access Controls, Uncontrolled Search Path Element
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities in CAMS server functions can be abused to suppress alarms, read or write files, crash the server, or execute arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Yokogawa reports these vulnerabilities affect the following distributed control system and software products: 
+
+CENTUM CS 3000 (Including CENTUM CS 3000 Entry Class): R3.08.10 - R3.09.00
+CENTUM VP (Including CENTUM VP Entry Class):
+
+R4.01.00 - R4.03.00
+R5.01.00 - R5.04.20
+R6.01.00 - R6.08.00
+
+
+Exaopc: (R3.72.00 - R3.79.00)
+
+Yokogawa reports the following products are not directly affected by the vulnerabilities, but may be indirectly affected by the existence of CENTUM installed on the same PC:
+
+B/M9000CS: (R5.04.01 - R5.05.01)
+B/M9000 VP: (R6.01.01 - R8.03.01)
+
+Usage of the CAMS function may determine whether an installation is affected. Please see Yokogawa’s full report (YSAR-22-0001) for details.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF HARD-CODED CREDENTIALS CWE-798
+If the password for the OS account created when installing the product has not been changed from the default password and the hard-coded credentials (default password) for the account are used, an attacker could access files and shared memory in the system. The product is not affected by this vulnerability if the default password has been properly changed after installation.
+CVE-2022-21194 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:H).
+3.2.2    USE OF HARD-CODED CREDENTIALS CWE-798
+If the hard-coded credentials for CAMS server application are used to send a malformed packet to CAMS server, all functions of CAMS server can be abused, including suppressing alarms.
+CVE-2022-23402 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:C/C:L/I:H/A:H).
+3.2.3    RELATIVE PATH TRAVERSAL CWE-23
+A malformed packet sent to a CAMS for HIS server may allow an attacker to achieve relative path traversal and then read and write files or execute commands.
+CVE-2022-21808 and CVE-2022-22729 have been assigned to these vulnerabilities. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    IMPROPER OUTPUT NEUTRALIZATION FOR LOGS CWE-117
+A malformed packet sent to a CAMS for HIS server may exploit an output neutralization vulnerability, allowing an attacker to crash the server or manipulate log files.
+CVE-2022-22151, CVE-2022-21177. and CVE-2022-22145 have been assigned to these vulnerabilities. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:H).
+3.2.5    OS COMMAND INJECTION CWE-78
+A local attacker may be able to utilize a named pipe with inappropriate access privileges to execute arbitrary programs.
+CVE-2022-22148 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.6    PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLS CWE-264
+A local attacker may be able to utilize a named pipe with inappropriate access privileges to delete arbitrary files.
+CVE-2022-22141 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H).
+3.2.7    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+CENTUM and Exaopc have a DLL injection vulnerability and a DLL planting vulnerability using the DLL search order vulnerability. See this link for further details on this exploit type.
+CVE-2022-23401 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Food and Agriculture
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Jacob Baines from Dragos reported these vulnerabilities to Yokogawa.
+4. MITIGATIONS
+Yokogawa recommends updating the following products:
+
+CENTUM VP: update to R6.09.00 or later
+Exaopc: update to R3.80.00 or later
+CENTUM CS 3000: consider system upgrade to the latest revision of CENTUM VP
+
+The method of obtaining and updating patch software depends on the support contract of each installation. Users who do not know how to obtain the update and install it should contact their service/sales person.
+Please see Yokogawa’s full report (YSAR-22-0001) for update details.
+For questions related to this report, please contact Yokogawa security. 
+Yokogawa also recommends the following countermeasures:
+
+Follow the installation instructions for each product and change the password of the OS account created when installing the product to an appropriate one.
+The initial password is set by default for the predefined user accounts in CENTUM VP and Exaopc. Be sure to change the initial password.
+When changing the password, ensure that the same password is set in the entire system.
+For more information about lists of the predefined user accounts in CENTUM VP and how to change the password for a user account, refer to: "CENTUM VP Security Guide"
+
+Yokogawa strongly recommends users establish and maintain a full security program. Security program components include patch updates, anti-virus, backup and recovery, zoning, hardening, whitelisting, firewalls, etc. 
+Yokogawa can assist in setting up and running security programs. For considering the most effective risk mitigation plan, as a starting point, Yokogawa can perform a security risk assessment.
+For questions related to this report, please contact Yokogawa.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: PTC
+Equipment: Vuforia Studio
+Vulnerabilities: Insufficiently Protected Credentials, Improper Authorization, Unrestricted Upload of File with Dangerous Type, Path Traversal, Cross-site Request Forgery
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to view credentials, perform a cross-site request forgery attack, resend requests, or upload or delete arbitrary files.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+PTC reports these vulnerabilities affect the following Vuforia Studio products:
+
+Vuforia Studio: all versions prior to 9.9
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The local Vuforia web application does not support HTTPS, and federated credentials are passed via basic authentication.
+CVE-2023-29168 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2 IMPROPER AUTHORIZATION CWE-285
+An attacker with local access to the machine could record the traffic, which could allow them to resend requests without the server authenticating that the user or session are valid.
+CVE-2023-24476 has been assigned to this vulnerability. A CVSS v3 base score of 1.8 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:H/UI:R/S:U/C:L/I:N/A:N).
+3.2.3 IMPROPER AUTHORIZATION CWE-285
+By changing the filename parameter in the request, an attacker could delete any file with the permissions of the Vuforia server account.
+CVE-2023-29152 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:C/C:N/I:N/A:H).
+3.2.4 UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+A user could use the “Upload Resource” functionality to upload files to any location on the disk.
+CVE-2023-27881 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.5 PATH TRAVERSAL CWE-22
+Before importing a project into Vuforia, a user could modify the “resourceDirectory” attribute in the appConfig.json file to be a different path.
+CVE-2023-29502 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:N/A:N).
+3.2.6 CROSS-SITE REQUEST FORGERY CWE-352
+PTC Vuforia Studio does not require a token; this could allow an attacker with local access to perform a cross-site request forgery attack or a replay attack.
+CVE-2023-31200 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Lockheed Martin—Red Team reported these vulnerabilities to PTC.
+4. MITIGATIONS
+PTC recommends users upgrade to Vuforia Studio release 9.9 or higher.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have a low attack complexity.

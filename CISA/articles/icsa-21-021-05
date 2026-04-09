@@ -1,0 +1,88 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.3
+ATTENTION: Low skill level to exploit
+Vendor: M&M Software GmbH, a subsidiary of WAGO Kontakttechnik
+Equipment: fdtCONTAINER
+Vulnerability: Deserialization of Untrusted Data
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-021-05 WAGO M&M Software fdtCONTAINER (Update B) that was published February 16, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+If an attacker can socially engineer a valid user into loading a manipulated project file, malicious code can be executed without notice.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following products are affected:
+
+fdtCONTAINER component
+
+Versions between 3.5.0 and 3.5.20304.x
+Versions between 3.6.0 and 3.6.20304.x
+Versions older than 3.5
+
+
+fdtCONTAINER application
+
+Versions between 4.5.0 and 4.5.20304.x
+Versions between 4.6.0 and 4.6.20304.x
+Versions older than 4.5
+
+
+dtmINSPECTOR Version 3 (Based on FDT 1.2.x)
+
+There are reports indicating the following products incorporate the affected component:
+
+Emerson Rosemount Transmitter Interface Software (RTIS) SKUs: 04088-9000-0001, 4088-9000-0002, and 7000003-312
+PEPPERL+FUCHS PACTware 5.0, up to and including Version 5.0.5.31
+Weidmüller WI Manager up to and including Version 2.5.1
+
+--------- Begin Update C Part 1 of 1 ---------
+
+Mitsubishi Electric MELSOFT FieldDeviceConfigurator, Versions 1.05 F and prior
+
+--------- End Update C Part 1 of 1 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+A vulnerability has been discovered in the fdtCONTAINER component issued by M&M Software and used by other products, including RTIS and PACTware. An attacker could exploit this vulnerability on the workstation by supplying/providing a manipulated project file. If that manipulated project file is loaded, malicious code could be executed without notice. 
+CVE-2020-12525 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Emerson reported this vulnerability to CISA and M&M Software.
+5. MITIGATIONS
+M&M Software recommends users choose one of the following solutions:
+
+Update the fdtCONTAINER component/fdtCONTAINER application to a version that provides a more secure deserialization of the project data. This version will still use a deprecated serialization technology but will fix the currently known attack vector and will be compatible with existing, non-manipulated project files.
+Update the fdtCONTAINER component/fdtCONTAINER application to a version (fdtCONTAINER component: 3.7 or newer, fdtCONTAINER application: 4.7 or newer) that provides a secure deserialization of the project data with an updated serialization technology. This will break the compatibility to existing, non-manipulated project files.
+
+The CERT@VDE advisory for M&M Software also recommends the following mitigation practices:
+
+Exchange project data only via secure exchange services.
+Use appropriate means to protect the project storage from unauthorized manipulation.
+Do not open project data from an unknown source.
+Reduce the user rights of the host application to the necessary minimum.
+
+Emerson has published a notification (EMR.RMT20004.Rev3) for this vulnerability in RTIS. RTIS users should review this notification for additional information specific to RTIS.
+CERT@VDE has published an advisory (VDE-2021-001) for this vulnerability in PEPPERL+FUCHS PACTware.
+CERT@VDE has published an advisory (VDE-2021-002) for this vulnerability in Weidmüller FDT/DTM Software with WI Manager.
+Mitsubishi Electric has published advisory 2020-020 concerning the vulnerability in MELSOFT FieldDeviceConfigurator.
+CISA recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Ensure the least-privilege user principle is followed.
+Do not open project files from untrusted sources.
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. 

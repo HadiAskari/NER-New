@@ -1,0 +1,46 @@
+
+CVSS V3 6.1
+Vendor: OSIsoft
+Equipment: PI Coresight, PI Web API
+Vulnerability: Information Exposure Through Server Log Files
+UPDATED INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-17-010-01 OSIsoft PI Coresight and PI Web API that was published January 10, 2017, on the NCCIC/ICS-CERT web site.
+AFFECTED PRODUCTS
+OSIsoft reports that the vulnerability affects the following versions:
+
+PI Coresight 2016 R2 and earlier versions, and
+PI Web API 2016 R2 when deployed using the PI AF Services 2016 R2 integrated install kit.
+
+IMPACT
+Anyone with access to the server file system can obtain the service account passwords for the affected services. This is accomplished by examining the installation log file when a nondefault service account and password are specified during installation or upgrade. This potentially leads to unauthorized shutdown of the affected PI services as well as potential reuse of domain credentials.
+MITIGATION
+--------- Begin Update A Part 1 of 1 --------
+OSIsoft has released new versions of PI Vision 2017, PI Web API 2017, and PI AF Services 2017 SP1 install kit. These new versions address this issue for PI Coresight, PI Web API, and the PI AF Services integrated install kit.
+OSIsoft recommends that users follow the workaround detailed in the security bulletin until a software update can be applied. The security bulletin with detailed workaround can be found at:
+https://techsupport.osisoft.com/Troubleshooting/Alerts/AL00312
+--------- End Update A Part 1 of 1 ----------
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability. Not remotely exploitable. Low skill level is needed to exploit.
+VULNERABILITY OVERVIEW
+
+INFORMATION EXPOSURE THROUGH SERVER LOG FILES CWE-533
+
+An information exposure through server log files vulnerability has been identified, which may allow service account passwords to become exposed for the affected services, potentially leading to unauthorized shutdown of the affected PI services as well as potential reuse of domain credentials.
+CVE-2017-5153 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:H).
+RESEARCHER
+Vint Maggs from Savannah River Nuclear Solutions reported this issue to OSIsoft.

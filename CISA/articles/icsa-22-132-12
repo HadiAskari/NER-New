@@ -1,0 +1,84 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: OPC Foundation Local Discovery Server of several industrial products
+Vulnerability: Improper Restriction of Operations within the Bounds of a Memory Buffer
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-132-12 Siemens Industrial Products (Update B) that was published August 11, 2022, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could cause a denial-of-service condition on the service or the device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports this vulnerability affects the OPC Foundation Local Discovery Server of the following Siemens industrial products: 
+
+SIMATIC NET PC Software v14: All versions prior to v14 SP1 Update 14
+SIMATIC NET PC Software v15: All versions
+SIMATIC NET PC Software v16: All versions prior to V16 Update 6
+SIMATIC NET PC Software v17: All versions prior to v17 SP1
+SIMATIC Process Historian OPC UA Server: All versions prior to 2020 SP1
+SIMATIC WinCC: All versions
+
+--------- Begin Update C Part 1 of 2 ---------
+
+SIMATIC WinCC Runtime Professional: All versions prior 10 v18
+SIMATIC WinCC Unified Scada Runtime: All versions prior 10 v18
+
+--------- End Update C Part 1 of 2 ---------
+
+TeleControl Server Basic v3: All versions prior to v3.1.1
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+In OPC Foundation Local Discovery Server versions before 1.04.402.463, remote attackers can cause a denial-of-service condition by sending  targeted messages that lead to access of a memory location after the end of a buffer.
+CVE-2021-40142 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+5. MITIGATIONS
+Siemens has released updates for several affected products and recommends updating to the latest versions. Siemens is preparing further updates and recommends specific countermeasures for products where updates are not, or not yet, available.
+
+SIMATIC NET PC Software v14: Update to v14 SP1 Update 14 or later version
+SIMATIC NET PC Software v16: Update to V16 Update 6 or later version
+SIMATIC NET PC Software v17: Update to v17 SP1 or later version
+SIMATIC Process Historian OPC UA Server: Update to Version 2020 SP1 or later version (see below)
+
+For PCS neo: Update to PCS neo v3.1 SP1
+For PCS 7: Update to PCS 7 v9.1 SP1
+
+
+For WinCC: Contact Siemens support
+
+--------- Begin Update C Part 2 of 2 ---------
+
+SIMATIC WinCC Runtime Professional: Update to V18 or later version
+SIMATIC WinCC Unified Scada Runtime: Update to V18 or later version 
+
+--------- End Update C Part 2 of 2 ---------
+
+TeleControl Server Basic V3: Update to V3.1.1 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Deactivate the OPC Local Discovery Server service if supported by the product use case. The local discovery server service is not activated in the default configuration.
+Use a VPN for protecting network communication between cells.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-321292
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

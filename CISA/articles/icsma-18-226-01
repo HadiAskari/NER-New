@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.3
+
+ATTENTION: Low skill level to exploit
+Vendor: Philips
+Equipment: Philips’ IntelliSpace Cardiovascular (ISCV) products
+Vulnerabilities: Improper Privilege Management, Unquoted Search Path or Element
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker with local access and users privileges to the ISCV/Xcelera server to escalate privileges on the ISCV/Xcelera server and execute arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Philips’ IntelliSpace Cardiovascular (ISCV) products, a comprehensive cardiac image and information management software, are affected:
+
+IntelliSpace Cardiovascular, Version 3.1 or prior, and
+Xcelera Version 4.1 or prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+For ISCV Version 2.x or prior and Xcelera Version 4.1 or prior, an attacker with escalated privileges could access folders which contain executables where authenticated users have write permissions, and could then execute arbitrary code with local administrative permissions.
+CVE-2018-14787 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H).
+ 
+3.2.2    UNQUOTED SEARCH PATH OR ELEMENT CWE-428
+For ISCV Version 3.1 or prior and Xcelera Version 4.1 or prior, an unquoted search path or element vulnerability has been identified, which may allow an attacker to execute arbitrary code and escalate their level of privileges.
+CVE-2018-14789 has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+3.4 RESEARCHER
+Philips reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+For ISCV Version 2.x or prior and Xcelera Version 4.1 or prior, this has been mitigated in ISCV 3.1. Users should contact their local Philips service support team of their regional service support for upgrade instructions.
+For ISCV Version 3.1 or prior and Xcelera Version 4.1 or prior, this will be mitigated in ISCV Version 3.2, scheduled to be released in October 2018.
+As an interim mitigation to the vulnerabilities until ISCV Version 3.2 can be applied, Philips recommends that users:
+
+Review their file permission policies and where possible restrict available permissions.
+
+Users with questions regarding their specific IntelliSpace Cardiovascular installations are advised by Philips to contact their local Philips service support team or their regional service support. Philips contact information is available at the following location:
+https://www.usa.philips.com/healthcare/solutions/customer-service-solutions (link is external).
+Please see the Philips product security website for the latest security information for Philips products:
+https://www.philips.com/productsecurity (link is external).
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

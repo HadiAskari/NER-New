@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.3
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: ABB 
+Equipment: Pulsar Plus Controller  
+Vulnerabilities: Use of Insufficiently Random Values, Cross-Site Request Forgery (CSRF) 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to take control of the product or execute arbitrary code.  
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of ABB Pulsar Plus Controller, are affected: 
+
+ABB Infinity DC Power Plant – H5692448 G104 G842 G224L G630-4 G451C(2) G461(2) – comcode 150047415 
+ABB Pulsar Plus System Controller – NE843_S – comcode 150042936 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352 
+There are several fields in the web pages where a user can enter arbitrary text, such as a description of an alarm or a rectifier. These represent a cross site scripting vulnerability where JavaScript code can be entered as the description with the potential of causing system interactions unknown to the user. These issues were remediated by adding a check of every field update to reject suspicious entries. 
+CVE-2022-1607 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N). 
+3.2.2 USE OF INSUFFICIENTLY RANDOM VALUES CWE-330 
+Every interaction with the web server requires a Session ID that is assigned to the session after a successful login. The reported vulnerability is that the Session IDs were too short (16 bits), too predictable (IDs simply incremented), and were plainly visible in the URLs of the web pages. These issues were remediated by rewriting the web server to follow recommended best practices.  
+CVE-2022-26080 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Dams, Energy, Food and Agriculture, Water and Wastewater 
+COUNTRIES/AREAS DEPLOYED:  Worldwide 
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+3.4 RESEARCHER
+Vlad Ionescu of Facebook Red Team X reported these vulnerabilities to ABB. 
+4. MITIGATIONS
+ABB has an available update resolving a privately reported vulnerability in the product versions listed above. The update is version number 5.0.0 for the application and 5.0.0 for web pages. These updates have been distributed through the appropriate product support channels with affected users.  
+ABB recommends users ensure the firewall protection is properly configured. 
+A workaround suggested by ABB is to use the controller’s Read/Write Enable/Disable feature for a network port (NET1,WRE=0).  
+The controller can disable all writes over the network port. The factory default is to have the write capability enabled. However, some users may not want settings to be remotely changed once systems are set. This feature, when set to “Disable”, will allow no changes to be accepted. Once set, it can only be changed locally through the front panel.  
+Although these workarounds will not correct the underlying vulnerability, they can help block known attack vectors.  
+For more information, see ABB Security Advisory.  
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+No known public exploits specifically target these vulnerabilities.  

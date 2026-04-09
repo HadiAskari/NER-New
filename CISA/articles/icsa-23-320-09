@@ -1,0 +1,115 @@
+
+ 
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/Low attack complexity
+Vendor: Siemens
+Equipment: COMOS
+Vulnerabilities: Improper Restriction of XML External Entity Reference, Path Traversal, Out-of-bounds Write, Out-of-bounds Read, Integer Overflow or Wraparound, Use After Free, Heap-based Buffer Overflow, Cleartext Transmission of Sensitive Information, Classic Buffer Overflow, Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary code, cause a denial-of-service condition, data infiltration, or perform access control violations.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens are affected:
+
+COMOS: All versions
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+MPXJ through 8.1.3 allows XXE attacks. This affects the GanttProjectReader and PhoenixReader components.
+CVE-2020-25020 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+common/InputStreamHelper.java in Packwood MPXJ before 8.3.5 allows directory traversal in the zip stream handler flow, leading to the writing of files to arbitrary locations.
+CVE-2020-35460 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.2.3 OUT-OF-BOUNDS WRITE CWE-787
+Open Design Alliance Drawings SDK before 2022.12.1 mishandles the loading of JPG files. Unchecked input data from a crafted JPG file leads to memory corruption. An attacker can leverage this vulnerability to execute code in the context of the current process.
+CVE-2022-23095 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4 OUT-OF-BOUNDS READ CWE-125
+Open Design Alliance Drawings SDK (all versions prior to 2023.2) is vulnerable to an out-of-bounds read when rendering DWG files after they are opened in the recovery mode. This could allow an attacker to execute code in the context of the current process.
+CVE-2022-28807 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.5 OUT-OF-BOUNDS READ CWE-125
+Open Design Alliance Drawings SDK (all versions prior to 2023.3) is vulnerable to an out-of-bounds read when reading DWG files in a recovery mode. This could allow an attacker to execute code in the context of the current process.
+CVE-2022-28808 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.6 OUT-OF-BOUNDS READ CWE-125
+Open Design Alliance Drawings SDK (all versions prior to 2023.3) is vulnerable to an out-of-bounds read when reading a DWG file with invalid vertex number in a recovery mode. This could allow an attacker to execute code in the context of the current process.
+CVE-2022-28809 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.7 INTEGER OVERFLOW OR WRAPAROUND CWE-190
+Integer overflow in PDFium library used in COMOS allowed a remote attacker to potentially exploit heap corruption via a crafted PDF file.
+CVE-2023-0933 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.8 USE AFTER FREE CWE-416
+Use after free in PDFium library used in COMOS allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page.
+CVE-2023-1530 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.9 USE AFTER FREE CWE-416
+Use after free in PDFium library used in COMOS allowed a remote attacker to potentially exploit heap corruption via a crafted PDF file.
+CVE-2023-2931 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.10 USE AFTER FREE CWE-416
+Use after free in PDFium library used in COMOS allowed a remote attacker to potentially exploit heap corruption via a crafted PDF file.
+CVE-2023-2932 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.11 HEAP-BASED BUFFER OVERFLOW CWE-122
+Open Design Alliance Drawings SDK used in affected application is vulnerable to heap-based buffer overflow while parsing specially crafted DWG files. An attacker could leverage this vulnerability to execute code in the context of the current process. (ZDI-CAN-19104)
+CVE-2023-22669 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.12 HEAP-BASED BUFFER OVERFLOW CWE-122
+Open Design Alliance Drawings SDK used in affected application is vulnerable to heap-based buffer overflow while parsing specially crafted DXF files. An attacker could leverage this vulnerability to execute code in the context of the current process. (ZDI-CAN-19382)
+CVE-2023-22670 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.13 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Caching system in the affected application leaks sensitive information such as user and project information in cleartext via UDP.
+CVE-2023-43503 has been assigned to this vulnerability. A CVSS v3 base score of 3.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.14 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+Ptmcast executable used for testing cache validation service in affected application is vulnerable to Structured Exception Handler (SEH) based buffer overflow. This could allow an attacker to execute arbitrary code on the target system or cause denial of service condition.
+CVE-2023-43504 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.15 IMPROPER ACCESS CONTROL CWE-284
+The affected application lacks proper access controls in SMB shares. This could allow an attacker to access files that the user should not have access to.
+CVE-2023-43505 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N).
+3.2.16 IMPROPER ACCESS CONTROL CWE-284
+The affected application lacks proper access controls in making the SQLServer connection. This could allow an attacker to query the database directly to access information that the user should not have access to.
+CVE-2023-46601 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends updating to the latest version the COMOS product:
+
+Update to V10.4.4 or later version.
+For CVE-2023-43503, update the COMOS database to version 25. (See "Data maintenance: Modifying the version" in the user manual. Warning: After the update, the database cannot be used by older COMOS versions).
+For CVE-2023-43504, delete ptmcast.exe from bin folder of COMOS installation directory. Installations from COMOS V10.4.4 or later version does not contain ptmcast.exe.
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+For CVE-2023-43505 and CVE-2023-46601, use an application server like Citrix which builds an additional layer of access control around COMOS. The file share with the documents folder and the database should be only accessible by the application server. You can find further recommendations in the COMOS manual "Security relevant configuration" in COMOS documentation.
+Ensure all files imported into COMOS originate from a trusted source and transmitted are over secure channels.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-137900 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 16, 2023: Initial Publication
+

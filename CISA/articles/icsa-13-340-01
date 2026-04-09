@@ -1,0 +1,50 @@
+
+OVERVIEW
+Siemens has reported to NCCIC/ICS-CERT multiple vulnerabilities in the RuggedCom Rugged OS (ROS). Siemens has produced a firmware update that mitigates these vulnerabilities. Exploitation of these vulnerabilities could allow an attacker to hijack an active Web session and access administrative functions on the devices without proper authorization.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens RuggedCom ROS versions are affected:
+
+RuggedCom devices with ROS firmware version prior to v3.12.2
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow attackers to hijack an active Web session and access administrative functions on the devices without proper authorization or unprivileged users to perform privilege escalation.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is an international company headquartered in Munich, Germany. Siemens develops products mainly in the energy, healthcare and public health sectors, and transportation systems.
+The affected products, RuggedCom switches and serial-to-Ethernet devices, are used to connect devices that operate in harsh environments such as electric utility substations and traffic control cabinets.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+USE OF INSUFFICIENTLY RANDOM VALUESCWE-330: Use of Insufficiently Random Values, http://cwe.mitre.org/data/definitions/330.html, Web site last accessed December 06, 2013.
+
+The RuggedCom ROS-Based integrated Web server on Port 443/TCP of the affected devices might allow attackers to guess the session ID of an active Web session and hijack it. The attacker must know the client IP address of the administrator.
+CVE-2013-6925NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6925, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory.has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:C, Web site last accessed December 06, 2013.
+
+AUTHENTICATION BYPASS ISSUES CWE-592: Authentication Bypass Issues, http://cwe.mitre.org/data/definitions/592.html, Web site last accessed December 06, 2013.
+
+The RuggedCom ROS-Based integrated Web server on Port 443/TCP of the affected devices might allow attackers with unprivileged accounts (guest or operator) to perform limited administrative operations over the network.
+CVE-2013-6926NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-6926, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory.has been assigned to this vulnerability. A CVSS v2 base score of 8.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:P/I:P/A:C, Web site last accessed December 06, 2013.
+
+VULNERABILITY DETAILS
+
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low to moderate skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens has produced a firmware update, RuggedCom ROS V3.12.2, which resolves these vulnerabilities. Asset owners and operators should contact Siemens customer support to acquire the update.
+Siemens security advisory is located here:
+http://www.siemens.com/innovation/pool/de/forschungsfelder/siemens_security_advisory_ssa-324789.pdf
+Siemens update information can be obtained at: RuggedCom support team - support@ruggedcom.com.
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed December 06, 2013. that is available for download from the NCCIC/ICS-CERT Web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

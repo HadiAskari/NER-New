@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 3.7
+
+ATTENTION: Exploitable remotely
+Vendor: Carestream
+Equipment: Carestream Vue RIS
+Vulnerability: Information Exposure Through an Error Message
+
+2. RISK EVALUATION
+An attacker with access to the network of the affected system can passively read traffic.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Carestream Vue RIS, a web-based radiology information system, are affected:
+
+RIS Client Builds: Version 11.2 and prior running on a Windows 8.1 machine with IIS/7.5
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INFORMATION EXPOSURE THROUGH AN ERROR MESSAGE CWE-209
+When contacting a Carestream server where there is no Oracle TNS listener available, users will trigger an HTTP 500 error, leaking technical information an attacker could use to initiate a more elaborate attack.
+CVE-2018-17891 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Dan Regalado of Zingbox reported this vulnerability to NCCIC.
+4. MITIGATIONS
+Carestream has remediated the vulnerability in the current version of the software and have provided the following workarounds for past versions which are affected. Given the mitigation instructions provided, this vulnerability is considered controlled vs. uncontrolled.
+
+RIS v11.3 forward | R&D has addressed the information leakage and enabled SSL.
+For RIS 11.2 running Windows 8.1 and IIS 7.2:
+
+
+Disable “Show debug messages.”
+Enable SSL for client/server communications.
+
+Please contact Carestream Support for assistance. Carestream contact information is available at the following location:
+https://www.carestream.com/en/us/medical/contact-us/world-wide-contacts.
+Users can open a request through the eService portal at: https://eservice.carestream.com.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. High skill level is needed to exploit.

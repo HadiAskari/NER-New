@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.3
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: INVT Electric
+Equipment: VT-Designer
+Vulnerabilities: Deserialization of Untrusted Data, Heap-based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause the program to crash and may allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+ZDI reports the following versions of VT-Designer are affected:
+
+VT-Designer 2.1.7.31
+
+Other versions could also be affected.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+The program populates objects with user supplied input via a file without first checking for validity, allowing attacker supplied input to be written to known memory locations. This may cause the program to crash or allow remote code execution.
+CVE-2018-18987 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+The program reads the contents of a file (which is already in memory) into another heap-based buffer, which may cause the program to crash or allow remote code execution.
+CVE-2018-18983 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy, Information Technology, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: China
+
+3.4 RESEARCHER
+Ariele Caltabiano (kimiya) working with Trend Micro’s Zero Day Initiative reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+INVT Electric’s mitigations for these vulnerabilities are not yet available.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

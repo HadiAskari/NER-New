@@ -1,0 +1,76 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low skill level to exploit
+Vendor: Siemens
+Equipment: RUGGEDCOM ROS
+Vulnerabilities: Improper Restriction of Operations within the Bounds of a Memory Buffer, Resource Management Errors
+
+2    UPDATE
+This updated advisory is a follow-up to the original advisory titled ICSA-19-344-03 Siemens RUGGEDCOM ROS that was published December 10, 2019, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a denial-of-service condition or arbitrary code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 1 of 2 ---------
+The following versions of RUGGEDCOM ROS, an ethernet switch, are affected:
+
+RUGGEDCOM ROS RMC8388: All versions with U-Boot prior to V2016.05RS09 (only affected by CVE-2018-18440)
+RUGGEDCOM ROS RSG900C: All versions with U-Boot prior to V2016.05RS09 (only affected by CVE-2018-18440)
+RUGGEDCOM ROS RSG900R: All versions with U-Boot prior to V2016.05RS09 (only affected by CVE-2018-18440)
+RUGGEDCOM ROS RSG907R: All versions with U-Boot prior to V2016.05RS09 (only affected by CVE-2018-18440)
+RUGGEDCOM ROS RSG908C: All versions with U-Boot prior to V2016.05RS09 (only affected by CVE-2018-18440)
+RUGGEDCOM ROS RSG909R: All versions with U-Boot prior to V2016.05RS09 (only affected by CVE-2018-18440)
+RUGGEDCOM ROS RSG910C: All versions with U-Boot prior to V2016.05RS09 (only affected by CVE-2018-18440)
+RUGGEDCOM ROS RSG920P: Versions 2016.05RS09 and later (only affected by CVE-2019-13103)
+RUGGEDCOM ROS RSG920P: All versions with U-Boot prior to V2016.05RS09
+RUGGEDCOM ROS RSG2488: Versions 2016.05RS09 and later (only affected by CVE-2019-13103)
+RUGGEDCOM ROS RSG2488: All versions with U-Boot prior to V2016.05RS09
+RUGGEDCOM ROS RSL910: All versions with U-Boot prior to V2016.05RS09 (only affected by CVE-2018-18440)
+RUGGEDCOM ROS RST2228: Versions 2016.05RS09 and later (only affected by CVE-2019-13103)
+RUGGEDCOM ROS RST2228: All versions with U-Boot prior to V2016.05RS09
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+The embedded boot loader has a locally exploitable buffer overflow via a crafted kernel image because the filesystem loading is mishandled.
+CVE-2018-18440 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.2 RESOURCE MANAGEMENT ERRORS CWE-399
+The embedded boot loader has a physically exploitable vulnerability. A crafted self-referential DOS partition table will cause the bootloader to infinitely recurse, causing the stack to grow infinitely and eventually crash.
+CVE-2019-13103 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Healthcare and Public Health, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+CVE-2018-18440: Disable boot interface access during boot up via the ‘bootoption.txt’ file parameter ‘Security = yes’.
+CVE-2019-13103: Disable access to the removable media via ‘bootoption.txt’ file parameter ‘Disableautoaccessremovable = yes’. Note that this vulnerability only applies to RUGGEDCOM ROS, if the device boots from removable media.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+--------- Begin Update A Part 2 of 2 ---------
+For more information see Siemens Security Advisory SSA-618620 in HTML or CSAF.
+--------- Begin Update A Part 2 of 2 ---------
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens security advisory SSA-618620 at the following location:
+http://www.siemens.com/cert/advisories
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Restrict access to devices following a least privilege principle.
+Implement physical security controls to mitigate unauthorized physical access. 
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

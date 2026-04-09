@@ -1,0 +1,50 @@
+
+Overview
+Security researcher Dmitriy Pletnevo of Secunia ResearchSecunia Research, http://secunia.com/secunia_research/2011-36/, website last accessed June 16, 2011. has released details of multiple overflow vulnerabilities affecting the InduSoft ISSymbol ActiveX control. The researcher identified both stack-based and heap-based buffer overflows.
+Successful exploitation of these vulnerabilities allows execution of arbitrary code.
+--------- Begin Update A Part 1 of 4----------
+ICS-CERT has confirmed that Secunia and InduSoft coordinated these vulnerabilities prior to public release of this report. InduSoft has issued an update addressing multiple vulnerabilities. Secunia has validated that the patch addresses the arbitrary code execution.
+--------- End Update A Part 1 of 4 ----------
+Affected Products
+--------- Begin Update A Part 2 of 4----------
+The researcher reports that the vulnerabilities affects the following InduSoft Products:
+--------- End Update A Part 2 of 4 ----------
+
+InduSoft ISSymbol ActiveX Control (build 301.1009.2904.0)
+InduSoft Thin Client Version 7.0
+InduSoft Web Studio Version 7.0B2.
+
+Impact
+Successful exploitation of the reported vulnerabilities can allow an attacker to perform arbitrary code execution. These actions can result in adverse application conditions and ultimately impact the production environment on which the supervisory control and data acquisition (SCADA) system is used.
+Background
+InduSoft Web Studio is a collection of automation tools that provide building blocks to develop human-machine interfaces, SCADA systems, and embedded instrumentation solutions. InduSoft is often integrated as a third-party application in control systems.
+Vulnerability Characterization
+Heap-Based Buffer Overflow Vulnerability Overview
+Boundary errors on processing the “InternationalOrder” and “InternationalSeparator” properties can be exploited to cause a heap-basedMITRE, http://cwe.mitre.org/data/definitions/122.html, website last accessed June 16, 2011. buffer overflow via an overly long string assigned to the properties.
+Heap-Based Buffer Overflow Vulnerability Details
+Exploitability
+--------- Begin Update A Part 3 of 4----------
+This vulnerability is remotely exploitable by creating a specially crafted webpage for a user with the ActiveX component installed.
+--------- End Update A Part 3 of 4 ----------
+Existence of Exploit
+No exploits are known specifically to target this vulnerability.
+Difficulty
+This vulnerability requires moderate skills to exploit.
+Stack-Based Buffer Overflow vulnerability Overview
+The researcher reports,Secunia Research, http://secunia.com/secunia_research/2011-36/, website last accessed June 16, 2011. “A boundary error when processing a certain window procedure can be exploited to cause a stack-based buffer overflowMITRE, http://cwe.mitre.org/data/definitions/121.html, website last accessed June 16, 2011. via e.g., an overly long string passed as the ‘bstrFileName’ parameter to the ‘OpenScreen()’ method.
+“A boundary error when creating a log file can be exploited to cause a stack-based buffer overflow via an overly long string assigned to the ‘LogFileName’ property.”
+Stack-Based Buffer Overflow Vulnerability Details
+Exploitability
+--------- Begin Update A Part 4 of 4----------
+This vulnerability is remotely exploitable by creating a specially crafted webpage for a user with the ActiveX component installed.
+--------- End Update A Part 4 of 4 ----------
+Existence of Exploit
+No exploits are known specifically to target this vulnerability.
+Difficulty
+This vulnerability requires moderate skills to exploit.
+Mitigation
+ICS-CERT recommends that customers of InduSoft Web Studio software take the following mitigation steps:
+Upgrade to the latest version and install the latest patch. The InduSoft security patch is available for download at: http://www.indusoft.com/hotfixes/hotfixes.php.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT encourages asset owners to minimize network exposure for all control systems devices. Critical devices should not directly face the Internet. Locate control systems networks and remote devices behind firewalls and isolate them from the business network. When remote access is required, use secure methods such as Virtual Private Networks (VPNs).
+The Control Systems Security Program (CSSP) also provides a section for control system security recommended practices on the CSSP page of the US-CERT website. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.

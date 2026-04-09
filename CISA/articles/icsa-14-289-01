@@ -1,0 +1,50 @@
+
+OVERVIEW
+Chris Sistrunk of Mandiant and Adam Crain of Automatak have identified an out of bound read vulnerability in the IOServer application. IOServer has produced a new version that mitigates this vulnerability. Adam Crain has tested the new version to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following IOServer versions are affected:
+
+IOServer Version 1.0.20 and older.
+
+IMPACT
+An attacker who exploits this out of bound read vulnerability may be able to crash the OPC Server application software running on the target system.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+IOServer is an Australian company based in Sydney, Australia.
+The affected product, IOServer, is a Windows-based (WindowsNT/95/98/ME/2000/2003/XP/2008/7) OPC Server that allows OPC clients, such as human-machine interface and supervisory control and data acquisition systems, to exchange plant floor data with programmable logic circuits. According to IOServer, the affected product is deployed across multiple sectors including critical manufacturing, water and wastewater systems, energy, and others.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNCONTROLLED RESOURCE CONSUMPTION (RESOURCE EXHAUSTION)CWE-400: Uncontrolled Resource Consumption, http://cwe.mitre.org/data/definitions/400.html, web site last accessed October 16, 2014.
+
+A vague interpretation of the DNP3 protocol may allow a null header to cause an out of bound read command to create large numbers of entries in the master in some implementations. This is not a universal problem for all DNP3 users, vendors or integrators, but it may occur.
+CVE-2014-5425NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5425, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P, web site last accessed October 16, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+DNP3 Application Note AN2013-004b Validation of Incoming DNP3 Data, published August 13, 2014, addresses this issue. This bulletin may be downloaded at URL:
+https://www.dnp.org/DNP3Downloads/AN2013-004b%20Validation%20of%20Incoming%20DNP3%20Data.pdf)
+IOServer has produced a new version that mitigates the vulnerability. The new version, Beta2112.exe, is available for download here:
+http://www.ioserver.com/
+Remote devices should not return a variation of 0 to a master, and a master that encounters a zero length message from a remote is suppose to stop processing that message.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks.
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed October 16, 2014. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed October 16, 2014. for more information on social engineering attacks.
+

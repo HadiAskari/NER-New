@@ -1,0 +1,64 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Mitsubishi Electric
+Equipment: MELSEC iQ-R Series Safety CPU and SIL2 Process CPU
+Vulnerability: Incorrect Privilege Assignment
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a non-administrator user to disclose the credentials (user ID and password) of a user with a lower access level than themselves.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Mitsubishi Electric reports that the following MELSEC iQ-R Series products are affected:
+
+MELSEC iQ-R Series Safety CPU R08SFCPU: all versions
+MELSEC iQ-R Series Safety CPU R16SFCPU: all versions
+MELSEC iQ-R Series Safety CPU R32SFCPU: all versions
+MELSEC iQ-R Series Safety CPU R120SFCPU: all versions
+MELSEC iQ-R Series SIL2 Process CPU R08PSFCPU: all versions
+MELSEC iQ-R Series SIL2 Process CPU R16PSFCPU: all versions
+MELSEC iQ-R Series SIL2 Process CPU R32PSFCPU: all versions
+MELSEC iQ-R Series SIL2 Process CPU R120PSFCPU: all versions
+
+3.2 Vulnerability Overview
+3.2.1 INCORRECT PRIVILEGE ASSIGNMENT CWE-266
+Information disclosure vulnerability due to incorrect privilege assignment exists in MELSEC iQ-R Series Safety CPU and SIL2 Process CPU modules. After a remote attacker logs into the CPU module as a non-administrator user, the attacker may disclose the credentials (user ID and password) of a user with a lower access level than the attacker by sending a specially crafted packet.
+CVE-2023-6815 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2023-6815. A base score of 7.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Reid Wightman of Dragos Inc. reported this vulnerability to Mitsubishi Electric.
+4. MITIGATIONS
+When the affected products are used in the following combinations, an attack can be prevented by enabling "communicating with only the enhanced version of vulnerability management of GX Works3" when writing user information to the CPU module:
+
+MELSEC iQ-R Series Safety CPU versions 27 or later used with GX Works3 versions 1.087R or later.
+MELSEC iQ-R Series SIL2 Process CPU version 12 or later used with GX Works3 versions 1.105K or later.
+
+Mitsubishi Electric recommends that users of MELSEC iQ-R Series Safety CPU (version 26 and prior) or MELSEC iQ-R Series SIL2 Process CPU (version 11 and prior) take the following mitigation measures to minimize the risk of exploiting this vulnerability because updating the product to the enhanced version of vulnerability management is not available:
+
+Use a firewall or virtual private network (VPN), etc., to prevent unauthorized access when Internet access is required.
+Use within a LAN and block access from untrusted networks and hosts through firewalls.
+Use IP filter function to block access from untrusted hosts. For details on the IP filter function, please refer to the following manual for each product. "1.13 Security" - "IP filter" in the MELSEC iQ-R Ethernet User's Manual(Application).
+Restrict physical access to the affected product as well as to the personal computers and the network devices that can communicate with it.
+Install antivirus software on your personal computer that can access the affected product.
+
+For specific update instructions and additional details, see Mitsubishi Electric advisory 2023-021..
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+February 13, 2024: Initial Publication
+May 16, 2024: Update A - Additional workarounds for MELSEC iQ-R Series SIL2 Process CPU.
+

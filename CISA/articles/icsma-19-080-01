@@ -1,0 +1,101 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.3
+ATTENTION: Exploitable with adjacent access/low attack complexity
+Vendor: Medtronic
+Equipment: MyCareLink Monitor, CareLink Monitor, CareLink 2090 Programmer, specific Medtronic implanted cardiac devices listed below
+Vulnerabilities: Improper Access Control, Cleartext Transmission of Sensitive Information
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSMA-19-080-01 Medtronic Conexus Radio Frequency Telemetry Protocol (Update B) that was published June 4, 2020, to the CISA webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker with adjacent short-range access to one of the affected products to interfere with, generate, modify, or intercept the radio frequency (RF) communication of the Medtronic proprietary Conexus telemetry system, potentially impacting product functionality and/or allowing access to transmitted sensitive data. Successful exploitation requires: (1) an RF device capable of transmitting or receiving Conexus telemetry communication, such as a monitor, programmer, or software-defined radio (SDR); (2) to have adjacent short-range access to the affected products; and (3) for the products to be in states where the RF functionality is active. Before the device implant procedure and during follow-up clinic visits, the Conexus telemetry sessions require initiation by an inductive protocol. Outside of these use environments, the RF radio in the affected implanted device is enabled for brief periods of time to support scheduled follow-up transmissions and other operational and safety notifications. The result of successful exploitation of these vulnerabilities may include the ability to read and write any valid memory location on the affected implanted device and therefore impact the intended function of the device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following products and versions of Medtronic devices utilizing the Conexus telemetry protocol are affected:
+
+MyCareLink Monitor, Versions 24950 and 24952
+CareLink Monitor, Version 2490C
+CareLink 2090 Programmer
+Amplia CRT-D (all models)
+Claria CRT-D (all models)
+Compia CRT-D (all models)
+Concerto CRT-D (all models)
+Concerto II CRT-D (all models)
+Consulta CRT-D (all models)
+Evera ICD (all models)
+Maximo II CRT-D and ICD (all models)
+Mirro ICD (all models)
+Nayamed ND ICD (all models)
+Primo ICD (all models)
+Protecta ICD and CRT-D (all models)
+Secura ICD (all models)
+Virtuoso ICD (all models)
+Virtuoso II ICD (all models)
+Visia AF ICD (all models)
+Viva CRT-D (all models)
+Brava CRT-D (all models)
+Mirro MRI ICD (all models)
+
+Not all devices may be available in in all geographical locations.
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER ACCESS CONTROL CWE-284
+The Conexus telemetry protocol utilized within this ecosystem does not implement authentication or authorization. An attacker with adjacent short-range access to an affected product, in situations where the product’s radio is turned on, can inject, replay, modify, and/or intercept data within the telemetry communication. This communication protocol provides the ability to read and write memory values to affected implanted cardiac devices; therefore, an attacker could exploit this communication protocol to change memory in the implanted cardiac device.
+CVE-2019-6538 has been assigned to this vulnerability. A CVSS v3 base score of 9.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H).
+4.2.2    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The Conexus telemetry protocol utilized within this ecosystem does not implement encryption. An attacker with adjacent short-range access to a target product can listen to communications, including the transmission of sensitive data.
+CVE-2019-6540 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+4.4 RESEARCHER
+Peter Morgan of Clever Security; Dave Singelée and Bart Preneel of KU Leuven; Eduard Marin formerly of KU Leuven, currently with University of Birmingham; Flavio D. Garcia; Tom Chothia of the University of Birmingham; and Rik Willems of University Hospital Gasthuisberg Leuven reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Medtronic has applied additional controls for monitoring and responding to improper use of the Conexus telemetry protocol by the affected implanted cardiac devices. Additional mitigations are being developed and will be deployed through future updates, assuming regulatory approval.
+Medtronic has developed mitigating patches for a subset of the affected implanted cardiac device models. These patches are installed during regular office visits. Medtronic has stated that patches for additional impacted models are being developed by Medtronic and will be deployed through future updates. Patches are currently available for the following affected models:
+--------- Begin Update C Part 1 of 1 -------- 
+
+Protecta CRT-D and implantable cardioverter defibrillators (ICDs), all models
+
+--------- End Update C Part 1 of 1 -------- 
+
+Amplia MRI CRT-D, all models (patch available in U.S. only)
+Claria MRI CRT-D, all models (patch available in U.S. only)
+Compia MRI CRT-D, all models (patch available in U.S. only)
+Visia AF MRI ICD, all models
+Visia AF ICD, all models 
+Brava CRT-D, all models                                            
+Evera MRI ICD, all models
+Evera ICD, all models
+Mirro MRI ICD, all models
+Primo MRI ICD, all models
+Viva CRT-D, all models
+
+Medtronic recommends that users take additional defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Maintain good physical control over home monitors and programmers.
+Use only home monitors, programmers, and implantable devices obtained directly from your healthcare provider or a Medtronic representative to ensure integrity of the system.
+Do not connect unapproved devices to home monitors and programmers through USB ports or other physical connections.
+Only use programmers to connect and interact with implanted devices in physically controlled hospital and clinical environments.
+Only use home monitors in private environments such as a home, apartment, or otherwise physically controlled environment.
+Report any concerning behavior regarding these products to your healthcare provider or a Medtronic representative.
+
+Medtronic has released additional patient focused information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable unnecessary accounts and services.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+These vulnerabilities are not exploitable remotely.

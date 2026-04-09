@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Wind River, General Electric
+Equipment: VxWorks, D20MX
+
+--------- Begin Update A Part 1 of 4 ---------
+
+Vulnerabilities: Improper Input Validation
+
+--------- End Update A Part 1 of 4 ---------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-13-091-01 Wind River VxWorks SSH and Web Server that was published April 1, 2013, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause affected products to be unavailable until the next reboot.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Wind River products are affected:
+
+Web Server & CLI vulnerabilities: VxWorks Versions 5.5 through 6.9, and
+SSH vulnerabilities: VxWorks Versions 6.5 through 6.9
+
+--------- Begin Update A Part 2 of 4 ---------
+GE reports the vulnerabilities affect the following D20MX versions:
+
+D20MX v1.0-1.6.2
+
+--------- End Update A Part 2 of 4 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER INPUT VALIDATION CWE-20
+The SSH server (IPSSH) implementation in VxWorks 6.5 through 6.9 contains a denial-of-service (DoS) vulnerability due to an issue in processing authentication requests. An attacker could send specially crafted authentication requests to cause an SSH server outage. SSH access may become unavailable until the next reboot as a result of this vulnerability being exploited. 
+CVE-2013-0711 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2   IMPROPER INPUT VALIDATION CWE-20
+The SSH server (IPSSH) implementation in VxWorks 6.5 through 6.9 contains a DoS vulnerability due to an issue in processing pty requests. Receiving a specially crafted pty request packet may cause SSH access to be unavailable until the next reboot. The attacker must login with a valid user name and password combination before launching a successful attack. 
+CVE-2013-0713 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+4.2.3    IMPROPER INPUT VALIDATION CWE-20
+The SSH server (IPSSH) implementation in VxWorks 6.5 through 6.9 contains vulnerability due to an issue in the processing authentication requests. Receiving a specially crafted packet for a public key authentication request may cause the server to hang and SSH access to be unavailable until the next reboot. In addition, arbitrary code may be executed on the server with administrator privileges. 
+CVE-2013-0714 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+--------- Begin Update A Part 3 of 4 ---------
+4.2.4    IMPROPER INPUT VALIDATION CWE-20
+--------- End Update A Part 3 of 4 ---------
+The WebCLI component in VxWorks 5.5 through 6.9 contains a DoS vulnerability due to an issue in parsing command strings. An attacker can login to a CLI session and cause the current CLI session to terminate. A new CLI session may be re-established without rebooting. 
+CVE-2013-0715 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L).
+4.2.5   IMPROPER INPUT VALIDATION CWE-20
+The Web Server in VxWorks 5.5 through 6.9 contains a DoS vulnerability. When a user accesses the VxWorks Web Server using a specially crafted URL, the server may crash. 
+CVE-2013-0716 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Hisashi Kojima and Masahiro Nakada of Fujitsu Laboratories discovered these vulnerabilities.
+5. MITIGATIONS
+According to Wind River, software patches for these vulnerabilities are available for all affected VxWorks versions. Users interested in obtaining these patches should contact Wind River technical support for assistance.
+http://windriver.com/support/ 
+--------- Begin Update A Part 4 of 4 ---------
+GE reports the vulnerabilities do not impact Version 1.7 or newer. To upgrade a D20MX to Version 1.8, users should follow the upgrade procedures:
+
+"TN0110 D20MX v1.8+ Upgrade Procedure" or
+"TN0111 D20MX v1.8+ Upgrade over Serial Procedure"
+
+These are available for download from the tech support website: http://sc.ge.com/*SASTechSupport  > Substation Automation > D20MX > Firmware v1.80 > Documentation.
+--------- End Update A Part 4 of 4 ---------
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

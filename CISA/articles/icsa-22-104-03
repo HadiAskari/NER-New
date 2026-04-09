@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Red Lion
+Equipment: DA50N
+Vulnerabilities: Insufficient Verification of Data Authenticity, Weak Password Requirements, Use of Unmaintained Third-Party Components, Insufficiently Protected Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in data compromise, data modification, and a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Red Lion DA50N, a networking gateway, are affected:
+
+DA50N: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+Authorized users may install a maliciously modified package file when updating the device via the web user interface. The user may inadvertently use a package file obtained from an unauthorized source or a file that was compromised between download and deployment.
+CVE-2022-26516 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H).
+3.2.2    WEAK PASSWORD REQUIREMENTS CWE-521
+The weak password on the web user interface can be exploited via HTTP or HTTPS. Once such access has been obtained, the other passwords can be changed. The weak password on Linux accounts can be accessed via SSH or Telnet, the former of which is by default enabled on trusted interfaces. While the SSH service does not support root login, a user logging in using either of the other Linux accounts may elevate to root access using the su command if they have access to the associated password.
+CVE-2022-1039 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.3    USE OF UNMAINTAINED THIRD-PARTY COMPONENTS CWE-1104
+This product relies on an outdated, unmaintained Linux kernel v4.9.119 that contains multiple vulnerabilities that may impact security. 
+3.2.4    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+A malicious actor having access to the exported configuration file may obtain the stored credentials and thereby gain access to the protected resource. If the same passwords were used for other resources, further such assets may be compromised.
+CVE-2022-27179 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Ron Brash of aDolus Technology Inc. reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Red Lion notes the DA50N series product is at end-of-life and does not intend to release a software update to address these vulnerabilities. Users are encouraged to apply workarounds and mitigations or upgrade their device to DA50A and DA70A.
+Red Lion has provided the following workarounds to help mitigate the risk of these vulnerabilities:
+
+Do not install image files that are obtained from sources other than the official Red Lion website.
+When downloading images from Red Lion’s website, ensure the validity of the server’s TLS certificate.
+If package files or images are to be stored before deployment, ensure they are stored in a secure manner.
+Minimize the risk of unauthorized installation via SD card by limiting physical access to the device.
+Ensure the default UI password is changed to one meeting standard security practices.
+Change the admin, rlcuser and techsup account passwords from their default values.
+Disable the SSH service and keep the telnet service disabled if they are not required.
+Do not re‐use the same password for securing multiple resources.
+Limit access to configuration files that contain valuable credentials.
+Ensure the use of secure credentials when configuring optional services.
+Enable only the minimum set of optional services required for the application.
+
+For additional information, refer to Red Lion’s security alert.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

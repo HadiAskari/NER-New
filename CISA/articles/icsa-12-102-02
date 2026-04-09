@@ -1,0 +1,66 @@
+
+Overview
+This Advisory is a follow-up to the ICS-CERT Alert titled “ICS-ALERT-12-020-05A—Koyo Ecom100 Vulnerabilities” that was originally published January 20, 2012, on the ICS-CERT web page and updated on February 14, 2012.ICS-CERT is aware of a public report of vulnerabilities with proof-of-concept (PoC) exploit code affecting the Koyo ECOM100 Ethernet Module. This report is based on information presented by Reid Wightman during Digital Bond’s SCADA Security Scientific Symposium (S4) on January19, 2012. Vulnerability details were released without coordination with either the vendor or ICS-CERT.A brute force password cracking tool has also been released that targets the weak authentication vulnerability in the ECOM series modules. This tool may greatly reduce the time and skill level required to attack a vulnerable system.ICS-CERT has coordinated these vulnerabilities with Koyo, which has produced an updated firmware that resolves these vulnerabilities.
+Affected Products
+DirectLogic DL205 Series Programmable Logic Controllers
+
+H2-ECOM (For DirectLogic DL205 Series Programmable Logic Controllers)
+H2-ECOM-F (For DirectLogic DL205 Series Programmable Logic Controllers)
+H2-ECOM100 (For DirectLogic DL205 Series Programmable Logic Controllers)
+
+DirectLogic DL06 Series Programmable Logic Controllers
+
+H0-ECOM (For DirectLogic DL06 Series Programmable Logic Controllers)
+H0-ECOM100 (For DirectLogic DL06 Series Programmable Logic Controllers).
+
+DirectLogic DL405 Series Programmable Logic Controllers
+
+H4-ECOM (For DirectLogic DL405 Series Programmable Logic Controllers)
+H4-ECOM-F (For DirectLogic DL405 Series Programmable Logic Controllers)
+H4-ECOM100 (For DirectLogic DL405 Series Programmable Logic Controllers).
+
+Impact
+Successful exploitation of these vulnerabilities may allow an attacker to load modified firmware, or to perform other malicious activities on the system.Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+Koyo is an international manufacturer of automation products and controllers including programmable logic controllers. AutomationDirect.com is a subsidiary of Koyo, and the exclusive distributor of Koyo programmable controllers for North America, South America, Australia, and Europe.The Koyo ECOM100 Ethernet module is used to communicate between a PLC and the control system.
+Vulnerability Characterization
+Vulnerability Overview
+Buffer Overflowhttp://cwe.mitre.org/data/definitions/119.html, CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer. This website was last accessed April 10, 2012.
+This vulnerability exists because long string input to parameters will cause a buffer overflow, which may allow execution of arbitrary code.
+CVE-2012-1805  has been assigned to this vulnerability.
+Mitigation
+Koyo reports that this is resolved by the patch available for the ECOM modules listed in this Advisory.
+Weak Password Requirementshttp://cwe.mitre.org/data/definitions/521.html , CWE-521: Weak Password Requirements. This website was last accessed April 10, 2012.
+This vulnerability exists because the ECOM modules only allow use of up to an 8-byte password for authentication. A brute force tool for exploiting this vulnerability has been released publicly.
+CVE-2012-1806 has been assigned to this vulnerability.
+Mitigation
+Koyo reports that this is resolved by the patch available for the ECOM modules listed in this Advisory.
+Web Server Requires No Authenticationhttp://cwe.mitre.org/data/definitions/306.html , CWE-306: Missing Authentication for Critical Function. This website was last accessed April 10, 2012.
+This vulnerability exists because the web server in the ECOM modules does not require authentication to perform critical functions.
+CVE-2012-1808 MITIGATION has been assigned to this vulnerability.
+Mitigation
+According to Koyo, the web server within the ECOM modules are limited to module configuration parameters. Web server authentication was not added to the module; however, the web server is now disabled by default. A configuration change is required to enable the web server.
+Uncontrolled Resource Consumptionhttp://cwe.mitre.org/data/definitions/306.html, CWE-306: Missing Authentication for Critical Function. This website was last accessed April 10, 2012.
+This vulnerability exists because the ECOM web server does not properly restrict the size or amount of resources that are requested or could be influenced by an actor. This can lead to excessive resource consumption, affecting system performance.
+CVE-2012-1809 has been assigned to this vulnerability.
+Mitigation
+According to Koyo, the web server within the ECOM modules is limited to module configuration parameters. Resource management features were not added to the module; however, the web server is now disabled by default. A configuration change is now required to enable the web server.
+Vulnerability Details
+Exploitability
+These vulnerabilities are all remotely exploitable.
+Existence of Exploit
+Public exploits are known to target these vulnerabilities.
+Difficulty
+An attacker with a low to moderate skill level would be able to exploit these vulnerabilities.
+Mitigation
+According to Automation Direct, the firmware for the ECOM family of Ethernet Products for the Koyo DirectLogic Series of PLCs has been updated to address these vulnerabilities; the update can be downloaded here: http://www.hosteng.com/.AutomationDirect.com encourages all customers that use and purchase the above products to subscribe to the e-mail firmware notification services for e-mail notification services for future upgrades and updates. Users can subscribe to this notification system.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01A—Cyber Intrusion Mitigation Strategies, which is available for download from the ICS-CERT Web page.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+

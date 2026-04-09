@@ -1,0 +1,140 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely; low skill level to exploit
+Vendor: Siemens
+Equipment: SIPROTEC 5 and DIGSI 5
+Vulnerabilities: Improper Input Validation
+
+2    UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-190-05 Siemens SIPROTEC 5 and DIGSI 5 (Update B) that was published December 10, 2019 on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a denial-of-service condition and limited control of file upload, download, and delete functions.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following SIPROTEC 5 and DIGSI 5 products:
+
+SIPROTEC 5 (All versions prior to v7.90) with CPU variants CP300 and CP100 and the respective Ethernet communication modules listed below:
+
+6MD85
+6MD86
+6MD89
+7UM85
+7SA87
+7SD87
+7SL87
+7VK87
+7SA82
+7SA86
+7SD82
+7SD86
+7SL82
+7SL86
+7SJ86
+7SK82
+7SK85
+7SJ82
+7SJ85
+7UT82
+7UT85
+7UT86
+7UT87
+7VE85
+All types not listed above
+
+All versions
+
+
+
+
+
+--------- Begin Update C Part 1 of 2 ---------
+
+SIPROTEC 5: All versions prior to v8.01
+
+7SS85
+7KE85
+
+
+
+--------- End Update C Part 1 of 2 ---------
+
+SIPROTEC 5 with CPU variants CP200 and the respective Ethernet communication modules
+CVE-2019-10931: 
+
+All versions prior to v7.59
+
+
+CVE-2019-10930: 
+
+All Versions
+
+
+DIGSI 5
+
+All Versions prior to v7.90
+
+
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER INPUT VALIDATION CWE-20
+A remote attacker could use specially crafted packets sent to Port 443/TCP to upload, download, or delete files in certain parts of the file system.
+CVE-2019-10930 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.2    IMPROPER INPUT VALIDATION CWE-20
+Specially crafted packets sent to Port 443/TCP could cause a denial-of-service condition.
+CVE-2019-10931 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Pierre Capillon, Nicolas Looss, and Jean-Baptiste Galet from Agence Nationale de la Sécurité des Systèmes d’Information (ANSSI) reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+Siemens recommends users upgrade to V7.90 where available and apply the following specific mitigations:
+SIPROTEC 5 device types 6MD85, 6MD86, 6MD89, 7UM85, 7SA87, 7SD87, 7SL87, 7VK87, 7SA82, 7SA86, 7SD82, 7SD86, 7SL82, 7SL86, 7SJ86, 7SK82, 7SK85, 7SJ82, 7SJ85, 7UT82, 7UT85, 7UT86, 7UT87 and 7VE85 with CPU variants CP300 and CP100 and the respective Ethernet communication modules:
+
+Update to firmware Version 7.90. Search for ‘SIPROTEC 5 - DIGSI Device Drivers v7.90’ on the Siemens Industry Online Support site. Firmware Version 7.90 for the communication modules can also be found on each device specific download page. Applying the update causes the device / module to go through a single restart cycle.
+
+DIGSI 5 engineering software:
+
+Update to DIGSI 5 v7.90 and activate the client authorization feature.
+
+SIPROTEC 5 with CPU variants CP200 and the respective Ethernet communication modules
+
+CVE-2019-10931: Update to firmware v7.59. Search for ‘SIPROTEC 5 - DIGSI Device Drivers v7.59’ on the Siemens Industry Online Support site. The firmware version v7.59 for the communication modules can also be found on each device specific download page. Applying the update causes the device/module to go through a single restart cycle.
+
+--------- End Update C Part 2 of 2 ---------
+SIPROTEC 5 device types 7SS85 and 7KE85:
+
+Update to Version 8.01 or later. Search for ‘SIPROTEC 5 - DIGSI Device Drivers’ on the Siemens Industry Online Support site. Applying the update causes the device/module to go through a single restart cycle.
+
+--------- End Update C Part 2 of 2 ---------
+DIGSI 5 engineering software:
+
+Update to DIGSI 5 v7.90 and activate the client authorization feature.
+
+SIPROTEC 5 with CPU variants CP200 and the respective Ethernet communication modules
+
+CVE-2019-10931: Update to firmware v7.59. Search for ‘SIPROTEC 5 - DIGSI Device Drivers v7.59’ on the Siemens Industry Online Support site. The firmware version v7.59 for the communication modules can also be found on each device specific download page. Applying the update causes the device/module to go through a single restart cycle.
+
+All other SIPROTEC 5 device types with CPU variants CP300, CP200, and CP100 and the respective Ethernet communication modules:
+
+Block access to Port 443/TCP e.g., with an external firewall.
+Activate role-based access control (RBAC) in the device (supported in SIPROTEC 5 firmware v7.80 and higher).
+Activate the DIGSI 5 connection password in the device (supported in all SIPROTEC 5 firmware versions).
+
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-899560 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

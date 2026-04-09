@@ -1,0 +1,120 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SINUMERIK
+Vulnerabilities: Buffer Underflow, Heap-based Buffer Overflow, Improper Initialization, Out-of-bounds Read, Stack-based Buffer Overflow, Access of Memory Location After End of Buffer, Off-by-one Error, Improper Null Termination, Improper Initialization
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution, information disclosure, and denial-of-service attacks under certain conditions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports the vulnerabilities affect the following SINUMERIK products:
+
+SINUMERIK Access MyMachine/P2P: All versions prior to 4.8
+SINUMERIK PCU base Win10 software/IPC: All versions prior to 14.00
+SINUMERIK PCU base Win7 software/IPC: All versions prior to 12.01 HF4
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    BUFFER UNDERWRITE (‘BUFFER UNDERFLOW’) CWE-124
+The affected products are vulnerable to a buffer underwrite in VNC client code, which may allow an attacker to remotely execute arbitrary code.
+CVE-2018-15361 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+The affected products are vulnerable to a heap-based buffer overflow, which may result in code execution.
+CVE-2019-8258 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER INITIALIZATION CWE-665
+The affected products contain multiple memory leaks in VNC client code, which allow an attacker to read stack memory and can be abused for information disclosure. Combined with another vulnerability, it can be used to leak stack memory and bypass ASLR.
+CVE-2019-8259 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.4    OUT-OF-BOUNDS READ CWE-125
+There is an out-of-bounds read vulnerability in VNC client decoder code caused by multiplication overflow.
+CVE-2019-8260 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    OUT-OF-BOUNDS READ CWE-125
+The affected products have an out-of-bounds read vulnerability in VNC code inside the client decoder, caused by multiplication overflow.
+CVE-2019-8261 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    HEAP-BASED BUFFER OVERFLOW CWE-122
+The affected products have multiple heap buffer overflow vulnerabilities in VNC client code inside Ultra decoder, which results in code execution.
+CVE-2019-8262 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7    STACK-BASED BUFFER OVERFLOW CWE-121
+The affected products are vulnerable to a stack-based buffer overflow, which leads to a denial-of-service condition. User interaction is required to trigger this vulnerability.
+CVE-2019-8263 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+3.2.8    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+The affected products are vulnerable due to out-of-bounds access, which can potentially result in code execution.
+CVE-2019-8264 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.9    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+The affected products are vulnerable to multiple out-of-bounds access vulnerabilities connected with usage of a macro in the VNC client code, which can potentially result in code execution.
+CVE-2019-8265 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.10    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+The affected products have multiple out-of-bounds access vulnerabilities connected with improper usage of functions in the VNC client code, which can potentially result in code execution.
+CVE-2019-8266 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.11    OUT-OF-BOUNDS READ CWE-125
+The affected products are vulnerable due to an out-of-bounds read in the VNC client code, which may result in a denial-of-service condition.
+CVE-2019-8267 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.12    OFF-BY-ONE ERROR CWE-193
+The affected products have multiple off-by-one vulnerabilities in VNC client code connected with improper usage of functions, which can potentially result code execution.
+CVE-2019-8268 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.13    STACK-BASED BUFFER OVERFLOW CWE-121
+The affected products are vulnerable to a stack-based buffer overflow in the VNC client code, which may allow an attacker to perform a denial of service condition.
+CVE-2019-8269 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.14    OUT-OF-BOUNDS READ CWE-125
+The affected products have an out-of-bounds read vulnerability in VNC client code inside Ultra decoder, which results in a denial-of-service condition.
+CVE-2019-8270 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.15    HEAP-BASED BUFFER OVERFLOW CWE-122
+The affected products are vulnerable to a heap-based buffer overflow in the VNC server code inside the file transfer handler, which can potentially result in code execution.
+CVE-2019-8271 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.16    OFF-BY-ONE ERROR CWE-193
+The affected products are vulnerable to multiple off-by-one errors in the VNC server code, which may allow an attacker to execute arbitrary code.
+CVE-2019-8272 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.17    HEAP-BASED BUFFER OVERFLOW CWE-122
+The affected products are vulnerable to a heap-based buffer overflow in the VNC server code inside the file transfer request handler, which can potentially result in code execution.
+CVE-2019-8273 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.18    HEAP-BASED BUFFER OVERFLOW CWE-122
+The affected products have a heap buffer overflow vulnerability in VNC server code inside file transfer offer handler, which can potentially in result code execution.
+CVE-2019-8274 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.19    IMPROPER NULL TERMINATION CWE-170
+There is an improper null termination in the VNC server code, which may allow remote access to out-of-bounds data.
+CVE-2019-8275 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.20    STACK-BASED BUFFER OVERFLOW CWE-121
+The affected products are vulnerable to a stack-based buffer overflow in the VNC server code, which can result in denial of service.
+CVE-2019-8276 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.21    IMPROPER INITIALIZATION CWE-665
+The affected products contain multiple memory leaks in VNC server code, which allows an attacker to read stack memory and can be abused for information disclosure. Combined with another vulnerability, it can be used to leak stack memory and bypass ASLR.
+CVE-2019-8277 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.22    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+The affected products are vulnerable to out-of-bounds access in the VNC client, which can potentially allow code execution.
+CVE-2019-8280 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released updates for the affected products and recommends users update to the latest versions:
+
+SINUMERIK Access MyMachine/P2P: Update to v4.8 (SINUMERIK software can be obtained from a Siemens account manager)
+SINUMERIK PCU base Win10 software/IPC: Update to v14.00 (SINUMERIK software can be obtained from a Siemens account manager)
+SINUMERIK PCU base Win7 software/IPC: Update to v12.01 HF4 (SINUMERIK software can be obtained from a Siemens account manager)
+
+Siemens recommends the following to help reduce risk:
+
+Restrict access to the device to the internal or VPN network and to trusted IP addresses only.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-927095
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

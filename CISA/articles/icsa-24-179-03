@@ -1,0 +1,62 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 6.9
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Yokogawa
+Equipment: FAST/TOOLS and CI Server
+Vulnerabilities: Cross-site Scripting, Empty Password in Configuration File
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to launch a malicious script and take control of affected products.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Yokogawa FAST/TOOLS and CI Server, SCADA software environments, are affected:
+
+FAST/TOOLS RVSVRN Package: Versions R9.01 through R10.04
+FAST/TOOLS UNSVRN Package: Versions R9.01 through R10.04
+FAST/TOOLS HMIWEB Package: Versions R9.01 through R10.04
+FAST/TOOLS FTEES Package: Versions R9.01 through R10.04
+FAST/TOOLS HMIMOB Package: Versions R9.01 through R10.04
+CI Server: Versions R1.01.00 through R1.03.00
+
+3.2 Vulnerability Overview
+3.2.1 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') CWE-79
+The affected product's WEB HMI server's function to process HTTP requests has a security flaw (reflected XSS) that allows the execution of malicious scripts. Therefore, if a client PC with inadequate security measures accesses a product URL containing a malicious request, the malicious script may be executed on the client PC.
+CVE-2024-4105 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-4105. A base score of 6.9 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.2 Empty Password in Configuration File CWE-258
+The affected products have built-in accounts with no passwords set. Therefore, if the product is operated without a password set by default, an attacker can break into the affected product.
+CVE-2024-4106 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N.
+A CVSS v4 score has also been calculated for CVE-2024-4106. A base score of 5.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Food and Agriculture
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Yokogawa reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Yokogawa recommends customers using FAST/TOOLS to update to R10.04 and first apply patch software R10.04 SP3 and afterwards apply patch software I12560.
+Yokogawa recommends customers using Collaborative Information Server (CI Server) to update to R1.03.00 and apply patch software R10.04 SP3.
+For both platforms, if the password for the default account has not been changed, please change that password according to the documentation included with the patch software.
+Yokogawa strongly recommends all customers to establish and maintain a full security program, not only for the vulnerability identified in this YSAR. Security program components are: Patch updates, Anti-virus, Backup and recovery, zoning, hardening, whitelisting, firewall, etc. Yokogawa can assist in setting up and running the security program continuously. For considering the most effective risk mitigation plan, as a starting point, Yokogawa can perform a security risk assessment.
+For questions related to this report, please contact Yokogawa.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+June 27, 2024: Initial Publication
+

@@ -1,0 +1,83 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-205-02 Siemens SIMATIC WinCC Vulnerabilities that was published July 24, 2014, on the NCCIC/ICS-CERT web site.
+Researchers Sergey Gordeychik, Alexander Tlyapov, Dmitry Nagibin, and Gleb Gritsai of Positive Technologies identified four of five vulnerabilities in the Siemens SIMATIC WinCC application. An anonymous researcher identified the remaining vulnerability. Siemens has produced an update that mitigates these vulnerabilities.
+All but one of the reported vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SIMATIC WinCC: all versions prior to Version 7.3, and
+SIMATIC PCS7 (as WinCC is incorporated): all versions prior to Version 8.1.
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow an attacker to obtain unauthorized access to sensitive data and allow unauthorized privilege escalation.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany. Siemens develops products mainly in the Energy, Healthcare and Public Health, and Transportation Systems sectors.
+SIMATIC WinCC is a supervisory control and data acquisition (SCADA) system that is used to monitor and control physical processes involved in industry and infrastructure. This software is used in many industries, including food and beverage, water and wastewater, oil and gas, and chemical.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+FORCED BROWSINGCWE-425: Direct Request (‘Forced Browsing’), http://cwe.mitre.org/data/definitions/425.html, web site last accessed July 24, 2014.
+
+The SIMATIC WinCC WebNavigator server at Port 80/TCP and Port 443/TCP could allow unauthenticated access to sensitive data with specially crafted HTTP requests.
+CVE-2014-4682NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4682, web site last accessed October 07, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:N/A:N, web site last accessed July 24, 2014.
+
+SESSION FIXATIONCWE-384: Session Fixation, http://cwe.mitre.org/data/definitions/384.html, web site last accessed July 24, 2014.
+
+Existing access control settings of the WinCC WebNavigator server at Port 80/TCP and Port 443/TCP could allow remote authenticated users to escalate their privileges in WinCC.
+CVE-2014-4683NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4683, web site last accessed October 07, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.9 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:S/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:S/C:P/I:P/A:N, web site last accessed July 24, 2014.
+
+IMPROPER PRIVILEGE MANAGEMENTCWE-269: Improper Privilege Management, http://cwe.mitre.org/data/definitions/269.html, web site last accessed July 24, 2014.
+
+The database server of SIMATIC WinCC could allow authenticated users to escalate their privileges in the database if a specially crafted command is sent to the database server at Port 1433/TCP.
+CVE-2014-4684NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4684, web site last accessed October 07, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 6.0 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:S/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:S/C:P/I:P/A:P, web site last accessed July 24, 2014.
+
+PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLSCWE-264: Permissions, Privileges, and Access Controls, http://cwe.mitre.org/data/definitions/264.html, web site last accessed July 24, 2014.
+
+Access permissions on system objects could allow a local user to obtain limited escalated privileges within the operating system.
+CVE-2014-4685NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4685, web site last accessed October 07, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.6 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:N/C:P/I:P/A:P, web site last accessed July 24, 2014.
+
+HARD-CODED CRYPTOGRAPHIC KEYCWE-321: Use of Hard-coded Cryptographic Key, http://cwe.mitre.org/data/definitions/321.html, web site last accessed July 24, 2014.
+
+A hard-coded cryptographic key could allow privilege escalation in the WinCC Project administration application if network communication on Port 1030/TCP of a legitimate user can be captured.
+CVE-2014-4686NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4686, web site last accessed October 07, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:P, web site last accessed July 24, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely except for vulnerability CVE-2014-4685, which requires an attacker to have local access to the system.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a moderate to low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens has released SIMATIC WinCC V7.3, which fixes the five vulnerabilities, and recommends upgrading as soon as possible. The updated software can be ordered via the customer support web site at the following location:
+https://mall.industry.siemens.com/mall/de/de/Catalog/Products/10042373?tree=CatalogTree
+--------- Begin Update A Part 1 of 1 --------
+Additional information about SIMATIC WinCC V7.3 is available at the following location:
+http://support.automation.siemens.com/WW/view/en/97493192
+Siemens has released SIMATIC PCS7 V8.1, which fixes the five vulnerabilities, and recommends upgrading as soon as possible. The updated software can be ordered via the customer support web site at the following location:
+https://mall.industry.siemens.com/mall/de/de/Catalog/Products/10042373?tree=CatalogTree
+Additional information about the new SIMATIC PCS7 V8.1 is available at the following location:
+http://support.automation.siemens.com/WW/view/en/98161292
+Until the updates can be deployed, Siemens advises asset owners to apply the following steps to mitigate the risk:
+--------- End Update A Part 1 of 1 ----------
+
+Limit the WebNavigator server access to trusted networks and clients,
+Ensure that the WebNavigator clients authenticate themselves against the WebNavigator server (e.g., use client certificates),
+Restrict access to the WinCC database server at Port 1433/TCP to trusted entities,
+Deactivate all unnecessary OS users on WinCC server,
+Run WinCC server and engineering stations within a trusted network, or
+Ensure that the WinCC server and the engineering stations communicate via encrypted channels only (e.g., establish a VPN tunnel).
+
+SIMATIC WinCC V7.3 introduces the feature “Encrypted Communications.” The feature allows operators to add an extra layer of security to protect server communication. Siemens strongly recommends activating this feature.
+Additional information can be found in the Siemens’ Security Advisory, SSA-214365 available at:
+http://www.siemens.com/cert/advisories/
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

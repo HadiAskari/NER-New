@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits are available
+Vendor: Fuji Electric
+Equipment: FRENIC Loader, FRENIC-Mini (C1), FRENIC-Mini (C2), FRENIC-Eco, FRENIC-Multi, FRENIC-MEGA, FRENIC-Ace
+Vulnerabilities: Buffer Over-read, Out-of-bounds Read, Stack-based Buffer Overflow
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-270-03 Fuji Electric FRENIC Devices that was published September 27, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow for arbitrary remote code execution affecting the availability of the device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of FRENIC Loader, FRENIC-Mini (C1), FRENIC-Mini (C2), FRENIC-Eco, FRENIC-Multi, FRENIC-MEGA, FRENIC-Ace, HVAC drive devices, are affected:
+
+FRENIC LOADER v3.3 v7.3.4.1a of FRENIC-Mini (C1), FRENIC-Mini (C2), FRENIC-Eco, FRENIC-Multi, FRENIC-MEGA, FRENIC-Ace
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    BUFFER OVER-READ CWE-126
+A buffer over-read vulnerability may allow remote code execution on the device. 
+CVE-2018-14790 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    OUT-OF-BOUNDS READ CWE-125
+The program does not properly parse FNC files that may allow for information disclosure. 
+CVE-2018-14798 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.3    STACK-BASED BUFFER OVERFLOW CWE-121
+The program does not properly check user-supplied comments which may allow for arbitrary remote code execution. 
+CVE-2018-14802 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Michael Flanders and Ghirmay Desta working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+--------- Begin Update A Part 1 of 1 --------
+Fuji Electric has released a new version of firmware for the affected FRENIC Loader products that can be found at:
+https://felib.fujielectric.co.jp/download/search2.htm?dosearch=1&siteswitch=1&product1_id=P10008&product2_id=&product3_id=&series_id=&documentGroup=&material1_id=&material2_id=&stopproduct=&site=america&lang=en.
+--------- End Update A Part 1 of 1 --------
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.

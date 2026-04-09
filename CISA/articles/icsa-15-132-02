@@ -1,0 +1,64 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on May 12, 2015, and is being released to the NCCIC/ICS-CERT web site.
+Rockwell Automation has produced a patch to mitigate a password encryption vulnerability in RSView32. Information Security Analysts Vladimir Dashchenko and Dmitry Dementjev of the Ural Security System Center (USSC) reported this vulnerability directly to Rockwell Automation.
+AFFECTED PRODUCTS
+The following RSView32 versions are affected:
+
+RSView32 - 7.60.00 (CPR9 SR4) and all prior versions.
+
+IMPACT
+An attacker who exploits this vulnerability may be able to gain access to user-defined passwords.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Rockwell Automation, which is a US-based company, provides industrial automation control and information products across a wide range of industries.
+The affected product, RSView32, is an HMI system used for monitoring and controlling automation machines and processes. According to Rockwell Automation, RSView32 is deployed across several sectors including Critical Manufacturing, Energy, Water and Wastewater Systems, and others. Rockwell Automation estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+STORING PASSWORDS IN A RECOVERABLE FORMATCWE-257: Storing Passwords in a Recoverable Format, http://cwe.mitre.org/data/definitions/257.html, web site last accessed May 12, 2015.
+
+A vulnerability has been discovered in the encryption approach used by RSView32 to create a password storage file used with the software.
+User-defined usernames and passwords for RSView32 are stored within a specific file. The associated weakness in the file is a result of the software using older weak and outdated encryption algorithms compared to contemporary encryption technologies. Use of older algorithms may be susceptible to unauthorized decryption. If successfully exploited, user-defined passwords can be revealed.
+This exploit requires an attacker gaining local access to the specific file storing passwords local to the RSView32 product. This involves local or remote access, reverse-engineering, and some form of successful social-engineering.
+CVE-2015-1010NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1010, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.0 has been assigned; the CVSS vector string is (AV:L/AC:H/Au:S/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:H/Au:S/C:C/I:C/A:C, web site last accessed May 12, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. This exploit is only triggered when a local user obtains and decrypts the file containing access credentials.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult.
+MITIGATION
+The software patch released by Rockwell Automation for the RSView32 mitigates the risk associated with the discovered password vulnerability. Rockwell Automation encourages asset owners/operators using affected versions of the RSView32 to deploy this patch and take the additional precautions:
+
+View the specific Rockwell Automation Advisory AID 700915 and the accompanying patch at (https://rockwellautomation.custhelp.com/app/answers/detail/a_id/700915) – registered users login required for access.
+Limit access to assets with RSView32 and other software to only authorized personnel.
+Restrict and segment network access to assets with RSView32 and other software as appropriate.
+Use trusted software and software patches that are obtained only from highly reputable sources.
+Interact with, and only obtain software and software patches from trustworthy web sites.
+Use of Microsoft AppLocker or other similar Whitelisting application can help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at https://rockwellautomation.custhelp.com/app/answers/detail/a_id/546989.
+Follow good network design practices that include network separation and segmentation, use of DMZs with properly configured firewalls to selectively control and monitor traffic passed between zones and systems.
+Maintain layered physical and logical security, defense-in-depth design practices for the ICS.
+Reaffirm with employees the importance for constant vigilance, especially the ongoing potential for social engineering attacks to manipulate otherwise normal user behaviors.
+Upgrade the affected product to a more contemporary, in-support product and compatible operating system.
+Establish a staged patch management and product upgrade strategy if one does not exist.
+
+The vendor recommends customers consider upgrading their software and compatible operating systems to more contemporary versions wherever possible. It is also advisable that customers adopt measures to keep products current and patched.
+For customers who must continue to use RSView32, the vendor strongly recommends that they upgrade the operating system on which the product runs, to a RSView32-compatible version that is as current as possible, and is still in support by the manufacturer.
+Other Vendor information links:
+
+http://www.rockwellautomation.com/rockwellautomation/products-technologies/network-technology/architectures.page (Rockwell Automation security architecture guidance document)
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/54102
+http://www.rockwellautomation.com/security (Rockwell Automation Registered Users Security Login)
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following minimum basic measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed May 12, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed May 12, 2015. for more information on social engineering attacks.
+

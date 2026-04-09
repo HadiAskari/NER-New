@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit/exploitable from within the same local subnet
+Vendor: Philips
+Equipment: Philips e-Alert Unit (non-medical device)
+Vulnerabilities: Improper Input Validation, Cross-site Scripting, Information Exposure, Incorrect Default Permissions, Cleartext Transmission of Sensitive Information, Cross-site Request Forgery, Session Fixation, Resource Exhaustion, Use of Hard-coded Credentials.
+
+2. RISK EVALUATION
+Successful exploitation from an attacker within the same subnet may impact or compromise user contact details, unit integrity, and/or unit availability. The vulnerabilities may allow attackers to provide unexpected input into the application, execute arbitrary code, display unit information, or potentially cause e-Alert to crash.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Philips e-Alert versions are affected:
+
+Version R2.1 and prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+The software does not validate input properly, allowing an attacker to craft the input in a form that is not expected by the rest of the application. This would lead to parts of the unit receiving unintended input, which may result in altered control flow, arbitrary control of a resource, or arbitrary code execution.
+CVE-2018-8850 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:N).
+3.2.2    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The software does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is then served to other users.
+CVE-2018-8846 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:N).
+3.2.3    INFORMATION EXPOSURE CWE-200
+The Philips e-Alert contains a banner disclosure vulnerability that could allow attackers to obtain extraneous product information, such as OS and software components, via the HTTP response header that is normally not available to the attacker, but might be useful information in an attack.
+CVE-2018-14803 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.4    INCORRECT DEFAULT PERMISSIONS CWE-276
+The software, upon installation, sets incorrect permissions for an object that exposes it to an unintended actor.
+CVE-2018-8848 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:N).
+3.2.5    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The software transmits sensitive or security-critical data in cleartext in a communication channel that can be sniffed by unauthorized actors. The Philips e-Alert communication channel is not encrypted which could therefore lead to disclosure of personal contact information and application login credentials from within the same subnet.
+CVE-2018-8842 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.6    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+The web application does not, or cannot, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request.
+CVE-2018-8844 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:H).
+3.2.7    SESSION FIXATION CWE-384
+When authenticating a user or otherwise establishing a new user session, the software gives an attacker the opportunity to steal authenticated sessions without invalidating any existing session identifier.
+CVE-2018-8852 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H).
+3.2.8    UNCONTROLLED RESOURCE CONSUMPTION ('RESOURCE EXHAUSTION') CWE-400
+The software does not properly restrict the size or amount of resources requested or influenced by an actor, which can be used to consume more resources than intended.
+CVE-2018-8854 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.9    USE OF HARD-CODED CREDENTIALS CWE- 798
+The software contains hard-coded cryptographic key, which it uses for encryption of internal data.
+CVE-2018-8856 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+3.4 RESEARCHER
+Philips reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+In June of 2018, Philips released Version R2.1 to remediate CWE-319, CWE-20, CWE-798, and CWE-384.  Philips has another product software update planned for the end of 2018 that addresses CWE-400, CWE-79, CWE-276, CWE-200, and CWE-352.
+Philips will communicate service options to all affected install-base users.
+Please see the Philips product security website for the latest public security information on this matter and for other Philips products:
+https://www.philips.com/productsecurity
+As an immediate mitigation to the vulnerabilities on the LAN until the update can be applied, Philips recommends that users:
+
+Ensure that network security best practices are implemented, and 
+Limit network access to e-Alert in accordance with product documentation.
+
+Users with questions regarding their specific e-Alert installations should contact their local Philips service support team or their regional e-Alert service support. Contact information is available at the following location:
+https://www.usa.philips.com/healthcare/solutions/customer-service-solutions
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

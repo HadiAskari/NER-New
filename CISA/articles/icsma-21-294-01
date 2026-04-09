@@ -1,0 +1,89 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: B. Braun Melsungen AG
+Equipment: Infusomat Space Large Volume Pump
+Vulnerabilities: Unrestricted Upload of File with Dangerous Type, Cleartext Transmission of Sensitive Information, Missing Authentication for Critical Function, Insufficient Verification of Data Authenticity, and Improper Input Validation
+
+2. UPDATE
+This updated advisory is a follow-up to the original advisory titled “ICSMA-21-294-01 B. Braun Infusomat Space Large Volume Pump” that was published October 21, 2021, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote unauthenticated attacker to gain user-level command-line access, send the device malicious data to be used in place of correct data, reconfigure the device from an unknown source, obtain sensitive information, or overwrite critical files.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+B. Braun reports these vulnerabilities affect the following products in the following areas:
+Within the United States and Canada:
+
+Battery pack SP with WiFi: All software Versions 028U000061 and earlier, which have been installed in an Infusomat Space Infusion Pump or a Perfusor Space Infusion pump
+SpaceStation with SpaceCom 2: All software Versions 012U000061 and earlier
+
+Outside the United States and Canada:
+
+Battery Pack SP with Wi-Fi: All software Versions L81 and earlier that have been installed in a Perfusor Space, Infusomat Space, or Infusomat Space P pump
+SpaceStation with SpaceCom 2: All software Versions L81 and earlier
+Data module compactPlus: All software Versions A10 and A11 that have been installed in a Perfusor compactPlus, Infusomat compactPlus, or Infusomat P compactPlus pump
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER INPUT VALIDATION CWE-20
+An improper sanitization of input vulnerability in B. Braun SpaceCom2 prior to 012U000062 allows a remote unauthenticated attacker to gain user-level command-line access by passing a raw external string straight through to printf statements. The attacker is required to be on the same network as the device.
+CVE-2021-33886 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.2.2    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+An insufficient verification of data authenticity vulnerability in B. Braun SpaceCom2 prior to 012U000062 allows a remote unauthenticated attacker to send the device malicious data to be used in place of the correct data. This results in full system command access and execution because of the lack of cryptographic signatures on critical data sets.
+CVE-2021-33885 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.2.3    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+A missing authentication for critical function vulnerability in B. Braun SpaceCom2 prior to 012U000062 allows a remote attacker to reconfigure the device from an unknown source because of the lack of authentication on proprietary networking commands.
+CVE-2021-33882 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N).
+4.2.4    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+A cleartext transmission of sensitive information vulnerability in B. Braun SpaceCom2 prior to 012U000062 allows a remote attacker to obtain sensitive information by obtaining access to network traffic. The exposed data includes critical values for a pump's internal configuration.
+CVE-2021-33883 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.5    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+An unrestricted upload of file with dangerous type vulnerability in B. Braun SpaceCom2 prior to 012U000062 allows remote attackers to upload any files to the /tmp directory of the device through the webpage API, which can result in critical files being overwritten.
+CVE-2021-33884 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Douglas McKee and Philippe Laulheret of McAfee reported these vulnerabilities to B. Braun.
+5. MITIGATIONS
+--------- Begin Update A part 1 of 1 ---------
+B. Braun has released software updates to mitigate the reported vulnerabilities:
+Within the United States and Canada:
+
+Battery pack SP with Wi-Fi, software 028U00093 (SN 138852 and lower).
+Battery pack SP with Wi-Fi, software 054U00093 (SN 138853 and higher).
+SpaceStation with SpaceCom 2, software Version 012U000093.
+
+For details on acquiring this software, see the B. Braun Advisory.
+Users in the United States and Canada who need additional support can contact B. Braun Technical Support by calling 800-627-PUMP or by emailing AISTechSupport@bbraunusa.com.
+Note: Facilities in Canada using “U” versions of software should follow the U.S. vulnerability disclosure. Facilities in Canada using non “U” versions (e.g. L) should follow the vulnerability disclosure for outside the U.S.
+Outside the United States and Canada: 
+
+Battery Pack SP with Wi-Fi, software 027L000093 (below SN 138853).
+Battery pack SP with Wi-Fi, software 053L00093 (SN 138853 and higher).
+SpaceStation with SpaceCom 2, software version 011L000093.
+
+For more information, see the B. Braun’s Vulnerability Advisory.
+--------- End Update A part 1 of 1 ---------
+In addition, B. Braun recommends users of the affected products consider the following best practices:
+
+All facilities utilizing SpaceCom 2, and Battery Pack SP with Wi-Fi should review their IT infrastructure to ensure a network zone concept has been implemented whereby critical systems, such as infusion pumps, are housed in separate (e.g., by firewalls or VLAN) environments that are not accessible directly from the Internet or by unauthorized users.
+Wireless networks should be implemented using industry standard encryption and should be equipped with intrusion detection systems (IDS) and/or intrusion prevention systems (IPS).
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have a low attack complexity.

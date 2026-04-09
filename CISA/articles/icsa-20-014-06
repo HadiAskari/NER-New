@@ -1,0 +1,69 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: OSIsoft LLC
+Equipment: PI Vision
+Vulnerabilities: Improper Access Control, Cross-site Request Forgery (CSRF), Cross-site Scripting, Inclusion of Sensitive Information in Log Files
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow disclosure of sensitive information and limit the availability of the system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of PI Vision, a visualization tool, are affected:
+
+CVE-2019-18275 and CVE-2019-18271: All versions of PI Vision prior to 2019
+CVE-2019-18273: PI Vision 2017 R2 and PI Vision 2017 R2 SP1
+CVE-2019-18244: PI Vision 2017 R2, PI Vision 2017 R2 SP1, PI Vision 2019
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+The affected product is vulnerable to an improper access control, which may return unauthorized tag data when viewing analysis data reference attributes.
+CVE-2019-18275 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+The affected product is vulnerable to a cross-site request forgery that may be introduced on the PI Vision administration site.
+CVE-2019-18271 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H).
+3.2.3    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The affected product is vulnerable to cross-site scripting, which may allow invalid input to be introduced.
+CVE-2019-18273 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    INCLUSION OF SENSITIVE INFORMATION IN LOG FILES CWE-532
+The affected product records the service account password in the installation log files when a non-default service account and password are specified during installation or upgrade.
+CVE-2019-18244 has been assigned to this vulnerability. A CVSS v3 base score of 5.1 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+OSIsoft reported this self-discovered issue to CISA.
+4. MITIGATIONS
+OSIsoft recommends users upgrade to PI Vision 2019 to resolve these issues.
+Additionally, OSIsoft recommends the following defensive measures:
+CVE-2019-18275: If upgrade is not an option, administrators should regularly audit the AF hierarchy to ensure that there are no unexpected or unknown elements/attributes. It is recommended that security on elements in AF be configured and enforced in addition to configuring PI point security.
+Potential unauthorized viewing of PI System data due to this issue is limited to permissions granted to the PI Vision Application Pool Identity. Configure a dedicated identity mapping for PI Vision servers and manage permissions in accordance with a data classification policy.
+CVE-2019-18271 and CVE-2019-18273: All access to the AF Server is protected by Windows authentication, so the modifications to AF data items required by an attacker would have to be performed by a user with write access to either the AF hierarchy or templates. Periodic review of AF Server permissions to ensure only intended users are granted write access to elements, element templates, event frame templates, and databases and servers configured on the PI Vision admin site is a good practice to reduce exposure.
+Similarly, which data items are available to PI Vision is controlled by the PI Vision Administrators through the Administrative site. Only add data sources to PI Vision that you can verify as legitimate with appropriate access control configured.
+CVE-2019-18244: Provision and use domain Group Managed Service Accounts or use the default NetworkService account to run PI Vision AppPools—there is no exposure to this vulnerability when using either of these account types.
+To limit exposure if a standard domain account is used to run PI Vision AppPools, remove the password entry from the setup log files immediately. The vulnerable log file is %pihome%\dat\SetupPIVision.log
+For more information and workaround details for these vulnerabilities, please refer to OSIsoft’s Security Bulletin (registration required): OSIsoft releases security update in PI Vision 2019
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

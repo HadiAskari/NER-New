@@ -1,0 +1,42 @@
+
+Overview
+This advisory provides mitigation details for multiple vulnerabilities that impact the Carlo Gavazzi EOS-Box Photovoltaic Monitoring System.
+Carlo Gavazzi has identified two vulnerabilities in the Carlo Gavazzi EOS-Box Photovoltaic Monitoring System. Carlo Gavazzi has produced a firmware update that fully resolves these vulnerabilities. Successful exploitation of the vulnerabilities would allow an attacker to gain unauthorized access, access private information, and execute remote code. This device is used in the energy sector.
+These vulnerabilities could be exploitable remotely. Exploits that target these vulnerabilities are publicly available.
+Affected Products
+The following Carlo Gavazzi device with firmware version prior to 1.0.0.1080_2.1.10 is affected:
+
+EOS-Box
+
+Impact
+Attackers could use the vulnerabilities to exploit the device by gaining unauthorized access in the system, leaking stored information, and remotely executing code on the device. This could allow a loss of availability, integrity, and confidentiality of the affected system. Carlo Gavazzi products are widely used in industrial automation and energy systems. The energy sector is affected.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+Carlo Gavazzi Automation is a Italian-based company that maintains offices in several countries around the world, including the United States.
+The affected product, EOS-Box, is an embedded PC that supervises photovoltaic plants, operating as an integrated control system. According to Carlo Gavazzi, the EOS-Box is deployed across the renewable energy sector. Carlo Gavazzi estimates that these products are used primarily in the United States, Canada, Europe, and Asia.
+Vulnerability Characterization
+Vulnerability Overview
+Hard-Coded CredentialsCWE, http://cwe.mitre.org/data/definitions/89.html, CWE-89: SQL Injection, Web site last accessed December 18, 2012.
+The Carlo Gavazzi device stores hard-coded passwords in the PHP file of the device. By using the hard-coded passwords, attackers can log into the device with administrative privileges. This could allow the attacker to have unauthorized access.
+CVE-2012-6428 has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).
+SQL InjectionCWE, http://cwe.mitre.org/data/definitions/89.html, CWE-89: SQL Injection, Web site last accessed December 18, 2012.
+The Carlo Gavazzi device does not check the validity of the data before executing queries. By accessing the SQL table of certain pages that do not require authentication, attackers can leak information from the device. This could allow the attacker to compromise confidentiality.
+CVE-2012-6427 has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:N/A:N).
+Vulnerability Details
+Exploitability
+These vulnerabilities could be exploitable remotely.
+Existence of Exploit
+Exploits that target these vulnerabilities are publicly available.
+Difficulty
+An attacker with a low skill would be able to exploit these vulnerabilities.
+Mitigation
+Carlo Gavazzi has developed a new firmware Version 1.0.0.1080_2.1.10 that mitigates these vulnerabilities. Carlo Gavazzi released the new firmware Tuesday, December 18, 2012, directly to the devices. Users will be able to manually download the firmware on their device by using the Firmware Update function in the System Menu in the device’s Web interface.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

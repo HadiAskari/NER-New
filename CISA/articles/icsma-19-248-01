@@ -1,0 +1,69 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.6
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Becton, Dickinson and Company (BD)
+Equipment: Pyxis
+Vulnerability: Session Fixation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-248-01 BD Pyxis that was published September 5, 2019, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow the Active Directory (AD) credentials of a previously authenticated user to gain access to the device. This could result in an attacker having the same level of privilege previously granted to a user prior to account expiration, and could allow access to patient data and medications. For exploitation to occur, products must be actively using AD for login and be connected to the hospital domain. Users who do not use AD are not impacted by this vulnerability.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of BD Pyxis, a medication management platform, are affected:
+--------- Begin Update A Part 1 of 2 ---------
+
+Pyxis ES Versions 1.3.4 through to 1.5.3
+Pyxis Enterprise Server, with Windows Server Versions 4.4 through 4.12
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    SESSION FIXATION CWE-384
+A vulnerability has been identified where existing access privileges are not restricted in coordination with the expiration of access based on active directory user account changes when the device is joined to an AD domain.  
+CVE-2019-13517 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+BD reported this vulnerability to CISA.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 ---------
+
+
+BD notes that connecting medication dispensing cabinets to a hospital domain is an uncommon configuration and is not recommended. BD reports this vulnerability was remediated in the latest software release; however, BD has been unsuccessful in reproducing this issue since initially testing and reproducing it earlier in the year. BD recommends the following mitigations and compensating controls to reduce risk associated with this vulnerability:
+
+Although BD has not been able to reproduce the vulnerability with a fully patched Microsoft Active Directory controller installed with an outdated functional level of 2008/2008 R2, BD recommends users upgrade Microsoft Active Directory Services Domain Controllers to a functional level of 2012 or higher.
+Pyxis ES systems are not recommended to be placed on the hospital domain.
+As a best practice, users should not rely on expiration dates to remove users from hospital AD system.
+No upgrades of the BD Pyxis ES suite of products are required to address this vulnerability.
+
+--------- End Update A Part 2 of 2 ---------
+
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all medical devices and/or systems.
+Locate medical devices behind firewalls and isolate them where possible.
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable any unnecessary accounts, protocols and services.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA at the following location: https://www.fda.gov/medical-devices/digital-health/cybersecurity
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability.

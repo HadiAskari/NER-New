@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Moxa
+Equipment: MXview Network Management Software
+Vulnerabilities: Path Traversal, Use of Hard-coded Password, Unprotected Transport of Credentials, Injection, Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to create or overwrite critical files to execute code, gain access to the program, obtain credentials, disable the software, read and modify otherwise inaccessible data, allow remote connections to internal communication channels, or interact and use MQTT remotely.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of MXview, a network management software, are affected:
+
+MXview Network Management Software: Versions 3.x to 3.2.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A path traversal vulnerability in the application may allow an attacker to create or overwrite critical files used to execute code, such as programs or libraries.
+CVE-2021-38452 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.2    USE OF HARD-CODED PASSWORD CWE-259
+The affected product uses hard-coded passwords, which may allow an attacker to gain access through accounts using default passwords.
+CVE-2021-38456 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    UNPROTECTED TRANSPORT OF CREDENTIALS CWE-523
+The affected product is vulnerable to password leakage, which may allow an attacker to obtain credentials through unprotected transport.
+CVE-2021-38460 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.4    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+The affected product is vulnerable to improper neutralization of special elements, which may allow an attacker to remotely execute unauthorized commands. This could allow an attacker to disable software or read and modify otherwise inaccessible data.
+CVE-2021-38458 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    IMPROPER ACCESS CONTROL CWE-284
+The affected product has a misconfigured service that allows remote connections to internal communication channels, which may allow an attacker to interact and use MQTT remotely.
+CVE-2021-38454 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Noam Moshe from Claroty reported these vulnerabilities to Moxa.
+4. MITIGATIONS
+Moxa recommends users do the following:
+
+Upgrade to software package v3.2.4 or higher.
+Users should change their Windows password regularly and use a firewall.
+If users need to use a multiple-site function, Moxa recommends a firewall to block Port 8883. If users do not have this requirement, Moxa suggests using the firewall to assign the Accessible IP of MXview at the client site.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

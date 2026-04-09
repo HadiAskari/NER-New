@@ -1,0 +1,95 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: Factory Talk Activation Manager
+Vulnerabilities: Cross-site Scripting, Improper Restriction of Operations within the Bounds of a Memory Buffer
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the updated advisory titled ICSA-18-102-02 Rockwell Automation FactoryTalk Activation Manager (Update A) that was published May 24, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker to access sensitive information, rewrite content, or cause a buffer overflow that could result in remote code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Rockwell Automation reports these vulnerabilities affect licensing management software in the following FactoryTalk Activation Manager products:
+
+FactoryTalk Activation Manager v4.00 and v4.01
+
+Ships with Wibu-Systems CodeMeter v6.50b and earlier,
+
+
+FactoryTalk Activation Manager v4.00 and earlier
+
+Ships with FlexNet Publisher v11.11.1.1 and earlier.
+
+
+
+The following products require FactoryTalk Activation Manager to store and keep track of Rockwell Automation software products and activation files. Users who recognize products from the following list are using FactoryTalk Activation Manager:
+
+Arena
+Emonitor
+FactoryTalk AssetCentre
+FactoryTalk Batch
+FactoryTalk EnergyMetrix
+FactoryTalk eProcedure
+FactoryTalk Gateway
+FactoryTalk Historian Classic
+FactoryTalk Historian Site Edition (SE)
+FactoryTalk Information Server
+FactoryTalk Metrics
+FactoryTalk Transaction Manager
+FactoryTalk VantagePoint
+FactoryTalk View Machine Edition (ME)
+FactoryTalk View Site Edition (SE)
+FactoryTalk ViewPoint
+RSFieldBus
+RSLinx Classic
+RSLogix 500
+RSLogix 5000
+RSLogix5
+RSLogix Emulate 5000
+RSNetWorx
+RSView32
+SoftLogix 5800
+Studio 5000 Architect
+Studio 5000 Logix Designer
+Studio 5000 Logix Emulate
+Studio 5000 View Designer
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+A Cross-Site Scripting (“XSS”) vulnerability was found in certain versions of Wibu-Systems CodeMeter that may allow local attackers to inject arbitrary web script or HTML via a specific field in a configuration file, allowing an attacker to access sensitive information, or even rewrite the content of the HTML page.
+CVE-2017-13754 has been assigned to this vulnerability. A CVSS v3 base score of 2.7 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:R/S:C/C:N/I:L/A:N).
+4.2.2 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+A custom string copying function of the license server manager in FlexNet Publisher does not use proper bounds checking on incoming data, allowing a remote, unauthenticated user to send crafted messages with the intent of causing a buffer overflow.
+CVE-2015-8277 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Chemical, Critical Manufacturing, Food and Agriculture, Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: U.S.
+
+4.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+Rockwell Automation recommends users with affected versions of CodeMeter and/or FlexNet Publisher that were installed with FactoryTalk Activation Manager to update Factory Talk Activation Manager to v4.02. If unable to update FactoryTalk Activation Manager to v4.02, update CodeMeter to a compatible version of CodeMeter that is compatible with FactoryTalk Activation Manager.
+Rockwell Automation also encourages users to combine the updates above with these general security guidelines to employ multiple strategies simultaneously.
+
+Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the Manufacturing Zone by blocking or restricting access to Port 2222/TCP and UDP and Port 44818/TCP and UDP, using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation Products, see Knowledgebase Article ID 898270 available at: https://rockwellautomation.custhelp.com/app/answers/detail/a_id/898270/page/1 (Login required).
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. VPN is only as secure as the connected devices.
+
+--------- Begin Update B Part 1 of 1 --------
+For more information about these vulnerabilities and the recommended mitigations, please see Rockwell Automation Knowledgebase Advisory 1073133 available at:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1073133 (Login required)
+--------- End Update B Part 1 of 1 --------
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

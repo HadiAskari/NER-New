@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: ThinManager ThinServer
+Vulnerabilities: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to remotely delete arbitrary files with system privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports this vulnerability affects the following versions of ThinManager ThinServer, a thin client and remote desktop protocol (RDP) server management software:
+
+ThinManager ThinServer: Versions 11.0.0-11.0.6
+ThinManager ThinServer: Versions 11.1.0-11.1.6
+ThinManager ThinServer: Versions 11.2.0-11.2.6
+ThinManager ThinServer: Versions 12.1.0-12.1.6
+ThinManager ThinServer: Versions 12.0.0-12.0.5
+ThinManager ThinServer: Versions 13.0.0-13.0.2
+ThinManager ThinServer: Version 13.1.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER INPUT VALIDATION CWE-20
+Due to improper input validation, an integer overflow condition exists in the affected products. When the ThinManager processes incoming messages, a read access violation occurs and terminates the process. A malicious user could exploit this vulnerability by sending a crafted synchronization protocol message.
+CVE-2023-2914 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2 IMPROPER INPUT VALIDATION CWE-20
+Due to improper input validation, a path traversal vulnerability exists when the ThinManager processes a certain function. If exploited, an unauthenticated remote threat actor can delete arbitrary files with system privileges. A malicious user could exploit this vulnerability by sending a specifically crafted synchronization protocol message.
+CVE-2023-2915 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3 IMPROPER INPUT VALIDATION CWE-20
+Due to improper input validation, a path traversal vulnerability exists, via the file name field, when the ThinManager processes a certain function. If exploited, an unauthenticated remote attacker can upload arbitrary files to any directory on the disk drive where ThinServer.exe is installed. A malicious user could exploit this vulnerability by sending a crafted synchronization protocol message.
+CVE-2023-2917 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Rockwell Automation recommends customers apply the following mitigations:
+
+ThinManager ThinServer: Versions 11.0.0-11.2.6: Update to 11.0.7
+ThinManager ThinServer: Versions 11.1.0-11.1.6: Update to 11.1.7
+ThinManager ThinServer: Versions 11.2.0-11.2.6: Update to 11.2.8
+ThinManager ThinServer: Versions 12.1.0-12.1.6: Update to 12.1.7
+ThinManager ThinServer: Versions 12.0.0-12.0.5: Update to 12.0.6
+ThinManager ThinServer: Versions 13.0.0-13.0.2: Update to 13.0.3
+ThinManager ThinServer: Version 13.1.0: Update to 13.1.1
+
+ 
+Customers using the affected software are encouraged to apply mitigations, if possible. Additionally, Rockwell Automation encourages customers to implement suggested security best practices to minimize the risk of vulnerability.
+
+Update to the corrected software versions.
+Limit remote access for TCP Port 2031 to known thin clients and ThinManager servers.
+Security Best Practices
+
+For more information, see Rockwell Automation’s Security Advisory.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.

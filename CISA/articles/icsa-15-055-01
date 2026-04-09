@@ -1,0 +1,48 @@
+
+OVERVIEW
+Adam Crain of Automatak and Chris Sistrunk of Mandiant have identified a resource exhaustion vulnerability in the Software Toolbox Top Server application. Software Toolbox has produced a new version that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Software Toolbox Top Server versions are affected:
+
+Software Toolbox Top Server Versions 5.16 and earlier.
+
+IMPACT
+An attacker who exploits this response processing vulnerability may be able to crash the OPC Server application software running on the target.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Software Toolbox is a US-based company that maintains offices primarily in Matthews, North Carolina. The TOP Server application is used as an industrial third-party connectivity communication software for OPC and embedded device communication users, system integrators, and in OEM automated processes worldwide.
+The affected product, Top Server, is a Microsoft Windows-based software that facilitates connectivity to multiple DNP3 compliant devices such as HMI, RTU, PLC, sensors and meters.
+According to Software Toolbox, Top Server is deployed worldwide across several sectors including Chemical, Commercial Facilities, Critical Manufacturing, Energy, Food and Agriculture, Information Technology, and Water and Wastewater Systems.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNCONTROLLED RESOURCE CONSUMPTION (RESOURCE EXHAUSTION)CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion'), http://cwe.mitre.org/data/definitions/400.html, web site last accessed February 24, 2015.
+
+A vague interpretation of the DNP3 protocol may allow a specially crafted response to create large numbers of entries in the master in some implementations. This is not a universal problem for all DNP3 users, vendors, or integrators, but it may occur.
+CVE-2014-5425NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5425, web site last accessed February 24, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P, web site last accessed February 24, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+Remote devices should not return a variation of 0 to a master, and a master that encounters a zero length message from a remote should stop processing that message.
+DNP3 Application Note AN2013-004b Validation of Incoming DNP3 Data, published August 13, 2014, addresses this issue. This bulletin may be downloaded at:
+https://www.dnp.org/DNP3Downloads/AN2013-004b%20Validation%20of%20Incoming%20DNP3%20Data.pdf)
+Software Toolbox has produced a new version of Top Server software, V5.17.495.0, which resolves the vulnerability. Information about the new version is available at the Software Toolbox support site:
+http://www.toolboxopc.com/html/support.asp
+Telephone support is available to trial and registered users 8 a.m. to 5 p.m. US Eastern Time (GMT‑5), Monday through Friday.
+US Toll Free – 1-888-665-3678
+Global – 1-704-849-2773
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Innokas Yhtymä Oy
+Equipment: Vital Signs Monitor VC150
+Vulnerabilities: Cross-site Scripting, Improper Neutralization of Special Elements in Output Used by a Downstream Component
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to modify communications between downstream devices or cause some features of the affected devices to become disabled.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Innokas Yhtymä Oy Vital Signs Monitors are affected:
+
+VC150 prior to Version 1.7.15
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+A stored cross-site scripting (XSS) vulnerability exists in the affected products that allow an attacker to inject arbitrary web script or HTML via the filename parameter to multiple update endpoints of the administrative web interface.
+CVE-2020-27262 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N).
+3.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT CWE-74
+HL7 v2.x injection vulnerabilities exist in the affected products that allow physically proximate attackers with a connected barcode reader to inject HL7 v2.x segments into specific HL7 v2.x messages via multiple expected parameters.
+CVE-2020-27260 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Finland
+
+3.4 RESEARCHER
+Julian Suleder, Nils Emmerich, and Birk Kauer of ERNW Research GmbH; and Dr. Oliver Matula of ERNW Enno Rey Netzwerke GmbH reported these vulnerabilities to the Federal Office for Information Security (BSI), Germany, in the context of the BSI project ManiMed (Manipulation of medical devices).
+4. MITIGATIONS
+Innokas Yhtymä Oy recommends users update to the latest Version 1.7.15b or later. Software Version 1.7.15b mitigates reported vulnerabilities. Additionally, the following mitigations are available:
+
+Where possible, utilize hospital network best practices such as network segmentation utilizing VLANs, and device isolation to enhance existing security measures.
+Ensure there are physical protections in place to prevent the devices from any unauthorized access.
+Encourage security awareness throughout the hospital staff to ensure clinical staff will report any unauthorized person trying to login or otherwise tamper with a medical device.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

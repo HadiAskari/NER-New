@@ -1,0 +1,273 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/Low attack complexity 
+Vendor: Siemens 
+Equipment: Busybox Applet affecting SCALANCE and RUGGEDCOM products 
+Vulnerabilities: Out-of-bounds Write, Exposure of Sensitive Information to an Unauthorized Actor, Improper Locking, Improper Input Validation, NULL Pointer Dereference, Out-of-bounds Read, Release of Invalid Pointer or Reference, Use After Free, Improper Authentication, OS Command Injection, Improper Certificate Validation, Improper Resource Shutdown or Release, Race Condition, Uncaught Exception, Integer Underflow (Wrap or Wraparound), Classic Buffer Overflow, Double Free, Incorrect Authorization, Allocation of Resources Without Limits or Throttling, Improper Validation of Syntactic Correctness of Input 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to inject code or cause a denial-of-service condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following software from Siemens is affected: 
+
+RUGGEDCOM RM1224 LTE(4G) EU (6GK6108-4AM00-2BA2): All versions prior to v7.2 
+RUGGEDCOM RM1224 LTE(4G) NAM (6GK6108-4AM00-2DA2): All versions prior to v7.2 
+SCALANCE M804PB (6GK5804-0AP00-2AA2): All versions prior to v7.2 
+SCALANCE M812-1 ADSL-Router (Annex A) (6GK5812-1AA00-2AA2): All versions prior to v7.2 
+SCALANCE M812-1 ADSL-Router (Annex B) (6GK5812-1BA00-2AA2): All versions prior to v7.2 
+SCALANCE M816-1 ADSL-Router (Annex A) (6GK5816-1AA00-2AA2): All versions prior to v7.2 
+SCALANCE M816-1 ADSL-Router (Annex B) (6GK5816-1BA00-2AA2): All versions prior to v7.2 
+SCALANCE M826-2 SHDSL-Router (6GK5826-2AB00-2AB2): All versions prior to v7.2 
+SCALANCE M874-2 (6GK5874-2AA00-2AA2): All versions prior to v7.2 
+SCALANCE M874-3 (6GK5874-3AA00-2AA2): All versions prior to v7.2 
+SCALANCE M876-3 (EVDO) (6GK5876-3AA02-2BA2): All versions prior to v7.2 
+SCALANCE M876-3 (ROK) (6GK5876-3AA02-2EA2): All versions prior to v7.2 
+SCALANCE M876-4 (6GK5876-4AA10-2BA2): All versions prior to v7.2 
+SCALANCE M876-4 (EU) (6GK5876-4AA00-2BA2): All versions prior to v7.2 
+SCALANCE M876-4 (NAM) (6GK5876-4AA00-2DA2): All versions prior to v7.2 
+SCALANCE MUM853-1 (EU) (6GK5853-2EA00-2DA1): All versions prior to v7.2 
+SCALANCE MUM856-1 (EU) (6GK5856-2EA00-3DA1): All versions prior to v7.2 
+SCALANCE MUM856-1 (RoW) (6GK5856-2EA00-3AA1): All versions prior to v7.2 
+SCALANCE S615 (6GK5615-0AA00-2AA2): All versions prior to v7.2 
+SCALANCE S615 EEC (6GK5615-0AA01-2AA2): All versions prior to v7.2 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 OUT-OF-BOUNDS WRITE CWE-787 
+zlib before 1.2.12 allows memory corruption when deflating (i.e., when compressing) if the input has many distant matches. 
+CVE-2018-25032 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.2 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+An information disclosure vulnerability exists when certain central processing units (CPU) speculatively access memory, aka 'Windows Kernel Information Disclosure Vulnerability'. This CVE ID is unique from CVE-2019-1071, CVE-2019-1073. 
+CVE-2019-1125 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N). 
+3.2.3 OUT-OF-BOUNDS WRITE CWE-787 
+A local privilege escalation vulnerability was found on polkit's pkexec utility. The pkexec application is a setuid tool designed to allow unprivileged users run commands as privileged users according to predefined policies. The current version of pkexec doesn't handle the calling parameters count correctly and ends trying to execute environment variables as commands. An attacker could leverage this by crafting environment variables in such a way it'll induce pkexec to execute arbitrary code. When successfully executed, the attack could cause a local privilege escalation, giving unprivileged users administrative rights on the target machine. 
+CVE-2021-4034 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.4 IMPROPER LOCKING CWE-667 
+A vulnerability was found in btrfs_alloc_tree_b in fs/btrfs/extent-tree.c in the Linux kernel due to an improper lock operation in btrfs. In this flaw, a user with a local privilege may cause a denial-of-service condition due to a deadlock problem. 
+CVE-2021-4149 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H). 
+3.2.5 IMPROPER INPUT VALIDATION CWE-20 
+LFENCE/JMP (mitigation V2-2) may not sufficiently mitigate CVE-2017-5715 on some AMD CPUs. 
+CVE-2021-26401 has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:N/A:N). 
+3.2.6 NULL POINTER DEREFERENCE CWE-476 
+A NULL pointer dereference in Busybox's man applet leads to a denial-of-service condition when a section name is supplied but no page argument is given. 
+CVE-2021-42373 has been assigned to this vulnerability. A CVSS v3 base score of 5.1 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.7 OUT-OF-BOUNDS READ CWE-125 
+An out-of-bounds heap read in Busybox's unlzma applet leads to information leak and a denial-of-service condition when crafted LZMA-compressed input is decompressed. This can be triggered by any applet/format that internally supports LZMA compression. 
+CVE-2021-42374 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:H). 
+3.2.8 IMPROPER INPUT VALIDATION CWE-20 
+An incorrect handling of a special element in Busybox's ash applet leads to a denial-of-service condition when processing a crafted shell command, due to the shell mistaking specific characters for reserved characters. This could cause a denial-of-service condition under rare conditions of filtered command input. 
+CVE-2021-42375 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:H). 
+3.2.9 NULL POINTER DEREFERENCE CWE-476 
+A NULL pointer dereference in Busybox's hush applet leads to a denial-of-service condition when processing a crafted shell command, due to missing validation after a \x03 delimiter character. This could cause a denial-of-service condition under very rare conditions of filtered command input. 
+CVE-2021-42376 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:H). 
+3.2.10 RELEASE OF INVALID POINTER OR REFERENCE CWE-763 
+An attacker-controlled pointer free in Busybox's hush applet leads to a denial-of-service condition and possible code execution when processing a crafted shell command, due to the shell mishandling the &&& string. This could be used for remote code execution under rare conditions of filtered command input. 
+CVE-2021-42377 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.11 USE AFTER FREE CWE-416 
+A use-after-free in Busybox's awk applet leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the getvar_i function. 
+CVE-2021-42378 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.12 USE AFTER FREE CWE-416 
+A use-after-free in Busybox's awk applet leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the next_input_file function. 
+CVE-2021-42379 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.13 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the clrvar function. 
+CVE-2021-42380 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.14 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the hash_init function. 
+CVE-2021-42381 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.15 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the getvar_s function. 
+CVE-2021-42382 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.16 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service could and possibly code execution when processing a crafted awk pattern in the evaluate function. 
+CVE-2021-42383 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.17 USE AFTER FREE CWE-416 
+A use-after-free in Busybox's awk applet leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the handle_special function. 
+CVE-2021-42384 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.18 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the evaluate function. 
+CVE-2021-42385 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.19 USE AFTER FREE CWE-416 
+A use-after-free in awk leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the nvalloc function. 
+CVE-2021-42386 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.20 IMPROPER INPUT VALIDATION CWE-20 
+Non-transparent sharing of branch predictor selectors between contexts in some Intel(R) Processors could allow an authorized user to enable information disclosure via local access. 
+CVE-2022-0001 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N). 
+3.2.21 IMPROPER INPUT VALIDATION CWE-20 
+Non-transparent sharing of branch predictor within a context in some Intel(R) Processors could allow an authorized user to enable information disclosure via local access. 
+CVE-2022-0002 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N). 
+3.2.22 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+A kernel information leak flaw was identified in the scsi_ioctl function in drivers/scsi/scsi_ioctl.c in the Linux kernel. This flaw allows a local attacker with a special user privilege (CAP_SYS_ADMIN or CAP_SYS_RAWIO) to create issues with confidentiality. 
+CVE-2022-0494 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N). 
+3.2.23 IMPROPER AUTHENTICATION CWE-287 
+OpenVPN 2.1 until v2.4.12 and v2.5.6 may enable authentication bypass in external authentication plug-ins when more than one of them makes use of deferred authentication replies, which allows an external user to be granted access with only partially correct credentials. 
+CVE-2022-0547 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.24 USE AFTER FREE CWE-416 
+A use-after-free flaw was found in the Linux kernel’s FUSE filesystem in the way a user triggers write(). This flaw allows a local user to gain unauthorized access to data from the FUSE filesystem, resulting in privilege escalation. 
+CVE-2022-1011 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.25 USE AFTER FREE CWE-416 
+A flaw was found in the Linux kernel in net/netfilter/nf_tables_core.c:nft_do_chain, which could cause a use-after-free. This issue needs to handle 'return' with proper preconditions, as it could lead to a kernel information leak problem caused by a local, unprivileged attacker. 
+CVE-2022-1016 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N). 
+3.2.26 USE AFTER FREE CWE-416 
+A use-after-free vulnerability was discovered in drivers/net/hamradio/6pack.c of Linux that could allow an attacker to crash the Linux kernel by simulating ax25 device using 6pack driver from user space. 
+CVE-2022-1198 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H). 
+3.2.27 USE AFTER FREE CWE-416 
+A flaw was found in the Linux kernel. This flaw allows an attacker to crash the Linux kernel by simulating amateur radio from the user space, resulting in a null-ptr-deref vulnerability and a use-after-free vulnerability. 
+CVE-2022-1199 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.28 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78 
+The c_rehash script does not properly sanitise shell metacharacters to prevent command injection. 
+CVE-2022-1292 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.29 OUT-OF-BOUNDS WRITE CWE-787 
+An out-of-bounds write vulnerability was found in e2fsprogs 1.46.5. This issue leads to a segmentation fault and possibly arbitrary code execution via a specially crafted filesystem. 
+CVE-2022-1304 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.30 IMPROPER CERTIFICATE VALIDATION CWE-295 
+Under certain circumstances, the command line OCSP verify function reports successful verification when the verification in fact failed. In this case, the incorrect successful response will also be accompanied by error messages showing the failure and contradicting the apparently successful result. 
+CVE-2022-1343 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N). 
+3.2.31 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+A vulnerability was found in the pfkey_register function in net/key/af_key.c in the Linux kernel. This flaw allows a local, unprivileged user to gain access to kernel memory, leading to a system crash or a leak of internal kernel information. 
+CVE-2022-1353 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H). 
+3.2.32 IMPROPER RESOURCE SHUTDOWN OR RELEASE CWE-404 
+The used OpenSSL version improperly reuses memory when decoding certificates or keys. This could lead to a process termination and denial-of-service condition for long lived processes. 
+CVE-2022-1473 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.33 USE AFTER FREE CWE-416 
+A NULL pointer dereference flaw was found in the Linux kernel’s X.25 set of standardized network protocols functionality in the way a user terminates their session using a simulated Ethernet card and continued usage of this connection. This flaw allows a local user to crash the system. 
+CVE-2022-1516 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H). 
+3.2.34 USE AFTER FREE CWE-416 
+A vulnerability in the Linux kernel could allow a local attacker to execute arbitrary code on the system, caused by a concurrency use-after-free flaw in the bad_flp_intr function. By executing a specially crafted program, an attacker could exploit this vulnerability to execute arbitrary code or cause a denial-of-service condition on the system. 
+CVE-2022-1652 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.35 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+A race condition was found the Linux kernel in perf_event_open() which can be exploited by an unprivileged user to gain root privileges. The bug allows to build several exploit primitives such as kernel address information leak, arbitrary execution, etc. 
+CVE-2022-1729 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.36 USE AFTER FREE CWE-416 
+A flaw in the Linux kernel found in nfcmrvl_nci_unregister_dev() in drivers/nfc/nfcmrvl/main.c can lead to use-after-free for both read or write when non-synchronized between cleanup routine and firmware download routine. 
+CVE-2022-1734 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.37 USE AFTER FREE CWE-416 
+A use-after-free flaw was found in the Linux kernel's near-field communication (NFC) core functionality due to a race condition between kobject creation and delete. This vulnerability allows a local attacker with CAP_NET_ADMIN privilege to leak kernel information. 
+CVE-2022-1974 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N). 
+3.2.38 UNCAUGHT EXCEPTION CWE-248 
+There is a sleep-in-atomic bug in /net/nfc/netlink.c that allows an attacker to crash the Linux kernel by simulating a NFC device from user-space. 
+CVE-2022-1975 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H). 
+3.2.39 OUT-OF-BOUNDS WRITE CWE-787 
+The Linux kernel is vulnerable to an out-of-bounds memory access in the drivers/video/fbdev/sm712fb.c:smtcfb_read() function. The vulnerability could result in a local attacker  crashing the kernel. 
+CVE-2022-2380 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H). 
+3.2.40 IMPROPER INPUT VALIDATION CWE-20 
+Zhenpeng Lin discovered the network packet scheduler implementation in the Linux kernel did not properly remove all references to a route filter before freeing it in some situations. A local attacker could use this to cause a denial-of-service condition (system crash) or execute arbitrary code. 
+CVE-2022-2588 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.41 INTEGER UNDERFLOW (WRAP OR WRAPAROUND) CWE-191 
+An integer coercion error was found in the openvswitch kernel module. Given a sufficiently large number of actions, while copying and reserving memory for a new action of a new flow, the reserve_sfa_size() function does not return -EMSGSIZE as expected, which could lead to an out-of-bounds write access. This flaw allows a local user to crash or potentially escalate their privileges on the system. 
+CVE-2022-2639 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.42 USE AFTER FREE CWE-416 
+In bdi_put and bdi_unregister of backing-dev.c, there is a possible memory corruption due to a use-after-free vulnerability. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. 
+CVE-2022-20158 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.43 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+Linux PV device frontends are vulnerable to attacks by backends. Several Linux PV device frontends use the grant table interfaces for removing access rights of the backends in ways subject to race conditions. This could result, data leaks, data corruption by malicious backends, and denial-of-service conditions triggered by malicious backends.  
+The blkfront, netfront, scsifront and the gntalloc driver test whether a grant reference is still in use. If this is not the case, they assume a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result, the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished.  
+CVE-2022-23036 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.44 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+Linux PV device frontends are vulnerable to attacks by backends. Several Linux PV device frontends use the grant table interfaces for removing access rights of the backends in ways being subject to race conditions. This could result in data leaks, data corruption by malicious backends, and denial-of-service triggered by malicious backends.  
+The blkfront, netfront, scsifront and the gntalloc driver test whether a grant reference is still in use. If this is not the case, they assume a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result, the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished.  
+CVE-2022-23037 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.45 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+Linux PV device frontends are vulnerable to attacks by backends. Several Linux PV device frontends use the grant table interfaces for removing access rights of the backends in ways being subject to race conditions. This could result in data leaks, data corruption by malicious backends, and denial-of-service triggered by malicious backends.  
+The blkfront, netfront, scsifront and the gntalloc driver test whether a grant reference is still in use. If this is not the case, they assume a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result, the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished.  
+CVE-2022-23038 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.46 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+Linux PV device frontends are vulnerable to attacks by backends. Several Linux PV device frontends use the grant table interfaces for removing access rights of the backends in ways being subject to race conditions. This could result in data leaks, data corruption by malicious backends, and denial-of-service triggered by malicious backends.  
+The blkfront, netfront, scsifront and the gntalloc driver test whether a grant reference is still in use. If this is not the case, they assume a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result, the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished.  
+CVE-2022-23039 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.47 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+Linux PV device frontends are vulnerable to attacks by backends. Several Linux PV device frontends use the grant table interfaces for removing access rights of the backends in ways being subject to race conditions. This could result in data leaks, data corruption by malicious backends, and denial-of-service triggered by malicious backends.  
+The blkfront, netfront, scsifront and the gntalloc driver test whether a grant reference is still in use. If this is not the case, they assume a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result, the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished.  
+CVE-2022-23040 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.48 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+Linux PV device frontends are vulnerable to attacks by backends. Several Linux PV device frontends use the grant table interfaces for removing access rights of the backends in ways being subject to race conditions. This could result in data leaks, data corruption by malicious backends, and denial-of-service triggered by malicious backends.  
+The blkfront, netfront, scsifront and the gntalloc driver test whether a grant reference is still in use. If this is not the case, they assume a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result, the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished. 
+CVE-2022-23041 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.49 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+Linux PV device frontends are vulnerable to attacks by backends. Several Linux PV device frontends use the grant table interfaces for removing access rights of the backends in ways being subject to race conditions. This could result in data leaks, data corruption by malicious backends, and denial-of-service triggered by malicious backends.  
+The blkfront, netfront, scsifront and the gntalloc driver test whether a grant reference is still in use. If this is not the case, they assume a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result, the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished.  
+CVE-2022-23042 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.50 USE AFTER FREE CWE-416 
+valid.c in libxml2 before 2.9.13 has a use-after-free of ID and IDREF attributes. 
+CVE-2022-23308 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.51 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120 
+st21nfca_connectivity_event_received in drivers/nfc/st21nfca/se.c in the Linux kernel through 5.16.12 has EVT_TRANSACTION buffer overflows due to untrusted length parameters. 
+CVE-2022-26490 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.52 IMPROPER INPUT VALIDATION CWE-20 
+In the Linux kernel before 5.17.1, a refcount leak bug was found in net/llc/af_llc.c. 
+CVE-2022-28356 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H). 
+3.2.53 DOUBLE FREE CWE-415 
+ems_usb_start_xmit in drivers/net/can/usb/ems_usb.c in the Linux kernel through 5.17.1 has a double free. 
+CVE-2022-28390 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.54 USE AFTER FREE CWE-416 
+A use-after-free in Busybox 1.35-x's awk applet leads to a denial-of-service condition and possibly code execution when processing a crafted awk pattern in the copyvar function. 
+CVE-2022-30065 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.55 INCORRECT AUTHORIZATION CWE-863 
+The Linux kernel before 5.17.2 mishandles seccomp permissions. The PTRACE_SEIZE code path allows attackers to bypass intended restrictions on setting the PT_SUSPEND_SECCOMP flag. 
+CVE-2022-30594 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.56 ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770 
+A malicious server can serve excessive amounts of "Set-Cookie:" headers in a HTTP response to curl and curl < 7.84.0 stores all of them. A sufficiently large amount of (big) cookies make subsequent HTTP requests to this, or other servers to which the cookies match, create requests that become larger than the threshold curl uses internally to avoid sending enormous requests (1048576 bytes) and instead returns an error. This denial state might remain for as long as the same cookies are kept, match, and haven't expired. Due to cookie matching rules, a server on "foo.example.com" can set cookies that also would match for "bar.example.com", making it possible for a "sister server" to effectively cause a denial-of-service condition for a sibling site on the same second-level domain using this method. 
+CVE-2022-32205 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L). 
+3.2.57 ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770 
+curl < 7.84.0 supports "chained" HTTP compression algorithms, meaning that a server response can be compressed multiple times and potentially with different algorithms. The number of acceptable "links" in this "decompression chain" was unbounded, allowing a malicious server to insert a virtually unlimited number of compression steps. The use of such a decompression chain could result in a "malloc bomb", forcing curl to spend enormous amounts of allocated heap memory, or trying to, and returning out of memory errors. 
+CVE-2022-32206 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H). 
+3.2.58 INCORRECT DEFAULT PERMISSIONS CWE-276 
+When curl < 7.84.0 saves cookies, alt-svc and hsts data to local files, it makes the operation atomic by finalizing the operation with a rename from a temporary name to the final target file name. In that rename operation, it might accidentally widen the permissions for the target file, leaving the updated file accessible to more users than intended. 
+CVE-2022-32207 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.59 OUT-OF-BOUNDS WRITE CWE-787 
+When curl < 7.84.0 does file transfer protocol (FTP) transfers secured by krb5, it mishandles message verification failures. This flaw makes it possible for a machine-in-the-middle attack to go unnoticed and or allow data to be injected into the client.  
+CVE-2022-32208 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.60 OBSERVABLE DISCREPANCY CWE-203 
+The Linux kernel before 5.17.9 allows TCP servers to identify clients by observing what source ports are used. This occurs because use of Algorithm 4 ("Double-Hash Port Selection Algorithm") of RFC 6056. 
+CVE-2022-32296 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N). 
+3.2.61 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120 
+An issue was discovered in the Linux kernel through 5.18.3 on powerpc 32-bit platforms. There is a buffer overflow in ptrace PEEKUSER and POKEUSER (aka PEEKUSR and POKEUSR) when accessing floating point registers. 
+CVE-2022-32981 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.62 USE AFTER FREE CWE-416 
+drivers/block/floppy.c in the Linux kernel before 5.17.6 is vulnerable to a denial-of-service condition, because of a concurrency use-after-free flaw after deallocating raw_cmd in the raw_cmd_ioctl function. 
+CVE-2022-33981 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L). 
+3.2.63 IMPROPER VALIDATION OF SYNTACTIC CORRECTNESS OF INPUT CWE-1286 
+When curl is used to retrieve and parse cookies from a HTTP(S) server, it accepts cookies using control codes that, when later are sent back to a HTTP server, could return 400 responses. As a result, a “sister site” could deny service to all siblings. 
+CVE-2022-35252 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.64 IMPROPER INPUT VALIDATION CWE-20 
+An issue was discovered in the Linux kernel through 5.18.14. xfrm_expand_policies in net/xfrm/xfrm_policy.c can cause a refcount to be dropped twice. 
+CVE-2022-36879 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H). 
+3.2.65 IMPROPER INPUT VALIDATION CWE-20 
+nfqnl_mangle in net/netfilter/nfnetlink_queue.c in the Linux kernel through 5.18.14 allows remote attackers to cause a denial-of-service condition (panic) because, in the case of an nf_queue verdict with a one-byte nfta_payload attribute, an skb_pull can encounter a negative skb->len. 
+CVE-2022-36946 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk: 
+
+Update all of the affected products to v7.2 or later version or the software. 
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens' operational guidelines for Industrial Security, and to follow the recommendations in the product manuals. Additional information on Industrial Security by Siemens can be found on the Siemens page for Industrial Security.  
+For further inquiries on security vulnerabilities in Siemens products and solutions, contact the Siemens ProductCERT.  
+For more information, see the associated Siemens security advisory SSA-419740 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. 

@@ -1,0 +1,205 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8 
+ATTENTION: Exploitable remotely / low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC S7-1500 TM MFP
+Vulnerabilities: Improper Input Validation, Out-of-bounds Read, Use After Free, Out-of-bounds Write, Infinite Loop, Reachable Assertion, Off-by-one Error, Incorrect Default Permissions, Double Free, Improper Handling of Exceptional Conditions, Integer Overflow or Wraparound, NULL Pointer Dereference, Release of Invalid Pointer or Reference, Race Condition, Improper Restriction of Operations within the Bounds of a Memory Buffer, Non-exit on Failed Initialization, Missing Encryption of Sensitive Data, Classic Buffer Overflow, Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may lead to denial of service, arbitrary code execution, information leakage, disclosure of sensitive data, or privilege escalation.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affect the BIOS of the following SIMATIC S7-1500 products:
+
+SIMATIC S7-1500 TM MFP - BIOS: all versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER INPUT VALIDATION CWE-20
+The iconv program in the GNU C library (aka glibc or libc6) 2.31 and earlier, when invoked with multiple suffixes in the destination encoding (TRANSLATE or IGNORE) along with the -c option, enters an infinite loop when processing invalid multi-byte input sequences, leading to a denial of service.
+CVE-2016-10228 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2 OUT-OF-BOUNDS READ CWE-125
+The iconv feature in the GNU C library (aka glibc or libc6) through 2.32, when processing invalid multi-byte input sequences in the EUC-KR encoding, may have a buffer over-read.
+CVE-2019-25013 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3 USE AFTER FREE CWE-416
+A use-after-free vulnerability introduced in glibc upstream version 2.14 was found in the way the tilde expansion was carried out. Directory paths containing an initial tilde followed by a valid username were affected by this issue. A local attacker could exploit this flaw by creating a specially crafted path that, when processed by the glob function, would potentially lead to arbitrary code execution. This was fixed in version 2.32.
+CVE-2020-1752 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4 OUT-OF-BOUNDS WRITE CWE-787
+The GNU C library (aka glibc or libc6) before 2.32 could overflow an on-stack buffer during range reduction if an input to an 80-bit long double function contains a non-canonical bit pattern, a seen when passing a 0x5d414141414141410000 value to sinl on x86 targets. This is related to sysdeps/ieee754/ldbl-96/e_rem_pio2l.c.
+CVE-2020-10029 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.5 LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+The iconv function in the GNU C Library (aka glibc or libc6) 2.32 and earlier, when processing invalid multi-byte input sequences in IBM1364, IBM1371, IBM1388, IBM1390, and IBM1399 encodings, fails to advance the input state, which could lead to an infinite loop in applications, resulting in a denial of service, a different vulnerability from CVE-2016-10228.
+CVE-2020-27618 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.6 REACHABLE ASSERTION CWE-617
+The iconv function in the GNU C library (aka glibc or libc6) 2.30 to 2.32, when converting UCS4 text containing an irreversible character, fails an assertion in the code path and aborts the program, potentially resulting in a denial of service.
+CVE-2020-29562 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:N/I:N/A:H).
+3.2.7 REACHABLE ASSERTION CWE-617
+The iconv function in the GNU C library (aka glibc or libc6) 2.32 and earlier, when processing invalid input sequences in the ISO-2022-JP-3 encoding, fails an assertion in the code path and aborts the program, potentially resulting in a denial of service.
+CVE-2021-3326 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.8 OUT-OF-BOUNDS READ CWE-125
+A flaw was found in glibc. The realpath() function can mistakenly return an unexpected value, potentially leading to information leakage and disclosure of sensitive data.
+CVE-2021-3998 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.9 OFF-BY-ONE ERROR CWE-193
+A flaw was found in glibc. An off-by-one buffer overflow and underflow in getcwd() may lead to memory corruption when the size of the buffer is exactly 1. A local attacker who can control the input buffer and size passed to getcwd() in a setuid program could use this flaw to potentially execute arbitrary code and escalate their privileges on the system.
+CVE-2021-3999 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.10 INCORRECT DEFAULT PERMISSIONS CWE-276
+A flaw was found in the permissions of a log file created by kexec-tools. This flaw allows a local unprivileged user to read this file and leak kernel internal information from a previous panic. The highest threat from this vulnerability is to confidentiality. This flaw affects kexec-tools shipped by Fedora versions prior to 2.0.21-8 and RHEL versions prior to 2.0.20-47.
+CVE-2021-20269 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.11 DOUBLE FREE CWE-415
+The nameserver caching daemon (nscd) in the GNU C library (aka glibc or libc6) 2.29 through 2.33, when processing a request for netgroup lookup, may crash due to a double-free, potentially resulting in degraded service or denial of service on the local system. This is related to netgroupcache.c.
+CVE-2021-27645 has been assigned to this vulnerability. A CVSS v3 base score of 2.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:L).
+3.2.12 IMPROPER HANDLING OF EXCEPTIONAL CONDITIONS CWE-755
+Decompress_gunzip.c in BusyBox through 1.32.1 mishandles the error bit on the huft_build result pointer, with a resultant invalid free or segmentation fault, via malformed gzip data.
+CVE-2021-28831 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.13 USE AFTER FREE CWE-416
+The mq_notify function in the GNU C library (aka glibc) versions 2.32 and 2.33 has a use-after-free. It may use the notification thread attributes object (passed through its struct sigevent parameter) after it has been freed by the caller, leading to a denial of service (application crash) or possibly unspecified other impact.
+CVE-2021-33574 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.14 INTEGER OVERFLOW OR WRAPAROUND CWE-190
+The wordexp function in the GNU C library (aka glibc) through 2.33 may crash or read arbitrary memory in parse_param (in posix/wordexp.c) when called with an untrusted, crafted pattern, potentially resulting in a denial of service or disclosure of information. This occurs because atoi was used but strtoul should have been used to ensure correct calculations.
+CVE-2021-35942 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H).
+3.2.15 NULL POINTER DEREFERENCE CWE-476
+In librt in the GNU C library (aka glibc) through 2.34, sysdeps/unix/sysv/linux/mq_notify.c mishandles certain NOTIFY_REMOVED data, leading to a NULL pointer dereference. NOTE: this vulnerability was introduced as a side effect of the CVE-2021-33574 fix.
+CVE-2021-38604 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.16 NULL POINTER DEREFERENCE CWE-476
+A NULL pointer dereference in Busybox's man applet leads to denial of service when a section name is supplied but no page argument is given.
+CVE-2021-42373 has been assigned to this vulnerability. A CVSS v3 base score of 5.1 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.17 OUT-OF-BOUNDS READ CWE-125
+Out-of-bounds heap read in Busybox's unlzma applet leads to information leak and denial of service when crafted LZMA-compressed input is decompressed. This can be triggered by any applet/format that internally supports LZMA compression.
+CVE-2021-42374 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:H).
+3.2.18 IMPROPER INPUT VALIDATION CWE-20
+An incorrect handling of a special element in Busybox's ash applet leads to denial of service when processing a crafted shell command, due to the shell mistaking specific characters for reserved characters. This may be used for denial of service under rare conditions of filtered command input.
+CVE-2021-42375 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:H).
+3.2.19 NULL POINTER DEREFERENCE CWE-476
+A NULL pointer dereference in Busybox's hush applet leads to denial of service when processing a crafted shell command, due to missing validation after a \x03 delimiter character. This may be used for denial of service under very rare conditions of filtered command input.
+CVE-2021-42376 has been assigned to this vulnerability. A CVSS v3 base score of 4.1 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:H).
+3.2.20 RELEASE OF INVALID POINTER OR REFERENCE CWE-763
+An attacker-controlled pointer free in Busybox's hush applet leads to denial of service and possible code execution when processing a crafted shell command, due to the shell mishandling the &&& string. This may be used for remote code execution under rare conditions of filtered command input.
+CVE-2021-42377 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been calculated. the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H)
+3.2.21 USE AFTER FREE CWE-416
+Use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_i function.
+CVE-2021-42378 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.22 USE AFTER FREE CWE-416
+Use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the next_input_file function.
+CVE-2021-42379 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.23 USE AFTER FREE CWE-416
+Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the clrvar function.
+CVE-2021-42380 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.24 USE AFTER FREE CWE-416
+Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the hash_init function.
+CVE-2021-42381 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.25 USE AFTER FREE CWE-416
+Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the getvar_s function.
+CVE-2021-42382 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.26 USE AFTER FREE CWE-416
+Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the evaluate function.
+CVE-2021-42383 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.27 USE AFTER FREE CWE-416
+Use-after-free in Busybox's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the handle_special function.
+CVE-2021-42384 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.28 USE AFTER FREE CWE-416
+Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the evaluate function.
+CVE-2021-42385 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.29 USE AFTER FREE CWE-416
+Use-after-free in awk leads to denial of service and possibly code execution when processing a crafted awk pattern in the nvalloc function.
+CVE-2021-42386 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.30 USE AFTER FREE CWE-416
+A use-after-free flaw was found in the Linux kernel’s pipes functionality in how a user performs manipulations with the pipe post_one_notification() after free_pipe_info() that is already called. This flaw allows a local user to crash or potentially escalate their privileges on the system.
+CVE-2022-1882 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.31 USE AFTER FREE CWE-416
+A use-after-free flaw was found in the Linux kernel’s POSIX CPU timers functionality in the way a user creates and then deletes the timer in the non-leader thread of the program. This flaw allows a local user to crash or potentially escalate their privileges on the system.
+CVE-2022-2585 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.32 IMPROPER INPUT VALIDATION CWE-20
+The network packet scheduler implementation in the Linux kernel does not properly remove all references to a route filter before freeing it in some situations. A local attacker could use this to cause a denial of service (system crash) or execute arbitrary code.
+CVE-2022-2588 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.33 OUT-OF-BOUNDS READ CWE-125
+An out-of-bounds memory read flaw was found in the Linux kernel's BPF subsystem in how a user calls the bpf_tail_call function with a key larger than the max_entries of the map. This flaw allows a local user to gain unauthorized access to data.
+CVE-2022-2905 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.34 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362
+A race condition was found in the Linux kernel's IP framework for transforming packets (XFRM subsystem) when multiple calls to xfrm_probe_algs occurred simultaneously. This flaw could allow a local attacker to potentially trigger an out-of-bounds write or leak kernel heap memory by performing an out-of-bounds read and copying it into a socket.
+CVE-2022-3028 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.35 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+A vulnerability classified as problematic has been found in the Linux kernel. This affects the function fib_nh_match of the file net/ipv4/fib_semantics.c of the component IPv4 Handler. The manipulation leads to out-of-bounds read. It is possible to initiate the attack remotely. It is recommended to apply a patch to fix this issue.
+CVE-2022-3435 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.36 USE AFTER FREE CWE-416
+A flaw was found in the Linux kernel’s networking code. A use-after-free was found in the way the sch_sfb enqueue function used the socket buffer (SKB) cb field after the same SKB had been enqueued (and freed) into a child qdisc. This flaw allows a local, unprivileged user to crash the system, causing a denial of service.
+CVE-2022-3586 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.37 OUT-OF-BOUNDS WRITE CWE-787
+A stack overflow flaw was found in the Linux kernel's SYSCTL subsystem in how a user changes certain kernel parameters and variables. This flaw allows a local user to crash or potentially escalate their privileges on the system.
+CVE-2022-4378 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.38 NON-EXIT ON FAILED INITIALIZATION CWE-455
+A flaw of incorrect access control in the Linux kernel USB core subsystem was found in the way a user attaches a USB device. A local user could use this flaw to crash the system.
+CVE-2022-4662 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.39 USE AFTER FREE CWE-416
+In binder_inc_ref_for_node of binder.c, there is a possible way to corrupt memory due to a use after free. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation. Product: Android, Versions: Android kernel, Android ID: A-239630375, References: Upstream kernel.
+CVE-2022-20421 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.40 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362 
+In emulation_proc_handler of armv8_deprecated.c, there is a possible way to corrupt memory due to a race condition. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation. Product: Android, Versions: Android kernel, Android ID: A-237540956, References: Upstream kernel 
+CVE-2022-20422 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.41 MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+Improper isolation of shared resources in some Intel processors may allow a privileged user to potentially enable information disclosure via local access.
+CVE-2022-21233 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.42 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The deprecated compatibility function svcunix_create in the sunrpc module of the GNU C library (aka glibc) through 2.34 copies its path argument on the stack without validating its length, which may result in a buffer overflow, potentially resulting in a denial of service or (if an application is not built with a stack protector enabled) arbitrary code execution.
+CVE-2022-23218 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.43 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The deprecated compatibility function clnt_create in the sunrpc module of the GNU C library (aka glibc) through 2.34 copies its hostname argument on the stack without validating its length, which may result in a buffer overflow, potentially resulting in a denial of service or (if an application is not built with a stack protector enabled) arbitrary code execution.
+CVE-2022-23219 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.44 MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+BusyBox through 1.35.0 allows remote attackers to execute arbitrary code if netstat is used to print a DNS PTR record's value to a VT compatible terminal. Alternatively, the attacker could choose to change the terminal's colors.
+CVE-2022-28391 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.45 USE AFTER FREE CWE-416
+A use-after-free in Busybox 1.35-x's awk applet leads to denial of service and possibly code execution when processing a crafted awk pattern in the copyvar function.
+CVE-2022-30065 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.46 CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362
+An issue was discovered in include/asm-generic/tlb.h in the Linux kernel before 5.19. Because of a race condition (unmap_mapping_range versus munmap), a device driver can free a page while it still has stale TLB entries. This only occurs in situations with VM_PFNMAP VMAs.
+CVE-2022-39188 has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.47 UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+An issue was discovered in net/netfilter/nf_tables_api.c in the Linux kernel before 5.19.6. A denial of service can occur upon binding to an already bound chain.
+CVE-2022-39190 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.48 USE AFTER FREE CWE-416
+An issue was discovered in the Linux kernel through 5.19.8. drivers/firmware/efi/capsule-loader.c has a race condition with a resultant use-after-free.
+CVE-2022-40307 has been assigned to this vulnerability. A CVSS v3 base score of 4.7 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.49 USE AFTER FREE CWE-416
+mm/mremap.c in the Linux kernel before 5.13.3 has a use-after-free via a stale TLB because an rmap lock is not held during a PUD move.
+CVE-2022-41222 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.50 USE AFTER FREE CWE-416
+mm/rmap.c in the Linux kernel before 5.19.7 has a use-after-free related to leaf anon_vma double reuse.
+CVE-2022-42703 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.51 INTEGER OVERFLOW OR WRAPAROUND CWE-190
+A buffer overflow vulnerability was found in the Netfilter subsystem in the Linux kernel. This issue could allow the leakage of both stack and heap addresses, and potentially allow local privilege escalation to the root user via arbitrary code execution.
+CVE-2023-0179 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.52 MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+A NULL pointer dereference flaw was found in rawv6_push_pending_frames in net/ipv6/raw.c in the network subcomponent in the Linux kernel. This flaw causes the system to crash.
+CVE-2023-0394 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. The CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.53 OUT-OF-BOUNDS WRITE CWE-787
+A memory corruption flaw was found in the Linux kernel’s human interface device (HID) subsystem in how a user inserts a malicious USB device. This flaw allows a local user to crash or potentially escalate their privileges on the system.
+CVE-2023-1073 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated. The CVSS vector string is (CVSS:3.1/AV:P/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens is preparing updates and recommends countermeasures for products where updates are not, or not yet available. Siemens has identified the following specific workarounds and mitigations that customers can apply to reduce the risk:
+
+Only build and run applications from trusted sources.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security, and to follow the recommendations in the product manuals. Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity.
+For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories. 
+For more information see the associated Siemens security advisory SSA-831302 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity.

@@ -1,0 +1,70 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Schneider Electric
+Equipment: Modicon M241 / M251 / M258 / LMC058
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could lead to a denial-of-service and a loss of confidentiality and integrity in the controller.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric reports following Modicon PLCs are affected:
+
+Modicon Controllers M241: Versions prior to 5.2.11.29
+Modicon Controllers M251: Versions prior to 5.2.11.29
+Modicon Controllers M258: All versions
+Modicon Controllers LMC058: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER INPUT VALIDATION CWE-20
+An improper input validation vulnerability exists that could lead to a denial-of-service and a loss of confidentiality and integrity in the controller when an unauthenticated crafted Modbus packet is sent to the device.
+CVE-2024-11737 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-11737. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Wooyeon Jo and Irfan Ahmed of Virginia Commonwealth University reported this vulnerability to Schneider Electric.
+4. MITIGATIONS
+Modicon M241/M251 firmware Version 5.2.11.29 includes a fix for this vulnerability and can be updated through the Schneider Electric SoftwareUpdate (SESU) application that is part of EcoStruxure Machine Expert
+Update Modicon Controller M241/M251 to the latest firmware by using Controller Assistant and perform reboot. Users should employ appropriate patching methodologies when applying these patches to their systems. Schneider Electric strongly recommends the use of back-ups and evaluating the impact of these patches in a test and development environment or on an offline infrastructure. Contact Schneider Electric's Customer Care Center for assistance removing a patch.
+Schneider Electric is establishing a remediation plan for all future versions of Modicon M258/LMC058 that will include a fix for this vulnerability. They will update SEVD-2024-345-03 when the remediation is available. Until then, users should immediately apply the following mitigations to reduce the risk of exploit:
+
+Use controllers and devices only in a protected environment to minimize network exposure and ensure that they are not accessible from public Internet or untrusted networks.
+Filter ports and IP through the embedded firewall.
+Setup network segmentation and implement a firewall to block all unauthorized access to Port 502/TCP.
+Disable all unused protocols (default configuration).
+For more details refer to "Cybersecurity Guidelines for EcoStruxure Machine Expert, Modicon and PacDrive Controllers and Associated Equipment Guide"
+To ensure users are informed of all updates, including details on affected products and remediation plans, Schneider Electric recommends subscription to their security notification service.
+
+Schneider Electric strongly recommends the following industry cybersecurity best practices:
+
+Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.
+Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.
+Place all controllers in locked cabinets and never leave them in the "Program" mode.
+Never connect programming software to any network other than the network intended for that device.
+Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.
+Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.
+Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.
+When remote access is required, use secure methods, such as virtual private networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.
+For more information refer to the Schneider Electric recommended cybersecurity best practices document.
+
+For more information, see Schneider Electric security notification "SEVD-2024-345-03 Modicon M241 / M251 / M258 / LMC058"
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+December 17, 2024: Initial Publication
+March 18, 2025: Update A - Added remediation for Modicon M241 / M251
+

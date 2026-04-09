@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Bently Nevada
+Equipment: 3701/4X series and 60M100 (3701/60) Condition Monitoring System
+Vulnerabilities: Use of Hard-coded Credentials, Missing Authentication for Critical Function
+
+CISA is aware of a public report, known as “OT:ICEFALL” that details vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow file manipulation, remote code execution, or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Bently Nevada 3700 machinery monitors are affected:
+
+Bently Nevada 3701/40: All versions prior to 4.1
+Bently Nevada 3701/44: All versions prior to 4.1
+Bently Nevada 3701/46: All versions prior to 4.1
+Bently Nevada 60M100 (3701/60): All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF HARD-CODED CREDENTIALS CWE-798
+The affected product has credentials for the maintenance interface hardcoded in the firmware. The maintenance interface allows for debug and process execution capabilities, which could allow remote code execution or cause a denial-of-service condition.
+CVE-2022-29953 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.2.2    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected product uses protocols to provide configuration management and historical data related functionality without any authentication features, which may allow an attacker to read or write files on the controllers or cause a denial-of-service condition.
+CVE-2022-29952 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Daniel dos Santos and Jos Wetzels from Forescout Technologies reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Bently Nevada recommend users upgrade 3701/4x series to Version 4.1.1712.0601 or higher, which has the diagnostics port disabled and the hardcoded credentials removed from the firmware image.
+Bently Nevada 60M100 Ethernet Port B, which is for diagnostics where Port 4001/TCP is enabled, should not be connected during normal operation. The 3701/60 is approaching end-of-life status and users are encouraged to upgrade to 60M100.
+For support information, users should contact the Bently Nevada technical support team by email, phone (+1 775-215-1818), or website at Bently Nevada Support (login required).
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities

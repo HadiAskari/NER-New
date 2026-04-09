@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.6
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: SIMATIC CP 1543-1
+Vulnerability: Improper Input Validation, Improper Privilege Management
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-16-327-01 Siemens SIMATIC CP 1543-1 Vulnerabilities that was published November 22, 2016, on the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to elevate privileges on the affected devices or cause a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that the vulnerabilities affect the following versions of the SIMATIC CP 1543-1 communication processor: 
+--------- Begin Update A Part 1 of 2 ---------
+
+SIMATIC CP 1543-1 (6GK7543-1AX00-0XE0): All versions prior to v2.0.28
+SIPLUS NET CP 1543-1 (6AG1543-1AX00-2XE0): All versions prior to v2.0.28
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+Users with elevated privileges to TIA-Portal and project data on the engineering station could possibly get privileged access on affected devices.
+CVE-2016-8561 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    IMPROPER INPUT VALIDATION CWE-20
+Under special conditions, it may be possible to write SNMP variables on Port 161/UDP that should be read-only and should only be configured with TIA-Portal. A write to these variables could reduce the availability or cause a denial of service.
+CVE-2016-8562 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Healthcare and Public Health, Transportation Systems, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+These vulnerabilities were coordinated directly with Siemens by SOGETI and Agence nationale de la sécurité des systèmes d’information (ANSSI).
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 ---------
+Siemens has released updates for the affected products and recommends users update to the latest versions.:
+
+SIMATIC CP 1543-1: Update to v2.0.28 or later version 
+SIPLUS NET CP 1543-1: Update to v2.0.28 or later version
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security, and following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+--------- End Update A Part 2 of 2 ---------
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-672373
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity.

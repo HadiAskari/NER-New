@@ -1,0 +1,56 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Weintek
+Equipment: cMT
+Vulnerabilities: Code Injection, Improper Access Control, Cross-site Scripting
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an unauthenticated remote attacker to access sensitive information and execute arbitrary code to gain root privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following models and OS versions of cMT are affected:
+
+cMT-SVR-1xx/2xx, versions prior to 20210305
+cMT-G01/G02, versions prior to 20210209
+cMT-G03/G04, versions prior to 20210222
+cMT3071/cMT3072/cMT3090/cMT3103/cMT3151, versions prior to 20210218
+cMT-HDM, versions prior to 20210204
+cMT-FHD, versions prior to 20210208
+cMT-CTRL01, versions prior to 20210302
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94
+The Weintek cMT product line is vulnerable to Code Injection, which may allow an unauthenticated remote attacker to execute commands with root privileges on the operation system.
+CVE-2021-27446 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.2    IMPROPER ACCESS CONTROL CWE-284
+The Weintek cMT product line is vulnerable to various improper access controls, which may allow an unauthenticated attacker to remotely access and download sensitive information and perform administrative actions on behalf of a legitimate administrator.
+CVE-2021-27444 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The Weintek cMT product line is vulnerable to a cross-site scripting vulnerability, which could allow an unauthenticated remote attacker to inject malicious JavaScript code.
+CVE-2021-27442 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Marcin Dudek from CERT.PL reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Weintek has released OS upgrades for the affected products. Refer to Weintek’s Technical Notice regarding these vulnerabilities.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

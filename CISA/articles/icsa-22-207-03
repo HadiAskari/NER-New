@@ -1,0 +1,49 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.6
+ATTENTION: Exploitable on adjacent network/low attack complexity
+Vendor: Honeywell
+Equipment: Saia Burgess PG5 PCD
+Vulnerabilities: Authentication Bypass, Use of a Broken or Risky Cryptographic Algorithm
+
+CISA is aware of a public report known as “OT:ICEFALL” that details vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identifies baseline mitigations for reducing risks from these and other cybersecurity attacks.
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow for configuration manipulation.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Saia Burgess PG5 PCD, a PLC, are affected:
+
+Saia Burgess PG5 PCD: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    AUTHENTICATION BYPASS CWE-288
+The affected product uses the S-Bus protocol with authentication functions that can be controlled by the client MAC and IP. Because UDP is stateless, an attacker that can observe traffic can also spoof the MAC and IP of an authenticated client and manipulate the controller configuration.
+CVE-2022-30319 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L).
+3.2.2    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+The affected product uses the S-Bus “write byte” message to a specific address and supplies a hashed version of the password. The hashing algorithm is based on CRC-16 and, as such, is not cryptographically secure.
+CVE-2022-30320 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Daniel dos Santos and Jos Wetzels from Forescout Technologies reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Honeywell recommends users with affected products and unsupported products take the following steps to protect themselves:
+
+Apply product updates as available.
+Follow guidance in the product security manual to ensure isolation of network segments upon which automation controllers reside.
+Ensure adequate security controls are in place between OT and IT network segments.
+Disable unnecessary accounts and services.
+Follow a least privilege approach and restrict system access to authorized personnel.
+Apply defense-in-depth strategies.
+Log and monitor network traffic for suspicious activity.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

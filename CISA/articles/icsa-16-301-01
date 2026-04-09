@@ -1,0 +1,56 @@
+
+OVERVIEW
+Honeywell reported a denial-of-service condition caused by an improper input validation vulnerability in Honeywell’s Experion Process Knowledge System (PKS) platform. Honeywell has produced patches to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Experion PKS versions are affected:
+
+Experion PKS, Release 3xx and prior,
+Experion PKS, Release 400,
+Experion PKS, Release 410,
+Experion PKS, Release 430, and
+Experion PKS, Release 431
+
+IMPACT
+Successful exploitation of the vulnerability would prevent the Experion PKS client tools from uploading firmware to Series-C devices.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Honeywell is a US-based company that maintains offices worldwide.
+The affected product, Experion PKS, is a client tool used to configure firmware in Series-C devices. According to Honeywell, Experion PKS is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, Water and Wastewater Systems, and others. Honeywell estimates that this product is used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, https://cwe.mitre.org/data/definitions/20.html, web site last accessed October 27, 2016.
+
+Experion PKS does not properly validate input. By sending a specially crafted packet, an attacker could cause the process to terminate. A successful exploit would prevent firmware uploads to the Series-C devices.
+CVE-2016-8344NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8344, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L, web site last accessed October 27, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a medium skill would be able to exploit this vulnerability.
+MITIGATION
+Honeywell recommends that Experion users download and apply the appropriate patch to protect themselves from this vulnerability.
+Honeywell’s software downloads to resolve the vulnerabilities include the following:
+
+R400.8 HOTFIX1,
+R410.8 HOTFIX6,
+R430.5 HOTFIX1, and
+R431.2 HOTFIX2
+
+In the event that a patch is not yet available for a current Experion release, Honeywell recommends users either isolate the network traffic when using the client tools (eNAP Server service) or turn the eNAP Server service off when not uploading new firmware until a patch is available.
+Users can contact Honeywell technical support for registration and installation instructions for these patches at the following URLs:
+https://www.honeywellprocess.com/en-US/support/pages/request-support.aspx
+https://www.honeywellprocess.com/en-US/contact-us/pages/default.aspx
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

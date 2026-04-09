@@ -1,0 +1,62 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Motorola Solutions
+Equipment: ACE1000
+Vulnerabilities: Use of Hard-coded Cryptographic Key, Use of Hard-coded Credentials, Insufficient Verification of Data Authenticity
+
+CISA is aware of a public report, known as “OT:ICEFALL” that details vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to manipulate the RTU configuration, cause a denial-of-service condition, or achieve remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of ACE1000, a remote terminal unit, are affected:
+
+Motorola Solutions ACE1000: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+The affected product ships with a hardcoded SSH private key and initialization scripts (such as /etc/init.d/sshd_service) only generate a new key if no such file yet exists. As such, this hard-coded key is likely to be used by default. This could allow an attacker to remotely execute code, manipulate configuration, or cause a denial-of-service condition.
+CVE-2022-30271 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.2.2    USE OF HARD-CODED CREDENTIALS CWE-798
+The affected product SSH service is controlled by five preconfigured accounts, all of which come with default hard-coded credentials. This could allow an attacker to manipulate configuration, remotely execute code, and cause a denial-of-service condition.
+CVE-2022-30270 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+The affected device communicates with an XRT Lan-to-radio gateway by means of an embedded client. Credentials for accessing this gateway are stored after being encrypted with the tiny encryption algorithm (TEA) in ECB mode using a hardcoded key, which could allow an attacker to manipulate the device configuration.
+CVE-2022-30274 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.4    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+The affected product allows for custom application installation via STS software, the C toolkit, or the ACE1000 Easy Configurator. Application images were found to have no authentication (in the form of firmware signing) and only relied on insecure checksums for regular integrity checks. This could allow an authenticated attacker to run remote code execution or cause a denial-of-service condition.
+CVE-2022-30269 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H).
+3.2.5    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+An attacker capable of communicating with and authenticating to a Motorola ACE1000 RTU via SSH or Web UI could push malicious firmware images to the RTU, which could allow firmware manipulation, remote code execution, and a denial-of-service condition.
+CVE-2022-30272 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Daniel dos Santos and Jos Wetzels from Forescout Technologies reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Motorola Solutions recommends the following:
+While individual remediation steps are specified, note all vulnerabilities listed above can be resolved by upgrading the ACE1000 to MC-EDGE intelligent RTU.
+CVE-2022-30269: To remediate, use the “Secured Download and Installation for ACE1000” procedure.
+CVE-2022-30272: To remediate, use the “Secured Download and Installation for ACE1000” procedure.
+CVE-2022-30271: To remediate, manually rotate the private key using the “ACE1000 SSH Key Rotation” process.
+CVE-2022-30270: To remediate, users should change their password manually. This process can be found in the ACE1000 user guide.
+CVE-2022-30274: Upgrade to MOTOTRBO Capacity Max.
+For user guide and procedural information mentioned within this report, use the Contact Us form and select “Other” for Product Interest and request the manual for IoT products.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

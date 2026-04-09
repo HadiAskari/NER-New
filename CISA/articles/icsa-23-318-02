@@ -1,0 +1,54 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Rockwell Automation
+Equipment: SIS Workstation and ISaGRAF Workbench
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow unprivileged local users to overwrite files replacing them with malicious programs.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports the following versions of SIS Workstation and ISaGRAF Workbench Code are affected:
+
+Safety Instrumented System Workstation: v1.2 up to but not including v2.00
+ISaGRAF Workbench: v6.6.9 up to but not including v6.06.10
+
+3.2 Vulnerability Overview
+3.2.1 Improper Input Validation CWE-20
+Due to the third-party vulnerabilities in Nullsoft Scriptable Install System (NSIS), the SIS Workstation and ISaGRAF Workbench installer and uninstaller have unsafe implicit linking against Version.dll. Therefore, there is no protection mechanism in the wrapper function that resolves the dependency at an appropriate time during runtime. Also, the SIS workstation and ISaGRAF Workbench uninstaller uses temporary folder locations that allow unprivileged local users to overwrite files. This allows a local attack in which the uninstaller can be replaced by a malicious program.
+CVE-2015-9268 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported this vulnerability to CISA.
+4. MITIGATIONS
+Rockwell Automation recommends users of the affected software to update the affected product to the latest version:
+
+Safety Instrumented System Workstation: v2.00 and later
+ISaGRAF Workbench: v6.06.10 and later
+
+Rockwell Automation encourages users of the affected software to apply the risk mitigations, if possible. Additionally, they encourage users to implement Rockwell Automation suggested security best practices to minimize the risk of vulnerability.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely.
+5. UPDATE HISTORY
+
+November 14, 2023: Initial Publication
+

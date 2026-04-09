@@ -1,0 +1,70 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: Desigo PX Devices
+Vulnerability: External Control of Assumed-Immutable Web Parameter
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to cause a denial-of-service condition on the device’s web server, requiring a reboot to recover the web interface.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Desigo PX automation controllers are affected:
+
+PXC00-E.D, PXC50-E.D, PXC100-E.D, PXC200-E.D with Desigo PX Web modules
+	PXA40-W0, PXA40-W1, PXA40-W2: All firmware versions prior to V6.00.320
+	 
+PXC00-U, PXC64-U, PXC128-U with Desigo PX Web modules
+	PXA30-W0, PXA30-W1, PXA30-W2: All firmware versions prior to V6.00.320
+	 
+PXC22.1-E.D, PXC36-E.D, PXC36.1-E.D with activated web server: All firmware versions prior to V6.00.320
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    EXTERNAL CONTROL OF ASSUMED-IMMUTABLE WEB PARAMETER CWE-472
+An attacker with network access to an affected device could send a specially crafted HTTP message to the web server port (TCP/80), which would cause the server to reply with status code 404 to any further requests. Exploitation requires no system privileges and no user interaction. A reboot is required to recover the web interface. This vulnerability may impact the availability of the affected system.
+
+CVE-2019-13927 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Gjoko “LiquidWorm” Krstic from Zero Science Lab (MK) reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens has an update available for the following affected products:
+
+PXC00-E.D, PXC50-E.D, PXC100-E.D, PXC200-E.D with Desigo PX Web modules
+	PXA40-W0, PXA40-W1, PXA40-W2: Install v6.00.320 or a later version.
+	 
+PXC00-U, PXC64-U, PXC128-U with Desigo PX Web modules
+	PXA30-W0, PXA30-W1, PXA30-W2: Install v6.00.320 or a later version.
+	 
+PXC22.1-E.D, PXC36-E.D, PXC36.1-E.D with activated web server: Install v6.00.320 or a later version.
+
+Siemens has identified the following specific workarounds and mitigations that users can apply to reduce risk:
+
+Ensure the PX Web interface is accessible only from trusted networks.
+
+As a general security measure, Siemens strongly recommends customers protect network access to affected products with appropriate mechanisms. Siemens advises all users to follow recommended security practices to run the devices in a protected environment.
+
+For more information on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT:
+http://www.siemens.com/cert/advisories
+
+For more information on the vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-898181 at the following location: http://www.siemens.com/cert/advisories
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

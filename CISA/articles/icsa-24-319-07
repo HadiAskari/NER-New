@@ -1,0 +1,96 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 7.0
+ATTENTION: Low Attack Complexity
+Vendor: Siemens
+Equipment: Siemens Engineering Platforms
+Vulnerability: Deserialization of Untrusted Data
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to cause a type confusion and execute arbitrary code within the affected application.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports that the following products are affected:
+
+SIMATIC S7-PLCSIM V16: all versions
+SIMATIC S7-PLCSIM V17: all versions
+SIMATIC STEP 7 Safety V16: all versions
+SIMATIC STEP 7 Safety V17: versions prior to V17 Update 8
+SIMATIC STEP 7 Safety V18: versions prior to V18 Update 5
+SIMATIC STEP 7 V16: all versions
+SIMATIC STEP 7 V17: versions prior to V17 Update 8
+SIMATIC STEP 7 V18: versions prior to V18 Update 5
+SIMATIC WinCC Unified V16: all versions
+SIMATIC WinCC Unified V17: versions prior to V17 Update 8
+SIMATIC WinCC Unified V18: versions prior to V18 Update 5
+SIMATIC WinCC V16: all versions
+SIMATIC WinCC V17: versions prior to V17 Update 8
+SIMATIC WinCC V18: versions prior to V18 Update 5
+SIMOCODE ES V16: all versions
+SIMOCODE ES V17: versions prior to V17 Update 8
+SIMOCODE ES V18: all versions
+SIMOTION SCOUT TIA V5.4 SP1: all versions
+SIMOTION SCOUT TIA V5.4 SP3: all versions
+SIMOTION SCOUT TIA V5.5 SP1: all versions
+SINAMICS Startdrive V16: all versions
+SINAMICS Startdrive V17: all versions
+SINAMICS Startdrive V18: all versions
+SIRIUS Safety ES V17: versions prior to V17 Update 8
+SIRIUS Safety ES V18: all versions
+SIRIUS Soft Starter ES V17: versions prior to V17 Update 8
+SIRIUS Soft Starter ES V18: all versions
+TIA Portal Cloud V16: all versions
+TIA Portal Cloud V17: versions prior to V4.6.0.1
+TIA Portal Cloud V18: versions prior to V4.6.1.0
+
+3.2 Vulnerability Overview
+3.2.1 DESERIALIZATION OF UNTRUSTED DATA CWE-502
+Affected products do not properly sanitize user-controllable input when parsing user settings. This could allow an attacker to cause a type confusion and execute arbitrary code within the affected application.
+CVE-2023-32736 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2023-32736. A base score of 7.0 has been calculated; the CVSS vector string is (CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has released new versions for several affected products and recommends updating to the latest versions. Siemens is preparing further fix versions and recommends countermeasures for products where fixes are not, or not yet available.
+
+SIMATIC WinCC V17: Update to V17 Update 8 or later version
+SIMATIC STEP 7 Safety V17, SIMATIC STEP 7 V17, SIMATIC WinCC Unified V17: Update to V17 Update 8 or later version
+SIMOCODE ES V17, SIRIUS Safety ES V17, SIRIUS Soft Starter ES V17: Update to V17 Update 8 or later version
+SIMATIC STEP 7 Safety V18, SIMATIC STEP 7 V18, SIMATIC WinCC Unified V18, SIMATIC WinCC V18: Update to V18 Update 5 or later version
+TIA Portal Cloud V18: TIA Portal Cloud V4.6.1.0 or later version updated TIA Portal to V18 Update 5 or later version
+SIMOCODE ES V18, SIMOTION SCOUT TIA V5.5 SP1, SINAMICS Startdrive V18, SIRIUS Safety ES V18, SIRIUS Soft Starter ES V18: Update SIMATIC STEP 7 V18 to V18 Update 5 or later version
+SIMOTION SCOUT TIA V5.4 SP3, SINAMICS Startdrive V17: Update SIMATIC STEP 7 V17 to V17 Update 8 or later version
+TIA Portal Cloud V17: TIA Portal Cloud V4.6.0.1 or later version updated TIA Portal to V17 Update 8 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Avoid opening untrusted files from unknown sources in affected products
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-871035 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely.
+5. UPDATE HISTORY
+
+November 14, 2024: Initial Publication
+

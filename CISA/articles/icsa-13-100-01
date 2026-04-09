@@ -1,0 +1,35 @@
+
+Overview
+This advisory provides mitigation details for a vulnerability affecting the Schneider Electric MiCOM S1 Studio Software.Independent researcher Michael Toecker of Digital Bond has identified an improper authorization vulnerability in the MiCOM S1 Studio Software using the Microsoft Attack Surface Analyzer tool. The vulnerability was disclosed to vendors prior to the 2013 Digital Bond S4 Conference and then presented at the conference. The function of MiCOM S1 Studio Software is to allow users to modify or manage the configuration parameters of electronic protective relays.
+Affected Products
+The following Schneider Electric MiCOM S1 Studio Software products are affected:
+
+MiCOM S1 Studio Software, all versions.
+
+Impact
+Successful exploitation of this vulnerability may allow an attacker with read/modify user permissions for the MiCOM S1 Studio file system to affect the availability of the application. Unauthorized attackers can then access the MiCOM S1 Studio executable files. This vulnerability can affect products deployed in the energy, water and wastewater, and critical manufacturing sectors.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Schneider Electric is a Europe-based company that maintains offices in 190 countries worldwide. Their products address various markets including renewable energy, process control, monitoring and control, motor controls, lighting controls, electrical distribution, and security systems.The affected product, MiCOM S1 Studio Software, allows users to modify or manage the configuration parameters of electronic protective relays.According to Schneider Electric, MiCOM S1 Studio Software is deployed across several sectors including energy, water and wastewater, and critical manufacturing.
+Vulnerability Characterization
+Vulnerability Overview
+Improper Access ControlCWE-284: Improper Access Control, http://cwe.mitre.org/data/definitions/284.html, Web site last accessed April 10, 2013.
+The MiCOM S1 Studio Software does not limit user access to its installed executables to only authenticated administrative users. A malicious user with any level of access to the local system could replace executables within the MiCOM S1 Studio Program Files directory with malicious files. When the MiCOM S1 Studio application is run, the malicious executable would be run instead. Successful exploitation of this vulnerability could cause loss of availability, integrity, and confidentiality with the local system and a disruption in communications with other connected devices.In addition, a Windows Service running under LocalSystem is located within this directory as well. Replacing the associated executable, in this case, would allow lower privileged users to escalate their privileges to an administrator level on the system.
+CVE-2013-0687NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0687, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory has been assigned to this vulnerability. A CVSS v2 base score of 6.0 has been assigned; the CVSS vector string is (AV:L/AC:H/Au:S/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+This vulnerability is not exploitable remotely and cannot be exploited without access to the local system by an authorized user.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a high skill would be able to exploit this vulnerability.
+Mitigation
+Schneider Electric has produced a vulnerability disclosure to address the MiCOM S1 Studio Software vulnerability and provide mitigation strategies.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

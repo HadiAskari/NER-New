@@ -1,0 +1,75 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/Low attack complexity/Public exploits available
+Vendor: Schneider Electric
+Equipment: APC Easy UPS Online Monitoring Software
+Vulnerability: OS Command Injection, Missing Authentication for Critical Function
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could result in an attacker achieving remote code execution on the underlying operating system when manipulating internal methods through the Java RMI interface. It could also result in escalation of privileges or authentication bypass, which could then result in malicious web code execution or loss of device functionality.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Easy UPS Online Monitoring Software for Windows 10, 11, Windows Server 2016, 2019, 2022 are affected:
+
+APC Easy UPS Online Monitoring Software: v2.5-GA-01-22261 and prior
+Schneider Electric Easy UPS Online Monitoring Software: Version V2.5-GA-01-22320 and prior
+
+3.2 Vulnerability Overview
+3.2.1 Missing Authentication For Critical Function CWE-306
+A vulnerability exists that could allow changes to administrative credentials, leading to potential remote code execution without requiring prior authentication on the Java RMI interface.
+CVE-2023-29411 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') CWE-78
+Prior versions of Schneider Electric APC Easy UPS Online contain an OS Command Injection vulnerability that could cause remote code execution when manipulating internal methods through Java RMI interface.
+CVE-2023-29412 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3 Missing Authentication For Critical Function CWE-306
+A vulnerability exists that could cause a denial-of-service condition when accessed by an unauthenticated user on the Schneider UPS Monitor service.
+CVE-2023-29413 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Esjay, working with Trend Micro Zero Day Initiative, and Nicholas Miles, working with Tenable, reported these vulnerabilities to Schneider Electric and CISA.
+4. MITIGATIONS
+Schneider Electric became aware of a public PoC detailing an exploit for prior versions of the APC Easy UPS Online Monitoring Software, and strongly recommends all users take the defensive actions listed in this advisory.
+The affected software is being discontinued with the discontinuation of the Easy UPS Online SNMP Cards (APV9601, APVS9601) managed by this software. Fixed versions notwithstanding, Schneider Electric recommends users to migrate to the PowerChute series of software, including PowerChute Serial Shutdown and PowerChute Network Shutdown. For more information, please see the following sites:
+
+PowerChute Serial Shutdown
+PowerChute Network Shutdown
+
+Schneider Electric recommends users update their affected devices to the following versions or later:
+
+APC Easy UPS Online Monitoring Software: Version 2.6-GA or later
+Schneider Electric Easy UPS Online Monitoring Software: Version 2.6-GS or later
+
+Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems and impact evaluate these patches in a test, development, or offline infrastructure environment. Schneider Electric strongly recommends the use of backups.
+Users can contact Schneider Electric's Customer Care Center for additional assistance. 
+Schneider Electric strongly recommends users follow cybersecurity industry best practices, including: 
+
+Locating control and safety system networks and remote devices behind firewalls and isolating them from the business network. 
+Installing physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks. 
+Placing all controllers in locked cabinets, and do not leave them in the "Program" mode. 
+Only connecting programming software to the network intended for that device. 
+Scanning all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks. 
+Properly sanitizing mobile devices that have connected to another network before connecting to the intended network. 
+Minimizing network exposure for all control system devices and systems and ensure that they are not accessible from the internet. 
+Using secure methods, such as virtual private networks (VPNs), when remote access is required. 
+For more information, refer to the Schneider Electric Recommended Cybersecurity Best Practices document. 
+
+For more information, see Schneider Electric security notification SEVD-2023-101-04
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+April 18, 2023: Initial Publication
+June 11, 2024: Update A - Updated CVE-2023-29412, mitigations section, and affected product version for APC version of product to reflect publicly available exploit found by Schneider.
+

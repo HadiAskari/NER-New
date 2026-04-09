@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.8
+
+ATTENTION: Public exploits are available
+Vendor: Stryker
+Equipment: Secure II MedSurg Bed, S3 MedSurg Bed, and InTouch ICU Bed
+Vulnerability: Reusing a Nonce
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow data traffic manipulation, resulting in partial disclosure of encrypted communication or injection of data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Stryker medical products are affected:
+
+Secure II MedSurg Bed (enabled with iBed Wireless), Model: 3002,
+S3 MedSurg Bed (enabled with iBed Wireless), Models: 3002 S3, and 3005 S3, and
+InTouch ICU Bed (enabled with Bed Wireless), Models 2131, and 2141.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    REUSING A NONCE, KEY PAIR IN ENCRYPTION CWE-323
+An industry-wide vulnerability exists in the WPA and WPA2 protocol affected by the Key Reinstallation Attacks known as KRACK. The four-way hand shake traffic in the Wi-Fi Protected Access WPA and WPA2 protocol can be manipulated to allow nonce reuse, resulting in key reinstallation. This could allow an attacker to execute a “man-in-the-middle” attack, enabling the attacker within radio range to replay, decrypt, or spoof frames. 
+The following CVEs have been assigned to this group of vulnerabilities: 
+CVE-2017-13077: Reinstallation of the pairwise key during the four-way handshake.
+CVE-2017-13078: Reinstallation of the group key during the four-way handshake.
+CVE-2017-13079: Reinstallation of the Integrity Group Temporal Key (IGTK) during the four-way handshake.
+CVE-2017-13080: Reinstallation of the group key during the group key handshake.
+CVE-2017-13081: Reinstallation of the IGTK during the group key handshake.
+CVE-2017-13082: Reinstallation of the Pairwise Transient Key (PTK) Temporal Key (TK) during the fast BSS transmission (FT) handshake.
+CVE-2017-13086: Reinstallation of the Tunneled Direct-Link Setup (TDLS) Peer Key (TPK) during the TDLS handshake.
+CVE-2017-13087: Reinstallation of the Group Temporal Key (GTK) when processing a Wireless Network Management (WNM) Sleep Mode Response frame.
+CVE-2017-13088: Reinstallation of the IGTK when processing a WNM Sleep Mode Response frame.
+A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Mathy Vanhoef of imec-DistriNet, KU Leuven discovered the KRACK vulnerabilities. Stryker reported to NCCIC that the KRACK vulnerabilities may possibly affect these products.
+4. MITIGATIONS
+Stryker has released software updates for affected products to mitigate the KRACK vulnerabilities. 
+
+Gateway 1.0 - no patch available
+Gateway 2.0 - upgrade to software version 5212-400-905_3.5.002.01
+Gateway 3.0 - patch incorporated in current software version 5212-500-905_4.3.001.01
+
+Stryker recommends users take additional defensive measures to minimize the risk of exploitation. Specifically, users should:
+
+If determined unnecessary by the user, the iBed wireless functionality may be disabled. 
+Stryker recommends these products operate on a separate VLAN, where possible, to ensure proper network security segmentation.  
+As an extra precaution, ensure the latest recommended updates (which includes the KRACK patch) for Wi-Fi access points, have been implemented in Wi-Fi enabled networks.
+
+For additional questions, users can call 1-800-STRYKER, option 2 for Stryker Medical Technical Support.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+This vulnerability is exploitable from an adjacent network. High skill level is needed to exploit.

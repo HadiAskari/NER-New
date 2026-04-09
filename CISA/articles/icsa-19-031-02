@@ -1,0 +1,64 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit/vulnerability details have been publicly disclosed
+Vendor: IDenticard
+Equipment: PremiSys
+Vulnerabilities: Use of Hard-coded Credentials, Use of Hard-coded Password, Inadequate Encryption Strength
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-031-02 IDenticard PremiSys that was published January 31, 2019, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to view sensitive information via backups, obtain access to credentials, and/or obtain full access to the system with admin privileges.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of IDenticard PremiSys, an access control system, are affected:
+--------- Begin Update A Part 1 of 2 ---------
+
+PremiSys all versions prior to 4.2
+
+CVE-2019-3906 was resolved in Version 4.1
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF HARD-CODED CREDENTIALS CWE-798
+The system contains hard-coded credentials that allow admin access to the entire service via the PremiSys WCF Service endpoint, which may allow complete control with admin privileges.
+CVE-2019-3906 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    INADEQUATE ENCRYPTION STRENGTH CWE-326
+The system stores user credentials and other sensitive information with a known weak encryption method, which may allow decryption and exposure of sensitive data.
+CVE-2019-3907 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.3    USE OF HARD-CODED PASSWORD CWE-259
+The system stores backup files as encrypted zip files. The password to the zip is hard-coded and unchangeable, which may allow access to the information they contain.
+CVE-2019-3908 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Government Facilities, Healthcare and Public Health, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Jimi Sebree working with Tenable reported these vulnerabilities.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 ---------
+IDenticard recommends users upgrade to Version 4.2 to address all three vulnerabilities. This software update is provided free of charge. To obtain the new software update and additional information visit https://identicard.helpdocs.io/article/8ikfxeqgdx-identicard-premi-sys-v-4-2 or contact the IDenticard Technical Support Team at (800) 220-8096.
+In addition to upgrading to Version 4.2, CVE-2019-3908 requires users to set a new password for the backup/restore feature. For more information see the following link:
+https://identicard.helpdocs.io/article/s02n8lcmwg-backup-premi-sys-4-2-database-with-a-password
+--------- End Update A Part 2 of 2 ---------
+IDenticard also recommends users change the Service Database default username and password.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Restrict or monitor access to Port 9003/TCP.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

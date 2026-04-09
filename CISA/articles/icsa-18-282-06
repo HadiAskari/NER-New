@@ -1,0 +1,45 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.1
+
+ATTENTION: Exploitable remotely/low skill level to exploit/information related to these vulnerabilities is publicly available
+Vendor: Hangzhou Xiongmai Technology Co., Ltd
+Equipment: XMeye P2P Cloud Server
+Vulnerabilities: Predictable From Observable State, Hidden Functionality, Missing Encryption of Sensitive Data
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow unauthorized access to video feeds with the potential to modify settings, replace firmware, and/or execute code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+All products using XMeye P2P Cloud Server are affected. Hangzhou Xiongmai Technology Co., Ltd acts primarily as an Original Equipment Manufacturer (OEM) and sells few, if any, Xiongmai-branded products. Various vendors sell branded devices with Hangzhou Xiongmai Technology Co., Ltd hardware/firmware inside. Use the following methods to check the hardware/firmware:
+
+Check if the product documentation/specifications mention the “XMEye” feature.
+Access the err.htm page on the device (http://<Camera IP Address>/err.htm). Xiongmai or XMeye will be referenced.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    PREDICTABLE FROM OBSERVABLE STATE CWE-341
+An attacker may be able to use MAC addresses to enumerate potential Cloud IDs. Using this ID, the attacker can discover and connect to valid devices using one of the supported apps.
+CVE-2018-17917 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2    HIDDEN FUNCTIONALITY CWE-912
+An attacker could use an undocumented user account “default” with its default password to login to XMeye and access/view video streams.
+CVE-2018-17919 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.2.3    MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+Not all device communication is encrypted. This includes the XMeye service and firmware update communication. This could allow an attacker to eavesdrop on video feeds, steal XMeye login credentials, or impersonate the update server with malicious update code.
+CVE-2018-17915 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: China
+
+3.4 RESEARCHER
+Stefan Viehböck on behalf of SEC Consult Vulnerability Lab reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Hangzhou Xiongmai Technology Co., Ltd has not provided mitigations for these vulnerabilities.
+NCCIC recommends taking immediate action to change the admin account password along with the undocumented “default” account password to minimize risk of exploit.
+NCCIC also recommends verifying the source of all firmware updates.
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.

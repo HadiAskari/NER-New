@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.4
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SINEMA Remote Connect Server
+Vulnerabilities: Modification of Assumed-Immutable Data, Improper Access Control, Exposure of Sensitive Information to an Unauthorized Actor, Improper Control of Interaction Frequency.
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an unauthorized remote attacker to retrieve or manipulate sensitive information from the affected software. In addition, the attacker could also cause a denial-of-service condition in devices controlled by the affected software.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports the vulnerability affects the following SINEMA Remote Connect Server products: 
+
+SINEMA Remote Connect Server: All versions prior to V3.0 SP2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MODIFICATION OF ASSUMED-IMMUTABLE DATA CWE-471
+The status provided by the syslog clients managed by the affected software can be manipulated by an unauthenticated attacker in the same network of the affected system.
+CVE-2021-37177 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.2    IMPROPER ACCESS CONTROL CWE-284
+The affected software allows sending send-to-sleep notifications to the managed devices. An unauthenticated attacker in the same network of the affected system can abuse these notifications to cause a denial-of-service condition in the managed devices.
+CVE-2021-37183 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.3    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The affected software has an information disclosure vulnerability that could allow an attacker to retrieve VPN connection for a known user.
+CVE-2021-37190 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.4    IMPROPER CONTROL OF INTERACTION FREQUENCY CWE-799
+An unauthenticated attacker in the same network of the affected system could brute force the usernames from the affected software.
+CVE-2021-37191 has been assigned to this vulnerability. A CVSS v3 base score of 3.1 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.5    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The affected software has an information disclosure vulnerability that could allow an attacker to retrieve a list of network devices a known user can manage.
+CVE-2021-37192 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.6    MODIFICATION OF ASSUMED-IMMUTABLE DATA CWE-471
+An unauthenticated attacker in the same network of the affected system could manipulate certain parameters and set a valid user of the affected software as invalid (or vice-versa).
+CVE-2021-37193 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+ 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Sharon Brizinov from Claroty reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has released an update for the SINEMA Remote Connect Server and recommends updating to v3.0 SP2 or later version.
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity 
+For more information, please see Siemens Security Advisory SSA-334944
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,55 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: CISA
+Equipment: Industrial Control Systems Network Protocol Parsers (ICSNPP) - Ethercat Plugin for Zeek
+Vulnerabilities: Out-of-bounds Write, Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following GitHub commits (versions) of ICSNPP - Ethercat Plugin, a plugin for Zeek, are affected:
+
+Industrial Control Systems Network Protocol Parsers (ICSNPP) - Ethercat Zeek Plugin: versions d78dda6 and prior
+
+3.2 Vulnerability Overview
+3.2.1 OUT-OF-BOUNDS WRITE CWE-787
+Industrial Control Systems Network Protocol Parsers (ICSNPP) - Ethercat Zeek Plugin versions d78dda6 and prior are vulnerable to out-of-bounds write in their primary analyses function for Ethercat communication packets. This could allow an attacker to cause arbitrary code execution.
+CVE-2023-7244 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 OUT-OF-BOUNDS WRITE CWE-787
+Industrial Control Systems Network Protocol Parsers (ICSNPP) - Ethercat Zeek Plugin versions d78dda6 and prior are vulnerable to out-of-bounds write while analyzing specific Ethercat datagrams. This could allow an attacker to cause arbitrary code execution.
+CVE-2023-7243 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3 OUT-OF-BOUNDS READ CWE-125
+Industrial Control Systems Network Protocol Parsers (ICSNPP) - Ethercat Zeek Plugin versions d78dda6 and prior are vulnerable to out-of-bounds read during the process of analyzing a specific Ethercat packet. This could allow an attacker to crash the Zeek process and leak some information in memory.
+CVE-2023-7242 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Cameron Whitehead of HACK@UCF reported these vulnerabilities to CISA.
+4. MITIGATIONS
+CISA recommends that users update Industrial Control Systems Network Protocol Parsers (ICSNPP) - Ethercat Zeek Plugin to commit 3bca34c or later.
+To help reduce successful exploitation, users are encouraged to keep critical software updates and patches up to date in their system networks.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+February 20, 2024: Initial Publication
+

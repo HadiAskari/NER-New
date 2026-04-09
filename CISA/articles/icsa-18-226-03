@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: Automation License Manager
+Vulnerabilities: Relative Path Traversal, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution or allow an attacker to determine port status on another remote system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+According to Siemens, the following products are affected:
+
+Automation License Manager 5: All versions prior to 5.3.4.4, and
+Automation License Manager 6: All versions prior to 6.0.1 (only affected by CVE-2018-11455).
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    RELATIVE PATH TRAVERSAL CWE-23
+A directory traversal vulnerability could allow a remote attacker to move arbitrary files, which can result in code execution, compromising system confidentiality, integrity, and availability. Successful exploitation requires a network connection to the affected device. The attacker does not need privileges or special conditions, but user interaction is required.
+CVE-2018-11455 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER INPUT VALIDATION CWE-20
+An attacker with network access to the device could send specially crafted network packets to determine whether a network port on another remote system is accessible. This allows the attacker to do basic network scanning using the victim’s machine.
+Successful exploitation requires a network connection. The attacker does not need privileges, and no user interaction is required. The impact is limited to determining whether or not a port on a target system is accessible by the affected device.
+CVE-2018-11456 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Vladimir Dashchenko from Kaspersky Lab worked with Siemens to identify the vulnerabilities, and Siemens reported the vulnerabilities to NCCIC.
+4. MITIGATIONS
+Siemens has recommended the following mitigations:
+
+Automation License Manager 5: Update to v5.3.4.4, and
+Automation License Manager 6: Update to v6.0.1
+
+https://support.industry.siemens.com/cs/ww/en/view/114358
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for Industrial Security (Download: https://www.siemens.com/cert/operational-guidelines-industrial-security) and following the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on these vulnerabilities and associated software updates, please see Siemens security advisory SSA-920962 on their website:
+https://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,65 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.2
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Schneider Electric
+Equipment: Data Center Expert
+Vulnerabilities: Improper Verification of Cryptographic Signature, Missing Authentication for Critical Function
+
+2. RISK EVALUATION
+Exploitation of these vulnerabilities could allow an attacker to expose private data or achieve remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric reports that the following products are affected:
+
+Schneider Electric Data Center Expert: 8.1.1.3 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER VERIFICATION OF CRYPTOGRAPHIC SIGNATURE CWE-347
+An improper verification of cryptographic signature vulnerability exists that could compromise the Data Center Expert software when an upgrade bundle is manipulated to include arbitrary bash scripts that are executed as root.
+CVE-2024-8531 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+A missing authentication for critical function vulnerability exists that could cause exposure of private data when an already generated "logcaptures" archive is accessed directly by HTTPS.
+CVE-2024-8530 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Schneider Electric CPCERT reported these vulnerabilities to CISA.
+Trend Micro Zero Day Initiative reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Schneider Electric has identified the following specific workarounds and mitigations users can apply to reduce risk:
+Version 8.2 of EcoStruxure™ IT Data Center Expert includes fixes for these vulnerabilities and is available upon request from Schneider Electric's Customer Care Center.
+Additionally, Schneider Electric recommends that users:
+
+Ensure the principals of least privilege are being followed so that only those with need have account access and that the level of their respective account authorization aligns with their role, including Privileged Accounts as described in the Data Center Expert Security Handbook.
+Verify SHA1 checksums of upgrade bundles prior to executing upgrades as described in the Upgrades section of the Data Center Expert Security Handbook.
+Delete any existing "logcapture" archives present on the system and do not create any new "logcapture" archives. Existing archives can be deleted from the https://server_ip/capturelogs web page after authenticating.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+January 16, 2025: Initial Publication
+

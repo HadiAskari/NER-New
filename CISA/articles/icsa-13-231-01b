@@ -1,0 +1,48 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the updated advisory titled ICSA-13-231-01A Sixnet Universal Protocol Undocumented Function Codes that was published August 26, 2013, on the ICS-CERT Web page.
+--------- Begin Update B Part 1 of 1 --------
+Researchers Kyle Stone and Mehdi Sabraoui have independently identified undocumented function codes in Sixnet’s universal protocol. Sixnet has produced a new version of the remote terminal unit (RTU) firmware that mitigates this vulnerability.
+--------- End Update B Part 1 of 1 ----------
+The Intelligent Systems Research Lab at the University of Louisville has tested the new version to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Sixnet products are affected:
+
+Versions older than UDR 2.0, and
+RTU firmware older than Version 4.8
+
+IMPACT
+An attacker who has access to the network where this RTU is located may use undocumented function codes to obtain file descriptors and file sizes, to read and write to files, to create new files, or to open a shell on the target machine to execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Sixnet is a US-based company owned by Red Lion Controls.
+The affected RTU products, RTU firmware, are SCADA systems that send real-time data from distributed locations to a human-machine interface in a central location. According to Sixnet, their RTU products are deployed across several sectors including energy, transportation, commercial facilities, and finance. Sixnet estimates that these products are used primarily in North America, Europe, and Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNDOCUMENTED FUNCTION CODESCWE-912: Hidden Functionality, http://cwe.mitre.org/data/definitions/912.html, Web site last accessed September 17, 2013.
+
+There are undocumented functions available to use in the Sixnet universal protocol. The researcher found six different opcodes that allow a user (or an attacker) to execute file and shell tasks. The device does not require an authenticated session before it accepts these opcodes.
+CVE-2013-2802NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2802, Web site last accessed September 17, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, Web site last accessed September 17, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+An attacker must have access to the network where the RTU is located.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Sixnet has released a new version of the RTU firmware, Version 4.8, which adds authentication so that only authorized users may access the device. Please contact Sixnet supportContact Sixnet Tech Support, http://www.sixnet.com/department/technical-support-155.cfm, Web site last accessed September 17, 2013. for more information about this issue and firmware Version 4.8 at (518) 877-5173 or support@sixnet.com.
+Sixnet software and firmware downloads are available at the following location on its Web site:
+http://www.sixnet.com/department/automation-devices-software-firmware-180.cfm
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.
+

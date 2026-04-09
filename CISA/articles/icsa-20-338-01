@@ -1,0 +1,49 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: National Instruments Corp. (NI)
+Equipment: CompactRIO
+Vulnerability: Incorrect Permission Assignment for Critical Resource
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to reboot the device remotely.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of CompactRIO, a real-time embedded industrial controller, are affected:
+
+CompactRIO: Driver versions prior to 20.5 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCE CWE-732
+Incorrect permissions are set by default for an API entry-point of a specific service, allowing a non-authenticated user to trigger a function that could reboot the device remotely.  
+CVE-2020-25191 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Researchers of Titanium Industrial Security reported this vulnerability to the Spanish National Institute of Cybersecurity (INCIBE).
+4. MITIGATIONS
+NI recommends the following steps for mitigation:
+1.    Download the NI CompactRIO 20.5 Driver. 
+2.    Install the driver on host computer.
+3.    Update the firmware on CompactRIO controllers to v8.5 or higher. Refer to Upgrading Firmware on my NI Linux Real-Time Device for directions on how to update the firmware on current controllers. Updating the firmware patches the Safe Mode where defaults are loaded.
+4.    Format the target to apply the new safemode default permissions. Refer to How to Restore LabVIEW RT Target to Factory Default Configuration for directions on how to format and reinstall software on target.
+5.    Repeat Steps 3 and 4 for each affected CompactRIO target.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

@@ -1,0 +1,40 @@
+
+OVERVIEW 
+Researcher Jon Christmas of Solera Networks has identified an improper input validation vulnerability in Triangle Research International, Inc.’s (Tri Inc.) Nano‑10 programmable logic controller (PLC). Tri Inc. has produced a firmware upgrade and tested it to validate that the upgrade resolves the vulnerability.
+This vulnerability is remotely exploitable.
+AFFECTED PRODUCTS
+The following Tri Inc. Nano-10 PLC firmware versions are affected:
+
+All firmware versions prior to r81.
+
+IMPACT
+An attacker could send a specially crafted packet to the PLC and cause a denial-of-service (DoS) condition. Exploitation of this vulnerability could cause the device to become inaccessible from the network and only recover with a manual power cycling of the device. This situation affects the availability of the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Tri Inc. is headquartered in British Columbia, Canada, and has another main office in Delaware, USA.
+The affected product, Nano-10 PLC, is a controller that is typically used with automated manufacturing equipment such as packaging machines, dispensing machines, and pump controls. According to Tri Inc., the Nano-10 is deployed across several industries including agriculture and food, building automation, transportation systems, water and wastewater, energy, as well as with elevator, and HVAC systems. Tri Inc. estimates that the product is used 60 percent in the United States, 10 percent in Canada, 5 percent in Australia, 10 percent in Singapore, 10 percent in South Korea, and 5 percent in the rest of the world.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation,  http://cwe.mitre.org/data/definitions/20.html, Web site last accessed July 08, 2013.
+
+It was discovered that the Nano-10 PLC has a gap in its bounds checking algorithm for incoming Modbus/TCP packets. By sending a specially crafted packet to Port TCP/502 of the PLC, an attacker could create a DoS condition that would cause the device to become inaccessible from the network and is only recoverable with a manual reboot.
+CVE-2013-2784NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2784, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:C, Web site last accessed July 08, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely if the firewall has Port TCP/502 open, allowing packets to be passed to the PLC.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill level would be able to exploit this vulnerability.
+MITIGATION
+According to Tri Inc., the Nano-10 PLC’s operating system firmware itself is not field upgradable, and therefore, they suggest that customers contact Tri Inc. to coordinate sending in affected Nano-10 PLCs for vendor firmware upgrading to resolve the vulnerability.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed July 08, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed July 08, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

@@ -1,0 +1,49 @@
+
+OVERVIEW
+Independent researcher Neil Smith has identified a hard-coded SSH key vulnerability in Advantech’s EKI-122X series products. Advantech has produced new firmware to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Advantech reports that the vulnerability affects the following products:
+
+EKI-136* product line prior to firmware version 1.27,
+EKI-132* product line prior to firmware version 1.98, and
+EKI-122*-BE product line prior to firmware version 1.65.
+
+IMPACT
+An attacker who exploits this vulnerability may be able to intercept communications to and from this device.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Advantech is based in Taiwan and has distribution offices in 21 countries worldwide.
+The EKI-1200 series Modbus gateways are bidirectional gateways for integrating Modbus/RTU and Modbus/ASCII serial devices to TCP/IP networked-based devices. These products are deployed in industrial automation globally.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HARD-CODED CREDENTIALSCWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, web site last accessed November 5, 2015
+
+The firmware contains hard-coded SSH keys that cannot be changed by the user.
+CVE-2015-6476NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6476, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N, web site last accessed November 5, 2015
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Advantech released new firmware in October 2015 to mitigate this vulnerability. For the EKI‑122*-BE (v1.65) and EKI-136* (v1.27) product lines, HTTPS and SSH is disabled. For the EKI‑132* (v1.98) product line, additional configurations were added to allow customization for the HTTPS and SSH keys. Users may download the latest firmware from the following locations on Advantech’s web site:
+EKI-136* product line:
+http://support.advantech.com.tw/Support/SearchResult.aspx?keyword=EKI-136*&searchtabs=Firmware
+EKI-132* product line:
+http://support.advantech.com.tw/Support/SearchResult.aspx?keyword=EKI-132*&searchtabs=Firmware
+EKI-122* product line:
+http://support.advantech.com.tw/Support/SearchResult.aspx?keyword=EKI-122*&searchtabs=Firmware
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

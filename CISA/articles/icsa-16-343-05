@@ -1,0 +1,167 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: Logix5000
+Vulnerability: Stack-based Buffer Overflow
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the previously updated advisory titled ICSA-16-343-05A Rockwell Automation Logix5000 Programmable Automation Controller Buffer Overflow Vulnerability (Update A) that was published February 14, 2017, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability may allow a remote attacker to cause a denial of service at a controller or execute code on a target controller.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following firmware versions for the Logix5000 Controller product line are affected, excluding all firmware versions prior to Version 16.00, which are not affected:
+
+FRN 16.00
+
+PowerFlex 700S drives with Phase II control and the embedded DriveLogix 5730 controller option installed (v16.020 through v16.022), 
+ControlLogix 5560 controllers (v16.020 through v16.022),
+ControlLogix L55 controllers (v16.020 through v16.022),
+ControlLogix 5560 Redundant controllers (all versions ),
+GuardLogix 5560 controllers (all versions),
+FlexLogix L34 controllers (all versions),
+1769 CompactLogix L23x controllers (all versions),
+1769 CompactLogix L3x controllers (v16.020 through v16.023), and
+1768 CompactLogix L4x controllers, (v16.020 through v16.025).
+
+
+FRN 17.00
+
+PowerFlex 700S drives with Phase II control and the embedded DriveLogix 5730 controller option installed (v17.003 and v17.004),
+SoftLogix 5800 controllers (all versions),
+ControlLogix 5560 controllers (all versions),
+GuardLogix 5560 controllers (all versions),
+1769 CompactLogix L23x controllers (all versions),
+1769 CompactLogix L3x controllers (all versions), and
+1768 CompactLogix L4x controllers (all versions).
+
+
+FRN 18.00
+
+SoftLogix 5800 controllers (all versions),
+RSLogix Emulate 5000 (all versions),
+ControlLogix 5560 controllers (all versions),
+ControlLogix 5570 controllers (all versions), 
+GuardLogix 5560 controllers (all versions),
+1769 CompactLogix L23x controllers (all versions), 
+1769 CompactLogix L3x controllers (all versions),
+1768 CompactLogix L4x controllers (all versions) , and
+1768 Compact GuardLogix L4xS (all versions). 
+
+
+FRN 19.00 
+
+SoftLogix 5800 controllers (all versions), 
+RSLogix Emulate 5000 (all versions), 
+ControlLogix 5560 controllers (all versions), 
+ControlLogix 5570 controllers (all versions), 
+ControlLogix 5560 Redundant controllers (all versions), 
+GuardLogix 5560 controllers (all versions), 
+1769 CompactLogix L23x controllers (all versions), 
+1769 CompactLogix L3x controllers (all versions), 
+1768 CompactLogix L4x controllers (all versions), and 
+1768 Compact GuardLogix L4xS controllers (all versions). 
+
+
+FRN 20.00 
+
+SoftLogix 5800 controllers (all versions),
+RSLogix Emulate 5000 (all versions),
+ControlLogix 5560 controllers (v20.010 through v20.013),
+ControlLogix 5570 controllers (v20.010 through v20.013), 
+ControlLogix 5560 Redundant controllers (v20.050 through v20.055), 
+ControlLogix 5570 Redundant controllers (v20.050 through v20.055), 
+GuardLogix 5560 controllers (v20.010 through v20.017), 
+GuardLogix 5570 controllers (v20.010 through v20.017), 
+1769 CompactLogix L23x controllers (v20.010 through v20.013), 
+1769 CompactLogix L3x controllers (v20.010 through v20.013), 
+1769 CompactLogix 5370 L1 controllers (v20.010 through v20.013), 
+1769 CompactLogix 5370 L2 controllers (v20.010 through v20.013), 
+1769 CompactLogix 5370 L3 controllers (v20.010 through v20.013),
+1768 CompactLogix L4x controllers (v20.011 through v20.016), and 
+1768 Compact GuardLogix L4xS controllers (v20.011 through v20.013). 
+
+
+FRN 21.00 
+
+SoftLogix 5800 controllers (all versions), 
+RSLogix Emulate 5000 (all versions), 
+ControlLogix 5570 controllers (all versions), 
+ControlLogix 5570 Redundant controllers (all versions), 
+GuardLogix 5570 controllers (all versions), 
+1769 CompactLogix 5370 L1 controllers (all versions), 
+1769 CompactLogix 5370 L2 controllers (all versions), and
+1769 CompactLogix 5370 L3 controllers (all versions).
+
+
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+By sending malformed common industrial protocol (CIP) packet, an attacker may be able to overflow a buffer and execute code on the controller or initiate a non-recoverable fault resulting in a denial of service.
+CVE-2016-9343 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Food and Agriculture, Water and Wastewater Systems, and others
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Rockwell Automation reported this vulnerability to NCCIC.
+5. MITIGATIONS
+--------- Begin Update B Part 1 of 1 --------
+Rockwell Automation has released new firmware versions to mitigate the identified vulnerability in the affected Logix5000 Controllers, with the exception of the FlexLogix controller, which has been discontinued and is no longer supported.
+Rockwell Automation encourages users to install the new firmware version listed below (Catalog Numbers, “CN”, in parenthesis):
+
+DriveLogix 5730 (Embedded Controller Option with PowerFlex 700S) v16.23 (Catalog numbers beginning with 20D with a “K” or “L” in the 17th position);
+DriveLogix 5730 (Embedded Controller Option with PowerFlex 700S) v17.05 (Catalog numbers beginning with 20D with a “K” or “L” in the 17th position);
+
+For more information about these catalog numbers, see Page 10 of the PowerFlex 700S Drives with Phase II Control Technical Data document.
+
+SoftLogix 5800 v23.00 and above (CN 1789-Lx);
+RSLogix Emulate 5000 v23.00 and above (CN 9310-Wx);
+ControlLogix L55 v16.023 and above (CN 1756-L55x);
+ControlLogix 5560 v16.023 and above (CN 1756-L6);
+ControlLogix 5560 v20.014 and above (CN 1756-L6);
+ControlLogix 5570 v20.014 and above (CN 1756-L7);
+ControlLogix 5570 v23.012 and above (CN 1756-L7);
+ControlLogix 5570 v24 and above (CN 1756-L7);
+ControlLogix 5560 Redundant v20.056 and above (CN 1756-L6);
+ControlLogix 5570 Redundant v20.056 and above (CN 1756-L7);
+ControlLogix 5570 Redundant v24.052 and above (CN 1756-L7);
+CompactLogix L23x and L3x v20.014 and above (CN 1769-L23, 1769-L31, 1769-L32, 1769-L35);
+CompactLogix 5370 L1, L2, and L3 Controllers v20.014 and above (CN 1769-L1, 1769-L2, and 1769-L3);
+CompactLogix 5370 L1, L2, and L3 Controllers v23.012 and above (CN 1769-L1, 1769-L2, and 1769-L3);
+CompactLogix 5370 L1, L2, and L3 Controllers v24 and above (CN 1769-L1, 1769-L2, and 1769-L3);
+CompactLogix L4x v16.026 (Series A, B, and C) and v16.027 and above (Series D) (CN 1768-L4x);
+CompactLogix L4x v20.014 and above (Series A, B, and C) and v20.016 and above (Series D) (CN 1768-L4x);
+Compact GuardLogix L4xS v20.018 and above (CN 1768-L4xS);
+GuardLogix 5560 v20.018 and above (CN 1756-L6S);
+GuardLogix 5570 v20.018 and above (CN 1756-L7S);
+GuardLogix 5570 v23.012 and above (CN 1756-L7S); and
+GuardLogix 5570 v24 and above (CN 1756-L7S).
+
+--------- End Update B Part 1 of 1 --------
+Rockwell Automation’s new firmware versions are available at the following URL:
+http://compatibility.rockwellautomation.com/Pages/MultiProductDownload.aspx 
+Rockwell Automation’s security notification is available at the following URL, with a valid account:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/970074 
+Rockwell Automation recommends that users apply additional precautions and risk mitigation strategies to this type of attack, when possible, which could include the following:
+
+Use proper network infrastructure controls, such as firewalls, to help confirm that requests from unauthorized sources are blocked.
+Block all traffic to affected devices from outside the Manufacturing Zone by blocking or restricting access to Port 2222 TCP/UDP and Port 44818 TCP/UDP, using network infrastructure controls, such as firewalls, or other security appliances. 
+When possible, keep the controller in RUN mode rather than Remote RUN or Remote Program in order to prevent other disruptive changes to the system.
+
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

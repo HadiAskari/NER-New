@@ -1,0 +1,53 @@
+
+CVSS v3 9.8
+ATTENTION: Remotely exploitable/low skill level to exploit. Public exploits are available.
+Vendor: Siemens
+Equipment: SICAM
+Vulnerabilities: Missing Authentication for Critical Function, Cross-site Scripting, Code Injection
+AFFECTED PRODUCTS
+Siemens reports that the vulnerabilities affect the following SICAM products:
+
+SICAM RTUs SM-2556 COM Modules with the firmware variants ENOS00, ERAC00, ETA2, ETLS00, MODi00, DNPi00: All versions.
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an unauthenticated remote attacker to execute arbitrary code.
+MITIGATION
+As the web server is for diagnostics only and not required for normal operation, Siemens recommends disabling the web server after commissioning.
+For users who are currently using the discontinued ETA2 (IEC 60870-5-104), MODi00 (Modbus/TCP slave) or DNPi00 (DNP3/TCP slave) firmware, Siemens recommends users upgrade to ETA4 (IEC 60870-5-104), MBSiA0 (Modbus/TCP slave) or DNPiA1 (DNP3/ TCP slave) firmware, respectively, on the SM-2558 COM Module, which is the successor to the SM-2556 Module. The upgrades are available at:
+http://w3.siemens.com/smartgrid/global/en/products-systems-solutions/substation-automation/substation-automation/Pages/sicam-ak-3.aspx
+Siemens recommends users protect network access with appropriate mechanisms. Siemens also advises that users configure the operational environment according to Siemens’ Operational Guidelines for Industrial Security:
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens Security Advisory SSA-164516 at the following location:
+http://www.siemens.com/cert/advisories
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+VULNERABILITY OVERVIEW
+
+MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+
+The integrated web server (Port 80/TCP) of the affected devices could allow unauthenticated remote attackers to obtain sensitive device information over the network.
+CVE-2017-12737 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+
+IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+
+The integrated web server (Port 80/TCP) of the affected devices could allow cross-site scripting (XSS) attacks if unsuspecting users are tricked into clicking on a malicious link.
+CVE-2017-12738 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+
+IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94
+
+The integrated web server (Port 80/TCP) of the affected devices could allow unauthenticated remote attackers to execute arbitrary code on the affected device.
+CVE-2017-12739 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+SEC Consult Vulnerability Lab reported these vulnerabilities directly to Siemens.
+BACKGROUND
+Critical Infrastructure Sectors: Energy
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany

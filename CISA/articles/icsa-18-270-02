@@ -1,0 +1,49 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits are available
+Vendor: Fuji Electric
+Equipment: Alpha5 Smart Loader
+Vulnerabilities: Classic Buffer Overflow, Heap-based Buffer Overflow
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-270-02 Fuji Electric Alpha5 Smart Loader that was published September 27, 2018, on the NCCIC/ICS-CERT website. This advisory includes mitigations for a classic buffer overflow and heap-based buffer overflow vulnerabilities in the Fuji Electric Alpha5 Smart Loader product.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow for arbitrary remote code execution on the device.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Alpha5 Smart Loader, a servo drive, are affected:
+
+Alpha5 Smart Loader Versions 3.7 and prior
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+A buffer overflow information disclosure vulnerability occurs when parsing certain file types.
+CVE-2018-14788 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+The device does not perform a check on the length/size of a project file before copying the entire contents of the file to a heap-based buffer.
+CVE-2018-14794 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Europe and Asia
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Michael Flanders working with Trend Micro’s Zero Day Initiative reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+--------- Begin Update A Part 1 of 1 ---------
+Fuji Electric has released a new version of the Alpha Loader software that can be obtained from (login required):
+https://felib.fujielectric.co.jp/download/login.htm?site=global&lang=en
+--------- End Update A Part 1 of 1 ---------
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.

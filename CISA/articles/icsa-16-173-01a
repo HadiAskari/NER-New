@@ -1,0 +1,57 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-16-173-01 Advantech WebAccess ActiveX Vulnerabilities that was published June 21, 2016, on the NCCIC/ICS-CERT web site.
+--------- Begin Update A Part 1 of 2 --------
+Zhou Yu of Acorn Network Security and ZDI (Zero Day Initiative) have identified vulnerabilities in Advantech’s WebAccess. Advantech has produced a new version to mitigate these vulnerabilities. Zhou Yu has tested the new version to validate that it resolves the vulnerabilities.
+--------- End Update A Part 1 of 2 ----------
+AFFECTED PRODUCTS
+Advantech reports that the vulnerabilities affect the following versions of WebAccess:
+
+WebAccess versions prior to 8.1_20160519
+
+IMPACT
+The vulnerabilities could allow an attacker who successfully exploits them to insert and run arbitrary code on an affected system.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Advantech is based in Taiwan and has distribution offices in 21 countries worldwide.
+The affected product, WebAccess, formerly known as BroadWin WebAccess, is a web-based SCADA and human-machine interface (HMI) product. According to Advantech, WebAccess is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, and Government Facilities. Advantech estimates that this product is used globally.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNSAFE ACTIVEX CONTROL MARKED SAFE-FOR-SCRIPTINGCWE-623: Unsafe ActiveX Control Marked Safe For Scripting, http://cwe.mitre.org/data/definitions/623.html, web site last accessed June 21, 2016.
+
+Several ActiveX controls are intended for restricted use, but have been marked as safe-for-scripting.
+CVE-2016-4525NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4525, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to these vulnerabilities. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N, web site last accessed June 21, 2016.
+
+CLASSIC BUFFER OVERFLOWCWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow'), http://cwe.mitre.org/data/definitions/120.html, web site last accessed June 21, 2016.
+
+A specially crafted DLL file can cause a buffer overflow.
+CVE-2016-4528NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4528, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to these vulnerabilities. A CVSS v3 base score of 5.0 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:H, web site last accessed June 21, 2016.
+--------- Begin Update A Part 2 of 2 --------
+
+INFORMATION EXPOSURECWE-200: Information Exposure, http://cwe.mitre.org/data/definitions/200.html, web site last accessed July 14, 2016.
+
+A properly authenticated administrator can view passwords for other administrators.
+CVE-2016-5810NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5810, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N, web site last accessed July 14, 2016.
+--------- End Update A Part 2 of 2 ----------
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities are not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application, which in certain scenarios can cause it to load a DLL file from an untrusted source.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+Crafting a working exploit for these vulnerabilities would be difficult. Social engineering is required to convince the user to accept a malformed DLL file. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Advantech has released a new version of WebAccess, Version 8.1_20160519, to address the reported vulnerabilities. This new version is available on the Advantech web site at the following location:
+http://www.advantech.com/industrial-automation/webaccess
+ICS-CERT recommends that users take defensive measures to protect themselves from social engineering attacks. Specifically, users should:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed June 21, 2016. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed June 21, 2016. for more information on social engineering attacks.
+Do not visit untrusted web sites.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

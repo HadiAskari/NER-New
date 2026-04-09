@@ -1,0 +1,54 @@
+
+CVSS v3 9.8
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Schneider Electric
+Equipment: Wonderware Intelligence
+Vulnerability: Credentials Management
+AFFECTED PRODUCTS
+The following versions of Wonderware Intelligence, an operations management software, are affected:
+
+Tableau Server/Desktop Versions 7.0 to 10.1.3 included in Wonderware Intelligence Versions 2014R3 and prior.
+
+IMPACT
+The vulnerability, if exploited, could allow a malicious entity to escalate its privilege to an administrator and take control over the host machine where Tableau Server is installed.
+MITIGATION
+Schneider Electric has released a new software version to address the identified vulnerability and recommends that users using affected versions apply Tableau Server Version 10.1.4. In addition, the Analytics Client (Tableau Desktop OEM) should also be upgraded to Version 10.1.4. Upgrading to Intelligence Server 2014 R3 is also recommended.
+The Schneider Electric customers using Wonderware Intelligence can login at the following support sites to download the Tableau patches:
+
+Tableau Analytics Dashboard Server v10.1.4
+
+      https://gcsresource.invensys.com/tracking/ConfirmDownload.aspx?id=22386
+
+Tableau Analytics Client v10.1.4
+
+      https://gcsresource.invensys.com/tracking/ConfirmDownload.aspx?id=22385
+
+Wonderware Intelligence 2014 R3
+
+      https://gcsresource.invensys.com/tracking/ConfirmDownload.aspx?id=22288
+Schneider Electric has issued Security Bulletin LFSEC00000119, which contains additional information:  
+http://software.schneider-electric.com/support/cyber-security-updates/
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 
+VULNERABILITY OVERVIEW
+
+CREDENTIALS MANAGEMENT CWE-255
+
+Tableau Server is embedded within the Schneider Electric Wonderware Intelligence software and contains a system account that is installed by default. The default system account is difficult to modify to use non-default credentials after installation and changing the default credentials in the embedded Tableau Server is not documented. As such, Schneider Electric has released a new software version that removes the default system account in the embedded Tableau Server.
+If Tableau Server is used with Windows integrated security (Active Directory), the software is not vulnerable. However, when Tableau Server is used with local authentication mode, the software is vulnerable. The default system account could be used to gain unauthorized access.
+CVE-2017-5178 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+Schneider Electric self-reported this vulnerability.
+BACKGROUND
+Critical Infrastructure Sectors: Critical Manufacturing, Energy, Healthcare and Public Health, and Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Paris, France

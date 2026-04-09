@@ -1,0 +1,73 @@
+
+Overview
+This Updated Advisory is a follow-up to the original advisory titled ICSA-12-354-01 RuggedCom ROS Hard-Coded RSA SSL Private Key that was published December 18, 2012, on the ICS-CERT Web page, as a follow-up to the original ICS-CERT alert ICS-ALERT-12-234-01 RuggedCom ROS Key Management Errors, which was released to the Web page on August 30, 2012.
+Independent researcher Justin W. Clarke of Cylance Inc., has identified the use of hard-coded RSA SSL private key in RuggedCom’s Rugged Operating System (ROS). RuggedCom, an independent subsidiary of Siemens, has produced a new version of the ROS that mitigates this vulnerability.
+This vulnerability could be exploited remotely. Exploits that target this vulnerability are publicly available.
+Affected Products
+The following RuggedCom productsRuggedCom Website, http://www.ruggedcom.com/productbulletin/ros-security-page/. Web site last accessed April 29, 2013.,Siemens Security Advisory, https://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-622607.pdf. Web site last accessed April 29, 2013. are affected:
+
+Rugged OS, ver. 3.11 and prior
+ROX I OS firmware used by RX1000 and RX1100 series products. ROX I versions before and including ROX v1.14.5
+ROX II OS firmware used by RX5000 and RX1500 series products. ROX II versions before and including ROX v2.3.0
+RuggedMax Operating System Firmware used by the Win7000 and Win7200 base station units and the Win5100 and Win5200 subscriber (CPE) devices. All versions of the firmware released before and including 4.2.1.4621.22
+
+Impact
+The impact of exploiting this vulnerability will give an attacker the private SSL key for secure communications between client/user and a RuggedCom switch. The attacker can use the key to decrypt management traffic and create malicious communication to the RuggedCom network device.
+This vulnerability has no impact on encrypted data traffic passing through RuggedCom ROS, ROX, or RuggedMax BS devices.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+RuggedCom, a Siemens Business, is a Canadian-based company with sales and distribution in over 25 countries around the world.
+The affected product, Rugged Operating System (ROS) is the software operating system for RuggedSwitch and RuggedServer product families. ROS based devices are often deployed in critical infrastructure projects such as electrical substations, intelligent transportation systems, and rail wayside control.
+RuggedCom/Siemens estimates that these products are used primarily in Canada, United States, Mexico, China, and Europe.
+Vulnerability Characterization
+Vulnerability Overview
+
+Key management errorsCWE-320: Key Management Errors, http://cwe.mitre.org/data/definitions/320.html, Web site last accessed April 29, 2013.
+
+Using publicly available software, the private SSL key can be extracted from the ROS binary file. This key can allow an attacker to establish a secure communication link with RuggedCom network devices and manipulate settings that would result in a denial-of-service condition.
+CVE-2012-4698NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4698. NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+This vulnerability could be exploited remotely.
+Existence of Exploit
+Exploits that target this vulnerability are publicly available.
+Difficulty
+An attacker with a moderate skill would be able to exploit this vulnerability.
+Mitigation
+
+ROS Devices
+
+--------- Begin Update A Part 1 of 1 --------
+ROS Update v3.12 has been produced to mitigate these issues and can be obtained from the RuggedCom Customer Support Team. Full information can be found at this link: http://www.ruggedcom.com/productbulletin/ros-security-page/.
+--------- End Update A Part 1 of 1 ----------
+
+ROX Devices
+
+ROX device customers are strongly encouraged to change their SSL and SSH keys. Application notes exist that explain how to change the SSL and SSH keys. Please consult App Note AN17 for ROX1.x versions of the firmware and App Note AN16 for ROX 2.x. These application notes can be obtained from RuggedCom’s Customer Support Team.
+
+RuggedMax Devices
+
+
+SSH Service
+
+For RuggedMax SSH service, the customer has the capability to generate new keys. Each device (subscriber or base station) can be triggered to generate a new SSH key by deleting the current key. Customers are strongly encouraged to generate new keys. A procedure on how to generate a new SSH key can be obtained from RuggedCom Customer Support Team.
+
+HTTPS/SSL Service
+
+For the HTTPS access, a temporary solution exists with the current version of firmware to disable HTTPS access. For details on this procedure please contact the RuggedCom Customer Support Team.
+Siemens recommendations the following mitigation strategies when deploying RuggedCom devices:
+
+Do not connect ROS, RuggedMax devices directly to an untrusted network such as the Internet.
+Establish a VPN solution to connect to an untrusted network such as the Internet.
+Check for any signs of unauthorized access to a device (e.g., by reviewing syslogs).
+Use industry best practices for security such as those defined by NERC-CIP.
+
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT Web page (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

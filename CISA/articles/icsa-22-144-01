@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.8
+ATTENTION: Exploitable remotely
+Vendor: Rockwell Automation
+Equipment: Logix Controllers
+Vulnerability: Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may allow an unauthorized user to send malicious messages to the targeted device, which could lead to a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports this vulnerability affects the following Logix Controllers: 
+
+CompactLogix 5380 controllers: firmware Versions 32.013 and earlier
+Compact GuardLogix 5380 controllers: firmware Versions 32.013 and earlier
+CompactLogix 5480 controllers: firmware Versions 32.013 and earlier
+ControlLogix 5580 controllers: firmware Versions 32.013 and earlier
+GuardLogix 5580 controllers: firmware Versions 32.013 and earlier
+CompactLogix 5370 controllers: firmware Versions 33.013 and earlier
+Compact GuardLogix 5370 controllers: firmware Versions 33.013 and earlier
+ControlLogix 5570 controllers: firmware Versions 33.013 and earlier
+GuardLogix 5570 controllers: firmware Versions 33.013 and earlier
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+A malformed Class 3 common industrial protocol message with a cached connection can cause a denial-of-service condition, resulting in a major nonrecoverable fault. If the target device becomes unavailable, a user would have to clear the fault and redownload the user project file to bring the device back online.
+CVE-2022-1797 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation discovered this vulnerability during routine security testing and reported it to CISA.
+4. MITIGATIONS
+Rockwell Automation recommends users update to the latest firmware version to mitigate this vulnerability. Users are directed towards the risk mitigation provided below and are encouraged (where possible) to combine these with the general security guidelines below to employ multiple strategies simultaneously. Users should go to Rockwell Automation's Product Compatibility & Download Center to download the latest firmware.
+
+CompactLogix 5380, Compact GuardLogix 5380, CompactLogix 5480, ControlLogix 5580, GuardLogix 5580: Upgrade to v33.011 firmware
+CompactLogix 5370, Compact GuardLogix 5370, ControlLogix 5570, GuardLogix 5570: Upgrade to v34.011 firmware
+
+If upgrading is not possible, Rockwell Automation recommends the following mitigations:
+
+Use of Microsoft AppLocker or other similar allow list applications can help mitigate risk. Information on using AppLocker with products from Rockwell Automation is available in Knowledgebase article QA17329.
+Confirm the least-privilege user principle is followed, and user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.
+
+Rockwell Automation general security guidelines:
+
+Use trusted software, software patches, antivirus/antimalware programs and interact only with trusted websites and attachments.
+Minimize network exposure for all control system devices and/or systems and confirm they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, see Knowledgebase article PN715.
+Locate control system networks and devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize a VPN is only as secure as connected devices.
+Please see Rockwell Automation’s security advisory PN1596 for more information.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

@@ -1,0 +1,87 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Desigo PXM Devices
+Vulnerabilities: OS Command Injection, Exposure of Sensitive Information to an Unauthorized Actor, Cross-Site Scripting, Cross-Site Request Forgery, Improper Neutralization of Encoded URI Schemes in a Web Page, Execution with Unnecessary Privileges
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to potentially access sensitive information, execute arbitrary commands, cause a denial-of-service condition, or perform remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Desigo devices contain the affected webserver:
+
+Desigo PXM30-1: All versions prior to V02.20.126.11-41
+Desigo PXM30.E: All versions prior to V02.20.126.11-41
+Desigo PXM40-1: All versions prior to V02.20.126.11-41
+Desigo PXM40.E: All versions prior to V02.20.126.11-41
+Desigo PXM50-1: All versions prior to V02.20.126.11-41
+Desigo PXM50.E: All versions prior to V02.20.126.11-41
+PXG3.W100-1: All versions prior to V02.20.126.11-37
+PXG3.W100-2: All versions prior to V02.20.126.11-41
+PXG3.W200-1: All versions prior to V02.20.126.11-37
+PXG3.W200-2: All versions prior to V02.20.126.11-41
+	 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND (’OS COMMAND INJECTION’) CWE-78
+Siemens Desigo PXM Devices’ webserver is vulnerable to OS command injection. An improper neutralization of special elements used in an OS Command with root privileges during a restore operation exists; validation of file names included in the input package are missing. By restoring a specifically crafted package, a remote low-privileged attacker could execute arbitrary system commands with root privileges on the device, potentially leading to a full compromise.
+CVE-2022-40176 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+Siemens Desigo PXM Devices’ webserver is vulnerable to exposure of sensitive information to an unauthorized actor. Endpoints of the “Operation” web application that interpret and execute Axon language queries allow file read access to the device file system with root privileges. By supplying specific input/output (I/O) related Axon queries, a remote low-privileged attacker could read sensitive files on the device.
+CVE-2022-40177 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N).
+3.2.3    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION (’CROSS-SITE SCRIPTING’) CWE-79
+Siemens Desigo PXM Devices’ webserver is vulnerable to improper neutralization of input during webpage generation in the “Import Files” functionality of the “Operation” web application, due to the missing validation of file titles included in the input package. By uploading a specifically crafted graphics package, a remote low-privileged attacker could execute arbitrary JavaScript code.
+CVE-2022-40178 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:N/A:N).
+3.2.4    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+Siemens Desigo PXM Devices’ webserver is vulnerable to a CSRF in endpoints of the “Operation” web application that interpret and execute Axon language queries, due to the missing validation of anti-CSRF tokens or other origin checks. By convincing a victim to click on a malicious link or visit a specifically crafted web page while logged-in to the device web application, a remote unauthenticated attacker could execute arbitrary Axon queries against the device.
+CVE-2022-40179 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N).
+3.2.5    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+Siemens Desigo PXM Devices’ webserver is vulnerable to a CSRF in the “Import Files” functionality of the “Operation” web application due to the missing validation of anti-CSRF tokens or other origin checks. By convincing a victim to visit a specially crafted web page while logged-in to the device’s web application, a remote unauthenticated attacker could upload and enable permanent arbitrary JavaScript code to the device.
+CVE-2022-40180 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N).
+3.2.6    IMPROPER NEUTRALIZATION OF ENCODED URI SCHEMES IN A WEB PAGE CWE-84
+Siemens Desigo PXM Devices’ webserver is vulnerable to improper neutralization of encoded URL schemes in a web page. The device’s embedded browser does not prevent interaction with alternative URI schemes when redirected to corresponding resources by web application code. By setting the homepage URI, the favorite URIs, or redirecting embedded browser users via JavaScript code to alternative scheme resources, a remote low privileged attacker could perform a range of attacks against the device, such as reading arbitrary files on the filesystem, executing arbitrary JavaScript code to steal or manipulate displayed information, or triggering denial-of-service conditions
+CVE-2022-40181 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H).
+3.2.7    EXECUTION WITH UNNECESSARY PRIVILEGES CWE-250
+Siemens Desigo PXM Devices’ webserver is vulnerable to execution with unnecessary privileges. The device launches the embedded Chromium-based browser as root with the “–no-sandbox” option. Attackers could add arbitrary JavaScript code inside the “Operation” graphics and successfully exploit publicly known vulnerabilities against the version of the embedded Chromium-based browser.
+CVE-2022-40182 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+ 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released updates for the affected products and recommends users update to the latest versions:
+
+Desigo PXM30-1: Update to V02.20.126.11-41 or later
+Desigo PXM30.E: Update to V02.20.126.11-41 or later
+Desigo PXM40-1: Update to V02.20.126.11-41 or later
+Desigo PXM40.E: Update to V02.20.126.11-41 or later
+Desigo PXM50-1: Update to V02.20.126.11-41 or later
+Desigo PXM50.E: Update to V02.20.126.11-41 or later
+PXG3.W100-1: Update to V02.20.126.11-37 or later
+PXG3.W100-2: Update to V02.20.126.11-41 or later
+PXG3.W200-1: Update to V02.20.126.11-37 or later
+PXG3.W200-2: Update to V02.20.126.11-41 or later
+
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information, see the associated Siemens Security Advisory in HTML or CSAF formats. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

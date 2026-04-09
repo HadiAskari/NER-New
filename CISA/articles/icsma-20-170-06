@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Becton, Dickinson and Company (BD)
+Equipment: Alaris PCU
+Vulnerability: Uncontrolled Resource Consumption
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-170-06 BD Alaris PCU that was published June 18, 2020, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to cause a denial of service (DoS) on the target system and could cause the BD Alaris PCU to disconnect from the facility’s wireless network. 
+Wireless functionality operates independently from the pump system and a disruption in wireless connectivity would not affect pump module functionality. Exploiting this vulnerability would not provide administrative access to the BD Alaris PC Unit or the BD Alaris Systems Manager. An unauthorized user would not be able to gain permissions or be able to perform remote commands for the BD Alaris PC Unit. 
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of the BD Alaris PCU that has implemented the Linux Kernel v4.4.97 within the Laird Wireless Module WB40N are affected:
+
+Alaris PC Unit: Versions 9.13, 9.19, 9.33, and 12.1
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The affected products incorporate a vulnerable Linux kernel which is vulnerable to uncontrolled resource consumption due to a hard-coded Linux kernel maximum segment size overflow. This could allow an attacker to cause a denial of service, affecting the wireless functionality of the vulnerable devices.
+CVE-2019-11479 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+BD notified CISA that these products are affected by this Linux kernel vulnerability.
+5. MITIGATIONS
+BD recommends the following to help reduce the risks associated with this third-party vulnerability:
+
+Consider stronger network controls for wireless authentication, which are harder to replicate and substitute, such as enterprise versions of WPA2 protocols.
+Users with Intrusion Detection Systems (IDS) should consider monitoring wireless networks with patient connected devices for possible malicious activity.
+BD Alaris Systems Manger should be considered a critical service. Whenever possible, it should be operated on a secure network behind a firewall, it should be patched regularly, and should have malware protection.
+Ensure that the BD Alaris PC Unit and BD Alaris Systems Manager are separated by a firewall.
+
+--------- Begin Update A Part 1 of 1 ---------
+For more information on this issue, please see the associated BD product security bulletin on the BD website. 
+--------- End Update A Part 1 of 1 ---------
+For more information on BD’s product security and vulnerability management, contact the BD product security office. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Where additional information is needed, users should refer to existing cybersecurity in medical device guidance issued by the FDA.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

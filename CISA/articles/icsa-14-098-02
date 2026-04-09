@@ -1,0 +1,41 @@
+
+OVERVIEW
+An anonymous researcher working with HP’s Zero Day Initiative has identified a stack-based buffer overflow in the WellinTech KingSCADA Stack. WellinTech has produced a patch that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following WellinTech KingSCADA products are affected:
+
+KingSCADA, all versions prior to v3.1.2.13
+
+IMPACT
+Successful exploitation of the reported vulnerability could allow an attacker to execute remote code.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+WellinTech is a software development company specializing in automation and control. WellinTech is based in Beijing, China, with branches in the United States, Japan, Singapore, Europe, and Taiwan.
+The WellinTech web site describes KingSCADA as a Windows-based control, monitoring, and data collection application deployed across several sectors including Energy, Water and Wastewater Systems, Commercial Facilities, and others.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed April 08, 2014.
+
+The KingSCADA application has a stack-based buffer overflow vulnerability where the application overwrites the structured exception handler (SEH). An attacker could send a specially crafted packet to KingSCADA, and the application would handle the packet incorrectly, causing a stack-based buffer overflow. This could allow the attacker to execute arbitrary code as the currently running user, which would affect confidentiality, integrity, and availability.
+CVE-2014-0787NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0787, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed April 08, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+WellinTech has created a patch and instructions for installation that are available for download on its web site at:
+http://www.wellintech.com/index.php?option=com_content&view=article&id=56&Itemid=11
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,88 @@
+
+
+Description
+
+This updated alert is a follow-up to the updated alert titled ICS-ALERT-17-181-01B Petya Malware Variant that was published July 5, 2017, on the NCCIC/ICS-CERT web site. ICS-CERT is aware of reports of a variant of the Petya malware that is affecting several countries. ICS-CERT is releasing this alert to enhance the awareness of critical infrastructure asset owners/operators about the Petya variant and to identify product vendors that have issued recommendations to mitigate the risk associated with this malware. table.gridtable { font-family: verdana,arial,sans-serif; font-size:11px; color:#333333; border-width: 1px; border-color: #666666; border-collapse: collapse; } table.gridtable th { border-width: 1px; padding: 8px; border-style: solid; border-color: #666666; background-color: #dedede; } table.gridtable td { border-width: 1px; padding: 8px; border-style: solid; border-color: #666666; background-color: #ffffff; }
+SUMMARY
+This updated alert is a follow-up to the updated alert titled ICS-ALERT-17-181-01B Petya Malware Variant that was published July 5, 2017, on the NCCIC/ICS-CERT web site.
+US-CERT released the following documents that contain in-depth technical analysis on the Petya malware, as well as indicators of compromise and additional recommendations for mitigation. These documents are available via the following links:
+Alert (TA17-181A) Petya Ransomware
+Malware Initial Findings Report (MIFR) - 10130295.pdf
+MIFR-10130295_stix.xml
+TA-17-181B_IOCs.csv
+ICS-CERT is aware of reports of a variant of the Petya malware that is affecting several countries. ICS-CERT is releasing this alert to enhance the awareness of critical infrastructure asset owners/operators about the Petya variant and to identify product vendors that have issued recommendations to mitigate the risk associated with this malware.
+Cybersecurity researchers have been aware of the Petya malware since 2016 and have recently identified a new enhanced variant with several different names, including “NotPetya,” “Petrwrap,” “GoldenEye,” and “Nyetya.” Current reporting suggests that the initial infection vector for the Petya variant may be the result of a supply chain attack against accounting software MEDoc.
+The Petya variant is a self-propagating worm that can laterally move through an infected network by harvesting credentials and active sessions on the network, exploiting previously identified SMB vulnerabilities, and using legitimate tools such as the Windows Management Instrumentation Command-line (WMIC) tool and the PsExec network management tool. After initial infection, the affected system scans the local network for additional systems to infect via Port 139/TCP and 445/TCP, prior to encrypting files and overwriting the Master Boot Record (MBR) or wiping sectors of the disk drive. There are several reports that suggest that the Petya variant’s creators intend it to be destructive in nature, rather than a traditional, economically motivated ransomware. Regardless, the U.S. Government does not encourage paying a ransom to criminal actors.
+The following product vendors have proactively issued notifications with recommendations for users regarding the Petya ransomware (ICS-CERT will update the list of vendors that have released customer notifications as additional information becomes available):
+
+ABB:
+
+http://search.abb.com/library/Download.aspx?DocumentID=9AKK107045A1494&Action=Launch
+--------- Begin Update C Part 1 of 3 --------
+
+Beckman Coulter
+
+https://www.beckmancoulter.com/wsrportal/wsr/support/WannaCry-Ransomware-Cyber-attack/index.htm
+--------- End Update C Part 1 of 3----------
+
+Becton, Dickinson and Company (BD):
+
+http://www.bd.com/en-us/support/product-security-and-privacy/product-security-bulletin-for-petya
+
+Dräger:
+
+http://static.draeger.com/security/
+
+Emerson Automation Solutions:
+
+http://www.emersonprocess-powerwater.com/cyber_cert/ICS-Cert-Petya-Cyber-hreat-Ovation_FinalSECURE.PDF
+http://www.emerson.com/documents/automation/1060810.pdf
+
+Honeywell:
+
+https://www.honeywellprocess.com/en-US/support/Pages/security-updates.aspx
+
+Johnson & Johnson:
+
+http://www.productsecurity.jnj.com/advisories.html
+--------- Begin Update C Part 2 of 3--------
+
+Philips:
+
+http://www.usa.philips.com/healthcare/about/customer-support/product-security
+--------- End Update C Part 2 of 3----------
+
+Rockwell Automation:
+
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1052876
+
+Schneider Electric:
+
+http://www.schneider-electric.com/en/download/document/SEVD-2017-179-01/
+--------- Begin Update C Part 3 of 3--------
+
+Smiths Medical:
+
+https://www.smiths-medical.com/company-information/news-and-events/news/2017/july/07/product-security-service-bulletin-for-petya-ransomware
+--------- End Update C Part 3 of 3----------
+MITIGATION
+ICS-CERT recommends that users take defensive measures to minimize the risk associated with the Petya malware. Specifically, users should consider the following:
+
+Apply the Microsoft patch, MS17-010.
+Disable SMBv1 on every system connected to the network. Information on how to disable SMBv1 is available from Microsoft. While many modern devices will operate correctly without SMBv1, some older devices may experience communication or file/device access disruptions.
+Microsoft recommends blocking all traffic on Port 139/TCP and 445/TCP to prevent propagation. Microsoft has also recommends that their users can also disable remote WMI and file sharing.
+Review network traffic to confirm that there is no unexpected SMBv1 network traffic. The following links provide information and tools for detecting SMBv1 network traffic and Microsoft’s MS17-010 patch:
+
+SMB—Audit Active Usage using Message Analyzer
+Wireshark download
+MS17-010 SMB RCE Detection.
+
+
+Isolate or protect vulnerable embedded systems that cannot be patched from potential network exploitation.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT also provides a control systems recommended practices page on the ICS-CERT web site. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+A cyber security incident can be reported to the NCCIC 24/7/365 at NCCICCustomerService@hq.dhs.gov or 1-844-Say-CISA (1-844-729-2472).

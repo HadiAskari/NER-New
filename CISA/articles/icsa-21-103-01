@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Schneider Electric
+Equipment: SoMachine Basic
+Vulnerability: Improper Restriction of XML External Entity Reference
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability may result in disclosure and retrieval of arbitrary data on the affected node via out-of-band (OOB) attack.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric reports this vulnerability affects the following SoMachine Basic: 
+
+SoMachine Basic, all versions prior to v1.6 SP1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+Schneider Electric SoMachine Basic prior to v1.6 SP1 suffers from an XML External Entity (XXE) vulnerability using the DTD parameter entities technique resulting in disclosure and retrieval of arbitrary data on the affected node via out-of-band (OOB) attack. This vulnerability is triggered when input passed to the xml parser is not sanitized while parsing the xml project/template file. 
+CVE-2018-7783 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing; Dams; Defense Industrial Base; Energy; Food and Agriculture; Government Facilities; Nuclear Reactors, Materials, and Waste; Transportation Systems; Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Gjoko Krstikj of Applied Risk reported this vulnerability to Schneider Electric.
+4. MITIGATIONS
+Schneider Electric has replaced SoMachine Basic with EcoStruxure Machine Expert – Basic. The following steps are recommended for mitigation of this issue:STEP 1: Update software and firmware 
+
+On the engineering workstation, update to EcoStruxure Machine Expert – Basic v1.1 SP1 or above. 
+On Modicon M100/M200/M221 Logic controllers, update to latest firmware version. 
+
+STEP 2: Update projects in EcoStruxure Machine Expert – Basic
+
+Upgrade the functional level of the application to minimum Version 10.2
+Activate the application protection for both read and write in the project properties. 
+
+STEP 3: Transfer applications. 
+
+Transfer applications to Modicon M100/M200/M221 logic controllers. EcoStruxure Machine Expert – Basic will perform an integrity check when transferring the application and will display a warning pop-up to the user if the application has been altered during transfer.
+
+Please see Schneider Electric’s publication SEVD-2018-142-01 for more information.
+Schneider Electric also recommends the following general security practices:
+
+Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.
+Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.
+Place all controllers in locked cabinets and never leave them in the “Program” mode.
+Never connect programming software to any network other than the network for the devices it is intended for.
+Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc. before use in the terminals or any node connected to these networks.
+Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.
+Minimize network exposure for all control system devices and systems and ensure they are not accessible from the Internet.
+When remote access is required, use secure methods, such as virtual private networks (VPNs). Recognize VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand VPNs are only as secure as the connected devices.
+For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

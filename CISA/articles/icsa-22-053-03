@@ -1,0 +1,48 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.6
+ATTENTION: Low attack complexity
+Vendor: WIN-911
+Equipment: WIN-911 2021
+Vulnerabilities: Incorrect Default Permissions
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to leverage the misconfigured privileges to the installed directory and achieve code execution in the application’s context and permissions.
+3. TECHNICAL DETAILS
+
+
+3.1 AFFECTED PRODUCTS
+The following versions of WIN-911, an alarm notification platform, are affected:
+
+WIN-911 2021 R1 – 5.21.10
+WIN-911 2021 R2 – 5.21.17
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INCORRECT DEFAULT PERMISSIONS CWE-276
+The affected product is vulnerable to a permissions misconfiguration that may allow an attacker to locally write files to the Program Announcer directory and elevate permissions whenever the program is executed.
+CVE-2022-23922 has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:L).
+3.2.2    INCORRECT DEFAULT PERMISSIONS CWE-276
+The affected product is vulnerable to a permissions misconfiguration that may allow an attacker to locally write files to the program Operator Workspace directory, which holds DLL files and executables. A low-privilege attacker could write a malicious DLL file to the Operator Workspace directory to achieve privilege escalation and the permissions of the user running the program.
+CVE-2022-23104 has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Noam Moshe of Claroty reported these vulnerabilities to CISA.
+4. MITIGATIONS
+WIN-911 has released a hotfix that removes write access for the user’s group on the affected directory subfolders. For the hotfix and more information, please use the following link: WIN-911 2021 R1/R2 File Permission Vulnerability.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Ensure the least-privilege user principle is followed.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

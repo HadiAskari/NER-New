@@ -1,0 +1,80 @@
+
+
+OVERVIEW
+--------- Begin Update B Part 1 of 2 --------
+This updated advisory is a follow-up to the previous advisory update titled ICSA-13-077-01A Schneider Electric PLCs Vulnerabilities (Update A) that was published March 20, 2013, on the ICS-CERT Web page. It is also a follow-up to the updated alert titled ICS-ALERT-13-016-01A Schneider Electric Product Vulnerabilities that was published March 05, 2013, on the ICS‑CERT Web page. This advisory corrects and expands on the details in the specified alert.
+--------- End Update B Part 1 of 2 --------
+This updated advisory provides mitigation details for multiple vulnerabilities that affect Schneider Electric Modicon, Premium, and Quantum PLC modules.
+Independent researcher Arthur Gervais has identified two vulnerabilities in the common Ethernet modules used across a broad range of Schneider Electric’s PLC products. These vulnerabilities were disclosed at the 2013 Digital Bond SCADA Security Scientific Symposium (S4) conference in January 2013. An improper authentication vulnerability and cross-site request forgery vulnerability have been validated by Schneider Electric. Schneider Electric has released mitigations for these vulnerabilities but does not plan to issue patches because of their complex nature.Schneider Electric Disclosure http://www.schneider-electric.com/download/ww/en/details/35081317-Vulnerability-Disclosure-for-Quantum-Premium-and-M340/, Web site last accessed June 04, 2013. Schneider Electric says that fixing these vulnerabilities would require significant changes to existing protocols and make any customer solutions currently using these features incompatible.
+
+These vulnerabilities could be exploited remotely.
+Additional issues reported by the researcher have also been investigated by the vendor.
+The vendor and researcher disagree on whether Magelis XBT HMI issue is a valid vulnerability. The Magelis XBT HMI panels have a security mode where a password is required to enable remote configuration uploads. After this mode is initially enabled, a factory default password is provided. The user is not prompted or required to supply a new password, although this capability is provided. Once the user supplies a new password, the factory default password is no longer valid. This does not fit the definition of a hard-coded password, because it can be changed. Users should be aware of the potential for configuration errors that can lead to significant security issues.
+The reported Resource Exhaustion issue affecting the M340 PLC family could not be duplicated by the vendor given the information supplied by the researcher. Software versions or specific configuration differences could account for the inability of the vendor to duplicate the results. In Schneider Electric’s testing on this issue, the communications module does in fact stop communicating when the connection limit is exceeded, but the PLC continues its control functions and its operation is unaffected. After the connection limit is exceeded, the communications module performs a soft reset. An attacker could not remotely exploit this observed behavior to deny PLC control functions. Although the researcher-reported behavior could not be duplicated, the vendor could not go any further with addressing it without more specific-detailed information.
+The remainder of this advisory addresses the two vulnerabilities that the vendor did confirm.
+
+AFFECTED PRODUCTS
+
+The following Schneider Electric products are affected:
+
+Modicon M340 PLC modules,
+Quantum PLC modules, and
+Premium PLC modules.
+
+
+IMPACT
+
+A malicious attacker may remotely halt, reset, or change settings for PLC modules by exploiting these vulnerabilities. This could affect products deployed in the critical manufacturing, energy, water, agriculture and food, dams, transportation, postal, nuclear, government facilities, and defense industrial sectors worldwide.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+
+BACKGROUND
+
+Schneider Electric is a Europe-based company that maintains offices in 190 countries worldwide. Their PLC products are used in a wide variety of automation and control applications across all industrial, infrastructure, and building sectors.
+The affected PLC products, Modicon M340, Quantum, and Premium lines are PLC devices that are used in the United States, China, Russia, and India, and throughout the rest of the world. Primary application areas for these PLCs are in control and monitoring applications across the critical manufacturing, energy, water, agriculture and food, dams, transportation, postal, nuclear, government facilities, and defense industrial sectors.
+VULNERABILITY CHARACTERIZATION
+
+VULNERABILITY OVERVIEW
+
+
+IMPROPER AUTHENTICATIONCWE-287: Improper Authentication, http://cwe.mitre.org/data/definitions/287.html, Web site last accessed June 04, 2013.
+
+Products supporting the Factory Cast feature, including the Modicon M340, Quantum, and Premium PLC ranges, allow users to send Modbus messages embedded in HTTP POST requests using SOAP messages. Modbus commands sent to the PLC via this mechanism are not authenticated. These messages can result in unintended consequences such as halting operation or modification of I/O data to and from the PLC.
+CVE-2013-0664NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0664, Web site last accessed June 04, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=(AV:N/AC:L/Au:N/C:C/I:C/A:C) , Web site last accessed June 04, 2013.
+
+CROSS-SITE REQUEST FORGERYCWE-352: Cross-Site Request Forgery, http://cwe.mitre.org/data/definitions/352.html, Web site last accessed June 04, 2013.
+
+The affected devices incorporate a Web server interface that receives requests from clients without a mechanism for verifying that it was intentionally sent. It is possible for an attacker to trick a client into making an unintentional request to the Web server, which will be treated as an authentic request. Valid commands could be sent to the PLC via specially crafted HTTP requests.
+CVE-2013-0663NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0663, Web site last accessed June 04, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 8.5 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:S/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=(AV:N/AC:M/Au:S/C:C/I:C/A:C), Web site last accessed June 04, 2013.
+
+VULNERABILITY DETAILS
+
+
+EXPLOITABILITY
+
+These vulnerabilities could be exploited remotely.
+
+EXISTENCE OF EXPLOIT
+
+No known public exploits specifically target these vulnerabilities.
+
+DIFFICULTY
+
+An attacker with a low to medium skill would be able to exploit these vulnerabilities.
+MITIGATION
+--------- Begin Update B Part 2 of 2 --------
+Schneider Electric has issued a patch for the HTTP and FTP service that is available on selected Quantum PLC. This patch contains a new feature that allows the user to disable HTTP service on certain modules. The patch can be found on the Schneider Electric website; http://www.schneider-electric.com/. Schneider Electric has not issued a patch for the Modicon M340 or Premium PLC, but has issued a vulnerability disclosure notification that contains the following recommended mitigations for both vulnerabilities:
+
+Do not connect the affected PLC modules to an untrusted network.
+If such a connection is required, block all HTTP access to the module from untrusted IP addresses using a firewall, and only allow HTTP connections from known IP addresses from secured workstations.
+
+--------- End Update B Part 2 of 2 --------
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.
+

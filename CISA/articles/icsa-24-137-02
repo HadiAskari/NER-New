@@ -1,0 +1,75 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: CPC80 Central Processing/Communication, CPCI85 Central Processing/Communication, OPUPI0 AMQP/MQTT, SICORE Base system
+Vulnerabilities: Improper Null Termination, Command Injection, Cleartext Storage of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute code in the context of the current process, allow an authenticated privileged remote attacker to execute arbitrary code with root privileges, or lead to a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of multiple Siemens SICAM products are affected:
+
+CPC80 Central Processing/Communication: All versions prior to V16.41
+CPCI85 Central Processing/Communication: All versions prior to V5.30
+OPUPI0 AMQP/MQTT: All versions prior to V5.30
+SICORE Base system: All versions prior to V1.3.0
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER NULL TERMINATION CWE-170
+The affected device firmwares contain an improper null termination vulnerability while parsing a specific HTTP header. This could allow an attacker to execute code in the context of the current process or lead to denial-of-service condition
+CVE-2024-31484 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-31484. A base score of 7.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+The web interface of affected devices is vulnerable to command injection due to missing server side input sanitation. This could allow an authenticated privileged remote attacker to execute arbitrary code with root privileges.
+CVE-2024-31485 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-31485. A base score of 8.6 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+The affected devices store MQTT client passwords without sufficient protection on the devices. An attacker with remote shell access or physical access could retrieve the credentials leading to confidentiality loss.
+CVE-2024-31486 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-31486. A base score of 6.0 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Steffen Robertz, Gerhard Hechenberger, and Thomas Weber from SEC Consult Vulnerability Lab reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+CPC80 Central Processing/Communication: Update to V16.41 or later version. The firmware CPC80 V16.41 is present within "CP-8000/CP-8021/CP-8022 Package" V16.41
+CPCI85 Central Processing/Communication: Update to V5.30 or later version. The firmware CPCI85 V5.30 is present within "CP-8031/CP-8050 Package" V5.30
+OPUPI0 AMQP/MQTT: Update to V5.30 or later version. The firmware OPUPI0 V5.30 is present within "CP-8031/CP-8050 Package" V5.30
+SICORE Base system: Update to V1.3.0 or later version. The firmware SICORE V1.3.0 is present within "SICAM 8 Software Solution Package" V5.30
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-871704 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+May 16, 2024: Initial Publication
+

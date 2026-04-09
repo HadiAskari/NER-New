@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Schneider Electric 
+Equipment: IGSS (Interactive Graphical SCADA System)  
+Vulnerabilities: Missing Authentication for Critical Function, Insufficient Verification of Data Authenticity, Deserialization of Untrusted Data, Improper Limitation of a Pathname to a Restricted Directory, and Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in a denial-of-service condition, as well as the loss, addition, or modification of dashboards or report files in the IGSS Report folder. Successful exploitation of these vulnerabilities could also allow remote code execution, potentially resulting in loss of control of the supervisory control and data acquisition (SCADA) System with IGSS running in production mode.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric reports these vulnerabilities affect the following Data Server, Dashboard and Custom Reports modules for the IGSS (Interactive Graphical SCADA System) product:
+
+IGSS Data Server (IGSSdataServer.exe): V16.0.0.23040 and prior 
+IGSS Dashboard (DashBoard.exe): V16.0.0.23040 and prior 
+Custom Reports (RMS16.dll): V16.0.0.23040 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306 
+A vulnerability in Schneider Electric Data Server TCP interface could allow the creation of a malicious report file in the IGSS project report directory, and this could lead to remote code execution when an unsuspecting user opens the malicious report.  
+CVE-2023-27980 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.2 INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345 
+A vulnerability in Schneider Electric Data Server could cause manipulation of dashboard files in the IGSS project report directory when an attacker sends specific crafted messages to the Data Server TCP port. This could lead to remote code execution if an unsuspecting user opens the malicious dashboard file. 
+CVE-2023-27982 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.3 DESERIALIZATION OF UNTRUSTED DATA CWE-502 
+A vulnerability in Schneider Electric Dashboard module could cause an interpretation of malicious payload data if a malicious file is opened by an unsuspecting user. This could lead to remote code execution. 
+CVE-2023-27978 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.4 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY CWE-22 
+A vulnerability in Schneider Electric Custom Reports could cause remote code execution if an unsuspecting user opens a malicious report. 
+CVE-2023-27981 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.5 IMPROPER INPUT VALIDATION CWE-20 
+A vulnerability in Schneider Electric Custom Reports could result in macro execution if a malicious report file is opened by an unsuspecting user, potentially leading to remote code execution. 
+CVE-2023-27984 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H). 
+3.2.6 INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345 
+A vulnerability in Schneider Electric Data Server could grant an unauthorized user access to delete files in the IGSS project report directory if specific crafted messages are sent to the Data Server TCP port. 
+CVE-2023-27977 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L). 
+3.2.7 INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345 
+A vulnerability in Schneider Electric Data Server could allow an unauthorized user to rename files in the IGSS project report directory. This could lead to a denial-of-service condition if an attacker sends specific crafted messages to the Data Server TCP port. 
+CVE-2023-27979 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L). 
+3.2.8 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306 
+A vulnerability in Schneider Electric Data Server TCP interface could allow deletion of reports from the IGSS project report directory. 
+CVE-2023-27983 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: France 
+
+3.4 RESEARCHER
+Kimiya, working with Trend Micro Zero Day Initiative, reported these vulnerabilities to Schneider Electric. 
+4. MITIGATIONS
+Version 16.0.0.23041 of IGSS Data Server, Dashboard and Custom Reports (RMS) includes corrections and mitigations for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software; the update is also available directly from Schneider Electric.  
+Schneider Electric recommends that users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric strongly recommends the use of back-ups and impact evaluating these patches in a test, development, or offline infrastructure environment. Users can contact Schneider Electric’s Customer Care Center for additional assistance. 
+Additionally, if patching is not feasible, Schneider Electric recommends the following mitigations to reduce the risk of vulnerability exploitation: 
+
+Read the Security Guideline for IGSS on securing an IGSS SCADA-installation. 
+Ensure that the System Configuration module under Files, automatic backup is enabled for file backup. 
+Strip report output from Excel output. In the System Configuration module under Reports, stripping of macros for the output engine can be enabled, reducing the risk of distributing an unsafe report. 
+Verify that devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access. 
+
+Schneider Electric strongly recommends the following industry cybersecurity best practices. 
+
+Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network. 
+Install physical controls to help prevent unauthorized users from accessing industrial control and safety systems, components, peripheral equipment, and networks. 
+Place all controllers in locked cabinets, and do not leave them in the “Program” mode. 
+Only connect programming software to the network intended for that device. 
+Scan all methods of mobile data exchange with the isolated network before use in the terminals or nodes connected to these networks. 
+Properly sanitize mobile devices that have connected to another network before connecting to the intended network. 
+Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the internet. 
+When remote access is required, use secure methods, such as virtual private networks (VPNs). 
+For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document. 
+
+For more information, see Schneider Electric security notification SEVD-2023-073-04. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity. 

@@ -1,0 +1,58 @@
+
+Overview
+Independent researchers Carlos Mario Penagos Hollman and Dillon Beresford identified multiple vulnerabilities in WellinTech’s KingView and a single vulnerability in WellinTech’s KingHistorian application. These vulnerabilities are exploitable remotely. WellinTech has created a patch and the researchers have validated that the patch resolves these vulnerabilities in the KingView and KingHistorian applications.
+Affected Products
+The following products and versions are affected:
+
+WellinTech KingView 6.53, and
+WellinTech KingHistorian 3.0.
+
+Impact
+Successful exploitation of these vulnerabilities could lead to arbitrary code execution, information disclosure, and denial of service (DoS).
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+WellinTech is a software development company specializing in automation and control. WellinTech is based in Beijing, China, with branches in the United States, Japan, Singapore, Europe, and Taiwan.
+According to the WellinTech Web site, the KingView product is a Windows-based control, monitoring, and data collection application deployed across several industries, including power, water, building automation, mining, and other sectors. The KingHistorian product is a database that can be used as a stand-alone historian; it is deployed across several industries including water and power and other sectors.
+Vulnerability Characterization
+Vulnerability Overview-Kingview Application
+
+Stack-based Buffer OverflowCWE, http://cwe.mitre.org/data/definitions/121.html , Web site last accessed July 3, 2012.
+
+By sending a specially crafted packet to Port 555/TCP, an attacker may create a stack-based buffer overflow in the KingView application. This attack may allow the execution of arbitrary code.
+CVE-2012-1830NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1830, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10 has been assigned; the CVSS vector string is AV:N/AC:L/Au:N/C:C/I:C/A:C.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, Web site last visited July 3, 2012.
+Heap-based Buffer OverflowCWE, http://cwe.mitre.org/data/definitions/122.html , Web site last accessed July 3, 2012.
+By sending a specially crafted packet to Port 555/TCP, an attacker may create a heap-based buffer overflow in the KingView application. This attack may allow the execution of arbitrary code.
+CVE-2012-1831NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1831, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10 has been assigned; the CVSS vector string is AV:N/AC:L/Au:N/C:C/I:C/A:C.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, Web site last visited July 3, 2012.
+Out-of-bounds ReadCWE, http://cwe.mitre.org/data/definitions/125.html , Web site last accessed July 3, 2012.
+By sending a specially crafted packet to either Port 2001/TCP or Port 2001/UDP, an attacker may read from an invalid memory location in the KingView application. This attack may allow the execution of arbitrary code.
+CVE-2012-1832NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-1832, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10 has been assigned; the CVSS vector string is AV:N/AC:L/Au:N/C:C/I:C/A:C.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, Web site last visited July 3, 2012.
+
+Path TraversalCWE, http://cwe.mitre.org/data/definitions/35.html. Web site last accessed July 3, 2012.
+
+By sending a specially crafted GET request via HTTP on Port 8001/TCP, an attacker may access arbitrary information from the KingView application.
+CVE-2012-2560NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2560, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5 has been assigned. The CVSS vector string is AV:N/AC:L/Au:N/C:P/I:N/A:N.http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:N/A:N. Web site last visited July 3, 2012.
+Vulnerability Overview-Kinghistorian Application
+
+Improper Restriction of Operations within the Bounds of a Memory BufferCWE, http://cwe.mitre.org/data/definitions/119.html, Web site last accessed July 3, 2012.
+
+By sending a specially crafted packet to Port 5678/TCP, an attacker may create an invalid pointer write in the KingHistorian application. This attack may allow the execution of arbitrary code.
+CVE-2012-2559NVD, 2560http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-2559, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10 has been assigned; the CVSS vector string is AV:N/AC:L/Au:N/C:C/I:C/A:C.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, Web site last visited July 3, 2012.
+
+Vulnerability Details
+
+Exploitability
+These vulnerabilities are exploitable remotely.
+Existence of Exploit
+No known public exploits specifically target these vulnerabilities.
+Difficulty
+An attacker requires a moderate skill level to exploit these vulnerabilities.
+Mitigation
+WellinTech has developed patches to resolve these issues. The WellinTech advisory and the KingView product patch can be found here: http://www.wellintech.com/index.php/news/33-patch-for-kingview653. The WellinTech advisory and the KingHistorian product patch can be found here: http://en2.wellintech.com/products/detail.aspx?contentid=25.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, https://ics-cert.us-cert.gov/Recommended-Practices, Web site last accessed July 3, 2012. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

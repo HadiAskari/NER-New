@@ -1,0 +1,58 @@
+
+CVSS v3 8.8
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: ProMinent
+Equipment: MultiFLEX M10a Controller
+Vulnerabilities: Client-Side Enforcement of Server-Side Security, Insufficient Session Expiration, Cross-Site Request Forgery, Information Exposure, and Unverified Password Change
+AFFECTED PRODUCTS
+The following versions of MultiFLEX Controller, a water treatment controller, are affected:
+
+All versions of MultiFLEX M10a Controller web interface.
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an attacker to bypass protection mechanisms, assume the identity of authenticated users, and change the device configuration.
+MITIGATION
+ProMinent has not provided mitigations for these vulnerabilities.
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that a VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+CLIENT-SIDE ENFORCEMENT OF SERVER-SIDE SECURITY CWE-602
+
+The log out function in the application removes the user’s session only on the client side. This may allow an attacker to bypass protection mechanisms, gain privileges, or assume the identity of an authenticated user.
+CVE-2017-14013 has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L).
+
+INSUFFICIENT SESSION EXPIRATION CWE-613
+
+The user’s session is available for an extended period beyond the last activity, allowing an attacker to reuse an old session for authorization.
+CVE-2017-14007 has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L).
+
+CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+
+The application does not sufficiently verify requests, making it susceptible to cross-site request forgery. This may allow an attacker to execute unauthorized code, resulting in changes to the configuration of the device.
+CVE-2017-14011 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+
+INFORMATION EXPOSURE CWE-200
+
+When an authenticated user uses the “Change Password” feature on the application, the current password for the user is specified in plaintext. This may allow an attacker who has been authenticated to gain access to the password.
+CVE-2017-14009 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+
+UNVERIFIED PASSWORD CHANGE CWE-620
+
+When setting a new password for a user, the application does not require the user to know the original password. An attacker who is authenticated could change a user’s password, enabling future access and possible configuration changes.
+CVE-2017-14005 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+Maxim Rupp disclosed this vulnerability to ICS-CERT.
+BACKGROUND
+Critical Infrastructure Sector: Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Ontario, California

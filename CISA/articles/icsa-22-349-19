@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Siemens  
+Equipment: SICAM PAS 
+Vulnerabilities: Uncontrolled Search Path Element, Improper Validation of Specified Type of Input, Cleartext Transmission of Sensitive Information 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to remote code execution, privilege escalation, or the creation of a denial-of-service condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affect the following energy automation products for operating electrical substations: 
+
+SICAM PAS/PQS: all versions prior to V7.0 
+SICAM PAS/PQS: all versions from and including 7.0 and prior to V8.06
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 UNCONTROLLED SEARCH PATH ELEMENT CWE-427 
+Affected software does not properly secure a folder containing library files. This could allow an attacker to place a custom malicious .dll in this folder, which is then run with SYSTEM rights when users start a service that requires this .dll. At the time of assigning the CVE number, succeeding mainline versions have already superseded the affected firmware version of the component. 
+CVE-2022-43722 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H). 
+3.2.2 IMPROPER VALIDATION OF SPECIFIED TYPE OF INPUT CWE-1287
+Affected software does not properly validate the input for a certain parameter in the s7ontcp.dll. This could allow an unauthenticated remote attacker to send messages and create a denial of service condition as the application crashes. At the time of assigning the CVE, succeeding mainline versions have already superseded the affected firmware version of the component. 
+CVE-2022-43723 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.3 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319 
+Affected software transmits the database credentials for the inbuilt SQL server in cleartext. In combination with the by default enabled xp_cmdshell feature, unauthenticated remote attackers could execute custom OS commands. At the time of assigning the CVE, succeeding mainline versions have already superseded the affected firmware version of the component. 
+CVE-2022-43724 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H) 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Munich, Germany 
+
+3.4 RESEARCHER
+Georgy Zaytsev and Maxim Kozhevnikov from Positive Technologies reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens released several updates for SICAM PAS/PQS and recommends updating to the latest version: 
+
+SICAM PAS/PQS: Update to V8.06 or later. 
+SICAM PAS/PQS: Update to V7.0 or later. 
+
+Operators of critical power systems worldwide are usually required by regulations to build resilience into power grids by applying multi-level redundant secondary protection schemes. Therefore, Siemens recommends operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can be minimized by virtue of the grid design.   
+Siemens recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens recommends prior validation of any security update before application, and supervision by trained staff of the update process in the target environment. 
+As a general security measure, Siemens recommends protecting network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN) and advises configuring the environment according to operational guidelines in order to run the devices in a protected IT environment. Please see Siemens’ recommended security guidelines. 
+For further inquiries on security vulnerabilities in Siemens products, users should contact Siemens ProductCERT. 
+For more information, see the associated Siemens security advisory SSA-849072 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open attachments in unsolicited email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks. 
+
+No known public exploits specifically target these vulnerabilities. 

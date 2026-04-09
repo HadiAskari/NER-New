@@ -1,0 +1,47 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.2
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: OpenV2G
+Vulnerability: Classic Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to trigger a memory corruption.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports this vulnerability affects the following open-source implementation of the ISO/IEC vehicle-to-grid communication interface (V2G CI) standard: 
+
+OpenV2G: v0.9.4 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The OpenV2G EXI parsing feature is missing a length check when parsing X509 serial numbers. An attacker could exploit this vulnerability to introduce a buffer overflow that leads to memory corruption.
+CVE-2022-27242 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Philipp Spiegelt, Patrick Hochscheidt, and Steffen Sanwald from Mercedes-Benz Tech Innovation reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens has released an update (v0.9.5) for the OpenV2G and recommends users update to the latest version.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For additional information, please refer to Siemens security advisory SSA-736385
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

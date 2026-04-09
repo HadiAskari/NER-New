@@ -1,0 +1,133 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). 
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.2
+ATTENTION: Low Attack Complexity
+Vendor: Siemens
+Equipment: RUGGEDCOM APE1808 Product Family
+Vulnerabilities: Exposure of Sensitive Information to an Unauthorized Actor, Buffer Underflow, Classic Buffer Overflow, Time-of-check Time-of-use Race Condition, Out-of-bounds Read, Improper Restriction of Operations within the Bounds of a Memory Buffer, Out-of-bounds Write, Improper Input Validation, Missing Release of Memory after Effective Lifetime, Improperly Implemented Security Check for Standard, Plaintext Storage of a Password
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities on affected products could lead to information disclosure, system crash or escalation of privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports that the following products contain affected versions of Insyde BIOS:
+
+RUGGEDCOM APE1808 ADM (6GK6015-0AL20-0GL0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808 ADM CC (6GK6015-0AL20-0GL1): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808 CKP (6GK6015-0AL20-0GK0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808 CKP CC (6GK6015-0AL20-0GK1): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808 CLOUDCONNECT (6GK6015-0AL20-0GM0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808 CLOUDCONNECT CC (6GK6015-0AL20-0GM1): BIOS versions < V1.0.212N
+RUGGEDCOM APE1808 ELAN (6GK6015-0AL20-0GP0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808 ELAN CC (6GK6015-0AL20-0GP1): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808 SAM-L (6GK6015-0AL20-0GN0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808 SAM-L CC (6GK6015-0AL20-0GN1): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808CLA-P (6GK6015-0AL20-1AA0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808CLA-P CC (6GK6015-0AL20-1AA1): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808CLA-S1 (6GK6015-0AL20-1AB0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808CLA-S1 CC (6GK6015-0AL20-1AB1): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808CLA-S3 (6GK6015-0AL20-1AD0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808CLA-S3 CC (6GK6015-0AL20-1AD1): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808CLA-S5 (6GK6015-0AL20-1AF0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808CLA-S5 CC (6GK6015-0AL20-1AF1): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808LNX (6GK6015-0AL20-0GH0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808LNX CC (6GK6015-0AL20-0GH1): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808W10 (6GK6015-0AL20-0GJ0): BIOS versions prior to V1.0.212N
+RUGGEDCOM APE1808W10 CC (6GK6015-0AL20-0GJ1): BIOS versions prior to V1.0.212N
+
+3.2 Vulnerability Overview
+3.2.1 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+An attacker with local access to the system could potentially disclose information from protected memory areas via a side-channel attack on the processor cache.
+CVE-2017-5715 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N).
+3.2.2 BUFFER UNDERWRITE ('BUFFER UNDERFLOW') CWE-124
+Existing CommBuffer checks in SmmEntryPoint will not catch underflow when computing BufferSize.
+CVE-2021-38578 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.3 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+An issue was discovered in IhisiSmm in Insyde InsydeH2O with kernel 5.0 through 5.5. IHISI function 0x17 verifies that the output buffer lies within the command buffer but does not verify that output data does not go beyond the end of the command buffer. In particular, the GetFlashTable function is called directly on the Command Buffer before the DataSize is check, leading to possible circumstances where the data immediately following the command buffer could be destroyed before returning a buffer size error.
+CVE-2022-24350 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.2.4 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+Using SPI injection, it is possible to modify the FDM contents after it has been measured. This TOCTOU attack could be used to alter data and code used by the remainder of the boot process.
+CVE-2022-24351 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N).
+3.2.5 OUT-OF-BOUNDS READ CWE-125
+Some versions of InsydeH2O use the FreeType tools to embed fonts into the BIOS. InsydeH2O does not use the FreeType API at runtime and usage during build time does not produce a vulnerability in the BIOS. The CVSS reflects this limited usage.
+CVE-2022-27405 has been assigned to this vulnerability. A CVSS v3 base score of 3.6 has been calculated; the CVSS vector string is (CVSS:3.1/AV:P/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:L).
+3.2.6 IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+In UsbCoreDxe, untrusted input may allow SMRAM or OS memory tampering Use of untrusted pointers could allow OS or SMRAM memory tampering leading to escalation of privileges. This issue was discovered by Insyde during security review.
+CVE-2022-29275 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.7 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+In UsbCoreDxe, tampering with the contents of the USB working buffer using DMA while certain USB transactions are in process leads to a TOCTOU problem that could be used by an attacker to cause SMRAM corruption and escalation of privileges The UsbCoreDxe module creates a working buffer for USB transactions outside of SMRAM. The code which uses can be inside of SMM, making the working buffer untrusted input. The buffer can be corrupted by DMA transfers. The SMM code code attempts to sanitize pointers to ensure all pointers refer to the working buffer, but when a pointer is not found in the list of pointers to sanitize, the current action is not aborted, leading to undefined behavior. This issue was discovered by Insyde engineering based on the general description provided by Intel's iSTARE group. Fixed in: Kernel 5.0: Version 05.09. 21 Kernel 5.1: Version 05.17.21 Kernel 5.2: Version 05.27.21 Kernel 5.3: Version 05.36.21 Kernel 5.4: Version 05.44.21 Kernel 5.5: Version 05.52.21
+CVE-2022-30283 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.8 OUT-OF-BOUNDS WRITE CWE-787
+Manipulation of the input address in PnpSmm function 0x52 could be used by malware to overwrite SMRAM or OS kernel memory. Function 0x52 of the PnpSmm driver is passed the address and size of data to write into the SMBIOS table, but manipulation of the address could be used by malware to overwrite SMRAM or OS kernel memory. This issue was discovered by Insyde engineering during a security review. This issue is fixed in: Kernel 5.0: 05.09.41 Kernel 5.1: 05.17.43 Kernel 5.2: 05.27.30 Kernel 5.3: 05.36.30 Kernel 5.4: 05.44.30 Kernel 5.5: 05.52.30
+CVE-2022-30772 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:N/I:H/A:H).
+3.2.9 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+DMA attacks on the PnpSmm shared buffer used by SMM and non-SMM code could cause TOCTOU race-condition issues that could lead to corruption of SMRAM and escalation of privileges.
+CVE-2022-32469 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.10 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+DMA attacks on the FwBlockServiceSmm shared buffer used by SMM and non-SMM code could cause TOCTOU race-condition issues that could lead to corruption of SMRAM and escalation of privileges.
+CVE-2022-32470 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.11 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+DMA attacks on the IHISI command buffer could cause TOCTOU issues which could lead to corruption of SMRAM and escalation of privileges.
+CVE-2022-32471 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.12 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+DMA attacks on the VariableRuntimeDxe shared buffer used by SMM and non-SMM code could cause TOCTOU race-condition issues that could lead to corruption of SMRAM and escalation of privileges.
+CVE-2022-32475 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.13 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+DMA attacks on the FvbServicesRuntimeDxe shared buffer used by SMM and non-SMM code could cause TOCTOU race-condition issues that could lead to corruption of SMRAM and escalation of privileges.
+CVE-2022-32477 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.14 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+DMA attacks on the SdHostDriver buffer used by SMM and non-SMM code could cause TOCTOU race-condition issues that could lead to corruption of SMRAM and escalation of privileges.
+CVE-2022-32953 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.15 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367
+DMA attacks on the SdMmcDevice buffer used by SMM and non-SMM code could cause TOCTOU race-condition issues that could lead to corruption of SMRAM and escalation of privileges.
+CVE-2022-32954 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.16 IMPROPER INPUT VALIDATION CWE-20
+An issue was discovered in Insyde InsydeH2O with kernel 5.0 through 5.5. An SMM memory corruption vulnerability in the FvbServicesRuntimeDxe driver allows an attacker to write fixed or predictable data to SMRAM. Exploiting this issue could lead to escalating privileges to SMM.
+CVE-2022-35893 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.17 MISSING RELEASE OF MEMORY AFTER EFFECTIVE LIFETIME CWE-401
+An issue was discovered in Insyde InsydeH2O with kernel 5.0 through 5.5. The SMI handler for the FwBlockServiceSmm driver uses an untrusted pointer as the location to copy data to an attacker-specified buffer, leading to information disclosure.
+CVE-2022-35894 has been assigned to this vulnerability. A CVSS v3 base score of 6.0 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N).
+3.2.18 OUT-OF-BOUNDS WRITE CWE-787
+An issue was discovered in Insyde InsydeH2O with kernel 5.0 through 5.5. The FwBlockSericceSmm driver does not properly validate input parameters for a software SMI routine, leading to memory corruption of arbitrary addresses including SMRAM, and possible arbitrary code execution.
+CVE-2022-35895 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.19 IMPROPER INPUT VALIDATION CWE-20
+An issue SMM memory leak vulnerability in SMM driver (SMRAM was discovered in Insyde InsydeH2O with kernel 5.0 through 5.5. An attacker can dump SMRAM contents via the software SMI provided by the FvbServicesRuntimeDxe driver to read the contents of SMRAM, leading to information disclosure.
+CVE-2022-35896 has been assigned to this vulnerability. A CVSS v3 base score of 6.0 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N).
+3.2.20 IMPROPER INPUT VALIDATION CWE-20
+An issue was discovered in Insyde InsydeH2O with kernel 5.0 through 5.5. An SMM callout vulnerability in the SMM driver FwBlockServiceSmm, creating SMM, leads to arbitrary code execution. An attacker can replace the pointer to the UEFI boot service GetVariable with a pointer to malware, and then generate a software SMI.
+CVE-2022-36338 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.21 IMPROPERLY IMPLEMENTED SECURITY CHECK FOR STANDARD CWE-358
+An attacker who has physical access or administrative rights to a target device could install an affected boot policy which could bypass security boot.
+CVE-2023-24932 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.22 IMPROPER INPUT VALIDATION CWE-20
+An issue was discovered in Insyde InsydeH2O with kernel 5.0 through 5.5. Due to insufficient input validation, an attacker can tamper with a runtime-accessible EFI variable to cause a dynamic BAR setting to overlap SMRAM.
+CVE-2023-27373 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.2.23 PLAINTEXT STORAGE OF A PASSWORD CWE-256
+An issue was discovered in SysPasswordDxe in Insyde InsydeH2O with kernel 5.0 through 5.5. System password information could optionally be stored in cleartext, which might lead to possible information disclosure.
+CVE-2023-31041 has been assigned to this vulnerability. A CVSS v3 base score of 5.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens ProductCERT reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released BIOS update V1.0.212N for the affected products and recommends updating to the latest version.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-957369 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+September 14, 2023: Initial Publication
+

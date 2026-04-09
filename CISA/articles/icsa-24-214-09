@@ -1,0 +1,82 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 7.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: ControlLogix, GuardLogix, and 1756 ControlLogix I/O Modules
+Vulnerability: Unprotected Alternate Channel
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to execute CIP programming and configuration commands.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of ControlLogix, GuardLogix, and 1756 ControlLogix I/O Modules are affected:
+
+ControlLogix 5580 (1756-L8z): Version V28
+GuardLogix 5580 (1756-L8zS): Version V31
+1756-EN4TR: Version V2
+1756-EN2T, Series A/B/C (unsigned version): Version v5.007
+1756-EN2F, Series A/B (unsigned version): Version v5.007
+1756-EN2TR, Series A/B (unsigned version): Version v5.007
+1756-EN3TR, Series A (unsigned version): Version v5.007
+1756-EN2T, Series A/B/C (signed version): Version v5.027
+1756-EN2F, Series A/B (signed version): Version v5.027
+1756-EN2TR, Series A/B (signed version): Version v5.027
+1756-EN3TR, Series A (signed version): Version v5.027
+1756-EN2T, Series D: Version V10.006
+1756-EN2F, Series C: Version V10.009
+1756-EN2TR, Series C: Version V10.007
+1756-EN3TR, Series B: Version V10.007
+1756-EN2TP, Series A: Version V10.020
+
+3.2 Vulnerability Overview
+3.2.1 Unprotected Alternate Channel CWE-420
+A vulnerability exists in the affected products that allows a threat actor to bypass the Trusted Slot feature in a ControlLogix controller. If exploited on any affected module in a 1756 chassis, a threat actor could potentially execute CIP commands that modify user projects and/or device configuration on a Logix controller in the chassis.
+CVE-2024-6242 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-6242. A base score of 7.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:H/VA:H/SC:L/SI:H/SA:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sharon Brizinov of Claroty Research - Team82 reported this vulnerability to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation recommends user update the Logix controllers to the following:
+
+ControlLogix 5580 (1756-L8z): Update to versions V32.016, V33.015, V34.014,V35.011 and later.
+GuardLogix 5580 (1756-L8zS): Update to versions V32.016, V33.015, V34.014,V35.011 and later.
+1756-EN4TR: Update to versions V5.001 and later.
+1756-EN2T Series D, 1756-EN2F Series C, 1756-EN2TR Series C, 1756-EN3TR Series B, and 1756-EN2TP Series A: Update to version V12.001 and later
+
+The products 1756-EN2T Series A/B/C, 1756-EN2F Series A/B, 1756-EN2TR Series A/B, and 1756-EN3TR Series A do not have a fix available. Users can upgrade to Series D to remediate this vulnerability.
+Users that are using the affected firmware and who are not able to upgrade to one of the corrected versions are encouraged to apply the following mitigation and security best practices, where possible.
+
+Limit the allowed CIP commands on controllers by setting the mode switch to the RUN position.
+Security Best Practices
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+August 01, 2024: Initial Publication
+

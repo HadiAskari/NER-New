@@ -1,0 +1,48 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: FactoryTalk View SE
+Vulnerabilities: Cleartext Storage of Sensitive Information, Weak Encoding for Password
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to unauthorized access to server data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of FactoryTalk View SE are affected:
+
+FactoryTalk View SE Versions 9.0 and earlier
+FactoryTalk View SE Version 10.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+Due to usernames/passwords being stored in plaintext in Random Access Memory (RAM), a local, authenticated attacker could gain access to certain credentials, including Windows Logon credentials.
+CVE-2020-14480 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.2    WEAK ENCODING FOR PASSWORD CWE-261
+The DeskLock tool provided with FactoryTalk View SE uses a weak encryption algorithm that may allow a local, authenticated attacker to decipher user credentials, including the Windows user or Windows DeskLock passwords. If the compromised user has an administrative account, an attacker could gain full access to the user’s operating system and certain components of FactoryTalk View SE.
+CVE-2020-14481 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Commercial Facilities, Critical Manufacturing, Energy, Government Facilities, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Ilya Karpov and Evgeny Druzhinin, who are part of the independent research team ScadaX Security, reported these vulnerabilities to Rockwell.
+4. MITIGATIONS
+Users of the affected versions of DeskLock provided with FactoryTalk View SE are encouraged to update to an available software version that addresses the associated risk, v10.0 or later. Users who are unable to update are directed towards risk mitigation strategies provided below, and are encouraged, when possible, to combine these with the general security guidelines to employ multiple strategies simultaneously.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

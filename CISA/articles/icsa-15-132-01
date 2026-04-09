@@ -1,0 +1,71 @@
+
+OVERVIEW
+OSIsoft has identified and reported to NCCIC/ICS-CERT a default permissions vulnerability in PI AF product. OSIsoft has produced a mitigation plan to remove this vulnerability. This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+OSIsoft reports that the vulnerability affects the following products:
+
+PI AF 2.6 new installs,
+PI AF 2.7 upgrade, and
+PI SQL for AF 2.1.
+
+IMPACT
+Under certain conditions, SQL statements can be executed that result in data tampering, information disclosure, repudiation, elevation of privilege, and denial of service.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+OSIsoft is a US-based company that maintains its headquarters in San Leandro, California, with operations globally. 
+The affected product, PI AF, allows definition of organizational assets and/or equipment. PI AF uses Microsoft SQL Server database. According to OSIsoft, PI AF is deployed in several critical infrastructure sectors. OSIsoft estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INCORRECT DEFAULT PERMISSIONSCWE-276: Incorrect Default Permissions, http://cwe.mitre.org/data/definitions/276.html, web site last accessed May 12, 2015.
+
+Some product installations insert the “Everyone” account in the “PI SQL (AF) Trusted Users” group on the PI AF Server. Users in the “PI SQL (AF) Trusted Users” group can bypass most of the security checks that would normally be applied to various types of SQL statements, and can execute commands on the PI AF SQL Database without authorization.
+CVE-2015-1013NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1013, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. OSIsoft has calculated a CVSS v2 base score of 6.5; the CVSS vector string is (AV:N/AC:L/Au:S/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:P/I:P/A:P, web site last accessed May 12, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+OSIsoft recommends the following mitigation actions, depending on the version of PI WebParts installed, to remove this vulnerability:
+If a system with PI WebParts is installed, the recommended action depends on the version:
+
+PI WebParts 2013 or later
+
+
+Remove the group “PI SQL (AF) Trusted Users”  (if it exists) from the AF server.
+No further action is required.
+
+
+PI WebParts 2010 (or 2010 R2) – pick one of the two following options:
+
+
+Upgrade to PI WebParts 2013 or later and follow the steps above, or
+Follow the mitigation steps below.
+
+
+Remove the “Everyone” user from the “PI SQL (AF) Trusted Users” group on the AF server.
+If the SharePoint application pool hosting PI WebParts runs as a domain service account, add that service account to the Windows group.
+If the SharePoint application pool hosting PI WebParts runs as the built in “Network Services” identity, add the PI WebParts web server’s machine account to the Windows group. After these configuration changes are made, an IISRESET must be performed on the PI WebParts web server. If the PI WebParts web server and the AF Server are on the same machine, the built-in “Network Services” identity must be added, and the machine must be restarted.
+
+
+If PI WebParts is NOT installed:
+
+
+Remove the group “PI SQL (AF) Trusted Users” (if it exists) from the AF server. 
+
+For more information regarding this vulnerability and the recommended mitigation plan, please see OSIsoft’s security bulletin titled “AL00280 - Security Bulletin Vulnerability in PI SQL (AF) Trusted Users group could allow bypassing of security” at the following location: 
+https://techsupport.osisoft.com/Troubleshooting/Alerts/AL00280
+Users may also visit the OSIsoft technical support web site: https://techsupport.osisoft.com/
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

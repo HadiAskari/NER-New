@@ -1,0 +1,62 @@
+
+OVERVIEW
+NCCIC/ICS-CERT received a report from Trend Micro’s Zero Day Initiative (ZDI) concerning buffer overflow vulnerabilities in Panasonic FPWIN Pro software. These vulnerabilities were reported to ZDI by security researcher Steven Seeley. Panasonic has produced a new version to mitigate these vulnerabilities.
+AFFECTED PRODUCTS
+Panasonic reports that these vulnerabilities affect the following products:
+
+FPWIN Pro version 5.x,
+FPWIN Pro version 6.x, and
+FPWIN Pro version 7.122 and prior.
+
+Software releases 5.x have reached end-of-support, and users are advised to migrate to a supported release. Software releases 6.x are end-of-sales since April 2015 and will reach end-of-support in September 2016. Users using 6.x releases are advised to plan for an upgrade to the supported software release.
+IMPACT
+Reading malformed project file can crash Panasonic FPWIN Pro application. Vulnerabilities do not have direct impact on the system controlled by Panasonic FPWIN Pro application.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Panasonic Electric Works Europe AG is a Panasonic company developing automation products and industrial solutions.
+The affected product, FPWIN Pro, is programming software for all FP Series PLCs. According to Panasonic, FPWIN Pro is deployed across several sectors including Commercial Facilities, Critical Manufacturing, and Food and Agriculture. Panasonic estimates that these products are used primarily in Europe, North America, and Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HEAP-BASED BUFFER OVERFLOWCWE-122: Heap-based Buffer Overflow, http://cwe.mitre.org/data/definitions/122.html, web site last accessed May 10, 2016.
+
+There are multiple ways an attacker can overwrite portions of the heap, which may cause the program to crash.
+CVE-2016-4499NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4499, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:L, web site last accessed May 10, 2016.
+
+ACCESS OF UNINITIALIZED POINTERCWE-824: Access of Uninitialized Pointer, http://cwe.mitre.org/data/definitions/824.html, web site last accessed May 10, 2016.
+
+The program accesses a pointer that has not been initialized.
+CVE-2016-4498NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4498, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:L, web site last accessed May 10, 2016.
+
+OUT-OF-BOUNDS WRITE CWE-787: Out-of-bounds Write, http://cwe.mitre.org/data/definitions/787.html, web site last accessed May 10, 2016.
+
+An attacker can use an index value or an integer overflow to force the program to write outside the bounds of an array.
+CVE-2016-4496NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4496, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:L, web site last accessed May 10, 2016.
+
+TYPE CONFUSIONCWE-843: Access of Resource Using Incompatible Type ('Type Confusion'), http://cwe.mitre.org/data/definitions/843.html, web site last accessed May 10, 2016.
+
+The program allocates or initializes a resource; such as a pointer, object, or variable; using one type, but it later accesses that resource using a type that is incompatible with the original type.
+CVE-2016-4497NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4497, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:L, web site last accessed May 10, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities are not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed project file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+Crafting a working exploit for these vulnerabilities would be difficult. Social engineering is required to convince the user to accept the malformed project file. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Panasonic has released FPWIN Pro 7.130 software that addresses the vulnerabilities described in this advisory. Fixed software can be downloaded from
+https://www.panasonic-electric-works.com/eu/plc-software-control-fpwin-pro.htm
+Panasonic states that users may only install, use, and expect support for software versions and feature sets for which they have purchased a license.
+For more information about these issues or other vulnerabilities in Panasonic products, please contact the Panasonic Product Security Incident Response Team:
+https://www.panasonic.com/global/corporate/product-security/sec/psirt.html
+ICS-CERT recommends, as quality assurance, that users test the update in a test development environment that reflects their production environment prior to installation. In addition, users should:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed May 10, 2016. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed May 10, 2016. for more information on social engineering attacks
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

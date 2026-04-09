@@ -1,0 +1,71 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: DataMosaix Private Cloud
+Vulnerabilities: Inadequate Encryption Strength, Out-of-bounds Write, Improper Check for Dropped Privileges, Reliance on Insufficiently Trustworthy Component, NULL Pointer Dereference
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a denial-of-service condition, view user data, or perform remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports that the following versions of DataMosaix Private Cloud are affected:
+
+DataMosaix Private Cloud: Versions 7.07 and prior
+
+3.2 Vulnerability Overview
+3.2.1 Inadequate Encryption Strength CWE-326
+DataMosaix Private Cloud utilizes GnuPG which contains a certificate signature vulnerability found in the SHA-1 algorithm. A threat actor could use this weakness to create forged certificate signatures. If exploited, a malicious user could view user data.
+CVE-2019-14855 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2019-14855. A base score of 8.5 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N).
+3.2.2 Out-of-bounds Write CWE-787
+DataMosaix Private Cloud utilizes LZ4 which contains a heap-based buffer overflow vulnerability in versions before 1.9.2 (related to LZ4_compress_destSize), that affects applications that call LZ4_compress_fast with a large input. This issue can also lead to data corruption. If exploited, a malicious actor could perform a remote code execution.
+CVE-2019-17543 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2019-17543. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 Improper Check for Dropped Privileges CWE-273
+DataMosaix Private Cloud utilizes shell.c which contains a vulnerability in disable_priv_mode in shell.c in GNU Bash through 5.0 patch 11. A threat actor with command execution in the shell can use "enable -f" for runtime loading to gain privileges. If exploited, a malicious actor could perform a remote code execution.
+CVE-2019-18276 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2019-18276. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.4 Reliance on Insufficiently Trustworthy Component CWE-1357
+DataMosaix Private Cloud utilizes SQLite 3.30.1 which contains a vulnerability in sqlite3Select in select.c that allows a crash if a subselect uses both DISTINCT and window functions and has certain ORDER BY usage. If exploited, a malicious actor could perform a denial of service, which would require the use to restart the software to recover it.
+CVE-2019-19244 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2019-19244. A base score of 8.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N).
+3.2.5 Reliance on Insufficiently Trustworthy Component CWE-1357
+DataMosaix Private Cloud utilizes libseccomp, which contains a vulnerability in versions 2.4.0 and earlier that does not correctly generate 64-bit syscall argument comparisons using the arithmetic operators (LT, GT, LE, GE). This vulnerability could lead to bypassing seccomp filters and potential privilege escalations. If exploited, a malicious actor could perform a remote code execution.
+CVE-2019-9893 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2019-9893. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.6 NULL Pointer Dereference CWE-476
+DataMosaix Private Cloud utilizes GNU Tar, which contains a vulnerability in pax_decode_header in sparse.c in versions before 1.32. pax_decode_header has a NULL pointer dereference when parsing certain archives that have malformed extended headers. If exploited, a malicious actor could perform a denial of service, which would require the user to restart the software to recover.
+CVE-2019-9923 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2019-9923. A base score of 8.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Rockwell Automation has addressed this issue in version v7.09 and encourages users to update to the newest available version. Rockwell Automation encourages users of the affected software to apply risk mitigations, if possible.
+Rockwell Automation encourages users to implement security best practices to minimize the risk of the vulnerability.
+For more information about this issue, please see the advisory on the Rockwell Automation security page.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+October 10, 2024: Initial Publication
+

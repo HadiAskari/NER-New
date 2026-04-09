@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.9
+ATTENTION: Exploitable remotely / low attack complexity 
+Vendor: Siemens 
+Equipment: SICAM Q100 
+Vulnerabilities: Session Fixation, Improper Input Validation 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to take over the session of a logged in user or to inject custom code. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affect the following SICAM Q100 products: 
+
+POWER METER SICAM Q100 (7KG9501-0AA31-2AA1): prior to V2.50 
+POWER METER SICAM Q100 (7KG9501-0AA01-2AA1): prior to V2.50 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 SESSION FIXATION CWE-384 
+Affected devices do not renew the session cookies after login/logout, and also accept user-defined session cookies. An attacker could overwrite the stored session cookie of a user. After the victim logs in, the attacker is given access to the user's account through the activated session. 
+CVE-2022-43398 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.2 IMPROPER INPUT VALIDATION CWE-20
+Affected devices do not properly validate the Language-parameter in requests to the web interface on port 443/tcp. This could allow an authenticated remote attacker to crash the device (followed by an automatic reboot) or to execute arbitrary code on the device. 
+CVE-2022-43439 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.3 IMPROPER INPUT VALIDATION CWE-20
+Affected devices do not properly validate the RecordType-parameter in requests to the web interface on port 443/tcp. This could allow an authenticated remote attacker to crash the device (followed by an automatic reboot) or to execute arbitrary code on the device. 
+CVE-2022-43545 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.4 IMPROPER INPUT VALIDATION CWE-20
+Affected devices do not properly validate the EndTime-parameter in requests to the web interface on port 443/tcp. This could allow an authenticated remote attacker to crash the device (followed by an automatic reboot) or to execute arbitrary code on the device. 
+CVE-2022-43546 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+3.4 RESEARCHER
+Michael Messner from Siemens Energy reported these vulnerabilities to Siemens. 
+4. MITIGATIONS
+Siemens released updates for the affected products and recommends updating to V2.50 or a later version.  
+Siemens identified the following specific workarounds and mitigations users can apply to reduce risk: 
+
+Restrict access to port 443/tcp to trusted IP addresses only 
+
+Operators of critical power systems (e.g. TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can be minimized by virtue of the grid design. 
+Siemens recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, operators may use an automated means to apply the security updates across multiple product instances. Siemens recommends prior validation of any security update before application and recommends trained staff supervise the update process in the target environment. 
+As a general security measure, Siemens recommends protecting network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN) and advises configuring the environment according to operational guidelines in order to run the devices in a protected IT environment. Recommended security guidelines can be found at Siemens' website.
+For further inquiries on security vulnerabilities in Siemens products and solutions, users should contact Siemens ProductCERT.
+For more information, see the associated Siemens security advisory SSA-570294 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. 
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have a low attack complexity. 

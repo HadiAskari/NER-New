@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: FactoryTalk Linx and FactoryTalk Services Platform
+Vulnerabilities: Classic Buffer overflow, Improper Check or Handling of Exceptional Conditions
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may result in denial-of-service conditions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports these vulnerabilities affect the following products:
+
+FactoryTalk Linx software: Versions 6.20 and prior (CVE-2020-5806 only affects Versions 6.10, 6.11, and 6.20)
+FactoryTalkServices Platform: Versions 6.20 and prior (Only affected by CVE-2020-5807)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER CHECK OR HANDLING OF EXCEPTIONAL CONDITIONS CWE-703
+Unhandled exception vulnerabilities exist within a .dll in FactoryTalk Linx. These vulnerabilities could allow a remote, unauthenticated attacker to send a malicious packet resulting in the termination of RSLinxNG.exe, causing a denial-of-service condition.
+CVE-2020-5801 and CVE-2020-5802 have been assigned to these vulnerabilities. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT CWE-120
+A buffer overflow vulnerability exists within a .dll in FactoryTalk Linx. This vulnerability could allow a local, unauthenticated attacker to send a malicious packet resulting in the termination of RSLinxNG.exe, causing a denial-of-service condition.
+CVE-2020-5806 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT CWE-120
+A buffer overflow vulnerability exists within a .dll in FactoryTalk Services Platform. This vulnerability could be exploited via a phishing attack where an attacker sends a specially crafted log file to a local user. When the malicious log file is opened by a local user, it can cause a buffer overflow in the FactoryTalk Services Platform resulting in temporary denial-of-service conditions. Users can recover from the condition by reopening the impacted software.
+CVE-2020-5806 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Tenable reported these vulnerabilities to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation published PN1540 to inform users of the risk of these vulnerabilities and instruct users on the proper use of patches.
+Rockwell Automation recommends the following network-based vulnerability mitigations for embedded products:
+
+Utilize proper network infrastructure controls, such as firewalls, to help ensure traffic from unauthorized sources is blocked.
+Consult the product documentation for specific features, such as a hardware keyswitch setting, which may be used to block unauthorized changes, etc.
+Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the manufacturing zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation products, see Knowledgebase Article ID BF7490.
+
+Rockwell Automation recommends the following software/PC-based mitigation strategies:
+
+Run all software as a User, not as an Administrator, to minimize the impact of malicious code on the infected system.
+Use Microsoft AppLocker or other similar allow list applications to help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at Knowledgebase Article ID QA17329.
+Confirm the least-privilege user principle is followed and the user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.
+
+Rockwell Automation recommends the following social engineering mitigation strategies:
+
+Do not open untrusted .ftd files with FactoryTalk Services Platform.
+Do not click on or open URL links from untrusted sources.
+Employ training and awareness programs to educate users on the warning signs of a phishing or social engineering attack.
+
+Rockwell Automation recommends the following general mitigations:
+
+Use trusted software, software patches, antivirus/antimalware programs and interact only with trusted websites and attachments.
+Minimize network exposure for all control system devices and/or systems and ensure they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, please see Knowledgebase Article ID PN715.
+Locate control system networks and devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), and recognize VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize a VPN is only as secure as the connected devices.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

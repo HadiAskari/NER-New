@@ -1,0 +1,36 @@
+
+Overview
+This advisory provides mitigation details for a vulnerability in the Tridium NiagaraAX software. Independent researchers Billy Rios and Terry McCorkle discovered a directory traversal vulnerability in the Tridium NiagaraAX software product. They demonstrated that with a valid user account or guest privileges enabled, privilege escalation is possible on a NiagaraAX system. Exploitation of this vulnerability could allow loss of availability, integrity, and confidentiality of the system.Tridium has produced a patch that mitigates this vulnerability. This vulnerability is remotely exploitable.
+Affected Products
+The following Tridium products are affected:
+
+Tridium NiagaraAX, all versions.
+
+Impact
+A loss of integrity, data, and possibly physical damage can result if the software is being used to control a physical process. Another consequence might be the compromise of facility security where NiagaraAX is used for facility access control and administration.Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+Tridium is a US-based company that maintains offices in several countries around the world, including the US, UK, Singapore, and China. Tridium also deploys systems to Latin America.
+NiagaraAX is a general framework that can be used to integrate and manage diverse industrial control system components, e.g., HVAC, building automation controls, and facility management that can be controlled over the Internet from a Web browser. According to Tridium, more than 350,000 instances of the NiagaraAX Framework are used worldwide.Tridium estimates that these products are used primarily in the commercial facilities (88 percent), energy (5 percent), education (5 percent), and government facilities and other sectors (2 percent).
+Vulnerability Characterization
+Vulnerability Overview
+Path TraversalCWE-22, http://cwe.mitre.org/data/definitions/22.html, CWE-22: Path Traversal, Web site last accessed February 14, 2013.
+If an installed NiagaraAX instance has its Web interface accessible from the Internet, and the user has valid user credentials, or if the system’s guest user function is enabled, the application could be subverted to escalate the user’s credentials and gain control of the system. The attacker could read the contents of unexpected files, expose sensitive data, execute arbitrary code, and affect the availability by sending a specially crafted packet to the Web server on Port 80/TCP.CVE-2012-4701 has been assigned to this vulnerability. A CVSS v2 base score of 8.5 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:S/C:C/I:C/A:C). If the guest user function is enabled, no authentication is required to exploit this vulnerability.
+Vulnerability Details
+Exploitability
+This vulnerability can be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with medium skill may be able to exploit this vulnerability.
+Mitigation
+Tridium has developed patches for all current versions (Versions 3.5, 3.6, and 3.7) of the NiagaraAX software. Links to the patches, along with instructions on their use, can be obtained from the Tridium Security Update Web page.
+For users of older versions of NiagaraAX software (prior to Version 3.5), Tridium recommends that users either upgrade to the newest version or take careful measures to isolate access to the Web interface from the Internet. Users are encouraged to contact Tridium for details on disabling the Web interface and for information on how to get to the most current version of NiagaraAX.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,84 @@
+
+ 
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). 
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity 
+Vendor: Siemens 
+Equipment: Teamcenter Visualization and JT2Go 
+Vulnerabilities: Heap-based Buffer Overflow, Out-of-bounds Write, Out-of-bounds Read, Use After Free, Stack-based Buffer Overflow 
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-314-09 Siemens Teamcenter Visualization and JT2Go published November 10, 2022, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary code in the context of the current process. 
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following software from Siemens is affected: 
+
+JT2Go: All versions prior to V14.1.0.4 
+
+--------- Begin Update A Part 1 of 2 --------- 
+
+Teamcenter Visualization V13.3: All versions V13.3.0.7 and later, prior to V13.3.0.8 (only affected by CVE-2022-39136)
+
+--------- End Update A Part 1 of 2 --------- 
+
+Teamcenter Visualization V13.3: All versions prior to V13.3.0.7 
+Teamcenter Visualization V14.0: All versions prior to V14.0.0.3 
+Teamcenter Visualization V14.1: All versions prior to V14.1.0.4 
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1 HEAP-BASED BUFFER OVERFLOW CWE-122 
+The affected application is vulnerable to fixed-length heap-based buffer while parsing specially crafted TIF files. An attacker could leverage this vulnerability to execute code in the context of the current process. 
+CVE-2022-39136 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H) 
+4.2.2 OUT-OF-BOUNDS WRITE CWE-787
+The affected products contain an out-of-bounds write vulnerability when parsing a CGM file. An attacker could leverage this vulnerability to execute code in the context of the current process. 
+CVE-2022-41660 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H) 
+4.2.3 OUT-OF-BOUNDS READ CWE-125 
+The affected products contain an out-of-bounds read vulnerability when parsing a CGM file. An attacker could leverage this vulnerability to execute code in the context of the current process. 
+CVE-2022-41661 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.4 OUT-OF-BOUNDS READ CWE-125
+The affected products contain an out-of-bounds read vulnerability when parsing a CGM file. An attacker could leverage this vulnerability to execute code in the context of the current process. 
+CVE-2022-41662 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H) 
+4.2.5 USE AFTER FREE CWE-416
+The affected applications contain a use-after-free vulnerability that could be triggered while parsing specially crafted CGM files. An attacker could leverage this vulnerability to execute code in the context of the current process. 
+CVE-2022-41663 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.6 STACK-BASED BUFFER OVERFLOW CWE-121
+The affected application contains a stack-based buffer overflow vulnerability potentially triggered while parsing specially crafted PDF files. This could allow an attacker to execute code in the context of the current process. 
+CVE-2022-41664 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide  
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+4.4 RESEARCHER
+Nafiez and Michael Heinzl reported these vulnerabilities to Siemens. 
+5. MITIGATIONS
+Siemens released updates for the following products and recommends updating to the latest versions: 
+
+JT2Go: Update to V14.1.0.4 or later version. 
+Teamcenter Visualization V14.1: Update to V14.1.0.4 or later version. 
+Teamcenter Visualization V14.0: Update to V14.0.0.3 or later version. 
+Teamcenter Visualization V13.3: Update to V13.3.0.7 or later version. 
+
+--------- Begin Update A Part 2 of 2 --------- 
+
+Teamcenter Visualization V13.3: Update to V13.3.0.8 or later version. (fixes CVE-2022-39136)
+
+--------- End Update A Part 2 of 2 --------- 
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk: 
+
+Do not open untrusted CGM, TIF, or PDF files in JT2Go and Teamcenter Visualization. 
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ Operational Guidelines for Industrial Security and following recommendations in the product manuals. 
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage. 
+For further inquiries on security vulnerabilities in Siemens products and solutions, users can contact the Siemens ProductCERT. 
+For more information see the associated Siemens security advisory SSA-120378 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. 
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies. 
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents. 
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. 

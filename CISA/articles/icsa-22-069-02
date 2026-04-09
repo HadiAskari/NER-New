@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.2
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMOTICS CONNECT 400
+Vulnerabilities: Type Confusion, Improper Validation of Specified Quantity in Input, Wrap or Wraparound, Improper Handling of Inconsistent Structural Elements
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to information leaks or a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SIMOTICS CONNECT 400, a connectivity module, are affected:
+
+SIMOTICS CONNECT 400: All versions prior to v0.5.0.0
+SIMOTICS CONNECT 400: All versions prior to v1.0.0.0; only affected by CVE-2021-31344, CVE-2021-31346, CVE-2021-31890
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    ACCESS OF RESOURCE USING INCOMPATIBLE TYPE ('TYPE CONFUSION') CWE-843
+The affected product is vulnerable when ICMP echo packets with fake IP options allow the sending ICMP echo reply messages to arbitrary hosts on the network.
+CVE-2021-31344 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.2.2    IMPROPER VALIDATION OF SPECIFIED QUANTITY IN INPUT CWE-1284
+The affected product is vulnerable when the total length of an ICMP payload (set in the IP header) is unchecked. This may lead to various side effects, including information leak and denial-of-service conditions, depending on the network buffer organization in memory.
+CVE-2021-31346 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+3.2.3    INTEGER UNDERFLOW (WRAP OR WRAPAROUND) CWE-191
+The affected product is vulnerable to a malformed TCP packet with a corrupted SACK option, which could lead to information leaks and denial-of-service conditions.
+CVE-2021-31889 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    IMPROPER HANDLING OF INCONSISTENT STRUCTURAL ELEMENTS CWE-240
+The affected product is vulnerable when the total length of a TCP payload (set in the IP header) is unchecked. This may lead to various side effects, including information leak and denial-of-service conditions, depending on the network buffer organization in memory.
+CVE-2021-31890 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Update to v5.0 or later version
+Update to v1.0.0.0 or later version
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-223353
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

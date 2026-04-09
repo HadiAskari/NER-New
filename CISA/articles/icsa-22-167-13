@@ -1,0 +1,83 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.9
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Teamcenter
+Vulnerability: Use of Hard-coded Credentials
+
+2. UPDATE
+This updated advisory is a follow-up to the original advisory titled ICSA-22-167-13 Siemens Teamcenter that was published June 16, 2022, to the ICS webpage on cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could lead to remote code execution with elevated permissions.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Teamcenter, a product lifecycle management software, are affected:
+
+Teamcenter v12.4: All versions prior to v12.4.0.13
+Teamcenter v13.0: All versions prior to v13.0.0.9
+Teamcenter v13.1: All versions prior to v13.1.0.9
+
+--------- Begin Update A Part 1 of 4 ---------
+
+Teamcenter V13.2, all versions prior to V13.2.0.9
+
+--------- End Update A Part 1 of 4 ---------
+
+Teamcenter V13.3, all versions prior to V13.3.0.3
+
+--------- Begin Update A Part 2 of 4 ---------
+
+Teamcenter V14.0, all versions prior to V14.0.0.2
+
+--------- End Update A Part 2 of 4 ---------
+This vulnerability only affects software using the Java EE Server Manager HTML Adaptor, which is not installed by default.
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF HARD-CODED CREDENTIALS CWE-798
+Java EE Server Manager HTML Adaptor in Teamcenter contains default hardcoded credentials. Access to the application allows users to perform a series of actions that could potentially lead to remote code execution with elevated permissions.
+CVE-2022-31619 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Han Lee and Matthias Kaiser from Apple Information Security reported this vulnerability to Siemens.
+5. MITIGATIONS
+Siemens has released updates for several affected products and recommends updating to the latest versions. Siemens is preparing further updates and recommends specific countermeasures for products where updates are not, or not yet, available.
+
+Teamcenter V12.4: Update to V12.4.0.13 or later
+Teamcenter V13.0: Update to V13.0.0.9 or later
+Teamcenter V13.1: Update to V13.1.0.9 or later
+
+--------- Begin Update A Part 3 of 4 ---------
+
+Teamcenter V13.2: Update to V13.2.0.9 or later
+
+--------- End Update A Part 3 of 4 ---------
+
+Teamcenter V13.3: Update to V13.3.0.3 or later
+
+--------- Begin Update A Part 4 of 4 ---------
+
+Teamcenter V14.0, Update to V14.0.0.2 or later
+
+--------- End Update A Part 4 of 4 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Harden the application’s host to prevent local access by untrusted personnel
+Limit access to Port 8082/TCP to specific IP addresses (e.g., with a firewall)
+Java EE Server Manager HTML Adaptor is obsolete. It is recommended to use Teamcenter Management Console for Server Manager administration
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-220589
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

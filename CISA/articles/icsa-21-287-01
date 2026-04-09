@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Schneider Electric
+Equipment: ConneXium Network Manager (CNM) Software
+Vulnerability: Improper Privilege Management
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to execute arbitrary commands.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of CNM, ethernet network management software, are affected:
+
+ConneXium Network Manager: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+The affected product has an issue with privilege management, which could cause an arbitrary command execution when the software is configured with specially crafted event actions.
+CVE-2021-22801 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+David Yesland, working with Trend Micro’s Zero Day Initiative, reported this vulnerability to CISA.
+4. MITIGATIONS
+Schneider Electric recommends users protect their installation with the following:
+STEP 1: Download and run the CNM Alarms Disabler Tool.
+Usage: Place the disabler tool and the .cxn project file in the same directory. In a shell prompt, and in the chosen directory, execute the following command:
+
+disabler -projectfile {source project filename} -resultfile {converted project filename}
+
+Important: The converter secures and modifies the CNM database and stores it in a new project file. Before a database coming from an untrusted source is loaded into CNM, users must run the converter. Note the original database is not modified. Therefore, if the original database needs to be loaded once more, it must be converted first.
+STEP 2: Set up the “Edit Password” in the CNM software. The “Edit Mode” is enabled by default. Users must activate the edit protection by switching to “Run mode” before exiting the application. Please refer to the chapter “Edit Mode” of the CNM user manual (packaged in the .iso file).
+Schneider Electric also recommends users should use appropriate patching methodologies when applying these patches to their systems. We strongly recommend the use of back-ups and evaluating the impact of these patches in a Test and Development environment or on an offline infrastructure. Contact Schneider Electric’s Customer Care Center if you need assistance removing a patch.
+If users choose not to apply the remediation provided above, they should immediately apply the following mitigations to reduce the risk of exploit:
+
+Harden the workstation running ConneXium Network Manager (CNM) Software.
+Do not load .cxn files received from untrusted sources.
+Use session without administrator rights when it is not necessary.
+
+For more information see Schneider Electric’s security notification: SEVD-2021-285-02
+CISA recommends users take the following measures to protect themselves from social engineering attacks:
+
+Only uses project files from trusted sources.
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

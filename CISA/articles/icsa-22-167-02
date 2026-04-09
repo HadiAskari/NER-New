@@ -1,0 +1,109 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.7
+ATTENTION: Low attack complexity
+Vendor: AutomationDirect
+Equipment: DirectLOGIC with Serial Communication
+Vulnerability: Cleartext Transmission of Sensitive Information
+
+2. UPDATE OR REPOSTED INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22.167-02 AutomationDirect DirectLOGIC with Serial Communication that was published June 16, 2022, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could cause a loss of sensitive information and unauthorized changes.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of DirectLOGIC with serial communication, a programmable controller, are affected:
+
+The following D0-06 series CPUs, prior to v2.72: 
+
+D0-06DD1
+D0-06DD2
+D0-06DR
+D0-06DA
+D0-06AR
+D0-06AA
+D0-06DD1-D
+D0-06DD2-D
+D0-06DR-D
+D0-06DD2-D
+D0-06DR-D
+
+
+
+--------- Begin Update A part 1 of 2 ---------
+
+D0-05DD: All versions prior to V5.41
+D0-05DR: All versions prior to V5.41
+D0-05DA: All versions prior to V5.41
+D0-05AR: All versions prior to V5.41
+D0-05AA: All versions prior to V5.41
+D0-05AD: All versions prior to V5.41
+D0-05DD-D: All versions prior to V5.41
+D0-05DR-D: All versions prior to V5.41
+D2-230: All versions
+D2-240: All versions
+D2-250: All versions
+D2-250-1: All versions prior to V4.91
+D2-260: All versions prior to V2.71
+D2-262: All versions prior to V1.06
+D3-350: All versions
+D4-430: All versions
+D4-440: All versions
+D4-450: All versions
+D4-454: All versions prior to V1.04
+F1-130AA: All versions
+F1-130AD: All versions
+F1-130DA: All versions
+F1-130DD: All versions
+F1-130DD-D: All versions
+F1-130DR-D: All versions
+F1-130AR: All versions
+F1-130DR: All versions
+
+--------- End Update A part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The product is vulnerable to a specifically crafted serial message to the CPU serial port that will cause the PLC to respond with the PLC password in cleartext. This could allow an attacker to access and make unauthorized changes.
+CVE-2022-2003 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Sam Hanson of Dragos reported this vulnerability to CISA.
+5. MITIGATIONS
+--------- Begin Update A part 2 of 2 ---------
+AutomationDirect recommends the following mitigations for the affected products:
+
+Update all D0-06 series CPUs to firmware version 2.72 or later
+Update all DL05 series CPUs to firmware version 5.41 or later
+D2-230/240/250 is obsolete and cannot be upgraded. AutomationDirect recommends upgrading to a newer PLC (D2-262 or newer PLC families; CLICK, Do-more/BRX and Productivity Series).
+Update D2-250-1 to firmware version 4.91 or later
+Update D2-260 to firmware version 2.71 or later
+Update D2-262 to firmware version 1.06 or later
+D3-350 is obsolete and cannot be upgraded. AutomationDirect recommends upgrading to a newer PLC (D2-262 or newer PLC families; CLICK, Do-more/BRX and Productivity Series).
+D4-430/440/450 is obsolete and cannot be upgraded. AutomationDirect recommends upgrading to a newer PLC (D4-454 or newer PLC families; CLICK, Do-more/BRX and Productivity Series).
+Update D4-454 to firmware version 1.04 or later
+All DL105 CPUs (F1-130xx) are obsolete and cannot be upgraded. AutomationDirect recommends upgrading to a newer PLC (CLICK, Do-more/BRX and Productivity Series).
+
+All DirectLogic PLC firmware can be found on the Product Firmware page. The updated firmware will no longer respond with the password when requested with the specially crafted message.
+Additional brute force mitigation for password access has also been added. Three incorrect password entries will result in a 3 hour lock out of password entry. Power cycling will allow subsequent password attempts.
+--------- End Update A part 2 of 2 ---------
+While automation networks and systems have built-in password protection schemes, this is only one step in securing the affected systems. Automation control system networks must incorporate data protection and security measures at least as robust as a typical business computer system. AutomationDirect recommends users of PLCs, HMI products, and other SCADA system products perform independent network security analysis to determine the proper level of security required for the application.
+AutomationDirect has identified the specific mitigation actions listed below:
+
+Secure physical access.
+Isolate and air gap networks when possible.
+Consider some of the AutomationDirect newer PLC families.
+
+Users should refer to the following link for supporting information related to security considerations.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

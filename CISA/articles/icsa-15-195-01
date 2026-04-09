@@ -1,0 +1,44 @@
+
+OVERVIEW
+Siemens has identified an authentication bypass vulnerability in its SICAM MIC telecontrol device. This vulnerability was reported directly to Siemens by Philippe Oechslin from Objectif Sécurité. Siemens has produced a new firmware update to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following versions of SICAM MIC:
+
+SICAM MIC: All versions prior to V2404.
+
+IMPACT
+A remote attacker may be able to exploit this vulnerability to perform administrative operations.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The Siemens SICAM MIC is a modular telecontrol device for energy automation that belongs to the SICAM RTU product family. According to Siemens, SICAM MIC products are deployed across several sectors including Energy. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+AUTHENTICATION BYPASS ISSUESCWE-592: Authentication Bypass Issues, http://cwe.mitre.org/data/definitions/592.html, web site last accessed July 14, 2015.
+Attackers with network access to the device’s web interface (Port 80/TCP) could possibly circumvent authentication and perform administrative operations. A legitimate user must be logged into the web interface for the attack to be successful.
+CVE-2015-5386NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5386, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:C, web site last accessed July 14, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with medium skill would be able to exploit this vulnerability.
+MITIGATION
+Siemens provides firmware update V2404, which fixes the vulnerability and contains further security improvements. Siemens recommends that customers update to the latest firmware version. The firmware update for SICAM MIC can be found at the following location on the Siemens web site:
+http://w3.siemens.com/smartgrid/global/en/products-systems-solutions/substation-automation/remote-terminal-units/Pages/SICAM-MIC.aspx
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-632547 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Configure firewall rules to appropriately restrict traffic to affected devices on Port 80/TCP.
+Monitor traffic to affected devices on Port 80/TCP with an intrusion detection system (IDS).
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

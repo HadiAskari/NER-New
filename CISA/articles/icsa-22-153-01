@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Carrier LenelS2
+Equipment: HID Mercury access panels sold by LenelS2
+Vulnerabilities: Protection Mechanism Failure, Forced Browsing, Classic Buffer Overflow, Path Traversal, OS Command Injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker access to the device, allowing monitoring of all communications sent to and from the device, modification of onboard relays, changing of configuration files, device instability, and a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Carrier reports these vulnerabilities affect the following HID Mercury access panels sold by LenelS2: 
+
+LNL-X2210
+LNL-X2220
+LNL-X3300
+LNL-X4420
+LNL-4420
+S2-LP-1501
+S2-LP-4502
+S2-LP-2500
+S2-LP-1502
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    PROTECTION MECHANISM FAILURE CWE-693
+An unauthenticated attacker can update the hostname with a specially crafted name, allowing shell command execution during the core collection process.
+CVE-2022-31479 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.2    DIRECT REQUEST ('FORCED BROWSING') CWE-425
+An unauthenticated attacker could arbitrarily upload firmware files to the target device, ultimately causing a denial-of-service condition.
+CVE-2022-31480 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+An unauthenticated attacker can send a specially crafted update file to the device that can overflow a buffer.
+CVE-2022-31481 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.4    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+An unauthenticated attacker can send a specially crafted unauthenticated HTTP request to the device that can overflow a buffer.
+CVE-2022-31482 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+An authenticated attacker can manipulate a filename to achieve the ability to upload the desired file anywhere on the filesystem.
+CVE-2022-31483 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.6    DIRECT REQUEST ('FORCED BROWSING') CWE-425
+An unauthenticated attacker can send a specially crafted network packet to delete a user from the web interface.
+CVE-2022-31484 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.7    DIRECT REQUEST ('FORCED BROWSING') CWE-425
+An unauthenticated attacker can send a specially crafted packet to update the “notes” section on the home page of the web interface.
+CVE-2022-31485 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.2.8    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+An authenticated attacker can send a specially crafted route to a specific binary causing it to execute shell commands.
+CVE-2022-31486 has been assigned to this vulnerability. A CVSS v3 base score 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: United States
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sam Quinn @eAyeP and Steve Povolny @spovolny from Trellix Threat Labs reported these vulnerabilities to Carrier.
+4. MITIGATIONS
+Carrier recommends updating these access panels to the most current released firmware via the LenelS2 Partner Center. Please contact a Carrier support channel partner for instructions.
+The controller can also be configured to disable web access, which prevents remote login into the controller’s webpage. To log in, see the specific instructions in CARR-PSA-006-0622
+Carrier has published CARR-PSA-006-0622 to notify users about these vulnerabilities, providing additional mitigation instructions.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

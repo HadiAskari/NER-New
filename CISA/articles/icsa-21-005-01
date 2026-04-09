@@ -1,0 +1,98 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.3
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Schneider Electric
+Equipment: Web Server on Modicon M340, Modicon Quantum and Modicon Premium Legacy
+Vulnerabilities: Out-of-bounds Read, Out-of-bounds Write, Classic Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow write access and the execution of commands, which could result in data corruption or a web server crash.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric reports these vulnerabilities affect the following Modicon products: 
+
+M340 CPUs
+
+BMX P34x, all versions
+
+
+M340 Communication Ethernet modules
+
+BMX NOE 0100 (H), all versions
+BMX NOE 0110 (H), all versions
+BMX NOC 0401, all versions
+BMX NOR 0200H, all versions
+
+
+Premium processors with integrated Ethernet COPRO
+
+TSXP574634, TSXP575634, TSXP576634, all versions
+
+
+Premium communication modules
+
+TSXETY4103, all versions
+TSXETY5103, all versions
+
+
+Quantum processors with integrated Ethernet COPRO
+
+140CPU65xxxxx, all versions
+
+
+Quantum communication modules
+
+140NOE771x1, all versions
+140NOC78x00, all versions
+140NOC77101, all versions
+
+
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS READ CWE-125
+An out-of-bounds read vulnerability exists which could cause a segmentation fault or a buffer overflow when uploading a specially crafted file on the controller over FTP. 
+CVE-2020-7562 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:H).
+3.2.2    OUT-OF-BOUNDS WRITE CWE-787
+An out-of-bounds write vulnerability exists which could cause corruption of data, a crash, or code execution when uploading a specially crafted file on the controller over FTP. 
+CVE-2020-7563 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:H).
+3.2.3    CLASSIC BUFFER OVERFLOW CWE-120
+A classic buffer overflow vulnerability exists which could cause write access and the execution of commands when uploading a specially crafted file on the controller over FTP. 
+CVE-2020-7564 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Energy, Food and Agriculture, Government Facilities, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Kai Wang of Fortinet's FortiGuard Labs reported these vulnerabilities to Schneider Electric.
+4. MITIGATIONS
+Schneider Electric is establishing a remediation plan to fix these vulnerabilities in current and future versions of Modicon PAC controllers. Schneider Electric will update SEVD-2020-315-01 when the remediation is available. Until then, users should immediately apply the following mitigations to reduce the risk of exploit:
+
+Disable FTP via UnityPro / Ecostruxure Control Expert. This is disabled by default when a new application is created.
+Configure the access control list via Ecostruxure Control Expert programming tool.
+Set up network segmentation and implement a firewall to block all unauthorized access to Port 21/TCP.
+
+Schneider Electric’s Modicon Premium and Modicon Quantum controllers have reached their end of life and are no longer commercially available. They have been replaced by the Modicon M580 ePAC controller.
+For further information please refer to Modicon Controllers Platform - CyberSecurity, Reference Manual and SEVD-2020-315-01
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

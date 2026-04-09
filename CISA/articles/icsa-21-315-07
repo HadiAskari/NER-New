@@ -1,0 +1,119 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Nucleus RTOS based APOGEE and TALON Products
+Vulnerabilities: Type Confusion, Improper Validation of Specified Quantity in Input, Out-of-bounds Read, Improper Restriction of Operations within the Bounds of a Memory Buffer, Improper Null Termination, Buffer Access with Incorrect Length Value, Integer Underflow, Improper Handling of Inconsistent Structural Elements
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-315-07 Siemens Nucleus RTOS-based APOGEE and TALON Products (Update B) that was published April 14, 2022, on the ICS webpage at cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow denial-of-service conditions, remote code execution, information leaks, and out-of-bounds reads and writes.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Nucleus RTOS based APOGEE and TALON Products, direct digital control (DDC) devices, are affected:
+
+APOGEE MBC (PPC) (BACnet): All versions
+APOGEE MBC (PPC) (P2 Ethernet): All versions
+APOGEE MEC (PPC) (BACnet): All versions
+APOGEE MEC (PPC) (P2 Ethernet): All versions
+
+--------- Begin Update C Part 1 of 2 ---------
+
+APOGEE PXC Compact (BACnet): All versions prior to v3.5.4
+APOGEE PXC Compact (P2 Ethernet): All versions prior to v2.8.19
+APOGEE PXC Modular (BACnet): All versions prior to v3.5.4
+APOGEE PXC Modular (P2 Ethernet): All versions prior to v2.8.19
+Desigo PXC00-E.D: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC00-U: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC001-E.D: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC12-E.D: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC22-E.D: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC22.1-E.D: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC36.1-E.D: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC50-E.D: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC64-U: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC100-E.D: Versions 2.3 and later and prior to v6.30.016 
+Desigo PXC128-U: Versions 2.3 and later and prior to v6.30.016
+Desigo PXC200-E.D: Versions 2.3 and later and prior to v6.30.016
+Desigo PXM20-E: Versions 2.3 and later and prior to v6.30.016
+TALON TC Compact (BACnet): All versions prior to v3.5.4
+TALON TC Modular (BACnet): All versions prior to v3.5.4
+
+--------- End Update C Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    ACCESS OF RESOURCE USING INCOMPATIBLE TYPE ('TYPE CONFUSION') CWE-843
+ICMP echo packets with fake IP options allow sending ICMP echo reply messages to arbitrary hosts on the network.
+CVE-2021-31344 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+4.2.2    IMPROPER VALIDATION OF SPECIFIED QUANTITY IN INPUT CWE-1284
+The total length of an UDP payload (set in the IP header) is unchecked. This may lead to various side effects, including information leaks, depending on a user-defined application that runs on top of the UDP protocol.
+CVE-2021-31345 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.3    IMPROPER VALIDATION OF SPECIFIED QUANTITY IN INPUT CWE-1284
+The total length of an ICMP payload (set in the IP header) is unchecked. This may lead to various side effects, including information leaks and denial-of-service conditions, depending on the network buffer organization in memory.
+CVE-2021-31346 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+4.2.4    OUT-OF-BOUNDS READ CWE-125
+When processing a DHCP OFFER message, the DHCP client application does not validate the length of the Vendor option(s), leading to denial-of-service conditions.
+CVE-2021-31881 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+4.2.5    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS CWE-119
+The DHCP client application does not validate the length of the Domain Name Server IP option(s) (0x06) when processing DHCP ACK packets. This may lead to denial-of-service conditions.
+CVE-2021-31882 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.6    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS CWE-119
+When processing a DHCP ACK message, the DHCP client application does not validate the length of the Vendor option(s), leading to denial-of-service conditions.
+CVE-2021-31883 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+4.2.7    IMPROPER NULL TERMINATION CWE-170
+The DHCP client application assumes the data supplied with the “Hostname” DHCP option is NULL terminated. In cases when global hostname variable is not defined, this may lead to out-of-bound reads, writes, and denial-of-service conditions.
+CVE-2021-31884 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.8    BUFFER ACCESS WITH INCORRECT LENGTH VALUE CWE-805
+TFTP server application allows for reading the contents of the TFTP memory buffer via sending malformed TFTP commands.
+CVE-2021-31885 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.9    IMPROPER NULL TERMINATION CWE-170
+FTP server does not properly validate the length of the “USER” command, leading to stack-based buffer overflows. This may result in denial-of-service conditions and remote code execution.
+CVE-2021-31886 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.10    IMPROPER NULL TERMINATION CWE-170
+FTP server does not properly validate the length of the “PWD/XPWD” command, leading to stack-based buffer overflows. This may result in denial-of-service conditions and remote code execution.
+CVE-2021-31887 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.11    IMPROPER NULL TERMINATION CWE-170
+FTP server does not properly validate the length of the “MKD/XMKD” command, leading to stack-based buffer overflows. This may result in denial-of-service conditions and remote code execution.
+CVE-2021-31888 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.12    INTEGER UNDERFLOW (WRAP OR WRAPAROUND) CWE-191
+Malformed TCP packets with a corrupted SACK option leads to denial-of-service conditions.
+CVE-2021-31889 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.13    IMPROPER HANDLING OF INCONSISTENT STRUCTURAL ELEMENTS CWE-240
+The total length of an TCP payload (set in the IP header) is unchecked. This may lead to various side effects, including denial-of-service conditions, depending on the network buffer organization in memory.
+CVE-2021-31890 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update C Part 2 of 2 ---------
+Siemens recommends the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Desigo products: update to v6.30.016 or later
+APOGEE PXC Compact (P2 Ethernet) and APOGEE PXC Modular (P2 Ethernet): update to v2.8.19 or later. Contact a Siemens office for support.
+TALON TC Compact (BACnet), TALON TC Modular (BACnet), APOGEE PXC Compact (BACnet), and APOGEE PXC Modular (BACnet): update to v3.5.4 or later. Contact a Siemens office for support.
+
+--------- End Update C Part 2 of 2 ---------
+
+CVE-2021-31881, CVE-2021-31882, CVE-2021-31883, CVE-2021-31884: Disable the DHCP client and use static IP address configuration instead (Note the DHCP client is disabled by default on APOGEE/TALON and Desigo products).
+CVE-2021-31885, CVE-2021-31886, CVE-2021-31887, CVE-2021-31888: Disable the FTP service (Note the FTP service is disabled by default on Desigo products).
+
+As a general security measure Siemens strongly recommends protecting network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices to run the devices in a protected IT environment.
+For more information see Siemens Security Advisory SSA-114589
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

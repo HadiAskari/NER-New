@@ -1,0 +1,44 @@
+
+OVERVIEW
+This advisory is a follow-up to the alert titled ICS-ALERT-13-304-01 Nordex NC2 – Cross-Site Scripting Vulnerability that was published October 31, 2013, on the NCCIC/ICS-CERT web site.
+Independent researcher Darius Freamon identified a cross-site scripting vulnerability in the Nordex Control 2 (NC2) application and released proof-of-concept (exploit) code without coordination with ICS-CERT, the vendor, or any other coordinating entity known to ICS-CERT.
+This vulnerability could be exploited remotely.
+Exploits that target this vulnerability are publicly available.
+AFFECTED PRODUCTS
+The following Nordex NC2 versions are affected:      
+
+Nordex Control 2 (NC2) SCADA V15 and prior versions.
+
+IMPACT
+The reflected cross-site scripting attack may allow an attacker to execute arbitrary script code in the user’s browser within the trust relationship between their browser and the server.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Nordex is a company based in Germany that maintains offices in several countries around the world, including the United States, Germany, Sweden, Netherlands, France, Austria, Spain, China, Italy, and the United Kingdom.
+The affected product, Nordex Control 2, is a web-based SCADA system for wind power plants. According to Nordex, NC2 is deployed across the Energy sector. Nordex estimates that this product is used primarily in the United States, Europe, and China.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+REFLECTED CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), http://cwe.mitre.org/data/definitions/79.html, web site last accessed October 30, 2014.
+
+The NC2 Wind Farm Portal contains a flaw that allows a reflected cross-site scripting attack. This flaw exists because the application does not validate the “username” parameter upon submission to the login script.
+CVE-2014-5408NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5408, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P, web site last accessed October 30, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Nordex will release a patch for all affected NC2-SCADA versions until the end of 2014. The patching of the NC2-SCADA system has to be done by Nordex.
+Nordex will upgrade all wind farms with a valid service contract to the patched version of the NC2-SCADA in coordination with normal maintenance operations.
+Owners of Nordex NC2-based wind farms without a valid service contract can order the patch from Nordex by contacting their local Nordex service organization.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

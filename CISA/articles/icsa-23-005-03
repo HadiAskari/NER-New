@@ -1,0 +1,64 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: Lumada Asset Performance Management (APM)
+Vulnerabilities: Classic Buffer Overflow, Out-of-bounds Write
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a denial-of-service condition or unauthorized remote arbitrary code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Lumada Asset Performance Management (APM), a web-based asset monitoring software deployable as both a cloud service or as a local deployment, are affected:
+
+Lumada APM: Version 6.5.0.0
+Lumada APM: Versions 6.1.0.0 through 6.4.0.0 (CVE-2022-37434 only)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    RELIANCE ON UNCONTROLLED COMPONENT CWE-1357
+The affected versions of Lumada APM rely on a version of OpenSSL that contains a buffer overflow vulnerability. A buffer overrun can be triggered in X.509 certificate verification, specifically in name constraint checking. Note that this occurs after certificate chain signature verification and requires either a CA to have signed the malicious certificate or for the application to continue certificate verification despite failure to construct a path to a trusted issuer. In Lumada APM, this can be triggered by configuring APM to connect to a malicious server for one of the supported integrations. This may cause a crash of the specific APM service implementing the integration (causing a denial of service).
+CVE-2022-3602 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    RELIANCE ON UNCONTROLLED COMPONENT CWE-1357
+The affected versions of Lumada APM rely on a version of OpenSSL that contains a buffer overflow vulnerability. A buffer overrun can be triggered in X.509 certificate verification, specifically in name constraint checking. Note that this occurs after certificate chain signature verification and requires either a CA to have signed a malicious certificate or for an application to continue certificate verification despite failure to construct a path to a trusted issuer. In Lumada APM, this can be triggered by configuring APM to connect to a malicious server for one of the supported integrations. This may cause a crash of the specific APM service implementing the integration (causing a denial of service).
+CVE-2022-3786 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+ 
+3.2.3    RELIANCE ON UNCONTROLLED COMPONENT CWE-1357
+The affected versions of Lumada APM rely on a version of zlib that contains an out-of-bounds write vulnerability. Successful exploitation of this vulnerability may result in denial of service or potentially the execution of arbitrary code.
+CVE-2022-37434 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy fixed the vulnerabilities in the following versions and recommends users update their systems to the appropriate version:
+
+For all listed vulnerabilities: Lumada APM Version 6.5.0.1 or later.
+For CVE-2022-37434 only: Lumada APM Version 6.4.0.1 or later.
+Users should contact Hitachi Energy for instructions on acquiring and installing the new versions.
+
+Note: Hitachi Energy has already remediated these vulnerabilities for cloud-based deployments (software-as-a-service) of Lumada APM.
+Hitachi Energy encourages users to apply recommended security practices and firewall configurations. These practices include, but are not limited to:
+
+Protect process control systems from physical access by unauthorized personnel.
+Do not allow process control systems to have direct connections to the Internet.
+Separate process control systems from other networks via a firewall system with a minimal number of exposed ports.
+Have security updates applied to installed software components.
+Do not use process control systems for personal use such as web browsing or checking emails.
+Carefully scan portable computers and removable storage media for viruses before connection to a control system.
+
+For more information, see Hitachi Energy advisory 8DBD000134.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

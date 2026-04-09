@@ -1,0 +1,66 @@
+
+
+Description
+
+NCCIC/ICS-CERT is aware of a public report concerning a command injection vulnerability with proof-of-concept (PoC) exploit code affecting Advantech EKI-6340, a wireless mesh access point used in industrial control systems.
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+SUMMARY
+NCCIC/ICS-CERT is aware of a public report concerning a command injection vulnerability with proof-of-concept (PoC) exploit code affecting Advantech EKI-6340, a wireless mesh access point used in industrial control systems. According to the report, the vulnerability is caused by incorrect sanitization of input parameters. The report was released following coordination with the vendor and ICS-CERT. ICS-CERT has notified the affected vendor of the report and has asked the vendor to confirm the vulnerability and identify mitigations. ICS-CERT is issuing this alert to provide early notice of the report and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+This report included vulnerability details and PoC exploit code for the following vulnerability:
+
+
+
+Vulnerability Type
+Remotely Exploitable
+Impact
+
+
+Command Injection
+Yes
+Possible Remote Code Execution
+
+
+
+Please report any issues affecting control systems in critical infrastructure environments to ICS‑CERT.
+Facundo Pantaleo and Flavio Cangini from Core Security Engineering Team discovered this command injection vulnerabilityAdvantech EKI-6340 Command Injection, http://www.coresecurity.com/advisories/advantech-eki-6340-command-injection web site last accessed November 19, 2014. in Advantech EKI-6340 V2.05. Joaquín Rodríguez Varela from Core Advisories Team reported this to ICS-CERT, who coordinated with Advantech. The vendor has decided not to fix this vulnerability in the EKI-6340 series, as it will soon be discontinued.
+The Advantech EKI-6340 series are wireless mesh access points for outdoor deployment. It is most commonly used in infrastructures where wired solutions are hard to deploy. The product is deployed across several sectors including Energy, and Commercial Facilities. Advantech estimates that these products are used worldwide.
+Advantech is based in Taiwan and has distribution offices in 21 countries worldwide.
+
+MITIGATION
+
+The security researchers from Core Security recommend the following mitigation steps:
+
+Change the “guest” user password (or delete the user in case it's not used).
+Edit the fshttpd.conf and remove the line “guest_allow=/cgi/ping.cgi.”
+Check that the “admin” user doesn't have the default password as well.
+
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.ICS-CERT ALERT, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-10-301-01, web site last accessed November 19, 2014.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT also provides a recommended practices section for control systems on the ICS-CERT web site (http://ics-cert.us-cert.gov). Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

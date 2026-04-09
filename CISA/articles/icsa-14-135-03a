@@ -1,0 +1,66 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-135-03 Siemens RuggedCom ROX-Based Devices Certificate Verification Vulnerability that was published May 15, 2014, on the NCCIC/ICS-CERT web site.
+Siemens has reported to ICS-CERT an incorrect certificate verification in RuggedCom ROX‑based devices. Siemens is working on a firmware update for the affected products.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens RuggedCom ROX-based devices are affected:
+--------- Begin Update A Part 1 of 2 --------
+
+ROX 1 prior to Version 1.16.1,
+ROX 2 prior to Version 2.6
+
+--------- End Update A Part 1 of 2 ----------
+IMPACT
+In RuggedCom ROX-based devices, GnuTLS is used for client certificate verification. Because GnuTLS is vulnerable to an incorrect error handling issue within this function, an attacker would be able to perform man-in-the-middle attacks.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is an international company headquartered in Munich, Germany. Siemens develops products mainly in the energy, healthcare and public health sectors, and transportation systems.
+The affected products, RuggedCom switches and serial-to-Ethernet devices, are used to connect devices that operate in harsh environments such as electric utility substations and traffic control cabinets.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CRYPTOGRAPHIC ISSUESCWE-310: Cryptographic Issues, http://cwe.mitre.org/data/definitions/310.html, web site last accessed May 15, 2014.
+
+ROX-based RuggedCom devices use GnuTLS libraries to enable secure communication. GnuTLS suffers from incorrect error handling in certificate verification, which could allow man‑in-the-middle attacks, and this may affect multiple services in these devices.
+The following client-side services use GnuTLS libraries:
+
+Secure Syslog (only affects ROX Version 1.16)
+Software upgrades with HTTPS-based connections. Nonsecure connections are not affected. (Only affects ROX Versions 2.4 and 2.5)
+FTPS (only affects ROX versions from v2.2 through v2.5 inclusive)
+
+CVE-2014-0092NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0092, web site last accessed May 15, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 5.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:N, web site last visited May 15, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+--------- Begin Update A Part 2 of 2 --------
+Siemens has developed firmware update V2.6.0 for ROX 2 and V1.16.1 for ROX 1, which fixes the vulnerability. It can be obtained from Siemens from either of the following methods:
+
+Submit a support request online:
+
+
+http://www.siemens.com/automation/support-request
+
+
+Call a local hotline center:
+
+
+http://www.automation.siemens.com/mcms/aspa-db/en/automation-technology/Pages/default.aspx
+
+--------- End Update A Part 2 of 2 ----------
+For more information please see Siemens advisory SSA-839231 on this subject at its web site:
+http://www.siemens.com/cert/advisories
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.7
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: B&R Industrial Automation GmbH
+Equipment: SiteManager and GateManager
+Vulnerabilities: Path Traversal, Uncontrolled Resource Consumption, Information Exposure, Improper Authentication, Information Disclosure  
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow for arbitrary information disclosure, manipulation, and a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SiteManager and GateManager are affected:
+
+SiteManager all versions prior to v9.2.620236042 
+GateManager 4260 and 9250 all versions prior to v9.0.20262 
+GateManager 8250 all versions prior to v9.2.620236042 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+An authenticated adversary can read service configuration and other sensitive information and abuse this information for malicious activities on SiteManager instances. 
+CVE-2020-11641 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).
+3.2.2    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+An authenticated adversary can repeatedly trigger a restart of SiteManager instances, thus limiting availability. 
+CVE-2020-11642 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H).
+3.2.3    INFORMATION EXPOSURE CWE-200
+An authenticated adversary can gather information about devices belonging to a foreign organization and abuse this information for malicious activities. 
+CVE-2020-11643 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.4    IMPROPER AUTHENTICATION CWE-287
+An authenticated adversary can fool users of foreign domains with fictional audit messages/alerts of their choice. 
+CVE-2020-11644 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.2.5    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+An authenticated adversary can repeatedly trigger a restart of GateManager instances, thus limiting their availability. 
+CVE-2020-11645 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.6    INFORMATION DISCLOSURE CWE-200
+An authenticated adversary can view information about all devices belonging to their domain and abuse this information for malicious activities. 
+CVE-2020-11646 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Austria
+
+3.4 RESEARCHER
+Nikolay Sokolik and Hay Mizrachi of OTORIO reported these vulnerabilities to CISA.
+4. MITIGATIONS
+B&R Industrial Automation reports the vulnerabilities have been fixed in the following versions:
+
+SiteManager v9.2.620236042
+GateManager 4260 and 9250 v9.0.20262
+GateManager 8250 v9.2.620236042
+
+The B&R cybersecurity webpage provides further information including cybersecurity guidelines. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

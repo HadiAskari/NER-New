@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Softing
+Equipment: Secure Integration Server
+Vulnerabilities: Out-of-bounds Read, Uncontrolled Search Path Element, Improper Authentication, Relative Path Traversal, Cleartext Transmission of Sensitive Information, NULL Pointer Dereference, Integer Underflow.
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Softing reports these vulnerabilities affect the following products: 
+
+Secure Integration Server: Version 1.22 and prior
+edgeConnector: Version 3.1
+edgeAggregator: Version 3.1
+OPC UA C++ Server SDK: Version 6
+OPC Suite: Version 5.2
+uaGate: Version 1.74
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS READ CWE-125
+A crafted HTTP packet with a large content-length header can create a denial-of-service condition in Softing Secure Integration Server.
+CVE-2022-1069 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+The application searches for a library dll that is not found. If an attacker can place a dll with this name, then the attacker can leverage it to execute arbitrary code on the targeted Softing Secure Integration Server.
+CVE-2022-2334 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER AUTHENTICATION CWE-287
+Softing Secure Integration Server, edgeConnector, and edgeAggregator software ships with the default administrator credentials as `admin` and password as `admin`. This allows Softing to log in to the server directly to perform administrative functions. Upon installation or upon first login, the application does not ask the user to change the `admin` password. There is no warning or prompt to ask the user to change the default password, and to change the password, many steps are required.
+CVE-2022-2336 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    RELATIVE PATH TRAVERSAL CWE-23
+The “restore configuration” feature of Softing Secure Integration Server is vulnerable to a directory traversal vulnerability when processing zip files. An attacker can craft a zip file to load an arbitrary dll and execute code. Using the "restore configuration" feature to upload a zip file containing a path traversal file may cause a file to be created and executed upon touching the disk.
+CVE-2022-1373 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Softing Secure Integration Server is vulnerable to authentication bypass via a machine-in-the-middle attack. The default the administration interface is accessible via plaintext HTTP protocol, facilitating the attack. The HTTP request may contain the session cookie in the request, which may be captured for use in authenticating to the server.
+CVE-2022-2338 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.6    NULL POINTER DEREFERENCE CWE-476
+Softing OPC UA C++ Server SDK, Secure Integration Server, edgeConnector, edgeAggregator, OPC Suite, and uaGate are affected by a NULL pointer dereference vulnerability.
+CVE-2022-1748 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.7    NULL POINTER DEREFERENCE CWE-476
+A crafted HTTP packet with a missing HTTP URI can create a denial-of-service condition in Softing Secure Integration Server.
+CVE-2022-2337 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.8    NULL POINTER DEREFERENCE CWE-476
+A crafted HTTP packet without a content-type header can create a denial-of-service condition in Softing Secure Integration Server.
+CVE-2022-2547 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.9    INTEGER UNDERFLOW (WRAP OR WRAPAROUND) CWE-191
+A crafted HTTP packet with a -1 content-length header can create a denial-of-service condition in Softing Secure Integration Server.
+CVE-2022-2335 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Pedro Ribeiro and Radek Domanski, working with Trend Micro Zero Day Initiative, reported these vulnerabilities to Softing and CISA.
+4. MITIGATIONS
+Softing released new versions to address these vulnerabilities and notified known users of the releases. Users are advised to update to the new versions:
+
+Softing Secure Integration Server V1.30 
+
+The latest software packages can be downloaded from the Softing website. 
+Softing recommends the following mitigations and workarounds: 
+
+Change the admin password or create a new user with administrative rights and delete the default admin user. 
+Configure the Windows firewall to block network requests to IP port 9000. 
+Disable the HTTP Server in NGINX configuration of the Softing Secure Integration Server, only using the HTTPS server. 
+
+For more details on these vulnerabilities and mitigations, users should see SYT-2022-7, SYT-2022-6, SYT-2022-5, and SYT-2022-4 on the Softing security website.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have a low attack complexity.

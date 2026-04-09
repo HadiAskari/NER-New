@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: Siveillance VMS
+Vulnerabilities: Improper Authorization, Incorrect User Management, Missing Authorization
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker with network access to Port 80/TCP to change device properties, user roles, and user-defined event properties.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siveillance VMS are affected:
+
+2017 R2 all versions prior to v11.2a
+2018 R1 all versions prior to v12.1a
+2018 R2 all versions prior to v12.2a
+2018 R3 all versions prior to v12.3a
+2019 R1 all versions prior to v13.1a
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER AUTHORIZATION CWE-285
+An attacker with network access to Port 80/TCP could change device properties without authorization.
+CVE-2019-6580 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    INCORRECT USER MANAGEMENT CWE-286
+An attacker with network access to Port 80/TCP could change user roles without proper authorization.
+CVE-2019-6581 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    MISSING AUTHORIZATION CWE-862
+An attacker with network access to Port 80/TCP can change user-defined event properties without proper authorization. 
+CVE-2019-6582 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens PSIRT reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Siemens has released the following updates to the Siveillance VMS products:•    2017 R2 v11.2a •    2018 R1 v12.1a •    2018 R2 v12.2a•    2018 R3 v12.3a•    2019 R1 v13.1a
+Updates can be found at:
+https://support.industry.siemens.com/cs/ww/en/ps/24899/dl
+Siemens also recommends applying the following specific mitigation to reduce risk:
+•    Block Port 80/TCP at an external firewall.
+For more information please see Siemens security advisory SSA-212009.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

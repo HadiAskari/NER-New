@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Ypsomed
+Equipment: mylife Cloud, mylife Mobile Application
+Vulnerabilities: Insufficiently Protected Credentials, Not Using an Unpredictable IV with CBC Mode, Use of Hard-coded Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain sensitive application information or modify the integrity of data being transmitted.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Ypsomed mylife diabetes management platform, are affected:
+
+Ypsomed mylife Cloud: All versions prior to 1.7.2
+Ypsomed mylife App: All versions prior to 1.7.5
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSUFFICIENTLY PROTECTED CREDENTIALS (CWE-522)
+The Ypsomed mylife Cloud discloses password hashes during the registration process.
+CVE-2021-27491 has been assigned to this vulnerability. A CVSS v3 base score of 5.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N).
+3.2.2    INSUFFICIENTLY PROTECTED CREDENTIALS (CWE-522)
+The Ypsomed mylife Cloud reflects the user password during the login process after redirecting the user from a HTTPS endpoint to a HTTP endpoint.
+CVE-2021-27495 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:L/A:N).
+3.2.3    NOT USING AN UNPREDICTABLE IV WITH CBC MODE (CWE-329)
+The application layer encryption of the communication protocol between the Ypsomed mylife App and mylife Cloud uses non-random IVs, which allows man-in-the-middle attackers to tamper with messages.
+CVE-2021-27499 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N).
+3.2.4    USE OF HARD-CODED CREDENTIALS (CWE-798)
+The application encrypts on the application layer of the communication protocol between the Ypsomed mylife App and mylife Cloud credentials based on hard-coded secrets, which allows man-in-the-middle attackers to tamper with messages.
+CVE-2021-27503 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Julian Suleder, Linda Huischen, and Nils Emmerich of ERNW Research GmbH and Dr. Oliver Matula of Enno Rey Netzwerke GmbH (ERNW) reported these vulnerabilities to the Federal Office for Information Security (BSI, Germany), in the context of the BSI project ManiMed – Manipulation of Medical Devices.
+4. MITIGATIONS
+Ypsomed has taken action to update the affected mylife Cloud backend services to mitigate the vulnerabilities affecting the mylife Cloud in versions prior to 1.7.2. Ypsomed recommends users with the affected mobile application to update to the latest available application Version 1.7.5 or later.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+•    Restrict system access to authorized personnel only and follow a least privilege approach.
+•    Apply defense-in-depth strategies.
+•    Disable unnecessary accounts and services.
+•    Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

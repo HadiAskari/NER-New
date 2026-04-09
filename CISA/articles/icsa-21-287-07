@@ -1,0 +1,112 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE
+Vulnerabilities: Cross-site Request Forgery, OS Command Injection, Classic Buffer Overflow, Command Injection, Path Traversal, Missing Encryption of Sensitive Data
+
+2. UPDATE OR REPOSTED INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-287-07 Siemens SCALANCE that was published October 14, 2021, on the ICS webpage on cisa.gov/ICS
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to inject commands or trigger buffer overflows.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of SCALANCE W1750D, a software management platform, are affected:
+
+SCALANCE W1750D: All versions prior to v8.7.1.3
+
+--------- Begin Update A part 1 of 3 ---------
+
+SCALANCE W1750D: All version 8.7.1.9 and prior (Only affected by CVE-2019-5318)
+SCALANCE W1750D: All versions from 8.7.1.3 to 8.7.1.8 (Only affected by CVE-2019-5318, CVE-2020-37719, CVE-2021-37717, CVE-2021-37718, CVE-2021-37720, CVE-2021-37721, CVE-2021-37722, CVE-2021-37728)
+
+--------- End Update A part 1 of 3 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+The web interface for RAPConsole lacks Anti-CSRF protections in place for state-changing operations. This can be exploited by an attacker to reboot the affected device if the attacker can convince a user to visit a specially crafted webpage.
+CVE-2019-5318 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:H).
+
+4.2.2    OS COMMAND INJECTION CWE-78
+An authenticated command injection vulnerability exists in the ArubaOS command line interface. Successful exploitation of this vulnerability results in the ability to execute arbitrary commands as a privileged user on the underlying operating system. This allows an attacker to fully compromise the underlying operating system on the device running ArubaOS.
+CVE-2020-37719 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+ 
+4.2.3    CLASSIC BUFFER OVERFLOW CWE-120
+There are multiple buffer overflow vulnerabilities that could lead to unauthenticated remote code execution by sending specially crafted packets destined to the PAPI (Aruba Networks AP management protocol) UDP Port (8211) of devices running ArubaOS. This may allow for denial-of-service attacks and/or remote code execution in the underlying operating system.
+CVE-2021-37716 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    COMMAND INJECTION CWE-77
+An authenticated command injection vulnerability exists in the ArubaOS web-based management user interface. Successful exploitation of this vulnerability results in the ability to execute arbitrary commands as a privileged user on the underlying operating system. This allows an attacker to fully compromise the underlying operating system on the device running ArubaOS.
+CVE-2021-37717 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.5    COMMAND INJECTION CWE-77
+An authenticated command injection vulnerability exists in the ArubaOS web-based management user interface. Successful exploitation of this vulnerability results in the ability to execute arbitrary commands as a privileged user on the underlying operating system. This allows an attacker to fully compromise the underlying operating system on the device running ArubaOS.
+CVE-2021-37718 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.6    COMMAND INJECTION CWE-77
+An authenticated command injection vulnerability exists in the ArubaOS command line interface. Successful exploitation of this vulnerability results in the ability to execute arbitrary commands as a privileged user on the underlying operating system. This allows an attacker to fully compromise the underlying operating system on the device running ArubaOS.
+CVE-2021-37720 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.7    COMMAND INJECTION CWE-77
+An authenticated command injection vulnerability exists in the ArubaOS command line interface. Successful exploitation of this vulnerability results in the ability to execute arbitrary commands as a privileged user on the underlying operating system. This allows an attacker to fully compromise the underlying operating system on the device running ArubaOS.
+CVE-2021-37721 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.8    COMMAND INJECTION CWE-77
+An authenticated command injection vulnerability exists in the ArubaOS command line interface. Successful exploitation of this vulnerability results in the ability to execute arbitrary commands as a privileged user on the underlying operating system. This allows an attacker to fully compromise the underlying operating system on the device running ArubaOS.
+CVE-2021-37722 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.9    COMMAND INJECTION CWE-77
+An authenticated command injection vulnerability exists in the ArubaOS command line interface. This vulnerability is only present in instances of the Mobility Conductor. Successful exploitation of this vulnerability results in the ability to execute arbitrary commands as a privileged user on the underlying operating system. This allows an attacker to fully compromise the underlying operating system on the Mobility Conductor running ArubaOS.
+CVE-2021-37723 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.10    COMMAND INJECTION CWE-77
+An authenticated command injection vulnerability exists in the ArubaOS command line interface. This vulnerability is only present in instances of the Mobility Conductor. Successful exploitation of this vulnerability results in the ability to execute arbitrary commands as a privileged user on the underlying operating system. This allows an attacker to fully compromise the underlying operating system on the Mobility Conductor running ArubaOS.
+CVE-2021-37724 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+4.2.11    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+A vulnerability in the web-based management interface of ArubaOS could allow an unauthenticated remote attacker to conduct a Cross-Site Request Forgery (CSRF) attack against a vulnerable system. Successful exploitation of this vulnerability would consist of an attacker persuading an authorized user to follow a malicious link, resulting in the deletion of arbitrary files with the privilege level of the targeted user.
+CVE-2021-37725 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:N).
+4.2.12    PATH TRAVERSAL CWE-22
+An authenticated path traversal vulnerability exists in the ArubaOS command line interface. Successful exploitation of this vulnerability results in the ability to impact the integrity of critical files on the underlying operating system. This allows an attacker to impact the availability of the ArubaOS instance and may allow for modification of sensitive data.
+CVE-2021-37728 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H).
+4.2.13    PATH TRAVERSAL CWE-22
+An authenticated path traversal vulnerability exists in the ArubaOS web-based management interface. Successful exploitation of this vulnerability results in the ability to impact the integrity of critical files on the underlying operating system. This allows an attacker to impact the availability of the ArubaOS instance and may allow for modification of sensitive data.
+CVE-2021-37729 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H).
+4.2.14    MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+An authenticated local path traversal vulnerability exists in the ArubaOS web-based management interface and CLI. This vulnerability only affects physical hardware controllers such as the 9000 series and 7x00 series. Successful exploitation of this vulnerability requires physical access to the controller and results in the ability to impact the integrity and confidentiality of critical files on the underlying operating system. This allows an attacker to impact the availability of the ArubaOS instance and may allow for modification or disclosure of sensitive data.
+CVE-2021-37731 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been assigned; the CVSS vector string is (AV:P/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C).
+4.2.15    PATH TRAVERSAL CWE-22
+An authenticated path traversal vulnerability exists in the ArubaOS command line interface. Successful exploitation of this vulnerability results in the ability to read arbitrary files on the underlying operating system, including sensitive system files.
+CVE-2021-37733 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+•    CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Healthcare and Public Health, Transportation Systems, and Water and Wastewater Systems
+•    COUNTRIES/AREAS DEPLOYED: Worldwide
+•    COMPANY HEADQUARTERS LOCATION: Germany
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens recommends upgrading SCALANCE W1750 to Versions 8.7.1.3 or later
+--------- Begin Update A part 2 of 3 ---------
+SCALANCE W1750D: All version 8719 and prior (only affected by CVE-2019-5318, currently no fix is planned.
+SCALANCE W1750 versions from 8.7.1.3 to 9.7.1.8 update to version 9.7.1.9 or later (only affected by CVE-2019-5318, CVE-2020-37719, CVE-2021-37717, CVE-2021-37718, CVE-2021-37720, CVE-2021-37721, CVE-2021-37722, CVE-2021-37728).
+--------- End Update A part 2 of 3 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Block access to the ArubaOS Command Line Interface from all untrusted users.
+Block access to the ArubaOS web-based management interface from all untrusted users.
+Block access to the Mobility Conductor Command Line Interface from all untrusted users.
+Enabling the Enhanced PAPI Security feature where available will prevent exploitation of these vulnerabilities. Please contact TAC for assistance if needed.
+Exploitation requires physical access. Controllers in strictly controlled physical environments are at low risk.
+To minimize the likelihood of an attacker exploiting these vulnerabilities, Aruba recommends the communication between Controller/Gateways and Access-Points be restricted either by having a dedicated Layer 2 segment/VLAN or, if Controller/Gateways and Access-Points cross Layer 3 boundaries, to have firewall policies restricting the communication of these authorized devices. In addition, enabling the Enhanced PAPI Security feature will prevent the PAPI-specific vulnerabilities above from being exploited. Contact Aruba Support for configuration assistance.
+The RAPConsole or Local Debug (LD) homepage can be reached by users in a split or bridge role. This can be prevented by configuring an ACL to restrict access to the LD homepage, which effectively prevents this issue. Detailed instructions for ACL implementation are available.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens’ operational guidelines for industrial security, and to follow the recommendations in the product manuals.
+--------- Begin Update A part 3 of 3 ---------
+For additional information, please refer to Siemens Security Advisory SSA-280624 in HTML or CSAF.
+--------- End Update A part 3 of 3 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

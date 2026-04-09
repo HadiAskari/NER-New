@@ -1,0 +1,47 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+ATTENTION: Exploitable with adjacent access/low attack complexity
+Vendor: ETIC Telecom
+Equipment: Remote Access Server (RAS)
+Vulnerability: Insecure Default Initialization of Resource
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to reconfigure the device or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of ETIC Telecom RAS are affected: 
+
+ETIC Telecom RAS: All versions 4.7.0 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 INSECURE DEFAULT INITIALIZATION OF RESOURCE CWE-1188 
+ETIC Telecom RAS versions 4.7.0 and prior the web management portal authentication disabled by default. This could allow an attacker with adjacent network access to alter the configuration of the device or cause a denial-of-service condition.
+CVE-2023-3453 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Haviv Vaizman, Hay Mizrachi, Alik Koldobsky, Ofir Manzur, and Nikolay Sokolik of OTORIO reported these vulnerabilities to CISA.
+4. MITIGATIONS
+ETIC Telecom recommends updating the affected devices’ firmware to the following versions:
+
+ETIC Telecom RAS: version 4.9.0 or later
+
+ETIC Telecom recommends enabling the authentication mechanism on the administration interface. This can be done on the page “> Setup > Security > Administration right” by creating an administrator on the “List of administrators” table, enabling the parameter “Password protect the configuration interface,” then setting the parameter “Protocols to use for configuration” to “HTTPs only”.
+NOTE: for firmware versions 4.9.0 or later, enabling the administration protection is mandatory after the first product start.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

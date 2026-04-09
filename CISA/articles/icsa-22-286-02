@@ -1,0 +1,44 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.4
+ATTENTION: Exploitable remotely 
+Vendor: Siemens
+Equipment: Industrial Edge Management
+Vulnerability: Improper Certificate Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to inject malicious maintenance requests by exploiting improper certification validation. An attacker could exploit this vulnerability by sending statistics, activating remote support, exchanging the initial keys when onboarding, querying new extensions, or accessing sensitive data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Industrial Edge Management, an application and device management platform, are affected:
+
+All versions prior to V1.5.1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER CERTIFICATE VALIDATION CWE-295
+All versions of Siemens Industrial Edge Management prior to version 1.5.1 do not properly validate the server certificate when initiating a TLS connection. This could allow an attacker to spoof a trusted entity’s certificate by interfering in the communication path between the client and the intended server.
+CVE-2022-40147 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens recommends users to update to v1.5.1 or later (login required).
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends  configuring the environment according to Siemens’ operational guidelines for industrial security and to follow the recommendations in the product manuals.
+For more information, see Siemens Security Advisory SSA-459643 in HTML or CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

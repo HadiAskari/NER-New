@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8 
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: PiiGAB, Processinformation i Göteborg Aktiebolag 
+Equipment: M-Bus SoftwarePack 900S 
+Vulnerabilities: Code Injection, Improper Restriction of Excessive Authentication Attempts, Unprotected Transport of Credentials, Use of Hard-coded Credentials, Plaintext Storage of a Password, Cross-site Scripting, Weak Password Requirements, Use of Password Hash with Insufficient Computational Effort, Cross-Site Request Forgery 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could crash allow an attacker to inject arbitrary commands, steal passwords, or trick valid users into executing malicious commands.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+PiiGAB reports these vulnerabilities affect the following wireless meter reading software:  
+
+M-Bus SoftwarePack 900S
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 CODE INJECTION CWE-94
+PiiGAB M-Bus does not correctly sanitize user input, which could allow an attacker to inject arbitrary commands.
+CVE-2023-36859 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+The number of login attempts is not limited. This could allow an attacker to perform a brute force on HTTP basic authentication.
+CVE-2023-33868 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3 UNPROTECTED TRANSPORT OF CREDENTIALS CWE-523
+PiiGAB M-Bus transmits credentials in plaintext format.
+CVE-2023-31277 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.4 USE OF HARD-CODED CREDENTIALS CWE-798
+PiiGAB M-Bus contains hard-coded credentials, which it uses for authentication.
+CVE-2023-35987 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5 PLAINTEXT STORAGE OF A PASSWORD CWE-256
+PiiGAB M-Bus stores credentials in a plaintext file, which could allow a low-level user to gain admin credentials.
+CVE-2023-35765 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.6 CROSS-SITE SCRIPTING CWE-79
+The affected product does not validate identification strings before processing, which could make it vulnerable to cross-site scripting attacks.
+CVE-2023-32652 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.7 WEAK PASSWORD REQUIREMENTS CWE-521
+There are no requirements for setting a complex password, which could contribute to a successful brute force attack if the password is inline with recommended password guidelines.
+CVE-2023-34995 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.8 USE OF PASSWORD HASH WITH INSUFFICIENT COMPUTATIONAL EFFORT CWE-916
+PiiGAB M-Bus stores passwords using a weak hash algorithm.
+CVE-2023-34433 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.9 CROSS-SITE REQUEST FORGERY CWE-352
+PiiGAB M-Bus is vulnerable to cross-site request forgery. An attacker who wants to execute a certain command could send a phishing mail to the owner of the device and hope that the owner clicks on the link. If the owner of the device has a cookie stored that allows the owner to be logged in, then the device could execute the GET or POST link request.
+CVE-2023-35120 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Sweden
+
+3.4 RESEARCHER
+Floris Hendriks and Jeroen Wijenbergh of Radboud University reported these vulnerabilities to CISA.
+4. MITIGATIONS
+PiiGAB created updated software to address these issues and encourages users to install the new update on their own gateway. The new software packages can be downloaded directly from the web UI in the gateway and older gateways can download it from Piigab.se or Piigab.com.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Ensure the least-privilege user principle is followed.
+Set unique and secure passwords for all products requiring authentication.
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity.

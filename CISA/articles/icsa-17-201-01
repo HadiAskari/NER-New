@@ -1,0 +1,81 @@
+
+CVSS v3 8.1
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor:  Schneider Electric
+Equipment: PowerSCADA Anywhere and Citect Anywhere
+Vulnerabilities: Information Exposure, Cross-Site Request Forgery, Improper Neutralization of Expression, Improper Validation of Certificate Expiration
+AFFECTED PRODUCTS
+Schneider Electric reports that the vulnerabilities affect the following versions of PowerSCADA Anywhere and Citect Anywhere mobile extensions:
+
+Version 1.0 of PowerSCADA Anywhere redistributed with PowerSCADA Expert v8.1 and PowerSCADA Expert v8.2,
+Citect Anywhere version 1.0
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an attacker to perform actions on behalf of a legitimate user, perform network reconnaissance, or gain access to resources beyond those intended with normal operation of the product.
+MITIGATION
+Schneider Electric strongly recommends that users upgrade their systems as soon as possible. The following provides links to instructions for addressing software that is at potential risk for the vulnerabilities:
+
+PowerSCADA Anywhere Version 1 used with PowerSCADA Expert v8.2 and PowerSCADA Expert v8.1: Uninstall PowerSCADA Anywhere (from Add/Remove Programs). Then install PowerSCADA Anywhere Version 1.1 available in the following location:
+
+https://schneider-electric.box.com/shared/static/3tvcc115kax8volhd8i13e4wg5k1sdel.iso
+
+Citect Anywhere version 1.1:
+
+https://www.citect.schneider-electric.com/scada/citectscada/downloads-updates/product-downloads?tab=extra_products
+In addition to installing the provided security patch, Schneider Electric recommends that the following steps be taken to further harden the system:
+
+Configure the HTTP origin header whitelist to match the environment’s URL(s) used for accessing the secure gateway. This address may be one or more of the IP, machine name, or domain name where the secure gateway is hosted. The address may also be that of a load balancer or proxy, if the secure gateway is deployed that way.
+Configure the secure gateway’s whitelists to restrict access to expected client IPs, as well as to restrict access from the secure gateway to only expected internal server hosts. For an additional defense-in-depth layer, users can further use the Windows OS-level firewall (or zone firewalls) to restrict communication among only the expected nodes.
+If using self-signed certificates, configure the secure gateway machine to trust the server certificate.
+Depending on the organization’s requirements, users can further configure the secure gateway to restrict the usable TLS protocols. For an additional defense-in-depth layer, TLS protocols and cipher suites can also be restricted at the operating system level through the use of third party tools such as IISCrypto.
+Create unique user accounts with minimal privileges dedicated to accessing applications remotely. OS group policy objects can be used to further restrict what those unique user accounts are allowed to do. For an example configuration that disables task manager from being launched in a remote app connection, follow the steps available here:
+
+https://social.technet.microsoft.com/Forums/office/en-US/35dd3cd6-cc67-476f-82e2-058293e6f657/how-do-i-disable-task-manager-for-users-only?forum=winserverTS
+For more information about the vulnerabilities and patch in PowerSCADA Anywhere, please refer to Schneider Electric Security Notification – PowerSCADA Anywhere SEVD-2017-173-01, which is available at the following location:
+http://www.schneider-electric.com/en/download/document/SEVD-2017-173-01/
+For more information about the vulnerabilities and patch in Citect Anywhere, please refer to Schneider Electric Security Notification – Citect Anywhere, which is available at the following location:
+https://www.citect.schneider-electric.com/safety-and-security-notifications/36-security-notifications/9071-security-notification-citect-anywhere
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+
+The secure gateway component of the affected products is vulnerable to CSRF for multiple state-changing requests. This type of attack requires some level of social engineering in order to get a legitimate user to click on or access a malicious link/site containing the CSRF attack.
+CVE-2017-7969 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N).
+
+INFORMATION EXPOSURE CWE-200
+
+An attacker on an adjacent network may be able to specify arbitrary server target nodes in connection requests to the secure gateway and server components.
+CVE-2017-7970 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+
+IMPROPER VALIDATION OF CERTIFICATE EXPIRATION CWE-298
+
+The affected products use outdated cipher suites and improperly verify peer SSL certificates.
+CVE-2017-7971 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N).
+
+IMPROPER NEUTRALIZATION OF EXPRESSION/COMMAND DELIMITERS CWE-146
+
+An attacker on an adjacent network may be able to escape out of remote applications and launch other processes.
+CVE-2017-7972 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L).
+RESEARCHER
+Schneider Electric notified ICS-CERT of these vulnerabilities after they made the fixes available.
+BACKGROUND
+Critical Infrastructure Sectors: Commercial Facilities
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Paris, France

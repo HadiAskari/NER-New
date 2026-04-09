@@ -1,0 +1,74 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: RUGGEDCOM APE1808
+Vulnerabilities: SQL Injection, Cross-site Scripting, Improper Input Validation, Incorrect Authorization, Session Fixation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an authenticated attacker to execute arbitrary SQL queries or injected code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens, are affected:
+
+RUGGEDCOM APE1808 with Nozomi Guardian / CMC: versions prior to V22.6.2
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+A blind SQL Injection vulnerability in Nozomi Networks Guardian and CMC, due to improper input validation in the sorting parameter, allows an authenticated attacker to execute arbitrary SQL queries on the DBMS used by the web application. Authenticated users can extract arbitrary information from the DBMS in an uncontrolled way.
+CVE-2023-22378 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L).
+3.2.2 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+An authenticated attacker with administrative access to the appliance can inject malicious JavaScript code inside the definition of a threat intelligence rule, that will later be executed by another legitimate user viewing the details of such a rule. An attacker may be able to perform unauthorized actions on behalf of legitimate users. JavaScript injection was possible in the content for Yara rules, while limited HTML injection has been proven for packet and STYX rules. The injected code will be executed in the context of the authenticated victim's session.
+CVE-2023-22843 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:L).
+3.2.3 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+A blind SQL Injection vulnerability in Nozomi Networks Guardian and CMC, due to improper input validation in the alerts_count component, allows an authenticated attacker to execute arbitrary SQL queries on the DBMS used by the web application. Authenticated users can extract arbitrary information from the DBMS in an uncontrolled way.
+CVE-2023-23574 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L).
+3.2.4 IMPROPER INPUT VALIDATION CWE-20
+An authenticated administrator can upload a SAML configuration file with the wrong format, with the application not checking the correct file format. Every subsequent application request will return an error. The whole application in rendered unusable until a console intervention.
+CVE-2023-23903 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).
+3.2.5 IMPROPER INPUT VALIDATION CWE-20
+A partial denial-of-service vulnerability has been detected in the reports section, exploitable by a malicious authenticated user forcing a report to be saved with its name set as null. The reports section will be partially unavailable for all later attempts to use it, with the report list seemingly stuck on loading.
+CVE-2023-24015 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L).
+3.2.6 INCORRECT AUTHORIZATION CWE-863
+An access control vulnerability was found, due to the restrictions that are applied on actual assertions not being enforced in their debug functionality. An authenticated user with reduced visibility can obtain unauthorized information via the debug functionality, obtaining data that would normally be not accessible in the query and assertions functions.
+CVE-2023-24471 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.7 SESSION FIXATION CWE-384
+In certain conditions, depending on timing and the usage of the Chrome web browser, Guardian/CMC versions before 22.6.2 do not always completely invalidate the user session upon logout, resulting in the opportunity for an authenticated local attacker to gain access to the original user's session.
+CVE-2023-24477 has been assigned to this vulnerability. A CVSS v3 base score of 5.0 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens ProductCERT reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Use internal firewall features to limit access to the web management interface.
+Adopt best practices that include closing the browser after a logout.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-647455 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+October 12, 2023: Initial Publication
+

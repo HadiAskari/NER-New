@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMOTICS CONNECT 400
+Vulnerabilities: Improper Null Termination, Out-of-bounds Read, Access of Memory Location After End of Buffer, Use of Insufficiently Random Values
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-103-13 Siemens SIMOTICS CONNECT 400 that was published April 13, 2021, on the ICS webpage on www.cisa.gov/uscert. 
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to poison the DNS cache or spoof DNS resolving.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following products and versions are affected:
+•    SIMOTICS CONNECT 400, All versions prior to v0.5.0.0
+•    SIMOTICS CONNECT 400, v0.5.0.0 and later only affected by CVE-2021-25677
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER NULL TERMINATION CWE-170
+The DNS domain name label parsing functionality does not properly validate the null-terminated name in DNS-responses. The parsing of malformed responses could result in a read past the end of an allocated structure. An attacker with a privileged position in the network could leverage this vulnerability to cause a denial-of-service condition or leak the read memory.
+CVE-2020-27736 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:H).
+4.2.2    OUT-OF-BOUNDS READ CWE-125
+The DNS response parsing functionality does not properly validate various length and counts of the records. The parsing of malformed responses could result in a read past the end of an allocated structure. An attacker with a privileged position in the network could leverage this vulnerability to cause a denial-of-service condition or leak the memory past the allocated structure.
+CVE-2020-27737 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:H).
+4.2.3    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+The DNS domain name record decompression functionality does not properly validate the pointer offset values. The parsing of malformed responses could result in a read access past the end of an allocated structure. An attacker with a privileged position in the network could leverage this vulnerability to cause a denial-of-service condition.
+CVE-2020-27738 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:H).
+4.2.4    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+The DNS client does not properly randomize DNS transaction IDs. This could allow an attacker to poison the DNS cache or spoof DNS resolving.
+CVE-2021-25677 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+--------- Begin Update A Part 1 of 1---------
+
+SIMOTICS CONNECT 400, All versions prior to v0.5.0.0: Update to v0.5.0.0
+
+For versions prior to v0.5.0.0, Siemens recommends users follow general security recommendations in SSA-669158
+
+
+SIMOTICS CONNECT 400, All versions v0.5.0.0 or later and prior to v1.0.0.0 only affected by CVE-2021-25677: Update to v1.0.0.0 or later version
+
+--------- End Update A Part 1 of 1 ---------
+For additional information, please refer to Siemens Security Advisory SSA-669158
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens operational guidelines for Industrial Security, and following the recommendations in the product manuals.
+For further inquiries on security vulnerabilities in Siemens’ products and solutions, please contact Siemens ProductCERT.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

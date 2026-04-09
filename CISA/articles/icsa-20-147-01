@@ -1,0 +1,64 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Inductive Automation
+Equipment: Ignition
+Vulnerabilities: Missing Authentication for Critical Function, Deserialization of Untrusted Data
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-147-01 Inductive Automation Ignition (Update A) that was published June 2, 2020, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain sensitive information and perform remote code execution with SYSTEM privileges.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Inductive Automation Ignition are affected:
+
+Inductive Automation Ignition 7 Gateway versions prior to 7.9.14
+Inductive Automation Ignition 8 Gateway versions prior to 8.0.10
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected product lacks proper authentication required to query the server.
+CVE-2020-12004 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.2    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+The affected product lacks proper validation of user-supplied data, which can result in deserialization of untrusted data.
+CVE-2020-10644 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+The affected product is vulnerable to the handling of serialized data. The issue results from the lack of proper validation of user-supplied data, which can result in deserialization of untrusted data.
+CVE-2020-12000 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+--------- Begin Update B Part 1 of 2 ---------
+4.2.4    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Sensitive information can be obtained through the handling of serialized data. The issue results from the lack of proper authentication required to query the server.
+CVE-2020-14479 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+--------- End Update B Part 1 of 2 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Information Technology
+COUNTRIES/AREAS DEPLOYED: United States
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Pedro Ribeiro, Radek Domanski, Chris Anastasio (muffin), and Steven Seeley (mr_me) working with Trend Micro’s Zero Day Initiative reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Inductive Automation recommends upgrading the Ignition software to v8.0.10
+For those running v7.9.x, it is recommended to upgrade the Ignition software to v7.9.14
+--------- Begin Update B Part 2 of 2 ---------
+Please note CVE-2020-14479 does not have a fix in place. Induction Automation plans to correct this vulnerability in future product versions.
+It is recommended to restrict interaction with the service to trusted machines. Only clients and servers with a legitimate procedural relationship should be permitted to communicate with the service. This can be done in various ways, most notably with firewall rules/allow listing.
+For more information regarding software and patches, please refer to the specified version in Inductive Automation’s release notes.
+--------- End Update B Part 2 of 2 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

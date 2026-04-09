@@ -1,0 +1,44 @@
+
+Overview
+ICS CERT originally released Advisory ICSA-11-243-01P on the US-CERT secure Portal on August 31, 2011. This web page release was delayed to allow users time to download and install the update.
+ICS-CERT has received a report from GE concerning a stack-based buffer overflow vulnerability in the GE Intelligent Platform Proficy Plant Applications software suite.
+ICS-CERT has coordinated with GE Intelligent Platforms to validate this vulnerability, and GE has created a patch to address the issue. ICS-CERT has validated that the patch fully resolves this issue.
+Affected Products
+This vulnerability affects Proficy Plant Applications (Version 5.0 and prior).
+Impact
+This vulnerability could cause multiple Proficy services to crash and potentially allow an attacker to take control of a system running the affected software.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+According to GE, Proficy Plant Applications suite is an Operations Management software product that is deployed across multiple industries worldwide.
+Vulnerability Characterization
+Vulnerability Overview
+GE reported that a stack-based buffer overflow vulnerability exists because of the way that Proficy Plant Applications components process incoming TCP/IP message traffic. This vulnerability affects the following services:
+
+Proficy Server Manager (PRProficyMgr.exe) that listens on Port 12293/TCP by default
+Proficy Server Gateway (PRGateway.exe) that listens on Port 12294/TCP by default
+Proficy Remote Data Service (PRRDS.exe) that listens on Port 12299/TCP by default
+Proficy Server License Manager (PRLicenseMgr.exe) that listens on Port 12401/TCP by default
+
+CVE-2011-1919 has been assigned to this vulnerability.
+Vulnerability Details
+Exploitability
+This vulnerability is remotely exploitable.
+Existence of Exploit
+No publicly available exploits are known to specifically target this vulnerability.
+Difficulty
+Exploiting this vulnerability requires a moderate skill set.
+Mitigation
+GE Intelligent Platforms has released security advisories and free product updates Software Improvement Modules (SIMs) to address recently reported security vulnerabilities in Proficy software. GE Intelligent Platforms urges all customers to follow the recommendations in the security advisories, which can be found at http://support.ge-ip.com/support/index?page=kbchannel&id=S:KB14493. A valid GE SSO ID and Customer Service Number are required to access the advisories and updates.
+ICS-CERT and GE recommend that Proficy Plant Applications users update their systems with the latest product updates, listed below:
+
+Proficy Plant Applications 5.0 SIM 43
+Proficy Plant Applications 4.4.1 SIM v10
+
+Note: According to GE, Proficy SIMs are cumulative. All future SIMs will include these updates. In addition to installing the available updates, ICS-CERT recommends that customers using the affected products consider taking the following proactive measures to decrease the likelihood of successful exploitation of this vulnerability.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls with properly configured rules—particularly Ports 12401/TCP, 12293/TCP, 12294/TCP, and 12299/TCP—and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) provides a recommended practices section for control systems security on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

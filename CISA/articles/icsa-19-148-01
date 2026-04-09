@@ -1,0 +1,83 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Emerson
+Equipment: Ovation OCR400 Controller
+Vulnerabilities: Stack-based Buffer Overflow, Heap-based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow privilege escalation or remote code execution, or it may halt the controller.
+For clarification, the referenced hardware is running a software version the vendor retired in July 2015. The identified vulnerabilities exist in a third-party embedded software version discontinued by that vendor.
+In addition, the vulnerable services are disabled by default in all product releases since 2007.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Emerson Ovation Controller OCR400, a process control device, are affected:
+
+Emerson Ovation OCR400 Controller running Ovation Version 3.3.1 or earlier
+
+These discontinued product versions include an embedded third-party FTP server, which is the vulnerable component. The vulnerable version of the FTP server was discontinued by that vendor several years ago.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+A stack-based buffer overflow vulnerability has been identified in the embedded third-party FTP server. The vulnerability involves improper handling of a long file name from the LIST command to the FTP service, which may cause the service to overwrite buffers, leading to remote code execution and escalation of privileges.
+CVE-2019-10967 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:N).
+3.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+A heap-based buffer overflow vulnerability has been identified in the embedded third-party FTP server. The vulnerability involves improper handling of a long command to the FTP service, which may cause memory corruption that halts the controller or leads to remote code execution and escalation of privileges.
+CVE-2019-10965 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:H/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Electrical (Power Generation), Water and Wastewater
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+VDLab, a collaboration of Venustech and Dongfang Electric Corporation (DEC), reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Emerson is issuing a notice to its customer base with mitigation recommendations, encouraging users with this older software to upgrade to a more current version supported by Emerson and the third-party vendor.
+For users with installations of the affected versions, Emerson recommends following the instructions outlined in Step 1 and Step 2 (below) to determine whether communication services (including FTP) have been enabled. If communication services have been enabled, Emerson recommends users return FTP services to their default (disabled) state as soon as is practical. If users are unable to make controller changes or disable communication services per the instructions below, they are strongly encouraged to restrict FTP communications to the required database and controller drops only. Review Ovation Software and Hardware
+Step 1 – Check the Ovation Controller Type
+In Ovation Developer Studio, right-click on each controller object, select “Open” and review the “Controller Type” listed. Alternately, run a System Registration report and verify the “Model” for each controller.
+
+OCR400: The controller is potentially affected; continue with Step 2 (below)
+OCR161: The controller is not affected by the vulnerabilities detailed in this advisory, and can be disregarded
+
+Step 2 – Check the Ovation Software Version
+Ovation v3.0.4 and older
+FTP services cannot be disabled using the Communications Services configuration detailed below. Emerson recommends users of retired systems, including Ovation v3.3.1 and older, consider upgrading to a more current version in which these issues do not exist.
+However, separate mitigation involving network configuration may still be possible. Please refer to the “Review Ovation Highway Switch Configuration” section (below).
+Ovation v3.1.0 – v3.3.1
+Follow the “Determine Current State of Communications Services” (below).
+Ovation v3.5.0 and Newer
+FTP communications services cannot be enabled. This advisory does not apply to those versions.
+Determine Current State of Communication Services
+Two methods exist for checking the current state of controller communication services:
+1.    Ovation Developer Studio
+2.    Controller Diagnostics application
+Method 1 – Use Ovation Developer Studio to determine the state and modify as needed
+The steps necessary to review and/or modify communications services settings can be found in Section 5.10.1 of the Developer Studio User Guide for Ovation 3.3.1 (PWS_005981), which is available on the Ovation Users’ Group website: www.ovationusers.com (this website requires registration).
+Method 2 – Use Controller Diagnostics to determine the state and modify as needed
+1.    Open the Controller Diagnostic application on an Ovation HMI.
+2.    Select a drop pair by double-clicking on it in the lower-left tree.
+3.    In the upper-left menu, verify the “Comm Services” section is set to “Disabled” for both the primary and secondary controllers.
+4.    If “Enabled,” left-click on the object to activate the drop-down menu and select “Disabled.” Review Ovation Highway Switch Configurations
+Systems using Cisco 2960 and/or 3750 switches on the Ovation Highway may be able to limit FTP communications (as well as telnet, rlogin, and SSH) using access control lists (ACLs). Please refer to the whitepaper “Enabling TELNET, SSH, RLOGIN & FTP Blocking on Ovation Switches,” which is available at www.ovationusers.com (Support and Security | Security | Network Whitepapers).
+Ovation Contact Information
+Ovation users with questions or concerns regarding the impact of these vulnerabilities on Ovation should contact the Ovation-CERT via email at OvationCERT@emerson.com or by phone at 1-800-445-9723, Option 3.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

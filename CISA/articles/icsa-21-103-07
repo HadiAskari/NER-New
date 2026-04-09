@@ -1,0 +1,122 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Web Server of SCALANCE X200
+Vulnerabilities: Heap-based Buffer Overflow, Stack-based Buffer Overflow
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-103-07 Siemens Web Server of SCALANCE X200 that was published April 13, 2021, on the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause a buffer overflow condition resulting in remote code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SCALANCE X200-4P IRT: All versions prior to 5.5.1
+SCALANCE X201-3P IRT: All versions prior to 5.5.1
+SCALANCE X201-3P IRT PRO: All versions prior to 5.5.1
+SCALANCE X202-2 IRT: All versions prior to 5.5.1
+SCALANCE X202-2P IRT (incl. SIPLUS NET variant): All versions prior to 5.5.1
+SCALANCE X202-2P IRT PRO: All versions prior to 5.5.1
+SCALANCE X204 IRT: All versions prior to 5.5.1
+SCALANCE X204 IRT PRO: All versions prior to 5.5.1
+SCALANCE XF201-3P IRT: All versions prior to 5.5.1
+SCALANCE XF202-2P IRT: All versions prior to 5.5.1
+SCALANCE XF204 IRT: All versions prior to 5.5.1
+SCALANCE XF204-2BA IRT: All versions prior to 5.5.1
+
+--------- Begin Update A Part 1 of 2 ---------
+
+SCALANCE X204-2 (incl. SIPLUS NET variant): All versions prior to 5.2.5
+SCALANCE X204-2FM: All versions prior to 5.2.5
+SCALANCE X204-2LD (incl. SIPLUS NET variant): All versions prior to 5.2.5
+SCALANCE X204-2LD TS: All versions prior to 5.2.5
+SCALANCE X204-2TS: All versions prior to 5.2.5
+SCALANCE X206-1: All versions prior to 5.2.5
+SCALANCE X206-1LD: All versions prior to 5.2.5
+SCALANCE X208 (incl. SIPLUS NET variant): All versions prior to 5.2.5
+SCALANCE X208PRO: All versions prior to 5.2.5
+SCALANCE X212-2 (incl. SIPLUS NET variant): All versions prior to 5.2.5
+SCALANCE X212-2LD: All versions prior to 5.2.5
+SCALANCE X216: All versions prior to 5.2.5
+SCALANCE X224: All versions prior to 5.2.5
+SCALANCE XF204: All versions prior to 5.2.5
+SCALANCE XF204-2 (incl. SIPLUS NET variant): All versions prior to 5.2.5
+SCALANCE XF206-1: All versions prior to 5.2.5
+SCALANCE XF208: All versions prior to 5.2.5
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+Incorrect processing of POST requests in the web server may result in an out-of-bounds write in the heap. An attacker could leverage this to cause a denial-of-service condition and remotely execute code.
+CVE-2021-25668 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    STACK-BASED BUFFER OVERFLOW CWE-121
+Incorrect processing of POST requests in the web server may write out-of-bounds in the stack. An attacker could leverage this to cause a denial-of-service condition or remotely execute code.
+CVE-2021-25669 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens recommends upgrading the following products to v5.5.1:
+
+SCALANCE X200-4P IRT
+SCALANCE X201-3P IRT
+SCALANCE X201-3P IRT PRO
+SCALANCE X202-2 IRT
+SCALANCE X202-2P IRT (incl. SIPLUS NET variant)
+SCALANCE X202-2P IRT PRO
+SCALANCE X204 IRT
+SCALANCE X204 IRT PRO
+SCALANCE XF201-3P IRT
+SCALANCE XF202-2P IRT
+SCALANCE XF204 IRT
+SCALANCE XF204-2BA IRT
+
+--------- Begin Update A Part 2 of 2 ---------
+Siemens recommends upgrading the following products to v5.2.5 or later:
+
+SCALANCE X204-2 (incl. SIPLUS NET variant)
+SCALANCE X204-2FM
+SCALANCE X204-2LD (incl. SIPLUS NET variant) SCALANCE X204-2LD TS
+SCALANCE X204-2TS
+SCALANCE X206-1
+SCALANCE X206-1LD
+SCALANCE X208 (incl. SIPLUS NET variant)
+SCALANCE X208PRO
+SCALANCE X212-2 (incl. SIPLUS NET variant)
+SCALANCE X212-2LD
+SCALANCE X216
+SCALANCE X224
+SCALANCE XF204
+SCALANCE XF204-2 (incl. SIPLUS NET variant)
+SCALANCE XF206-1
+SCALANCE XF208
+
+--------- End Update A Part 2 of 2 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Limit network traffic of web servers of Scalance X switches to trusted connections by firewall rules (Ports 443/TCP and 80/TCP).
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-187092
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,86 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). 
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.0
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: WIBU Systems CodeMeter
+Vulnerability: Heap-Based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated attacker to escalate privileges or execute arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens, are affected:
+
+PSS(R)CAPE V14: All versions prior to V14.2023-08-23
+PSS(R)CAPE V15: All versions prior to V15.0.22
+PSS(R)E V34: All versions prior to V34.9.6
+PSS(R)E V35: All versions
+PSS(R)ODMS V13.0: All versions
+PSS(R)ODMS V13.1: All versions prior to V13.1.12.1
+SIMATIC PCS neo V3: All versions
+SIMATIC PCS neo V4: All versions
+SIMATIC WinCC OA V3.17: All versions
+SIMATIC WinCC OA V3.18: All versions
+SIMATIC WinCC OA V3.19: All versions prior to V3.19 P006
+SIMIT Simulation Platform: All versions
+SINEC INS: All versions
+SINEMA Remote Connect: All versions
+
+3.2 Vulnerability Overview
+3.2.1 HEAP-BASED BUFFER OVERFLOW CWE-122
+In CodeMeter Runtime versions up to 7.60b, there is a heap buffer overflow vulnerability which can potentially lead to a remote code execution. Currently, no PoC is known. To exploit the heap overflow, additional protection mechanisms need to be broken. Remote access is only possible if CodeMeter is configured as a server. If CodeMeter is not configured as a server, an attacker would need to log in to the machine where the CodeMeter Runtime is running or trick a user into sending a malicious request to CodeMeter. This might result in an escalation of privilege. (WIBU-230704-01)
+CVE-2023-3935 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+PSS(R)CAPE V14, PSS(R)CAPE V15, PSS(R)E V34, PSS(R)E V35, PSS(R)ODMS V13.0, PSS(R)ODMS V13.1, SIMATIC PCS neo V3, SIMATIC PCS neo V4, SIMATIC WinCC OA V3.17, SIMATIC WinCC OA V3.18, SIMATIC WinCC OA V3.19, SIMIT Simulation Platform, SINEC INS, SINEMA Remote Connect: If CodeMeter Runtime is configured as server: Limit remote access to systems where the CodeMeter Runtime network server is running
+SIMIT Simulation Platform: Ensure that only trusted persons have access to the system and avoid the configuration of additional local accounts
+PSS(R)CAPE V15, PSS(R)E V34, PSS(R)ODMS V13.1: For affected versions: Install WIBU Systems CodeMeter Runtime V7.60c or later version manually to fix the issue: Download the package from
+https://www.wibu.com/support/user/user-software.html and follow the installation instructions from WIBU Systems.
+SIMATIC PCS neo V3, SINEC INS, SINEMA Remote Connect: Currently no fix is planned
+SIMATIC PCS neo V4, SIMATIC WinCC OA V3.17, SIMATIC WinCC OA V3.18: Currently no fix is available
+PSS(R)ODMS V13.1: Update to V13.1.12.1 or later version
+PSS(R)CAPE V15: Update to V15.0.22 or later version
+SIMATIC WinCC OA V3.19: Update to V3.19 P006 or later version
+PSS(R)E V34: Update to V34.9.6 or later version
+PSS(R)E V35, SIMIT Simulation Platform: Install WIBU Systems CodeMeter Runtime V7.60c or later version manually to fix the issue: Download the package from
+https://www.wibu.com/support/user/user-software.html and follow the installation instructions from WIBU Systems.
+PSS(R)CAPE V14: CAPE V14 installations installed from material dated 2023-08-23 or later are not affected, as they contain a fixed version of CodeMeter Runtime.
+
+For installations of CAPE V14 using material earlier than 2023-08-23: Install WIBU Systems CodeMeter Runtime V7.60c or later version manually to fix the issue: Download the package from https://www.wibu.com/support/user/user-software.html and follow the installation instructions from WIBU Systems.
+
+PSS(R)ODMS V13.0: Install WIBU Systems CodeMeter Runtime V7.60c or later version manually to ﬁx the issue: Download the package from
+https://www.wibu.com/support/user/user-software.html and follow the installation instructions from WIBU Systems.
+PSS(R)CAPE V14, PSS(R)CAPE V15, PSS(R)E V34, PSS(R)E V35, PSS(R)ODMS V13.0, PSS(R)ODMS V13.1, SIMATIC PCS neo V3, SIMATIC PCS neo V4, SIMATIC WinCC OA V3.17, SIMATIC WinCC OA V3.18, SIMATIC WinCC OA V3.19, SIMIT Simulation Platform, SINEC INS, SINEMA Remote Connect: If CodeMeter Runtime is configured as client only in the affected product: Ensure that only trusted persons have access to the system and avoid the configuration of additional local accounts
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-240541 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability has a high attack complexity.
+5. UPDATE HISTORY
+
+September 14, 2023: Initial Publication
+

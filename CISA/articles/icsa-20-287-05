@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.4
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: Desigo Insight
+Vulnerabilities: SQL Injection, Improper Restriction of Rendered UI Layers or Frames, Exposure of Sensitive Information to an Unauthorized Actor
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to retrieve or modify data and gain access to sensitive information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+Desigo Insight: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+The web service does not properly apply input validation for some query parameters, which may allow an attacker to retrieve data via a content based blind SQL injection attack. 
+CVE-2020-15792 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.2    IMPROPER RESTRICTION OF RENDERED UI LAYERS OR FRAMES CWE-1021
+The affected product is vulnerable to clickjacking, which may allow an attacker to retrieve or modify data in the context of a legitimate user by tricking that user to click on a website controlled by the attacker. 
+CVE-2020-15793 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N).
+3.2.3    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The affected product is vulnerable to exposure of sensitive information, which may allow an attacker to retrieve additional information about the host system. 
+CVE-2020-15794 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Davide De Rubeis, Damiano Proietti, Matteo Brutti, Stefano Scipioni, and Massimiliano Brolli from TIM Security Red Team Research reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Update to v6.0 SP5 and apply Hotfix 2 or later.
+Disable Desigo Insight Web, if not used. 
+Restrict the access to allow only authorized users to access the web applications.
+Only access links from trusted sources in the browser used to access Desigo Insight Web.
+
+As a general security measure Siemens strongly recommends protecting network access to affected products with appropriate mechanisms. It is advised to follow recommended security practices and run the devices in a protected IT environment.
+For additional information, please refer to Siemens Security Advisory SSA-226339
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.

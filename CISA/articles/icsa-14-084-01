@@ -1,0 +1,67 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on March 25, 2014, and is now being released to the NCCIC/ICS-CERT web site.
+K. Reid Wightman of IOActive, Inc. has identified vulnerabilities in Festo’s CECX-X-C1 and CECX-X-M1 controllers. Festo has decided not to resolve these vulnerabilities because of compatibility reasons with existing engineering tools. This places critical infrastructure asset owners using this product at risk. This advisory is being published to alert critical infrastructure asset owners of the risk of using this equipment and for them to increase compensating measures if possible.
+These vulnerabilities can be remotely exploited, and public exploit code is known to be available.
+AFFECTED PRODUCTS
+The following Festo products are affected:
+
+CECX-X-C1 Modular Master Controller with CoDeSys, and
+CECX-X-M1 Modular Controller with CoDeSys and SoftMotion.
+
+IMPACT
+Reid Wightman discovered several vulnerabilities in the Festo CECX-X-M1 Modular Controller. These are:
+
+An FTP backdoor.
+Two unauthenticated ports (Port 4000/TCP debug service port and Port 4001/TCP log service port) that allow modification of memory and logging.
+All CoDeSys commands are executed without authentication because of two known vulnerabilities in the CoDeSys V2.3 runtime version.
+
+This product is used industrywide as a programmable logic controller with inclusion of a multiaxis controller for automated assembly and automated manufacturing. Identified customers are in solar cell manufacturing, automobile assembly, general assembly and parts control, and airframe manufacturing where tolerances are particularly critical to end product operations. An attacker could change the tolerances of assembly and remove record of the change.
+According to the Festo product web page, other products are using newer versions of CoDeSys software and may not be vulnerable to the CoDeSys vulnerability, but this has not been evaluated by the researcher.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Festo is a German industrial control and automation company based in Esslingen am Neckar, Germany. Its US Headquarters are located in Hauppauge, New York.
+The affected product, CECX-X-M1 controller, is a programmable logic controller with inclusion of a multi-axis controller primarily used for factory assembly processes. According to Festo, CECX-X-M1 controllers are deployed across several sectors including Critical Manufacturing. Festo has subsidiaries and resellers in 176 countries.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER AUTHENTICATIONCWE-287: Improper Authentication,  http://cwe.mitre.org/data/definitions/287.html, web site last accessed April 24, 2014.
+
+The Festo CECX-X-M1 controller has an FTP backdoor, allowing unauthenticated access. An attack could allow the attacker to cause a crash or to execute arbitrary code.
+CVE-2014-0760NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0760, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is AV:N/AC:M/Au:N/C:C/I:C/A:C.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed April 24, 2014.
+
+IMPROPER AUTHENTICATIONCWE-287: Improper Authentication,  http://cwe.mitre.org/data/definitions/287.html, web site last accessed April 24, 2014.
+
+Two unauthenticated ports (Port 4000/TCP debug service port and Port 4001/TCP log service port) could allow modification of memory and logging. This could allow an attacker to change configuration settings and remove log records of system change/error, hiding malicious activity.
+CVE-2014-0769NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0769, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is AV:N/AC:M/Au:N/C:C/I:C/A:C.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed April 24, 2014.
+
+IMPROPER ACCESS CONTROLCWE-284: Improper Access Control,  http://cwe.mitre.org/data/definitions/284.html, web site last accessed April 24, 2014.
+
+TheCoDeSys v2.3 runtime module used by the Festo CECX-X-M1 has been shown to be vulnerable (ICSA-13-011-01 3S CoDeSys Multiple Vulnerabilities). By not updating this runtime module to newer, nonvulnerable versions, any CoDeSys command sent to this module is accepted without authentication.
+CVE-2012-6068NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-6068, web site last accessed April 24, 2014. was assigned to this vulnerability in January 2013. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is AV:N/AC:L/Au:N/C:C/I:C/A:C.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed April 24, 2014.
+
+DIRECTORY TRAVERSALCWE-284: Improper Access Control,  http://cwe.mitre.org/data/definitions/284.html, web site last accessed April 24, 2014.
+
+TheCoDeSys v2.3 runtime module used by the Festo CECX-X-M1 has been shown to be vulnerable (ICSA-13-011-01 3S CoDeSys Multiple Vulnerabilities). By not updating this runtime module to newer, nonvulnerable versions, any CoDeSys command sent to this module is accepted without authentication.
+The CoDeSys Runtime Toolkit’s file transfer functionality does not perform input validation, which allows an attacker to access files and directories outside the intended scope. This may allow an attacker to upload and download any file on the device. This could allow the attacker to affect the availability, integrity, and confidentiality of the device.
+CVE-2012-6069NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-6069, web site last visited April 24, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is AV:N/AC:L/Au:N/C:C/I:C/A:C.CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed April 24, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target these vulnerabilities are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Festo has decided not to resolve these vulnerabilities, placing critical infrastructure asset owners using this product at risk. This advisory is being published to alert critical infrastructure asset owners of the risk of using this equipment, and to increase compensating security measures if possible.
+Some of these compensating measures can be:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+Investigate the practicality of configuring and deploying an intrusion detection system (IDS) to log and monitor the control system network, as well as adjacent networks.
+Configure, activate, and test existing defenses, such as port security and traffic logging, among other defensive strategies in the recommended practices document listed below.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,120 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the updated advisory titled ICSA-15-125-01A Hospira LifeCare PCA Infusion System Vulnerabilities that was published May 13, 2015, on the NCCIC/ICS-CERT web site.
+--------- Begin Update B Part 1 of 9 --------
+Independent researcher Billy Rios has identified vulnerabilities in Hospira’s LifeCare PCA Infusion System, which ICS-CERT has been coordinating with Hospira since May 2014. Kyle Kamke of Ramparts, LLC has independently identified an uncontrolled resource consumption vulnerability in Hospira’s Symbiq Infusion System. Hospira has not validated that this vulnerability exists on the LifeCare PCA System.
+--------- End Update B Part 1 of 9 ----------
+ICS-CERT has become aware of publicly disclosed vulnerabilities in the LifeCare Infusion System, which have been validated by Hospira. ICS-CERT is reporting on these additional vulnerabilities identified by “tech” to provide notice, so that asset owners and operators can take additional defensive measures to mitigate risks associated with these vulnerabilities.
+Hospira has developed a new version of the LifeCare PCA Infusion System and has stated that this new version will mitigate these vulnerabilities. Hospira has submitted a premarket 510(k) submission of the new LifeCare PCA Infusion System to the U.S. Food and Drug Administration (FDA), and this submission is currently under review. The release of the new system will be dependent on the clearance of Hospira’s 510(k).
+These vulnerabilities could be exploited remotely. Exploits that target some of these vulnerabilities are known to be publicly available.
+AFFECTED PRODUCTS
+The following Hospira products are affected:
+
+LifeCare PCA Infusion System, Version 5.0 and prior versions.
+
+IMPACT
+--------- Begin Update B Part 2 of 9 --------
+Successful exploitation of these vulnerabilities, in a worst case scenario, may allow an attacker to impact the core functions of the device.
+--------- End Update B Part 2 of 9 ----------
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Hospira is a US-based company that maintains offices in several countries around the world.
+The affected product, the LifeCare PCA Infusion System, is an intravenous pump that delivers medication to patients. The affected products are deployed across the Healthcare and Public Health Sector. Hospira estimates that these products are primarily used in the US and Canada.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+--------- Begin Update B Part 3 of 9 --------
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed June 10, 2015.
+
+The researcher has evaluated the device and asserts that the device contains a buffer overflow vulnerability that could be exploited to allow execution of arbitrary code on the device. This vulnerability has not been validated by Hospira; however, acting out of an abundance of caution, ICS-CERT is including this information to enhance healthcare providers’ awareness, so that additional monitoring and controls can be applied.
+CVE-2015-3955NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3955, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.6 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:H/Au:N/C:C/I:C/A:C, web site last accessed June 10, 2015.
+--------- End Update B Part 3 of 9 ----------
+
+IMPROPER AUTHORIZATIONCWE-285: Improper Authorization, http://cwe.mitre.org/data/definitions/285.html, web site last accessed May 13, 2015.
+
+The LifeCare PCA Infusion pump’s communication module gives unauthenticated users root privileges on Port 23/TELNET by default. An unauthorized user may be able to issue commands to modify the wireless configuration of the pump.
+CVE-2015-3459NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3459, web site last accessed May 13, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed May 13, 2015.
+--------- Begin Update B Part 4 of 9 --------
+
+INSUFFICIENT VERIFICATION OF DATA AUTHENTICITYCWE-345: Insufficient Verification of Data Authenticity, http://cwe.mitre.org/data/definitions/345.html, web site last accessed June 10, 2015.
+
+The LifeCare PCA Infusion pump could have drug libraries, software updates, and configuration changes uploaded to it from an unauthorized source. The LifeCare PCA Infusion pump listens on the following ports: Port 20/FTP, Port 23/TELNET, Port 80/HTTP, Port 443/HTTPS, and Port 5000/UPNP.
+CVE-2014-5406NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5406, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.6 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:H/Au:N/C:C/I:C/A:C, web site last accessed June 10, 2015.
+--------- End Update B Part 4 of 9 ----------
+
+USE OF HARDCODED PASSWORDCWE-259: Use of Hard-coded Password, http://cwe.mitre.org/data/definitions/259.html, web site last accessed May 13, 2015.
+
+Hardcoded accounts may be used to access the device.
+CVE-2015-1011NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1011, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed May 13, 2015.
+
+CLEARTEXT STORAGE OF SENSITIVE INFORMATIONCWE-312: Cleartext Storage of Sensitive Information, http://cwe.mitre.org/data/definitions/312.html, web site last accessed May 13, 2015.
+
+Wireless keys are stored in plain text on Version 5 of the LifeCare PCA Infusion System. According to Hospira, Version 3 of the LifeCare PCA Infusion System is not indicated for wireless use, is not shipped with wireless capabilities, and should not be modified to be used in a wireless capacity in a clinical setting.
+CVE-2015-1012NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1012, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.4 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:N, web site last accessed May 13, 2015.
+--------- Begin Update B Part 5 of 9 --------
+
+KEY MANAGEMENT ERRORSCWE-320: Key Management Errors, http://cwe.mitre.org/data/definitions/320.html, web site last accessed June 10, 2015.
+
+Private keys and certificates are stored on the device.
+CVE-2015-3957NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3957, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.6 has been assigned; the CVSS vector string is (AV:L/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:N/C:P/I:P/A:P, web site last accessed June 10, 2015.
+--------- End Update B Part 5 of 9 ----------
+
+VULNERABLE SOFTWARE VERSION USED
+
+The web server is reportedly running vulnerable versions of AppWeb, to include Version 1.0.2, which contain numerous vulnerabilities. This vulnerability impacts LifeCare PCA Infusion Systems Version 5, prior to Version 5.07. According to Hospira, Version 3 of the LifeCare PCA Infusion System does not have wireless capability and, therefore, does not use the vulnerable versions of AppWeb.
+--------- Begin Update B Part 6 of 9 --------
+
+UNCONTROLLED RESOURCE CONSUMPTIONCWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion'), http://cwe.mitre.org/data/definitions/400.html, web site last accessed June 10, 2015.
+
+The device is susceptible to a denial of service condition as a result of an overflow of TCP packets, which requires the device to be manually rebooted. This vulnerability has not been validated by Hospira; however, acting out of an abundance of caution, ICS-CERT is including this information to enhance healthcare providers’ awareness, so that additional monitoring and controls can be applied.
+CVE-2015-3958NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3958, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:C, web site last accessed June 10, 2015.
+--------- End Update B Part 6 of 9 ----------
+VULNERABILITY DETAILS
+--------- Begin Update B Part 7 of 9 --------
+EXPLOITABILITY
+All but one of these vulnerabilities could be exploited remotely.
+--------- End Update B Part 7 of 9 ----------
+EXISTENCE OF EXPLOIT
+Exploits that target some of these vulnerabilities are known to be publicly available.
+--------- Begin Update B Part 8 of 9 --------
+DIFFICULTY
+An attacker with low skill would be able to exploit all but two of these vulnerabilities; the remaining vulnerabilities would require high skill to exploit.
+--------- End Update B Part 8 of 9 ----------
+MITIGATION
+ICS-CERT has been working with Hospira since May 2014 to address the vulnerabilities in the LifeCare PCA Infusion System. Hospira has developed a new version of the PCS Infusion System, Version 7.0 that addresses the identified vulnerabilities. According to Hospira, Version 7.0 has Port 20/FTP and Port 23/TELNET closed by default to prevent unauthorized access.
+Hospira has developed a new version of the LifeCare PCA Infusion System and has stated that this new version will mitigate these vulnerabilities. Specifically, the new version is intended to:
+
+Mitigate unauthorized remote access to the device,
+Disable the ability for unauthorized changes to the medication library,
+Remove hard-coded passwords to gain access to the device,
+Encrypt storage of wireless network keys, and
+Ensure that the vulnerable versions of AppWeb are no longer used.
+
+Existing PCA Infusion Systems running Version 5.0 can be upgraded to Version 7.0 when it becomes available. Hospira will be retiring older versions of the LifeCare PCA Infusion System, Versions 2 and Versions 3, by the end of the year, 2015.
+Hospira’s premarket 510(k) submission for the new LifeCare PCA Infusion System (Version 7.0) is currently being reviewed by the FDA. The release of the new system will be dependent on the clearance of Hospira’s 510(k).
+For additional information about Hospira’s upcoming release, contact Hospira’s technical support at 1-800-241-4002.
+ICS-CERT strongly encourages asset owners to perform a risk assessment by examining their specific clinical use of the LifeCare PCA Infusion System in their host environment to identify any potential impacts of the identified vulnerabilities. ICS-CERT offers the following compensating options:
+
+Temporarily disconnect the affected LifeCare PCA Infusion System from the wireless network until unused ports on the device are closed, to include Port 20/FTP and Port 23/TELNET. Once the unused ports have been closed, reconnecting the affected device to the wireless network should be done after ensuring that the host network is isolated from the Internet. The affected LifeCare PCA Infusion Systems should be isolated from untrusted systems; traffic to the device should be selectively controlled and monitored for anomalous activity.
+Disconnect the affected LifeCare PCA Infusion System from the wireless network and use a wired connection to the host network. The operational concerns associated with this option are primarily associated with the initial setup of the wired connection and verifying that the host network effectively implements good design practices prior to connection of the LifeCare PCA Infusion System.
+If neither of the previous two options are feasible, then disconnect the affected LifeCare PCA Infusion System from the wireless network until mitigations are available. Disconnecting the affected device from the wireless network will have operational impacts. Disconnecting the device will require drug libraries to be updated manually and data normally transmitted to MedNet from the device, will not be available. Manual updates to each pump can be labor intensive and prone to entry error.
+
+ICS-CERT encourages asset owners to implement the following defensive measures to protect against this and other cybersecurity risks. Specifically, users should:
+
+Ensure that unused ports are closed, to include Port 20/FTP and Port 23/TELNET.
+
+--------- Begin Update B Part 9 of 9 --------
+
+Hospira strongly recommends that healthcare providers change the default password used to access Port 8443.
+Monitor and log all network traffic attempting to reach the affected product via Port 20/FTP, Port 23/TELNET and Port 8443.
+
+--------- End Update B Part 9 of 9 ----------
+
+Maintain layered physical and logical security to implement defense-in-depth security practices for environments operating medical devices.
+Isolate the LifeCare PCA Infusion pump from the Internet and untrusted systems.
+Produce an MD5 checksum of key files to identify any unauthorized changes.
+Use good design practices that include network segmentation. Use DMZs with properly configured firewalls to selectively control traffic and monitor traffic passed between zones and systems to identify anomalous activity. Use the static nature of these isolated environments to look for anomalous activities.
+
+ICS-CERT also provides a section for security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

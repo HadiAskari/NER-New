@@ -1,0 +1,45 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Measuresoft 
+Equipment: ScadaPro Server
+Vulnerability: Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a local user with limited privileges to modify the service binary path and start malicious commands with SYSTEM privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Measuresoft reports this vulnerability affects the following product: 
+
+ScadaPro Server: version 6.7
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+The security descriptor of the service has inconsistent permissions, which could allow a local user with limited privileges to modify the service binary path and start malicious commands with SYSTEM privileges.
+CVE-2022-3263 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+3.4 RESEARCHER
+@rgod777, working with Trend Micro Zero Day Initiative, reported this vulnerability to CISA.
+4. MITIGATIONS
+Measuresoft recommends the following steps to remove full access to the ORCHESTRATOR service:
+
+Open a command-line window (CMD) with 'run as administrator'
+Use the following command to make the permission change to the ORCHESTRATOR service: sc sdset ORCHESTRATOR D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)
+As a low-level user, attempt to shut down the ORCHESTRATOR service: sc stop ORCHESTRATOR. User will be denied. It will no longer be possible to edit the configuration of the service by a low-level user.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Ensure the least-privilege user principle is followed.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. This vulnerability has a low attack complexity.

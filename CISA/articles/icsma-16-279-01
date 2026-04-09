@@ -1,0 +1,53 @@
+
+OVERVIEW
+Rapid7 has identified vulnerabilities in the cybersecurity of the Animas OneTouch Ping insulin pump system. Animas will not be releasing a patch or new version to mitigate these vulnerabilities. Animas has provided compensating controls to help reduce the risk associated with the exploitation of the identified vulnerabilities, and these compensating controls may impact device functionality.
+These vulnerabilities could be exploited remotely via radio frequency communications.
+Detailed vulnerability information is publicly available that could be used to develop an exploit that targets these vulnerabilities.
+AFFECTED PRODUCTS
+The following OneTouch Ping insulin pump system versions are affected:
+
+Animas OneTouch Ping insulin pump system, all versions.
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow an attacker to spoof radio frequency communications between the meter remote and the pump to issue unauthorized commands or replay captured communications to control the pump, to include administering insulin. The impact associated with the successful exploitation of these vulnerabilities could have a direct impact on patient safety.
+BACKGROUND
+Animas is a subsidiary of Johnson & Johnson and is a US-based company that maintains offices in several countries around the world.
+The affected product, the OneTouch Ping insulin pump system, is a two-part system consisting of a meter remote that uses radio frequency communication to wirelessly communicate to the pump to deliver insulin.
+According to Animas, the OneTouch Ping insulin pump system is deployed across the Healthcare and Public Health sector. Animas states that this product is marketed in the U.S. and Canada.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATIONCWE-319: Cleartext Transmission of Sensitive Information, https://cwe.mitre.org/data/definitions/319.html, web site last accessed October 05, 2016.
+
+All communications between the meter remote unit and the pump are transmitted in cleartext.
+CVE-2016-5084NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5084, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N, web site last accessed October 05, 2016.
+
+USE OF INSUFFICIENTLY RANDOM VALUESCWE-330: Use of Insufficiently Random Values, https://cwe.mitre.org/data/definitions/330.html, web site last accessed October 05, 2016.
+
+The setup of the Animas OneTouch Ping insulin pump system involves a pairing process during which a checksum is generated, which is then used as an encryption key during communications. This value does not change between authentication handshakes between the meter remote unit and the pump.
+CVE-2016-5085NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5085, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.2 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N , web site last accessed October 05, 2016.
+
+AUTHENTICATION BYPASS BY CAPTURE-REPLAYCWE-294: Authentication Bypass by Capture-replay, https://cwe.mitre.org/data/definitions/294.html, web site last accessed October 05, 2016.
+
+An attacker can capture remote transmissions between the meter remote unit and the pump and replay them to initiate unauthorized commands, to include administering insulin.
+CVE-2016-5086NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-5086, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:L, web site last accessed October 05, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely via radio frequency communications.
+EXISTENCE OF EXPLOIT
+Detailed vulnerability information is publicly available that could be used to develop an exploit that targets these vulnerabilities.
+DIFFICULTY
+An attacker with high skill would be able to exploit these vulnerabilities.
+MITIGATION
+Animas does not plan to release a firmware update to address the identified vulnerabilities. Animas reports that customer notifications are being sent to patients and HealthCare professionals, which is available on Animas’ web site at the following location:
+https://www.animas.com/sites/default/files/pdf/FINAL%20Letter%20to%20patients%20regarding%20OTP_10.04.16.16_WEB%20VERSION.PDF.
+Animas has provided the following compensating controls to help reduce the risk associated with the exploitation of the identified vulnerabilities:
+
+The pump’s radio frequency feature can be turned off, which is explained in Chapter 2 of Section III of the OneTouch Ping Owner’s Booklet. However, turning off this feature means that the pump and meter remote will no longer communicate and blood glucose readings will need to be entered manually on the pump.
+If patients choose to use the meter remote feature, another option for protection is to program the OneTouch Ping pump to limit the amount of bolus insulin that can be delivered. Bolus deliveries can be limited through a number of customizable settings (maximum bolus amount, 2-hour amount, and total daily dose). Any attempt to exceed or override these settings will trigger a pump alarm and prevent bolus insulin delivery. For more information, please see Chapter 10 of Section I of the OneTouch Ping Owner’s Booklet.
+Animas also suggests turning on the Vibrating Alert feature of the OneTouch Ping system, as described in Chapter 4 of Section I. This notifies the user that a bolus dose is being initiated by the meter remote, which gives the patient the option of canceling the bolus.
+The bolus delivery alert and the customizable limits on bolus insulin can only be enabled on the pump and cannot be altered by the meter remote. This is also true of basal insulin. Patients can also be reminded that any insulin delivery and the source of the delivery (pump or meter remote) are recorded in the pump history, so your patients can review the bolus dosing.
+
+For additional information about the vulnerabilities or the compensating controls, users can contact the Animas Customer Technical Support at:
+RA-ANMUS-CustomSupp@its.jnj.com or 1-877-937-7867.
+NCCIC/ICS-CERT reminds users to perform proper impact analysis and risk assessment prior to deploying compensating controls.

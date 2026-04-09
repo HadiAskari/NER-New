@@ -1,0 +1,55 @@
+
+OVERVIEW
+This advisory provides mitigation details for vulnerabilities that impact the Siemens WinCC Web Navigator 7.2.
+Researchers Alexander Tlyapov, Sergey Gordeychik, and Timur Yunusov of Positive Technologies have identified multiple vulnerabilities in the Siemens WinCC Web Navigator 7.2 application. Siemens has produced an update that mitigates these vulnerabilities. Siemens ProductCERT has tested the update to validate that it resolves the vulnerabilities. Exploitation of these vulnerabilities could allow an attacker to probe for valid NetBIOS user names, log onto the system as an authenticated user, or have full access to the system. This could affect multiple industries, including food and beverage, water and wastewater, oil and gas, and chemical sectors worldwide.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+WinCC 7.2 and earlier, and
+SIMATIC PCS7 V8.0 SP1 and earlier.
+
+IMPACT
+Successful exploitation of these vulnerabilities may result in an attacker having the ability to probe for valid NetBIOS user names, log onto the system as an authenticated user, or have full access to the system running the software.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany. Siemens develops products mainly in the energy, transportation, and healthcare sectors.
+WinCC Web Navigator 7.2 is a software package used as an interface between the operator and the programmable logic controllers (PLCs). WinCC Web Navigator 7.2 performs the following tasks: process visualization, operator control of the process, alarm display, process value and alarm archiving, and machine parameter management. This software is used in many industries, including food and beverage, water and wastewater, oil and gas, and chemical.
+VULNERABILITY CHARACTERIZATION 
+VULNERABILITY OVERVIEW
+
+SQL INJECTIONCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection'),  http://cwe.mitre.org/data/definitions/89.html, Web site last accessed June 18, 2013.
+
+The WinCC Web Navigator 7.2 has input filtering in the login screen that can be overcome, allowing injection of SQL statements into queries. By manipulating the database, an attacker can elevate his rights. This could allow the attacker to gain full system access.
+CVE-2013-3957NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3957, Web site last accessed June 18, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 7.5 has been assigned by the vendor; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P, Web site last accessed June 18, 2013.
+
+HARD-CODED CREDENTIALSCWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, Web site last accessed June 18, 2013.
+
+The WinCC Web Navigator 7.2 has hard-coded credentials used in the login system. Attackers with network access and knowledge of the credentials could log into the Web Navigator Web applications as an authenticated user. This could allow the attacker to execute any system action provided to an authenticated user.
+CVE-2013-3958NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3958, Web site last accessed June 18, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 7.5 has been assigned by the vendor; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P Web site last accessed June 18, 2013.
+
+FORCED BROWSINGCWE-425: Direct Request ('Forced Browsing'),  http://cwe.mitre.org/data/definitions/425.html, Web site last accessed June 18, 2013.
+
+The WinCC Web Navigator 7.2 allows a user with authenticated access to probe for valid NetBIOS user names by manipulating URL parameters. This could allow the attacker to obtain user names with heightened privileges.
+CVE-2013-3959NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3959, Web site last accessed June 18, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 4.0 has been assigned by the vendor; the CVSS vector string is (AV:N/AC:L/Au:S/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:P/I:N/A:N Web site last accessed June 18, 2013.
+VULNERABILITY DETAILS 
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens has produced a software update that resolves these vulnerabilities. The update can be applied to all versions of WinCC Web Navigator starting with Version 7.2. Siemens recommends that asset owners and operators contact Siemens customer support to acquire the update.
+Siemens update information is located here:
+http://support.automation.siemens.com/WW/view/en/73443294
+Siemens security advisory is located here:
+http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-345843.pdf
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed June 18, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed June 18, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

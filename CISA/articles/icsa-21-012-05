@@ -1,0 +1,73 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE X Products
+Vulnerabilities: Missing Authentication for Critical Function, Heap-based Buffer Overflow
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-012-05 Siemens SCALANCE X Products (Update A) that was published February 9, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause denial-of-service conditions and further impact the system through heap and buffer overflows.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that these vulnerabilities affect the following SCALANCE X products: 
+--------- Begin Update B Part 1 of 2 ---------
+
+SCALANCE X-200 switch family (incl. SIPLUS NET variants): All versions prior to v5.2.5
+
+--------- End Update B Part 1 of 2 ---------
+
+SCALANCE X-200IRT switch family (incl. SIPLUS NET variants): All versions prior to v5.5.0
+SCALANCE X-300 switch family (incl. X408 and SIPLUS NET variants): All versions prior to v4.1.0, only affected by CVE-2020-15800
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+This vulnerability could allow an unauthenticated attacker to reboot the device over the network using special URLs from integrated web server of the affected products. 
+CVE-2020-15799 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+The web server of the affected devices contains a vulnerability that may lead to a heap-overflow condition. An attacker could cause this condition on the web server by sending specially crafted requests. This could stop the web server temporarily. 
+CVE-2020-15800 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    HEAP-BASED BUFFER OVERFLOW CWE-122
+The web server of the affected devices contains a vulnerability that may lead to a buffer-overflow condition. An attacker could cause this condition on the web server by sending a specially crafted request. The web server could stop and not recover. 
+CVE-2020-25226 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND\
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens has released updates for several affected products and recommends updating to the latest version(s). Siemens recommends countermeasures where fixes are not currently available.
+--------- Begin Update B Part 2 of 2 ---------
+
+SCALANCE X-200 switch family (incl. SIPLUS NET variants): Update to v5.2.5 or later
+
+--------- End Update B Part 2 of 2 ---------
+
+SCALANCE X-300 switch family: Update to v4.1.0 or later
+SCALANCE X-200IRT switch family (incl. SIPLUS NET variants): Update to v5.5.0 or later
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Limit network traffic of web servers of SCALANCE X switches to trusted connections by firewall rules (Port 443/TCP).
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for Industrial Security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-139628
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

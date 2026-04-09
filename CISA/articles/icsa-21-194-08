@@ -1,0 +1,60 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: Solid Edge
+Vulnerabilities: Heap-based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in an out-of-bounds write, a buffer overflow condition that may allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siemens Solid Edge, a portfolio of software tools, are affected:
+
+All versions prior to SE2021MP5
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+The plmxmlAdapterSE70.dll library in affected applications lacks proper validation of user-supplied data when parsing PAR files. This could result in an out-of-bounds write past the fixed-length heap-based buffer. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-34326 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+The plmxmlAdapterSE70.dll library in affected applications lacks proper validation of user-supplied data when parsing ASM files. This could result in an out-of-bounds write past the fixed-length heap-based buffer. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-34327 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    HEAP-BASED BUFFER OVERFLOW CWE-122
+The plmxmlAdapterSE70.dll library in affected applications lacks proper validation of user-supplied data when parsing PAR files. This could result in an out-of-bounds write past the fixed-length heap-based buffer. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-34328 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    HEAP-BASED BUFFER OVERFLOW CWE-122
+The plmxmlAdapterSE70.dll library in affected applications lacks proper validation of user-supplied data when parsing PAR files. This could result in an out-of-bounds write past the fixed-length heap-based buffer. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-34329 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Mat Powell, working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific mitigations and workarounds users can apply to reduce the risk:
+
+Update to SE2021MP5 or later version (login required)
+Avoid opening untrusted files from unknown sources in Solid Edge
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens Operational Guidelines for Industrial Security, and follow the recommendations in the product manual.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information about this issue, please see Siemens Security Advisory SSA-173615.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

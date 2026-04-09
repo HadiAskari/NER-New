@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: LOGO!
+Vulnerabilities: Insufficiently Protected Credentials, Man-in-the-Middle
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-17-243-02 Siemens LOGO! that was published August 31, 2017, on the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to hijack existing web sessions.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports the vulnerabilities affect the following LOGO! devices: 
+--------- Begin Update A Part 1 of 2 ---------
+
+LOGO! 8 BM (incl. SIPLUS variants): All versions prior to v1.81.2
+LOGO! 8 BM (incl. SIPLUS variants): All versions prior to v8.3
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+An attacker with network access to the integrated web server on Port 80/TCP could obtain the session ID of an active user session. A user must be logged in to the web interface. Siemens recommends that users use the integrated web server on Port 80/TCP only in trusted networks. 
+CVE-2017-12734 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.2    CHANNEL ACCESSIBLE BY NON-ENDPOINT (MAN-IN-THE-MIDDLE) CWE-300
+An attacker who performs a man-in-the-middle attack between the LOGO! and other devices could potentially decrypt and modify network traffic. 
+CVE-2017-12735 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Maxim Rupp discovered one of these two vulnerabilities.
+5. MITIGATIONS
+Siemens provides LOGO!8 BM FS-05 with firmware Version 1.81.2, which fixes the first Insufficiently Protected Credentials vulnerability.
+--------- Begin Update A Part 2 of 2 ---------
+Siemens recommends users update to v8.3 to mitigate the Man-in-the-Middle vulnerability. 
+NOTE: To update, a new hardware version is required.
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Configure the environment according to the recommendations in the Siemens user manual.
+Apply cell protection concept.
+Use VPN for protecting network communication between cells.
+Apply defense-in-depth.
+
+--------- End Update A Part 2 of 2 ---------
+As a general security measure, Siemens strongly recommends protecting network access to the devices with appropriate mechanisms. Siemens advises configuring the environment according to Siemens operational guidelines to run the devices in a protected IT environment.
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens Security Advisory SSA-087240
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

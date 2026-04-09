@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.3
+ATTENTION: Low attack complexity
+Vendor: AVEVA
+Equipment: Platform Common Services (PCS) Portal
+Vulnerability: Uncontrolled Search Path Element
+
+2. RISK EVALUATION
+The DLL hijacking vulnerability in the Platform Common Services (PCS) Portal, if exploited, could allow malicious code execution within the context of the PCS Portal application.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the AVEVA Software Platform Common Services (PCS) Portal are affected:
+
+PCS Versions 4.5.2, 4.5.1, 4.5.0, and 4.4.6
+
+The following products ship a vulnerable version of the PCS Portal application and are affected:
+
+AVEVA System Platform 2020 R2 P01, 2020 R2, and 2020
+AVEVA Work Tasks 2020 Update 1
+AVEVA Work Tasks 2020
+AVEVA Mobile Operator 2020
+AVEVA Manufacturing Execution System 2020
+AVEVA Batch Management 2020
+AVEVA Enterprise Data Management 2021
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED SEARCH PATH ELEMENT CWE-427
+The affected products are vulnerable to DLL hijacking through an uncontrolled search path element, which may allow an attacker control to one or more locations in the search path.
+CVE-2021-38410 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+3.4 RESEARCHER
+Noam Moshe of Claroty discovered and disclosed the vulnerability to the AVEVA Software Security Response Center.
+4. MITIGATIONS
+AVEVA recommends organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation. Users of affected versions of the products should apply the corresponding security update as soon as possible.
+Security update PCS 4.5.3 is available for the following versions:
+
+AVEVA Mobile Operator 2020
+AVEVA Enterprise Data Management 2021
+AVEVA System Platform 2020 R2 P01
+AVEVA System Platform 2020 R2
+AVEVA Work Tasks 2020 Update 1
+
+Security update PCS 4.4.7 is available for the following versions:
+
+AVEVA System Platform 2020
+AVEVA Work Tasks 2020
+AVEVA Manufacturing Execution System 2020
+AVEVA Batch Management 2020
+
+For more information on this issue, including security updates, please see Security Bulletin AVEVA-2021-008
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Reduce the attack surface by hard-coding the search path to a set of known-safe values (such as system directories), or only allow them to be specified by the administrator in a configuration file.
+Reduce the attack surface by invoking other programs using fully qualified pathnames.
+Reduce the attack surface by removing or restricting all environment settings before invoking other programs.
+Check the search path before use and removing any elements that are likely to be unsafe, such as the current working directory or a temporary files directory.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

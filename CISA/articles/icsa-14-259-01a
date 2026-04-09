@@ -1,0 +1,90 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-259-01 Schneider Electric SCADA Expert ClearSCADA Vulnerabilities that was published September 16, 2014, on the NCCIC/ICS-CERT web site.
+Independent researcher Aditya Sood has identified a weak hashing algorithm and cross-site scripting vulnerability in Schneider Electric’s StruxureWare SCADA Expert ClearSCADA. Schneider Electric has identified an additional vulnerability in its StruxureWare SCADA Expert ClearSCADA product line. Schneider Electric is in the process of producing a patch that mitigates these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Schneider Electric StruxureWare SCADA Expert ClearSCADA versions are affected:
+
+ClearSCADA 2010 R3 (build 72.4560),
+ClearSCADA 2010 R3.1 (build 72.4644),
+SCADA Expert ClearSCADA 2013 R1 (build 73.4729),
+SCADA Expert ClearSCADA 2013 R1.1 (build 73.4832),
+SCADA Expert ClearSCADA 2013 R1.1a (build 73.4903),
+SCADA Expert ClearSCADA 2013 R1.2 (build 73.4955),
+SCADA Expert ClearSCADA 2013 R2 (build 74.5094),
+SCADA Expert ClearSCADA 2013 R2.1 (build 74.5192), and
+SCADA Expert ClearSCADA 2014 R1 (build 75.5210).
+
+IMPACT
+The cross-site scripting vulnerability could be exploited to trick a user with system administration privileges logged in via the WebX client to unknowingly execute a remote shutdown of the ClearSCADA Server.
+The authentication bypass vulnerability could be exploited to expose potentially sensitive system information to users without requiring logon credentials.
+The self-signed web certificate provided with ClearSCADA uses MD5, a depreciated and weak signing algorithm and could be deciphered allowing an attacker to gain access to the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric corporate headquarters is located in Paris, France, and maintains offices in 190 countries worldwide.
+The affected products, SCADA Expert ClearSCADA, are web-based SCADA systems. According to Schneider Electric, SCADA Expert ClearSCADA is deployed across several sectors including Commercial Facilities, Energy, and Water and Wastewater Systems. Schneider Electric estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation (“Cross-site Scripting”), http://cwe.mitre.org/data/definitions/79.html, web site last accessed September 16, 2014.
+
+SCADA Expert ClearSCADA versions released prior to September 2014 may be vulnerable to specific web cross-site scripting attacks. The attacker would have to trick the user with system administration privileges logged in via the WebX client interface to exploit this vulnerability. The attacker could then execute a remote shutdown of the ClearSCADA Server. Social engineering is required to exploit this vulnerability.
+CVE-2014-5411NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5411, web site last accessed October 07, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.9 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:S/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:H/Au:S/C:N/I:N/A:C, web site last accessed September 16, 2014.
+
+AUTHENTICATION BYPASSCWE-287: Improper Authentication, http://cwe.mitre.org/data/definitions/287.html, web site last accessed September 16, 2014.
+
+The guest user account within ClearSCADA installations is provided read access to the ClearSCADA database for the purpose of demonstration for new users. This default security configuration is not sufficiently secure to be adopted for systems placed into a production environment and can potentially expose sensitive system information to users without requiring login credentials.
+CVE-2014-5412NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5412, web site last accessed October 07, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 6.4 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:N, web site last accessed September 16, 2014.
+
+WEAK HASHING ALGORITHMCWE-310: Cryptographic Issues, http://cwe.mitre.org/data/definitions/310.html, web site last accessed September 16, 2014.
+
+The default self-signed web certificate provided with ClearSCADA uses MD5, a depreciated and weak signing algorithm. An attacker could decrypt and decipher keys hashed with this algorithm.
+CVE-2014-5413NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5413, web site last accessed October 07, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:N, web site last accessed September 16, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The authentication bypass and weak hashing algorithm vulnerabilities could be exploited remotely.
+The cross-site scripting vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user with administrative access runs the WebX Client.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low to moderate skill would be able to exploit the authentication bypass and weak hashing algorithm vulnerabilities. Crafting a working exploit for the cross-site scripting vulnerability would be difficult. Social engineering is required to trick the user to exploit the cross-site scripting vulnerability. This decreases the likelihood of a successful exploit.
+MITIGATION
+--------- Begin Update A Part 1 of 1 --------
+Schneider Electric has prepared new service packs to mitigate the vulnerabilities within this advisory.
+Weak Hashing Algorithm:
+Asset owners should always obtain a signed web certificate from a certified authority before deploying ClearSCADA Web Server in a production environment.
+To assist asset owners who are currently using self-signed certificates, a standalone utility will be made available that can be used to generate and deploy a new self-signed certificate (signed using an SHA signing algorithm). This utility is recommended for existing ClearSCADA systems subject to this vulnerability, removing the need to upgrade the ClearSCADA software and perform a manual generation of a new certificate. This utility will be made available within the Software Downloads section of the following ClearSCADA Resource Center page:
+http://resourcecenter.controlmicrosystems.com/display/CS/SCADA+Expert+ClearSCADA+Support
+XSS & Authentication Bypass:
+Schneider Electric advises all ClearSCADA users to take steps to secure the interfaces to the ClearSCADA system. The ClearSCADA database security configuration should be reviewed and updated to limit all system access to authorized users only. The access permissions of existing users should be reduced to only those required by their role (e.g., removing any higher level System Administration privileges from Operations or Engineering users), and specific accounts should be created with appropriate permissions for performing System Administration tasks.
+Existing ClearSCADA customers using WebX can protect their system from cross-site scripting attacks by disabling the “Allow database shutdown via WebX” option within the ClearSCADA Server Configuration utility.
+Existing ClearSCADA customers should take measures to ensure their system does not grant any system access until users have supplied a valid username and password.
+Schneider Electric has corrected the default user security permissions; however, upgrading an existing vulnerable installation to a new version will not affect existing configured database security permissions. Therefore, the measures suggested here are strongly recommended for all users.
+Schneider Electric has corrected these vulnerabilities in the following service packs:
+
+ClearSCADA 2010 R3.2, Released October 2014, and
+SCADA Expert ClearSCADA 2014 R1.1, Released October 2014.
+
+If asset owners wish to upgrade to a new ClearSCADA Service Pack, please contact the local Schneider Electric office for the latest software version for ClearSCADA; alternatively, these new versions are available for direct download from the Schneider Electric web site. To update their license (not required when upgrading to a service pack of the same version), asset owners are required to complete and submit an online form, which is available here:
+http://resourcecenter.controlmicrosystems.com/display/CS/StruxureWare+SCADA+Expert+ClearSCADA+Update+Request+Form
+New Service packs for ClearSCADA are available for download here:
+http://resourcecenter.controlmicrosystems.com/display/CS/SCADA+Expert+ClearSCADA+Support
+General instructions on how to upgrade the ClearSCADA license (if required) are available here:
+http://resourcecenter.controlmicrosystems.com/display/CS/Updating+Your+ClearSCADA+License
+--------- End Update A Part 1 of 1 ----------
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed September 16, 2014. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed September 16, 2014. for more information on social engineering attacks.
+

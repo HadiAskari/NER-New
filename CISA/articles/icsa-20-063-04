@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.9
+ATTENTION: Exploitable remotely/low skill level is needed to exploit/public exploits are available
+Vendor: Moxa
+Equipment: Moxa AWK-3131A
+Vulnerabilities: Improper Access Control, Use of Hard-coded Cryptographic Key, OS Command Injection, Use of Hard-coded Credentials, Classic Buffer Overflow, Out-of-bounds Read, Stack-based Buffer Overflow, Improper Access Control, Authentication Bypass Using an Alternate Path or Channel
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain control of the device and remotely execute arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Moxa reports that the vulnerabilities affect the following versions of AWK-3131A, a wireless networking appliance:
+
+Moxa AWK-3131A firmware, Version 1.13 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+A specially crafted menu selection string can cause an escape from the restricted console, resulting in system access as the root user. An attacker needs to be authenticated as a low-privilege user to trigger this vulnerability.
+CVE-2019-5136 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+The usage of hard-coded cryptographic keys allows for the decryption of captured traffic across the network to or from the device.
+CVE-2019-5137 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3    OS COMMAND INJECTION CWE-78
+A specially crafted diagnostic script file can cause arbitrary commands to be executed, resulting in remote control over the device. An attacker needs to be authenticated as a low-privilege user to trigger this vulnerability.
+CVE-2019-5138 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.4    USE OF HARD-CODED CREDENTIALS CWE-798
+The device operating system contains an undocumented encryption password, allowing for the creation of custom diagnostic scripts.
+CVE-2019-5139 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    OS COMMAND INJECTION CWE-78
+A specially crafted diagnostic script file name can cause user input to be reflected in a subsequent system call, resulting in remote control over the device. An attacker needs to be authenticated as a low-privilege user to send commands to trigger this vulnerability.
+CVE-2019-5140 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    OS COMMAND INJECTION CWE-78
+A specially crafted parameter can cause user input to be reflected in a subsequent system call, resulting in remote control over the device. An attacker needs to be authenticated as a low-privilege user to send commands to trigger this vulnerability.
+CVE-2019-5141 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.7    OS COMMAND INJECTION CWE-78
+A specially crafted entry to network configuration information can cause execution of arbitrary system commands, resulting in full control of the device. An attacker can send various authenticated requests to trigger this vulnerability.
+CVE-2019-5142 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.8    CLASSIC BUFFER OVERFLOW CWE-120
+A specially crafted time server entry can cause an overflow of the time server buffer, resulting in remote code execution. An attacker needs to be authenticated as a low-privilege user to send commands to trigger this vulnerability.
+CVE-2019-5143 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.9    OUT-OF-BOUNDS READ CWE-125
+A specially crafted packet can cause an integer underflow, triggering a large memcpy that will access unmapped or out-of-bounds memory. An attacker can send this packet while unauthenticated to trigger this vulnerability.
+CVE-2019-5148 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.10    STACK-BASED BUFFER OVERFLOW CWE-121
+A specially crafted user name entry can cause an overflow of an error message buffer, resulting in remote code execution. An attacker needs to be authenticated as a low-privilege user to send commands to trigger this vulnerability.
+CVE-2019-5153 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.11    IMPROPER ACCESS CONTROL CWE-284
+A specially crafted user name entry can cause the overwrite of an existing user account password, resulting in remote shell access to the device as that user. An attacker needs to be authenticated as a low-privilege user to send commands to trigger this vulnerability.
+CVE-2019-5162 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.12    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+A specially configured device hostname can cause the device to interpret select remote traffic as local traffic, resulting in a bypass of web authentication. An attacker can send authenticated SNMP requests to trigger this vulnerability.
+CVE-2019-5165 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Jared Rittle, Carl Hurd, Patrick DeSantis, and Alexander Perez Palma of Cisco Talos reported these vulnerabilities to Moxa.
+4. MITIGATIONS
+Moxa has created a security patch to mitigate these vulnerabilities. Please contact Moxa technical support to obtain it. For additional information see the Moxa advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.

@@ -1,0 +1,50 @@
+
+OVERVIEW
+David Formby and Raheem Beyah of Georgia Tech have identified a vulnerability caused by an Institute of Electrical and Electronics Engineers (IEEE) conformance issue involving improper frame padding in Schneider Electric’s Telvent SAGE 2300 and 2400 remote terminal units (RTUs). Schneider Electric has already released a revision that eliminates this vulnerability. This advisory serves as a notification of a new vulnerability in the previous software version. The researchers have tested the revision to validate that it resolves the reported vulnerability.
+AFFECTED PRODUCTS
+The following Schneider Electric Telvent RTUs are affected:
+
+Sage 3030M, with firmware prior to C3414-500-S02J2;
+Sage 1410, with firmware prior to C3414-500-S02J2;
+Sage1430, with firmware prior to C3414-500-S02J2;
+Sage 1450, with firmware prior to C3414-500-S02J2;
+LANDAC II-2, with firmware prior to C3414-500-S02J2;
+Sage 2300, with firmware prior to C3413-500-S01; and
+Sage 2400, with firmware prior to C3414-500-S02J2 (released March 2015.)
+
+IMPACT
+IEEE 802 specifies that packets have a minimum size of 56 bytes. The Ethernet driver is expected to fill the data field with octets of zero for padding when packets are less than 56 bytes. Resident memory and other data are used for padding in some implementations that could cause information leakage. This attack is passive; the attacker can only see data that the affected device sent out as part of a packet.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric is a European-based company that maintains offices in 190 countries worldwide.
+The affected products, Telvent Sage 2300/2400 RTUs, are industrial data communications devices. According to Schneider Electric, these products are deployed across several sectors including the Energy sector. Schneider Electric estimates that these products are used primarily in North America.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER ETHERNET FRAME PADDINGCWE-226: Sensitive Information Uncleared Before Release, http://cwe.mitre.org/data/definitions/226.html, web site last accessed March 10, 2016.
+
+The data padding within the data field of the Ethernet pack should be all zeros. The previous implementation of firmware allowed other data from a known area of memory to be used in this field and could exfiltrate or leak data.
+CVE-2015-6485NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6485, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 and a temporal score of 5.1 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N/E:H/RL:O/RC:C, web site last accessed March 10, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The attacker would need to be the receiver of the packet (that contains leaked data) or along the path (e.g., on a local network that does not use encryption).
+EXISTENCE OF EXPLOIT
+ICS-CERT is unaware of any exploits that target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability. This is a passive attack; the attacker can only access the data that are contained within the packet.
+MITIGATION
+Schneider-Electric provides a customer web site for access to all Sage RTU vulnerability and update information at:
+https://infrastructurecommunity.schneider-electric.com/community/products/infrastructure-products/sage
+The Telvent Sage 2300 is end of life for security patches, and customers are advised to move to the Sage 2400 platform.
+The Telvent SAGE 2300 family is end of life and no longer supported by Schneider Electric. The Telvent SAGE 2400 family is still supported and maintained with patches. Schneider Electric may be contacted using the following:
+Sage Support OfficePhone: (713) 920-6832Email: sagesupport@schneider-electric.com
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

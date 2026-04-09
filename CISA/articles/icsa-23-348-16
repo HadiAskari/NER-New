@@ -1,0 +1,75 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SINEC INS
+Vulnerabilities: Improper Certificate Validation, Improper Input Validation, Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection'), Unexpected Status Code or Return Value, Missing Report of Error Condition, Improper Check for Unusual or Exceptional Conditions
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to create a denial-of-service condition, intercept credentials, or escalate privileges on the affected device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SINEC INS: Versions prior to V1.0 SP2 Update 2
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER CERTIFICATE VALIDATION CWE-295
+A security vulnerability has been identified in all supported versions of OpenSSL related to the verification of X.509 certificate chains that include policy constraints. Attackers may be able to exploit this vulnerability by creating a malicious certificate chain that triggers exponential use of computational resources, leading to a denial-of-service (DoS) attack on affected systems. Policy processing is disabled by default but can be enabled by passing the -policy argument to the command line utilities or by calling the X509_VERIFY_PARAM_set1_policies() function.
+CVE-2023-0464 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2 IMPROPER INPUT VALIDATION CWE-20
+libcurl would reuse a previously created connection even when an SSH related option had been changed that should have prohibited reuse. libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup. However, two SSH settings were left out from the configuration match checks, making them match too easily.
+CVE-2023-27538 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.3 IMPROPER CERTIFICATE VALIDATION CWE-295
+Affected products do not properly validate the certificate of the configured UMC server. This could allow an attacker to intercept credentials that are sent to the UMC server as well as to manipulate responses, potentially allowing an attacker to escalate privileges.
+CVE-2023-48427 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+The radius configuration mechanism of affected products does not correctly check uploaded certificates. A malicious admin could upload a crafted certificate resulting in a denial-of-service condition or potentially issue commands on system level.
+CVE-2023-48428 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.5 UNEXPECTED STATUS CODE OR RETURN VALUE CWE-394
+The Web UI of affected devices does not check the length of parameters in certain conditions. This allows a malicious admin to crash the server by sending a crafted request to the server. The server will automatically restart.
+CVE-2023-48429 has been assigned to this vulnerability. A CVSS v3 base score of 2.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L).
+3.2.6 MISSING REPORT OF ERROR CONDITION CWE-392
+The REST API of affected devices does not check the length of parameters in certain conditions. This allows a malicious admin to crash the server by sending a crafted request to the API. The server will automatically restart.
+CVE-2023-48430 has been assigned to this vulnerability. A CVSS v3 base score of 2.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L).
+3.2.7 IMPROPER CHECK FOR UNUSUAL OR EXCEPTIONAL CONDITIONS CWE-754
+Affected software does not correctly validate the response received by an UMC server. An attacker can use this to crash the affected software by providing and configuring a malicious UMC server or by manipulating the traffic from a legitimate UMC server (i.e. leveraging CVE-2023-48427).
+CVE-2023-48431 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+SINEC INS: Update to V1.0 SP2 Update 2 or later version
+SINEC INS: Restrict access to application webserver for trusted users only
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-077170 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+December 14, 2023: Initial Publication
+

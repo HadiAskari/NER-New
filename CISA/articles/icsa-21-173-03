@@ -1,0 +1,62 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: CODESYS, GmbH
+Equipment: CODESYS V2 Runtime Toolkit, CODESYS PLCWinNT
+Vulnerabilities: Stack-based Buffer Overflow, Heap-based Buffer Overflow, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may cause a heap-based buffer overflow, a stack-based buffer overflow, or a buffer over-read in the affected CODESYS products. This could result in a denial-of-service condition or allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+CODESYS reports the following CODESYS V2 runtime systems are affected, regardless of the CPU type or operating system:
+
+CODESYS Runtime Toolkit 32-bit full prior to v2.4.7.55
+CODESYS PLCWinNT prior to v2.4.7.55
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+A crafted request may cause a heap-based buffer overflow in the affected CODESYS products, resulting in a denial-of-service condition.
+CVE-2021-30186 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    STACK-BASED BUFFER OVERFLOW CWE-121
+A crafted request may cause a stack-based buffer overflow in the affected CODESYS products, resulting in a denial-of-service condition or remote code execution.
+CVE-2021-30188 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER INPUT VALIDATION CWE-20
+A crafted request may cause a buffer over-read in the affected CODESYS products, resulting in a denial-of-service condition.
+CVE-2021-30195 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Sergey Fedonin, Denis Goryushev, and Anton Dorfman of Positive Technologies; and Yossi Reuven of SCADAfence independently reported these vulnerabilities to CODESYS.
+4. MITIGATIONS
+CODESYS GmbH has released the following product versions to solve the noted vulnerability issues for the affected CODESYS products:
+
+CODESYS Runtime Toolkit 32-bit full v2.4.7.55
+CODESYS PLCWinNT v2.4.7.55. This will also be part of the CODESYS Development System setup v2.3.9.66
+
+Please visit the CODESYS update area for more information on how to obtain the software updates.
+As part of a security strategy, CODESYS recommends the following general defense measures to reduce the risk of exploits:
+
+Use controllers and devices only in a protected environment to minimize network exposure, ensuring they are not accessible from outside.
+Use firewalls to protect and separate the control system network from other networks.
+Use VPN (virtual private network) tunnels if remote access is required.
+Activate and apply user management and password features.
+Use encrypted communication links.
+Limit access to both development and control system by physical means, operating system features, etc.
+Protect both development and control system operations by using up to date virus detecting solutions.
+
+For more information and general recommendations for protecting machines and plants, see also the CODESYS Security Whitepaper.
+Please see CODESYS Advisory 2021-06 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

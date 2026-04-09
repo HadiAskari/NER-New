@@ -1,0 +1,69 @@
+
+OVERVIEW
+ABB has identified one use of password hash with insufficient computational effort and three insufficiently protected credentials vulnerabilities in ABB’s PCM600. These vulnerabilities were reported directly to ABB by Ilya Karpov from Positive Technologies. ABB has produced a new version to mitigate these vulnerabilities.
+AFFECTED PRODUCTS
+ABB reports that the vulnerabilities affect the following products:
+
+PCM600 up to and including Version 2.6
+
+IMPACT
+An attacker who successfully exploits these vulnerabilities could edit the main application or gain access to PCM600 or connected devices.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+ABB is a Switzerland-based company that maintains offices in several countries around the world.
+The affected product, PCM600, is a protection and control IED manager. According to ABB, PCM600s are deployed in the Energy sector. ABB estimates that this product is used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+USE OF PASSWORD HASH WITH INSUFFICIENT COMPUTATIONAL EFFORTCWE-916: Use of Password Hash With Insufficient Computational Effort, http://cwe.mitre.org/data/definitions/916.html, web site last accessed May 31, 2016.
+
+The main application password in the ACTConfig configuration file is hashed with a weak hashing function. In order to exploit the vulnerability, the attacker needs to have local access to the PC running PCM600.
+CVE-2016-4511NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4511, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 2.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N, web site last accessed May 31, 2016.
+
+INSUFFICIENTLY PROTECTED CREDENTIALSCWE-522: Insufficiently Protected Credentials, http://cwe.mitre.org/data/definitions/522.html, web site last accessed May 31, 2016.
+
+The main application password is stored insecurely after being changed. In order to exploit the vulnerability, the attacker needs to have local access to the PC running PCM600.
+CVE-2016-4516NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4516, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 2.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N, web site last accessed May 31, 2016.
+
+INSUFFICIENTLY PROTECTED CREDENTIALSCWE-522: Insufficiently Protected Credentials, http://cwe.mitre.org/data/definitions/522.html, web site last accessed May 31, 2016.
+
+OPC Server IEC61850 authentication passwords are temporarily stored insecurely. In order to exploit the vulnerability, the attacker needs to have local access to the PC running PCM600.
+CVE-2016-4524NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4524, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:L/I:N/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:C/C:L/I:N/A:L, web site last accessed May 31, 2016.
+
+INSUFFICIENTLY PROTECTED CREDENTIALSCWE-522: Insufficiently Protected Credentials, http://cwe.mitre.org/data/definitions/522.html, web site last accessed May 31, 2016.
+
+PCM600 authentication credentials are stored insecurely. In order to exploit the vulnerability, the attacker needs to have local access to the PC running PCM600. The access control in PCM600 needs to be active.
+CVE-2016-4527NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4527, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 2.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N, web site last accessed May 31, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities are not exploitable remotely and cannot be exploited without user interaction.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+ABB has corrected the problems in PCM600 Version 2.7. ABB recommends that users apply the update at earliest convenience.
+ABB recommends using the following security practices and firewall configurations to help protect process control networks from attacks that originate from outside the network.
+
+Physically protect control systems from direct access by unauthorized personnel.
+Do not allow direct connections from control systems to the Internet. 
+Separate control systems from other networks by deploying a firewall that has a minimal number of ports exposed.
+Do not use process control systems for Internet surfing, instant messaging, or receiving emails.
+Carefully scan portable computers and removable storage media for viruses before they are connected to a control system.
+
+ABB provides more information on recommended practices in 1MRS758440, Protection and Control IED Manager PCM600 Cyber Security Deployment Guideline, which can be found at the following location:
+http://search.abb.com/library/Download.aspx?DocumentID=1MRS758440&Action=Launch
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed May 31, 2016. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed May 31, 2016. for more information on social engineering attacks.
+

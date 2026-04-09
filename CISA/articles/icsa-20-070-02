@@ -1,0 +1,72 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC S7-300 CPUs and SINUMERIK Controller over Profinet
+Vulnerability: Uncontrolled Resource Consumption
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-070-02 Siemens SIMATIC S7-300 CPUs and SINUMERIK Controller over Profinet that was published March 10, 2020, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could cause the affected device to go into defect mode resulting in a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of SIMATIC and SINUMERIK are affected:
+
+SIMATIC S7-300 CPU family (incl. related ET200 CPUs and SIPLUS variants): All versions prior to 3.X.17
+
+--------- Begin Update A Part 1 of 2 ---------
+
+SIMATIC TDC CP51M1: All versions prior to 1.1.8
+SIMATIC TDC CPU555: All versions prior to 1.1.1
+SINUMERIK 840D sl: All versions prior to 4.8.6
+SINUMERIK 840D sl: All versions prior to 4.94
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+Specially crafted packets sent to Port 102/TCP (Profinet) could cause the affected device to go into defect mode.
+CVE-2019-18336 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Peter Cheng of Elex Cybersecurity, Inc., and CNCERT/CC coordinated this vulnerability with Siemens.
+5. MITIGATIONS
+Siemens recommends the following mitigations for affected users:
+
+SIMATIC S7-300 CPU family: Update to Version 3.X.17
+
+--------- Begin Update A Part 2 of 2 ---------
+
+SIMATIC TDC CP1M1: Update to v1.1.8
+SIMATIC TDC CPU555: Update to v1.1.1
+SINUMERIK 840D sl: Update to v4.8.6 (Software can be obtained from your local Siemens account manager)
+SINUMERIK 840D sl: Update to v4.94 (Software can be obtained from your local Siemens account manager)
+
+--------- End Update A Part 2 of 2 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply:
+
+Make sure that access to Port 102/TCP is restricted (e.g., with an external firewall).
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for industrial security and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information see Siemens security advisory SSA-508982
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

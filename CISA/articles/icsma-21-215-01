@@ -1,0 +1,82 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Swisslog Healthcare
+Equipment: Translogic PTS (Pneumatic Tube Systems)
+Vulnerabilities: Use of Hard-coded Password, Execution with Unnecessary Privileges, Improper Authentication, Download of Code without Integrity Check, Out-of-Bounds Write
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain control of the device, escalate privileges, or execute arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Swisslog Healthcare reports the vulnerabilities affect the following Translogic Pneumatic Tube Systems: 
+
+Nexus Control Panel, versions prior to 7.2.5.7
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF HARD-CODED PASSWORD CWE-259
+User and root accounts have hardcoded passwords that can be accessed remotely on the Nexus Control Panel. These accounts are enabled by default and cannot be turned off by native configuration of the system.
+CVE-2021-37163 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    EXECUTION WITH UNNECESSARY PRIVILEGES CWE-250
+A user logged in using the default credentials can gain root access to the device, which allows permissions for all the functionalities of the device.
+CVE-2021-37167 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    INTEGER UNDERFLOW CWE-191
+A buffer overflow allows an attacker to overwrite an internal queue data structure, which could allow remote code execution.
+CVE-2021-37161 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    INTEGER UNDERFLOW CWE-191
+A buffer overflow allows an attacker to overwrite an internal queue data structure, which could allow remote code execution.
+CVE-2021-37162 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    INTEGER UNDERFLOW CWE-191
+A specially crafted message to the HMI may cause an overflow, which could allow remote code execution.
+CVE-2021-37165 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    OUT-OF-BOUNDS WRITE CWE-787
+Received data can be copied to a stack buffer, resulting in an overflow.
+CVE-2021-37164 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7    IMPROPER AUTHENTICATION CWE-287
+The method used to bind a local service to ports on device interfaces may allow the connection to be hijacked by an external attacker.
+CVE-2021-37166 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8    DOWNLOAD OF CODE WITHOUT INTEGRITY CHECK CWE-494
+There is no file validation during an upload for an update. 
+CVE-2021-37160 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Barak Hadad and Ben Seri from Armis reported these vulnerabilities to Swisslog.
+4. MITIGATIONS
+Swisslog Healthcare recommends upgrading to the latest software version as soon as it becomes available. Version 7.2.5.7 is reported to fix all vulnerabilities above except CVE-2021-37160. Use the latest version together with mitigation methods below to protect against exploitation of all the listed vulnerabilities.
+Swisslog also recommends the following mitigation methods until updated software is deployed:
+
+Network firewalls that restrict inter-VLAN traffic on the network must allow inbound and outbound internal network connections for the ports listed in “Windows firewalls.” Do not restrict these ports to specific applications.
+If there is no firewall between the SCC and the floor devices, apply an extended access control list (ACL) in the Layer 3 VLAN that is dedicated to the PTS floor equipment. Both inbound and outbound access lists are required between the SCC server and floor equipment, allowing the use of the TCP and UDP ports listed.
+Employ an IDS (intrusion detection system) such as SNORT to detect exploitation attempts.
+
+Armis recommends the following practices to identify and block attempts to exploit these issues.
+
+Block any use of Telnet (Port 23) on the Translogic PTS stations. The Telnet service is not required in production.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Ensure the least-privilege user principle is followed.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. 

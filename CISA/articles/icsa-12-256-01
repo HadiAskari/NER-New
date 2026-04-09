@@ -1,0 +1,60 @@
+
+Overview
+Siemens has reported multiple vulnerabilities in the Siemens WinCC WebNavigator application. These vulnerabilities were originally reported directly to Siemens by Positive Technologies. Siemens has produced an update that mitigates these vulnerabilities. These vulnerabilities could be exploited remotely.
+Affected Products
+Siemens reports that these vulnerabilities affect the WebNavigator component of the following versions of WinCC:
+
+WinCC 7.0 SP3 and earlier.
+
+Impact
+Successful exploitation of these vulnerabilities could allow an attacker to access sensitive data or possibly take over the WebNavigator session with the same rights as the victim.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+WinCC/Web Navigator is a WinCC option that provides a Web interface for the Siemens SIMATIC WinCC Human Machine Interface (HMI). SIMATIC WinCC performs the following tasks: process visualization, operator control of the process, alarm display, process value and alarm archiving, and machine parameter management. This software is used in many industries, including food and beverage, water and wastewater, oil and gas, and chemical.
+Vulnerability Characterization
+Vulnerability Overview
+Reflected Cross-Site ScriptingCWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), http://cwe.mitre.org/data/definitions/79.html, Web site last accessed September 12, 2012.
+An attacker can use social engineering to trick an authenticated user into clicking a malicious link. This action may execute a java script in the victim’s browser, which can have malicious behavior such as stealing a session cookie.
+CVE-2012-3031 has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:C).
+Cross-Site Request Forgeryd. CWE-352: Cross-Site Request Forgery (CSRF), http://cwe.mitre.org/data/definitions/352.html, Web site last accessed September 12, 2012.
+Cross site request forgery is similar to the cross site scripting vulnerability (see above). It can also be triggered by an authenticated user clicking on a malicious link. However, this vulnerability also works if the user has disabled scripting in his or her browser.
+CVE-2012-3028 has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:P/A:C).
+Forceful BrowssingCWE-425: Direct Request ('Forced Browsing', http:/cwe.mitre.org/data/definitions/425.html, Web site last accessed September 12, 2012.
+If an attacker knows or guesses the right path and/or file name, he or she can read files on the system that hosts WebNavigator.
+CVE-2012-3030 has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:N/A:N).
+SQL InjectionCWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection'), http://cwe.mitre.org/data/definitions/89.html, Web site last accessed September 12, 2012.
+If an attacker sends a specially crafted SOAP (Simple Object Access Protocol) message to the server, the resulting SQL queries might read or write more data in the database than originally intended.
+CVE-2012-3032k has been assigned to this vulnerability. A CVSS v2 base score of 9.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:C).
+ActiveXCWE-618: Exposed Unsafe ActiveX Method, http://cwe.mitre.org/data/definitions/618.html, Web site last accessed September 12, 2012.
+WebNavigator uses ActiveX controls in the user’s browser. The methods of these ActiveX controls can be called by any Web site this user visits. By using specially crafted parameters with these methods, an attacker can gain access to the username and password of a legitimate user.Precondition: to exploit this vulnerability, the attacker needs access to the Web server.
+CVE-2012-3034 has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:P/A:P).
+Vulnerability Details
+Exploitability
+These vulnerabilities could be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a low to medium skill would be able to exploit these vulnerabilities.
+Mitigation
+Siemens addresses these issues in a Siemens Security Advisory, SSA-864051.
+Siemens provides an update for WinCC 7.0 SP3, which fixes vulnerabilities 1, 3, 4, and 5, and recommends installing the patch. Siemens also recommends users restrict access to WebNavigator, e.g., with a firewall or VPN gateway or to operate the service only within trusted networks.
+No patch is yet available for vulnerability 2; Siemens recommends the following:
+
+Do not interact with other Internet-related services while being logged in.
+Log out when WebNavigator is not needed any more.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks:
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01A—Cyber Intrusion Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click Web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

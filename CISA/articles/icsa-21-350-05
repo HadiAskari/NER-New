@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.5
+ATTENTION: Low attack complexity
+Vendor: Mitsubishi Electric
+Equipment: FA Engineering Software
+Vulnerabilities: Out-of-bounds Read, Integer Underflow
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-350-05 Mitsubishi Electric FA Engineering Software that was published December 16, 2021, on the ICS webpage on cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may cause a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of FA Engineering Software, an engineering software suite, are affected:
+
+GX Works2: Versions 1.606G and prior
+MELSOFT Navigator: Versions 2.84N and prior
+
+--------- Begin Update B Part 1 of 2 ---------
+
+EZSocket: Versions 5.4 and prior
+
+--------- End Update B Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    OUT-OF-BOUNDS READ CWE-125
+When a valid user opens a malicious project file specially crafted by an attacker, the software reads data outside of the intended buffer, allowing an attacker to potentially cause a denial-of-service condition in the software.
+CVE-2021-20606 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+4.2.2    INTEGER UNDERFLOW CWE-191
+When a valid user opens a malicious project file specially crafted by an attacker, the product subtracts one value from another, such that the result is less than the minimum allowable integer value, which produces a value that is not equal to the correct result.
+CVE-2021-20607 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Mitsubishi Electric reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Mitsubishi Electric recommends that users download and update the latest version of each software product:
+
+GX Works2, Version 1.610L or later
+MELSOFT Navigator, Version 2.86Q or later
+
+--------- Begin Update B Part 2 of 2 ---------
+
+EZSocket, Version 5.5 or later.  Mitsubishi Electric will provide the fixed version of EZSocket directly to the partner companies.
+
+--------- End Update B Part 2 of 2 ---------
+Mitsubishi Electric has included the following directions for users looking to update to the fixed software version:
+
+Unzip the downloaded file (zip format).
+Execute the file “setup.exe” located in the folder unzipped and install it.
+
+For customers who use the software for which the fixed version has not been released or who are not able to immediately update the software, Mitsubishi Electric recommends the following mitigation measures to minimize the risk of being exploited these vulnerabilities:
+
+Ensure malicious attackers cannot access project files that are stored in your computer/server via untrusted network or host.
+Install an antivirus software in your personal computer running the software.
+Do not open the project files, such as those attached to e-mail sent from an untrusted sender.
+Please execute procedures below for GX Works2 project files read from PLC via “Batch Read” function of MELSOFT Navigator or EZSocket.
+
+With GX Works2 1.610L or later, open the project file that is read from PLC via “Batch Read” function of MELSOFT Navigator or EZSocket.
+Enable the option [Enable the security check for the project] ([Options] -> [Project] -> [Common Setting]) and save the project.
+
+
+
+For specific update instructions and additional details see the Mitsubishi Electric advisory. 
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

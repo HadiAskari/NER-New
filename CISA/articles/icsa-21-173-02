@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: CODESYS, GmbH
+Equipment: CODESYS V2 web server
+Vulnerabilities: Stack-based Buffer Overflow, Improper Access Control, Buffer Copy without Checking Size of Input, Improperly Implemented Security Check, Out-of-bounds Write, Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to read or write arbitrary memory or files in the CODESYS Control runtime system, cause invalid memory accesses to execute code, or crash the CODESYS web server or CODESYS Control runtime system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+CODESYS reports all CODESYS V2 web servers running stand-alone or as part of the CODESYS runtime system prior to Version 1.1.9.20 are affected.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+Crafted web server requests may cause a stack-based buffer overflow. This could allow an attacker to execute arbitrary code on the CODESYS web server or trigger a denial-of-service condition due to a crash in the CODESYS web server.
+CVE-2021-30189 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER ACCESS CONTROL CWE-284
+The user management of the CODESYS v2.3 WebVisu allows user dependent control of access to the visualization pages. However, subordinate requests to read or write values are forwarded to the CODESYS Control runtime system regardless of successful authentication. This enables crafted web server requests to bypass user management and read or write values on the PLC without authentication.
+CVE-2021-30190 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    CLASSIC BUFFER OVERFLOW CWE-120
+Crafted web server requests can cause an over-read or over-write of a buffer in the CODESYS web server, which typically leads to a denial-of-service condition.
+CVE-2021-30191 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    IMPROPERLY IMPLEMENTED SECURITY CHECK CWE-358
+Crafted web server requests can bypass the security checks for boot project-related files on the CODESYS Control runtime system and be uploaded from the CODESYS Control runtime system.
+CVE-2021-30192 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    OUT-OF-BOUNDS WRITE CWE-787
+Crafted web server requests can be utilized to write arbitrary memory in the CODESYS Control runtime system. This could allow an attacker to execute code on the CODESYS Control runtime system or cause a denial-of-service condition due to a crash of the CODESYS Control runtime system.
+CVE-2021-30193 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    OUT-OF-BOUNDS READ CWE-125
+Crafted web server requests can be utilized to read arbitrary memory in the CODESYS Control runtime system or crash the CODESYS web server.
+CVE-2021-30194 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Vyacheslav Moskvin, Sergey Fedonin, and Anton Dorfman of Positive Technologies reported these vulnerabilities to CODESYS.
+4. MITIGATIONS
+CODESYS GmbH has released Version 1.1.9.20 of the CODESYS V2 web server to address these vulnerabilities. This version of the CODESYS V2 web server is also part of the CODESYS Development System setup Version 2.3.9.66
+Please visit the CODESYS update area for more information on how to obtain the software updates.
+As part of a security strategy, CODESYS recommends the following general defense measures to reduce the risk of exploits:
+
+Use controllers and devices only in a protected environment to minimize network exposure, ensuring they are not accessible from outside.
+Use firewalls to protect and separate the control system network from other networks.
+Use VPN (virtual private network) tunnels if remote access is required.
+Activate and apply user management and password features.
+Use encrypted communication links.
+Limit access to both development and control system by physical means, operating system features, etc.
+Protect both development and control system operations by using up to date virus detecting solutions.
+
+For more information and general recommendations for protecting machines and plants, see also the CODESYS Security Whitepaper.
+Please see CODESYS Advisory 2021-07 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

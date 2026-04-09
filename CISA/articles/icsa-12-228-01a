@@ -1,0 +1,59 @@
+
+OVERVIEW
+--------- Begin Update A Part 1 of 2 --------
+This updated advisory is a follow-up to the original advisory titled ICSA-12-228-01 Tridium Niagara Multiple Vulnerabilities that was published August 15, 2012, on the ICS-CERT Web page. It is also a follow-up to ICS-ALERT-12-195-01 Tridium Niagara Directory Traversal and Weak Credential Storage Vulnerability that was published July 13, 2012, on the ICS-CERT Web page.
+--------- End Update A Part 1 of 2 ----------
+Independent security researchers Billy Rios and Terry McCorkle have identified multiple vulnerabilities in the Tridium Niagara AX Framework software. The vulnerabilities include directory traversal, weak credential storage, session cookie weaknesses, and predictable session IDs, all of which can be exploited remotely. Although not all technical details have been released, these vulnerabilities have been made public.
+Tridium has issued a security alert,Tridium Announcements, http://www.tridium.com/cs/tridium_news/security, Web site last accessed August 12, 2013. and has produced a patch that Mr. Rios and Mr. McCorkle have validated fixes these vulnerabilities.
+AFFECTED PRODUCTS
+All known versions of the Tridium Niagara AX Framework software products are susceptible to these vulnerabilities.
+IMPACT
+Successfully exploiting these vulnerabilities will lead to data leakage and possible privilege escalation.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+The Tridium Niagara AX software platform integrates different systems and devices, e.g., HVAC, building automation controls, telecommunications, security automation, machine‑to‑machine, lighting control, maintenance repair operations, service bureaus, and facilities management,Tridium Niagara, http://www.tridium.com/cs/corporate_info/faqs, Web site last accessed August 12, 2013. onto a single platform that can be managed and controlled over the Internet from a Web browser.
+Tridium sells its products and services through multiple distribution channels, which include OEMs/resellers, independent systems integrators, and energy service companies. According to Tridium, more than 300,000 instances of Niagara AX Framework are installed worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+DIRECTORY TRAVERSALCWE-22: Improper Limitation of a Pathname to a Restricted Directory (‘Path Traversal’), http://cwe.mitre.org/data/definitions/22.html, Web site last accessed August 12, 2013.
+
+By default, the Tridium Niagara AX software is not configured to deny access to restricted parent directories. This vulnerability allows a successful attacker to access the file that stores all system usernames and passwords. An attacker could exploit this vulnerability by sending a specially crafted request to the Web server running on Port 80/TCP.
+CVE-2012-4027NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4027 , Web site last accessed August 12, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is AV:N/AC:L/Au:N/C:P/I:N/A:N.NVD, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:N/A:N, Web site last accessed August 12, 2013.
+
+WEAK CREDENTIAL STORAGECWE-522: Insufficiently Protected Credentials, http://cwe.mitre.org/data/definitions/522, Web site last accessed August 12, 2013.
+
+The system insecurely stores user authentication credentials, which are susceptible to interception and retrieval. User authentication credentials are stored in the Niagara station configuration file, config.bog, which is located in the root of the station folder.
+CVE-2012-4028NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4028, Web site last accessed August 12, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is AV:N/AC:L/Au:N/C:C/I:N/A:N.NVD, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:N/A:N, Web site last accessed August 12, 2013.
+
+PLAINTEXT STORAGE IN A COOKIECWE-315: Cleartext Storage of Sensitive Information in a Cookie, http://cwe.mitre.org/data/definitions/315.html, Web site last accessed August 12, 2013.
+
+Usernames and passwords are stored using Base64 encoding in a cookie within the default authentication configuration. This significantly lowers the difficulty of exploitation by an attacker. The user must take additional steps to configure stronger authentication.
+CVE-2012-3025NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3025, Web site last accessed August 12, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is AV:N/AC:M/Au:N/C:N/I:C/A:N.NVD, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:C/A:N, Web site last accessed August 12, 2013.
+
+PREDICTABLE SESSION IDSCWE-330: Use of Insufficiently Random Values, http://cwe.mitre.org/data/definitions/330.html, Web site last accessed August 12, 2013.
+
+The software generates a predictable session ID or key value, allowing an attacker to guess the session ID or key.
+CVE-2012-3024NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-3024, Web site last accessed August 12, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:C/A:N).NVD, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:C/A:N, Web site last accessed August 12, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities can be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target some of these vulnerabilities are publicly available, although not all technical details have been released.
+DIFFICULTY
+An attacker with a medium skill could exploit these vulnerabilities.
+MITIGATION
+To mitigate the decoding of passwords listed in the config.bog file, Tridium recommends that security settings for file access be assigned only at the administrator level. Instructions for configuring these settings are included in the July 13 Security AlertTridium Announcements, http://www.tridium.com/cs/tridium_news/security, Web site last accessed August 12, 2012. from Tridium. In addition, Tridium has issued a patch that prevents access to the config.bog file and backups of the file from network facing clients. The patch can be found at this URL:
+https://www.niagara-central.com/ord?portal:/dev/wiki/Niagara_AX_3.5_and_3.6_Security_Patches
+--------- Begin Update A Part 2 of 2 --------
+In addition to the security updates released by Tridium in August, 2012 and February, 2013 to address the issues in this advisory, Tridium has now issued a product update that further enhances the security of the Niagara AX Framework as part of the company’s normal product release process.
+--------- End Update A Part 2 of 2 --------
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed August 12, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, which is available for download from the ICS-CERT Web site: http://ics-cert.us-cert.gov/.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

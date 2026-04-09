@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: Spectrum Power 4.7
+Vulnerability: Command Injection
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability in versions of Spectrum Power 4 using the user-specific project enhancement (PE) Web Office Portal (WOP) are affected by an OS command injection vulnerability. The vulnerability could be exploited by an unauthenticated attacker with network access to the affected service. No user interaction is required to exploit this vulnerability. Successful exploitation compromises confidentiality, integrity, or availability of the targeted system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Spectrum Power, a system that provides basic components for SCADA, communications, and data modeling for control and monitoring systems, are affected:
+
+Spectrum Power 4 with Web Office Portal
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND CWE-77
+An attacker with network access to the web server on Port 80/TCP or 443/TCP could execute system commands with administrative privileges.
+CVE-2019-6579 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Applied Risk reported this vulnerability to Siemens.
+4. MITIGATIONS
+Siemens recommends users install bugfix bf-47456_PE_WOP_fix to mitigate the vulnerability in the affected version. Bugfix bf-47456_PE_WOP_fix for Web Office Portal can be obtained from the Siemens Energy Customer Support Center at: support.energy@siemens.com
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Turn off the web server or limit access to the web server by an external firewall.
+
+Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment.
+As a general security measure, Siemens strongly recommends protecting network access with appropriate mechanisms (e.g. firewalls, segmentation, VPN). It is advised that users configure the environment according to Siemens operational guidelines in order to run the devices in a protected IT environment.
+Recommended security guidelines to secure substations can be found at:
+https://www.siemens.com/gridsecurity
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-324467 on their website:
+https://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

@@ -1,0 +1,71 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.3
+ATTENTION: Exploitable remotely; low skill level is needed to exploit.
+Vendor: Siemens
+Equipment: SIMATIC
+Vulnerabilities: Insufficient Verification of Data Authenticity, Sensitive Cookie in HTTPS Session Without 'Secure' Attribute
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-16-327-02 Siemens SIMATIC CP 343-1/CP 443-1 Modules and SIMATIC S7-300/S7-400 CPUs (Update A) that was published March 21, 2017, on the ICS webpage.
+3. RISK EVALUATION
+Under certain conditions, an attacker could use these vulnerabilities to perform operations as an authenticated user.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that the vulnerabilities affect the following SIMATIC products:
+--------- Begin Update B Part 1 of 2 ---------
+
+SIMATIC CP 343-1 Advanced (incl. SIPLUS NET variant): All versions prior to v3.0.53
+SIMATIC CP 443-1 Advanced (incl. SIPLUS NET variant): All versions prior to v3.2.17
+SIMATIC S7-300 CPU family (incl. SIPLUS NET variant): All firmware versions
+SIMATIC S7-400 CPU family (incl. SIPLUS NET variant): All firmware versions
+
+--------- End Update B Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+The integrated web server at Port 80/TCP or Port 443/TCP of the affected devices could allow remote attackers to perform actions with the permissions of an authenticated user, provided the targeted user has an active session and is induced to trigger the malicious request. 
+CVE-2016-8673 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L).
+4.2.2    SENSITIVE COOKIE IN HTTPS SESSION WITHOUT 'SECURE' ATTRIBUTE CWE-614
+The integrated web server delivers cookies without the “secure” flag. Modern browsers interpreting the flag would mitigate potential data leakage in case of clear text transmission. 
+CVE-2016-8672 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, and Food and Agriculture
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Inverse Path auditors in collaboration with Airbus ICT Industrial Security team reported this to Siemens.
+--------- Begin Update B Part 2 of 2 ---------
+Artem Zinenko from Kaspersky Lab identified additional affected products.
+--------- End Update B Part 2 of 2 ---------
+5. MITIGATIONS
+Siemens provides firmware versions that fix the vulnerabilities and recommends that users update to the fixed versions:
+
+SIMATIC CP 343-1 Advanced: Update to v3.0.53.
+	 
+SIMATIC CP 443-1 Advanced: Update to v3.2.17.
+
+For SIMATIC S7-300/S7-400 CPUs, Siemens recommends the following mitigations:
+
+Apply cell protection concept,
+Use VPN for protecting network communication between cells, and
+Apply defense-in-depth.
+
+Siemens strongly recommends users protect network access to SIMATIC S7-300/S7-400 CPUs and to the web interface of SIMATIC CP 343-1 Advanced and CP 443-1 Advanced devices with appropriate mechanisms. Siemens also advises that users configure the protected operational environment according to Siemens’ Operational Guidelines for Industrial Security.
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-603476 at the following location: http://www.siemens.com/cert/advisories
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

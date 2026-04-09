@@ -1,0 +1,96 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Mitsubishi Electric Corporation
+Equipment: GOT and Tension Controller
+Vulnerability: Out-of-bounds Read
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-20-343-02 Mitsubishi Electric GOT and Tension Controller (Update A) that was published May 11, 2021, to the ICS webpage on www.cisa.gov/uscert/ics.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow malicious attackers to cause deterioration of communication performance or cause a denial-of-service condition of the TCP communication functions of the products requiring a re-boot of the device to recover.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Mitsubishi Electric reports that the vulnerability affects the following human-machine interface (GOT) and Tension Controller products: 
+
+GOT2000 series, GT21 model:
+
+GT2107-WTBD versions v01.39.000 and earlier
+GT2107-WTSD versions v01.39.000 and earlier
+GT2104-RTBD versions v01.39.000 and earlier
+GT2104-PMBD versions v01.39.000 and earlier
+GT2103-PMBD versions v01.39.000 and earlier
+
+
+GOT SIMPLE series, GS21 model:
+
+GS2110-WTBD versions v01.39.000 and earlier
+GS2107-WTBD versions v01.39.000 and earlier
+GS2110-WTBD-N versions v01.39.000 and earlier
+GS2107-WTBD-N versions v01.39.000 and earlier
+
+
+
+--------- Begin Update B Part 1 of 2 ---------
+
+Tension Controller: 
+
+LE7-40GU-L Screen package data for CC-Link IEF Basic v1.00
+LE7-40GU-L Screen package data for MODBUS/TCP v1.00
+LE7-40GU-L Screen package data for SLMP v1.00
+
+
+
+Refer to the user manual to determine which version is in use. The latest version of the manual of GOT is available at the Mitsubishi Electric Global Website. Contact a Mitsubishi Electric representative for the latest version of the Tension Controller manual.
+--------- End Update B Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    OUT-OF-BOUNDS READ CWE-125
+There is an out-of-bounds read vulnerability that may allow attackers to cause deterioration in communication performance or cause a denial-of-service condition of the TCP communication functions of the products by sending specially crafted packets.
+CVE-2020-5675 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Mitsubishi Electric reported this vulnerability to CISA.
+5. MITIGATIONS
+--------- Begin Update B Part 2 of 2 ---------
+Mitsubishi Electric has fixed the basic system application for GOT2000 series GT21 model or GOT SIMPLE series GS21 model, which is shipped with GT Designer3 (2000) versions 1.255R or later.
+To apply version v01.40.000 or later to GOT2000 series GT21 model or GOT SIMPLE series GS21 model, use the following update procedure:
+
+Download the fixed version of MELSOFT GT Designer3(2000) and install into the PC. Please contact a Mitsubishi Electric representative about MELSOFT GT Designer3(2000).
+Start the MELSOFT GT Designer3 (GOT2000) and open the project data used in affected products.
+Select Write to GOT from Communication menu to write the required package data to the GOT.
+Please refer to the GT Designer3 (GOT2000) Screen Design Manual.
+After writing the required package data to the GOT, refer to the publication from Mitsubishi Electric to learn how to confirm if using the updated version.
+
+Mitsubishi Electric has provided the following procedure to update the tension controller to Version 1.01 or later:
+
+Contact a Mitsubishi Electric representative for the fixed version of the screen package data.
+Install the engineering tool (“Data Transfer Tool” or “GT Designer 3 (GOT2000)”) in your PC. Contact a Mitsubishi Electric representative for the latest engineering tool.
+Connect LE7-40GU-L and your PC with a USB cable.
+Write the screen package data to LE7-40GU-L using the “GOT write” function of the engineering tool.
+After writing is completed, restart LE7-40GU-L.
+Refer to the publication from Mitsubishi Electric to learn how to confirm if using the updated version.
+
+--------- End Update B Part 2 of 2 ---------
+Until the update can be applied, Mitsubishi Electric asks that users restrict access to the product only from trusted networks and hosts.
+Please refer to the Mitsubishi Electric website for details.
+Additional information about the vulnerability or Mitsubishi Electric recommendations is available by contacting a Mitsubishi Electric representative.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

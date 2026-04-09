@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Schneider Electric
+Equipment: Triconex TriStation and Triconex Tricon Communication Module
+Vulnerabilities: Cleartext Transmission of Sensitive Information, Uncontrolled Resource Consumption, Hidden Functionality, Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to view clear text data on the network, cause a denial-of-service condition, or allow improper access.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric has discovered and remediated multiple vulnerabilities affecting the following legacy versions of its Triconex brand safety instrumented system: 
+
+TriStation 1131, v1.0.0 to v4.9.0, v4.10.0, and 4.12.0, operating on Windows NT, Windows XP, or Windows 7.
+Tricon Communications Module (TCM) Models 4351, 4352, 4351A/B, and 4352A/B installed in Tricon v10.0 to v10.5.3 systems.
+
+Users of current and more recent versions of the identified firmware and software are not exposed to these specific vulnerabilities. 
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+A vulnerability related to the "password" feature in TriStation 1131 Versions 1.0 through 4.12.0 could cause certain data to be visible on the network when the feature was enabled.
+CVE-2020-7483 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N).
+3.2.2    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+A vulnerability related to the "password" feature in TriStation 1131 Versions 1.0 through 4.12.0 could allow a denial of service attack if the user is not following documented guidelines pertaining to dedicated TriStation 1131 connection and key-switch protection. 
+CVE-2020-7484 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    HIDDEN FUNCTIONALITY CWE-912
+A vulnerability related to a legacy support account in TriStation 1131 versions 1.0 through 4.9.0 and 4.10.0 could allow inappropriate access to the TriStation 1131 project file. 
+CVE-2020-7485 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.2.4    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+A vulnerability could cause TCMs installed in Tricon system Versions 10.0.0 through 10.4.x to reset when under high network load. This reset could result in a denial of service behavior with the SIS.
+CVE-2020-7486 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5    IMPROPER ACCESS CONTROL CWE-284
+A legacy debug port account in TCMs installed in Tricon system Versions 10.2.0 through 10.5.3 is visible on the network and could allow inappropriate access.
+CVE-2020-7491 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+CISA would like to thank Schneider Electric and Reid Wightman, Dragos, Inc., for their efforts leading to this public disclosure.
+4. MITIGATIONS
+Schneider Electric released TriStation v4.9.1 and v4.10.1 on May 30, 2013 and 4.13.0 on January 26, 2015 to address these issues. Tricon v10.5.0 was released on August 13, 2009 and v10.5.4 on February 2, 2012 to address the issues.
+Schneider Electric notified customers of updated product availability via direct-to-customer notification and fixed versions of these offers are available for download here.
+Schneider Electric strongly recommends following industry cybersecurity best practices:
+
+Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.
+Install physical controls so no unauthorized personnel can access industrial control and safety systems, components, peripheral equipment, and networks.
+Place all controllers in locked cabinets and never leave them in the “Program” mode.
+Scan all methods of mobile data exchange with the isolated network, such as CDs, USB drives, etc., before use in the terminals or nodes connected to these networks.
+Never allow laptops that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.
+Minimize network exposure for all control system devices and systems and ensure that they are not accessible from the Internet.
+When remote access is required, use secure methods such as virtual private networks. Recognize that VPNs may have vulnerabilities and should therefore be updated to the most current version available. Also recognize that VPNs are only as secure as the connected devices.
+
+Schneider Electric continues to recommend users always implement the instructions in the “Security Considerations,” which include the following:
+
+Ensure the cybersecurity features in Triconex solutions are always enabled.
+Always deploy safety systems on isolated networks.
+Secure all TriStation engineering workstations and never connect to any network other than the safety network.
+Configure operator stations to display an alarm whenever the Tricon key switch is in the “PROGRAM” mode.
+
+Please see the Schneider Electric Security Bulletin – SESB-2020-105-01 for more details of these vulnerabilities in legacy Triconex products.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

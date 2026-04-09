@@ -1,0 +1,54 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Schneider Electric
+Equipment: GUIcon
+Vulnerabilities: Out-of-bounds Write, Use After Free, Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to execute arbitrary code on the host PC, leading to sensitive information disclosure or unintended user actions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of GUIcon software are affected
+
+GUIcon: Versions 2.0 (Build 683.003) and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS WRITE CWE-787
+This vulnerability may cause arbitrary code execution when a malicious *.gd1 configuration file is loaded into the GUIcon tool.
+CVE-2021-22807 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    USE AFTER FREE CWE-416
+This vulnerability may cause arbitrary code execution when a malicious *.gd1 configuration file is loaded into the GUIcon tool.
+CVE-2021-22808 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    OUT-OF-BOUNDS READ CWE-125
+This vulnerability may cause arbitrary code execution when a malicious *.gd1 configuration file is loaded into the GUIcon tool.
+CVE-2021-22809 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Michael Heinzl reported these vulnerabilities to CISA.
+4. MITIGATIONS
+The GUIcon software tool was discontinued in June 2020 and is no longer supported. Users should immediately apply the following mitigation to reduce the risk of exploit:
+
+The only known method for an attacker to exploit these vulnerabilities is to create a malicious GUIcon *.gd1 configuration file and then trick a user into opening it with the GUIcon software. The mitigation for these vulnerabilities is to ensure any GUIcon *.gd1 file loaded into the tool is from a trusted source.
+For more information about these issues, please refer to the original Schneider Electric publication SEVD-2021-313-07
+
+Schneider Electric strongly recommends the following industry cybersecurity best practices:
+
+Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.
+Install physical controls to prevent unauthorized personnel from accessing industrial control and safety systems, components, peripheral equipment, and networks.
+Place all controllers in locked cabinets and never leave them in the “Program” mode.
+Never connect programming software to any network other than the network intended for that device.
+Scan all methods of mobile data exchange with the isolated network, such as CDs, USB drives, etc., before use in the terminals or any node connected to these networks.
+Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.
+Minimize network exposure for all control system devices and systems and ensure they are not accessible from the Internet.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.
+
+For more information refer to the Schneider Electric Recommended Cybersecurity Best Practices document.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

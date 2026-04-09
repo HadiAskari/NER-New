@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.8
+
+ATTENTION: Low skill level to exploit
+Vendor: Delta Electronics (Delta)
+Equipment: Delta Industrial Automation CNCSoft
+Vulnerabilities: Stack-based Buffer Overflow, Heap-based Buffer Overflow, Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause buffer overflow conditions that may allow information disclosure, remote code execution, or crash the application.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Delta Industrial Automation CNCSoft are affected:
+
+CNCSoft ScreenEditor Version 1.00.88 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+Multiple stack-based buffer overflow vulnerabilities may be exploited by processing specially crafted project files, allowing an attacker to remotely execute arbitrary code. This may occur because CNCSoft lacks user input validation before copying data from project files onto the stack.
+CVE-2019-10947 has been assigned to these vulnerabilities. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+Multiple heap-based buffer overflow vulnerabilities may be exploited by processing specially crafted project files, allowing an attacker to remotely execute arbitrary code. There is a lack of user input validation before copying data from project files onto the heap.
+CVE-2019-10951 has been assigned to these vulnerabilities. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    OUT-OF-BOUNDS READ CWE-125
+Multiple out-of-bounds read vulnerabilities may be exploited, allowing information disclosure due to a lack of user input validation for processing specially crafted project files.
+CVE-2019-10949 has been assigned to these vulnerabilities. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Natnael Samson (@NattiSamson) and an anonymous researcher working with Trend Micro’s Zero Day Initiative (ZDI) reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Delta recommends the following:
+
+Update to the latest version of ScreenEditor 1.00.89. This updated version can be found at:
+
+http://www.deltaww.com/services/DownloadCenter2.aspx?secID=8&pid=2&tid=0&CID=06&itemID=060202&typeID=1&downloadID=&title=&dataType=8;&check=1&hl=en-US 
+
+Restrict the interaction with the application to trusted files.
+
+NCCIC recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

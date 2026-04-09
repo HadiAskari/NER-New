@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.5
+
+Vendor: PEPPERL+FUCHS
+Equipment: VisuNet RM, VisuNet PC, Box Thin Client (BTC)
+Vulnerability: Improper Authentication
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow attackers to intercept sensitive communications, establish a man-in-the-middle attack, achieve administrator privileges, and execute remote code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following PEPPERL+FUCHS product families are affected:
+
+VisuNet RM All models,
+VisuNet PC All models, and
+BTC All models.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER AUTHENTICATION CWE-287
+An authentication vulnerability within CredSSP may allow interception of user credentials resulting in remote code execution.
+CVE-2018-0886 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV: N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications, Critical Manufacturing, Information Technology
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Eyal Karni, Yaron Zinar, and Roman Blachman with Preempt Research Labs reported this vulnerability to PEPPRL+FUCHS, who then reported it to NCCIC.
+4. MITIGATIONS
+PEPPRL+FUCHS recommends users using HMI devices within VisuNet RM, VisuNet PC or BTC product families follow these guidelines:
+
+PEPPRL+FUCHS HMI devices running RM Shell 4 should be updated with ‘RM Image 4 Security Patches 01/2017 to 05/2018’ (18-33400C):
+
+https://www.pepperl-fuchs.com/cgi-bin/db/doci.pl/?ShowDocByDocNo=18-33400c
+
+PEPPRL+FUCHS HMI devices running RM Shell 5 should be updated with ‘RM Image 5 Security: Windows Cumulative Security Patch 07/2018’ (18-33624):
+
+https://www.pepperl-fuchs.com/cgi-bin/db/doci.pl/?ShowDocByDocNo=18-33624
+
+PEPPRL+FUCHS HMI devices running Windows 7 or Windows 10 should be updated by using the Windows Update mechanism. See Microsoft’s security bulletin for more information:
+
+https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0866
+
+After deploying the patch, all connected third-party clients or servers must use the latest version of the CredSSP protocol.
+Be aware of the importance of installing these patches, as security will be enforced by the update. Security by default restriction might result in an error due to encryption oracle remediation. Updates should be installed on both the server and the HMI device; otherwise, system compatibility might be influenced.
+
+For more information CERT@VDE has released a security advisory found at:
+https://cert.vde.com/de-de/advisories/vde-2018-008
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. High skill level is needed to exploit.

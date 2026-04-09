@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.7
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Hitachi Energy 
+Equipment: Lumada APM 
+Vulnerability: Improper Access Control 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to gain unauthorized access to any Power BI reports installed or manipulate asset issue comments on assets. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reports the following products are affected: 
+
+Lumada APM – SaaS: Versions 6.0.0.0 to 6.4.220601.0 
+Lumada APM – On Premises: Versions 6.0.0.0.0 to 6.4.0 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER ACCESS CONTROL CWE-284
+Hitachi Energy Lumada APM has a flaw in the access control mechanism implementation on the “Limited Engineer” role, granting access to the embedded Power BI reports feature. This could allow an unauthorized user to access information by gaining unauthorized access to any installed Power BI reports, then manipulating asset issue comments on assets that should not be available to that user. 
+CVE-2022-2155 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+3.4 RESEARCHER
+Hitachi Energy reported this vulnerability to CISA.
+4. MITIGATIONS
+Hitachi Energy advises users that the vulnerability is remediated in Lumada APM v6.4.0.1. Lumada APM v6.5.0.0 and later are not affected.  
+According to Hitachi Energy, the “On Premise” edition of Lumada APM does not support the Power BI integration feature. However, users can connect a subscription-based Power BI to Lumada APM.  
+If the Power BI integration feature is enabled, Hitachi Energy recommends: 
+
+Disabling the unsupported Power BI integration feature if there are users with “Limited Engineer” role. 
+Removing the any users with “Limited Engineer” role. 
+Assigning users to another role prior to using the unsupported Power BI integration feature. 
+
+Note: If Power BI integration is disabled, it is safe to continue to assign the “Limited Engineer” role to users. 
+Hitachi Energy also recommends the following security practices: 
+
+Physically protect process control systems from direct access by unauthorized personnel,  
+Ensure affected equipment has no direct connections to the internet,  
+Separate process control systems from other networks using a firewall system with a minimal number exposed of ports.  
+
+Hitachi Energy advises that process control systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for viruses before connecting to a control system. 
+For more information, see the Hitachi Energy advisory. 
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

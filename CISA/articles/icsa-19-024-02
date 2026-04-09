@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: PHOENIX CONTACT
+Equipment: FL SWITCH
+Vulnerabilities: Cross-site Request Forgery, Improper Restriction of Excessive Authentication Attempts, Cleartext Transmission of Sensitive Information, Resource Exhaustion, Incorrectly Specified Destination in a Communication Channel, Insecure Storage of Sensitive Information, and Memory Corruption
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow attackers to have user privileges, gain access to the switch, read user credentials, deny access to the switch, or perform man-in-the-middle attacks.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Phoenix Contact reports the vulnerabilities affect the following products:
+
+FL SWITCH 3xxx, 4xxx and 48xx versions prior to Version 1.35.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+This vulnerability may allow an attacker to trick the web browser into transmitting unwanted commands.
+CVE-2018-13993 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+The switch lacks a login time-out feature to prevent high-speed automated username and password combination guessing. An attacker may gain access by brute forcing of usernames and passwords.
+CVE-2018-13990 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).
+3.2.3    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The default setting of the Web UI (HTTP) allows user credentials to be transmitted unencrypted.
+CVE-2018-13992 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N).
+3.2.4    UNCONTROLLED RESOURCE CONSUMPTION (RESOURCE EXHAUSTION) CWE-400
+An attacker can initiate a web denial-of-service attack by producing an excessive number of Web UI connections.
+CVE-2018-13994 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5    INSECURE STORAGE OF SENSITIVE INFORMATION CWE-922
+An attacker may extract the switch’s default private keys from its firmware image.
+CVE-2018-13991 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.6    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER (MEMORY CORRUPTION) CWE-119
+Buffer errors in the existing switch security library may allow a denial-of-service condition.
+CVE-2017-3735 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications, Critical Manufacturing, Information Technology
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Phoenix Contact, working with Evgeniy Druzhinin, Ilya Karpov, and Georgy Zaytsev of Positive Technologies, reported the vulnerabilities to CERT@VDE.
+4. MITIGATIONS
+Phoenix Contact recommends that users of FL SWITCH devices with affected firmware versions update the firmware to Version 1.35 or higher, which fixes these vulnerabilities. The updated firmware may be downloaded from the managed switch product page on the Phoenix Contact website. Please see the CERT VDE advisory for these vulnerabilities for the location of the new firmware download for each specific product: https://cert.vde.com/de-de/advisories/vde-2019-001
+Phoenix Contact also recommends that users using the Phoenix Contact managed FL SWITCH devices enable HTTP security.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

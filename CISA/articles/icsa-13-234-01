@@ -1,0 +1,51 @@
+
+OVERVIEW
+Schneider Electric has self-reported a hard-coded encryption key vulnerability in Schneider Electric’s J-Series Radios. Schneider Electric has produced a patch that mitigates this vulnerability and has published a customer security notification.Schneider Electric Cybersecurity Vulnerability Disclosure, http://download.schneider-electric.com/files?p_File_Id=141141292&p_File_Nam+e=SEVD-2013-143-01.pdf, Web site last accessed August 22, 2013.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Schneider Electric Trio J-Series Radio versions running Firmware Versions V3.6.0, V3.6.1, V3.6.2, and V3.6.3 are affected:
+
+TBURJR900-00002DH0
+TBURJR900-01002DH0
+TBURJR900-05002DH0
+TBURJR900-06002DH0
+TBURJR900-00002EH0
+TBURJR900-01002EH0
+TBURJR900-05002EH0
+TBURJR900-06002EH0.
+
+IMPACT
+In certain cases the affected Trio J-Series radio firmware versions do not correctly generate an advanced encryption standard (AES) encryption key when AES encryption is enabled in the device configuration. An attacker could potentially leverage this situation to gain control of a device or to access a connected device or industrial control system (ICS) network.
+If a Trio J-Series Radio with V3.6.0, V3.6.1, V3.6.2, or V3.6.3 has AES encryption enabled with a user-defined pass phrase, the AES encryption key is not generated correctly, unless it is part of an upgrade.
+If the radio had AES encryption enabled at the time of the V3.5.0 or earlier firmware upgrade to the affected versions, and the AES encryption pass phrase was not changed, then the Trio J-Series will continue to properly encrypt the radio traffic.
+If the radio running firmware V3.5.0 or earlier was upgraded to these affected versions and the AES encryption was changed from disable to enable or had the AES encryption key changed, then the encryption key will not be generated correctly.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric is a Europe-based company that maintains offices in 190 countries worldwide. Their PLC products are used in a wide variety of automation and control applications across all industrial, infrastructure, and building sectors.
+These radios are used mostly in Australia and the US, with smaller deployments in Brazil, Europe, and the UK. Sectors most commonly using the affected devices include oil and gas, water and waste water, and mining.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+Hard-Coded Encryption KeyCWE-321: Use of Hard-coded Cryptographic Key,  http://cwe.mitre.org/data/definitions/321.html, Web site last accessed August 22, 2013.
+
+The affected devices may, under some circumstances, not properly generate an encryption key. This could potentially result in an attacker gaining access to the radio communications link traffic and potentially the ICS network.
+CVE-2013-2782NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2782 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:A/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:L/Au:N/C:C/I:C/A:C, Web site last accessed August 22, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+The best mitigation for this vulnerability is to install the vendor firmware update from Schneider Electric, which can be accessed from the link below.
+http://www2.schneider-electric.com/sites/corporate/en/support/cybersecurity/cybersecurity.page
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed August 22, 2011. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed August 22, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

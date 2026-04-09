@@ -1,0 +1,55 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+ATTENTION: Exploitable remotely
+Vendor: Sensormatic Electronics, LLC; a subsidiary of Johnson Controls
+Equipment: American Dynamics victor Web Client, Software House C•CURE Web Client
+Vulnerability: Improper Authorization
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated attacker on the network to create and sign their own JSON web token and use it to execute an HTTP API method without the need for valid authentication/authorization. Under certain circumstances, this could be used by an attacker to impact system availability by conducting a denial-of-service attack.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Johnson Controls reports this vulnerability affects the following products: 
+
+All versions of victor Web Client up to and including v5.6
+All versions of C•CURE Web Client up to and including v2.90
+
+NOTE: This does not affect the new web-based C•CURE 9000 client that was introduced in C•CURE 9000 v2.90
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER AUTHORIZATION CWE-285
+The software does not perform, or incorrectly performs, an authorization check when an actor attempts to access a resource or perform an action. 
+CVE-2020-9049 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+3.4 RESEARCHER
+Joachim Kerschbaumer reported this vulnerability to Johnson Controls, Inc.
+4. MITIGATIONS
+Johnson Controls advises users to maintain product installations at the latest release and provides several options for remediation of this issue. See below for details.
+victor Web Client: upgrade to v5.6 SP1 (victor Unified Client v5.6 SP1)
+C•CURE Web Client: upgrade to a minimum of v2.70 and install the relevant update below.
+
+C•CURE Web v2.70: install the update Web Client_c2.70_5.2_Update02
+C•CURE Web v2.80: install the update Web Client_c2.80_v5.4.1_Update04
+C•CURE Web v2.90: install the update CCureWeb_2.90_Update01 
+
+For more detailed mitigation instructions, please see Johnson Controls Product Security Advisory JCI-PSA-2020-10. 
+Johnson Controls recommends taking steps to minimize risks to building automation systems.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

@@ -1,0 +1,110 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Siemens SICAM P850 and SICAM P855
+Vulnerabilities: Improper Neutralization of Parameter/Argument Delimiters, Cleartext Transmission of Sensitive Information, Cross-site Scripting, Missing Authentication for Critical Function, Authentication Bypass by Capture-replay, Improper Authentication
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker management interface access, traffic capture, interface with the functionality of the device, control of the program counter, cause a denial-of-service condition, loss of device information, and allow arbitrary code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SICAM P850 and SICAM P855, electrical variable measuring devices, are affected:
+
+SICAM P850 7KG8500-0AA00-0AA0: All versions prior to v3.0
+SICAM P850 7KG8500-0AA00-2AA0: All versions prior to v3.0
+SICAM P850 7KG8500-0AA10-0AA0: All versions prior to v3.0
+SICAM P850 7KG8500-0AA10-2AA0: All versions prior to v3.0
+SICAM P850 7KG8500-0AA30-0AA0: All versions prior to v3.0
+SICAM P850 7KG8500-0AA30-2AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA01-0AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA01-2AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA02-0AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA02-2AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA11-0AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA11-2AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA12-0AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA12-2AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA31-0AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA31-2AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA32-0AA0: All versions prior to v3.0
+SICAM P850 7KG8501-0AA32-2AA0: All versions prior to v3.0
+SICAM P855 7KG8550-0AA00-0AA0: All versions prior to v3.0
+SICAM P855 7KG8550-0AA00-2AA0: All versions prior to v3.0
+SICAM P855 7KG8550-0AA10-0AA0: All versions prior to v3.0
+SICAM P855 7KG8550-0AA10-2AA0: All versions prior to v3.0
+SICAM P855 7KG8550-0AA30-0AA0: All versions prior to v3.0
+SICAM P855 7KG8550-0AA30-2AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA01-0AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA01-2AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA02-0AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA02-2AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA11-0AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA11-2AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA12-0AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA12-2AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA31-0AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA31-2AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA32-0AA0: All versions prior to v3.0
+SICAM P855 7KG8551-0AA32-2AA0: All versions prior to v3.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF PARAMETER/ARGUMENT DELIMITERS CWE-141
+The affected devices do not properly validate parameters of POST requests. This could allow an authenticated attacker to cause a denial-of-service condition or to control the program counter and execute arbitrary code on the device.
+CVE-2022-29872 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER NEUTRALIZATION OF PARAMETER/ARGUMENT DELIMITERS CWE-141
+The affected devices do not properly validate parameters of certain GET and POST requests. This could allow an unauthenticated attacker to cause a denial-of-service condition or to control the program counter and execute arbitrary code on the device.
+CVE-2022-29873 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The affected devices do not encrypt web traffic with clients but communicate in cleartext via HTTP. This could allow an unauthenticated attacker to capture the traffic and interfere with the functionality of the device.
+CVE-2022-29874 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The affected devices do not properly handle the input of a GET request parameter. The provided argument is directly reflected in the web server response. This could allow an unauthenticated attacker to perform reflected cross-site scripting (XSS) attacks.
+CVE-2022-29876 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L).
+3.2.5    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected devices allow unauthenticated access to the web interface configuration area. This could allow an attacker to extract internal configuration details or to reconfigure network settings. However, the reconfigured settings cannot be activated unless the attacker achieves the role of authenticated administrator.
+CVE-2022-29877 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.2.6    AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+The affected devices use a limited range for challenges sent during the unencrypted challenge-response communication. An unauthenticated attacker could capture a valid challenge-response pair generated by a legitimate user and request the webpage repeatedly to wait for the same challenge to reappear for the correct response to be revealed. This could allow the attacker to access the management interface of the device.
+CVE-2022-29878 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.7    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The web-based management interface of affected devices does not employ special access protection for certain internal developer views. This could allow authenticated users to access critical device information.
+CVE-2022-29879 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.8    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The affected devices do not properly validate input in the configuration interface. This could allow an authenticated attacker to place persistent XSS attacks to perform arbitrary actions in the name of a logged user who accesses the affected views.
+CVE-2022-29880 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L).
+3.2.9    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The web-based management interface of affected devices does not employ special access protection for certain internal developer views. This could allow unauthenticated users to extract internal configuration details.
+CVE-2022-29881 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.10    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The affected devices do not handle uploaded files correctly. An unauthenticated attacker could take advantage of this to store an XSS attack, which could (when a legitimate user accesses the error logs) perform arbitrary actions in the name of the user.
+CVE-2022-29882 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L).
+3.2.11    IMPROPER AUTHENTICATION CWE-287
+The affected devices do not restrict unauthenticated access to certain pages of the web interface. This could allow an attacker to delete log files without authentication.
+CVE-2022-29883 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Michael Messner from Siemens Energy reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has recommended the following:
+
+Update SICAM P850 to Version 3.0 or later
+Update SICAM P855 to Version 3.0 or later
+Do not access links from untrusted sources while logged in to SICAM P850 or SICAM P855 devices
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-165073
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,98 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Wibu-Systems AG
+Equipment: CodeMeter
+Vulnerabilities: Buffer Access with Incorrect Length Value, Inadequate Encryption Strength, Origin Validation Error, Improper Input Validation, Improper Verification of Cryptographic Signature, Improper Resource Shutdown or Release
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-20-203-01 Wibu-Systems CodeMeter (Update E) that was published February 11, 2021, to the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to alter and forge a license file, cause a denial-of-service condition, potentially attain remote code execution, read heap data, and prevent normal operation of third-party software dependent on the CodeMeter.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of CodeMeter Runtime, a license manager, are affected: 
+
+All versions prior to 7.10a are affected by CVE-2020-14509 and CVE-2020-14519
+All versions prior to 7.10a are affected by CVE-2020-14517
+All versions prior to 7.10 are affected by CVE-2020-16233
+All versions prior to 6.81 are affected by CVE-2020-14513 
+All versions prior to 6.90 are affected by CVE-2020-14515 when using CmActLicense update files with CmActLicense Firm Code
+
+This license manager is used in products by many different vendors. As new instances are discovered/reported, they will be added to this list of affected products.
+4.2 VULNERABILITY OVERVIEW
+4.2.1    BUFFER ACCESS WITH INCORRECT LENGTH VALUE CWE-805
+Multiple memory corruption vulnerabilities exist where the packet parser mechanism does not verify length fields. An attacker could send specially crafted packets to exploit these vulnerabilities.
+CVE-2020-14509 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.2.2    INADEQUATE ENCRYPTION STRENGTH CWE-326
+Protocol encryption can be easily broken and the server accepts external connections, which may allow an attacker to remotely communicate with the CodeMeter API.
+CVE-2020-14517 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H).
+4.2.3    ORIGIN VALIDATION ERROR CWE-346
+This vulnerability allows an attacker to use the internal WebSockets API via a specifically crafted Java Script payload, which may allow alteration or creation of license files when combined with CVE-2020-14515.
+CVE-2020-14519 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H).
+4.2.4    IMPROPER INPUT VALIDATION CWE-20
+CodeMeter and the software using it may crash while processing a specifically crafted license file due to unverified length fields.
+CVE-2020-14513 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.5    IMPROPER VERIFICATION OF CRYPTOGRAPHIC SIGNATURE CWE-347
+There is an issue in the license-file signature checking mechanism, which allows attackers to build arbitrary license files, including forging a valid license file as if it were a valid license file of an existing vendor. Only CmActLicense update files with CmActLicense Firm Code are affected.
+CVE-2020-14515 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:R/S:C/C:N/I:H/A:H).
+4.2.6    IMPROPER RESOURCE SHUTDOWN OR RELEASE CWE-404
+An attacker could send a specially crafted packet that could have the server send back packets containing data from the heap.
+CVE-2020-16233 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Sharon Brizinov and Tal Keren of Claroty reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Wibu-Systems recommends the following:
+
+Update to the latest version of the CodeMeter Runtime.
+Run CodeMeter only as client.
+Utilize the new REST API instead of the internal WebSockets API.
+Disable the WebSockets API.
+Apply AxProtector.
+
+For more information please see Wibu-Systems’ security advisories:
+
+Deutsch: https://www.wibu.com/de/support/security-advisories.html
+English: https://www.wibu.com/en/support/security-advisories.html
+
+For more information on products dependent on the affected CodeMeter see the following vendor security advisories:
+
+ABB: CodeMeter Vulnerabilities
+Bosch: BOSCH-SA-231483
+CODESYS: Security Advisory 2020-06
+COPA-DATA: CD_SVA_2020_1
+Dräger: PSA-20-266-01
+Eaton: ETN-SB-2020-1011
+Pepperl+Fuchs: VDE-2020-034
+Phoenix Contact: VDE-2020-030
+PILZ: VDE-2020-033
+Rockwell: Knowledgebase Article ID 1127863 (Login Required)
+Schneider Electric: SEVD-2020-287-02
+
+--------- Begin Update F Part 1 of 1 ---------
+
+Siemens: SSA-455843 and SSA-455844
+
+--------- End Update F Part 1 of 1 ---------
+
+TRUMPF: VDE-2020-039
+WAGO: VDE-2020-032
+WEIDMUELLER: VDE-2020-041
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

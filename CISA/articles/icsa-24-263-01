@@ -1,0 +1,64 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.8
+ATTENTION: Exploitable locally/high attack complexity
+Vendor: Rockwell Automation
+Equipment: RSLogix 5 and RSLogix 500
+Vulnerability: Insufficient verification of data authenticity
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to perform remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Rockwell Automation RSLogix 5 and RSLogix 500, a programming software, are affected:
+
+RSLogix 500: All versions
+RSLogix Micro Developer and Starter: All versions
+RSLogix 5: All versions
+
+3.2 Vulnerability Overview
+3.2.1 INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+A feature in the affected products enables users to prepare a project file with an embedded VBA script and can be configured to run once the project file has been opened without user intervention. This feature can be abused to trick a legitimate user into executing malicious code upon opening an infected RSP/RSS project file. If exploited, a threat actor may be able to perform a remote code execution.
+CVE-2024-7847 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.7 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-7847. A base score of 8.8 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sharon Brizinov of Claroty Research - Team82 reported this vulnerability to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation offers users the following solutions:
+Users using the affected software are encouraged to apply the following mitigations and security best practices, where possible:
+
+Deny the execution feature in FactoryTalk Administration Console, when not needed, by navigating to "Policies", selecting ‘"Enable/Disable VBA", and then checking the "Deny" box to block VBA code execution.
+Save project files in a Trusted location where only administrators can modify it and verify file integrity.
+Utilize the VBA editor protection feature, which locks the VBA code from viewing and editing by setting a password.
+
+For more information about this issue, please see the advisory on the Rockwell Automation security page.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. This vulnerability is not exploitable remotely. This vulnerability has a high attack complexity.
+5. UPDATE HISTORY
+
+September 19, 2024: Initial Publication
+

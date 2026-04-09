@@ -1,0 +1,175 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Wind River VxWorks-based Industrial Products
+Vulnerability: Heap-based Buffer Overflow
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-21-194-12 Siemens Wind River VxWorks-based Industrial Products (Update B) that was published May 12, 2022, on the ICS webpage on cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to cause a heap-based buffer overflow.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports this vulnerability affects the following Wind River VxWorks-based industrial products:
+
+RUGGEDCOM WIN5100 series subscriber unit: All versions
+RUGGEDCOM WIN5200 series subscriber unit: All versions
+SCALANCE X200-4P IRT (6GK5200-4AH00-2BA3): All versions
+SCALANCE X201-3P IRT (6GK5201-3BH00-2BA3): All versions
+SCALANCE X201-3P IRT PRO (6GK5201-3BH00-2BD2): All versions
+SCALANCE X202-2IRT (6GK5202-2BB00-2BA3): All versions
+SCALANCE X202-2P IRT (6GK5202-2BH00-2BA3): All versions
+SCALANCE X202-2P IRT PRO (6GK5202-2JR00-2BA6): All versions
+SCALANCE X204-2 (6GK5204-2BB10-2AA3): All versions
+SCALANCE X204-2FM (6GK5204-2BB11-2AA3): All versions
+SCALANCE X204-2LD (6GK5204-2BC10-2AA3): All versions
+SCALANCE X204-2LD TS (6GK5204-2BC10-2CA2): All versions
+SCALANCE X204-2TS (6GK5204-2BB10-2CA2): All versions
+SCALANCE X204IRT (6GK5204-0BA00-2BA3): All versions
+SCALANCE X204IRT PRO (6GK5204-0JA00-2BA6): All versions
+SCALANCE X206-1 (6GK5206-1BB10-2AA3): All versions
+SCALANCE X206-1LD (6GK5206-1BC10-2AA3): All versions
+SCALANCE X208 (6GK5208-0BA10-2AA3): All versions
+SCALANCE X208PRO (6GK5208-0HA10-2AA6): All versions
+SCALANCE X212-2 (6GK5212-2BB00-2AA3): All versions
+SCALANCE X212-2LD (6GK5212-2BC00-2AA3): All versions
+SCALANCE X216 (6GK5216-0BA00-2AA3): All versions
+SCALANCE X224 (6GK5224-0BA00-2AA3): All versions
+SCALANCE X302-7 EEC (2x 24V) (6GK5302-7GD00-2EA3): All versions 
+SCALANCE X302-7 EEC (2x 24V, coated) (6GK5302-7GD00-2GA3): All versions
+SCALANCE X302-7 EEC (2x 230V) (6GK5302-7GD00-4EA3): All versions
+SCALANCE X302-7 EEC (2x 230V, coated) (6GK5302-7GD00-4GA3): All versions
+SCALANCE X302-7 EEC (24V) (6GK5302-7GD00-1EA3): All versions
+SCALANCE X302-7 EEC (24V, coated) (6GK5302-7GD00-1GA3): All versions
+SCALANCE X302-7 EEC (230V) (6GK5302- 7GD00-3EA3): All versions
+SCALANCE X302-7 EEC (230V, coated) (6GK5302-7GD00-3GA3): All versions
+SCALANCE X304-2FE (6GK5304-2BD00-2AA3): All versions
+SCALANCE X306-1LD FE (6GK5306-1BF00-2AA3): All versions
+SCALANCE X307-2 EEC (2x 24V) (6GK5307-2FD00-2EA3): All versions
+SCALANCE X307-2 EEC (2x 24V, coated) (6GK5307-2FD00-2GA3): All versions
+SCALANCE X307-2 EEC (2x 230V) (6GK5307-2FD00-4EA3): All versions
+SCALANCE X307-2 EEC (2x 230V, coated) (6GK5307-2FD00-4GA3): All versions
+SCALANCE X307-2 EEC (24V) (6GK5307-2FD00-1EA3): All versions
+SCALANCE X307-2 EEC (24V, coated) (6GK5307-2FD00-1GA3): All versions
+SCALANCE X307-2 EEC (230V) (6GK5307-2FD00-3EA3): All versions 
+SCALANCE X307-2 EEC (230V, coated) (6GK5307-2FD00-3GA3): All versions
+SCALANCE X307-3 (6GK5307-3BL00-2AA3): All versions
+SCALANCE X307-3 (6GK5307-3BL10-2AA3): All versions
+SCALANCE X307-3LD (6GK5307-3BM00-2AA3): All versions
+SCALANCE X307-3LD (6GK5307-3BM10-2AA3): All versions
+SCALANCE X308-2 (6GK5308-2FL00-2AA3): All versions
+SCALANCE X308-2 (6GK5308-2FL10-2AA3): All versions
+SCALANCE X308-2LD (6GK5308-2FM00-2AA3): All versions
+SCALANCE X308-2LD (6GK5308-2FM10-2AA3): All versions
+SCALANCE X308-2LH (6GK5308-2FN00-2AA3): All versions
+SCALANCE X308-2LH (6GK5308-2FN10-2AA3): All versions
+SCALANCE X308-2LH+ (6GK5308-2FP00-2AA3): All versions
+SCALANCE X308-2LH+ (6GK5308-2FP10-2AA3): All versions
+SCALANCE X308-2M (6GK5308-2GG00-2AA2): All versions
+SCALANCE X308-2M (6GK5308-2GG10-2AA2): All versions
+SCALANCE X308-2M PoE (6GK5308-2QG00-2AA2): All versions
+SCALANCE X308-2M PoE (6GK5308-2QG10-2AA2): All versions
+SCALANCE X308-2M TS (6GK5308-2GG00-2CA2): All versions
+SCALANCE X308-2M TS (6GK5308-2GG10-2CA2): All versions
+SCALANCE X310 (6GK5310-0FA00-2AA3): All versions 
+SCALANCE X310 (6GK5310-0FA10-2AA3): All versions
+SCALANCE X310FE (6GK5310-0BA00-2AA3): All versions
+SCALANCE X310FE (6GK5310-0BA10-2AA3): All versions
+SCALANCE X320-1 FE (6GK5320-1BD00-2AA3): All versions
+SCALANCE X320-1-2LD FE (6GK5320-3BF00-2AA3): All versions
+SCALANCE X408-2 (6GK5408-2FD00-2AA2): All versions
+SCALANCE XF201-3P IRT (6GK5201-3JR00-2BA6): All versions
+SCALANCE XF202-2P IRT (6GK5202-2BH00-2BD2): All versions
+SCALANCE XF204 (6GK5204-0BA00-2AF2): All versions
+SCALANCE XF204-2 (6GK5204-2BC00-2AF2): All versions
+SCALANCE XF204-2BA IRT (6GK5204-2AA00-2BD2): All versions
+SCALANCE XF204IRT (6GK5204-0BA00-2BF2): All versions
+SCALANCE XF206-1 (6GK5206-1BC00-2AF2): All versions
+SCALANCE XF208 (6GK5208-0BA00-2AF2): All versions
+SCALANCE XR324-4M EEC (2x 24V, ports on front) (6GK5324-4GG00-2ER2): All versions
+SCALANCE XR324-4M EEC (2x 24V, ports on front) (6GK5324-4GG10-2ER2): All versions 
+SCALANCE XR324-4M EEC (2x 24V, ports on rear) (6GK5324-4GG00-2JR2): All versions 
+SCALANCE XR324-4M EEC (2x 24V, ports on rear) (6GK5324-4GG10-2JR2): All versions
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front) (6GK5324-4GG00-4ER2): All versions
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front) (6GK5324-4GG10-4ER2): All versions 
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG00-4JR2): All versions 
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG10-4JR2): All versions 
+SCALANCE XR324-4M EEC (24V, ports on front) (6GK5324-4GG00-1ER2): All versions 
+SCALANCE XR324-4M EEC (24V, ports on front) (6GK5324-4GG10-1ER2): All versions 
+SCALANCE XR324-4M EEC (24V, ports on rear) (6GK5324-4GG00-1JR2): All versions 
+SCALANCE XR324-4M EEC (24V, ports on rear) (6GK5324-4GG10-1JR2): All versions 
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front) (6GK5324-4GG00-3ER2): All versions 
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front) (6GK5324-4GG10-3ER2): All versions 
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG00-3JR2): All versions 
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG10-3JR2): All versions 
+SCALANCE XR324-4M PoE (24V, ports on front) (6GK5324-4QG00-1AR2): All versions 
+SCALANCE XR324-4M PoE (24V, ports on rear) (6GK5324-4QG00-1HR2): All versions 
+SCALANCE XR324-4M PoE (230V, ports on front) (6GK5324-4QG00-3AR2): All versions 
+SCALANCE XR324-4M PoE (230V, ports on rear) (6GK5324-4QG00-3HR2): All versions 
+SCALANCE XR324-4M PoE TS (24V, ports on front) (6GK5324-4QG00-1CR2): All versions
+SCALANCE XR324-12M (24V, ports on front) (6GK5324-0GG00-1AR2): All versions 
+SCALANCE XR324-12M (24V, ports on front) (6GK5324-0GG10-1AR2): All versions 
+SCALANCE XR324-12M (24V, ports on rear) (6GK5324-0GG00-1HR2): All versions 
+SCALANCE XR324-12M (24V, ports on rear) (6GK5324-0GG10-1HR2): All versions 
+SCALANCE XR324-12M (230V, ports on front) (6GK5324-0GG00-3AR2): All versions 
+SCALANCE XR324-12M (230V, ports on front) (6GK5324-0GG10-3AR2): All versions 
+SCALANCE XR324-12M (230V, ports on rear) (6GK5324-0GG00-3HR2): All versions 
+SCALANCE XR324-12M (230V, ports on rear) (6GK5324-0GG10-3HR2): All versions 
+SCALANCE XR324-12M TS (24V) (6GK5324-0GG00-1CR2): All versions 
+SCALANCE XR324-12M TS (24V) (6GK5324-0GG10-1CR2): All versions 
+SIMATIC RF180C (6GT2002-0JD00): All versions
+SIMATIC RF182C (6GT2002-0JD10): All versions
+SIMATIC RFID 181EIP (6GT2002-0JD20): All versions
+SIPLUS NET SCALANCE X308-2 (6AG1308-2FL10-4AA3): All versions
+
+--------- Begin Update C Part 1 of 2 ---------
+
+SINAMICS PERFECT HARMONY GH180 Drives: Drives manufactured between 2015 and 2021 (Drives manufactured in 2022 are not affected)
+
+--------- End Update C Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+3.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+There is a DHCP vulnerability in Wind River VxWorks, for versions prior to 6.5. This vulnerability could cause a heap overflow if exploited.
+CVE-2021-29998 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported this vulnerability to CISA.
+5. MITIGATIONS
+Siemens recommends that the affected product versions listed as “All versions prior to v4.1.4” to Update to v4.1.4 or later.
+
+Avoid the use of the DHCP client if unnecessary to your environment.
+If the DHCP client is enabled, it is recommended to disable it.
+
+--------- Begin Update C Part 2 of 2 ---------
+For SINAMICS PERFECT HARMONY GH180 Drives:
+
+Contact Siemens customer support for detailed instructions to remediate the issue in affected drives.
+Disable the DHCP client and use a static IP address configuration instead.
+Ensure the drive internal network is not externally connected (the default drive configuration as described in the operational manual).
+For more information see SSA-910883
+
+--------- End Update C Part 2 of 2 ---------
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens Operational Guidelines for Industrial Security, and to follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity.
+For more information about this vulnerability and the associated remediations, please see Siemens publication number SSA-560465.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

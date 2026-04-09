@@ -1,0 +1,124 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.3
+
+ATTENTION: Exploitable with adjacent access/low skill level to exploit
+
+--------- Begin Update A Part 1 of 3 --------
+
+Vendor: Roche Diagnostics 
+Equipment: Accu-Chek Inform II, CoaguChek Pro II/XS Plus/XS Pro, cobas h 232 POC handheld medical devices
+
+--------- End Update A Part 1 of 3 --------
+
+Equipment: Point of Care handheld medical devices
+Vulnerabilities: Improper Authentication, OS Command Injection, Unrestricted Upload of File with Dangerous Type, Improper Access Control
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-18-310-01 Roche Point of Care Handheld Medical Devices that was published November 6, 2018 on the NCCIC/ICS-CERT website. 
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain unauthorized access to modify system settings or execute arbitrary code. 
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 2 of 3 --------
+The following versions of Roche Diagnostics handheld medical devices are affected:
+--------- End Update A Part 2 of 3 --------
+
+Accu-Chek Inform II
+CoaguChek Pro II
+CoaguChek XS Plus
+CoaguChek XS Pro
+cobas h 232 POC
+Including the related base units (BU), base unit hubs and handheld base units (HBU).
+
+Accu-Chek Units Not affected:
+
+Accu-Chek Inform II Base Unit Light
+Accu-Chek Inform II Base Unit NEW with Software 04.00.00 or newer
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER AUTHENTICATION CWE-287
+Weak access credentials may enable attackers in the adjacent network to gain unauthorized service access via a service interface.
+CVE-2018-18561 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+Affected products:
+
+Accu-Chek Inform II Base Unit / Base Unit Hub – all versions before 03.01.04
+CoaguChek / cobas h232 Handheld Base Unit – all versions before 03.01.04
+
+4.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+Insecure permissions in a service interface may allow authenticated attackers in the adjacent network to execute arbitrary commands on the operating systems.
+CVE-2018-18562 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:H).
+Affected products:
+
+Accu-Chek Inform II Base Unit / Base Unit Hub – all versions before 03.01.04
+CoaguChek / cobas h232 Handheld Base Unit – all versions before 03.01.04
+
+4.2.3    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+A vulnerability in the software update mechanism allows an attacker in adjacent network to overwrite arbitrary files on the system through a crafted update package. 
+CVE-2018-18563 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:H).
+Affected products:
+Accu-Chek Inform II Instrument – all versions before 03.06.00 (serial number below 14000) / 04.03.00 (serial Number above 14000)
+
+CoaguChek Pro II – all versions before 04.03.00
+CoaguChek XS Plus – all versions before 03.01.06
+CoaguChek XS Pro – all versions before 03.01.06
+cobas h 232 – all versions before 03.01.03 (serial number below KQ0400000 or KS0400000)
+cobas h 232 – all versions before 04.00.04 (serial number above KQ0400000 or KS0400000)
+
+4.2.4    IMPROPER ACCESS CONTROL CWE-284
+Improper access control to a service command allows attackers in the adjacent network to execute arbitrary code on the system through a crafted message.
+CVE-2018-18564 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+Affected Products: 
+
+Accu-Chek Inform II Instrument – all versions before 03.06.00 (Serial number below 14000) / 04.03.00 (Serial Number above 14000)
+CoaguChek Pro II – all versions before 04.03.00
+cobas h 232 – all versions before 04.00.04 (Serial number above KQ0400000 or KS0400000)
+
+4.2.5    IMPROPER ACCESS CONTROL CWE-284
+Improper access control allows attackers in the adjacent network to change the instrument configuration.
+CVE-2018-18565 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:L/A:H).
+Affected products:
+
+Accu-Chek Inform II Instrument – all versions before 03.06.00 (Serial number below 14000) / 04.03.00 (Serial Number above 14000)
+CoaguChek Pro II – all versions before 04.03.00
+CoaguChek XS Plus – all versions before 03.01.06
+CoaguChek XS Pro – all versions before 03.01.06
+cobas h 232 – all versions before 03.01.03 (Serial number below KQ0400000 or KS0400000)
+cobas h 232 – all versions before 04.00.04 (Serial number above KQ0400000 or KS0400000)
+
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+
+--------- Begin Update A Part 3 of 3 --------
+
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+--------- End Update A Part 3 of 3 --------
+4.4 RESEARCHER
+Niv Yehezkel of Medigate reported these vulnerabilities to Roche.
+5. MITIGATIONS
+Roche recommends the following mitigation procedures for connected devices (Ethernet and Wi-Fi):
+
+Restrict network and physical access to the device and attached infrastructure by enabling the device security features.
+Protect connected endpoints from unauthorized access, theft, and malicious software.
+Monitor the system and network infrastructure for suspicious activity and report a suspected compromise according to local policy. 
+
+For non-connected devices:
+
+Protect from unauthorized access, theft and manipulation.
+
+For all affected products, Roche Diagnostic has scheduled release of new software updates with availability beginning November 2018.
+For further information or concerns, please contact a local Roche Diagnostics office at the following location: 
+https://www.roche.com/about/business/roche_worldwide.htm
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

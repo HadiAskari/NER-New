@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.8
+ATTENTION: Low skill level to exploit
+Vendor: GE
+Equipment: Mark VIe Controller
+Vulnerabilities: Improper Authorization, Use of Hard-coded Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to create read/write/execute commands within the Mark VIe control system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+All versions of the GE Mark VIe Controller are affected by at least one of the vulnerabilities. Some versions are affected by both. For more information contact GE.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER AUTHORIZATION CWE-285
+The affected product has an unsecured Telnet protocol that may allow a user to create an authenticated session using generic default credentials.
+CVE-2019-13554 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L).
+3.2.2    USE OF HARD-CODED CREDENTIALS CWE - 798
+The affected product is shipped with pre-configured hard-coded credentials that may allow root-user access to the controller. A limited application of the affected product may ship without setup and configuration instructions immediately available to the end user. The bulk of controllers go into applications requiring the GE commissioning engineer to change default configurations during the installation process.
+CVE-2019-13559 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTOR: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sharon Brizinov of Claroty reported these vulnerabilities to GE.
+4. MITIGATIONS
+GE recommends users apply the following mitigations:
+
+Disable the Telnet service (Telnet was enabled by default on Mark VIe controllers with versions of Control*ST earlier than v6.0).
+Reset controller passwords upon transfer of Mark VIe to the operating environment
+
+GE Mark VIe Control system owners can request access and find instructions in GEH-6808, Control*ST Software Suite How to Guidelines.
+GE Mark VIe Control system owners can reference GEH-6839, Secure Deployment Guidelines, for further instruction on security actions with installation and maintenance of their control system.
+GE recommends organizations employ a defense-in-depth strategy through user authentication and authorization with features native to the control system to remediate security risk against the communication protocol vulnerabilities described.
+For more information contact GE at https://www.ge.com/security
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

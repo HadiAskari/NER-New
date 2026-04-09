@@ -1,0 +1,68 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: AVEVA Software, LLC
+Equipment: SuiteLink Server
+Vulnerabilities: Heap-based Buffer Overflow, Null Pointer Dereference, Improper Handling of Exceptional Conditions
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause the SuiteLink Server to crash. It may be possible to achieve remote code execution, but no proof-of-concept currently exists.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+AVEVA reports the following products ship a vulnerable version of the SuiteLink Server and are affected:
+
+AVEVA System Platform 2020 R2 P01 and all prior versions
+AVEVA InTouch 2020 R2 P01 and all prior versions
+AVEVA Historian 2020 R2 P01 and all prior versions
+AVEVA Communication Drivers Pack 2020 R2 and all prior versions
+AVEVA Operations Integration Core 3.0 and all prior versions
+AVEVA Data Acquisition Servers all versions
+AVEVA Batch Management 2020 and all prior versions
+AVEVA MES 2014 R2 and all prior versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+Heap-based buffer overflow in SuiteLink server while processing commands 0x05/0x06
+CVE-2021-32959 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    NULL POINTER DEREFERENCE CWE-476
+Null pointer dereference in SuiteLink server while processing commands 0x03/0x10
+CVE-2021-32963 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    NULL POINTER DEREFERENCE CWE-476
+Null pointer dereference in SuiteLink server while processing commands 0x04/0x0a
+CVE-2021-32979 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    NULL POINTER DEREFERENCE CWE-476
+Null pointer dereference in SuiteLink server while processing command 0x07
+CVE-2021-32971 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5    NULL POINTER DEREFERENCE CWE-476
+Null pointer dereference in SuiteLink server while processing command 0x0b
+CVE-2021-32987 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6    IMPROPER HANDLING OF EXCEPTIONAL CONDITIONS CWE-755
+Improper handling of exceptional conditions in SuiteLink server while processing command 0x01
+CVE-2021-32999 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+3.4 RESEARCHER
+Sharon Brizinov of Claroty reported these vulnerabilities to AVEVA.
+4. MITIGATIONS
+AVEVA recommends organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Users with affected versions of these products should apply the corresponding security update. Note a subset of the updates requires activation-based licensing.
+Please see AVEVA security bulletin AVEVA-2021-003 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

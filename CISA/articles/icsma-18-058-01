@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+Vendor: Medtronic
+Equipment: 2090 CareLink Programmer, 29901 Encore Programmer
+Vulnerabilities: Storing Passwords in a Recoverable Format, Relative Path Traversal, Improper Restriction of Communication Channel to Intended Endpoints
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the updated advisory titled ICSMA-18-058-01 Medtronic 2090 CareLink Programmer Vulnerabilities (Update B) that was published October 11, 2018, ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker with physical access to a 2090 Programmer to obtain per-product credentials to the software deployment network. These credentials grant access to the software deployment network, but access is limited to read-only versions of device software applications. 
+Additionally, successful exploitation of these vulnerabilities may allow an attacker with local network access to influence communications between the Programmer and the software deployment network. 
+Additional product security review revealed potential for an attacker to remotely exploit a subset of these vulnerabilities. The SessionSync and RemoteView features associated with the affected products are not affected by the vulnerabilities reported in this advisory.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of the Medtronic CareLink 2090 Programmer, a device used by trained personnel at hospitals and clinics to program and manage Medtronic cardiac devices, are affected: 
+
+2090 CareLink Programmer, all versions
+29901 Encore Programmer, all versions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    STORING PASSWORDS IN A RECOVERABLE FORMAT CWE-257
+The affected product uses a per-product username and password that is stored in a recoverable format. 
+CVE-2018-5446 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated; the CVSS vector string is (AV:P/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N).
+4.2.2    RELATIVE PATH TRAVERSAL CWE-23
+The affected product’s software deployment network contains a directory traversal vulnerability that could allow an attacker to read files on the system. 
+CVE-2018-5448 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N).
+4.2.3    IMPROPER RESTRICTION OF COMMUNICATION CHANNEL TO INTENDED ENDPOINTS CWE-923
+The affected product uses a virtual private network connection to securely download updates. The product does not verify it is still connected to this virtual private network before downloading updates. The affected products initially establish an encapsulated IP-based VPN connection to a Medtronic-hosted update network. Once the VPN is established, it makes a request to a HTTP (non-TLS) server across the VPN for updates, which responds and provides any available updates. The programmer-side (client) service responsible for this HTTP request does not check to ensure it is still connected to the VPN before making the HTTP request. Thus, an attacker could cause the VPN connection to terminate (through various methods and attack points) and intercept the HTTP request, responding with malicious updates via a man-in-the-middle attack. The affected products do not verify the origin or integrity of these updates, as it insufficiently relied on the security of the VPN. An attacker with remote network access to the programmer could influence these communications.
+CVE-2018-10596 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is. (AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+4.4 RESEARCHER
+Researchers Billy Rios and Jonathan Butts of Whitescope LLC identified these vulnerabilities and reported them to CISA.
+5. MITIGATIONS
+Medtronic has assessed the vulnerabilities and determined that no new potential safety risks were identified. In order to enhance system security, Medtronic has added periodic integrity checks for files associated with the software deployment network. Additionally, Medtronic has developed server-side security changes that further enhance security. Medtronic reports that they will not be issuing a product update; however, Medtronic has identified compensating controls within this advisory to reduce the risk of exploitation and reiterates the following from the CareLink 2090 Programmer Reference Manual:
+
+Maintain good physical controls over the programmer. Having a secure physical environment prevents access to the internals of the programmer.
+Only connect the programmer to managed, secure networks.
+Update the software on the programmer when Medtronic updates are available.
+Alternatively, disconnect the programmer from the network. Network connectivity is not required for normal programmer operation. 
+Offline updates are available, contact your Medtronic representative for more information.
+
+--------- Begin Update C Part 1 of 1 --------
+Medtronic has deployed mitigating patches to address the reported vulnerabilities. Medtronic has also stated that they have increased security controls associated with these vulnerabilities. As a result of the available mitigating patches, Medtronic has re-enabled the network-based software update mechanism.
+Medtronic has stated that the patch for affected products can be obtained by contacting Medtronic Technical Services at 800‑638‑1991.
+--------- End Update C Part 1 of 1 --------
+After additional review and risk evaluation of the affected products, Medtronic has disabled the network-based software update mechanism, including both the VPN and the HTTP subservices, as an immediate security mitigation. Users should not attempt to update the affected products over the network as this update mechanism is vulnerable to the attack described in section 4.2.3. Medtronic will continue to implement and deploy increased security protections and mitigations to address the vulnerabilities in this advisory.
+Users should still obtain and apply updates via controlled USB dongles and should contact their Medtronic representative for more information.
+Medtronic recommends that affected products continue to be used for their intended purpose in the previously described manner.
+Medtronic has released a security bulletin for the 2090 CareLink Programmer.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+These vulnerabilities are not exploitable remotely.

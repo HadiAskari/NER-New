@@ -1,0 +1,91 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). 
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE SC-600 Family
+Vulnerabilities: Acceptance of Extraneous Untrusted Data With Trusted Data, Use of Weak Hash, Forced Browsing, Uncontrolled Resource Consumption, Unchecked Return Value, Injection, OS Command Injection
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to escalate privileges, execute arbitrary code, or spawn a system root shell on the affected system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SCALANCE SC622-2C (6GK5622-2GS00-2AC2) (CVE-2023-44317, CVE-2023-44373, CVE-2023-49691, CVE-2023-49692): Versions prior to V3.0.2
+SCALANCE SC622-2C (6GK5622-2GS00-2AC2) (CVE-2023-44319, CVE-2023-44320, CVE-2023-44322): Versions prior to V3.1
+SCALANCE SC622-2C (6GK5622-2GS00-2AC2) (CVE-2023-44321): All versions
+SCALANCE SC626-2C (6GK5626-2GS00-2AC2) (CVE-2023-44317, CVE-2023-44373, CVE-2023-49691, CVE-2023-49692): Versions prior to V3.0.2
+SCALANCE SC626-2C (6GK5626-2GS00-2AC2) (CVE-2023-44319, CVE-2023-44320, CVE-2023-44322): Versions prior to V3.1
+SCALANCE SC626-2C (6GK5626-2GS00-2AC2) (CVE-2023-44321): All versions
+SCALANCE SC632-2C (6GK5632-2GS00-2AC2) (CVE-2023-44317, CVE-2023-44373, CVE-2023-49691, CVE-2023-49692): Versions prior to V3.0.2
+SCALANCE SC632-2C (6GK5632-2GS00-2AC2) (CVE-2023-44319, CVE-2023-44320, CVE-2023-44322): Versions prior to V3.1
+SCALANCE SC632-2C (6GK5632-2GS00-2AC2) (CVE-2023-44321): All versions
+SCALANCE SC636-2C (6GK5636-2GS00-2AC2) (CVE-2023-44317, CVE-2023-44373, CVE-2023-49691, CVE-2023-49692): Versions prior to V3.0.2
+SCALANCE SC636-2C (6GK5636-2GS00-2AC2) (CVE-2023-44319, CVE-2023-44320, CVE-2023-44322): Versions prior to V3.1
+SCALANCE SC636-2C (6GK5636-2GS00-2AC2) (CVE-2023-44321): All versions
+SCALANCE SC642-2C (6GK5642-2GS00-2AC2) (CVE-2023-44317, CVE-2023-44373, CVE-2023-49691, CVE-2023-49692): Versions prior to V3.0.2
+SCALANCE SC642-2C (6GK5642-2GS00-2AC2) (CVE-2023-44319, CVE-2023-44320, CVE-2023-44322): Versions prior to V3.1
+SCALANCE SC642-2C (6GK5642-2GS00-2AC2) (CVE-2023-44321): All versions
+SCALANCE SC646-2C (6GK5646-2GS00-2AC2) (CVE-2023-44317, CVE-2023-44373, CVE-2023-49691, CVE-2023-49692): Versions prior to V3.0.2
+SCALANCE SC646-2C (6GK5646-2GS00-2AC2) (CVE-2023-44319, CVE-2023-44320, CVE-2023-44322): Versions prior to V3.1
+SCALANCE SC646-2C (6GK5646-2GS00-2AC2)(CVE-2023-44321): All versions
+
+3.2 Vulnerability Overview
+3.2.1 ACCEPTANCE OF EXTRANEOUS UNTRUSTED DATA WITH TRUSTED DATA CWE-349
+Affected products do not properly validate the content of uploaded X509 certificates which could allow an attacker with administrative privileges to execute arbitrary code on the device.
+CVE-2023-44317 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 USE OF WEAK HASH CWE-328
+Affected devices use a weak checksum algorithm to protect the configuration backup that an administrator can export from the device. This could allow an authenticated attacker with administrative privileges or an attacker that tricks a legitimate administrator to upload a modified configuration file to change the configuration of an affected device.
+CVE-2023-44319 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N).
+3.2.3 DIRECT REQUEST ('FORCED BROWSING') CWE-425
+Affected devices do not properly validate the authentication when performing certain modifications in the web interface allowing an authenticated attacker to influence the user interface configured by an administrator.
+CVE-2023-44320 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N).
+3.2.4 UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+Affected devices do not properly validate the length of inputs when performing certain configuration changes in the web interface allowing an authenticated attacker to cause a denial-of-service condition. The device needs to be restarted for the web interface to become available again.
+CVE-2023-44321 has been assigned to this vulnerability. A CVSS v3 base score of 2.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L).
+3.2.5 UNCHECKED RETURN VALUE CWE-252
+Affected devices can be configured to send emails when certain events occur on the device. When presented with an invalid response from the SMTP server, the device triggers an error that disrupts email sending. An attacker with access to the network can use this to do disable notification of users when certain events occur.
+CVE-2023-44322 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.6 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+Affected devices do not properly sanitize an input field. This could allow an authenticated remote attacker with administrative privileges to inject code or spawn a system root shell. Follow-up of CVE-2022-36323.
+CVE-2023-44373 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.7 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+An improper neutralization of special elements used in an OS command with root privileges vulnerability exists in the handling of the DDNS configuration. This could allow malicious local administrators to issue commands on system level after a successful IP address update.
+CVE-2023-49691 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.8 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+An improper neutralization of special elements used in an OS command with root privileges vulnerability exists in the parsing of the IPSEC configuration. This could allow malicious local administrators to issue commands on system level after a new connection is established.
+CVE-2023-49692 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released new versions for several affected products and recommends users update to the latest versions. Siemens recommends countermeasures for products where fixes are not, or not yet available:
+
+For CVE-2023-44317, CVE-2023-44373, CVE-2023-49691, CVE-2023-49692: Update to V3.0.2 or later version
+For CVE-2023-44319, CVE-2023-44320, CVE-2023-44322: Update to V3.1 or later version
+For CVE-2023-44321: Currently no fix is planned
+
+Siemens also recommends users restrict access to application webserver for trusted users only.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-602936 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+February 15, 2024: Initial Publication
+

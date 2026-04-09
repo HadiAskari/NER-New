@@ -1,0 +1,102 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Fresenius Kabi
+Equipment: Agilia Connect Infusion System
+Vulnerabilities: Uncontrolled Resource Consumption, Use of a Broken or Risky Cryptographic Algorithm, Insufficiently Protected Credentials, Improper Access Control, Plaintext Storage of a Password, Files or Directories Accessible to External Parties, Exposure of Information Through Directory Listing, Cross-site Scripting, Injection, Use of Hard-coded Credentials, Use of Client-side Authentication, Use of Unmaintained Third-party Components
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-21-355-01 Fresenius Kabi Agilia Connect Infusion System that was published December 21, 2021, to the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+--------- Begin Update A Part 1 of 1 ---------
+Successful exploitation of these vulnerabilities in system accessories could allow an attacker to gain access to sensitive information, modify settings or parameters, or perform arbitrary actions as an authenticated user.
+According to Fresenius Kabi, the Agilia infusion pump alarm is not impacted by the vulnerabilities described in this advisory. Fresenius Kabi maintains the infusion parameters are preserved, current infusion is not interrupted, and no unacceptable patient risk is identified. Fresenius Kabi also maintains there is no risk of exposure of personally identifiable information (PII) or protected health information (PHI).
+--------- End Update A Part 1 of 1 ---------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following accesories of the Agilia Connect Infusion System, are affected:
+
+Agilia Connect WiFi module of the pumps vD25 and prior
+Agilia Link+ v3.0 D15 and prior
+Vigilant Software Suite v1.0: Vigilant Centerium, Vigilant MasterMed and Vigilant Insight
+Agilia Partner maintenance software v3.3.0 and prior
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+Requests may be used to interrupt the normal operation of the device. When exploited, Agilia Link+ must be rebooted via a hard reset triggered by pressing a button on the rack system.
+CVE-2021-23236 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+The SSL/TLS configuration of Agilia Link+ has serious deficiencies that may allow an attacker to compromise SSL/TLS sessions in different ways. An attacker may be able to eavesdrop on transferred data, manipulate data allegedly secured by SSL/TLS, and impersonate an entity to gain access to sensitive information.
+CVE-2021-31562 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+4.2.3    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+The Agilia Link+ management interface does not enforce transport layer encryption. Therefore, transmitted data may be sent in cleartext. Transport layer encryption is offered on Port TCP/443, but the affected service does not perform an automated redirect from the unencrypted service on Port TCP/80 to the encrypted service.
+CVE-2021-41835 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.4    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The web application on Agilia Link+ implements authentication and session management mechanisms exclusively on the client-side and does not protect authentication attributes sufficiently.
+CVE-2021-23196 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.5    IMPROPER ACCESS CONTROL CWE-284
+Sensitive endpoints can be accessed without any authentication information such as the session cookie. An attacker can send requests to sensitive endpoints as an unauthenticated user to perform critical actions on Agilia Link+ or modify critical configuration parameters.
+CVE-2021-23233 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.6    PLAINTEXT STORAGE OF A PASSWORD CWE-256
+An attacker with physical access to the host can extract the secrets from the registry and create valid JWT tokens for the Fresenius Kabi Vigilant MasterMed application and impersonate arbitrary users. An attacker could manipulate RabbitMQ queues and messages by impersonating users.
+CVE-2021-23207 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).
+4.2.7    FILES OR DIRECTORIES ACCESSIBLE TO EXTERNAL PARTIES CWE-552
+Agilia SP MC WiFi has a default configuration page accessible without authentication. An attacker may use this functionality to change the exposed configuration values such as network settings.
+CVE-2021-33843 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+4.2.8    EXPOSURE OF INFORMATION THROUGH DIRECTORY LISTING CWE-548
+Vigilant API has the option for automated indexing (directory listing) activated. When accessing a directory, a web server delivers its entire content in HTML form. If an index file does not exist and directory listing is enabled, all content of the directory will be displayed, allowing an attacker to identify and access files on the server.
+CVE-2021-23195 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.2.9    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION (CROSS-SITE SCRIPTING) CWE-79
+Vigilant Centerium Dashboard is vulnerable to reflected cross-site scripting attacks. An attacker could inject JavaScript in a GET parameter of HTTP requests and perform unauthorized actions such as stealing internal information and performing actions in context of an authenticated user.
+CVE-2021-33848 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N).
+4.2.10    USE OF HARD-CODED CREDENTIALS CWE-798
+The Vigilant MasterMed application contains service credentials likely to be common across all instances. An attacker in possession of the password may gain privileges on all installations of this software.
+CVE-2021-44464 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L).
+4.2.11    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+The Vigilant MasterMed application issues authentication tokens to authenticated users that are signed with a symmetric encryption key. An attacker in possession of the key can issue valid JWTs and impersonate arbitrary users.
+CVE-2021-33846 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:N).
+4.2.12    USE OF CLIENT-SIDE AUTHENTICATION CWE-603
+The Vigilant MasterMed application allows user input to be validated on the client side without authentication by the server. The server should not rely on the correctness of the data because users might not support or block JavaScript or intentionally bypass the client-side checks. An attacker with knowledge of the service user could circumvent the client-side control and login with service privileges.
+CVE-2021-43355 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.13    USE OF UNMAINTAINED THIRD-PARTY COMPONENTS CWE-1104
+The affected system is using ExpertPdf library and lighttpd web server, which are both out of date. Outdated software may contain vulnerabilities not publicly known but may be reverse engineered by an attacker.
+CVE-2020-35340 has been assigned to one of the publicly known vulnerabilities in ExpertPdf library. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Julian Suleder, Nils Emmerich, and Raphael Pavlidis of ERNW Research GmbH, and Dr. Oliver Matula (ERNW Enno Rey Netzwerke GmbH) reported these vulnerabilities to the German Federal Office for Information Security (BSI) in the context of the BSI ManiMed project.
+5. MITIGATIONS
+Fresenius Kabi has created new versions to address these vulnerabilities:
+
+Link+ v3.0 (D16 or later)
+VSS v1.0.3 (or later)
+Agilia Connect Pumps Wifi Module (D29 or later)
+Agilia Connect Partner v3.3.2 (or later) 
+
+Fresenius Kabi has initiated communication on this topic in April 2021 with users to inform them about availability of the new versions in corresponding countries. Contact Fresenius Kabi online or by phone at 1-800-333-6925 for more update information.
+Fresenius Kabi also identified that early Link+ devices (approximatively 1,200 devices) would need hardware change to support D16 or later firmware. Until those devices can be replaced in users’ installation, Fresenius Kabi recommends users to rely on CISA recommendations below.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities

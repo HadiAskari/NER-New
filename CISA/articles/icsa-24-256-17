@@ -1,0 +1,60 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.7
+ATTENTION: Exploitable from an adjacent network/low attack complexity
+Vendor: AutomationDirect
+Equipment: DirectLogic H2-DM1E
+Vulnerabilities: Session Fixation, Authentication Bypass by Capture-replay
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to inject traffic into an ongoing authenticated session or authenticate as a valid user.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of DirectLogic H2-DM1E, a programmable logic controller, are affected:
+
+DirectLogic H2-DM1E: Versions 2.8.0 and prior
+
+3.2 Vulnerability Overview
+3.2.1 Authentication Bypass by Capture-replay CWE-294
+The session hijacking attack targets the application layer's control mechanism, which manages authenticated sessions between a host PC and a PLC. During such sessions, a session key is utilized to maintain security. However, if an attacker captures this session key, they can inject traffic into an ongoing authenticated session. To successfully achieve this, the attacker also needs to spoof both the IP address and MAC address of the originating host which is typical of a session-based attack.
+CVE-2024-43099 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-43099. A base score of 8.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 Session Fixation CWE-384
+The H2-DM1E PLC's authentication protocol appears to utilize either a custom encoding scheme or a challenge-response protocol. However, there's an observed anomaly in the H2-DM1E PLC's protocol execution, namely its acceptance of multiple distinct packets as valid authentication responses. This behavior deviates from standard security practices where a single, specific response or encoding pattern is expected for successful authentication.
+CVE-2024-45368 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-45368. A base score of 8.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Dams, Food and Agriculture
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Daniel Davenport, Nicholas Meier, Matthew Zelinsky, and Ryan Silva of John Hopkins Applied Physics Lab reported these vulnerabilities to CISA.
+4. MITIGATIONS
+As part of their ongoing risk assessment, AutomationDirect has determined that the H2-DM1E, due to its age and inherent architectural limitations, can no longer be supported within the secure development lifecycle.
+To address these challenges, AutomationDirect recommends the following mitigation strategies based on a thorough risk assessment:
+
+Upgrade to the BRX platform: Transitioning to the BRX platform is strongly advised, as it is designed to meet current security standards and is actively maintained within AutomationDirect's secure development lifecycle.
+Network segmentation and air gapping: To mitigate risks associated with the H2-DM1E, AutomationDirect recommends implementing network segmentation and air gapping. This strategy will isolate the older technology from the broader network, reducing its exposure to external threats and minimizing the impact of any security vulnerabilities.
+Deploy a StrideLinx secure VPN platform: AutomationDirect also recommends placing the system behind a StrideLinx VPN platform.
+
+These mitigation strategies provide a comprehensive approach to managing the risks associated with the H2-DM1E while preparing for future security needs. Please reach out to AutomationDirect if you have any further questions or require additional details on these recommendations.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 12, 2024: Initial Publication
+

@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: OSIsoft
+Equipment: PI Vision
+Vulnerabilities: Cross-site Scripting, Incorrect Authorization
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to information disclosure, modification, or deletion.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of PI Vision, a data management platform, are affected:
+
+PI:Vision: All versions prior to 2021
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+A remote attacker with write access to PI Vision could inject code into a display. Unauthorized information disclosure, modification, or deletion is possible if a victim views or interacts with the infected display using Microsoft Internet Explorer. The impact affects PI System data and other data accessible with victim’s user permissions.
+CVE-2021-43551 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:L/A:N).
+3.2.2    INCORRECT AUTHORIZATION CWE-863
+PI Vision could disclose information to a user with insufficient privileges for an AF attribute that is the child of another attribute and is configured as a Limits property.
+CVE-2021-43553 has been assigned to this vulnerability. A CVSS v3 base score of 3.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+OSIsoft reported these vulnerabilities to CISA.
+4. MITIGATIONS
+OSIsoft recommends upgrading to PI vision 2021. Information can be found in the OSIsoft PI Vision security bulletin (registration required).
+OSIsoft recommends users apply the following workarounds for PI Vision to help reduce risk:
+
+Configure Publisher and Explorer roles in PI Vision User Access Levels to restrict which users can create or modify displays.
+Remove any Limits properties from AF child attributes using PI System Explorer or a bulk editing tool.
+
+OSIsoft recommends the following defense measures to lower the impact of exploitation for PI Vision:
+
+Use a modern web browser such as Microsoft Edge, Google Chrome, or Mozilla FireFox. Do not use Microsoft Internet Explorer.
+If upgrade is not an option, administrators should regularly audit the AF hierarchy to ensure there are no unexpected or unknown elements, attributes, or attribute properties. It is recommended security on elements in AF be configured and enforced in addition to configuring PI point security.
+Potential unauthorized viewing of PI System data due to this issue is limited to permissions granted to the PI Vision Application Pool Identity.  Configure a dedicated identity mapping for PI Vision servers and manage permissions in accordance with a data classification policy.
+
+See OSIsoft customer portal knowledge article for additional details and associated security updates (registration required).
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. 

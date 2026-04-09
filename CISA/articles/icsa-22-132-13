@@ -1,0 +1,105 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: Industrial devices using libcurl
+Vulnerabilities: Use After Free
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-132-13 Siemens Industrial Devices using libcurl (Update A) that was published June 16, 2022, on the ICS webpage on cisa.gov/ics. 
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could crash and allow an attacker to interfere with the affected products in various ways.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affect the following Siemens Industrial Devices using libcurl: 
+
+LOGO! CMR family: All versions
+RUGGEDCOM RM1224 LTE(4G) EU (6GK6108-4AM00-2BA2): All versions prior to v7.1
+RUGGEDCOM RM1224 LTE(4G) NAM (6GK6108-4AM00-2DA2): All versions prior to v7.1
+SCALANCE M804PB (6GK5804-0AP00-2AA2): All versions prior to v7.1
+SCALANCE M812-1 ADSL-Router (Annex A) (6GK5812-1AA00-2AA2): All versions prior to v7.1
+SCALANCE M812-1 ADSL-Router (Annex B) (6GK5812-1BA00-2AA2): All versions prior to v7.1
+SCALANCE M816-1 ADSL-Router (Annex A) (6GK5816-1AA00-2AA2): All versions prior to v7.1
+SCALANCE M816-1 ADSL-Router (Annex B) (6GK5816-1BA00-2AA2): All versions prior to v7.1
+SCALANCE M826-2 SHDSL-Router (6GK5826-2AB00-2AB2): All versions prior to v7.1
+SCALANCE M874-2 (6GK5874-2AA00-2AA2): All versions prior to v7.1 
+SCALANCE M874-3 (6GK5874-3AA00-2AA2): All versions prior to v7.1
+SCALANCE M876-3 (EVDO) (6GK5876-3AA02-2BA2): All versions prior to v7.1
+SCALANCE M876-3 (ROK) (6GK5876-3AA02-2EA2): All versions prior to v7.1
+SCALANCE M876-4 (EU) (6GK5876-4AA00-2BA2): All versions prior to v7.1
+SCALANCE M876-4 (NAM) (6GK5876-4AA00-2DA2): All versions prior to v7.1
+SCALANCE MUM856-1 (EU) (6GK5856-2EA00-3DA1): All versions prior to v7.1
+SCALANCE MUM856-1 (RoW) (6GK5856-2EA00-3AA1): All versions prior to v7.1
+SCALANCE S615 (6GK5615-0AA00-2AA2): All versions prior to v7.1
+
+--------- Begin Update B Part 1 of 2 --------- 
+
+SIMATIC CP 1242-7 V2 (6GK7242-7KX31-0XE0): All versions prior to v3.3.46 
+SIMATIC CP 1243-1 (6GK7243-1BX30-0XE0): All versions prior to v3.3.46 
+SIMATIC CP 1243-7 LTE EU (6GK7243-7KX30-0XE0): All versions prior to v3.3.46 
+SIMATIC CP 1243-7 LTE US (6GK7243-7SX30-0XE0): All versions prior to v3.3.46 
+SIMATIC CP 1243-8 IRC (6GK7243-8RX30-0XE0): All versions prior to v3.3.46  
+SIPLUS NET CP 1242-7 V2 (6AG1242-7KX31-7XE0): All versions prior to V3.3.46 
+SIPLUS S7-1200 CP 1243-1 RAIL (6AG2243-1BX30-1XE0): All versions prior to V3.3.46 
+
+--------- End Update B Part 1 of 2 --------- 
+
+SIMATIC CP 1543-1 (6GK7543-1AX00-0XE0): All versions prior to v3.0.22
+SIMATIC CP 1545-1 (6GK7545-1GX00-0XE0): All versions prior to v1.1
+SINEMA Remote Connect Client: All versions prior to v3.1
+SIMATIC RTU3010C (6NH3112-0BA00-0XX0): All versions prior to v5.0
+SIMATIC RTU3030C (6NH3112-3BA00-0XX0): All versions prior to v5.0
+SIMATIC RTU3031C (6NH3112-3BB00-0XX0): All versions prior to v5.0
+SIMATIC RTU3041C (6NH3112-4BB00-0XX0): All versions prior to v5.0
+SIPLUS NET CP 1543-1 (6AG1543-1AX00-2XE0): All versions prior to v3.0.22
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE AFTER FREE CWE-416
+libcurl 7.75.0 through 7.76.1 suffers from a use-after-free vulnerability resulting in already freed memory being used when a TLS 1.3 session ticket arrives over a connection. A malicious attacker can use this to reach remote code execution in the client. 
+When libcurl at run-time sets up support for TLS 1.3 session tickets on a connection using OpenSSL, it stores pointers to the transfer in-memory object for later retrieval when a session ticket arrives. If the connection is used by multiple transfers (as with a reused HTTP/1.1 connection or multiplexed HTTP/2 connection) that first transfer object might be freed before the new session is established and the function will then access a memory buffer that might be freed. When using that memory, libcurl may call a function pointer in the object, making it possible for remote code execution if the server could manage to get crafted memory content into the correct place in memory.
+CVE-2021-22901 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    USE AFTER FREE CWE-416
+libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup. Due to errors in the logic, the config matching function did not take ‘issuercert’ into account and compares the involved paths case insensitively, which could lead to libcurl reusing wrong connections. File paths are, or can be, case sensitive on many systems and can vary depending on used file systems. The comparison also didn’t include the ‘issuer cert,’ which a transfer can set to qualify how to verify the server certificate.
+CVE-2021-22924 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens notified CISA these devices are affected by these known vulnerabilities.
+5. MITIGATIONS
+Siemens has released updates for several affected products and recommends updating to the latest versions. Siemens is preparing further updates and recommends countermeasures for products where updates are not yet available.
+
+RUGGEDCOM RM1224, SCALANCE M804PB, SCALANCE M812-1, SCALANCE M816-1, SCALANCE M826-2, SCALANCE M874-2, SCALANCE M874-3, SCALANCE M876-3, SCALANCE M876-4, SCALANCE MUM856-1, and SCALANCE S615: Update to v7.1 or later
+SIMATIC CP 1543-1 and SIPLUS NET CP 1543-1: Update to v3.0.22 or later
+SIMATIC RTU3010C, SIMATIC RTU3030C, SIMATIC RTU3031C, and SIMATIC RTU3041C: Update to v5.0 or later
+
+--------- Begin Update B Part 2 of 2 --------- 
+
+SIMATIC CP 1242-7 V2, SIMATIC CP 1243-1, SIMATIC CP 1243-7 LTE EU, SIMATIC CP 1243-7 LTE US, SIMATIC CP 1243-8 IRC, SIPLUS NET CP 1242-7 V2, SIPLUS S7-1200 CP 1243-1, and SIPLUS S7-1200 CP 1243-1 RAIL: Update to V3.3.46 or later
+
+--------- End Update B Part 2 of 2 --------- 
+
+SIMATIC CP 1545-1: Update to v1.1 or later version
+SINEMA Remote Connect Client: Update to v3.1 or later version
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For additional information, please refer to Siemens Security Advisory SSA-732250
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity.

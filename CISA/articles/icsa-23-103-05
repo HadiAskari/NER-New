@@ -1,0 +1,68 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.7
+ATTENTION: Exploitable with adjacent access 
+Vendor: Siemens 
+Equipment: SCALANCE X-200IRT Devices 
+Vulnerability: Inadequate Encryption Strength 
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthorized attacker in a machine-in-the-middle position to read and modify any data passed over the connection between legitimate clients and the affected device. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following software from Siemens is affected: 
+
+SCALANCE X200-4P IRT (6GK5200-4AH00-2BA3): All versions prior to V5.5.2 
+SCALANCE X201-3P IRT (6GK5201-3BH00-2BA3): All versions prior to V5.5.2 
+SCALANCE X201-3P IRT PRO (6GK5201-3JR00-2BA6): All versions prior to V5.5.2 
+SCALANCE X202-2IRT (6GK5202-2BB00-2BA3): All versions prior to V5.5.2 
+SCALANCE X202-2IRT (6GK5202-2BB10-2BA3): All versions prior to V5.5.2 
+SCALANCE X202-2P IRT (6GK5202-2BH00-2BA3): All versions prior to V5.5.2 
+SCALANCE X202-2P IRT PRO (6GK5202-2JR00-2BA6): All versions prior to V5.5.2 
+SCALANCE X204IRT (6GK5204-0BA00-2BA3): All versions prior to V5.5.2 
+SCALANCE X204IRT (6GK5204-0BA10-2BA3): All versions prior to V5.5.2 
+SCALANCE X204IRT PRO (6GK5204-0JA00-2BA6): All versions prior to V5.5.2 
+SCALANCE XF201-3P IRT (6GK5201-3BH00-2BD2): All versions prior to V5.5.2 
+SCALANCE XF202-2P IRT (6GK5202-2BH00-2BD2): All versions prior to V5.5.2 
+SCALANCE XF204-2BA IRT (6GK5204-2AA00-2BD2): All versions prior to V5.5.2 
+SCALANCE XF204IRT (6GK5204-0BA00-2BF2): All versions prior to V5.5.2 
+SIPLUS NET SCALANCE X202-2P IRT (6AG1202-2BH00-2BA3): All versions prior to V5.5.2 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 INADEQUATE ENCRYPTION STRENGTH CWE-326 
+The secure shell (SSH) server on affected devices is configured to offer weak ciphers by default. This could allow an unauthorized attacker in a machine-in-the-middle position to read and modify any data passed over the connection between legitimate clients and the affected device. 
+CVE-2023-29054 has been assigned to this vulnerability. A CVSS v3 base score of 6.7 has been calculated; the CVSS vector string is (CVSS:3.1/AV:A/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to CISA. 
+4. MITIGATIONS
+Siemens has released updates for the affected products and recommends updating to the latest versions: 
+
+Update all affected products to V5.5.2 or later. 
+
+Siemens has identified the following specific workarounds and mitigations that customers can apply to reduce the risk identified in the vulnerability overview:  
+
+Configure the SSH clients to use strong key exchange ciphers. 
+Add only trusted SSH client public keys to the responding operating system (ROS) and allow access to those clients only. 
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals. 
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.  
+For more information, see the associated Siemens security advisory SSA-479249 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. This vulnerability has a high attack complexity. 

@@ -1,0 +1,67 @@
+
+Overview
+This advisory is a follow-up to ICS-ALERT-11-080-03 7-Technologies IGSS Vulnerabilities, published on the ICS-CERT Web site on March 20, 2011.
+An independent researcher has identified eight vulnerabilities in 7-Technologies (7T) IGSS SCADA human-machine interface (HMI) application. Each of the identified vulnerabilities includes proof-ofconcept (PoC) exploit code. The researcher identified the following vulnerability types:
+
+Stack-based buffer overflows
+Path traversal
+String formatting
+Local arbitrary code execution (dc.exe).
+
+Seven of these vulnerabilities occur in IGSSdataServer service on Port 12401/TCP. The eighth vulnerability is identified in the Data Collection application (dc.exe) on Port 12397/TCP. Both vulnerable services run as part of the IGSS application suite. The IGSS Data Server is responsible for data transmission between the IGSS server and the operator stations. All vulnerabilities are remotely exploitable and can allow denial of service, path traversal, and arbitrary code execution.
+After these original eight vulnerabilities were identified, Joel Langill of SCADAhackerJoel Langill, http://scadahacker.com/, website accessed May 06, 2011. discovered and coordinated with ICS-CERT a ninth vulnerability. This new vulnerability is directly leveraged off one of the original vulnerabilities, specifically local arbitrary code execution affecting the Data Collection application (dc.exe) on Port 12397/TCP. An attacker could exploit this additional vulnerability to conduct simultaneous directory traversal and arbitrary programs execution on the host machine.
+7T has developed a patch that resolves the reported vulnerabilities. ICS-CERT has validated the patch.
+Affected Products
+The vulnerabilities affect 7T IGSS SCADA HMI prior to Version 9.0.0.11083.
+Impact
+Successful exploitation of the reported vulnerabilities can allow an attacker to perform a number of malicious actions including denial of service, path traversal, and arbitrary code execution. These actions can result in adverse application conditions and ultimately impact the production environment on which the SCADA system is used.
+Background
+7T, based in Denmark, creates monitoring and control systems that are primarily used in the United States, Europe, and South Asia. According to the 7T website, IGSS has been deployed in over 28,000 industrial plants in 50 countries worldwide.
+7T IGSS HMI is used to control and monitor programmable logic controllers in industrial processes across multiple sectors including energy, manufacturing, oil and gas, and water.
+Vulnerability Characterization
+Stack-Based Buffer Overflow Vulnerability Overview
+Five of the reported vulnerabilities are categorized as stack-based buffer overflows.Mitre, http://cwe.mitre.org/data/definitions/121.html Each of these five vulnerabilities occurs in the IGSSdataServer service on Port 12401/TCP. These stack-based buffer overflow vulnerabilities can be exploited by sending specially crafted code to the vulnerable IGSSdataServer service on Port 12401/TCP.
+Stack-Based Buffer Overflow Vulnerability Details
+Exploitability
+The five stack-based buffer overflow vulnerabilities reported can be remotely exploited by sending specially crafted code to the vulnerable IGSSdataServer service. If exploited, these vulnerabilities could allow the attacker to execute a malicious payload.
+Existence of Exploit
+Exploit code is publicly available for each of the vulnerabilities.
+Difficulty
+These vulnerabilities require moderate skills to exploit.
+Path Traversal Vulnerability Overview
+The sixth reported vulnerability, a path traversalMiter, http://cwe.mitre.org/data/definitions/21.html vulnerability, allows an attacker to perform a path traversal that exposes the file system structure and potentially allows an attacker to download or upload files without authorization.
+Path Traversal Vulnerability Details
+Exploitability
+This vulnerability is remotely exploitable by sending specially crafted code to the IGSSdataServer service.
+Existence of Exploit
+Exploit code is publicly available for each of the vulnerabilities.
+Difficulty
+This vulnerability requires moderate skills to exploit.
+String Format Vulnerability Overview
+The seventh reported vulnerability involves a string formatMiter, http://cwe.mitre.org/data/definitions/134.html that occurs in the IGSSdataServer service on Port 12401/TCP. This vulnerability can be exploited by sending specially crafted code to the vulnerable IGSSdataServer service on Port 12401/TCP.
+String Format Vulnerability Details
+Exploitability
+This vulnerability is remotely exploitable by sending specially crafted code to the IGSSdataServer service. If exploited, these vulnerabilities could allow the attacker to execute a malicious payload.
+Existence of Exploit
+Exploit code is publicly available for each of the vulnerabilities.
+Difficulty
+This vulnerability requires moderate skills to exploit.
+Code Execution Vulnerability Overview
+The eighth reported vulnerability, code-execution, affects the dc.exe service on Port 12397/TCP. This vulnerability results from the application failing to provide protection mechanisms for executing such code. This vulnerability could allow an attacker to remotely execute a malicious payload.
+Joel Langill was able to leverage this vulnerability to identify the ninth vulnerability, another directory traversal situation.
+Code Execution Vulnerability Details
+Exploitability
+This vulnerability is remotely exploitable by sending specially crafted code to the dc.exe service.
+Existence of Exploit
+Exploit code is publicly available for each of the vulnerabilities.
+Difficulty
+This vulnerability requires moderate skills to exploit.
+Mitigation
+ICS-CERT recommends that customers of 7T IGSS software take the following mitigation steps:
+
+Upgrade to the latest version and install the latest patch.
+Review 7T public news release about these vulnerabilities. The 7T public news release is available at: http://www.igss.com/company/news-and-press-center/11-03-25/IGSS_%e2%80%93_ongoing_focus_on_security.aspx?News=NewsItem.
+7T recommends placing the system behind a properly configured firewall.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to takingdefensive measures.
+The Control Systems Security Program (CSSP) also provides a section for control system security recommended practices on the CSSP page of the US-CERT website. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.

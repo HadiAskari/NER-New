@@ -1,0 +1,47 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on July 15, 2014, and is being released to the NCCIC/ICS-CERT web site.
+Adam Crain of Automatak and Chris Sistrunk of Mandiant have identified a Buffer Overflow Vulnerability in the SUBNET Solutions Inc (SUBNET), SubSTATION Server 2, Telegyr 8979 Master application. SUBNET has produced a hot fix that mitigates this and a related vulnerability the vendor found independently. The researchers have tested the new hot fix and validate that it resolves these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following SUBNET product is affected:
+
+SubSTATION Server 2 Telegyr 8979 Master Protocol – All Versions.
+
+IMPACT
+By sending specially crafted invalid RTU messages to the Telegyr 8979 master, a buffer overflow can occur, resulting in a denial of service (DoS).
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+SUBNET is based in Calgary, Alberta, Canada.
+The affected product, SubSTATION Server, is a vendor agnostic multifunction software application used in intelligent substation automation and IT networking. SubSTATION Server performs data concentration, protocol translation, automation logic, event file collection, and enterprise connectivity. This allows replacement of separate legacy devices, such as RTU data concentrators, relay communications processors used in the operation of electrical substations. According to SUBNET, SubSTATION Server is deployed in the Energy sector including oil and gas and electric utilities. SUBNET estimates that these products are used primarily in the United States and Canada.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed July 15, 2014.
+
+The researchers found that by sending a specially crafted packet simulating an RTU to Master message exceeding allowable data length, an attacker can cause the Telegyr 8979 Master to crash. SUBNET has also discovered that after sending a specially crafted message containing a valid data length, any subsequent message sent immediately to the Telegyr 8979 will also crash the service. SUBNET had also determined the root issue was in the GPT software library.
+CVE-2014-2357NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2357, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 8.3 has been assigned; the CVSS vector string is (AV:A/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?calculator&version=2&vector=AV:A/AC:L/Au:N/C:C/I:C/A:C, web site last accessed July 15, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+Crafting a working exploit for these vulnerabilities would be difficult. An attacker with a moderate to high skill level would be able to exploit these vulnerabilities.
+MITIGATION
+SUBNET has produced hot fix “SSNET v2.12 HF18808” to resolve this issue.
+This hot fix can be obtained by secure FTP provided by the SUBNET support department. Please contact SUBNET Customer Support at: (403) 270-8885, or by email at: support@SUBNET.com and reference SUBNET Release Bulletin “SubSTATION Server 2.12 HF18808 Release, 21  May 2014” for a copy of this release bulletin and download/installation information (This bulletin is being sent to registered users only).
+Vendor Recommendation:
+
+The exploit results in an unrecoverable exception, but all software components are registered as Services under Windows and can be configured to automatically restart after any stoppage. Users can configure the service to automatically restart, which limits the DoS to a momentary disruption.
+Backward compatible releases will be available by request for customers using older versions of SubSTATION Server.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

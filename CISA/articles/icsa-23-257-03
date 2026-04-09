@@ -1,0 +1,82 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). 
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: QMS Automotive
+Vulnerabilities: Plaintext Storage of a Password, Cleartext Storage of Sensitive Information in Memory, Generation of Error Message Containing Sensitive Information, Server-generated Error Message Containing Sensitive Information, Improper Verification of Cryptographic Signature, Insecure Storage of Sensitive Information, Cleartext Transmission of Sensitive Information, Improper Access Control, Unrestricted Upload of File with Dangerous Type, Insufficient Session Expiration
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to perform malicious code injection, information disclosure or lead to a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens, are affected:
+
+QMS Automotive: All versions prior to v12.39
+
+3.2 Vulnerability Overview
+3.2.1 PLAINTEXT STORAGE OF A PASSWORD CWE-256
+User credentials are stored in plaintext in the database without any hashing mechanism. This could allow an attacker to gain access to credentials and impersonate other users.
+CVE-2022-43958 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L).
+3.2.2 CLEARTEXT STORAGE OF SENSITIVE INFORMATION IN MEMORY CWE-316
+User credentials are found in memory as plaintext. An attacker could perform a memory dump, and get access to credentials, and use it for impersonation.
+CVE-2023-40724 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L).
+3.2.3 GENERATION OF ERROR MESSAGE CONTAINING SENSITIVE INFORMATION CWE-209
+The affected application returns inconsistent error messages in response to invalid user credentials during login session. This allows an attacker to enumerate usernames, and identify valid usernames.
+CVE-2023-40725 has been assigned to this vulnerability. A CVSS v3 base score of 4.0 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.4 SERVER-GENERATED ERROR MESSAGE CONTAINING SENSITIVE INFORMATION CWE-550
+The affected application server responds with sensitive information about the server. This could allow an attacker to directly access the database.
+CVE-2023-40726 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.5 IMPROPER VERIFICATION OF CRYPTOGRAPHIC SIGNATURE CWE-347
+The QMS.Mobile module of the affected application uses weak outdated application signing mechanism. This could allow an attacker to tamper the application code.
+CVE-2023-40727 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.6 INSECURE STORAGE OF SENSITIVE INFORMATION CWE-922
+The QMS.Mobile module of the affected application stores sensitive application data in an external insecure storage. This could allow an attacker to alter content, leading to arbitrary code execution or denial-of-service condition.
+CVE-2023-40728 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:L).
+3.2.7 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+The affected application lacks security control to prevent unencrypted communication without HTTPS. An attacker who managed to gain machine-in-the-middle position could manipulate, or steal confidential information.
+CVE-2023-40729 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N).
+3.2.8 IMPROPER ACCESS CONTROL CWE-284
+The QMS.Mobile module of the affected application lacks sufficient authorization checks. This could allow an attacker to access confidential information, perform administrative functions, or lead to a denial-of-service condition.
+CVE-2023-40730 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L).
+3.2.9 UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The affected application allows users to upload arbitrary file types. This could allow an attacker to upload malicious files, that could potentially lead to code tampering.
+CVE-2023-40731 has been assigned to this vulnerability. A CVSS v3 base score of 5.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:N).
+3.2.10 INSUFFICIENT SESSION EXPIRATION CWE-613
+The QMS.Mobile module of the affected application does not invalidate the session token on logout. This could allow an attacker to perform session hijacking attacks.
+CVE-2023-40732 has been assigned to this vulnerability. A CVSS v3 base score of 3.9 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+QMS Automotive: Update to V12.39 or later version. The patch is available upon request from customer support.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-147266 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 14, 2023: Initial Publication
+

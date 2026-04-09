@@ -1,0 +1,58 @@
+
+Overview
+This updated advisory is a follow-up to the original advisory titled ICSA-13-050-01, 3S CODESYS Gateway-Server Vulnerabilities that was published February 19, 2013, on the ICS-CERT Web page.
+This updated advisory provides mitigation details for five vulnerabilities in the 3S-Smart Software Solutions GmbH CODESYS Gateway-Server.
+Independent researcher Aaron Portnoy of Exodus Intelligence has identified five vulnerabilities in the 3S CODESYS Gateway-Server application. 3S has produced a security patch that mitigates these vulnerabilities. Successful exploitation of these vulnerabilities could allow remote code execution. The Gateway-Server is a third-party component found in multiple control systems manufacturer’s products. These vulnerabilities affect products primarily found in the energy, critical manufacturing, and industrial automation industries.
+These vulnerabilities could be exploited remotely.
+--------- Begin Update A Part 1 of 2 --------
+An exploit that targets one of these vulnerabilities is publicly available. Rapid7 has released a Metasploit module exploiting the directory traversal vulnerability that allows arbitrary file creation that can be used to execute a .mof file in order to gain remote execution within the ICS. 
+--------- End Update A Part 1 of 2 ----------
+Affected Products
+The following 3S CODESYS products are affected:
+
+Gateway-Server, prior to ver. 2.3.9.27
+
+Impact
+The 3S security patch covers directory traversal and memory operation restriction vulnerabilities reported to ICS-CERT by Exodus Intelligence.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+3S-Smart Software Solutions GmbH, based in Germany, is the manufacturer of CODESYS, used in the industrial automation field.
+According to the 3S-Smart Software Solutions GmbH Web site, CODESYS is used in virtually all sectors of the automation industry by manufacturers of industrial controllers or intelligent automation devices, by end users in many different industries, or by system integrators who offer automation solutions with CODESYS.
+Vulnerability Characterization
+Vulnerability Overview
+Improper Access of Indexable Resource ("Range Error")http://cwe.mitre.org/data/definitions/118.html
+The 3S CODESYS Gateway-Server performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer. This could allow the attacker to send a specially crafted packet over TCP/1211 to cause a crash, read from unintended memory locations, or execute arbitrary code stored in a separate memory  location.
+CVE-2012-4704 has been assigned to this vulnerability. A CVSS v2 base score of 9.4 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:N/A:C).
+Directory or Path Traversalhttp://cwe.mitre.org/data/definitions/22.html
+The 3S CODESYS Gateway-Server uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory. However, the software does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location outside the restricted directory. An attacker can use a specially crafted directory path to exploit this vulnerability.
+CVE-2012-4705 has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).
+Heap-Based Buffer Overflowhttp://cwe.mitre.org/data/definitions/122.html
+The 3S CODESYS Gateway-Server fails to check for a signed value that could lead to the buffer being overwritten with malicious code. This vulnerability is exploited by sending a specially crafted packet over TCP/1211 affecting the availability of the system.
+CVE-2012-4706 has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).
+Improper Restriction of Operations Within the Bounds of a Memory Bufferhttp://cwe.mitre.org/data/definitions/119.html
+The 3S CODESYS Gateway-Server can read or write to a memory location that is outside the intended boundary of the buffer. As a result, an attacker may execute arbitrary code, alter the intended control flow, read sensitive information, or cause a system crash.
+CVE-2012-4707 has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).
+Stack-Based Buffer Overflowhttp://cwe.mitre.org/data/definitions/121.html
+By sending a specially crafted packet to the 3S CODESYS Gateway-Server over Port TCP/1211, an attacker can cause a stack-based buffer overflow. This condition could allow an attacker to cause a system crash or denial of service.
+CVE-2012-4708 has been assigned to this vulnerability. A CVSS v2 base score of 10 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+These vulnerabilities could be exploited remotely.
+Existence of Exploit
+--------- Begin Update A Part 2 of 2 --------
+A publicly available Metasploit module exploits the directory traversal vulnerability.
+--------- End Update A Part 2 of 2 ----------
+Difficulty
+An attacker with a moderate skill would be able to exploit these vulnerabilities.
+Mitigation
+3S has produced a security patch that mitigates these vulnerabilities. The patch is available on the download site for CODESYS: CODESYS V2.3.9.38 (customer login required).
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+

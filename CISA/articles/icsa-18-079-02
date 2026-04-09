@@ -1,0 +1,107 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable from an adjacent network
+Vendor: Siemens
+Equipment: SIMATIC, SINUMERIK, and PROFINET IO
+Vulnerability: Improper Input Validation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-18-079-02 Siemens SIMATIC, SINUMERIK, and PROFINET IO (Update C) that was published May 14, 2019, on the on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could result in a denial-of-service condition requiring a manual restart to recover the system.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following products:
+
+SIMATIC CP 343-1 Advanced: All versions
+SIMATIC CP 343-1 Standard: All versions
+SIMATIC CP 443-1 Advanced: All versions
+SIMATIC CP 443-1 Standard: All versions
+SIMATIC S7-1500 Software Controller incl. F: All versions prior to v1.7.0
+SIMATIC S7-1500 incl. F: All versions prior to v1.7.0
+SIMATIC S7-300 incl. F and T: All versions prior to v3.X.16
+SIMATIC S7-400 H v6: All versions prior to v6.0.9
+SIMATIC S7-400 PN/DP v6 incl. F: All versions prior to v6.0.7
+SIMATIC S7-400 PN/DP v7 incl. F: All versions
+SIMATIC S7-410: All versions prior to v8.1
+
+--------- Begin Update D Part 1 of 2 ---------
+
+SIMATIC WinAC RTX (F) 2010: All versions prior to SP3
+
+--------- End Update D Part 1 of 2 ---------
+
+SINUMERIK 828D: All versions prior to v4.7 SP6 HF1
+Softnet PROFINET IO for PC-based Windows systems: All versions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER INPUT VALIDATION CWE-20
+Responding to a PROFINET DCP request with a specially crafted PROFINET DCP packet could result in a denial-of-service condition of the requesting system. This vulnerability could be exploited if the attacker is located on the same Ethernet segment (OSI Layer 2) as the targeted device.
+CVE-2018-4843 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems.
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens ProductCERT reported this vulnerability to NCCIC.
+5. MITIGATIONS
+Siemens has provided the following updates for mitigations:
+
+SIMATIC S7-1500 Software Controller incl. F: Update to v1.8.5 or newer, which can be found here:
+
+https://support.industry.siemens.com/cs/ww/en/view/109478528
+
+SIMATIC S7-1500 incl. F: Update to v1.8.5 or newer, which can be found here:
+
+https://support.industry.siemens.com/cs/ww/en/view/109478459
+
+SIMATIC S7-400 PN/DP v6 incl. F: Update to v6.0.7, which can be found here:
+
+https://support.industry.siemens.com/cs/ww/en/view/109474874
+
+SIMATIC S7-410: Update to v8.1, which can be found here:
+
+https://support.industry.siemens.com/cs/ww/en/view/109476571
+
+SINUMERIK 828D: Update to v4.7 SP6 HF1 SINUMERIK software can be obtained from the local Siemens account manager.
+SIMATIC S7-300 incl. F and T: Update to v3.X.16, which can be found here:
+
+https://support.industry.siemens.com/cs/ww/en/ps/13752/dl
+
+SIMATIC S7-400 H V6: Update to v6.0.9, which can be found here:
+
+https://support.industry.siemens.com/cs/ww/en/view/109474550
+--------- Begin Update D Part 2 of 2 ---------
+
+SIMATIC WinAC RTX (F) 2010: Update to SP3 and apply BIOS and Microsoft Windows updates. SP3 software can be found here:
+
+https://support.industry.siemens.com/cs/ww/en/view/109765109
+--------- End Update D Part 2 of 2 ---------
+For all other affected products, Siemens has identified the following specific workarounds and mitigations that users can apply to reduce the risk:
+
+Apply cell protection concept.
+Use VPN for protecting network communication between cells.
+Apply defense-in-depth.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To run the devices in a protected IT environment, Siemens particularly recommends configuring the environment according to Siemens’ operational guidelines for industrial security, and following the recommendations in the product manuals. Additional information on industrial security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and associated software updates, please see Siemens security notification SSA-592007 on their website:
+https://www.siemens.com/cert/advisories
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. High skill level is needed to exploit.

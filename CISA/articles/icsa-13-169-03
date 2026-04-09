@@ -1,0 +1,43 @@
+
+OVERVIEW
+This advisory provides mitigation details for vulnerabilities that impact the Siemens COMOS database system.
+Siemens has identified a permissions, privileges, and access controls vulnerability in the Siemens COMOS database system. Siemens has produced software updates that mitigate this vulnerability. Siemens has tested the updates to validate that they resolve the vulnerability.
+AFFECTED PRODUCTS
+The following Siemens COMOS Versions 9.2 and 10.0 are affected:
+
+COMOS 9.2: all versions < v092_Upd06_Patch010 (9.2.0.6.10) and
+COMOS 10.0: all versions < V100_SP03_Patch004 (10.0.3.0.4)
+
+IMPACT
+Successful exploitation of this vulnerability may result in an authenticated user gaining elevated privileges, potentially giving him the ability to modify all COMOS objects available in the database.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany. Siemens develops products mainly in the energy, transportation, and healthcare sectors.
+COMOS is an object-oriented database system that supports collecting, processing, saving, and distributing information. COMOS is used across many engineering domains including functional engineering of plans and machines, engineering and design, automation and process control planning, and asset and plant management as examples. COMOS also allows the configuration of user privileges, much like any database system.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+PERMISSIONS, PRIVILEGES, AND ACCESS CONTROLSCWE-264: Permissions, Privileges, and Access Controls,  http://cwe.mitre.org/data/definitions/264.html, Web site last accessed June 18, 2013.
+COMOS authenticated users with read privileges can use the client library to elevate their privileges for the Siemens COMOS database system. This could allow the attacker to access and modify all COMOS objects available in the database.
+CVE-2013-3927NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-3927 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.6 has been assigned by the vendor; the CVSS vector string is (AV:L/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=%28AV:L/AC:L/Au:N/C:P/I:P/A:P%29, Web site last accessed June 18, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The attacker must have local access to the system as an authenticated Windows user.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Siemens has produced software updates, 9.2.0.6.10 for Version 9.2 and 10.0.3.0.4 for Version 10.0, that resolve this vulnerability. Siemens recommends that asset owners and operators contact Siemens customer support to acquire the software updates.
+Siemens contact details for the customer support are available at:
+http://support.automation.siemens.com/WW/view/en/16605032
+Siemens security advisory is located here:
+http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-194865.pdf
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed June 18, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed June 18, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

@@ -1,0 +1,25 @@
+
+Overview
+Independent researchers Billy Rios and Terry McCorkle identified cross-site scripting (XSS) and write access violation vulnerabilities in Ocean Data Systems Dream Report application.ICS-CERT has coordinated these vulnerabilities with Ocean Data Systems, which has produced a new version that resolves the reported vulnerabilities. The researchers have tested the new version to confirm that it resolves the vulnerability.
+Affected Products
+According to Ocean Data System the following versions are affected:• Dream Reports versions prior to Version 4.0
+Impact
+Successful attacks could result in data leakage, denial of service, or remote code execution.Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their environment, architecture, and product implementation.
+Background
+Ocean Data Systems is a France-based company that focuses on reporting software for control systems.According to Ocean Data Systems, Dream Report is deployed across several sectors including manufacturing, building automation, oil and gas, water and wastewater, healthcare, and electric utilities. Ocean Data Systems states that these products are used primarily in France, Switzerland, United Kingdom, Israel, United States, and Germany.
+Vulnerability Characterization
+Vulnerability Overview
+Cross Site Scripting
+A XSS vulnerability exists in the Ocean Data Dream Report application due to the lack of server-side validation of query string parameter values. Exploitation of this vulnerability requires that a user visit a specially crafted URL, which injects client-side scripts into the server’s HTTP response to the client.CVE-2011-4038http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4038, NIST uses this advisory to create the CVE website report. This website will be active sometime after publication of this advisory. has been assigned to this vulnerability.
+Write Access Violation
+A write access violation vulnerability exists in the Ocean Data Dream Report application. Exploitation of this vulnerability requires that a user opens a specially crafted file. This may result in arbitrary code execution.CVE-2011-4039http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4039, NIST uses this advisory to create the CVE website report. This website will be active sometime after publication of this advisory. has been assigned to this vulnerability.
+Vulnerability Details
+Exploitability
+The XSS vulnerability is remotely exploitable.The write access violation is not remotely exploitable and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads a malformed file.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a low skill level can create the XSS exploit.Crafting a working exploit for the access violation vulnerability would be difficult. Social engineering is required to convince the user to accept the malformed file. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+Mitigation
+Download the latest version of Dream Reports from Ocean Data’s website: http://www.dreamreport.net/php/download/download.php?lang=en
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.• Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.• Locate control system networks and remote devices behind firewalls, and isolate them from the business network.• When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.

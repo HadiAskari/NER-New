@@ -1,0 +1,106 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSMA-17-250-02 Smiths Medical Medfusion 4000 Wireless Syringe Infusion Pump Vulnerabilities that was published September 7, 2017, on the NCCIC/ICS-CERT web site.
+Independent researcher Scott Gayou has identified eight vulnerabilities in Smiths Medical’s Medfusion 4000 Wireless Syringe Infusion Pump.
+--------- Begin Update A Part 1 of 3 --------
+Smiths Medical has released a patch to address these vulnerabilities. ICS-CERT is recommending that users apply the identified compensating controls until the new version can be applied.
+--------- End Update A Part 1 of 3 --------
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Medfusion 4000 Wireless Syringe Infusion Pump versions are affected:
+
+Medfusion 4000 Wireless Syringe Infusion Pump, Version 1.1,
+Medfusion 4000 Wireless Syringe Infusion Pump, Version 1.5, and
+Medfusion 4000 Wireless Syringe Infusion Pump, Version 1.6
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow a remote attacker to gain unauthorized access and impact the intended operation of the pump. Despite the segmented design, it may be possible for an attacker to compromise the communications module and the therapeutic module of the pump.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment and specific clinical usage.
+BACKGROUND
+Smiths Medical is headquartered in Plymouth, Minnesota, and is a subsidiary of Smiths Group plc, which is a UK-based company.
+The affected products, Medfusion 4000 Wireless Syringe Infusion Pumps, are syringe infusion pumps used to deliver small doses of medication in acute care settings. According to Smiths Medical, Medfusion 4000 Wireless Syringe Infusion Pumps are deployed across the Healthcare and Public Health sector. Smiths Medical estimates these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW')CWE-120: Buffer Copy without Checking Size of Input ('Classic Buffer Overflow'), http://cwe.mitre.org/data/definitions/120.html, web site last accessed September 7, 2017.
+
+A third-party component used in the pump does not verify input buffer size prior to copying, leading to a buffer overflow, allowing remote code execution on the target device. The pump receives the potentially malicious input infrequently and under certain conditions, increasing the difficulty of exploitation.
+CVE-2017-12718NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-12718, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed September 7, 2017.
+
+OUT-OF-BOUNDS READCWE-125: Out-of-bounds Read, http://cwe.mitre.org/data/definitions/125.html, web site last accessed September 7, 2017.
+
+A third-party component used in the pump reads memory out of bounds, causing the communications module to crash. Smiths Medical assesses that the crash of the communications module would not impact the operation of the therapeutic module.
+CVE-2017-12722 . NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-12722, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L). . CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L, web site last accessed September 7, 2017.
+
+USE OF HARD-CODED CREDENTIALSCWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, web site last accessed September 7, 2017.
+
+The pump with default network configuration uses hard-coded credentials to automatically establish a wireless network connection. The pump will establish a wireless network connection even if the pump is Ethernet connected and active; however, if the wireless association is established and the Ethernet cable is attached, the pump does not attach the network stack to the wireless network. In this scenario, all network traffic is instead directed over the wired Ethernet connection.
+CVE-2017-12725NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-12725 , NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed September 7, 2017.
+
+IMPROPER ACCESS CONTROLCWE-284: Improper Access Control, http://cwe.mitre.org/data/definitions/284.html, web site last accessed September 7, 2017.
+
+The FTP server on the pump does not require authentication if the pump is configured to allow FTP connections.
+CVE-2017-12720NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-12720, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed September 7, 2017.
+
+USE OF HARD-CODED CREDENTIALSCWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, web site last accessed September 7, 2017.
+
+The FTP server on the pump contains hardcoded credentials, which are not fully initialized. The FTP server is only accessible if the pump is configured to allow FTP connections.
+CVE-2017-12724NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-12724, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H, web site last accessed September 7, 2017.
+
+USE OF HARD-CODED PASSWORDCWE-259: Use of Hard-coded Password, http://cwe.mitre.org/data/definitions/259.html, web site last accessed September 7, 2017.
+
+Telnet on the pump uses hardcoded credentials, which can be used if the pump is configured to allow external communications. Smiths Medical assesses that it is not possible to upload files via Telnet and the impact of this vulnerability is limited to the communications module.
+CVE-2017-12726NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-12726, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.6 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L, web site last accessed September 7, 2017.
+
+IMPROPER CERTIFICATE VALIDATIONCWE-295: Improper Certificate Validation, http://cwe.mitre.org/data/definitions/295.html, web site last accessed September 7, 2017.
+
+The pump does not validate host certificate, leaving the pump vulnerable to a man-in-the-middle (MITM) attack.
+CVE-2017-12721NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-12721, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N, web site last accessed September 7, 2017.
+
+PASSWORD IN CONFIGURATION FILECWE-260: Password in Configuration File, http://cwe.mitre.org/data/definitions/260.html, web site last accessed September 7, 2017.
+
+The pump stores some passwords in the configuration file, which are accessible if the pump is configured to allow external communications.
+CVE-2017-12723NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2017-12723, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N, web site last accessed September 7, 2017.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with high skill would be able to exploit these vulnerabilities.
+MITIGATION
+--------- Begin Update A Part 2 of 3 --------
+Smiths Medical has released update Version 1.6.1 to mitigate the vulnerabilities in the Medfusion 4000 Wireless Syringe Infusion Pump.
+--------- End Update A Part 2 of 3 --------
+Smiths Medical recommends users apply the following defensive measures:
+
+Assign static IP addresses to the Medfusion 4000 Wireless Syringe Infusion Pump.
+Monitor network activity for rogue DNS and DHCP servers.
+Ensure network segments which the Medfusion 4000 medical infusion pumps are installed are segmented from other hospital and clinical information technology infrastructure.
+Consider network micro segmentation.
+Consider use of network virtual local area networks (VLANs) for the segmentation of the Medfusion 4000 medical infusion pumps.
+Apply proper password hygiene standards across systems (i.e., use uppercase, lowercase, special characters, and a minimum character length of eight).
+Do not re-use passwords.
+Routinely take backups and perform routine evaluations.
+
+--------- Begin Update A Part 3 of 3 --------
+For additional information about the vulnerabilities, proposed measures, or obtaining the product fix, contact Smiths Medical Technical Support at:
+Tel: +1 (800) 258 5361 or +01 614 210 7300
+Online: https://smiths-medical.custhelp.com/
+Email: info.asd@smiths-medical.com
+cybersecurityinquiries@smiths-medical.com
+--------- End Update A Part 3 of 3 --------
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment by examining their specific clinical use of the pump in the host environment. ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users:
+
+Can evaluate the possibility of temporarily disconnecting the pump from the network until the product fix can be applied. Disconnecting the pump from the network would minimize the attack surface and reduce the risk of exploitation. If the pump were disconnected, it would have an operational impact, which would include preventing the pump from receiving drug library updates from the PharmGuard Server. This would require changes to the drug library to be manually input by clinical staff. According to Smiths Medical, disconnecting the pump from the network does not impact the clinical functionality of the pump. If network access is required, users should ensure that Port 20/FTP, Port 21/FTP, and Port 23/Telnet are closed.
+Ensure that the FTP server on the pump is not enabled. If the FTP server is enabled, it should be disabled. Disabling the FTP server will have operational impacts, which should be evaluated.
+Ensure that all unused ports are closed on the affected devices to include Port 20/FTP, Port 21/FTP, and Port 23/TELNET.
+Monitor and log all network traffic attempting to reach the affected products, to include Port 20/FTP, Port 21/FTP, and Port 23/TELNET.
+Isolate the affected products from the Internet and all untrusted systems.
+Organizations should follow good network design practices that include network separation and segmentation; use DMZs with properly configured firewalls to selectively control traffic; and monitor traffic passed between zones and systems to identify anomalous activity.
+Locate all medical devices and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that any VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

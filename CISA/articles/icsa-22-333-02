@@ -1,0 +1,66 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+ATTENTION: Low attack complexity
+Vendor: Hitachi Energy
+Equipment: PCM600
+Vulnerability: Cleartext Storage of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to obtain sensitive credentials and gain access to the affected products, perform unauthorized modifications, or provoke a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Hitachi Energy's IED Connectivity Packages and PCM600 products are affected:
+
+PCM600: v2.11 and previous versions, including hotfixes
+670 Connectivity Package: versions from 3.0 to 3.4.1
+650 Connectivity Package: versions from 1.3 to 2.4.1
+SAM600-IO Connectivity Package: versions from 1.0 to 1.2
+GMS600 Connectivity Package: versions from 1.3 to 1.3.1
+PWC600 Connectivity Package: versions from 1.1 to 1.3
+
+3.2 Vulnerability Overview
+3.2.1 CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+A vulnerability exists in the Intelligent Electronic Device (IED) Connectivity Package (ConnPack) credential storage function in Hitachi Energy's PCM600 product included in the versions listed below, where IEDs credentials are stored in a cleartext format in the PCM600 database and logs files. An attacker having get access to the exported backup file can exploit the vulnerability and obtain user credentials of the IEDs. Additionally, an attacker with administrator access to the PCM600 host machine can obtain other user credentials by analyzing database log files. The credentials may be used to perform unauthorized modifications such as loading incorrect configurations, reboot the IEDs or cause a denial-of-service on the IEDs.
+CVE-2022-2513 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported this vulnerability to CISA.
+4. MITIGATIONS
+Hitachi Energy released the following recommended immediate actions:
+
+Update to PCM600 v2.11 Hotfix 20240426 or apply mitigation factors/workarounds as described below.
+
+After applying the hotfix, reimport and export the backup files to secure that they do not contain this vulnerability. More information to deploy PCM600 securely can be found in the following documents:
+
+1MRS758440, PCM600 Cyber Security Deployment Guideline
+
+Hitachi Energy recommends the following steps to mitigate the risk of vulnerability exploitation:
+
+Implement the least privilege principle, continuously revising permissions and accesses to PCM600 related resources, including the backup file, PCMI, PCMP, PCMA and PCMT files.
+Use a firewall system with the minimal number of exposed ports to help protect a process control network from attacks originating from outside the network.
+Protect process control systems from direct, physical access by unauthorized personnel.
+Ensure process control systems are not directly connected to the internet.
+Separate process control systems from other networks via network segmentation techniques.
+Avoid using process control systems for browsing the internet, instant messaging, or receiving emails.
+Scan removable storage media for malware prior to connection to a process control system.
+
+For more information, see Hitachi Energy's Cybersecurity Advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.
+5. UPDATE HISTORY
+
+November 29, 2022: Initial Publication
+July 23, 2024: Update A - Updated vulnerability description and mitigation section
+

@@ -1,0 +1,70 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Yokogawa
+Equipment: CENTUM
+Vulnerabilities: Improper Authentication, Path Traversal
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-224-01 Yokogawa CENTUM that was published August 11, 2020, on the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote unauthenticated attacker to send tampered communication packets or create/overwrite any file and run any commands.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Yokogawa reports that the vulnerability affects the following CENTUM distributed control system products:
+--------- Begin Update A Part 1 of 2 --------- 
+
+Exaopc (R3.72.00 - R3.78.00)
+
+--------- End Update A Part 1 of 2 --------- 
+
+CENTUM CS 3000 versions R3.08.10 - R3.09.50 (Including CENTUM CS 3000 Entry Class)
+CENTUM VP versions R4.01.00 - R6.07.00 (Including CENTUM VP Entry Class)
+B/M9000CS versions R5.04.01 - R5.05.01
+B/M9000 VP versions R6.01.01 - R8.03.01
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER AUTHENTICATION CWE-287
+This vulnerability may allow a remote unauthenticated attacker to send tampered communication packets. 
+CVE-2020-5608 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).
+4.2.2    PATH TRAVERSAL CWE-22
+This vulnerability may allow a remote attacker to create or overwrite any file, run any commands. 
+CVE-2020-5609 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Food and Agriculture
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Nataliya Tlyapova, Ivan Kurnakov, and Positive Technologies reported these vulnerabilities to Yokogawa.
+5. MITIGATIONS
+Yokogawa recommends the following mitigations:
+--------- Begin Update A Part 2 of 2 --------- 
+
+Exaopc R3.72.00 - R3.78.00: Update to R3.78.10 or later.
+
+--------- End Update A Part 2 of 2 --------- 
+
+For CENTUM CS 3000 (including CENTUM CS 3000 Entry Class) R3.08.10 – R3.09.50 and CENTUM VP (including CENTUM VP Entry Class) R4.01.00 – R4.03.00, no patch will be available because these products are already end of support. Yokogawa recommends that affected customers upgrade to the latest revision of CENTUM VP.
+For CENTUM VP (including CENTUM VP Entry Class) R5.01.00 – R5.04.20, apply patch R5.04.D1
+For CENTUM VP (including CENTUM VP Entry Class) R6.01.00 – R6.07.00, apply patch R6.07.11
+For B/M9000CS R5.04.01 – R5.05.01 and B/M9000 VP R6.01.01 – R8.03.01, Yokogawa reports that this product is not affected by the vulnerabilities but is affected by the existence of CENTUM CS 3000 installed on the same PC. If CENTUM CS 3000 is installed, update B/M90000CS to suitable revision. If CENTUM VP is installed on the same PC, update to B/M90000 VP to suitable revision.
+
+For questions related to this report, please contact Yokogawa support.
+More details can also be found in Yokogawa’s security advisory report number YSAR-20-0001
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

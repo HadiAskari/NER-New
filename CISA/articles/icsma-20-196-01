@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.6
+ATTENTION: Low skill level to exploit/public exploits are available
+Vendor: Capsule Technologies
+Equipment: SmartLinx Neuron 2
+Vulnerability: Protection Mechanism Failure
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-20-196-01 Capsule Technologies SmartLinx Neuron 2 that was published July 14, 2020, on the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could provide an attacker with full control of a trusted device on a hospital’s internal network.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Capsule Technologies SmartLinx Neuron 2, a medical device platform, are affected:
+--------- Begin Update A Part 1 of 2 ---------
+
+Capsule Technologies SmartLinx Neuron 2: Firmware Versions 9.0.3 and older
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    PROTECTION MECHANISM FAILURE CWE-693
+A restricted environment escape vulnerability exists in the “kiosk mode” function of Capsule Technologies SmartLinx Neuron 2 medical information collection devices running
+Version 6.9.1. A specific series of keyboard inputs can allow an escape from the restricted environment, resulting in full administrator access to the underlying operating system. An attacker can connect to the device via USB port with a keyboard or other HID device to trigger this vulnerability.
+CVE-2019-5024 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Patrick DeSantis of Cisco Talos reported this vulnerability to Capsule Technologies.
+5. MITIGATIONS
+Capsule Technologies recommends the following mitigations:
+--------- Begin Update A Part 2 of 2 ---------
+
+Update the software to a supported version (v9.0.4 and above) by doing the following:
+
+--------- End Update A Part 2 of 2 ---------
+
+
+
+Connect the Neuron 2 to the Capsule SmartLinx application server.
+Edit the Neuron Software Reference to include the Neuron software the user wants to update.
+Transfer the Neuron Software to the given Neuron.
+Select Install Neuron Software Reference on the given Neuron.
+The Neuron will drop offline for approximately 30 minutes for the install to complete.
+
+
+Restrict physical access to the vulnerable devices and ensure they remain outside of the organization’s security perimeter.
+Ensure data communications from the devices are not implicitly trusted by internal systems.
+If possible, physically disable or obstruct access to USB ports on vulnerable devices.
+Monitor logs for signs of connections of unauthorized peripherals to vulnerable devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+This vulnerability is not exploitable remotely.

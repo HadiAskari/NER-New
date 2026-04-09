@@ -1,0 +1,86 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC HMIs/WinCC Products
+Vulnerabilities: Improper Initialization, Out-of-bounds Read, Heap-based Buffer Overflow, Stack-based Buffer Overflow, Access of Memory Location After End of Buffer, Improper Null Termination
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution, information disclosure, and denial-of-service attacks under certain conditions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens SIMATIC HMIs/WinCC products are affected:
+
+SIMATIC HMI Comfort Outdoor Panels 7’ and 15’ (incl. SIPLUS variants): All versions prior to v16 Update 4
+SIMATIC HMI Comfort Panels 4’to 22’ (incl. SIPLUS variants): All versions prior to v16 Update 4
+SIMATIC HMI KTP Mobile Panels KTP400F, KTP700, KTP700F, KTP900, and KTP900F: All versions prior to v16 Update 4
+SIMATIC WinCC Runtime Advanced: All versions prior to v16 Update 4
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INITIALIZATION CWE-665
+UltraVNC revision 1198 contains multiple memory leaks in VNC client code, which could allow an attacker to read stack memory and allow for information disclosure. Combined with another vulnerability, it can be used to leak stack memory and bypass ASLR. 
+CVE-2019-8259 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    OUT-OF-BOUNDS READ CWE-125
+UltraVNC revision 1199 has an out-of-bounds read vulnerability in VNC client RRE decoder code caused by multiplication overflow.
+CVE-2019-8260 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    OUT-OF-BOUNDS READ CWE-125
+UltraVNC revision 1199 has an out-of-bounds read vulnerability in VNC code inside client CoRRE decoder caused by multiplication overflow. 
+CVE-2019-8261 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    HEAP-BASED BUFFER OVERFLOW CWE-122
+UltraVNC revision 1203 has multiple heap buffer overflow vulnerabilities in VNC client code inside Ultra decoder, which could result in code execution.
+CVE-2019-8262 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    STACK-BASED BUFFER OVERFLOW CWE-121
+UltraVNC revision 1205 has a stack-based buffer overflow vulnerability in VNC client code inside ShowConnInfo routine, which could lead to a denial-of-service condition.
+CVE-2019-8263 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+3.2.6    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+UltraVNC revision 1203 has an out-of-bounds access vulnerability in VNC client inside Ultra2 decoder, which could result in code execution.
+CVE-2019-8264 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+UltraVNC revision 1207 has multiple out-of-bounds access vulnerabilities connected with improper usage of SETPIXELS macro in VNC client code, which could result in code execution.
+CVE-2019-8265 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8    IMPROPER NULL TERMINATION CWE-170
+UltraVNC revision 1211 has multiple improper null termination vulnerabilities in VNC server code, which could result in out-of-bound data being accessed by remote users.
+CVE-2019-8275 has been assigned to these vulnerabilities. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.9    IMPROPER INITIALIZATION CWE-665
+UltraVNC revision 1211 contains multiple memory leaks in VNC server code, which could allow an attacker to read stack memory and be abused for information disclosure. Combined with another vulnerability, it can be used to leak stack memory and bypass ASLR.
+CVE-2019-8277 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.10    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+UltraVNC revision 1203 has an out-of-bounds access vulnerability in VNC client inside RAW decoder, which could result in code execution.
+CVE-2019-8280 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends applying updates where available:
+
+SIMATIC HMI Comfort Outdoor Panels 7’ and 15’ (incl. SIPLUS variants): Update to v16 Update 4 or later version
+SIMATIC HMI Comfort Panels 4’-22’ (incl. SIPLUS variants): Update to v16 Update 4 or later version
+SIMATIC HMI KTP Mobile Panels KTP400F, KTP700, KTP700F, KTP900, KTP900F: Update to v16 Update 4 or later version
+SIMATIC WinCC Runtime Advanced: Update to v16 Update 4 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Restrict access to Port 5900/TCP to trusted IP addresses only
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for industrial security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-940818
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities

@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely
+Vendor: Motorola Solutions
+Equipment: MDLC
+Vulnerabilities: Use of a Broken or Risky Cryptographic Algorithm, Plaintext Storage of a Password
+
+CISA is aware of a public report, known as “OT:ICEFALL” that details vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in message manipulation, exposure of the attack surface of the MDLC protocol parser, memory corruption, and exposure of sensitive information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the Motorola Solutions MDLC protocol parser are affected:
+
+MDLC: Versions 4.80.0024, 4.82.004, and 4.83.001
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    USE OF A BROKEN OR RISKY CRYPTOGRAPHIC ALGORITHM CWE-327
+The MDLC protocol has a legacy encryption mode that encrypts traffic using the tiny encryption algorithm (TEA) block-cipher in ECB mode, which offers no message integrity and reduced confidentiality. An attacker could craft messages with ciphertext blocks inserted at certain positions resulting in known plaintext at a given offset. This could either lead to message manipulation or exposure of the attack surface of the MDLC protocol parser to memory corruption attacks.
+CVE-2022-30273 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:L/A:N).
+3.2.2    PLAINTEXT STORAGE OF A PASSWORD CWE-256
+The affected product utilizes an MDLC driver that has a password stored in plaintext in the wmdlcdrv.ini driver configuration file.
+CVE-2022-30275 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Daniel dos Santos and Jos Wetzels from Forescout Technologies reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Motorola Solutions recommends the following:
+For CVE-2022-30273:
+
+Motorola Solutions notes the MDLC protocol offers two encryption algorithm options: AES256 (as default since 2014) and TEA. The TEA option will not be available after June 2022 in the new software update. The AES256 option will remain as a mandatory encryption method starting with the June 2022 software update for the ACE3600 and the MC-EDGE.
+Users with legacy products such as MOSCAD or ACE1000 are encouraged to move to newer products that support the MDLC secure protocol.
+
+For CVE-2022-30275:
+
+Motorola Solutions notes the password in the MDLC’s Windows driver (nonsecured MDLC protocol) is plaintext. MDLC has two versions – secured and nonsecured. In order to encrypt the password, users should secure MDLC as described in the user’s manual.
+
+Motorola Solutions also recommends ACE3600 and MC-EDGE users move to the MDLC protocol, which replaces the MDLC legacy protocol and supports AES 256-bit encryption.
+For user guide and procedural information mentioned within this report, use the Contact Us form and select “Other” for Product Interest and request the manual for IoT products.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

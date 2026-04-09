@@ -1,0 +1,53 @@
+
+
+Description
+
+This alert describes a default backdoor user account with a password with trivial encoding. Proof-of-concept (PoC) exploit code affects RuggedCom RuggedSwitch and RuggedServer devices using Rugged Operating System (ROS).
+Summary
+ICS-CERT is aware of a public report of a default backdoor user account with a password with trivial encoding. Proof-of-concept (PoC) exploit code affects RuggedCom RuggedSwitch and RuggedServer devices using Rugged Operating System (ROS). These network devices are used in a variety of network applications, including industrial control systems (ICS).
+According to this report, the vulnerability is exploitable by generating a password from known data about the device. This report was discovered and released by independent security researcher Justin W. Clarke following an attempted but unsuccessful coordination with the vendor.
+ICS-CERT is issuing this alert to provide notice of the public report and identify baseline mitigations for reducing risks to this cybersecurity risk.
+The report included vulnerability details and PoC exploit code for the following vulnerability:
+
+
+
+Vulnerability Type
+Exploitability
+Impact
+
+
+Weak cryptography for passwordshttp://cwe.mitre.org/data/definitions/261.html, Website last access April 25, 2012.
+Remote
+Complete administrative control of the device
+
+
+
+Please report any issues affecting control systems in critical infrastructure environments to ICS-CERT.
+CVE-2012-1803  has been assigned to this vulnerability. A CVSS v2 base score of 8.5 has been assigned.
+For details, please see US-CERT’s vulnerability note.
+Mitigation
+RuggedCom is advising ROS customers to disable the rsh (remote shell) service and set the number of Telnet connections allowed to 0. The researcher has stated that the back door will not work over ssh (secure shell) or the web interface. With these recommendations, the back door will only be accessible via the local serial interface (RS232). ICS-CERT has not fully verified these mitigations.
+--------- Begin Update A Part 1 of 1 --------
+ICS-CERT is coordinating with RuggedCom who has indicated that they intend to release a patch that removes the backdoor access to address this reported vulnerability. They plan to release this patch within the next month. In addition, RuggedCom has released a notification regarding this issue.
+--------- End Update A Part 1 of 1 ----------
+ICS-CERT is currently coordinating with the security researcher, CERT/CC, and Siemens ProductCERT to identify useful mitigations. Siemens acquired RuggedCom earlier this year.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices. Control system devices should not directly face the Internet.ICS-ALERT, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-10-301-01, website last accessed April 25, 2012.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+If remote access is required, employ secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+The Control Systems Security Program (CSSP) also provides a recommended practices section for control systems on the US-CERT website. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+Background
+RuggedCom makes network equipment that is intended for deployment in harsh environments. Their products can be found in applications such as traffic control systems, railroad communications systems, power plants, electrical substations, and military sites. Beyond simple Layer 2 and Layer 3 networking, these devices are also used for serial-to-ip conversation in SCADA systems, and they support MODBUS and DNP3.
+The following ROS versions are known to be affected:
+
+3.2.x and earlier (see note below)
+3.3.x and above
+
+Note: Customers who are running 3.2.x and earlier need to update to the latest release in order to have the capability to disable telnet and remote shell (rsh).
+Follow-Up
+ICS-CERT released a follow-up advisory ICSA-12-146-01 RuggedCom Weak Cryptography for Password to the ICS-CERT Web site on May 25, 2012.

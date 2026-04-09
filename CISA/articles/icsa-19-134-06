@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.5
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SINAMICS PERFECT HARMONY GH180 Fieldbus Network
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens has determined this vulnerability applies to the following medium voltage converters:
+
+SINAMICS PERFECT HARMONY GH180 with NXG I control, MLFBs: 6SR2. . . -, 6SR3. . . -, 6SR4. . . -: All versions with option G21, G22, G23, G26, G28, G31, G32, G38, G43 or G46
+SINAMICS PERFECT HARMONY GH180 with NXG II control, MLFBs: 6SR2. . . -, 6SR3. . . -, 6SR4. . . -: All versions with option G21, G22, G23, G26, G28, G31, G32, G38, G43 or G46
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+An improperly configured parameter read/write execution via fieldbus network may cause the controller to restart. An attacker with access to the fieldbus network could cause a denial-of-service condition by sending specially crafted packets.The vulnerability could be exploited by an attacker with network access to the device. Successful exploitation requires no privileges and no user interaction. An attacker could use the vulnerability to compromise the availability of the affected system.
+CVE-2019-6574 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Healthcare and Public Health, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to NCCIC.
+4. MITIGATIONS
+Siemens recommends users upgrade to NXGpro control. Please contact Siemens customer service to obtain and install the upgrade.Siemens has identified the following specific workarounds and mitigations that users can apply to reduce the risk:
+
+Disable the fieldbus parameter read/write functionality
+Apply cell protection concept and implement defense in depth
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to following the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at: 
+https://www.siemens.com/industrialsecurity
+For further inquiries about security vulnerabilities in Siemens products and solutions, or for more information about this vulnerability and associated software updates (outlined in SSA-865156), please contact the Siemens ProductCERT through the website:
+https://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

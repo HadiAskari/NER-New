@@ -1,0 +1,46 @@
+
+OVERVIEW
+NCCIC/ICS-CERT has become aware of a code injection vulnerability affecting the Cogent DataHub application produced by Cogent Real-Time Systems, Inc. An anonymous security researcher reported this vulnerability to HP’s Zero Day Initiative (ZDI). A patch to mitigate this issue was released on September 2, 2015.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Cogent DataHub versions are affected:
+
+Cogent DataHub, Version 7.3.8 and earlier.
+
+IMPACT
+Successful exploitation of this vulnerability could allow an attacker to turn on an insecure processing mode in the web server, which subsequently allows the attacker to send arbitrary script commands to the server. These script commands can result in remote code execution, denial of service, and information disclosure.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Cogent is a Canadian-based company that produces middleware applications that are used to interface with control systems.
+The Cogent DataHub product is a real-time middleware solution and is deployed across several sectors including Chemical, Commercial Facilities, Critical Manufacturing, Energy, Financial Services, and others. These products are used worldwide, but primarily in the United States and Great Britain.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CODE INJECTIONCWE-94: Improper Control of Generation of Code (“Code Injection”), http://cwe.mitre.org/data/definitions/94.html, web site last accessed September 03, 2015.
+
+If an attacker sends a request to any Gamma script file that uses a certain class, it can then turn on an insecure processing mode in the web server. The specific flaw exists because of an insecure processing mode in the ajax pseudo-URL handler within the Cogent DataHub web server.
+CVE-2014-3789 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3789, web site last accessed September 03, 2015. has been assigned to this vulnerability. ZDI has calculated a CVSS v2 base score of 7.5; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:P, web site last accessed September 03, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Cogent has fixed this vulnerability in Version 7.3.9 of DataHub. This is a free upgrade for any customer running V7.x. Cogent advises that customers running versions prior to Version 7.3.9 do one of the following:
+
+Upgrade to Cogent DataHub Version 7.3.9 from: http://www.cogentdatahub.com/Download_Software.html, or
+Disable the web server component in the Cogent DataHub installation, or
+Configure network security to block access to the Cogent DataHub web server from untrusted locations, or
+Delete the file: C:\Program files (x86)\Cogent\Cogent DataHub\require\AJAXSupport.g and then re-start the Cogent DataHub process.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

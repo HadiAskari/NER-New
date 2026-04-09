@@ -1,0 +1,64 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.0
+
+ATTENTION: Exploitable remotely/Low skill level to exploit/Public exploits are available
+Vendor: WAGO
+Equipment: e!DISPLAY Web-Based-Management (WBM)
+Vulnerabilities: Cross-site Scripting, Unrestricted Upload of File with Dangerous Type, and Incorrect Permissions for Critical Resource
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute code in the context of the user, execute code within the user’s browser, place malicious files within the filesystem, and replace existing files to allow privilege escalation.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of WAGO e!DISPLAY, an HMI, running firmware FW 01 are affected:
+
+762-3000,
+762-3001,
+762-3002, and
+762-3003
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+Authenticated and unauthenticated users can send specially crafted requests to the web server, which allows code injection within the WBM. The code will be rendered and/or executed within the user’s browser.
+CVE-2018-12981 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+This vulnerability allows an authenticated user to upload arbitrary files to the file system with the permissions of the web server.CVE-2018-12980 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    INCORRECT PERMISSION FOR CRITICAL RESOURCE CWE-732
+Weak permissions allow an authenticated user to overwrite critical files by abusing the unrestricted file upload in the WBM.CVE-2018-12979 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy, and Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+T. Weber of SEC Consult reported these vulnerabilities to CERT@VDE, who reported them to NCCIC.
+4. MITIGATIONS
+WAGO recommends affected users update to the latest firmware (FW 02). Contact WAGO support for update files and specific instructions.
+WAGO also recommends the following mitigations:
+
+Update the device to the latest firmware.
+Restrict network access to the device.
+Do not directly connect the device to the Internet.
+Restrict the number of users with access to the device to a minimum.
+Change the default passwords of devices.
+Do not install software from untrusted sources.
+Do not open websites or follow links from untrusted sources.
+
+WAGO has published a security advisory that can be viewed here:
+https://www.wago.com/medias/SA-WBM-2018-004.pdf
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks: 
+
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

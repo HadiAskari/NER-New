@@ -1,0 +1,56 @@
+
+OVERVIEW
+Adam Crain of Automatak and Chris Sistrunk of Mandiant have identified an unhandled C++ exception in the MatrikonOPC DNP3 application. MatrikonOPC has produced a new version that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following MatrikonOPC Server version is affected:
+
+MatrikonOPC Server for DNP3 Version 1.2.3.0
+
+IMPACT
+An attacker could potentially use this vulnerability to craft an exploit to cause a denial-of-service (DoS) loop in the MatrikonOPC Server for DNP3 Windows service. Consequences of a successful exploit would result in a disruption of OPC data until the OPC Server is manually restarted.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+MatrikonOPC is an Edmonton, Canada-based company that maintains offices in several countries around the world, including the United States, Germany, Russia, Australia, Singapore, Norway, Brazil, UK, India, Spain, Portugal, and Costa Rica.
+The affected product, MatrikonOPC Server for DNP3, is Microsoft Windows-based software that facilitates connectivity to multiple DNP3 compliant devices such as remote terminal units, programmable logic controllers, and meters. According to MatrikonOPC, the MatrikonOPC Server for DNP3 is deployed across several sectors including Chemical and Energy. MatrikonOPC products are used primarily in the US, Canada, and UK.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER CHECK FOR UNUSUAL OR EXCEPTIONAL CONDITIONSCWE-754: Improper Check for Unusual or Exceptional Conditions, http://cwe.mitre.org/data/definitions/754.html, web site last accessed November 25, 2014.
+
+An unhandled C++ exception occurs upon receiving a specifically formatted message. The DNP3 process within Windows service crashes, and the service cannot be stopped via services dialog. Restoration of service requires a system reboot.
+CVE-2014-5426NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5426, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:P, web site last accessed November 25, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+MatrikonOPC recommends that asset owners obtain and install the new version as follows:
+
+Visit http://www.opcsupport.com
+Click on the Product Advisory section, and read the posted security notification “Security Notification OPC Server for SCADA DNP3 SN 2014-10-14-01”
+Contact OPC Support to obtain the new version of the OPC server for DNP3
+Install the new version of the OPC Server for DNP3.
+
+The researchers suggest the following mitigation:
+
+Block DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DPN3-specific rule sets.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed November 25, 2014. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed November 25, 2014.[2] for more information on social engineering attacks.
+

@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable with adjacent access/low skill level to exploit
+Vendor: Medtronic
+Equipment: MyCareLink (MCL) Smart Model 25000 Patient Reader
+Vulnerabilities: Improper Authentication, Heap-based Buffer Overflow, Time-of-check Time-of-use Race Condition
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities together could result in the attacker being able to modify or fabricate data from the implanted cardiac device being uploaded to the CareLink Network and remotely execute code on the MCL Smart Patient Reader device, which could allow control of a paired cardiac device. The exploitation must be initiated within Bluetooth signal proximity of the vulnerable product. Medtronic is currently unaware of any cyberattack, privacy breach, or patient harm as a result of these vulnerabilities.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the Medtronic MyCareLink Smart Patient Reader, are affected:
+
+Smart Model 25000 Patient Reader, all versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER AUTHENTICATION CWE-287
+The affected products contain an authentication protocol vulnerability where the method used to authenticate between the MCL Smart Patient Reader and the Medtronic MyCareLink Smart mobile app is vulnerable to bypass. This vulnerability enables an attacker to use another mobile device or malicious application on the patient’s smartphone to authenticate to the patient’s Medtronic Smart Reader, fooling the device into believing it is communicating with the original Medtronic smart phone application when executed within range of Bluetooth communication.
+CVE-2020-25183 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+The affected products are vulnerable when an authenticated attacker runs a debug command, which can be sent to the patient reader and cause a heap overflow event within the MCL Smart Patient Reader software stack. The heap overflow could allow an attacker to remotely execute code on the MCL Smart Patient Reader, potentially leading to control of the device
+CVE-2020-25187 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.3    TIME-OF-CHECK TIME-OF-USE RACE CONDITION CWE-367
+The affected products are vulnerable to a race condition in the MCL Smart Patient Reader software update system, which allows unsigned firmware to be uploaded and executed on the Patient Reader. If exploited, an attacker could remotely execute code on the MCL Smart Patient Reader device, leading to control of the device.
+CVE-2020-27252 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Ireland
+
+3.4 RESEARCHER
+Sternum, based in Tel Aviv, Israel, discovered and initially reported these vulnerabilities to Medtronic.
+A team of researchers from the University of California Santa Barbara, University of Florida, and University of Michigan also independently discovered the lack of authentication vulnerability. This team consists of Eric Gustafson, Sara Rampazzi, Paul Grosen, Christopher Kruegel, and Giovanni Vigna.
+4. MITIGATIONS
+A firmware update to eliminates these vulnerabilities has been developed by Medtronic and is available by updating the MyCareLink Smartapp via the associated mobile application store. Upgrading to the latest v5.2 mobile application version will ensure the Patient Reader is also updated on next use. The user’s smart phone must be updated to the following operating system version for the patches to be applied: iOS 10 and above; Android 6.0 and above.
+Medtronic has released additional patient focused information: 
+https://www.medtronic.com/xg-en/product-security/security-bulletins.html 
+In response to these vulnerabilities, Medtronic has applied additional controls for monitoring and responding to improper use of the MCL Smart Patient Reader:
+
+Medtronic has implemented enhanced integrity validation (EIV) technology, which provides early detection and real-time mitigation of known vulnerability exploitation attempts.
+Medtronic has also implemented advanced detection system technology, which enables device-level logging and monitoring of all device activity and behavior.
+
+Medtronic recommends that users take additional defensive measures to minimize risk. Specifically, users should:
+
+Maintain good physical control over home monitors.
+
+This includes only using home monitors in private environments such as a home, apartment, or otherwise physically controlled environment.
+
+
+Use only home monitors obtained directly from your healthcare provider or a Medtronic representative.
+Patients should ensure that the operating system of their mobile phone is updated to the latest version of the available Android or Apple iOS operating system.
+
+Report any concerning behavior regarding these products to your healthcare provider or a Medtronic representative.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

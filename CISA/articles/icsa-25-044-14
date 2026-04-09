@@ -1,0 +1,75 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.4
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Opcenter Intelligence
+Vulnerabilities: Improper Authentication, Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'), Deserialization of Untrusted Data, Insertion of Sensitive Information into Log File, Server-Side Request Forgery (SSRF)
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could enable an attacker to execute remote code or allow a malicious site administrator to change passwords for users.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports that the following products are affected:
+
+Siemens Opcenter Intelligence: All versions prior to V2501
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER AUTHENTICATION CWE-287
+Tableau is aware of a broken access control vulnerability present in Tableau Server affecting Tableau Server users using Local Identity Store for managing users. The vulnerability allows a malicious site administrator to change passwords for users in different sites hosted on the same Tableau Server, resulting in the potential for unauthorized access to data. Tableau Server versions affected are: 2020.4.16, 2021.1.13, 2021.2.10, 2021.3.9, 2021.4.4 and earlier. All future releases of Tableau Server will address this security issue. Versions that are no longer supported are not tested and may be vulnerable.
+CVE-2022-22127 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2022-22127. A base score of 7.4 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:H/AT:N/PR:H/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N).
+3.2.2 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+Tableau discovered a path traversal vulnerability affecting Tableau Server Administration Agent's internal file transfer service that could allow remote code execution. Tableau only supports product versions for 24 months after release. Older versions have reached their end of life and are no longer supported. They are also not assessed for potential security issues and do not receive security updates.
+CVE-2022-22128 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2022-22128. A base score of 9.2 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 DESERIALIZATION OF UNTRUSTED DATA CWE-502
+The Java OpenWire protocol marshaller is vulnerable to remote code execution. This vulnerability may allow a remote attacker with network access to either a Java-based OpenWire broker or client to run arbitrary shell commands by manipulating serialized class types in the OpenWire protocol to cause either the client or the broker (respectively) to instantiate any class on the classpath. Users are recommended to upgrade both brokers and clients to version 5.15.16, 5.16.7, 5.17.6, or 5.18.3 which fixes this issue. For Opcenter Intelligence: On November 2, 2023, Apache announced the discovery of CVE-2023-46604, a remote code execution (RCE) vulnerability impacting Apache ActiveMQ clients. As a result of this issue, a remote threat actor with network access to either a Java-based OpenWire broker or client could execute code remotely to run arbitrary shell commands.
+CVE-2023-46604 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been assigned; the CVSS vector string is (CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2023-46604. A base score of 9.4 has been calculated; the CVSS vector string is (CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H).
+3.2.4 INSERTION OF SENSITIVE INFORMATION INTO LOG FILE CWE-532
+Personal access token disclosure vulnerability in Tableau Server. For details see Salesforce knowledge article id 000390611.
+CVE-2025-26490 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2025-26490. A base score of 6.9 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.5 SERVER-SIDE REQUEST FORGERY (SSRF) CWE-918
+Server-side request forgery (SSRF) vulnerability in Tableau Server. For details see Salesforce knowledge article id 001534936.
+CVE-2025-26491 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2025-26491. A base score of 7.1 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends Opcenter Intelligence users update to V2501 or later version and install the latest available version of Tableau Server as described in https://support.sw.siemens.com/knowledge-base/PL8822108.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-246355 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+February 13, 2025: Initial Publication
+

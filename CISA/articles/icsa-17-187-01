@@ -1,0 +1,52 @@
+
+CVSS v3 7.4
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Siemens
+Equipment: OZW672 and OZW772
+Vulnerabilities: Missing Authentication
+AFFECTED PRODUCTS
+Siemens reports that the vulnerability affects the following OZW672 and OZW772 devices for monitoring building controller devices:
+
+OZW672: All versions, and
+OZW772: All versions.
+
+IMPACT
+Successful exploitation of this vulnerability could allow attackers to read and write historical measurement data under certain conditions, or to read and modify data in TLS sessions.
+MITIGATION
+Siemens recommends applying the following mitigations:
+
+Protect network access to the affected devices.
+Disable integrated service on Port 21/TCP in the device settings by changing the value of “ACS access” under “Settings > Communication > Services to “Off”. Applying this configuration change mitigates CVE-2017-6872 entirely.
+Use the web portal as described in the product documentation for all applications; Connections to the web portal are not affected by CVE-2017-6873.
+If use of web portal is not possible, then use the integrated web server only in trusted networks.
+
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-563539 at the following location:
+http://www.siemens.com/cert/advisories
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+
+An attacker with access to Port 21/TCP could access or alter historical measurement data stored on the device.
+CVE-2017-6872 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+
+MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+
+A vulnerability in the integrated web server on Port 443/TCP could allow an attacker to read and manipulate data in TLS sessions while performing a man-in-the-middle (MITM) attack.
+CVE-2017-6873 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+RESEARCHER
+Stefan Viehböck from SEC Consult reported these vulnerabilities to Siemens.
+BACKGROUND
+Critical Infrastructure Sector: Commercial Facilities
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany

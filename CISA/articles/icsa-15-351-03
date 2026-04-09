@@ -1,0 +1,76 @@
+
+OVERVIEW
+Independent researcher Karn Ganeshen has identified several vulnerabilities in the eWON sa industrial router. eWON sa has produced an updated firmware to mitigate these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following eWON router firmware versions are affected:
+
+eWON firmware versions prior to 10.1s0
+
+IMPACT
+Vulnerabilities between the application server and client browsers can impact the integrity of what the server is presenting, allow for information leakage, and allow for unauthorized and unauthenticated use of the application server.
+Sessions are an established communication between a web server or application and a user’s browser. Sessions can carry benefits like retaining information such as browsing history. They can also use keys to establish encryption of communications between the server and the browser. One of the vulnerabilities is in the eWON software function to log off. Despite pressing this button, the client browser keeps the session alive allowing a malicious party to use the same browser session to continue interacting with the device.
+Cross-site scripting takes advantage of web servers that return dynamically generated web pages. Cross-site scripting also allows users to post viewable content in order to execute arbitrary HTML and active content, such as JavaScript, ActiveX, and VBScript, on a remote machine browsing the site within the context of a client-server session. This potentially allows the attacker to redirect the web page to a malicious location, hijack the client-server session, engage in network reconnaissance, and plant backdoor programs. Please refer to the ICS-CERT Abstract on Cross-Site Scripting for more information and additional mitigations.
+A cross-site request forgery (CSRF) attack may allow the web browser to perform an unwanted action on a trusted site for which the user is currently authenticated. eWON web server application does not use CSRF Tokens anywhere and, therefore, allows any application function to be silently executed.
+The server allows direct entry and manipulation of the URL allowing an unauthenticated user to gather information and status of I/O servers through the use of a forged URL.
+The server does not encrypt sensitive data like passwords. These are passed in unencrypted (in plain) text allowing a malicious party to retrieve them from network traffic. The autocomplete setting of some eWON forms also allows these passwords to be retrieved from the browser. Compromise of the credentials would allow unauthenticated access.
+eWON firmware web server allows the use of the HTML command GET in place of POST. GET is less secure because data that are sent are part of the URL.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+eWON sa is a Belguim-based company that maintains offices in several countries around the world, including the United States and Japan.
+The affected products, eWON, is an industrial router. According to eWON sa, eWON routers are deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, Water and Wastewater Systems, and others.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+WEAK SESSION MANAGEMENTCWE-613: Insufficient Session Expiration, http://cwe.mitre.org/data/definitions/613.html, web site last accessed December 17, 2015.
+
+The software function to log off retains the session within the browser allowing a malicious party to use the same browser session to continue interacting with the device.
+CVE-2015-7924NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7924, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.8 and a temporal score of 7.9 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H/E:P/RL:O/RC:C , web site last accessed December 15, 2015.
+
+CROSS-SITE REQUEST FORGERY ATTACKSCWE-352: Cross-Site Request Forgery (CSRF), http://cwe.mitre.org/data/definitions/352.html, web site last accessed December 17, 2015.
+
+Cross-site request forgery is an exploit that allows for potential malicious commands to be passed from a user to the application server. eWON web application contains a global CSRF vulnerability. There is no anti-CSRF token in use, either per page or per (configuration) functions. An attacker can perform actions with the same permissions as the victim user, provided the victim has an active session and is induced to trigger the malicious request.
+Successful exploitation may allow the execution of firmware upload, device reboot, or deletion of device configuration.
+CVE-2015-7925NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7925, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.0 and a temporal score of 7.6 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H/E:P/RL:U/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H/E:P/RL:U/RC:C , web site last accessed December 17, 2015.
+
+WEAK RBAC CONTROLSCWE-274: Improper Handling of Insufficient Privileges, http://cwe.mitre.org/data/definitions/274.html, web site last accessed December 17, 2015.
+
+The software allows an unauthenticated user to gather information and status of I/O servers through the use of a forged URL.
+CVE-2015-7926 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7926, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.9 and a temporal score of 8.9 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H/E:P/RL:O/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H/E:P/RL:O/RC:C , web site last accessed December 17, 2015.
+
+STORED CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation (‘Cross-site Scripting), http://cwe.mitre.org/data/definitions/79.html, web site last accessed December 17, 2015.
+
+Stored cross-site scripting refers to client-side code injection where an attacker can execute malicious script on a web server or application. This malicious script is then served to other users of the web server or application who become victims.
+CVE-2015-7927NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7927, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.1 and a temporal score of 5.8 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RL:U/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N/E:P/RL:U/RC:C , web site last accessed December 17, 2015.
+
+PASSWORDS NOT SECUREDCWE-255: Credentials Management, http://cwe.mitre.org/data/definitions/255.html, web site last accessed December 17, 2015.
+
+Passwords are passed in plain text allowing a malicious party to retrieve them from network traffic. The autocomplete setting of some eWON forms also allows these passwords to be retrieved from the browser. Compromise of the credentials would allow unauthenticated access.
+CVE-2015-7928NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7928, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 9.3 and a temporal score of 8.8 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N/E:P/RL:U/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:L/A:N/E:P/RL:U/RC:C , web site last accessed December 17, 2015.
+
+POST/GET ISSUESCWE-598: Information Exposure Through Query Strings in GET Request, http://cwe.mitre.org/data/definitions/598.html, web site last accessed December 17, 2015.
+
+eWON firmware web server allows the use of the HTML command GET in place of POST. GET is less secure because data that are sent are part of the URL.
+CVE-2015-7929NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-7929, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.3 and a temporal score of 4.1 have been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N/E:P/RL:U/RC:C).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N/E:P/RL:U/RC:C , web site last accessed December 17, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+eWON sa has mitigated some (Weak Session Management, Weak RBAC Controls, and partially Passwords not secured) of the aforementioned vulnerabilities with its new updated firmware. In the case of vulnerabilities not mitigated by firmware updates, eWON sa recommends using the router in a secure environment. More information on the eWON’s mitigation of these vulnerabilities can be found on their web site at:
+http://ewon.biz/support/news/support/ewon-security-enhancement-7529-01
+The newest version of their firmware may be found at:
+http://ewon.biz/support/product/download-firmware/firmware-2
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

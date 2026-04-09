@@ -1,0 +1,52 @@
+
+OVERVIEW
+Siemens has identified denial-of-service (DoS) vulnerabilities in the SCALANCE X-300/X408 switch family. These vulnerabilities were reported directly to Siemens by Déjà vu Security. Siemens has produced a firmware update that mitigates these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens SCALANCE switches are affected:
+
+SCALANCE X-300 switch family: All versions prior to V4.0
+SCALANCE X408: All versions prior to V4.0
+
+Alternatively, the affected products may be identified by using their machine-readable product designation (MLFB). A full list of the affected MLFBs can be found in Siemens Security Advisory SSA-321046.SSA-321046: Denial-of-Service Vulnerabilities in SCALANCE X-300/X408 Switch Family, http://www.siemens.com/cert/advisories, web site last accessed January 20, 2015.
+IMPACT
+Exploitation of these vulnerabilities may cause the target device to reboot. No packets are forwarded to connected devices until the reboot is completed.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is an international company headquartered in Munich, Germany.
+SCALANCE-X switches are used to connect industrial components like PLCs or HMIs. The switches offer a web interface to enable users to change the configuration using a common web browser, as well as a FTP server to download and upload configuration and firmware files. According to Siemens, these devices are deployed across most sectors including Chemical, Communications, Critical Manufacturing, Dams, Defense Industrial Base, Energy, Food and Agriculture, Government Facilities, Transportation Systems, and Water and Wastewater Systems. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+DENIAL OF SERVICECWE-730: Denial of Service, http://cwe.mitre.org/data/definitions/730.html, web site last accessed January 20, 2015.
+
+The web server of the affected switches could allow unauthenticated users to cause a device to reboot if malformed HTTP requests are sent to the web server (Port 80/TCP or Port 443/TCP). To achieve this, an attacker must be able to reach the HTTP interface over the network. No packets are forwarded to connected devices until the reboot is completed.
+CVE-2014-8478NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8478, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:C , web site last accessed January 20, 2015.
+
+DENIAL OF SERVICECWE-730: Denial of Service, http://cwe.mitre.org/data/definitions/730.html, web site last accessed January 20, 2015.
+
+The FTP server of the affected switches could allow authenticated users to cause a device reboot if specially crafted network packets are sent to the FTP server (Port 21/TCP). No packets are forwarded to connected devices until the reboot is completed.
+CVE-2014-8479NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-8479, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:N/I:N/A:C, web site last accessed January 20, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens provides firmware update V4.0, which fixes the vulnerabilities, and recommends updating as soon as possible. The firmware update is available at:
+http://support.automation.siemens.com/WW/view/en/107178573
+Siemens also recommends protecting network access to all products except for perimeter devices with appropriate mechanisms. It is advised to follow recommended security practices and to configure the environment according to operational guidelines in order to run the devices in a protected IT environment. Siemens operational guidelines are available at:
+http://www.industry.siemens.com/topics/global/en/industrial-security/Documents/operational_guidelines_industrial_security_en.pdf
+For more information on these vulnerabilities and detailed instructions, please see Siemens Security Advisory SSA-321046 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

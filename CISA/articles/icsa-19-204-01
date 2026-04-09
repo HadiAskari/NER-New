@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+ATTENTION: Low skill level to exploit
+Vendor: Mitsubishi Electric
+Equipment: Mitsubishi Electric FR Configurator2
+Vulnerabilities: Improper Restriction of XML External Entity Reference, Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may enable arbitrary files to be read or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Mitsubishi FR Configurator2, used for configuring Mitsubishi variable frequency drives, are affected:
+
+FR Configurator2 Version 1.16S and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER RESTRICTION OF XML EXTERNAL ENTITY REFERENCE CWE-611
+This vulnerability is triggered when input passed to the XML parser is not sanitized while parsing the XML project and/or template file (.frc2). Once a user opens the file, the attacker could read arbitrary files.
+CVE-2019-10976 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H). 
+3.2.2    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+This vulnerability can be triggered when an attacker provides the target with a rogue project file (.frc2). Once a user opens the rogue project, CPU exhaustion occurs, which causes the software to quit responding until the application is restarted.
+CVE-2019-10972 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Applied Risk reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Mitsubishi Electric has released Version 1.17T for the reported vulnerabilities. Additional information about the vulnerabilities and how to obtain the update can be found at the following location:
+https://www.mitsubishielectric.com/fa/download/software/drv/inv/vulnerability-protection/2019-001.pdf
+Additional information about the vulnerabilities or Mitsubishi Electric's compensating control is available by contacting a local Mitsubishi Electric representative, which can be found at the following location:
+https://us.mitsubishielectric.com/fa/en/about-us/distributors
+CISA recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Be careful with files from untrusted sources.
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

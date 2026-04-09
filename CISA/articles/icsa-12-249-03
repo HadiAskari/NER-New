@@ -1,0 +1,41 @@
+
+Overview
+ICS-CERT received a report from Indusoft and the Zero Day Initiative (ZDI) concerning a heap-based buffer overflow vulnerability affecting the InduSoft ISSymbol ActiveX control. This vulnerability was reported to ZDI by security researcher Alexander Gavrun.
+Successful exploitation of this vulnerability could allow remote execution of arbitrary code.
+Affected Products
+The following products and versions are affected:
+
+InduSoft ISSymbol ActiveX Control (Build 301.1009.2904.0),
+InduSoft Thin Client Version 7.0, and
+InduSoft Web Studio Version 7.0B2
+
+Impact
+Successful exploitation of the reported vulnerability could allow an attacker to perform arbitrary code execution. These actions can result in adverse application conditions and ultimately impact the production environment on which the supervisory control and data acquisition (SCADA) system is used.Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their environment, architecture, and product implementation.
+Background
+InduSoft Web Studio is a collection of automation tools to develop human-machine interfaces, SCADA systems, and embedded instrumentation systems. InduSoft products are often integrated as third-party components in other vendors’ products.
+Vulnerability Characterization
+Vulnerability Overview
+Heap-Based Buffer OverflowCWE, http://cwe.mitre.org/data/definitions/122.html, CWE-122: Heap-based Buffer Overflow, Web site last accessed September 05, 2012.
+Boundary errors on processing the “InternationalOrder” and “InternationalSeparator” properties can be exploited causing a heap-based buffer overflow via an overly long string assigned to the properties.CVE-2011-0340NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-0340 , Web site last accessed September 05, 2012. has been assigned to this vulnerability. According to ZDI, a CVSS v2 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:P).
+Vulnerability Details
+Exploitability
+This vulnerability could be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+This vulnerability requires moderate skills to exploit.
+Mitigation
+ICS-CERT recommends that customers of InduSoft Web Studio software take the following mitigation steps.
+
+Apply hotfix 70.1.02.12. The InduSoft security patch and details are available at: http://www.indusoft.com/hotfixes/hotfixes.php.
+NOTE: Users will be required to email InduSoft support to acquire the hotfix. The link on the InduSoft Web site will automatically draft an email to Support with a request.
+
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Cyber Intrusion Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

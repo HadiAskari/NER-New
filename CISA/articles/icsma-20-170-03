@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Baxter
+Equipment: Phoenix Hemodialysis Delivery System
+Vulnerability: Cleartext Transmission of Sensitive Information
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-170-03 Baxter Phoenix Hemodialysis Delivery System that was published June 18, 2020, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker with unauthorized network access to view sensitive data.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of the Phoenix Hemodialysis Delivery System are affected:
+
+Phoenix Hemodialysis Delivery System SW 3.36 and 3.40
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    CLEARTEXT TRANSMISSION OF SENSITIVE DATA CWE-319
+The Phoenix Hemodialysis device does not support data-in-transit encryption (e.g., TLS/SSL) when transmitting treatment and prescription data on the network between the Phoenix system and the Exalis dialysis data management tool. An attacker with access to the network could observe sensitive treatment and prescription data sent between the Phoenix system and the Exalis tool.
+CVE-2020-12048 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Baxter reported this vulnerability to CISA.
+5. MITIGATIONS
+Baxter recommends users apply the following implementation guidance:
+
+Ensure medical device implementations and configurations employ cybersecurity defense-in-depth strategies such as:
+Ensure proper network segmentation as outlined in the operating manual. Ensure Phoenix machines and Exalis Server PCs reside on a dedicated subnetwork (the machines and the Exalis servers must be the ONLY devices present within it).
+In case of remote connection (WAN), keep the subnetwork dedicated by using a VPN network connection.
+Firewall each network segment, limiting inbound and outbound connections.
+Scan for unauthorized network access.
+Scan for vulnerabilities and viruses.
+
+Users should also identify, analyze, evaluate, and control all risks associated with integration of medical devices in an enterprise network. Subsequent changes to the enterprise network could introduce new risks and require new analysis.
+--------- Begin Update A Part 1 of 1 ---------
+For additional information please see the Baxter Product Security Bulletin.
+--------- End Update A Part 1 of 1 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

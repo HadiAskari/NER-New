@@ -1,0 +1,69 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: ABB
+Equipment: FLXEON Controllers
+Vulnerabilities: Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion'), Missing Origin Validation in WebSockets, Insertion of Sensitive Information into Log File
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to send unauthorized HTTPS requests, access sensitive information from HTTPS responses, or use network access to execute remote code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+ABB reports that the following products are affected:
+
+FLXEON Controllers FBXi: Version 9.3.4 and prior
+FLXEON Controllers FBVi: Version 9.3.4 and prior
+FLXEON Controllers FBTi: Version 9.3.4 and prior
+FLXEON Controllers CBXi: Version 9.3.4 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+Network access can be used to execute arbitrary code with elevated privileges. This issue affects FLXEON version 9.3.4 and prior.
+CVE-2024-48841 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-48841. A base score of 10.0 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H).
+3.2.2 MISSING ORIGIN VALIDATION IN WEBSOCKETS CWE-1385
+Session management is not sufficient to prevent unauthorized HTTPS requests. This issue affects FLXEON version 9.3.4 and prior.
+CVE-2024-48849 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-48849. A base score of 8.8 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 INSERTION OF SENSITIVE INFORMATION INTO LOG FILE CWE-532
+Some information may be improperly disclosed through HTTPS access. This issue affects FLXEON version 9.3.4 and prior.
+CVE-2024-48852 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-48852. A base score of 8.8 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Gjoko Krstikj of Zero Science Lab reported these vulnerabilities through responsible disclosure.
+4. MITIGATIONS
+ABB recommends that users update to firmware version 9.3.5.
+ABB recommends that users immediately do the following actions on any released version of FLXEON:
+
+Stop and disconnect any FLXEON products that are exposed directly to the Internet, either via a direct ISP connection or via NAT port forwarding.
+Ensure that physical controls are in place, so no unauthorized personnel can access your devices, components, peripheral equipment, and networks.
+Ensure that all FLXEON products are upgraded to the latest firmware version (9.3.5 or above). Please find the latest version of FLXEON firmware on the respective product homepage.
+When remote access is required, only use secure methods. If a virtual private network (VPN) is used, ensure that the chosen VPN is secure i.e. updated to the most current version available and configured for secure access.
+
+For more information, please refer to ABB's cybersecurity advisory 9AKK108470A5684.
+ABB states that these vulnerabilities are only exploitable if attackers can access the network segment where FLXEON is installed and exposed directly to the internet. ABB therefore recommends the following guidelines in order to protect users networks:
+
+FLXEON devices should never be exposed directly to the Internet either via a direct ISP connection nor via NAT port forwarding. If remote access to a FLXEON system is a user requirement, the system shall operate behind a firewall. Users accessing FLXEON remotely shall do this using a VPN gateway allowing access to the particular network segment where FLXEON is in stalled and configured.
+It is crucial that the VPN gateway and network are set up in accordance with best industry standards and maintained in terms of security patches for all related components.
+Change default passwords if they are still in use.
+Ensure that all FLXEON products are upgraded to the latest firmware version. Please find the latest version of FLXEON firmware on the respective product homepage.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+February 20, 2025: Initial Publication
+

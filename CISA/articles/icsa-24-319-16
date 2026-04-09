@@ -1,0 +1,57 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: MSM
+Vulnerabilities: Missing Release of Resource after Effective Lifetime, Loop with Unreachable Exit Condition ('Infinite Loop')
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to impact the confidentiality, integrity or availability of the MSM.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Hitachi Energy MSM, a condition monitoring system, are affected:
+
+MSM: Versions 2.2.8 and earlier
+
+3.2 Vulnerability Overview
+3.2.1 Missing Release of Resource after Effective Lifetime CWE-772
+When an application tells libcurl it wants to allow HTTP/2 server push, and the amount of received headers for the push surpasses the maximum allowed limit (1000), libcurl aborts the server push. When aborting, libcurl inadvertently does not free all the previously allocated headers and instead leaks the memory. Further, this error condition fails silently and is therefore not easily detected by an application.
+CVE-2024-2398 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L).
+3.2.2 Loop with Unreachable Exit Condition ('Infinite Loop') CWE-835
+A denial-of-service vulnerability exists in the processing of multipart/form-data requests in the base GoAhead web server application in versions v5.0.1, v.4.1.1 and v3.6.5. A specially crafted HTTP request can lead to an infinite loop in the process. The request can be unauthenticated in the form of GET or POST requests and does not require the requested resource to exist on the server.
+CVE-2019-5097 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends that users apply the update as soon as it is available. in the meantime, Hitachi Energy recommends the general mitigation factors/workarounds given below are followed.
+MSM is not intrinsically designed and intended to be directly connected to the internet. Please disconnect the device from any internet facing network, if any installation has performed the same. Hitachi Energy suggests adopting user access management and any state-of-the-art antivirus protection engines equipped with the latest signature rules on the computers that have installed and operating the MSM Client application. As an example, please use the operating system (OS) inbuilt user access management functionality, if supported, to limit the probability of unauthorized access followed by rogue commands via MSM Client application.
+Also, Hitachi Energy recommends following the hardening guidelines published by "The Center for Internet Security (CIS)" to protect the host operating system of computers that connects with MSM. This measure would then prevent the lateral movement of the attack vector into MSM via these connected devices. Some examples for Windows based computers are listed below:
+1) CIS Microsoft Windows Desktop Benchmarks2) CIS Microsoft Windows Server Benchmarks
+Hitachi Energy has provided the additional following security practices and firewall configurations can help protect a process control network from attacks that originate from outside the network:
+
+Physically protect process control systems from direct access by unauthorized personnel.
+Do not connect directly to the Internet.
+Separate from other networks by means of a firewall system that has a minimal number of ports exposed.
+Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails.
+Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+
+For more information, see Hitachi Energy's security advisory 8DBD000205
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 14, 2024: Initial Publication
+

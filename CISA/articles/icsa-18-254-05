@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.6
+
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits are available
+Vendor: Siemens
+Equipment: SCALANCE X Switches
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker with network access to the device to cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SCALANCE X Switches, which are used to connect industrial components like programmable logic controllers (PLCs) or human machine interfaces (HMIs), are affected:
+
+SCALANCE X300: All versions prior to 4.0.0,
+SCALANCE X408: All versions prior to 4.0.0 and
+SCALANCE X414: All versions.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE- 20
+The web interface on Port 443/TCP could allow an attacker to cause a denial-of-service condition by sending specially crafted packets to the web server. The device will automatically reboot, impacting network availability for other devices.
+An attacker must have network access to Port 443/TCP to exploit the vulnerability. Neither valid credentials nor interaction by a legitimate user are required to exploit the vulnerability. There is no confidentiality or integrity impact, availability is only temporarily impacted.
+This vulnerability could be exploited by publicly available tools.
+CVE-2018-13807 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported this vulnerability to NCCIC.
+4. MITIGATIONS
+Siemens provides updates for SCALANCE X300, and SCALANCE X408, and provides mitigations for the SCALANCE X414.
+
+SCALANCE X300: Update to Version 4.1.2
+
+https://support.industry.siemens.com/cs/us/en/view/109753720
+
+SCALANCE X408: Update to Version 4.1.2
+
+https://support.industry.siemens.com/cs/us/en/view/109753720
+
+SCALANCE X424: Siemens has identified the following specific workarounds and mitigations that users can apply to reduce the risk:
+
+Protect network access to the integrated web server on Port 443/TCP with appropriate mechanisms.
+Restrict network access to Port 443/TCP to trusted IP addresses, and avoid running vulnerability scanning tools from trusted IP addresses on affected devices.
+
+
+
+As a general security measure, Siemens strongly recommends to protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens’ operational guidelines for Industrial Security (download: https://www.siemens.com/cert/operational-guidelines-industrial-security), and to follow the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity.
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-447396 on their web site:
+https://www.siemens.com/cert/advisories.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.

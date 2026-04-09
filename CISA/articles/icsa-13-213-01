@@ -1,0 +1,59 @@
+
+OVERVIEW
+Siemens has identified multiple vulnerabilities in the Siemens Scalance W-7xx product family and reported them to ICS-CERT. A software update has been produced by Siemens that mitigates these vulnerabilities. Siemens has tested the software update to validate that it resolves the vulnerabilities. Exploitation of these vulnerabilities could allow a man-in-the-middle attack or the ability to gain complete control of the system.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+Firmware Version V4.5.4 and earlier are affected for the following Siemens Scalance W-7xx product family supporting IEEE 802.11a/b/g:
+
+SCALANCE W744-1, W746-1, W747-1;
+SCALANCE W744-1PRO, W746-1PRO, W747-1RR;
+SCALANCE W784-1, W784-1RR;
+SCALANCE W786-1PRO, W786-2PRO, W786-3PRO, W786-2RR; and
+SCALANCE W788-1PRO, W788-2PRO, W788-1RR, W788-2RR.
+
+Alternately, the affected products may be identified by using their MLFB. Products with the following MLFBs are affected (“x” represents a wild-card symbol):
+
+6GK5 7xx-xAxx0-xAx0;
+6GK5 7xx-xBxx0-xAx0; and
+6GK5 746-1AA60-4BA0.
+
+IMPACT
+Successful exploitation of these vulnerabilities may result in an attacker being able to perform a man-in-the-middle attack or gain complete control of the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected products, Siemens Scalance W7xx product family, are wireless communication devices that are for both noncritical communication and process-critical data. Siemens develops products mainly in the energy, transportation, and healthcare sectors. The devices are used where mobility of machines and parts is required, or cable installation is not practical.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+KEY MANAGEMENT ERRORSCWE-320: Key Management Errors,  http://cwe.mitre.org/data/definitions/320.html, Web site last accessed August 01, 2013.
+
+The Siemens Scalance W-7xx product family uses a hard-coded SSL certificate for secure communication with the management Web interface (HTTPS). It is not possible to change this certificate using the management Web interfaces. This could allow the attacker to perform man‑in-the-middle attacks.
+CVE-2013-4651NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4651 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.6 has been assigned by the vendor; the CVSS vector string is (AV:N/AC:H/Au:N/C:P/I:P/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:H/Au:N/C:P/I:P/A:C, Web site last accessed August 01, 2013.
+
+IMPROPER AUTHENTICATIONCWE-287: Improper Authentication,  http://cwe.mitre.org/data/definitions/287.html, Web site last accessed August 01, 2013.
+
+The Siemens Scalance W-7xx product family has implemented a command-line based management interface that contains a vulnerability allowing attackers to gain complete system access over the network without authentication. This affects protocols SSH (Port 22/TCP) and telnet (Port 23/TCP).
+CVE-2013-4652NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-4652 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned by the vendor; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, Web site last accessed August 01, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low to high skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens has produced a software update that resolves these vulnerabilities. The update can be applied to all versions of Scalance. Siemens recommends that asset owners and operators contact Siemens customer support to acquire the update.
+Siemens update information is located here:
+http://support.automation.siemens.com/WW/view/en/77427398
+Siemens security advisory is located here:
+http://www.siemens.com/corporate-technology/pool/de/forschungsfelder/siemens_security_advisory_ssa-120908.pdf
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed August 01, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed August 01, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

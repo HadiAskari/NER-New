@@ -1,0 +1,71 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-086-01A Schneider Electric Serial Modbus Driver Buffer Overflow that was published March 27, 2014, on the NCCIC/ICS-CERT web site.
+Carsten Eiram of Risk-Based Security has identified a stack-based buffer overflow vulnerability in Schneider Electric’s Serial Modbus Driver that affects 11 Schneider Electric products. Schneider Electric has produced patches that mitigate this vulnerability for some of the products listed below.
+This vulnerability can be exploited remotely.
+AFFECTED PRODUCTS
+The following Schneider Electric products bundle the Schneider Electric Modbus Serial Driver (ModbusDrv.exe), which is started when attempting to connect to a Programmable Logic Controller (PLC) via the serial port of a personal computer:
+
+TwidoSuite Versions 2.31.04 and earlier,
+PowerSuite Versions 2.6 and earlier,
+SoMove Versions 1.7 and earlier,
+SoMachine Versions 2.0, 3.0, 3.1, and 3.0 XS,
+Unity Pro Versions 7.0 and earlier,
+UnityLoader Versions 2.3 and earlier,
+Concept Versions 2.6 SR7 and earlier,
+ModbusCommDTM sl Versions 2.1.2 and earlier,
+PL7 Versions 4.5 SP5 and earlier,
+SFT2841 Versions 14, 13.1 and earlier, and
+
+--------- Begin Update A Part 1 of 2 --------
+
+OPC Factory Server (OFS) Versions 3.40 and earlier.
+
+--------- End Update A Part 1 of 2 ----------
+Modbus Serial Driver versions that are affected:
+
+Windows XP 32 bit V1.10 IE v37,
+Windows Vista 32 bit V2.2 IE12,
+Windows 7 32 bit V2.2 IE12, and
+Windows 7 64 bit V3.2 IE12.
+
+IMPACT
+A successful exploit of this vulnerability could cause a buffer overflow that could allow arbitrary code execution with user privileges.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric corporate headquarters is located in Paris, France, and maintains offices in more than 100 countries worldwide.
+The affected products are mostly software-based utilities and engineering tools designed for programming and configuring process, machine, and general control applications. These applications rely on a common driver to communicate with PLCs. According to Schneider Electric, the affected software is deployed across several sectors including Chemical, Critical Manufacturing, Dams, Energy, Food and Agriculture, Government Facilities, Nuclear Reactors, Materials, and Waste, and Transportation Systems. Schneider Electric estimates that these products are used primarily in China, United States, and Europe.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed March 27, 2014.
+
+The Modbus Serial Driver creates a listener on Port 27700/TCP. When a connection is made, the Modbus Application Header is first read into a buffer. If a large buffer size is specified in this header, a stack-based buffer overflow results.
+A second overflow problem can then be exploited by overwriting the return address, allowing the attacker to execute arbitrary code with the permission of the user running the software.
+CVE-2013-0662NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0662, web site last accessed April 01, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed March 27, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability can be remotely exploited.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a high skill would be able to exploit this vulnerability.
+MITIGATION
+Schneider Electric has released a security notification with further information on this vulnerability and how to mitigate it:
+http://download.schneider-electric.com/files?p_Doc_Ref=SEVD 2013-070-01.
+Schneider Electric recommends that products that use this driver be updated with the latest version of software.
+--------- Begin Update A Part 2 of 2 --------
+New versions of OFS V3.5 and Unity Pro V8 include the updated ModbusDriverSuite.
+For the other products listed above, the updated ModbusDriverSuite will be implemented with each new version of those software products. Asset owners concerned about the Modbus Serial Driver used for those applications, please contact Schneider Electric Technical Support at:
+http://www2.schneider-electric.com/sites/corporate/en/products-services/services/field-services/services-by-business-activity/automation/lifecycle/technical-support.page.
+--------- End Update A Part 2 of 2 ----------
+Until this software can be updated in the vulnerable devices, Schneider Electric recommends a defense-in-depth strategy, which includes locating the PLCs and devices running the vulnerable software behind firewalls configured to limit access to authorized personnel and protocols.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

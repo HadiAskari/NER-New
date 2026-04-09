@@ -1,0 +1,137 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE M-800 Family
+Vulnerabilities: Out-of-bounds Read, Missing Encryption of Sensitive Data, Integer Overflow or Wraparound, Uncontrolled Resource Consumption, Excessive Iteration, Use After Free, Improper Output Neutralization for Logs, Observable Discrepancy, Improper Locking, Missing Release of Resource after Effective Lifetime, Improper Input Validation, Improper Access Control, Path Traversal, Cross-site Scripting, Injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could impact the confidentiality, integrity or availability.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+RUGGEDCOM RM1224 LTE(4G) EU (6GK6108-4AM00-2BA2): versions prior to V8.2
+RUGGEDCOM RM1224 LTE(4G) NAM (6GK6108-4AM00-2DA2): versions prior to V8.2
+SCALANCE M804PB (6GK5804-0AP00-2AA2): versions prior to V8.2
+SCALANCE M812-1 ADSL-Router (6GK5812-1AA00-2AA2): versions prior to V8.2
+SCALANCE M812-1 ADSL-Router (6GK5812-1BA00-2AA2): versions prior to V8.2
+SCALANCE M816-1 ADSL-Router (6GK5816-1AA00-2AA2): versions prior to V8.2
+SCALANCE M816-1 ADSL-Router (6GK5816-1BA00-2AA2): versions prior to V8.2
+SCALANCE M826-2 SHDSL-Router (6GK5826-2AB00-2AB2): versions prior to V8.2
+SCALANCE M874-2 (6GK5874-2AA00-2AA2): versions prior to V8.2
+SCALANCE M874-3 3G-Router (CN) (6GK5874-3AA00-2FA2): versions prior to V8.2
+SCALANCE M874-3 (6GK5874-3AA00-2AA2): versions prior to V8.2
+SCALANCE M876-3 (6GK5876-3AA02-2BA2): versions prior to V8.2
+SCALANCE M876-3 (ROK) (6GK5876-3AA02-2EA2): versions prior to V8.2
+SCALANCE M876-4 (6GK5876-4AA10-2BA2): versions prior to V8.2
+SCALANCE M876-4 (EU) (6GK5876-4AA00-2BA2): versions prior to V8.2
+SCALANCE M876-4 (NAM) (6GK5876-4AA00-2DA2): versions prior to V8.2
+SCALANCE MUM853-1 (A1) (6GK5853-2EA10-2AA1): versions prior to V8.2
+SCALANCE MUM853-1 (B1) (6GK5853-2EA10-2BA1): versions prior to V8.2
+SCALANCE MUM853-1 (EU) (6GK5853-2EA00-2DA1): versions prior to V8.2
+SCALANCE MUM856-1 (A1) (6GK5856-2EA10-3AA1): versions prior to V8.2
+SCALANCE MUM856-1 (B1) (6GK5856-2EA10-3BA1): versions prior to V8.2
+SCALANCE MUM856-1 (CN) (6GK5856-2EA00-3FA1): versions prior to V8.2
+SCALANCE MUM856-1 (EU) (6GK5856-2EA00-3DA1): versions prior to V8.2
+SCALANCE MUM856-1 (RoW) (6GK5856-2EA00-3AA1): versions prior to V8.2
+SCALANCE S615 EEC LAN-Router (6GK5615-0AA01-2AA2): versions prior to V8.2
+SCALANCE S615 LAN-Router (6GK5615-0AA00-2AA2): versions prior to V8.2
+
+3.2 Vulnerability Overview
+3.2.1 OUT-OF-BOUNDS READ CWE-125
+An out-of-bounds (OOB) memory access flaw was found in fs/f2fs/node.c in the f2fs module in the Linux kernel in versions before 5.12.0-rc4. A bounds check failure allows a local attacker to gain access to out-of-bounds memory leading to a system crash or a leak of internal kernel information. The highest threat from this vulnerability is to system availability.
+CVE-2021-3506 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H).
+3.2.2 MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+An issue was discovered in Dnsmasq before 2.90. The default maximum EDNS.0 UDP packet size was set to 4096 but should be 1232 because of DNS Flag Day 2020.
+CVE-2023-28450 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3 INTEGER OVERFLOW OR WRAPAROUND CWE-190
+dnsmasq 2.9 is vulnerable to Integer Overflow via forward_query.
+CVE-2023-49441 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4 UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+Issue summary: Some non-default TLS server configurations can cause unbounded memory growth when processing TLSv1.3 sessions Impact summary: An attacker may exploit certain server configurations to trigger unbounded memory growth that would lead to a Denial of Service This problem can occur in TLSv1.3 if the non-default SSL_OP_NO_TICKET option is being used (but not if early_data support is also configured and the default anti-replay protection is in use). In this case, under certain conditions, the session cache can get into an incorrect state, and it will fail to flush properly as it fills. The session cache will continue to grow in an unbounded manner. A malicious client could deliberately create the scenario for this failure to force a Denial of Service. It may also happen by accident in normal operation. This issue only affects TLS servers supporting TLSv1.3. It does not affect TLS clients. The FIPS modules in 3.2, 3.1 and 3.0 are not affected by this issue. OpenSSL 1.0.2 is also not affected by this issue.
+CVE-2024-2511 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.5 EXCESSIVE ITERATION CWE-834
+Issue summary: Checking excessively long DSA keys or parameters may be very slow. Impact summary: Applications that use the functions EVP_PKEY_param_check() or EVP_PKEY_public_check() to check a DSA public key or DSA parameters may experience long delays. Where the key or parameters that are being checked have been obtained from an untrusted source this may lead to a Denial of Service. The functions EVP_PKEY_param_check() or EVP_PKEY_public_check() perform various checks on DSA parameters. Some of those computations take a long time if the modulus (p parameter) is too large. Trying to use a very large modulus is slow and OpenSSL will not allow using public keys with a modulus which is over 10,000 bits in length for signature verification. However, the key and parameter check functions do not limit the modulus size when performing the checks. An application that calls EVP_PKEY_param_check() or EVP_PKEY_public_check() and supplies a key or parameters obtained from an untrusted source could be vulnerable to a Denial of Service attack. These functions are not called by OpenSSL itself on untrusted DSA keys so only applications that directly call these functions may be vulnerable. Also vulnerable are the OpenSSL pkey and pkeyparam command line applications when using the -check option. The OpenSSL SSL/TLS implementation is not affected by this issue. The OpenSSL 3.0 and 3.1 FIPS providers are affected by this issue.
+CVE-2024-4603 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.6 USE AFTER FREE CWE-416
+Issue summary: Calling the OpenSSL API function SSL_free_buffers may cause memory to be accessed that was previously freed in some situations
+CVE-2024-4741 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.7 IMPROPER OUTPUT NEUTRALIZATION FOR LOGS CWE-117
+control channel: refuse control channel messages with nonprintable characters in them. Security scope: a malicious openvpn peer can send garbage to openvpn log, or cause high CPU load
+CVE-2024-5594 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L).
+3.2.8 OBSERVABLE DISCREPANCY CWE-203
+iPerf3 before 3.17, when used with OpenSSL before 3.2.0 as a server with RSA authentication, allows a timing side channel in RSA decryption operations. This side channel could be sufficient for an attacker to recover credential plaintext. It requires the attacker to send a large number of messages for decryption, as described in "Everlasting ROBOT: the Marvin Attack" by Hubert Kario.
+CVE-2024-26306 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.9 IMPROPER LOCKING CWE-667
+In the Linux kernel, the following vulnerability has been resolved: netfilter: nf_tables: release mutex after nft_gc_seq_end from abort path The commit mutex should not be released during the critical section between nft_gc_seq_begin() and nft_gc_seq_end(), otherwise, async GC worker could collect expired objects and get the released commit lock within the same GC sequence. nf_tables_module_autoload() temporarily releases the mutex to load module dependencies, then it goes back to replay the transaction again. Move it at the end of the abort phase after nft_gc_seq_end() is called.
+CVE-2024-26925 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.10 MISSING RELEASE OF RESOURCE AFTER EFFECTIVE LIFETIME CWE-772
+OpenVPN from 2.6.0 through 2.6.10 in a server role accepts multiple exit notifications from authenticated clients which will extend the validity of a closing session
+CVE-2024-28882 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.2.11 IMPROPER INPUT VALIDATION CWE-20
+Affected devices do not properly validate input in configuration fields of the iperf functionality. This could allow an unauthenticated remote attacker to execute arbitrary code on the device.
+CVE-2024-50557 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-50557. A base score of 8.6 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.12 IMPROPER ACCESS CONTROL CWE-284
+Affected devices improperly manage access control for read-only users. This could allow an attacker to cause a temporary denial of service condition.
+CVE-2024-50558 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L).
+A CVSS v4 score has also been calculated for CVE-2024-50558. A base score of 5.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N).
+3.2.13 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+Affected devices do not properly validate the filenames of the certificate. This could allow an authenticated remote attacker to append arbitrary values which will lead to compromise of integrity of the system.
+CVE-2024-50559 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-50559. A base score of 5.1 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N).
+3.2.14 IMPROPER INPUT VALIDATION CWE-20
+Affected devices truncates usernames longer than 15 characters when accessed via SSH or Telnet. This could allow an attacker to compromise system integrity.
+CVE-2024-50560 has been assigned to this vulnerability. A CVSS v3 base score of 3.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-50560. A base score of 2.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N).
+3.2.15 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+Affected devices do not properly sanitize the filenames before uploading. This could allow an authenticated remote attacker to compromise of integrity of the system.
+CVE-2024-50561 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-50561. A base score of 5.1 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N).
+3.2.16 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+Affected devices do not properly sanitize an input field. This could allow an authenticated remote attacker with administrative privileges to inject code or spawn a system root shell.
+CVE-2024-50572 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-50572. A base score of 8.6 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Communications
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+All affected products: Update to V8.2 or later version
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-354112 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 14, 2024: Initial Publication
+

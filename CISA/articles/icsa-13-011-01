@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits are available
+Vendor: 3S-Smart Software Solutions
+Equipment: CoDeSys
+Vulnerabilities: Improper Access Control, Relative Path Traversal
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-13-011-01 3S CoDeSys that was published January 10, 2013, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain unauthorized access and obtain administrative privileges.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following 3S CoDeSys Runtime versions are affected:
+--------- Begin Update A Part 1 of 3 ---------
+
+CODESYS Control Runtime embedded: Versions prior to 2.3.2.8
+CODESYS Control Runtime full: Versions prior to 2.4.7.40
+CODESYS Control RTE: Versions prior to 2.3.7.17
+
+The CoDeSys Runtime Toolkit is used in several vendor’s products worldwide.
+--------- End Update A Part 1 of 3 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER ACCESS CONTROL CWE-284
+The CoDeSys Runtime Toolkit does not require users to authenticate when connecting to the device. An attacker could obtain administrative privileges on the device by default.  This could allow the attacker to compromise the availability, integrity, and confidentiality of the device.
+---------Begin Update A Part 2 of 3 ---------
+CVE-2012-6068 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+--------- End Update A Part 2 of 3 ---------
+4.2.2    RELATIVE PATH TRAVERSAL CWE-23
+The CoDeSys Runtime Toolkit’s file transfer functionality does not perform input validation, which allows an attacker to access files and directories outside the intended scope. This may allow an attacker to upload and download any file on the device. This could allow the attacker to affect the availability, integrity, and confidentiality of the device.
+--------- Begin Update A Part 3 of 3 ---------
+CVE-2012-6069 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+--------- End Update A Part 3 of 3 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Commercial Facilities, Energy, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Independent researcher Reid Wightman of IOActive, formerly of Digital Bond has validated that the patch, issued by 3S, mitigates theses vulnerabilities.
+5. MITIGATIONS
+CoDeSys recommends upgrading to the latest version, which is Version 3. It can be downloaded here.
+3S released a patch which implements a password for authentication to the device.
+The patch can be downloaded from the CoDeSys Download Center. 3S also recommends the usage of standard security methods like firewalls or virtual private network (VPN) access to prevent unauthorized access to the controller.
+
+CoDeSys Version 3.X is not affected by these vulnerabilities.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.

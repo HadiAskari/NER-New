@@ -1,0 +1,48 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Low attack complexity
+Vendor: Advantech
+Equipment: R-SeeNet
+Vulnerabilities: SQL Injection, Improper Privilege Management
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow authenticated users to perform a local privilege escalation and retrieve any information from the product’s database.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of R-SeeNet, a monitoring application, are affected:
+
+R-SeeNet: Versions 2.4.16 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+Advantech is aware of multiple SQL injection vulnerabilities in the following pages: group_list, company_list, user_list, and device_list. An attacker could send a specially crafted HTTP request to trigger the vulnerabilities.
+CVE-2021-21915, CVE-2021-21916, CVE-2021-21917, CVE-2021-21918, CVE-2021-21919, CVE-2021-21920, CVE-2021-21921, CVE-2021-21922, CVE-2021-21923, CVE-2021-21924, CVE-2021-21925, CVE-2021-21926, CVE-2021-21927, CVE-2021-21928, CVE-2021-21929, CVE-2021-21930, CVE-2021-21931, CVE-2021-21932, CVE-2021-21933, CVE-2021-21934, CVE-2021-21935, CVE-2021-21936, and CVE-2021-21937 have been assigned to these vulnerabilities. A CVSS v3 base score of 7.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).
+3.2.2    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+Advantech is aware of multiple privilege escalation vulnerabilities that could be triggered when an authenticated user replaces a specially crafted file in the system to escalate privileges to NT SYSTEM authority.
+CVE-2021-21910, CVE-2021-21911, and CVE-2021-21912 have been assigned to these vulnerabilities. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: East Asia, Europe, Middle East, South America, United States
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Yuri Kramarz of Cisco Talos reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Advantech recommends updating to Version 2.4.17 or later.
+See Advantech Czech’s Security Advisory SA-2021-03 for more information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,58 @@
+
+OVERVIEW
+Ashish Kamble of Qualys Security and Eireann Leverett have identified authentication, denial of service, and cross-site scripting vulnerabilities in GarrettCom’s Magnum 6k and Magnum 10k product lines. GarrettCom has produced new firmware versions to mitigate these vulnerabilities. Ashish Kamble has tested the newest version to validate that it resolves the vulnerabilities he reported.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following GarrettCom products are affected:
+
+Magnum 6K product line, all versions prior to 4.5.6, and
+Magnum 10K product line, all versions prior to 4.5.6.
+
+IMPACT
+An attacker who exploits these vulnerabilities may be able to remotely execute arbitrary code on the target device or cause the device to reboot.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+GarrettCom is a US-based company that maintains offices also in Europe.
+The Magnum MNS-6K Management Software provides device management for the Magnum 6K line of managed Ethernet switches. According to GarrettCom, the 6K line of switches are deployed across several sectors including Critical Manufacturing, Defense Industrial Base, Energy, Transportation Systems, and Water and Wastewater Systems. GarrettCom estimates that these products are used primarily in the United States with a small percentage in Europe and Asia, though they are available worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CROSS-SITE SCRIPTINGCWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting'), http://cwe.mitre.org/data/definitions/79.html, web site last accessed June 16, 2015.
+
+Multiple XSS vulnerabilities exist in the web server present on the device, which can be exploited by an unauthenticated attacker.
+CVE-2015-3942NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3942 , NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. GarrettCom has calculated a CVSS v2 base score of 5.0; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:P, web site last accessed June 16, 2015.
+
+USE OF HARD-CODED CREDENTIALSCWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, web site last accessed June 16, 2015.
+
+The firmware contains hard-coded RSA private keys and certificate files, which are used by the server for SSH connections and HTTPS connections.
+CVE-2015-3960 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3960, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:N, web site last accessed June 16, 2015.
+USE OF HARD-CODED CREDENTIALSCWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, web site last accessed June 16, 2015.
+The firmware contains hard-coded password for a serial console connected high privileged user.
+CVE-2015-3959 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3959, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. GarrettCom has calculated a CVSS v2 base score of 7.2; the CVSS vector string is (AV:L/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:L/Au:N/C:C/I:C/A:C, web site last accessed June 16, 2015.
+
+EXTERNAL CONTROL OF ASSUMED-IMMUTABLE WEB PARAMETERCWE-472: External Control of Assumed-Immutable Web Parameter, http://cwe.mitre.org/data/definitions/472.html, web site last accessed June 16, 2015.
+
+By issuing a certain form of URL against the device’s web server, memory corruption can occur which results in a reboot of the device.
+CVE-2015-3961NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-3961, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. GarrettCom has calculated a CVSS v2 base score of 3.5; the CVSS vector string is (AV:N/AC:M/Au:S/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:S/C:N/I:N/A:P, web site last accessed June 16, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+No known public exploits specifically target these vulnerabilities.
+MITIGATION
+The latest versions of GarrettCom Magnum 6K and Magnum 10K software fix these vulnerabilities. Version 4.5.5 was released December 2014, and Version 4.5.6 was released January 2015. Users may download the latest software version and release notes from the following web site:
+http://www.garrettcom.com/techsupport/sw_downloads.htm
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Perform access control checks to limit which users can access the feature that requires the hard-coded credentials. For example, a feature might only be enabled through the system console instead of through a network connection.
+Use an application firewall that can detect XSS attacks. It can be helpful when the code cannot be fixed, as an emergency prevention measure, or to provide defense in depth.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,67 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 4.9
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SIMATIC PCS 7
+Vulnerabilities: Improper Input Validation
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-17-306-01 Siemens SIMATIC PCS 7 that was published November 2, 2017, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow a remote authenticated attacker to crash services on the devices.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of SIMATIC PCS 7, a distributed control system, are affected:
+--------- Begin Update 1 Part 1 of 2 --------
+
+v8.1 all versions prior to v8.1 SP1 with WinCC v7.3 Upd 13, and
+v8.2 all versions prior to v8.2 SP1
+
+--------- End Update 1 Part 1 of 2 ----------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER INPUT VALIDATION CWE-20
+An authenticated remote attacker who is a member of the administrators group to crash services by sending specially-crafted messages to the DCOM interface. 
+ 
+CVE-2017-6867 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Sergey Temnikov and Vladimir Dashchenko of Kaspersky Labs reported the vulnerability to Siemens.
+5. MITIGATIONS
+Siemens has released the following updates:
+
+V8.1: Update to V8.1 SP1 with WinCC V7.3 Upd 13 which can be obtained from:
+
+https://support.industry.siemens.com/cs/ww/en/view/109746452
+--------- Begin Update A Part 2 of 2 --------
+
+v8.2:  Update to v8.2 SP1.  Contact local Siemens support for download and instructions.
+
+--------- End Update A Part 2 of 2 ----------
+Siemens recommends that affected users apply the following mitigations:
+
+Apply cell protection concept,
+Use VPN for protecting network communication between cells, and
+Apply Defense-in-Depth.
+
+Siemens also strongly recommends that users protect network access to the SIMATIC PCS 7 with appropriate mechanisms by configuring the environment according to operation guidelines that can be found at:
+https://support.industry.siemens.com/cs/ww/en/view/60119725
+For more information on this vulnerability and more detailed mitigation instructions, please see Siemens Security Advisory SSA-523365 at the following location:
+http://www.siemens.com/cert/en/cert-security-advisories.htm
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

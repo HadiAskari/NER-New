@@ -1,0 +1,68 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.4
+
+ATTENTION: Exploitable Remotely / Low skill level to exploit / Public exploits are available
+Vendors: Silex Technology, GE Healthcare
+Equipment: SX-500, SD-320AN, MobileLink
+Vulnerabilities: Improper Authentication, OS Command Injection
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the updated advisory titled ICSMA-18-128-01 Silex Technology SX-500/SD-320AN or GE Healthcare MobileLink (Update A) that was published May 31, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow modification of system settings and remote code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following products from Silex Technology are affected. Some are not affected by both vulnerabilities (see Mitigations Section):
+
+GEH-500 Version 1.54 and prior (integrated into GE MobileLink),
+SX-500 All Versions (end-of-life 2011),
+GEH-SD-320AN Version GEH-1.1 and prior (integrated into GE MobileLink), and
+SD-320AN Version 2.01 and prior (end-of-life Nov 2017).
+
+The following models of GE MAC Resting ECG analysis system may use the vulnerable MobileLink technology:
+
+MAC 3500,
+MAC 5000 (end-of-life 2012),
+MAC 5500, and
+MAC 5500 HD.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1   IMPROPER AUTHENTICATION CWE-287
+Authentication is not verified when making certain POST requests, which may allow attackers to modify system settings.
+CVE-2018-6020 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).
+4.2.2  IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+A system call parameter is not properly sanitized, which may allow remote code execution.
+CVE-2018-6021 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L).
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Healthcare and Public Health
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: United States
+
+4.4 RESEARCHER
+Eric Evenchick of Atredis Partners reported these vulnerabilities to Silex and GE and tested pre-release firmware and other mitigations confirming they resolved the vulnerabilities.
+5. MITIGATIONS
+Silex Technologies and GE Healthcare recommend the following mitigations:
+CVE-2018-6020 (GE MobileLink/SX-500) – Enable the “update” account within the web interface, which is not enabled by default. Set the secondary password for the “update” account to prevent unauthenticated changes to the device configuration.
+--------- Begin Update B Part 1 of 1 --------
+CVE-2018-6021 (GE MobileLink/GEH-SD-320AN) – Silex Technology and GE Healthcare have produced an updated firmware image (Version 1.14) for the GEH-SD-320AN, which is now available for download at the following location:  
+http://silextechnology.com/geh320an/
+GE Healthcare has released a security notice that can be viewed at:
+http://www3.gehealthcare.com/en/support/security
+The firmware update (Version 2.0.3) for SD-320AN is separate from GEH-SD-320AN and is available for download from Silex Technology at the following link:
+https://www.silextechnology.com/connectivity-solutions/device-connectivity/sd-320an
+Note that this update does not pertain to the listed GEH device. Contact Silex Technology for more information regarding download and application of this new firmware.
+--------- End Update B Part 1 of 1 --------
+NCCIC recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.

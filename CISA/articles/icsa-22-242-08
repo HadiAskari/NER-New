@@ -1,0 +1,55 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.1
+ATTENTION: Low attack complexity
+Vendor: Honeywell
+Equipment: Trend Controls IQ Series that utilize Inter-Controller (IC) protocol
+Vulnerability: Cleartext Transmission of Sensitive Information
+
+CISA is aware of a public report, known as “OT:ICEFALL” that details vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could cause the loss of authentication information in cleartext by sniffing network traffic.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Trend Controls IQ Series IC, an industrial communication controller, are affected:
+
+IQ Series Controllers that utilize Inter-Controller (IC) protocol: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Several Trend Controls IQ Series building automation controllers utilize an Inter-Controller (IC) protocol that uses a 4-digit authentication PIN transmitted in plaintext, allowing usernames and passwords to be transmitted in plaintext when utilizing unsupported legacy versions of the controller. This may allow an attacker with local OT network access to obtain these credentials.
+CVE-2022-30312 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Daniel dos Santos and Jos Wetzels from Forescout Technologies reported this vulnerability to CISA.
+4. MITIGATIONS
+Honeywell recommends users with affected products and unsupported products take the following steps:
+
+Procure and utilize currently supported hardware through reputable supply channels.
+Apply product updates as available.
+Follow guidance in the product security manual to ensure isolation of network segments upon which building automation controllers reside.
+Ensure adequate security controls are in place between OT and IT network segments.
+Disable unnecessary accounts and services.
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Log and monitor network traffic for suspicious activity.
+
+For IQ4 Series controllers, ensure the latest available firmware version is utilized. The latest firmware may be obtained from a dealer or the Trend Partner Network (login required).
+Follow the Security Best Practice for Trend Products included with product documentation. Additional copies may be obtained from a dealer or the Trend Partner Network (login required).
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely.

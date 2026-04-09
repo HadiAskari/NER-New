@@ -1,0 +1,51 @@
+
+OVERVIEW
+Siemens has released a new version of SIMATIC STEP 7 (TIA Portal) to mitigate information disclosure vulnerabilities. These vulnerabilities were reported directly to Siemens by Dmitry Sklyarov and Gleb Gritsai from Positive Technologies. Siemens has produced a new version to mitigate these vulnerabilities.
+AFFECTED PRODUCTS
+Siemens reports that the vulnerabilities affect the following versions of SIMATIC STEP 7 (TIA Portal):
+
+SIMATIC STEP 7 (TIA Portal): All versions prior to V14
+
+IMPACT
+A local attacker who exploits these vulnerabilities may be able to access sensitive information contained in TIA Portal project files under certain conditions.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected product, SIMATIC Step 7 (TIA Portal), is engineering software for SIMATIC products. According to Siemens, SIMATIC Step 7 (TIA Portal) is deployed across several sectors including Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems. Siemens estimates that this product is used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INADEQUATE ENCRYPTION STRENGTHCWE-326: Inadequate Encryption Strength, https://cwe.mitre.org/data/definitions/326.html, web site last accessed October 13, 2016.
+
+Local attackers with read access to TIA Portal project files could brute-force preshared keys used for machine-to-machine communication with possibly reduced effort.
+CVE-2016-7959NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7959, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 2.5 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N, web site last accessed October 13, 2016.
+
+CRYPTOGRAPHIC ISSUESCWE-310: Cryptographic Issues, https://cwe.mitre.org/data/definitions/310.html, web site last accessed October 13, 2016.
+
+Local attackers could circumvent the protection of the transport format of TIA Portal project files and potentially access sensitive configuration settings. This format is used by TIA Portal during the migration of project files to a new version (e.g., V12 to V13).
+CVE-2016-7960NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7960, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 2.5 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N, web site last accessed October 13, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities are not exploitable remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+Crafting a working exploit for these vulnerabilities would be difficult.
+MITIGATION
+Access to the TIA Portal project files on engineering workstations or network storage must be protected with appropriate mechanisms from unauthorized access.
+Siemens provides SIMATIC STEP 7 (TIA Portal) V14, which fixes the vulnerabilities and recommends users migrate projects to the new version. It can be found at the following location on the Siemens web site:
+https://support.industry.siemens.com/cs/ww/en/view/109740340
+Siemens strongly recommends users protect network access to engineering workstations and project storage with appropriate mechanisms. Siemens also advises that users configure the operational environment according to Siemens’ Operational Guidelines for Industrial Security:
+https://www.siemens.com/cert/operational-guidelines-industrial-security
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens Security Advisory SSA-869766 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Generally, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

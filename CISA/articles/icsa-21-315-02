@@ -1,0 +1,102 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendors: Eclipse, eProsima, GurumNetworks, Object Computing, Inc. (OCI), Real-Time Innovations (RTI), TwinOaks Computing
+Equipment: CycloneDDS, FastDDS, GurumDDS, OpenDDS, Connext DDS Professional, Connext DDS Secure, Connext DDS Micro, CoreDX DDS
+Vulnerabilities: Write-what-where Condition, Improper Handling of Syntactically Invalid Structure, Network Amplification, Incorrect Calculation of Buffer Size, Heap-based Buffer Overflow, Improper Handling of Length Parameter Inconsistency, Amplification, Stack-based Buffer Overflow
+
+CISA is aware of a public report detailing vulnerabilities found in multiple open-source and proprietary Object Management Group (OMG) Data-Distribution Service (DDS) implementations. This advisory addresses a vulnerability that originates within, and affects the implementation of, the DDS standard. In addition, this advisory addresses other vulnerabilities found within the DDS implementation. CISA is issuing this advisory to provide early notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-315-02 Multiple Data Distribution Service (DDS) Implementations that was published November 11, 2021, to the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in denial-of-service or buffer-overflow conditions, which may lead to remote code execution or information exposure.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following implementations of OMG DDS are affected:
+
+Eclipse CycloneDDS: All versions prior to 0.8.0
+eProsima Fast DDS: All versions prior to 2.4.0 (#2269)
+GurumNetworks GurumDDS: All versions
+Object Computing, Inc. (OCI) OpenDDS: All versions prior to 3.18.1
+Real-Time Innovations (RTI) Connext DDS Professional and Connext DDS Secure: Versions 4.2x to 6.1.0
+RTI Connext DDS Micro: Versions 3.0.0 and later
+TwinOaks Computing CoreDX DDS: All versions prior to 5.9.1
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    WRITE-WHAT-WHERE CONDITION CWE-123
+Eclipse CycloneDDS versions prior to 0.8.0 are vulnerable to a write-what-where condition, which may allow an attacker to write arbitrary values in the XML parser.
+CVE-2021-38441 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H).
+4.2.2    IMPROPER HANDLING OF SYNTACTICALLY INVALID STRUCTURE CWE-228
+Eclipse CycloneDDS versions prior to 0.8.0 improperly handle invalid structures, which may allow an attacker to write arbitrary values in the XML parser.
+CVE-2021-38443 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H).
+4.2.3    INSUFFICIENT CONTROL OF NETWORK MESSAGE VOLUME (NETWORK AMPLIFICATION) CWE-406
+eProsima Fast DDS versions prior to 2.4.0 (#2269) are susceptible to exploitation when an attacker sends a specially crafted packet to flood a target device with unwanted traffic, which may result in a denial-of-service condition and information exposure.
+--------- Begin Update A Part 1 of 4---------
+CVE-2021-38425 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+--------- End Update A Part 1 of 4 ---------
+4.2.4    INCORRECT CALCULATION OF BUFFER SIZE CWE-131
+All versions of GurumDDS improperly calculate the size to be used when allocating the buffer, which may result in a buffer overflow.
+CVE-2021-38423 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H).
+4.2.5    HEAP-BASED BUFFER OVERFLOW CWE-122
+All versions of GurumDDS are vulnerable to heap-based buffer overflow, which may cause a denial-of-service condition or remotely execute arbitrary code.
+CVE-2021-38439 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H).
+4.2.6    IMPROPER HANDLING OF LENGTH PARAMETER INCONSISTENCY CWE-130
+OCI OpenDDS versions prior to 3.18.1 do not handle a length parameter consistent with the actual length of the associated data, which may allow an attacker to remotely execute arbitrary code.
+CVE-2021-38445 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:H).
+4.2.7    ASYMMETRIC RESOURCE CONSUMPTION (AMPLIFICATION) CWE-405
+OCI OpenDDS versions prior to 3.18.1 are vulnerable when an attacker sends a specially crafted packet to flood target devices with unwanted traffic, which may result in a denial-of-service condition.
+CVE-2021-38447 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H).
+4.2.8    INSUFFICIENT CONTROL OF NETWORK MESSAGE VOLUME (NETWORK AMPLIFICATION) CWE-406
+OCI OpenDDS versions prior to 3.18.1 are vulnerable when an attacker sends a specially crafted packet to flood target devices with unwanted traffic, which may result in a denial-of-service condition and information exposure.
+--------- Begin Update A Part 2 of 4 ---------
+CVE-2021-38429 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+--------- End Update A Part 2 of 4 ---------
+4.2.9    STACK-BASED BUFFER OVERFLOW CWE-121
+RTI Connext DDS Professional and Connext DDS Secure Versions 4.2.x to 6.1.0  are vulnerable to a stack-based buffer overflow, which may allow a local attacker to execute arbitrary code.
+CVE-2021-38427 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H).
+4.2.10    STACK-BASED BUFFER OVERFLOW CWE-121
+RTI Connext DDS Professional and Connext DDS Secure Versions 4.2x to 6.1.0 vulnerable to a stack-based buffer overflow, which may allow a local attacker to execute arbitrary code.
+CVE-2021-38433 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H).
+4.2.11    INCORRECT CALCULATION OF BUFFER SIZE CWE-131
+RTI Connext DDS Professional and Connext DDS Secure Versions 4.2x to 6.1.0 not correctly calculate the size when allocating the buffer, which may result in a buffer overflow.
+CVE-2021-38435 has been assigned to this vulnerability. A CVSS v3 base score of 6.6 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H).
+4.2.12    INSUFFICIENT CONTROL OF NETWORK MESSAGE VOLUME (NETWORK AMPLIFICATION) CWE-406
+RTI Connext DDS Professional, Connext DDS Secure Versions 4.2x to 6.1.0, and Connext DDS Micro Versions 2.4 and later are vulnerable when an attacker sends a specially crafted packet to flood target devices with unwanted traffic. This may result in a denial-of-service condition and information exposure.
+--------- Begin Update A Part 3 of 4 ---------
+CVE-2021-38487 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+--------- End Update A Part 3 of 4 ---------
+4.2.13    INSUFFICIENT CONTROL OF NETWORK MESSAGE VOLUME (NETWORK AMPLIFICATION) CWE-406
+TwinOaks Computing CoreDX DDS versions prior to 5.9.1 are susceptible to exploitation when an attacker sends a specially crafted packet to flood target devices with unwanted traffic. This may result in a denial-of-service condition and information exposure.
+--------- Begin Update A Part 4 of 4 ---------
+CVE-2021-43547 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+--------- End Update A Part 4 of 4 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Multiple
+
+4.4 RESEARCHER
+Federico Maggi (Trend Micro Research), Ta-Lun Yen, and Chizuru Toyama (TXOne Networks, Trend Micro) reported these vulnerabilities to CISA. In addition, Patrick Kuo, Mars Cheng (TXOne Networks, Trend Micro), Víctor Mayoral-Vilches (Alias Robotics), and Erik Boasson (ADLINK Technology) also contributed to this research.
+5. MITIGATIONS
+Eclipse recommends users apply the latest CycloneDDS patches.
+eProsima recommends users apply the latest Fast DDS patches.
+CISA reached out to Gurum Networks but did not respond to requests for coordination. Users should contact GurumNetworks for assistance.
+OCI recommends users update to Version 3.18.1 of OpenDDS or later.
+RTI recommends users apply the available patches for these issues. A patch is available on the RTI customer portal or by contacting RTI Support. Also, contact RTI Support for mitigations, including how to use RTI DDS Secure to mitigate against the network amplification issue defined by CVE-2021-38487
+Twin Oaks Computing recommends users apply CoreDX DDS Version 5.9.1 or later, which can be downloaded on the Twin Oaks website (login required).
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: LOGO! 8 BM Devices
+Vulnerabilities: Buffer Copy without Checking Size of Input; Improper Input Validation; Improper Validation of Specified Index, Position, or Offset in Input.
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute code remotely, put the device into a denial-of-service state, or retrieve parts of the memory.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affect the following LOGO! 8 BM (Base Module) devices: 
+
+LOGO! 8 BM (incl. SIPLUS variants): All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CLASSIC BUFFER OVERFLOW CWE-120
+Affected devices do not properly validate the structure of TCP packets in several methods. This could allow an attacker to cause buffer overflows, obtain control over the instruction counter, and run custom code.
+CVE-2022-36361 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER INPUT VALIDATION CWE-20
+Affected devices do not conduct certain validations during interaction. This could allow an unauthenticated remote attacker to manipulate the device’s IP address, making the device unreachable until the device could be power cycled.
+CVE-2022-36362 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    IMPROPER VALIDATION OF SPECIFIED INDEX, POSITION, OR OFFSET IN INPUT CWE-1285
+Affected devices do not properly validate an offset value, which can be defined in TCP packets when calling a method. This could allow an attacker to retrieve parts of memory content.
+CVE-2022-36363 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Cyber Research Group from Raytheon UK reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens is preparing updates and recommends specific countermeasures for products where updates are not yet available:
+
+Only for versions prior to V8.3: Restrict access to port 10005/TCP to only trusted IP addresses.
+Only for versions including and since V8.3: Restrict access to port 8443/TCP to only trusted IP addresses.
+Restrict access to port 135/TCP to trusted IP addresses only.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following the recommendations in the product manuals.
+Siemens has provided additional information on industrial security. 
+For more information, see the associated Siemens Security Advisory SSA-955858 in HTML or CSAF formats.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have a low attack complexity.

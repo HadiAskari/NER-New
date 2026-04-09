@@ -1,0 +1,109 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit.
+Vendor: Siemens
+Equipment: Building Technologies Products
+Vulnerabilities: Stack-based Buffer Overflows, Security Features, Improper Restriction of Operations within the Bounds of a Memory Buffer, NULL Pointer Dereference, XML Entity Expansion, Heap-based Buffer Overflow, Improper Access Control
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-093-01 Siemens Building Technologies Products that was published April 3, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow arbitrary code execution, NTLM-relay attacks, remote code execution, denial of service, or increased attack surface.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Siemens License Management System (LMS), which includes a vulnerable version of Gemalto Sentinel LDK RTE, is used by the following Siemens products and solutions:
+
+License Management System (LMS) All versions prior to V2.1 SP3(2.1.670)
+Annual Shading V1.0.4 and 1.1
+Desigo ABT Versions
+
+MP1.1 Build 845
+MP1.15 Build 360
+MP1.16 Build 055
+MP1.2 Build 850
+MP1.2.1 Build 318
+MP2.1 Build 965
+
+
+Desigo CC Versions
+
+MP1.1
+MP2.0
+MP2.1
+MP3.0
+
+
+Desigo Configuration Manager (DCM) V6.10.140
+Desigo XWP
+
+V5.00.204
+V5.00.260
+V5.10.142
+V5.10.212
+V6.00.184
+V6.00.342
+V6.10.172
+
+
+SiteIQ Analytics
+
+V1.1
+V1.2
+V1.3
+
+
+Siveillance Identity V1.1
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1     STACK-BASED BUFFER OVERFLOW CWE-121
+Malformed ASN1 streams in V2C and similar input files can be used to generate stack-based buffer overflows. The vulnerability could allow arbitrary code execution.
+CVE-2017-11496 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2     STACK-BASED BUFFER OVERFLOW CWE-121
+Language packs containing malformed filenames could lead to a stack-based buffer overflow. The vulnerability could allow arbitrary code execution.
+CVE-2017-11497 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3     SECURITY FEATURES CWE-254
+Remote manipulation of the language pack updater could allow NTLM-relay attacks.
+CVE-2017-12819 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.4     IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+A memory corruption flaw could allow remote code execution.
+CVE-2017-12821 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.5     NULL POINTER DEREFERENCE CWE-476
+Zipped language packs with invalid HTML files could lead to NULL pointer access. The vulnerability could cause denial of service of the remote process.
+CVE-2017-11498 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.6     IMPROPER RESTRICTION OF RECURSIVE ENTITY REFERENCES IN DTDS ('XML ENTITY EXPANSION') CWE-776
+A stack overflow flaw in the custom XML-parser could allow remote denial of service.
+CVE-2017-12818 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.7     HEAP-BASED BUFFER OVERFLOW CWE-122
+Arbitrary memory read from controlled memory pointer could allow remote denial of service.
+CVE-2017-12820 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.8     IMPROPER ACCESS CONTROL CWE-284
+The administrative interface can be remotely enabled and disabled without authentication. This could increase the attack surface.
+CVE-2017-12822 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Commercial Facilities
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany
+
+4.4 RESEARCHER
+Sergey Temnikov and Vladimir Dashchenko from Kaspersky Labs reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+--------- Begin Update A Part 1 of 1 --------
+Siemens recommends that users upgrade License Management System (LMS) to version 2.1 SP4 (2.1.681) or newer. To do so, users should follow the instructions at https://support.industry.siemens.com/cs/document/109479834 or contact the local Siemens representative or Siemens customer support.
+--------- End Update A Part 1 of 1 --------
+NOTE: Users using Desigo CC MP2.1 or older need to upgrade ALM Manager before applying the update to LMS.
+Siemens has released the following advisory:
+https://cert-portal.siemens.com/productcert/pdf/ssa-727467.pdf
+NCCIC recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

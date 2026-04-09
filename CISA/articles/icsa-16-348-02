@@ -1,0 +1,48 @@
+
+OVERVIEW
+Independent researcher Zhou Yu has identified denial-of-service and unquoted service path privilege escalation vulnerabilities in Moxa’s DACenter application. Moxa has produced a patch to mitigate these vulnerabilities. Zhou Yu has tested the patch to validate that it resolves the vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+Moxa reports that the vulnerability affects the following versions of DACenter:
+
+Versions 1.4 and older.
+
+IMPACT
+The vulnerabilities may render the DACenter application unavailable and also allow an authorized but nonprivileged local user to execute arbitrary code with privileges on the system.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Moxa is a Taiwan-based company that maintains offices in several countries around the world, including the US, UK, India, Germany, France, China, Russia, and Brazil.
+The affected product, DACenter, provides a standard OPC interface that interacts with Moxa Active OPC Server for real-time data collection. According to Moxa, DACenter is deployed across several sectors including Commercial Facilities, Critical Manufacturing, Energy, Water and Wastewater Systems, and others. Moxa estimates that this product is used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+RESOURCE EXHAUSTIONCWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion'), https://cwe.mitre.org/data/definitions/400.html, web site last accessed December 13, 2016.
+
+A specially crafted project file may cause the program to crash.
+CVE-2016-9354NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9354, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H, web site last accessed December 13, 2016.
+
+UNQUOTED SEARCH PATH OR ELEMENTCWE-428: Unquoted Search Path or Element, https://cwe.mitre.org/data/definitions/428.html, web site last accessed December 13, 2016.
+
+The application may suffer from an unquoted search path issue.
+CVE-2016-9356NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9356, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H, web site last accessed December 13, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Moxa recommends replacing existing DACenter installations with the new software MX-AOPC UA suite. DACenter is nearing end-of-life by the end of 2016, and no further updates will be issued.
+For existing DACenter installations, Moxa recommends contacting the Moxa Technical Support team or visiting the Moxa technical support web page at:
+http://www.moxa.com/support
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

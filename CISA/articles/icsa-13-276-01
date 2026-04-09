@@ -1,0 +1,49 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on October 03, 2013, and is now being released to the NCCIC/ICS-CERT-Web page.
+This advisory provides mitigation details for a vulnerability that impacts the Invensys Wonderware InTouch application.
+Independent researchers Timur Yunusov, Alexey Osipov, and Ilya Karpov of the Positive Technologies Research Team have identified an improper input validation vulnerability in the Invensys InTouch human-machine interface (HMI). Invensys has produced an update that mitigates this vulnerability. The Positive Technologies Research Team has tested the update to validate that it resolves the vulnerability.
+AFFECTED PRODUCTS
+The following Invensys Wonderware products are affected:
+
+InTouch HMI 2012 R2 and all previous versions.
+
+IMPACT
+Successful exploitation of this vulnerability could allow an attacker to affect the confidentiality and availability of the Invensys Wonderware InTouch.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Invensys is a global technology company that works with industrial, commercial, rail operators, and appliance operators, while operating in over 180 countries. Invensys develops software, systems, and equipment that enable users to monitor, automate, and control their processes.
+The Invensyshttp://www.invensys.com/, Web site last accessed October 09, 2013. Wonderware InTouch HMI is deployed across several sectors including critical manufacturing, energy, food and agriculture, chemical, and water and wastewater.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation,  http://cwe.mitre.org/data/definitions/20.html, Web site last accessed October 09, 2013.
+
+Wonderware InTouch HMI allows access to local resources (files and internal resources) via unsafe parsing of XML external entities. By using specially crafted XML files, an attacker can cause Wonderware InTouch HMI to send the contents of local or remote resources to the attacker’s server or cause a denial of service of the system.
+CVE-2012-4709NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2012-4709, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.3 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:C/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:C/I:N/A:C, Web site last accessed October 09, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed XML files.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Invensys has developed an update to the InTouch HMI that mitigates this vulnerability. The Positive Technologies Research Team has tested the update and validated that it fixes the vulnerability. Instructions and a link to the update are found on the Invensys download page at the following link:
+https://wdn.wonderware.com/sites/WDN/Pages/Downloads/Software.aspx
+According to Invensys, any machine running InTouch 2012 R2 or earlier versions is affected. Users should install the update using instructions provided in the ReadMe file for the product and component being installed. Invensys recommends that users:
+
+Read the installation instructions provided with the patch.
+Shut down any of the affected software products.
+Install the update.
+Restart the software.
+
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed October 09, 2013. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed October 09, 2013.] that is available for download from the NCCIC/ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS‑CERT for tracking and correlation against other incidents.

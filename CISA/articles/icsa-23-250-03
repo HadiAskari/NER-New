@@ -1,0 +1,71 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Socomec
+Equipment: MOD3GP-SY-120K
+Vulnerabilities: Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), Insecure Storage of Sensitive Information, Reliance on Cookies without Validation and Integrity Checking, Code Injection, Plaintext Storage of a Password
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to execute malicious Javascript code, obtain sensitive information, or steal session cookies.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Socomec products are affected:
+
+MODULYS GP (MOD3GP-SY-120K): Web firmware v01.12.10
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+Persistent cross-site scripting (XSS) in the web application of MOD3GP-SY-120K allows an authenticated remote attacker to introduce arbitrary JavaScript by injecting an XSS payload into the field MAIL_RCV. When a legitimate user attempts to access to the vulnerable page of the web application, the XSS payload will be executed.
+CVE-2023-38582 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.2.2 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+Thanks to the weaknesses that the web application has at the user management level, an attacker could obtain the information from the headers that is necessary to create specially designed URLs and originate malicious actions when a legitimate user is logged into the web application.
+CVE-2023-39446 has been assigned to this vulnerability. A CVSS v3 base score of 8.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:H/A:H).
+3.2.3 INSECURE STORAGE OF SENSITIVE INFORMATION CWE-922
+Sending some requests in the web application of the vulnerable device allows information to be obtained due to the lack of security in the authentication process.
+CVE-2023-41965 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.4 RELIANCE ON COOKIES WITHOUT VALIDATION AND INTEGRITY CHECKING CWE-565
+Session management within the web application is incorrect and allows attackers to steal session cookies to perform a multitude of actions that the web app allows on the device.
+CVE-2023-41084 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.5 IMPROPER CONTROL OF GENERATION OF CODE ('CODE INJECTION') CWE-94
+The absence of filters when loading some sections in the web application of the vulnerable device allows potential attackers to inject malicious code that will be interpreted when a legitimate user accesses the web section (MAIL SERVER) where the information is displayed. Injection can be done on parameter MAIL_RCV. When a legitimate user attempts to review NOTIFICATION/MAIL SERVER, the injected code will be executed.
+CVE-2023-40221 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.6 PLAINTEXT STORAGE OF A PASSWORD CWE-256
+The web application that owns the device clearly stores the credentials within the user management section. Obtaining this information can be done remotely due to the incorrect management of the sessions in the web application.
+CVE-2023-39452 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.7 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+A potential attacker with or without (cookie theft) access to the device would be able to include malicious code (XSS) when uploading new device configuration that could affect the intended function of the device.
+CVE-2023-38255 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Aarón Flecha Menéndez reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Socomec reports that MODULYS GP (MOD3GP-SY-120K) is an End-of-Life product. Socomec recommends using MODULYS GP2 (M4-S-XXX) instead. MODULYS GP2 (M4-S-XXX) is not affected by the above vulnerabilities.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting this these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+September 07, 2023: Initial Publication
+

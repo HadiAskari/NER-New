@@ -1,0 +1,41 @@
+
+CVSS v3 7.1
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: OSIsoft
+Equipment: PI Web API 2017
+Vulnerability: Cross-Site Request Forgery
+AFFECTED PRODUCTS
+OSIsoft reports that the vulnerability affects the following PI Web API products:
+
+PI Web API versions prior to 2017 (1.9.0).
+
+IMPACT
+Successful exploitation of this vulnerability may allow an attacker to access the PI System with the privileges of a legitimate client user. PI System data alteration is possible if the client user has sufficient access to write data.
+MITIGATION
+OSIsoft recommends that users upgrade to the PI Web API version 2017 (1.9.0) and enable CSRF defense. To enable this option, set the configuration attribute ‘EnableCSRFDefense’ to ‘True’ in the PI Web API System Configuration element. This element is located at the path "..\OSIsoft\PI Web API\PIWebAPIMachineName\System Configuration" in PI AF Server Configuration database.
+A new installation of PI Web API 2017 (1.9.0) enables CSRF protection by default.
+Please see alert AL00316 on the OSIsoft web page for more information about this issue:
+https://techsupport.osisoft.com/Troubleshooting/Alerts/AL00316
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.
+VULNERABILITY OVERVIEW
+
+CROSS-SITE REQUEST FORGERY CWE-352
+
+The vulnerability allows cross-site request forgery (CSRF) attacks to occur when an otherwise-unauthorized cross-site request is sent from a browser the server has previously authenticated.
+CVE-2017-7926 has been assigned to this vulnerability. OSIsoft calculated a CVSS v3 base score of 7.1; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L).
+RESEARCHER
+These issues were found by OSIsoft and reported once they had prepared an upgrade to fix them.
+BACKGROUND
+Critical Infrastructure Sectors: Multiple Sectors
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: United States

@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.4
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE W1700
+Vulnerabilities: Race Condition, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to cause various denial-of-service conditions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of SCALANCE, a wireless communication device, are affected:
+
+SCALANCE W1788-1 M12: All versions prior to 3.0.0
+SCALANCE W1788-2 ECC M12: All versions prior to 3.0.0
+SCALANCE W1788-2 M12: All versions prior to 3.0.0
+SCALANCE W1788-2IA M12: All versions prior to 3.0.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    CONCURRENT EXECUTION USING SHARED RESOURCE WITH IMPROPER SYNCHRONIZATION ('RACE CONDITION') CWE-362
+The affected product does not properly handle resources of ARP requests. This could allow an attacker to cause a race condition that leads to a crash of the entire device.
+CVE-2022-27481 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.2    IMPROPER INPUT VALIDATION CWE-20
+The affected product does not properly handle malformed Multicast LLC frames. This could allow an attacker to trigger a denial-of-service condition.
+CVE-2022-28328 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.3    IMPROPER INPUT VALIDATION CWE-20
+The affected product does not properly handle malformed TCP packets received over the RemoteCapture feature. This could allow an attacker to lead to a denial-of-service condition, which only affects the port used by the RemoteCapture feature.
+CVE-2022-28329 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends installing the following software updates to address these vulnerabilities.
+
+Update SCALANCE W1788-1 M12 to Version 3.0.0 or later
+Update SCALANCE W1788-2 EEC M12 to Version 3.0.0 or later
+Update SCALANCE W1788-2 M12 to Version 3.0.0 or later
+Update SCALANCE W1788-2IA M12 to Version 3.0.0 or later
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to follow the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For additional information, please refer to Siemens Security Advisory SSA-392912
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

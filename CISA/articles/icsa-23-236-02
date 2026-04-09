@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+​CVSS v3 7.5 
+​ATTENTION: Exploitable remotely/low attack complexity 
+​Vendor: OPTO 22 
+​Equipment: SNAP PAC S1 
+​Vulnerabilities: Improper Restriction of Excessive Authentication Attempts, Weak Password Requirements, Improper Access Control, Uncontrolled Resource Consumption 
+
+2. RISK EVALUATION
+​Successful exploitation of these vulnerabilities could allow an attacker to brute force passwords, access certain device files, or cause a denial-of-service condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+​The following version of SNAP PAC S1, an industrial programmable automation controller, is affected: 
+
+​SNAP PAC S1 Firmware: Version R10.3b 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 ​IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307 
+​There is no limit on the number of login attempts. This could allow a brute force attack on the built-in web server login. 
+​CVE-2023-40706 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.2 ​WEAK PASSWORD REQUIREMENTS CWE-521 
+​There are no requirements for setting a complex password, which could allow a successful brute force attack if users don't setup complex credentials. 
+​CVE-2023-40707 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.2.3 ​IMPROPER ACCESS CONTROL CWE-284 
+​The File Transfer Protocol (FTP) port is open by default. This could allow an adversary to access some device files. 
+​CVE-2023-40708 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N). 
+3.2.4 UNCONTROLLED RESOURCE CONSUMPTION CWE-400 
+​An adversary could crash the entire device by sending large quantity of ICMP requests if the controller has the built-in web server enabled but not completely set-up and configured. 
+​CVE-2023-40709 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.5 ​UNCONTROLLED RESOURCE CONSUMPTION CWE-400 
+​An adversary could cause a continuous restart loop to the entire device by sending large quantity of HTTP GET requests if the controller has the built-in web server enabled but does not have the built-in web server completely set-up and configured. 
+​CVE-2023-40710 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+​CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+​COUNTRIES/AREAS DEPLOYED: Worldwide 
+​COMPANY HEADQUARTERS LOCATION: United States 
+
+3.4 RESEARCHER
+​Nicolas Cano of Dragos reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+​OPTO 22 recommends users follow the direction Dragos and CISA provided for this vulnerability. 
+​Dragos recommends users take the following actions: 
+
+​Disable the built-in web server when not in use through the Network Security settings within the OPTO 22 Pac Manager software. 
+​Restrict access to the built-in web server found on HTTPS (TCP/443). 
+​Restrict access to the FTP Port (TCP/21). 
+​Ensure user credentials are changed to something long, complex, and unique. 
+
+​CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should: 
+
+​Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet. 
+​Locate control system networks and remote devices behind firewalls and isolate them from business networks. 
+​When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices. 
+
+​CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+​CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. 
+​Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies. 
+​Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents. 
+​No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. 

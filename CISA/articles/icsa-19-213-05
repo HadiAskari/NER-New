@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Low skill level to exploit
+Vendor: Rockwell Automation
+Equipment: Arena Simulation Software
+
+--------- Begin Update B Part 1 of 2 ---------
+
+Vulnerabilities: Use After Free, Information Exposure, Type Confusion, Insufficient UI Warning of Dangerous Operations, Access of Uninitialized Pointer
+
+--------- End Update B Part 1 of 2 ---------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-19-213-05 Rockwell Automation Arena Simulation Software (Update A) that was published September 5, 2019, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to cause a current Arena session to fault or enter a denial-of-service (DoS) state, allowing the attacker to run arbitrary code.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Arena Simulation, an event simulation and automation software platform, are affected:
+
+Arena Simulation Software for Manufacturing, Cat. 9502-Ax, Versions 16.00.00 and earlier
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE AFTER FREE CWE-416
+A maliciously crafted Arena file opened by an unsuspecting user may result in the application crashing or the execution of arbitrary code.
+CVE-2019-13510 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+
+4.2.2    INFORMATION EXPOSURE CWE-200
+A maliciously crafted Arena file opened by an unsuspecting user may result in the limited exposure of information related to the targeted workstation.
+CVE-2019-13511 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+4.2.3    ACCESS OF RESOURCE USING INCOMPATIBLE TYPE ('TYPE CONFUSION') CWE-843
+A maliciously crafted Arena file opened by an unsuspecting user may result in the limited exposure of information related to the targeted workstation.
+CVE-2019-13519 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.4    INSUFFICIENT UI WARNING OF DANGEROUS OPERATIONS CWE-357
+A maliciously crafted Arena file opened by an unsuspecting user may result in the limited exposure of information related to the targeted workstation.
+CVE-2019-13521 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+--------- Begin Update B Part 2 of 2 ---------
+4.2.5    ACCESS OF UNINITIALIZED POINTER CWE-824
+A maliciously crafted Arena file opened by an unsuspecting user may result in the use of a pointer that has not been initialized.
+CVE-2019-13527 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been assigned; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+--------- End Update B Part 2 of 2 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+kimiya of 9SG Security Team working with Trend Micro’s Zero Day Initiative reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Rockwell Automation has released Version 16.00.01 of Arena Simulation Software to address the reported vulnerabilities.
+Rockwell Automation also recommends users:
+
+Do not open untrusted .doe files with Arena Simulation Software.
+Ensure all software is run as a User and not as an Administrator to minimize the impact of malicious code on the infected system.
+Use trusted software, software patches, anti-virus/anti-malware programs, and interact only with trusted websites and attachments
+
+For more information please see the Rockwell Automation security advisory (login required).
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. This vulnerability is not exploitable remotely.

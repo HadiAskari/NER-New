@@ -1,0 +1,42 @@
+
+OVERVIEW
+This advisory provides mitigation details for a vulnerability that impacts the Monroe Electronics DASDEC.
+Mike Davis, a researcher with IOActive, reported a compromised root SSH key vulnerability to CERT Coordination Center (CERT/CC). This vulnerability is in Monroe Electronics DASDEC‑I and DASDEC-II appliances. ICS-CERT coordinated with CERT/CC and Monroe Electronics to resolve the vulnerability. Monroe Electronics has produced an update that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Monroe Electronics products are affected:
+
+DASDEC-I
+DASDEC-II
+
+IMPACT
+An attacker who exploits this vulnerability could gain root access to the device and affect the availability, integrity, and confidentiality of the system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Monroe Electronics is a US-based company that maintains offices and research facilities in Lyndonville, New York. Monroe Electronics develops and distributes worldwide electrostatic measuring instruments including electrostatic voltmeters, electrostatic field meters, coulomb meters, and resistivity meters.
+The affected products, DASDEC-I and DASDEC-II are emergency alert system (EAS) encoder/decoder (endec) devices that are used to broadcast EAS messages over digital and analog channels. According to Monroe Electronics, DASDEC-I and DASDEC-II are deployed across broadcast radio and television in the communication sector. Monroe Electronics estimates that these products are used primarily in the United States.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+COMPROMISED ROOT SSH KEYCWE-321: Use of Hard-coded Cryptographic Key,  http://cwe.mitre.org/data/definitions/321.html, Web site last accessed July 03, 2013.
+
+DASDEC-I and DASDEC-II had publicly available firmware images for these devices that included a private SSH key that authorizes remote logins to the devices. For software versions prior to 2.0-2, where the default SSH keys have not already been changed, an attacker can then log into a device with root privileges.
+CVE-2013-0137NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0137, Web site last accessed July 03, 2013. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, Web site last accessed July 03, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill level could exploit this vulnerability.
+MITIGATION
+Monroe Electronics has produced a software update, Version 2.0-2 that resolves this vulnerability. DASDEC users can obtain the DASDEC v2.0-2 software update and release notes by contacting support@digitalalertsystems.com.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed July 03, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed July 03, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

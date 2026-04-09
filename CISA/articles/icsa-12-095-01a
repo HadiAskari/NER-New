@@ -1,0 +1,51 @@
+
+Overview
+Independent researchers Terry McCorkle and Billy Rios identified a buffer overflow vulnerability in multiple components of the ABB WebWare Server application. These components have been found to contain vulnerabilities in the COM and scripting interfaces. Follow-up investigation by ABB showed that these components are used in multiple ABB legacy products.
+Because these are legacy products nearing the end of their life cycle, ABB does not intend to patch these vulnerable components.
+Affected Products
+The following ABB products are affected:
+
+WebWare Server: All versions of Data Collector and Interlink
+WebWare SDK: All versions
+ABB Interlink Module: All versions
+S4 OPC Server: All versions
+QuickTeach: All versions
+RobotStudio S4: All versions
+RobotStudio Lite: All versions.
+
+Impact
+Successfully exploiting these vulnerabilities could lead to a denial-of-service for the application and privilege escalation or could allow an attacker to execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+The legacy WebWare software products include a number of COM and ActiveX controls. These controls are delivered and installed together in the above products to facilitate communications with the robot controller or the WebWare Server and may run as services on the PC. Other controls provide graphical elements for web pages and custom human-machine interfaces (HMIs).
+The above products are used in several different roles in a factory environment. WebWare Server is used for data gathering and backup handling. WebWare SDK, ABB Interlink Module, and S4 OPC Server are used for HMIs and communications to and from a robot controller. QuickTeach, RobotStudio S4, and RobotStudio Lite are PC tools used for training, installation, and programming of a robot cell.
+Vulnerability Characterization
+Vulnerability Overview
+According to independent researchers Terry McCorkle and Billy Rios, multiple components of the ABB WebWare Server application contain a buffer overflow vulnerability. According to ABB, the legacy PC products WebWare Server, WebWare SDK, and other legacy products that include parts of WebWare contain a number of COM and ActiveX components that have been found to contain vulnerabilities in the COM and scripting interfaces. Follow-up investigation by ABB showed that these components are used in multiple ABB platforms.
+Vulnerability Details
+Stack-Based Overflowhttp://cwe.mitre.org/data/definitions/119.html, “CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer,” website last accessed April 10, 2012.
+The COM and ActiveX controls included in the software do not provide adequate checking of input data. A user or program could call one of the controls’ interfaces with specially crafted input data that can overflow the stack pointer or cause the control to stop execution. The ActiveX controls have been registered as scriptable, which means that they can be included and scripted from remotely served web pages.
+CVE-2012-1801 has been assigned to this vulnerability. According to ABB, a CVSS Overall Score of 7.7 has also been assigned.
+Exploitability
+The vulnerability in these components is remotely exploitable.
+Existence of Exploit
+No known exploits specifically target these vulnerable components.
+Difficulty
+Crafting a working exploit for this vulnerability requires a medium skill level.
+Mitigation
+According to ABB, the WebWare Server and the products listed above are legacy products nearing the end of their life cycle that are no longer actively supported. Users of these products are directed to the available documentation on mitigating risk and securing their machines and production environments. Because these are legacy products, ABB does not intend to patch these vulnerable components.
+--------- Begin Update A Part 1 of 1 --------
+ABB has released a customer advisory.
+ABB has also released a whitepaper on WebWare Component security.
+ABB would like to direct customers using the affected products to review the above documents and implement the recommendations provided.
+--------- End Update A Part 1 of 1----------
+ABB customers using these products may contact their local ABB Robotics service organization (see www.abb.com for information).
+Questions or responses on cybersecurity may be addressed to cybersecurity@ch.abb.com.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,68 @@
+
+1. EXECUTIVE SUMMARY
+--------- Begin Update A Part 1 of 4 ---------
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+
+--------- End Update A Part 1 of 4 ---------
+
+Vendor: WECON Technology Co., Ltd. (WECON)
+Equipment: PI Studio
+Vulnerabilities: Stack-based Buffer Overflow, Out-of-bounds Write, Information Exposure Through XML External Entity Reference, Out-of-bounds Read
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-277-01 WECON PI Studio that was published October 4, 2018, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+--------- Begin Update A Part 2 of 4 ----------
+Successful exploitation of these vulnerabilities may allow execution of code and disclose sensitive information under the context of administrator.
+--------- End Update A Part 2 of 4 ---------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of PI Studio, an HMI project programmer, are affected:
+
+PI Studio HMI: Versions 4.1.9 and prior
+
+--------- Begin Update A Part 3 of 4 ---------
+
+PI Studio: Versions 4.2.125 and prior
+
+--------- End Update A Part 3 of 4 ---------
+4.2 VULNERABILITY OVERVIEW
+--------- Begin Update A Part 4 of 4 ---------
+4.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+When parsing specific files the process does not properly validate the length of user-supplied data prior to copying it to a fixed-length stack-based buffer. An attacker can leverage this vulnerability to execute code under the context of an administrator. 
+CVE-2018-14818 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.2    OUT-OF-BOUNDS WRITE CWE-787
+When parsing specific files the process does not properly validate user-supplied data, which can result in multiple write instances past the end of an allocated object. An attacker can leverage this vulnerability to execute code under the context of an administrator. 
+CVE-2018-14810 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.3    INFORMATION EXPOSURE THROUGH XML EXTERNAL ENTITY REFERENCE CWE-611
+When parsing project files the XMLParser that ships with Wecon PIStudio is vulnerable to a XML external entity injection attack, which may allow sensitive information disclosure.
+CVE-2018-17889 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+4.2.4    OUT-OF-BOUNDS READ CWE-125
+When parsing specific files the process does not properly validate user-supplied data, which can result in a read past the end of an allocated object.
+CVE-2018-14814 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).
+--------- End Update A Part 4 of 4 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: China
+
+4.4 RESEARCHER
+Mat Powell of Trend Micro’s Zero Day Initiative and Natnael Samson (Natti), working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to CISA.
+5. MITIGATIONS
+WECON has verified these vulnerabilities but has not yet released an updated version. CISA is working with WECON and will update this advisory once an updated version is released.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

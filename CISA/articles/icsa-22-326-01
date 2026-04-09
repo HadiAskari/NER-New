@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity  
+Vendor: AVEVA 
+Equipment: Edge 
+Vulnerabilities: Uncontrolled Search Path Element, Exposure of Sensitive Information to an Unauthorized Actor, Uncontrolled Resource Consumption, Improper Access Control, Windows UNC Share 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to insert malicious DLL files and trick the application into executing code. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of AVEVA Edge, an HMI/SCADA software, are affected: 
+
+AVEVA Edge 2020 R2 SP1  
+AVEVA Edge 2020 R2 SP1 w/ HF 2020.2.00.40  
+AVEVA Edge 2020 R2 and all prior versions (formerly known as InduSoft Web Studio)  
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 UNCONTROLLED SEARCH PATH ELEMENT CWE-427 
+In AVEVA Edge versions R2020 and prior could allow a malicious entity with access to the file system to achieve arbitrary code execution and privilege escalation by tricking the AVEVA Edge InstallShield package to load an unsafe DLL. This attack is only possible during the installation or when performing an install or repair operation. 
+CVE-2016-2542 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200 
+AVEVA Edge versions R2020 and prior could allow internal network scanning and expose sensitive device information. 
+CVE-2021-42794 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N). 
+3.2.3 IMPROPER ACCESS CONTROL CWE-284 
+AVEVA Edge versions R2020 and prior could allow unauthenticated arbitrary commands to be executed with the security context of the StADOSvr.exe process. In most instances, this will be a standard-privileged user account under which the AVEVA Edge runtime was started. It's possible for a high-privileged service account to have been configured and assigned for running AVEVA Edge runtime. 
+CVE-2021-42796 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.4 PATH TRAVERSAL: '\\UNC\SHARE\NAME\' (WINDOWS UNC SHARE) CWE-40 
+AVEVA Edge versions R2020 and prior could allow an unauthenticated actor to trick the AVEVA Edge runtime into disclosing a Windows access token of the user account configured for accessing external DB resources. 
+CVE-2021-42797 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: United Kingdom 
+
+3.4 RESEARCHER
+Sam Hanson of Dragos reported these vulnerabilities to CISA.
+4. MITIGATIONS
+AVEVA recommends organizations evaluate the impact of these vulnerabilities based on operational environment, architecture, and product implementations.  
+
+Users of AVEV Edge (formerly known as InduSoft Web Studio) up to 2020 R2 SP1 w/ HF 2020.2.00.40 should apply AVEVA Edge 2020 R2 SP2 as soon as possible. 
+Restrict access to port TCP/3997 
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

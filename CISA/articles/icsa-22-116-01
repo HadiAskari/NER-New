@@ -1,0 +1,70 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: System Data Manager – SDM600
+Vulnerabilities: Integer Overflow or Wraparound, Reachable Assertion, Type Confusion, Uncontrolled Recursion, Observable Discrepancy
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to eavesdrop on traffic or to cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reports these vulnerabilities affect the following System Data Manager products: 
+
+All System Data Manager – SDM600 versions prior to version 1.2 FP2 HF10 (Build Nr. 1.2.14002.506) 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OBSERVABLE DISCREPANCY CWE-203
+In affected OpenSSL versions, the Raccoon attack exploits a flaw in the TLS specification that can lead to an attacker computing the pre-master secret in connections that have used a Diffie-Hellman-based ciphersuite. This allows the attacker to eavesdrop on all encrypted communications sent over that TLS connection.
+CVE-2020-1968 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2    UNCONTROLLED RECURSION CWE-674
+In affected versions of OpenLDAP, LDAP search filters with nested boolean expressions can result in a denial-of-service condition.
+CVE-2020-12243 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3    REACHABLE ASSERTION CWE-617
+A flaw in affected versions of the OpenLDAP slapd server may cause an assertion failure when processing a malicious packet. This may lead to a denial-of-service condition.
+CVE-2020-25709 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    REACHABLE ASSERTION CWE-617
+A flaw in affected versions of OpenLDAP allows an attacker who sends a malicious packet processed by OpenLDAP to force a failed assertion in csnNormalize23() function. This may lead to a denial-of-service condition.
+CVE-2020-25710 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5    TYPE CONFUSION CWE-843
+A flaw was discovered in ldap_X509dn2bv in affected OpenLDAP versions leading to a slapd crash in the X.509 DN parsing in ad_keystring, resulting in a denial-of-service condition.
+CVE-2020-36229 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6    REACHABLE ASSERTION CWE-617
+A flaw was discovered in affected OpenLDAP versions leading in an assertion failure in slapd in the X.509 DN parsing in decode.c ber_next_element, resulting in a denial-of-service condition.
+CVE-2020-36230 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.7    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+A flaw in affected versions of OpenSSL may cause calls to EVP_CipherUpdate, EVP_EncryptUpdate and EVP_DecryptUpdate to overflow the output length argument in some cases where the input length is close to the maximum permissible length for an integer on the platform. This could lead to applications behaving incorrectly.
+CVE-2021-23840 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+The vulnerabilities are remediated as of the following product Version SDM600 Version 1.2 FP2 HF10 (Build Nr. 1.2.14002.506). Hitachi Energy recommends users apply the update at the earliest convenience from the SDM600 product website.
+Hitachi Energy also recommends the following general security mitigations:
+
+Implement and continuously revise least privileges principles to minimize permissions and accesses to SDM600 related resources.
+Follow security practices as defined in SDM600 security deployment guideline and firewall configurations to help protect process control networks from attacks that originate from outside the network. Such practices include that process control systems are: 
+
+Physically protected from direct access by unauthorized personnel.
+Not directly connected to the Internet.
+Separated from other networks by means of a firewall system that has a minimal number of ports exposed.
+Not used for Internet surfing, instant messaging, or receiving e-mails.
+
+
+Carefully scan portable computers and removable storage media for viruses before connecting to a control system.
+
+For additional information, see the Hitachi Energy security advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

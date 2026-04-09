@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/Low attack complexity
+Vendor: Rockwell Automation
+Equipment: FactoryTalk AssetCentre
+Vulnerabilities: OS Command Injection, Deserialization of Untrusted Data, SQL Injection, Improperly Restricted Functions
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow unauthenticated attackers to perform arbitrary command execution, SQL injection, or remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports these vulnerabilities affects the following products:
+
+FactoryTalk AssetCentre, v10.00 and earlier
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+A deserialization vulnerability exists in how the AosService.rem service in FactoryTalk AssetCentre verifies serialized data. This vulnerability may allow a remote, unauthenticated attacker to execute arbitrary commands in FactoryTalk AssetCentre.
+CVE-2021-27462 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.2    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+A deserialization vulnerability exists in how the ArchiveService.rem service in FactoryTalk AssetCentre verifies serialized data. This vulnerability may allow a remote, unauthenticated attacker to execute arbitrary commands in FactoryTalk AssetCentre.
+CVE-2021-27466 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.3    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+A deserialization vulnerability exists in how the LogService.rem service in FactoryTalk AssetCentre verifies serialized data. This vulnerability may allow a remote, unauthenticated attacker to execute arbitrary commands in FactoryTalk AssetCentre.
+CVE-2021-27470 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.4    USE OF POTENTIALLY DANGEROUS FUNCTION CWE-676
+FactoryTalk AssetCentre does not properly restrict all functions relating to IIS remoting services. This vulnerability may allow a remote, unauthenticated attacker to modify sensitive data in FactoryTalk AssetCentre.
+CVE-2021-27474 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.5    OS COMMAND INJECTION CWE-78
+A vulnerability exists in the SaveConfigFile function of the RACompare Service, which may allow for OS command injection. This vulnerability may allow a remote, unauthenticated attacker to execute arbitrary commands in FactoryTalk AssetCentre.
+CVE-2021-27476 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.6    SQL INJECTION CWE-89
+A vulnerability exists in the RunSearch function of SearchService service, which may allow for the execution of remote unauthenticated arbitrary SQL statements.
+CVE-2021-27472 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.7    SQL INJECTION CWE-89
+The AosService.rem service exposes functions lacking proper authentication. This vulnerability may allow a remote, unauthenticated attacker to execute arbitrary SQL statements.
+CVE-2021-27468 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.8    SQL INJECTION CWE-89
+The ArchiveService.rem service exposes functions lacking proper authentication. This vulnerability may allow a remote, unauthenticated attacker to execute arbitrary SQL statements.
+CVE-2021-27464 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.9    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+FactoryTalk AssetCentre components contain .NET remoting endpoints that deserialize untrusted data without sufficiently verifying that the resulting data will be valid. This vulnerability may allow a remote, unauthenticated attacker to gain full access to the FactoryTalk AssetCentre main server and all agent machines.
+CVE-2021-27460 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sharon Brizinov and Amir Preminger of Claroty reported these vulnerabilities to Rockwell Automation.
+4. MITIGATIONS
+Rockwell Automation encourages users of the affected versions of FactoryTalk AssetCentre to update to AssetCentre v11 (or above) to addresses these vulnerabilities.  For more information about these vulnerabilities and mitigations please see Rockwell Automation’s publication KnowledgeBase ID: PN1559
+As an additional mitigation, Rockwell Automation encourages users who are unable to upgrade or are concerned about unauthorized client connections to use built in security features found within FactoryTalk AssetCentre. Users should follow guidance found in QA46277. IPsec would minimize exposure to unauthorized clients and has been tested in FactoryTalk AssetCentre v9-v11
+Rockwell Automation recommends the following software/PC-based mitigation strategies:
+
+Run all software as User, not as an Administrator, to minimize the impact of malicious code on the infected system.
+Use of Microsoft AppLocker or other similar allow list applications can help mitigate risk. Information on using AppLocker with Rockwell Automation products is available at Knowledge Base Article QA17329
+Ensure the least-privilege user principle is followed, and user/service account access to shared resources (such as a database) is only granted with a minimum number of rights as needed.
+
+Rockwell Automation recommends the following general mitigations:
+
+Use trusted software, software patches, antivirus/antimalware programs and interact only with trusted web sites and attachments.
+Minimize network exposure for all control system devices and/or systems and ensure they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, please see Knowledgebase Article PN715
+Locate control system networks and devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize a VPN is only as secure as the connected devices.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

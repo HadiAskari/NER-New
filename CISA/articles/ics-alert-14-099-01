@@ -1,0 +1,70 @@
+
+
+Description
+
+NCCIC/ICS-CERT is aware of a vulnerability with proof-of-concept exploit code that could expose private SSL keys used in the OpenSSL implementation of secure communication.
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+SUMMARY
+NCCIC/ICS-CERT is aware of a public report of a vulnerability with proof-of-concept (PoC) exploit code that could expose private SSL keys used in the OpenSSL implementation of secure communication. According to this report, the vulnerability in OpenSSL Versions 1.0.1 through 1.0.1f contain a flaw in its implementation of the transport layer security/datagram transport layer security (TLS/DTLS) heartbeat functionality that could disclose private/encrypted information to an attacker. This vulnerability is commonly referred to as “heartbleed.” This vulnerability was discovered by a team of security engineers (Riku, Antti and Matti) at Codenomicon and Neel Mehta of Google Security, who reported this vulnerability to the National Cyber Security Centre Finland (NCSC-FI) for vulnerability coordination and reporting to the OpenSSL team. ICS-CERT is issuing this alert to provide early notice of the report and identify baseline mitigations for reducing risks to this and other cybersecurity attacks.
+The report included vulnerability details and PoC exploit code for the following vulnerability:
+
+
+
+Vulnerability Type
+Remotely Exploitable
+Impact
+
+
+Heartbleed SSL key exposure
+Yes
+Private/encrypted information exposure
+
+
+
+For details, please see the US-CERT Vulnerability Note, VU#720951 here:
+http://www.kb.cert.org/vuls/id/720951
+For the public report, please see the following:
+http://heartbleed.com/
+ICS-CERT encourages any asset owners/operators, developers, or vendors to coordinate known implementations of the affected products directly with ICS-CERT.
+As OpenSSL may be used as a third-party component, asset owners, operators, and SCADA software developers are encouraged to investigate the use of the affected versions of OpenSSL in their environments.
+
+
+Mitigations
+
+MITIGATION
+OpenSSL Version 1.0.1g has addressed and mitigates this vulnerability. Please contact your software vendor to check for availability of updates. Any system that may be affected by this vulnerability should regenerate any credential information (secret keys, passwords, etc.) with the assumption that an attacker has already used this vulnerability to obtain those items.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.a
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+If remote access is required, employ secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT also provides a recommended practices section for control systems on the ICS-CERT web site (http://ics-cert.us-cert.gov). Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+
+
+a. ICS-CERT ALERT, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-10-301-01, web site last accessed April 9, 2014.
+

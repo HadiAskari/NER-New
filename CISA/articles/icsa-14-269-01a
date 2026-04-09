@@ -1,0 +1,97 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-269-01 Bash Command Injection Vulnerability that was published September 26, 2014, on the NCCIC/ICS‑CERT web site.
+A command injection vulnerability has been reported in the Bourne again shell (bash). Bash is the common command-line used in most Linux/Unix-based operating systems and Apple’s Mac OS X. The flaw could allow an attacker to remotely execute shell commands by attaching malicious code in environment variables used by the operating system.
+Industrial control systems running embedded versions of Linux may not be field upgradeable are of particular concern and may require alternate mitigation.
+Patches have been released to fix this vulnerability by major Linux vendors for affected versions. Solutions for CVE-2014-6271 do not completely resolve the vulnerability. It is advised to install existing patches and pay attention for updated patches to address CVE-2014-7169.
+Exploits that target this vulnerability are publicly available.
+As bash is a third-party component, asset owners, operators, and SCADA product developers are encouraged to investigate the use of the affected versions of bash in their environments. ICS-CERT encourages any asset owners/operators, developers, or vendors to coordinate known implementations of the affected products directly with ICS-CERT.
+AFFECTED PRODUCTS
+The following bash versions are affected:
+
+GNU bash versions 1.14 to 4.3
+Linux, BSD, and UNIX distributions including but not limited to:
+
+
+CentOS
+Debian
+Mac OS X
+Red Hat Enterprise
+Ubuntu
+
+Users may use Nessus to determine if their devices are running a vulnerable bash version:
+
+GNU Bash Environment Variable Handling Code Injection (Shellshock)h[tt]p://[www].tenable.com/plugins/index.php?view=single&id=77829http://tinyurl.com/p8fxk8e (provided because issues reported with redirect)
+Bash Remote Code Execution (Shellshock)h[tt]p://[www].tenable.com/plugins/index.php?view=single&id=77823http://tinyurl.com/q6218p2 (provided because issues reported with redirect)
+
+--------- Begin Update A Part 1 of 1 --------
+ICS-CERT sent out a query to vendors we have collaborated with in the past. Many have responded back with information about which products are affected by this bash vulnerability. ICS-CERT created a supplement to this advisory that contains this information. It can be found at the following web location: https://ics-cert.us-cert.gov/advisories/Supplement-ICSA-14-269-01. This supplement will be updated with additional information as it becomes available, without updating this advisory.
+ 
+--------- End Update A Part 1 of 1 ----------
+IMPACT
+An exploit using this vulnerability could allow an attacker to remotely execute arbitrary commands. 
+This vulnerability is classified by industry standards as “High” impact with CVSS Impact Subscore 10 and “Low” on complexity, which means it takes little skill to perform. This flaw allows attackers to provide specially crafted environment variables containing arbitrary commands that can be executed on vulnerable systems. It is especially dangerous because of the prevalent use of the bash shell and its ability to be called by an application in numerous ways.https://www.us-cert.gov/ncas/alerts/TA14-268A, web site last accessed September 26, 2014.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability as based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Bash is a command processor that allows users to type or input stored commands via a script. Originally written as a Unix shell by Brian Fox for the GNU project, it has become the default shell on Linux and Mac OS X. Various product adaptations have brought this shell to Microsoft (Cygwin and MinGW), DOS, Novell NetWare, and Android. Bash supports wildcards in file names, piping, variables, command substitution, and condition testing.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+OS COMMAND INJECTIONSCWE-78: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection'), http://cwe.mitre.org/data/definitions/78.html, web site last accessed September 25, 2014.
+
+GNU bash through 4.3 processes trailing strings after function definitions in the values of environment variables, which allows remote attackers to execute arbitrary code via a crafted environment. OpenSSH, Apache HTTP Server, and DHCP clients could be particularly vulnerable.
+CVE-2014-6271NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed September 25, 2014. 
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+There are several functional mitigations for this vulnerability including upgrading to a new version of bash, replacing bash with an alternate shell, limiting access to vulnerable services, and/or filtering inputs to vulnerable services.
+Patches have been released to fix this vulnerability by major Linux vendors for affected versions; however, solutions for CVE-2014-6271 do not completely resolve the vulnerability. It is advised to install existing patches and pay attention for updated patches to address CVE-2014-7169.Vulnerability Summary for CVE-2014-7169 http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-7169, web site last accessed September 26, 2014.
+Many UNIX-like operating systems, including Linux distributions, BSD variants, and Apple Mac OS X include bash and are likely to be affected. Contact your respective Linux or Unix-based OS vendor(s) for updated information. A list of vendors can be found in CERT Vulnerability Note VU#252743.Vulnerability Note VU#252743, http://www.kb.cert.org/vuls/id/252743, web site last accessed September 26, 2014.
+ICS-CERT recommends system administrators review the vendor patches and the NIST Vulnerability Summary for CVE-2014-7169e, to mitigate damage caused by the exploit
+Other helpful resources include:
+
+https://securityblog.redhat.com/2014/09/24/bash-specially-crafted-environment-variables-code-injection-attack/
+http://lists.gnu.org/archive/html/bug-bash/2014-09/threads.html
+https://www.us-cert.gov/ncas/current-activity/2014/09/24/Bourne-Again-Shell-Bash-Remote-Code-Execution-Vulnerability
+https://www.us-cert.gov/ncas/alerts/TA14-268A
+https://www.cert.gov.uk/resources/alerts/update-bash-vulnerability-aka-shellshock/
+
+Support Information:
+
+Novel/SuSE
+Debian
+Ubuntu
+Mint (No link at this time)
+Redhat/Fedora
+Mageia (No link at this time)
+CentOS
+
+As bash may be used as a third-party component, asset owners, operators, and ICS software developers are encouraged to investigate the use of the affected versions of bash in their environments.
+The ST and PT ISAC released the following test string to determine detect vulnerable installations.
+To check if you are patched, you can use the original test string:
+env x='() { :;}; echo vulnerable' bash -c "echo this is a test"
+If you are patched, but want to demonstrate that you are still vulnerable, you can use this command:
+env X='() { (a)=>\' bash -c "echo date";
+This command will return an error on a patched system, but it will still create a file with the output of `date` in a file called "echo".
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed September 26, 2014.  for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed September 26, 2014.  for more information on social engineering attacks.
+
+

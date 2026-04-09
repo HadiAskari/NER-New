@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Siemens Healthineers, a subsidiary of Siemens
+Equipment: syngo fastView
+
+--------- Begin Update A Part 1 of 2 --------
+
+Vulnerabilities: Out-of-bounds Write, Write-what-where Condition
+
+--------- End Update A Part 1 of 2 --------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-350-16 Siemens Healthineers syngo fastView that was published December 16, 2021, to the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to a crash of the application or arbitrary code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of syngo fastView, a software for digital imaging and communications, are affected:
+
+Syngo fastView: All versions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    OUT-OF-BOUNDS WRITE CWE-787
+The affected application lacks proper validation of user-supplied data when parsing DICOM files, which could result in an out-of-bounds write past the end of an allocated structure. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-40367 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+4.2.2    OUT-OF-BOUNDS WRITE CWE-787
+The affected application lacks proper validation of user-supplied data when parsing BMP files, which could result in an out-of-bounds write past the end of an allocated structure. An attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-42028 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+--------- Begin Update A Part 2 of 2 --------
+4.2.3    WRITE-WHAT-WHERE CONDITION CWE-123
+The affected application lacks proper validation of user-supplied data when parsing BMP files. This could result in a write-what-where condition and an attacker could leverage this vulnerability to execute code in the context of the current process.
+CVE-2021-45465 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+--------- End Update A Part 2 of 2 --------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Tran Van Khang - khangkito (VinCSS) working with Trend Micro Zero Day Initiative reported these vulnerabilities to Siemens and CISA.
+5. MITIGATIONS
+Siemens Healthineers has identiﬁed the following speciﬁc workarounds and mitigations that customers can apply to reduce the risk:
+
+Download syngo fastView only from the SHS official page.
+Avoid opening untrusted files from unknown sources in syngo fastView.
+Remove syngo fastView after viewing the required files.
+
+For additional information, please refer to Siemens Healthineers’ Security Advisory SHSA-688797
+In addition, Siemens Healthineers recommends the following:
+
+Ensure appropriate backups and system restoration procedures are in place.
+Securely delete any backup files that are no longer needed.
+For specific patch and remediation guidance information contact a Siemens Healthineers Customer Service Engineer, portal, or the Regional Support Center.
+
+For further inquiries on security vulnerabilities in Siemens Healthineers products and solutions, please contact Siemens Healthineers.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

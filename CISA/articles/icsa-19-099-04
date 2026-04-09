@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.3
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: SINEMA Remote Connect (Client and Server)
+Vulnerabilities: Incorrect Calculation of Buffer Size, Out-of-bounds Read, Stack-based Buffer Overflow, Improper Handling of Insufficient Permissions
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-099-04 Siemens SINEMA Remote Connect that was published April 9, 2019, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to circumvent the system authorization for certain functionalities, and to execute privileged functions.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens products are affected: 
+
+SINEMA Remote Connect Client; all versions prior to v2.0 HF1
+SINEMA Remote Connect Server; all versions prior to v2.0
+
+Note that not every product listed above is affected by every vulnerability described below. Please see the Siemens advisory for more detail.
+4.2 VULNERABILITY OVERVIEW
+4.2.1    INCORRECT CALCULATION OF BUFFER SIZE CWE-131
+The HTTP client curl is vulnerable to a buffer overrun.
+The vulnerability could be exploited by an attacker providing a malicious HTTP server. Successful exploitation requires no system privileges. User interaction by a legitimate use is required to exploit the vulnerability. An attacker could use the vulnerability to compromise confidentiality, integrity and availability of the affected device.
+CVE-2018-14618 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H) 
+4.2.2    OUT-OF-BOUNDS READ CWE-125
+The HTTP client library libcurl is vulnerable to a heap buffer out-of-bounds read. 
+The vulnerability could be exploited by an attacker providing a malicious HTTP server. Successful exploitation requires no system privileges and no user interaction. An attacker could use the vulnerability to compromise availability of the affected system.
+CVE-2018-16890 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.3    STACK-BASED BUFFER OVERFLOW CWE-121
+The HTTP client library libcurl is vulnerable to a stack-based buffer overflow.
+The vulnerability could be exploited by an attacker providing a malicious HTTP server. Successful exploitation requires no system privileges and no user interaction. An attacker could use the vulnerability to compromise confidentiality, integrity and availability of the affected system.
+CVE-2019-3822 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+--------- Begin Update A Part 1 of 1 ---------
+4.2.4    OUT-OF-BOUNDS READ CWE-125
+The libcurl library versions 7.34.0 to and including 7.63.0 are vulnerable to a heap out-of-bounds read in the code handling the end-of-response for SMTP.  This vulnerability could allow an attacker to trigger a denial-of-service condition on the affected devices.
+CVE-2019-3823 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+--------- End Update A Part 1 of 1 ---------
+4.2.5    IMPROPER HANDLING OF INSUFFICIENT PERMISSIONS CWE-280
+Due to insufficient checking of user permissions, an attacker may access URLs that require special authorization.
+The vulnerability could be exploited by an attacker with network access to the affected system. An attacker must have access to a low privileged account to exploit the vulnerability. An attacker could use the vulnerability to compromise confidentiality, integrity and availability of the affected system.
+CVE-2019-6570 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens ProductCERT reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens currently has updates for the following products: 
+
+SINEMA Remote Connect Client: Update to v2.0 HF1 
+SINEMA Remote Connect Server: Update to v2.0 
+
+Siemens recommends users apply the following specific workarounds and mitigations to reduce the risk:
+
+Turn off NTLM authentication to mitigate CVE-2018-16890 and CVE-2019-3822
+Turn off SMTP to mitigate CVE-2019-3822
+Apply defense-in-depth strategies.
+
+Siemens recommends users configure their environment according to Siemens’ operational guidelines for industrial security and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens Security Advisory SSA-436177
+For further inquiries on security vulnerabilities in Siemens products and solutions, please contact Siemens ProductCERT.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

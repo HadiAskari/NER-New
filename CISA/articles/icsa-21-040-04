@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: RUGGEDCOM ROX IIB
+Vulnerabilities: Improper Input Validation, NULL Pointer Dereference, Out-of-Bounds Write, Insufficient Verification of Data Authenticity, Improper Certificate Validation, Out-of-bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow the decryption of encrypted content, possible code execution, or cause a system crash, resulting in a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+RUGGEDCOM ROX MX5000: All versions prior to v2.14.0
+RUGGEDCOM ROX RX1400: All versions prior to v2.14.0
+RUGGEDCOM ROX RX1500: All versions prior to v2.14.0
+RUGGEDCOM ROX RX1501: All versions prior to v2.14.0
+RUGGEDCOM ROX RX1510: All versions prior to v2.14.0
+RUGGEDCOM ROX RX1511: All versions prior to v2.14.0
+RUGGEDCOM ROX RX1512: All versions prior to v2.14.0
+RUGGEDCOM ROX RX500: All versions prior to v2.14.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+A cached side-channel attack during handshakes using RSA encryption could allow for the decryption of content. This is a variant of the adaptive chosen ciphertext attack (AKA Bleichenbacher attack) and affects all Network Security Services (NSS) versions prior to NSS 3.41 
+CVE-2018-12404 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    NULL POINTER DEREFERENCE CWE-476
+In NSS before v3.36.7 and before v3.41.1, a malformed signature can cause a crash due to a NULL dereference, resulting in a denial-of-service condition. 
+CVE-2018-18508 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+3.2.3    OUT-OF-BOUNDS WRITE CWE-787
+When encrypting with a block cipher, if a call to NSC_EncryptUpdate was made with data smaller than the block size, a small out-of-bounds write could occur. This could cause heap corruption and an exploitable crash.
+CVE-2019-11745 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+In NSS before v3.46, several cryptographic primitives had missing length checks. In cases where the application calling the library did not perform a sanity check on the inputs, exploitation of this vulnerability could result in a crash due to a buffer overflow. 
+CVE-2019-17006 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    IMPROPER CERTIFICATE VALIDATION CWE-295
+In NSS before v3.44, a malformed Netscape certificate sequence can cause NSS to crash, resulting in a denial-of-service condition.
+CVE-2019-17007 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6    OUT-OF-BOUNDS READ CWE-125
+An out-of-bounds buffer read flaw was found in the pluto daemon of libreswan from Versions 3.27 to 3.31. An unauthenticated attacker could use this flaw to crash libreswan by sending specially crafted IKev1 informational exchange packets. The daemon respawns after the crash. 
+CVE-2020-1763 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens ProductCERT reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released the following update and recommends it be applied:
+RUGGEDCOM ROX (products listed above): Update to v2.14.0 or later version
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Disable IPsec unless the feature is required in the network environment. Note that IPsec is disabled by default.
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens’ operational guidelines for Industrial Security, and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information see Siemens security advisory SSA-379803
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

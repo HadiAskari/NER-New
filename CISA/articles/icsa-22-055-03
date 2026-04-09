@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Low attack complexity
+Vendor: Schneider Electric
+Equipment: Easergy P5 and P3
+
+--------- Begin Update A Part 1 of 4 ---------
+
+Vulnerabilities: Use of Hard-Coded Credentials, Classic Buffer Overflow, and Improper Input Validation
+
+--------- End Update A Part 1 of 4 ---------
+2.   UPDATE
+This updated advisory is a follow-up to the original advisory titled ICSA-22-055-03 Schneider Electric Easergy P5 and P3 that was published February 24, 2022, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may disclose device credentials, cause a denial-of-service condition, device reboot, or allow an attacker to gain full control of the relay. This could result in loss of protection to your electrical network.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Easergy P5, a medium voltage protection relay, are affected:
+--------- Begin Update A Part 2 of 4 ---------
+
+All firmware versions prior to v01.401.102
+
+--------- End Update A Part 2 of 4 ---------
+The following versions of Easergy P3, a medium voltage protection relay, are affected:
+
+All versions prior to v30.205
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF HARD-CODED CREDENTIALS CWE-798
+If an attacker were to obtain the SSH cryptographic key for the device and take active control of the local operational network connected to this product, they could observe and manipulate traffic associated with product configuration. This could result in information disclosure.
+CVE-2022-22722 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSSIC BUFFER OVERFLOW') CWE-120
+A buffer copy without checking size of input vulnerability exists in Easergy P5 devices that could lead to a buffer overflow, causing program crashes and arbitrary code execution when specially crafted packets are sent to the device over the network. Protection functions and tripping functions via GOOSE can be impacted.
+CVE-2022-22723 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSSIC BUFFER OVERFLOW') CWE-120
+A buffer copy without checking size of input vulnerability exists in Easergy P3 devices that could lead to a buffer overflow, causing program crashes and arbitrary code execution when specially crafted packets are sent to the device over the network. Protection functions and tripping functions via GOOSE can be impacted.
+CVE-2022-22725 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+--------- Begin Update A Part 3 of 4 ---------
+4.2.4    IMPROPER INPUT VALIDATION CWE-20
+An Improper Input Validation vulnerability exists in Easergy P5 devices that cause the device watchdog function to be disabled if the attacker had access to privileged user credentials. 
+CVE-2022-34758 has been assigned to this vulnerability. A CVSS v3 base score of 5.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:L).
+--------- End Update A Part 3 of 4 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+4.4 RESEARCHER
+Timothée Chauvin, Paul Noalhyt, and Yuanzhe Wu at Red Balloon Security reported these vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update A Part 4 of 4 ---------
+Schneider Electric recommends users using Easergy P5 upgrade to v01.402.101 and users using Easergy P3 upgrade to version 30.205. These firmware upgrades include a fix for the identified vulnerabilities and are available upon request from Schneider Electric’s Customer Care Center.
+--------- End Update A Part 4 of 4 ---------
+For CVE-2022-22723 and CVE-2022-22725 only, if users choose not to apply the remediation provided above, they should immediately apply the following mitigation to reduce the risk of exploit:
+
+Disable the GOOSE service of the product to reduce the risk of exposure. If GOOSE is needed for the application, use it only in a secure local area network.
+
+For more information see Schneider Electric’s security notifications: SEVD-2022-011-03, SEVD-2022-011-04
+Schneider Electric recommends users use appropriate patching methodologies when applying these patches to their systems. Schneider Electric recommends the use of backups and an evaluation of the impact of these patches in a test and development environment or on an offline infrastructure. Contact Schneider Electric’s Customer Care Center for assistance removing a patch.
+Schneider Electric recommends the following industry cybersecurity best practices:
+
+Locate control and safety system networks and remote devices behind firewalls and isolate them from the business network.
+Install physical controls so no unauthorized personnel can access industrial control and safety systems, components, peripheral equipment, and networks.
+Place all controllers in locked cabinets and never leave them in the “Program” mode.
+Never connect programming software to any network other than a network intended to for the devices.
+Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc., before use in the terminals or any node connected to these networks.
+Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.
+Minimize network exposure for all control system devices and systems and ensure they are not accessible from the Internet.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand VPNs are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

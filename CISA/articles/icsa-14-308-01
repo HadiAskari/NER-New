@@ -1,0 +1,54 @@
+
+OVERVIEW
+Ivan Sanchez of WiseSecurity Team has identified a dll hijack vulnerability in the ABB RobotStudio and Test Signal Viewer applications. ABB has produced new versions that mitigate this vulnerability. Mr. Sanchez has tested the new version to validate that it resolves the vulnerability.
+AFFECTED PRODUCTS
+The following ABB versions are affected:
+
+RobotStudio Version 5.60 up to and including 5.61.01.01, and
+Test Signal Viewer Version 1.5
+
+IMPACT
+The vulnerability could allow an attacker who successfully exploits it to insert and run arbitrary code on an affected system.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+ABB is a company based in Switzerland that maintains offices in several countries around the world. ABB develops products in multiple critical sectors that are deployed worldwide.
+The RobotStudio software is a PC product used for offline programming and simulation of ABB Robot system. The vulnerability exists in an executable file included in the product versions listed above. The Test Signal Viewer software is a PC product used for tuning motion parameters for external axes such as track motion and turning tables. According to ABB, these products are deployed across several industries including manufacturing, discrete automation, and others. ABB estimates that these products are used globally.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+UNCONTROLLED SEARCH PATH ELEMENTCWE-427: Uncontrolled Search Path Element, http://cwe.mitre.org/data/definitions/427.html, web site last accessed November 04, 2014.
+
+The vulnerability can be exploited when an executable file is executed during installation of RobotStudio to resolve the location of other DLLs to be dynamically loaded by a third-party component. The executable file has mistakenly been included, but not used in the distribution of all RobotStudio, Versions 5.60 up to and including 5.61.01.01.
+CVE-2014-5430NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5430, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. A CVSS v2 base score of 9.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:C/A:C, web site last accessed November 04, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application, which in certain scenarios can cause it to load a dll file from an untrusted source.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+The problem is corrected in the following product versions:
+
+RobotStudio Version 5.61.02, and
+Test Signal Viewer Version 1.6
+
+These versions are available on the RobotWare 5.15.07.01 DVD and the RobotWare 5.61.02 DVD. The RobotWare 5.15.07.01 DVD and the RobotWare 5.61.02 DVD are available for download at the following hyperlink:
+http://new.abb.com/products/robotics/robotstudio/downloads
+ABB recommends that customers apply the update as early as convenient. ABB has issued two Cyber Security Advisories providing further information. Please see the ABB Cyber Security Alerts & Notifications web page at:
+http://www.abb.com/cawp/abbzh254/2c9d1261d9fa1dcfc1257950002e4fbf.aspx
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed November 04, 2014. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed November 04, 2014. for more information on social engineering attacks.
+

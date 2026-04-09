@@ -1,0 +1,47 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on October 30, 2014, and is being released to the NCCIC/ICS-CERT web site
+Independent researchers Adam Crain and Chris Sistrunk have identified a DNP3 denial‑of‑service vulnerability in the Elipse SCADA application. Elipse has produced a new version of the DNP3 driver that mitigates this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Elipse products are affected:
+
+Elipse SCADA 2.29 build 141 and prior w/ DNP3 driver,
+Elipse E3 versions V1.0 to V4.6,
+Elipse Power systems Versions V1.0 to V4.6, and
+DNP 3.0 Master v3.02 and prior.
+
+IMPACT
+An attacker exploiting this vulnerability can cause the process to be disabled until it is manually restarted.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Elipse is a Brazil-based company that has business partners in several countries around the world, including the US, Germany, India, Russia, Sweden, Argentina, and Chile.
+The affected products, Elipse SCADA, are web-based SCADA systems. According to Elipse, these products are deployed across several sectors including Critical Manufacturing, Energy, Water and Wastewater Systems, and others. Elipse estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+RESOURCE EXHAUSTIONCWE-400: CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion'),http://cwe.mitre.org/data/definitions/400.html, web site last accessed October 30, 2014.
+
+Elipse investigated the notification, identifying a vulnerability in DNP Master Driver V3.02, which could be reproduced in Elipse SCADA, Elipse E3, and Elipse Power systems. The attack consists of sending data packets with formatting errors, causing a process failure.
+When the exploit is used against Elipse E3 and Elipse Power systems, the unavailability is temporary (about 30 seconds), and when used against Elipse SCADA, the system becomes unavailable until a system restart.
+CVE-2014-5429NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-5429, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:P, web site last accessed October 30, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Elipse has created a new version of DNP Master Driver (V.4.0.21) that fixes this problem. Elipse has also made this new version available on October 27, 2014, on its web site at the following location:
+http://www.elipse.com.br/eng/download_drivers.aspx
+Asset owners using affected products should contact their local sales representative or Elipse customer service for more information.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (www.ics-cert.org).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

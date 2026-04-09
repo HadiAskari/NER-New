@@ -1,0 +1,64 @@
+
+
+Description
+
+This updated alert describes vulnerabilities with proof-of-concept (PoC) exploit code affecting the WAGO I/O System 750, a controller product.
+Summary
+This Alert Update is a follow-up to the original ICS-CERT Alert titled ICS-ALERT-12-020-07—WAGO I/O 750 Multiple Vulnerabilities that was published January 20, 2012, on the ICS-CERT Web page.
+--------- Begin Update A Part 1 of 2 --------
+The reported vulnerabilities from DSecRG have been coordinated with WAGO. WAGO has determined that the vulnerabilities can be mitigated by adjusting system configurations of services not in use.
+WAGO has released a customer cybersecurity notification on best security practicesWAGO Cybersecurity Notification, http://www.wago.us/products/40576.htm, Web site last accessed on July 19, 2012. for its products.
+--------- End Update A Part 1 of 2 ----------
+ICS-CERT is aware of a public report of multiple vulnerabilities with proof-of-concept (PoC) exploit code affecting the WAGO I/O System 750, a controller product. According to the Wego website, the Wego I/O System 750 is used in the industrial automation, building automation, marine automation, and on and offshore applications. These reports were released by Digital Security Research Group (DSecRG) without coordination with either the vendor or ICS-CERT.
+ICS-CERT has notified WAGO of this report and has asked the vendor to confirm the vulnerability and identify mitigations. ICS-CERT is issuing this alert to provide early notice of the report and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+The report included vulnerability details and PoC exploit code for the following vulnerabilities:
+
+
+
+Vulnerability Type
+Exploitability
+Impact
+
+
+Data leakage
+Remote
+Download firmware
+
+
+Data leakage
+Remote
+Data leakage
+
+
+Unauthorized access
+Remote
+Denial of service / loss of system integrity
+
+
+
+Please report any issues affecting control systems in critical infrastructure environments to ICS-CERT.
+Mitigation
+ICS-CERT has coordinated with WAGO and the security researcher to identify mitigations. WAGO has determined that the reported vulnerabilities can be mitigated through system configuration.
+--------- Begin Update A Part 2 of 2 --------
+Data Leakage Resulting in a Download of Firmware
+In Section 10.4 of the WAGO I/O 750-841 User’s Manual, Ports 44818/TCP and 2222/UDP can be disabled, thereby disabling the Web Based Management system preventing the download of firmware. WAGO recommends that these ports remain disabled when not being actively used. Section 12.1.1.5 recommends installing controllers behind firewalls.
+Data Leakage Resulting in a Download of Confidentiality
+In Section 10.4 of the WAGO I/O 750-841 User’s Manual, Port 80/TCP can be disabled, thereby disabling the Web Based Management system. WAGO recommends that these ports remain disabled when not being actively used. Section 12.1.1.5 recommends using controllers behind firewalls.
+Unauthorized Access Resulting In A Denial of Service or Loss of System Integrity
+The 750-841 provides a Web Server Authentication function. By default, this function is enabled, but it may be disabled. If enabled, the previous password must first be entered before the password can be changed. If disabled, the password may be changed without first entering the previous password. WAGO recommends this function remain enabled. A description of the Web Server Authentication can be found in Section 10.8 of the WAGO I/O 750-841 User’s Manual.
+These features can be found in the WAGO I/O 750-841 User’s Manual.
+--------- End Update A Part 2 of 2 ----------
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices. Control system devices should not directly face the Internet.ICS-CERT ALERT, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-10-301-01, website last accessed January 20, 2012.
+Locate control system networks and devices behind firewalls, and isolate them from the businessnetwork.
+If remote access is required, employ secure methods, such as Virtual Private Networks (VPNs),recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+The Control Systems Security Program (CSSP) also provides a recommended practices section for control systems on the US-CERT website. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+
+
+Mitigations
+
+

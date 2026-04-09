@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Phoenix Contact
+Equipment: ILC 131 ETH, ILC 131 ETH/XC, ILC 151 ETH, ILC 151 ETH/XC, ILC 171 ETH 2TX, ILC 191 ETH 2TX, ILC 191 ME/AN, and AXC 1050
+Vulnerability: Missing Authentication for Critical Function
+
+CISA is aware of a public report, known as “OT:ICEFALL” that details vulnerabilities found in multiple operational technology (OT) vendors. CISA is issuing this advisory to provide notice of the reported vulnerabilities and identify baseline mitigations for reducing risks to these and other cybersecurity attacks.
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthorized attacker to change configurations, manipulate services, or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the classic line industrial controllers are affected:
+
+ILC 1x0: All variants
+ILC 1x1: All variants
+ILC 3xx: All variants
+AXC 1050: Article number 2700988
+AXC 1050XC: Article number 2701295
+AXC 3050: Article number 2700989
+RFC 480S: Article number 2404577
+RFC 470S: Article number 2916794
+RFC 460R: Article number 2700784
+RFC 430 ETH: Article number 2730190
+RFC 450 ETH: Article number 2730200
+PC WORX SRT: Article number 2701680
+PC WORX RT BASIC: Article number 2700291
+FC 350 PCI ETH: Article number 2730844
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected product does not feature a function to authenticate communication protocols, which could allow an unauthorized attacker to change or download the configuration, start or stop services, update or modify the firmware, or shut down the device.
+CVE-2019-9201 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Sergiu Sechel reported this vulnerability to Phoenix Contact.
+Daniel dos Santos and Jos Wetzels of Forescout Technologies reported this vulnerability to CISA.
+4. MITIGATIONS
+Phoenix Contact has provided the following mitigations and workarounds:
+
+Phoenix Contact classic line controllers are designed and developed for use in closed industrial networks. The control and configuration protocols do not feature authentication mechanisms by design. Phoenix Contact recommends using the devices exclusively in closed networks, protected by a suitable firewall.
+If the use of an affected controller in protected zones is not suitable, OT communication protocols should be disabled either by using the CPU services via console or web-based management according to the controller type.
+Information for which controllers and from which firmware version communication protocols can be disabled are described in Phoenix Contact’s application note for classic line controllers, or the manual to the respective controller, which is available for download at the Phoenix Contact website.
+
+For detailed information on Phoenix Contact’s recommendations for measures to protect network-capable devices, please refer to their application note for classic line controllers: 
+Measures to protect devices based on classic control technology
+Controller supporting CPU services or WBM for disabling communication protocols:
+
+ILC 1x0: All variants, firmware: no fix
+ILC 1x1: All variants, firmware: 4.42
+ILC 1x1 GMS/GPRS: Article number2700977, firmware: 4.42
+ILC 3xx: All variants, firmware 3.98
+AXC 1050: Article number 2700988, firmware 3.01, 5.00 (WBM)
+AXC 1050XC: Article number 2701295, firmware 3.01, 5.00 (WBM)
+AXC 3050: Article number 2700989, firmware 5.60, 6.30 (WBM)
+RFC 480S PN 4TX: Article number 2404577, firmware 6.10
+RFC 470 PN 3TX: Article number 291660, firmware 4.20
+RFC 470S PN 3TX: Article number 2916794, firmware 4.20
+RFC 460R PN 3TX: Article number 2700784, firmware 5.00
+RFC 460R PN 3TX-S: Article number 1096407, firmware 5.30
+RFC 430 ETH-IB: Article number 2730190, no fix
+RFC 450 ETH-IB: Article number 2730200, no fix
+PC WORX SRT: Article number 2701680, no fix
+PC WORX RT BASIC: Article number 2700291, no fix
+FC 350 PCI ETH: Article number 2730844, no fix
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

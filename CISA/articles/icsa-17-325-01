@@ -1,0 +1,64 @@
+
+CVSS v3 6.8
+ATTENTION: Public exploits are available.
+Vendor: PHOENIX CONTACT
+Equipment: WLAN capable devices using the WPA2 Protocol
+Vulnerabilities: Reusing a Nonce
+AFFECTED PRODUCTS
+PHOENIX CONTACT reports that these vulnerabilities affect all versions of the following WLAN capable devices using the WPA2 Protocol:
+
+BL2 BPC,
+BL2 PPC,
+FL COMSERVER WLAN 232/422/485,
+FL WLAN 110x,
+FL WLAN 210x,
+FL WLAN 510x,
+FL WLAN 230 AP 802-11,
+FL WLAN 24 AP 802-11,
+FL WLAN 24 DAP 802-11,
+FL WLAN 24 EC 802-11,
+FL WLAN EPA,
+FL WLAN SPA,
+ITC 8113,
+RAD-80211-XD,
+RAD-WHG/WLAN-XD,
+TPC 6013,
+VMT 30xx,
+VMT 50xx, and
+VMT 70xx.
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an attacker to operate as a “man-in-the-middle” between the device and the wireless access point.
+MITIGATION
+PHOENIX CONTACT has reported that users operating embedded devices in AP mode are not affected by these vulnerabilities. PHOENIX CONTACT is actively working on discovering how these vulnerabilities affect its products and plans to release future updates as they become available. For more information, please see the advisory at this location:
+https://cert.vde.com/de-de/advisories/vde-2017-003
+PHOENIX CONTACT recommends that users apply the security update provided by Microsoft at the following location for devices running Microsoft Windows:
+https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2017-13080
+If WPA-TKIP is being used for WLAN configuration, PHOENIX CONTACT recommends the user switch to AES-CCMP immediately.
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+These vulnerabilities are not remotely exploitable. High skill level is needed to exploit.
+VULNERABILITY OVERVIEW
+
+REUSING A NONCE, KEY PAIR IN ENCRYPTION CWE-323
+
+Multiple products are affected by key reinstallation attacks known as KRACK. The four-way hand shake traffic in the Wi-Fi Protected Access WPA and WPA2 protocol can be manipulated to allow nonce reuse resulting in key reinstallation. This could allow an attacker to execute a “man-in-the-middle” attack, enabling the attacker within radio range to replay, decrypt, or spoof frames.
+The following CVEs have been assigned to this group of vulnerabilities:
+CVE-2017-13077: reinstallation of the pairwise key in the four-way handshake,
+CVE-2017-13078: reinstallation of the group key in the four-way handshake, and
+CVE-2017-13080: reinstallation of the group key in the group key handshake,
+A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+RESEARCHER
+Mathy Vanhoef of imec-DistriNet, KU Leuven discovered these vulnerabilities. PHOENIX CONTACT reported these vulnerabilities to CERT@VDE. CERT@VDE coordinated these vulnerabilities with ICS-CERT.
+BACKGROUND
+Critical Infrastructure Sectors: Communications, Critical Manufacturing, Information Technology
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany

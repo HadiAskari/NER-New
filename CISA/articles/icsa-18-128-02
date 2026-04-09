@@ -1,0 +1,68 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.1
+
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: Siveillance Video Management Software (VMS)
+Vulnerability: Deserialization of Untrusted Data
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-128-02 Siemens Siveillance VMS that was published May 8, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability by the affected ports in .NET Remoting deserialization could allow elevation of privileges and/or cause a denial-of-service.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Siveillance VMS, an IP video management software, are affected:
+
+Siveillance VMS 2016 R1, all versions prior to V10.0a,
+Siveillance VMS 2016 R2, all versions prior to V10.1a,
+Siveillance VMS 2016 R3, all versions prior to V10.2b,
+Siveillance VMS 2017 R1, all versions prior to V11.1a,
+Siveillance VMS 2017 R2, all versions prior to V11.2a, and
+Siveillance VMS 2018 R1, all versions prior to V12.1a.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1   DESERIALIZATION OF UNTRUSTED DATA CWE-502
+The Recording Server, Management Server, and Management Client on Ports 6473/TCP local connection only, 7474/TCP, 8966/TCP local connection only, and Port 9993/TCP use an exploitable .NET Framework Remoting deserialization level.
+An attacker could exploit this vulnerability by accessing the vulnerable ports, allowing elevation of privileges or causing a denial-of-service; compromising confidentiality, integrity, and availability of the targeted system.
+CVE-2018-7891 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Unknown
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Germany
+
+4.4 RESEARCHER
+Siemens ProductCERT reported this vulnerability to NCCIC.
+5. MITIGATIONS
+Siemens has released updates for several affected products and recommends users update to the new version.
+--------- Begin Update A Part 1 of 1 --------
+
+Siveillance VMS 2016 R1: Update to V10.0a (Obtain the update via the local Siemens representative)
+Siveillance VMS 2016 R2: Update to V10.1a (Obtain the update via the local Siemens representative)
+Siveillance VMS 2016 R3: Update to V10.2b (Obtain the update via the local Siemens representative)
+Siveillance VMS 2017 R1: Update to V11.1a (Obtain the update via the local Siemens representative)
+Siveillance VMS 2017 R2: Update to V11.2a (Obtain the update via the local Siemens representative)
+Siveillance VMS 2018 R1: Update to V12.1a (Obtain the update via the local Siemens representative)
+
+Contact Siveillance Technical Support at: siveillance.support.industry@siemens.com
+--------- End Update A Part 1 of 1 ----------
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to run the devices in a protected IT environment, Siemens specifically recommends users configure the environment according to Siemens’ Operational Guidelines for Industrial Security and follow the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on this vulnerability and associated software updates, please see Siemens security advisory SSA-457058 on their website:
+https://www.siemens.com/cert/advisories:
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. High skill level is needed to exploit.

@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.2
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens Energy
+Equipment: PLUSCONTROL
+Vulnerabilities: Type Confusion, Improper Validation of Specified Quantity in Input, Buffer Access with Incorrect Length Value, Integer Underflow, Improper Handling of Inconsistent Structural Elements
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in access to TFTP memory buffer contents, information leaks, and denial-of-service conditions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of PLUSCONTROL, a control device for high-power energy transmission, are affected:
+
+PLUSCONTROL 1st Gen: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    ACCESS OF RESOURCE USING INCOMPATIBLE TYPE (‘TYPE CONFUSION') CWE-843
+ICMP echo packets with fake IP options allow sending ICMP echo reply messages to arbitrary hosts on the network.
+CVE-2021-31344 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N).
+3.2.2    IMPROPER VALIDATION OF SPECIFIED QUANTITY IN INPUT CWE-1284
+The total length of an UDP payload (set in the IP header) is unchecked. This may lead to various side effects including information leakage and denial-of-service conditions.
+CVE-2021-31345 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.3    IMPROPER VALIDATION OF SPECIFIED QUANTITY IN INPUT CWE-1284
+The total length of an ICMP payload (set in the IP header) is unchecked. This may lead to various side effects including information leakage and denial-of-service conditions.
+CVE-2021-31346 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H).
+3.2.4    BUFFER ACCESS WITH INCORRECT LENGTH VALUE CWE-805
+TFTP server application allows for reading the contents of the TFTP memory buffer by sending malformed TFTP commands.
+CVE-2021-31885 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    INTEGER UNDERFLOW (WRAP OR WRAPAROUND) CWE-191
+Malformed TCP packets with a corrupted SACK option can lead to information leaks and denial-of-service conditions.
+CVE-2021-31889 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6    IMPROPER HANDLING OF INCONSISTENT STRUCTURAL ELEMENTS CWE-240
+The total length of an TCP payload (set in the IP header) is unchecked. This may lead to various side effects including information leakage and denial-of-service conditions.
+CVE-2021-31890 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens Energy has indicated no remediation is planned.
+Siemens Energy has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+PLUSCONTROL devices are typically located in a separate LAN segment of energy transmission solutions, where an attacker could use these vulnerabilities to disrupt SER messages or Trace functionalities. Therefore, review the status of the defense-in-depth recommendations as they apply specific deployments and align as needed. Users are encouraged to pay special attention to the measures on the network layer to prevent accessibility from other network segments.
+
+As a general security measure Siemens strongly recommends users protect network access to affected products with appropriate mechanisms. Users are advised to follow recommended security practices in order to run the devices in a protected IT environment. Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information see Siemens Security Advisory SSA-845392
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

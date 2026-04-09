@@ -1,0 +1,48 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.3
+
+Vendor: gpsd Open Source Project
+Equipment: gpsd, microjson
+Vulnerability: Stack-based Buffer Overflow
+
+2. REPOSTED INFORMATION
+This advisory was originally posted to the HSIN ICS-CERT library on November 6, 2018, and is being released to the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could allow remote code execution, data exfiltration, or denial-of service via device crash.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of gpsd and microjson, an open-source GPS framework, are affected:
+
+gpsd, Versions 2.90 to 3.17
+microjson Versions 1.0 to 1.3
+
+As reported on the gpsd website, gpsd can be found in many mobile embedded systems such as Android phones, drones, robot submarines, driverless cars, manned aircraft, marine navigation systems, and military vehicles.
+Google has been contacted regarding this vulnerability. They have examined it and believe the vulnerability does not apply to Android.
+4.2 VULNERABILITY OVERVIEW
+4.2.1 STACK-BASED BUFFER OVERFLOW CWE-121
+A stack-based buffer overflow may allow remote attackers to execute arbitrary code on embedded platforms via traffic on Port 2947/TCP or crafted JSON inputs. 
+CVE-2018-17937 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications, Defense Industrial Base, Emergency Services, Transportation Systems, and other sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Open-source Project
+
+4.4 RESEARCHER
+GE Digital Cyber Security Services, working with GE-PSIRT, reported the vulnerability to NCCIC.
+5. MITIGATIONS
+Platforms which implement stack protector and local variable re-ordering reduce the impact of this vulnerability to availability only.
+gpsd/microjson project maintainers recommend upgrading to gpsd Version 3.18 or newer and microjson 1.4 or newer to resolve this vulnerability.http://download-mirror.savannah.gnu.org/releases/gpsd/http://www.catb.org/esr/microjson/
+For more information visit the gpsd website:http://www.catb.org/gpsd/
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is exploitable from an adjacent network. High skill level is needed to exploit.

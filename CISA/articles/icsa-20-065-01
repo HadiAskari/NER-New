@@ -1,0 +1,79 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 10.0
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: WAGO
+Equipment: I/O-CHECK Series PFC100 and Series PFC200
+Vulnerabilities: Information Exposure Through Sent Data, Buffer Access with Incorrect Length Value, Missing Authentication for Critical Function, Classic Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to change settings, delete the application, run remote code, cause a system crash, cause a denial-of-service condition, revert to factory settings, and overwrite MAC addresses.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of I/O-CHECK software are affected by the listed vulnerabilities:
+
+Series PFC100 (750-81xx/xxx-xxx)
+Series PFC200 (750-82xx/xxx-xxx)
+750-852, 750-831/xxx-xxx, 750-881, 750-880/xxx-xxx, 750-889
+750-823, 750-832/xxx-xxx, 750-862, 750-890/xxx-xxx, 750-891
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INFORMATION EXPOSURE THROUGH SENT DATA CWE-201
+A specially crafted packet could cause the server to send back packets containing data from the stack.
+CVE-2019-5073 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2    BUFFER ACCESS WITH INCORRECT LENGTH VALUE CWE-805
+The affected products are vulnerable to a buffer overflow condition due to the lack of input validation, which may allow remote execution of arbitrary code.
+CVE-2019-5074 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    BUFFER ACCESS WITH INCORRECT LENGTH VALUE CWE-805
+The affected products are vulnerable to a buffer overflow condition due to the lack of input validation, which may allow remote execution of arbitrary code.
+CVE-2019-5075 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+An attacker can send an unauthenticated packet that will overwrite the MAC address stored persistently on the device. This can cause the device to enter an error state where it ceases all network communications.
+CVE-2019-5077 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H).
+3.2.5    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+An attacker can send an unauthenticated packet that will erase system data on the device. This may cause the device to enter an error state where it ceases all network communications.
+CVE-2019-5078 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H).
+3.2.6    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The affected products are vulnerable to a buffer overflow condition due to the lack of input validation, which may allow remote execution of arbitrary code.
+CVE-2019-5079 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H).
+3.2.7    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+An attacker can send unauthenticated packets that will cause the device to restore factory settings. This may cause the device to enter an error state where it ceases all network communications.
+CVE-2019-5080 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H).
+3.2.8    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+Lack of input validation may allow an attacker to trigger a buffer overflow condition by sending unauthenticated packets to the device, which may allow remote execution of arbitrary code.
+CVE-2019-5081 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H).
+3.2.9    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The affected products are vulnerable to a buffer overflow condition due to the lack of input validation, which may allow remote execution of arbitrary code.
+CVE-2019-5082 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Energy, Manufacturing, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Kelly Leuschner of Cisco Talos coordinated these vulnerabilities with CERT@VDE.
+4. MITIGATIONS
+WAGO recommends updating to the latest firmware, FW 15 or above.
+WAGO has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+The I/O-Check service protocol is only needed during installation and commissioning, not during normal operations.
+It is highly recommended to disable IP Port 6626 after commissioning.
+Disable unused TCP/UDP-ports.
+Restrict network access to the device.
+Do not directly connect the device to the Internet.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

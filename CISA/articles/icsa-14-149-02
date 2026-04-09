@@ -1,0 +1,56 @@
+
+OVERVIEW
+Independent researcher Alain Homewood has identified four vulnerabilities in the Cogent Real-Time Systems DataHub application. Cogent Real-Time Systems has produced a new version that mitigates three of the four identified vulnerabilities; they have recommended a mitigation for the unresolved vulnerability. The researcher has tested the new version to validate that it resolves three of the four vulnerabilities.
+Three of the identified vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Cogent DataHub versions are affected:
+
+DataHub versions prior to 7.3.5
+
+IMPACT
+Successful exploitation of these vulnerabilities may allow an attacker to: execute arbitrary code in a user’s browser session; traverse directories to access a limited number of hard-coded files and cause a denial-of-service condition; expose weakly encrypted stored usernames and passwords via brute force attacks; and exploit known vulnerabilities in a third-party component, OpenSSL Version 1.0.0d.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Cogent Real-Time Systems, Inc. is a Canadian-based company that produces middleware applications that are used to interface with control systems.
+Cogent’s products are deployed across several sectors including Chemical, Commercial Facilities, Critical Manufacturing, Energy, Financial Services, and others. These products are used worldwide, primarily in the United States and Great Britain.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+REFLECTED CROSS SITE SCRIPTINGCWE-80: Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS), http://cwe.mitre.org/data/definitions/80.html, web site last accessed May 29, 2014.
+
+The Cogent DataHub does not perform adequate input sanitization, thereby becoming vulnerable to a reflected cross-site scripting attack. By sending invalid input through the web interface, an attacker can execute arbitrary HTML and script code in a user’s browser session.
+CVE-2014-2353NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2353, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:C/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:C/I:N/A:N, web site last accessed May 29, 2014.
+
+DIRECTORY TRAVERSALCWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal'), http://cwe.mitre.org/data/definitions/22.html, web site last accessed May 29, 2014.
+
+The directory specifier can include designators that can be used to traverse the directory path. Exploiting this vulnerability may enable an attacker to access a limited number of hardcoded file types. Further exploitation of this vulnerability may allow an attacker to cause the web server component to enter a denial-of-service condition.
+CVE-2014-2352NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2352, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:N/A:N, web site last accessed May 29, 2014.
+
+PASSWORD HASH WITH INSUFFICIENT COMPUTATIONAL EFFORTCWE-916: Use of Password Hash With Insufficient Computational Effort, http://cwe.mitre.org/data/definitions/916.html, web site last accessed May 29, 2014.
+
+The Cogent DataHub stores usernames and passwords in an unsalted form, lowering each hash’s level of uniqueness making them more susceptible to brute force attacks. An attacker must have administrative privileges and read access to the password database to access hashed usernames and passwords. This vulnerability is not remotely exploitable.
+CVE-2014-2354NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2354, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.0 has been assigned; the CVSS vector string is (AV:L/AC:H/Au:S/C:C/I:C/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:H/Au:S/C:C/I:C/A:C, web site last accessed May 29, 2014.
+
+MANY KNOWN VULNERABILITIES FOR OPENSSL VERSION 1.0.0D
+
+The Cogent DataHub uses a third-party component, OpenSSL Version 1.0.0d that is known to contain over 19 documented vulnerabilities. The documented vulnerabilities have CVSS v2 base scores ranging from 2.6 to 7.5.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The username and password vulnerability is not remotely exploitable. The other three vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target the third-party component, OpenSSL Version 1.0.0d, are in the public domain. No known public exploits specifically target the other three vulnerabilities.
+DIFFICULTY
+An attacker with a low to moderate skill would be able to exploit these vulnerabilities.
+MITIGATION
+Cogent Real-Time Systems, Inc. has produced a new version of the Cogent DataHub application, Version 7.3.5, that fixes three of the four identified vulnerabilities. The updated version is available at the following address:
+http://cogentdatahub.com/Download_Software.html
+Cogent has indicated that it will not be fixing the cryptographic weaknesses of hashed usernames and passwords because of compatibility issues with existing systems. Cogent and the researcher agree that an effective mitigation strategy for users is to select sufficiently strong passwords. Cogent has indicated that password hashes can be checked for strength using sites such as: https://crackstation.net/.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

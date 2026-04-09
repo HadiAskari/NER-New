@@ -1,0 +1,60 @@
+
+OVERVIEW
+Adam Crain of Automatak and independent researcher Chris Sistrunk have identified an improper input validation vulnerability in the Cooper Power Systems SMP Gateway DNP3 protocol components. Cooper Power Systems has produced a new firmware version that mitigates this vulnerability. Cooper Power Systems has tested the new firmware version to validate that it resolves the vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Cooper Power Systems products are affected:
+
+SMP 16 Gateway (Data Concentrator), all versions,
+SMP 4 Gateway (Data Concentrator), all versions, and
+SMP 4/DP Gateway (Data Concentrator), all versions.
+
+IMPACT
+The SMP Gateway can be made to reboot by sending a specially crafted TCP packet on an IP‑based network. If the device is connected via a serial connection, the same attack can be accomplished with physical access to the SMP Gateway. In most cases, the SMP Gateway will restart and resume communications. In more severe cases, when the device is connected via a serial connection, the SMP Gateway may need to be manually reset.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Cooper Power Systems is a US-based company that maintains offices in several countries around the world, including the United States and Canada.
+The affected product, SMP Gateway, is a data concentrator. According to Cooper Power Systems, SMP Gateway is deployed across the energy sector. Cooper Power Systems estimates that these products are used primarily in North America, Latin America, and Oceania.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+As this vulnerability affects Internet Protocol-connected and serial-connected devices, two CVSS scores have been calculated.
+
+IMPROPER INPUT VALIDATION-IP-BASEDCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed December 12, 2013.
+
+The SMP Gateway DNP3 component incorrectly validates input. An attacker could cause a reboot or the failure of a communications link with a specifically crafted TCP packet. In the case where the attacked communications link fails, all other SMP Gateway services and connections remain fully operational and only the attacked communications link will become unresponsive. Communications will automatically be reestablished when the master station attempts to reconnect to the unresponsive link. If the attack causes a reboot, communications will be resumed once the SMP Gateway restarts.
+The following scoring is for IP-connected devices.
+CVE-2013-2813NVD, http://Web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2813, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, Web site last visited December 12, 2013.
+
+IMPROPER INPUT VALIDATION-SERIAL-BASEDa
+
+The SMP Gateway DNP3 component incorrectly validates input. An attacker could cause a reboot or the failure of a communications link with a specifically crafted packet. If the attack causes a reboot, communications will be resumed once the SMP Gateway restarts. In the case where the attacked communications link fails, all other SMP Gateway services and connections remain fully operational and only the attacked connection will become unresponsive. However, it may be necessary to manually reset the system to restore communications on the attacked connection. This can be achieved remotely by an authorized user using the maintenance tools.
+The following scoring is for serial-connected devices.
+CVE- 2013-2816NVD, http://Web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2816, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.7 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed December 12, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+The IP-based vulnerability could be exploited remotely.
+The serial-based vulnerability is not remotely exploitable. Local access to the serial-based outstation is required.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill could craft an TCP packet that would be able to exploit the vulnerability for an IP-based device.
+An attacker with a high skill could exploit the serial-based vulnerability because physical access to the device or some amount of social engineering is required.
+MITIGATION
+Cooper Power Systems has produced a new version of the SMP Gateway firmware that mitigates all the affected products and is available for download from the customer support Web portal. For additional information, please contact a customer support representative at eassupport@cooperindustries.com.
+In addition, Cooper Power Systems recommends the following mitigation measure:
+
+Users of the SMP Gateway should ensure that slave connections are configured to only accept connections from specific IP addresses or address ranges.
+
+The security researchers suggest the following mitigation:
+
+Block DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DPN3-specific rule sets.
+
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense‑in‑Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed December 12, 2013. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed December 12, 2013. that is available for download from the NCCIC/ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

@@ -1,0 +1,69 @@
+
+1. EXECUTIVE SUMMARY
+
+​CVSS v3 9.6
+​ATTENTION: Exploitable remotely/low attack complexity
+​Vendor: Hitachi Energy
+​Equipment: AFF66x
+​Vulnerabilities: Cross-site Scripting, Use of Insufficiently Random Values, Origin Validation Error, Integer Overflow or Wraparound, Uncontrolled Resource Consumption, NULL Pointer Dereference
+
+2. RISK EVALUATION
+​Successful exploitation of these vulnerabilities could allow an attacker to compromise availability, integrity, and confidentiality of the targeted devices.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+​Hitachi Energy reports these vulnerabilities affect the following AFF660/665 products:
+
+
+​AFF660/665: Firmware 03.0.02 and prior
+
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 ​CROSS-SITE SCRIPTING CWE-79
+​In uClibc and uClibc-ng before 1.0.39, incorrect handling of special characters in domain names DNS servers returned via gethostbyname, getaddrinfo, gethostbyaddr, and getnameinfo could lead to output of wrong hostnames (leading to domain hijacking) or injection into applications (leading to remote code execution, XSS, applications crashes, etc.). In other words, a validation step, which is expected in any stub resolver, does not occur.
+​CVE-2021-43523 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.2.2 ​USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+​ntpd in ntp before 4.2.8p14 and 4.3.x before 4.3.100 could allow remote attackers to cause a denial of service (daemon exit or system time change) by predicting transmit timestamps for use in spoofed packets. The victim must rely on unauthenticated IPv4 time sources. There must be an off-path attacker who could query time from the victim's ntpd instance.
+​CVE-2020-13817 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.2.3 ​ORIGIN VALIDATION ERROR CWE-346
+​ntpd in ntp before 4.2.8p14 and 4.3.x before 4.3.100 could allow an off-path attacker to block unauthenticated synchronization via a server mode packet with a spoofed source IP address because transmissions are rescheduled even when a packet lacks a valid origin timestamp.
+​CVE-2020-11868 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4 ​INTEGER OVERFLOW OR WRAPAROUND CWE-190
+​TCP_SKB_CB(skb)->tcp_gso_segs value is subject to an integer overflow in the Linux kernel when handling TCP selective acknowledgments (SACKs). A remote attacker could use this to cause a denial of service. This has been fixed in stable kernel releases 4.4.182, 4.9.182, 4.14.127, 4.19.52, 5.1.11, and is fixed in commit.
+​CVE-2019-11477 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5 ​UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+​A vulnerability named “non-responsive delegation attack” (NRDelegation attack) has been discovered in various DNS resolving software. The NRDelegation attack works by having a malicious delegation with a considerable number of non-responsive nameservers. The attack starts by querying a resolver for a record that relies on those unresponsive nameservers. The attack could cause a resolver to spend time/resources resolving records under a malicious delegation point where a considerable number of unresponsive NS records reside. It could trigger high CPU usage in some resolver implementations that continually look in the cache for resolved NS records in that delegation, which could lead to degraded performance and eventually denial of service in orchestrated attacks. Unbound does not suffer from high CPU usage, but still requires resources to resolve the malicious delegation. Unbound will continue to try to resolve the record until it reaches hard limits. Based on the nature of the attack and the replies, Unbound could reach different limits. From version 1.16.3 on, Unbound introduces fixes for better performance when under load by cutting opportunistic queries for nameserver discovery and DNSKEY prefetching and limiting the number of times a delegation point can issue a cache lookup for missing records.
+​CVE-2022-3204 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6 ​NULL POINTER DEREFERENCE CWE-476
+​snmp_oid_compare in snmplib/snmp_api.c in NetSNMP before 5.8 has a NULL pointer exception bug that an unauthenticated attacker could use to remotely cause the instance to crash via a crafted UDP packet, resulting in denial of service.
+​CVE-2018-18066 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+​CRITICAL INFRASTRUCTURE SECTORS: Energy
+​COUNTRIES/AREAS DEPLOYED: Worldwide
+​COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+​Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+​Hitachi Energy recommends the following actions:
+
+​Update to upcoming AFF660/665 FW 04.6.01 release when available.
+​Configure only trusted DNS server(s).
+​Configure the NTP service with redundant trustworthy sources of time.
+​Restrict TCP/IP-based management protocols to trusted IP addresses.
+​Disable the SNMP server (CLI and web interface will continue to function as they use an internal connection).
+
+​Hitachi Energy recommends the following general mitigations:
+
+​Recommended security practices and firewall configurations could help protect a process control network from attacks originating from outside the network.
+​Physically protect process control systems from direct access by unauthorized personnel.
+​Ensure process control systems have no direct connections to the internet and are separated from other networks via a firewall system with minimal exposed ports.
+​Do not use process control systems for internet surfing, instant messaging, or receiving emails.
+​Scan portable computers and removable storage media for malware prior connection to a control system.
+
+​For more information, see Hitachi Energy’s Security Advisory: 8DBD000167.
+​CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+​CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+​Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+​Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+​No known public exploitation specifically targeting this vulnerability has been reported to CISA at this time. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity.

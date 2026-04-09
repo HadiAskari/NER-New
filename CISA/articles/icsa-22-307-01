@@ -1,0 +1,95 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v4 6.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: ETIC Telecom
+Equipment: Remote Access Server (RAS)
+Vulnerabilities: Insufficient Verification of Data Authenticity, Path Traversal, Unrestricted Upload of File with Dangerous Type, Cross-site Scripting, Cross-Site Request Forgery, Cleartext Transmission of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain sensitive information and compromise the vulnerable device and other connected machines.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+ETIC Telecom Remote Access Server (RAS) is used to manage connections between the machine network of the industrial site and the operator who has to perform remote maintenance from his PC or smartphone. The following versions of ETIC Telecom Remote Access Server (RAS), are affected:
+
+ETIC Telecom RAS: All versions prior to 4.5.0 (CVE-2022-3703, CVE-2022-41607, CVE-2022-40981, CVE-2024-26155, CVE-2024-26154, CVE-2024-26157, CVE-2024-26156)
+ETIC Telecom RAS: All versions prior to 4.9.19 (CVE-2024-26153)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 INSUFFICIENT VERIFICATION OF DATA AUTHENTICITY CWE-345
+All versions of ETIC Telecom Remote Access Server (RAS) 4.5.0 and prior's web portal is vulnerable to accepting malicious firmware packages that could provide a backdoor to an attacker and provide privilege escalation to the device.
+CVE-2022-3703 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is ((AV:A/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H)).
+A CVSS v4 score has also been calculated for CVE-2022-3703. A base score of 5.2 has been calculated; the CVSS vector string is (CVSS4.0/AV:A/AC:H/AT:N/PR:H/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:H).
+3.2.2 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+All versions of ETIC Telecom Remote Access Server (RAS) 4.5.0 and prior's application programmable interface (API) is vulnerable to directory traversal through several different methods. This could allow an attacker to read sensitive files from the server, including SSH private keys, passwords, scripts, python objects, database files, and more.
+CVE-2022-41607 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is ((AV:A/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N).).
+A CVSS v4 score has also been calculated for CVE-2022-41607. A base score of 6.0 has been calculated; the CVSS vector string is (CVSS4.0/AV:A/AC:L/AT:N/PR:H/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N).
+3.2.3 UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+All versions of ETIC Telecom Remote Access Server (RAS) 4.5.0 and prior is vulnerable to malicious file upload. An attacker could take advantage of this to store malicious files on the server, which could override sensitive and useful existing files on the filesystem, fill the hard disk to full capacity, or compromise the affected device or computers with administrator level privileges connected to the affected device.
+CVE-2022-40981 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is ((AV:A/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:L).
+A CVSS v4 score has also been calculated for CVE-2022-40981. A base score of 4.8 has been calculated; the CVSS vector string is (CVSS4.0/AV:A/AC:L/AT:N/PR:H/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:L).
+3.2.4 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+All versions of ETIC Telecom Remote Access Server (RAS) prior to 4.5.0 are vulnerable to reflected cross site scripting (XSS) attacks in the method parameter. The ETIC RAS web server uses dynamic pages that gets their input from the client side and reflects the input in its response to the client.
+CVE-2024-26156 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-26156. A base score of 4.8 has been calculated; the CVSS vector string is (CVSS4.0/AN:A/AC:L/AT:N/PR:H/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N).
+3.2.5 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+All versions of ETIC Telecom Remote Access Server (RAS) prior to 4.5.0 are vulnerable to reflected cross site scripting (XSS) attacks in get view method under view parameter. The ETIC RAS web server uses dynamic pages that get their input from the client side and reflect the input in their response to the client.
+CVE-2024-26157 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-26157. A base score of 5.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N).
+3.2.6 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+All versions of ETIC Telecom Remote Access Server (RAS) prior to 4.5.0 are vulnerable to reflected cross site scripting in the appliance site name. The ETIC RAS web server saves the site name and then presents it to the administrators in a few different pages.
+CVE-2024-26154 has been assigned to this vulnerability. A CVSS v3 base score of 4.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-26154. A base score of 4.8 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:H/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N).
+3.2.7 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+All versions of ETIC Telecom Remote Access Server (RAS) prior to 4.5.0 expose clear text credentials in the web portal. An attacker can access the ETIC RAS web portal and view the HTML code, which is configured to be hidden, thus allowing a connection to the ETIC RAS ssh server, which could enable an attacker to perform actions on the device.
+CVE-2024-26155 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-26155. A base score of 6.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N).
+3.2.8 CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+All versions of ETIC Telecom Remote Access Server (RAS) prior to 4.9.19 are vulnerable to cross-site request forgery (CSRF). An external attacker with no access to the device can force the end user into submitting a "setconf" method request, not requiring any CSRF token, which can lead into denial of service on the device.
+CVE-2024-26153 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-26153. A base score of 6.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:N/SI:N/SA:H)).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications, Information Technology, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+Haviv Vaizman, Hay Mizrachi, Alik Koldobsky, Ofir Manzur, and Nikolay Sokolik of OTORIO reported these vulnerabilities to CISA.
+4. MITIGATIONS
+For the installed devices, ETIC Telecom recommends:
+
+CVE-2022-3703: For all firmware versions 4.7.0 and above, there is a code signature verification for firmware packages. To reduce the attack surface in versions prior to 4.7.0, ETIC Telecom advises users to verify: (1) That the downloaded firmware comes from a trusted source (ETIC Telecom web site), and (2) The hash of the firmware files.
+CVE-2022-41607: This issue has been fixed in version 4.7.0. To reduce the attack surface in versions prior to 4.7.0, ETIC Telecom advises users to verify in the router configuration that: (1) The administration web page is accessible only through the LAN side over HTTPS, and (2) The administration web page is protected with authentication.
+CVE-2022-40981: For all firmware versions 4.7.0 and above, only valid configuration files can be uploaded to the device. To reduce the attack surface in versions prior to 4.7.0, ETIC Telecom advises users to verify in the router configuration that: (1) The administration web page is accessible only through the LAN side over HTTPS, and (2) The administration web page is protected with authentication.
+CVE-2024-26156: For all firmware versions 4.5.0 and above, this issue is fixed. To reduce the attack surface in versions prior to 4.5.0, ETIC Telecom advises users to verify in the router configuration that: (1) The administration web page is accessible only through the LAN side over HTTPS, and (2) The administration web page is protected with authentication.
+CVE-2024-26157: This issue has been fixed in version 4.5.0. Update to firmware version 4.5.0 and above.
+CVE-2024-26154: For all firmware versions 4.5.0 and above, this issue is fixed. For versions prior to 4.5.0, to reduce the attack surface, ETIC Telecom advise the user to verify in the router configuration that: (1) The administration web page is accessible only through the LAN side over HTTPS, and (2) The administration web page is protected with authentication.
+CVE-2024-26155: For all firmware versions 4.5.0 and above, this issue is fixed. For versions prior to 4.5.0, to reduce the attack surface, ETIC Telecom advise the user to verify in the router configuration that: (1) The administration web page is accessible only through the LAN side over HTTPS, and (2) The administration web page is protected with authentication.
+CVE-2024-26153: ETIC Telecom RAS recommends updating the affected devices’ firmware to version 4.9.19 or later.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 3, 2022: Initial Publication
+July 27, 2023: Update A - Added new vulnerabilities
+December 3, 2024: Update B - Modified vulnerabilities to include CVSS 4.0 score. Added mitigations, and vulnerabilities CVE-2024-26156, CVE-2024-26157, CVE-2024-26154, CVE-2024-26155, and CVE-2024-26153.
+

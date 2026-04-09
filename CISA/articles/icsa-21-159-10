@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC TIM libcurl
+Vulnerabilities: Exposure of Sensitive Information to an Unauthorized Actor, Improper Certificate Validation
+
+2. RISK EVALUATION
+Successful exploitation of these third-party vulnerabilities could allow an attacker to extract sensitive information and pass a revoked certificate as valid.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following devices are affected by the third-party component libcurl:
+
+SIMATIC TIM 1531 IRC (incl. SIPLUS NET variants), All versions prior to v2.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The libcurl library Versions 7.62.0 to and including 7.70.0 are vulnerable to an information disclosure vulnerability that can lead to a partial password being leaked over the network and to DNS servers.
+CVE-2020-8169 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.2    IMPROPER CERTIFICATE VALIDATION CWE-295
+The libcurl library Versions 7.41.0 to 7.73.0 are vulnerable to an improper check for certificate revocation due to insufficient verification of the OCSP response. This vulnerability could allow an attacker to pass a revoked certificate as valid.
+CVE-2020-8286 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Update to v2.2 or later version
+Restrict access to the device to the internal or VPN network and to trusted IP addresses only
+
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information see Siemens Security Advisory SSA-200951
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

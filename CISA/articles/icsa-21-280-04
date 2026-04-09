@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.8
+ATTENTION: Exploitable remotely
+Vendor: Mitsubishi Electric
+Equipment: MELSEC iQ-R Series C Controller Module R12CCPU-V
+Vulnerability: Uncontrolled Resource Consumption
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-280-04 Mitsubishi Electric MELSEC iQ-R Series C Controller Module that was published October 7, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could prevent the module from starting up. If successfully exploited, a system reset would be required for recovery.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following modules of the MELSEC iQ-R Series C Controller Module are affected:
+--------- Begin Update B Part 1 of 2 ---------
+
+R12CCPU-V: Firmware Version 16 and prior
+
+--------- End Update B Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The potential for a denial-of-service condition exists in MELSEC iQ-R series C Controller Module due to uncontrolled resource consumption caused by an attacker sending a large number of packets to the module at start up in a short time.
+CVE-2021-20600 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Mitsubishi Electric Corporation reported this vulnerability to CISA.
+5. MITIGATIONS
+--------- Begin Update B Part 2 of 2 ---------
+Mitsubishi Electric recommends users update affected devices to Firmware Version 17 or later. For specific update instructions and additional details see the Mitsubishi Electric advisory.
+--------- End Update B Part 2 of 2 ---------
+If a System WDT error occurs at start up, there is a possibility the C Controller Module has been attacked. In this case, disconnect the LAN cable of the module and restart. After confirming the module has started normally, make a LAN connection.
+Regardless of whether the above error occurred, Mitsubishi Electric recommends users take the following mitigation measures to minimize the risk of exploiting this vulnerability:
+
+Use a firewall or virtual private network (VPN), etc. to prevent unauthorized access when Internet access is required.
+Use within a LAN and block access from untrusted networks and hosts through firewalls.
+
+For specific update instructions and additional details see the Mitsubishi Electric advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

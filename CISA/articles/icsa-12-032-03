@@ -1,0 +1,51 @@
+
+Overview
+ICS-CERT received a report from GE Intelligent Platforms and the Zero Day Initiative (ZDI). If exploited, this vulnerability could allow an attacker to create or overwrite a file on the system running Real-Time Information Portal. concerning a directory traversal vulnerability in the GE Intelligent Platforms Proficy Real-Time Information Portal. This vulnerability was reported to ZDI by independent security researcher Luigi Auriemma.
+GE Intelligent Platforms has created patches to address this issue.
+Affected Products
+According to GE Intelligent Platforms the following product and versions are affected.
+Proficy Real-Time Information Portal Versions:
+
+3.5
+3.0 SP1
+3.0
+2.6
+
+Note: Proficy Real-Time Information Portal Versions 2.5 and prior are not affected by this vulnerability.
+Impact
+Exploitation of this vulnerability could allow an attacker to create or overwrite a file on the system running Proficy Real-Time Information Portal.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+According to GE, Proficy Real-Time Information Portal is a web-based data visualization and reporting tool that is deployed across multiple industries worldwide.
+Vulnerability Characterization
+Vulnerability Overview
+A directory traversal vulnerability exists in the Remote Interface Service (rifsrvd.exe) that runs on Port 5159/TCP by default. The Remote Interface Service creates a file on the system and does not sufficiently validate two input strings that are used to create a configuration file on the server.
+The vulnerability may allow a remote attacker to: vulnerability exists in the Remote Interface Service (rifsrvd.exe) that runs on Port 5159/TCP by default. The Remote Interface Service creates a file on the system and does not sufficiently validate two input strings that are used to create a configuration file on the server.
+
+Set the file’s name and extension (to create a new file or to overwrite an existing file)
+Supply text that will be inserted into the file.
+
+According to GE, the vulnerability does not allow the attacker to directly execute the file and does not allow the attacker to define the file’s entire contents.
+CVE-2012-0232 has been assigned to this vulnerability.
+Vulnerability Details
+Exploitability
+This vulnerability is remotely exploitable.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a moderate skill level may be able to exploit these vulnerabilities.
+Mitigation
+GE Intelligent Platforms has released a security advisory and free product update Software Improvement Modules (SIMs) to address this vulnerability in Proficy Real-Time Information Portal Versions 3.5 and 3.0 SP1. Proficy Real-Time Information Portal customers using Versions 3.0 and 2.6 are encouraged to upgrade to one of the versions described above and apply the appropriate product update. GE Intelligent Platforms urges all customers to follow the recommendations in their security advisory, which can be found here: http://support.ge-ip.com/support/index?page=kbchannel&id=S:KB14768.
+Note: A valid GE user ID and Customer Service Number are required to access the advisories and updates. Proficy SIMs are cumulative. All future SIMs will include these updates.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls with properly configured rules addressing Port 5159/TCP, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in e-mail messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding e-mail scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

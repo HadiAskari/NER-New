@@ -1,0 +1,55 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: MACH System Software
+Vulnerabilities: Path Traversal, Exposure of Resource to Wrong Sphere
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to read/write arbitrary files without the proper authorization.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Hitachi Energy products are affected:
+
+MACH SSW: Version 5.0 to 7.17.0.0
+MACH SSW: Version 7.10.0.0 to 7.18.0.0
+
+3.2 Vulnerability Overview
+3.2.1 PATH TRAVERSAL CWE-29
+The McFeeder server (distributed as part of SSW package), is susceptible to an arbitrary file write vulnerability on the MAIN computer system. This vulnerability stems from the use of an outdated version of a third-party library, which is used to extract archives up-loaded to McFeeder server. An authenticated malicious client can exploit this vulnerability by uploading a crafted ZIP archive via the network to McFeeder's service endpoint.
+CVE-2023-2621 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.2.2 INCORRECT PRIVILEGE ASSESSMENT CWE-266
+Authenticated clients can read arbitrary files on the MAIN Computer system using the remote procedure call (RPC) of the InspectSetup service endpoint. The low privilege client is then allowed to read arbitrary files that they do not have authorization to read.
+CVE-2023-2622 has been assigned to this vulnerability. A CVSS v3.1 base score of 2.7 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi Energy recommends the following general mitigation workarounds:
+Project recommended security practices and firewall configurations will help protect a process control network from attacks that originate from outside of the network. Such practices include that process control systems have no direct connections to the Internet; are physically protected from direct access by unauthorized personnel and are separated from other networks by means of a firewall system that has a required number of ports opened, security logs enabled, and others that have to be evaluated case by case. Process control systems should not be used for internet surfing, instant messaging, or receiving emails. Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+Due to complexity of individual implementation of project, contact local account team for further information on possible upgrades.
+For more information, please visit Hitachi Energy's advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 16, 2023: Initial Publication
+

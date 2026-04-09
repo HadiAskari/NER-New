@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Becton, Dickinson and Company (BD)
+Equipment: BD Alaris 8015 PC Unit and BD Alaris Systems Manager
+Vulnerability: Improper Authentication
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could lead to a drop in the wireless capability of the Alaris PC Unit. In order to exploit this vulnerability, an attacker would need to gain access to the network associated with the affected devices and redirect the BD Alaris PC Unit’s authentication requests with a custom code and complete an authentication handshake based on the information extracted from the authentication requests. The Alaris PC Unit will continue to function as programmed; however, network-based services such as pre-populating the Alaris PC Unit with infusion parameters through EMR Interoperability or wirelessly updating the Alaris System Guardrails (DERS) will not be available.
+As a result of a successful attack, the operator may have to manually program the pump, download data logs, or activate the new data set. Exploiting this vulnerability would not provide administration access to the BD Alaris PC Unit or the BD Alaris Systems Manager. An unauthorized user would not be able to gain permissions or be able to perform remote commands for the BD Alaris PC Unit. Any Protected Health Information (PHI) or Personally Identifiable Information (PII) is encrypted.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of BD Alaris infusion products are affected:
+
+BD Alaris PC Unit, Model 8015, Versions 9.33.1 and earlier
+BD Alaris Systems Manager, Versions 4.33 and earlier
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER AUTHENTICATION CWE-287
+The affected products are vulnerable to a network session authentication vulnerability within the authentication process between specified versions of the BD Alaris PC Unit and the BD Alaris Systems Manager.
+If exploited, an attacker could perform a denial-of-service attack on the BD Alaris PC Unit by modifying the configuration headers of data in transit. A denial-of-service attack could lead to a drop in the wireless capability of the BD Alaris PC Unit, resulting in manual operation of the PC Unit.
+CVE-2020-25165 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4    RESEARCHER
+Medigate discovered this vulnerability and reported it to BD.
+4. MITIGATIONS
+BD has provided the following mitigations and compensating controls to assist users in reducing the risks associated with this vulnerability.
+As part of BD's normal server upgrades, many of the Systems Manager installations have already been updated to a version that addresses this security vulnerability.
+BD plans to release an upcoming version of the BD Alaris PC Unit software to address this vulnerability, and Versions 12.0.1, 12.0.2, 12.1.0, and 12.1.2 of the BD Alaris Systems Manager will address this vulnerability.
+BD also recommends the following mitigations and compensating controls to reduce the risks associated with this vulnerability:
+
+Enable the firewall on the Systems Manager server image and implement rules around port and services restrictions, per BD’s product security whitepaper. This includes both inbound and outbound ports and services, which blocks most of the access to the server and will protect it from being affected by this vulnerability.
+If a firewall is integrated between the server network segment and its wireless network segments, implement a firewall rule with an access control list (ACL) that restricts access to the wireless network segment via the specific MAC address of the wireless card on the pump. This would restrict access to the wireless segment to only authorized devices and not allow other devices to connect and authenticate to the segment.
+BD Alaris Systems Manager should be considered a critical service. Whenever possible, it should operate on a secured network behind a firewall, be patched regularly, and have malware protection.
+Disable any unnecessary accounts, protocols, and services.
+
+The combination of these actions can restrict what devices or systems can be on the segment and the types of traffic that could be used between the wireless network segment and the server segment where the Systems Manager Server is located. These controls will help to mitigate and reduce the impact of this type of attack. For additional information please see the BD product security bulletin.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

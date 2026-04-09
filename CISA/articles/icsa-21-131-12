@@ -1,0 +1,95 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely
+Vendor: Siemens
+Equipment: SIMATIC HMIs/WinCC Products
+Vulnerabilities: Access of Memory Location After End of Buffer, Improper Handling of Exceptional Conditions, Improper Restriction of Operations within the Bounds of a Memory Buffer, Uncontrolled Resource Consumption
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-040-05 Siemens SIMATIC SmartVNC HMI WinCC Products that was published September 14, 2021, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution, information disclosure and denial-of-service attacks under certain conditions.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens SIMATIC HMIs/WinCC products are affected:
+--------- Begin Update A Part 1 of 2 ---------
+
+SIMATIC HMI Comfort Outdoor Panels v15 7’ and 15’ (incl. SIPLUS variants): All versions prior to v15.1 Update 6
+SIMATIC HMI Comfort Panels v15 4’-22’ (incl. SIPLUS variants): All versions prior to v15.1 Update 6
+SIMATIC HMI KTP Mobile Panels v15 KTP400F, KTP700, KTP700F, KTP900, KTP900F: All versions prior to v15.1 Update 6
+SIMATIC WinCC Runtime Advanced v15: All versions prior to v15.1 SP1 Update 6
+
+--------- End Update A Part 1 of 2 ---------
+
+SIMATIC HMI Comfort Outdoor Panels v16 7’ and 15’ (incl. SIPLUS variants): All versions prior to v16 Update 4
+SIMATIC HMI Comfort Panels v16 4’-22’ (incl. SIPLUS variants): All versions prior to v16 Update 4
+SIMATIC HMI KTP Mobile Panels v16 KTP400F, KTP700, KTP700F, KTP900, KTP900F: All versions prior to v16 Update 4
+SIMATIC WinCC Runtime Advanced v16: All versions prior to v16 Update 4
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+SmartVNC has an out-of-bounds memory access vulnerability that could be triggered on the server side when sending data from the client, which could result in a denial-of-service condition.
+CVE-2021-25660 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:N/A:H).
+4.2.2    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+SmartVNC has an out-of-bounds memory access vulnerability that could be triggered on the client side when sending data from the server, which could result in a denial-of-service condition.
+CVE-2021-25661 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:H).
+4.2.3    IMPROPER HANDLING OF EXCEPTIONAL CONDITIONS CWE-755
+SmartVNC client fails to handle an exception properly if the program execution process is modified after sending a packet from the server, which could result in a denial-of-service condition.
+CVE-2021-25662 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:H).
+4.2.4    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+SmartVNC has a heap allocation leak vulnerability in the server Tight encoder, which could result in a denial-of-service condition.
+CVE-2021-27383 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.5    ACCESS OF MEMORY LOCATION AFTER END OF BUFFER CWE-788
+SmartVNC has an out-of-bounds memory access vulnerability in the device layout handler represented by a binary data stream on client side, which could result in code execution.
+CVE-2021-27384 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.6    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+A remote attacker could send specially crafted packets to a SmartVNC device layout handler on the client side, which could influence the number of resources consumed and result in a denial-of-service condition (infinite loop).
+CVE-2021-27385 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.7    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+SmartVNC has a heap allocation leak vulnerability in the device layout handler on client side, which could result in a denial-of-service condition.
+CVE-2021-27386 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens recommends applying updates where available:
+--------- Begin Update A Part 2 of 2 ---------
+
+SIMATIC HMI Comfort Outdoor Panels v15 7’ and 15’ (incl. SIPLUS variants): Update SIMATIC WinCC (TIA Portal) to v15.1 SP1 Update 6, and then update panel to v15.1 SP1 Update 6
+SIMATIC HMI Comfort Panels v15 4’-22’ (incl. SIPLUS variants): Update SIMATIC WinCC (TIA Portal) to v15.1 SP1 Update 6, and then update panel to v15.1 SP1 Update 6
+SIMATIC HMI KTP Mobile Panels v15 KTP400F, KTP700, KTP700F, KTP900, KTP900F: Update SIMATIC WinCC (TIA Portal) to v15.1 SP1 Update 6, and then update panel to v15.1 SP1 Update 6
+SIMATIC WinCC Runtime Advanced v15: Update to v15.1 Update 6
+
+--------- End Update A Part 2 of 2 ---------
+
+SIMATIC HMI Comfort Outdoor Panels v16 7’ and 15’ (incl. SIPLUS variants): Update SIMATIC WinCC (TIA Portal) to v16 Update 4 or later version, and then update panel to v16 Update 4 or later version
+SIMATIC HMI Comfort Panels v16 4’-22’ (incl. SIPLUS variants): Update SIMATIC WinCC (TIA Portal) to v16 Update 4 or later version, and then update panel to v16 Update 4 or later version
+SIMATIC HMI KTP Mobile Panels v16 KTP400F, KTP700, KTP700F, KTP900, KTP900F: Update SIMATIC WinCC (TIA Portal) tov16 Update 4 or later version, and then update panel to v16 Update 4 or later version
+SIMATIC WinCC Runtime Advanced v16: Update to v16 Update 4 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Restrict access to Port 5900/TCP to trusted IP addresses only
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to the Siemens operational guidelines for industrial security and following the recommendations in the product manuals.
+For additional information, please refer to Siemens Security Advisory SSA-538778
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity.

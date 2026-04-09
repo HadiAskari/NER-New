@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.6
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: MicroLogix 1100
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to create a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Rockwell Automation reports the vulnerability affects the following products:
+
+MicroLogix 1100: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+A remote, unauthenticated attacker sending specially crafted commands could cause the PLC to fault when the controller is switched to RUN mode, which results in a denial-of-service condition. If successfully exploited, this vulnerability will cause the controller to fault when the controller is switched to RUN mode.
+CVE-2021-33012 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Beau Taub of Bayshore Networks reported this vulnerability to Rockwell Automation.
+4. MITIGATIONS
+A controller in this fault state can be recovered by downloading a new project or an offline copy of the project to the controller. Rockwell Automation recommends users set the controller switch to RUN mode to prevent remote programming. Users are encouraged to have a backup copy of the project in the case it is necessary to recover from an event. Rockwell Automation also recommends users should consider migrating to the Micro870 controller.
+Rockwell automation recommends the following general security guidelines:
+
+Utilize proper network infrastructure controls, such as firewalls, to help ensure EtherNet/IP traffic from unauthorized sources are blocked.
+Consult the product documentation for specific features, such as a hardware mode switch setting, to which may be used to block unauthorized changes, etc.
+Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the Manufacturing Zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls, such as firewalls, UTM devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation Products, see Knowledge Base Article BF7490
+Use trusted software, software patches, antivirus/antimalware programs and interact only with trusted websites and attachments.
+Minimize network exposure for all control system devices and/or systems and ensure they are not accessible from the Internet. For further information about the risks of unprotected Internet accessible control systems, please see Knowledgebase Article PN715
+Locate control system networks and devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+Rockwell Automation users can refer to the Converged Plantwide Ethernet (CPwE) Design and Implementation Guide for best practices for deploying network segmentation and broader defense in depth strategies. Users can also refer to the Rockwell Automation System Security Design Guidelines on how to use Rockwell Automation products to improve the security of their industrial automation systems.
+For more information see Rockwell Automation’s Security advisory (Login required).
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

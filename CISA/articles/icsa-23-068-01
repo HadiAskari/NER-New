@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Akuvox
+Equipment: E11
+Vulnerabilities: Generation of Predictable IV with CBC, User of Hard-coded Cryptographic Key, Missing Authentication for Critical Function, Storing Passwords in a Recoverable Format, Weak Password Recovery Mechanism for Forgotten Password, Command Injection, Reliance on File Name or Extension of Externally-Supplied File, Missing Authorization, Improper Access Control, Exposure of Sensitive Information to an Unauthorized Actor, Improper Authentication, Use of hard-coded Credentials, Hidden Functionality
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause loss of sensitive information, unauthorized access, and grant full administrative control to an attacker.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Akuvox E11, a doorbell camera phone, are affected:
+
+E11: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    GENERATION OF PREDICTABLE IV WITH CBC CWE-329
+Akuvox E11 contains a function that encrypts messages which are then forwarded. The IV vector and the key are static, and this may allow an attacker to decrypt messages.
+CVE-2023-0343 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.2    USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+Akuvox E11 uses a hard-coded cryptographic key, which could allow an attacker to decrypt sensitive information.
+CVE-2023-0355 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N).
+3.2.3    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The Akuvox E11 web server can be accessed without any user authentication, and this could allow an attacker to access sensitive information, as well as create and download packet captures with known default URLs.
+CVE-2023-0354 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.2.4    STORING PASSWORDS IN A RECOVERABLE FORMAT CWE-257
+Akuvox E11 uses a weak encryption algorithm for stored passwords and uses a hard-coded password for decryption which could allow the encrypted passwords to be decrypted from the configuration file.
+CVE-2023-0353 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    WEAK PASSWORD RECOVERY MECHANISM FOR FORGOTTEN PASSWORD CWE-640
+The Akuvox E11 password recovery webpage can be accessed without authentication, and an attacker could download the device key file. An attacker could then use this page to reset the password back to the default.
+CVE-2023-0352 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+
+3.2.6    COMMAND INJECTION CWE-94
+The Akuvox E11 web server backend library allows command injection in the device phone-book contacts functionality. This could allow an attacker to upload files with executable command instructions.
+CVE-2023-0351 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.7    RELIANCE ON FILE NAME OR EXTENSION OF EXTERNALLY-SUPPLIED FILE CWE-646
+Akuvox E11 does not ensure that a file extension is associated with the file provided. This could allow an attacker to upload a file to the device by changing the extension of a malicious file to an accepted file type.
+CVE-2023-0350 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.2.8    MISSING AUTHORIZATION CWE-862
+The Akuvox E11 libvoice library provides unauthenticated access to the camera capture for image and video. This could allow an attacker to view and record image and video from the camera.
+CVE-2023-0349 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.9    IMPROPER ACCESS CONTROL CWE-284
+Akuvox E11 allows direct SIP calls. No access control is enforced by the SIP servers, which could allow an attacker to contact any device within Akuvox to call any other device.
+CVE-2023-0348 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.10    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The Akuvox E11 Media Access Control (MAC) address, a primary identifier, combined with the Akuvox E11 IP address, could allow an attacker to identify the device on the Akuvox cloud.
+CVE-2023-0347 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.11    IMPROPER AUTHENTICATION CWE-287
+Akuvox E11 cloud login is performed through an unencrypted HTTP connection. An attacker could gain access to the Akuvox cloud and device if the MAC address of a device if known.
+CVE-2023-0346 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.12    USE OF HARD-CODED CREDENTIALS CWE-798
+The Akuvox E11 secure shell (SSH) server is enabled by default and can be accessed by the root user. This password cannot be changed by the user.
+CVE-2023-0345 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.13    HIDDEN FUNCTIONALITY CWE-912
+Akuvox E11 appears to be using a custom version of dropbear SSH server. This server allows an insecure option that by default is not in the official dropbear SSH server.
+CVE-2023-0344 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Information Technology
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: China
+
+3.4 RESEARCHER
+Vera Mens and Amir Preminger of Claroty Research reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Users should contact Akuvox for more information on these vulnerabilities.
+CISA recommends users disconnect Akuvox E11 devices from the internet until these vulnerabilities are fixed. If this is not possible, users should ensure that the camera is not recording any sensitive information.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,88 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: User Management Component (UMC)
+Vulnerabilities: Permissive Cross-domain Policy with Untrusted Domains, Cross-site Scripting, Classic Buffer Overflow, Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to a restart of the UMC server.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports the following products are affected:
+
+Opcenter Quality: all versions
+SIMATIC PCS neo: versions prior to v4.1
+SINUMERIK Integrate RunMyHMI /Automotive: all versions
+Totally Integrated Automation Portal (TIA Portal) v14: all versions
+Totally Integrated Automation Portal (TIA Portal) v15.1: all versions
+Totally Integrated Automation Portal (TIA Portal) v16: all versions
+Totally Integrated Automation Portal (TIA Portal) v17: all versions
+Totally Integrated Automation Portal (TIA Portal) v18: versions prior to V18 update 3
+
+3.2 Vulnerability Overview
+3.2.1 PERMISSIVE CROSS-DOMAIN POLICY WITH UNTRUSTED DOMAINS CWE-942
+When accessing the UMC Web-UI from affected products, UMC uses an overly permissive CORS policy. This could allow an attacker to trick a legitimate user to trigger unwanted behavior.
+CVE-2023-46281 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:L).
+3.2.2 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+A reflected cross-site scripting vulnerability exists in the web interface of the affected applications that could allow an attacker to inject arbitrary JavaScript code. The code could be potentially executed later by another (possibly privileged) user.
+CVE-2023-46282 has been assigned to this vulnerability. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:L).
+3.2.3 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The affected application contains an out-of-bounds write past the end of an allocated buffer when handling specific requests on port 4002/tcp. This could allow an attacker to crash the application. The corresponding service is auto-restarted after the crash.
+CVE-2023-46283 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4 BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+The affected application contains an out-of-bounds write past the end of an allocated buffer when handling specific requests on port 4002/tcp and 4004/tcp. This could allow an attacker to crash the application. The corresponding service is auto-restarted after the crash.
+CVE-2023-46284 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5 IMPROPER INPUT VALIDATION CWE-20
+The affected application contains an improper input validation vulnerability that could allow an attacker to bring the service into a denial-of-service state by sending a specifically crafted message to 4004/tcp. The corresponding service is auto-restarted after the crash is detected by a watchdog.
+CVE-2023-46285 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens has released updates for several affected products and recommends users update to the latest versions. Siemens is preparing further updates and recommends specific countermeasures for products where updates are not, or not yet available.
+
+SIMATIC PCS neo: Update to V4.1 or later version
+Totally Integrated Automation Portal (TIA Portal) V18: Update to V18 Update 3 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Do not access links from untrusted sources.
+If only one UMC server is used, block access to port 4002/tcp e.g. with an external firewall.
+If only one RT server is used, block access to port 4004/tcp e.g. with an external firewall. If the deployment contains no RT-Servers, block the port in the local firewall.
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see the associated Siemens security advisory SSA-999588 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+December 14, 2023: Initial Publication
+

@@ -1,0 +1,39 @@
+
+Overview
+--------- Begin Update A Part 1 of 2 ----------
+On October 20, 2010, an independent security researcher postedRubén Santamarta, http://www.reversemode.com/index.php?option=com_content&task=view&id=70&Itemid=1, website last visited October 28, 2010. information regarding a vulnerability in MOXA Device Manager (MDM) Version 2.1. MOXA has confirmed this vulnerability and released Version 2.3 on November 11, 2010 to resolve this issue.
+Further updated information is listed in the vulnerability and mitigation section of this document.
+---------- End Update A Part 1 of 2 ----------
+The security researcher’s analysis indicates successful exploitation of this vulnerability can lead to arbitrary code execution and control of the system. However, based on conversations with the researcher, the level of difficulty to exploit this vulnerability is high.
+Affected Products
+MOXA Device Manager Version 2.1 is affected by this vulnerability.
+Impact
+MOXA’s embedded device products are implemented in a variety of industrial control solutions making it difficult to ascertain where and how the products are used. Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their environment, architecture, and product implementation.
+Background
+MDM 2.1 is a freeware software product developed by MOXA for users to manage MOXA’s embedded computers. MOXA devices are used in a wide variety of applications across a wide range of industries including substation monitoring, manufacturing, telecommunications, medical, etc. MOXA has offices in Taiwan (HQ), China, Germany, and Brea, California while the heaviest concentration of Moxa distributors is in the United States.
+he MDM is used to remotely monitor and manage approximately 50 different embedded device products. Some functions that can be performed using the MDM software are firmware upgrades, file system management, program monitoring, process control management, network configuration, system reboots, and other management tasks.
+MOXA embedded computers are used for front-end computers at remote sites, for onsite data collection, and industrial control applications. Their embedded computers operate on MOXA-provided operating systems (Linux, CE, XPe).
+Vulnerability Characterization
+Vulnerability Overview
+The MOXA Device Manager consists of an MDM Tool which allows local users to connect to a remote MDM Gateway to monitor and manage embedded computers installed with MDM Agent software.
+The vulnerability is a stack-based buffer overflow caused by the use of the "strcpy" function in the MDM Tool software component.
+Vulnerability Details
+Exploitability
+This vulnerability has a lower probability of being exploited.
+Based on current information about the vulnerability, control of the MDM Gateway is necessary since the vulnerable function is exposed during communication between the MDM Tool and MDM Gateway. If an attacker has the capability to compromise the Gateway, exploitation of this vulnerability may not be necessary as other methods of compromise may be possible. Additionally, the MDM Tool was compiled using the /GS switchMicrosoft, http://msdnmicrosoft.com/en-us/library/Aa290051, website last visited October 28, 2010.  switch2 and therefore forces an attacker to use additional effortLitchfield, http://wwwngssoftware.com/papers/defeating-w2k3-stack-protection.pdf, website last visited October 28, 2010. when constructing an exploit.
+Existence of Exploit
+--------- Begin Update A Part 2 of 2 ----------
+A Metasploit module is publicly available.
+Mitigation
+MOXA has created Version 2.3 to mitigate this vulnerability. The vendor has indicated this new version will be available on the  MOXA website by November 11, 2010.
+The following mitigations are recommended:
+
+Update MDM Version 2.1 to Version 2.3.
+
+---------- End Update A Part 2 of 2 ----------
+
+Ensure network protection for the MDM Tool, Gateway, and Agents to protect communications between these systems.
+Encourage asset owners to minimize network exposure for all control system devices. Critical devices should not directly face the Internet. Control system networks and remote devices should be located behind firewalls, and be separate from the business network. If remote access is required, secure methods such as Virtual Private Networks (VPNs) should be utilized.
+
+Refer to the Control System Security Program Recommended Practices section for control systems on the US-CERT website. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. As with all system changes, administrators should consult their control systems vendor prior to making any control systems changes.
+Organizations should follow their established internal procedures if any suspected malicious activity is observed and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS CERT reminds organizations that proper impact analysis and risk assessment should be performed prior to taking defensive measures.

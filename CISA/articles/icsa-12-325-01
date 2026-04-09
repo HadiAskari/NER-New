@@ -1,0 +1,57 @@
+
+Overview
+This advisory is a follow-up to the alert titled ICS-ALERT-12-284-01—Sinapsi eSolar Light Vulnerabilities that was published October 10, 2012.
+Independent researchers Roberto Paleari and Ivan Speziale identified four vulnerabilities and released proof-of-concept (exploit) code for the Sinapsi eSolar Light Photovoltaic System Monitor without coordination with ICS-CERT, this vendor, or any other coordinating entity known to ICS-CERT.
+The eSolar Light has also been sold with different brands and names. Successful exploitation of the vulnerabilities would allow an attacker to gain unauthorized access, access private information, and execute remote code. The eSolar Light is a monitoring system used in solar power applications. However, Sinapsi also reports that other Sinapsi devices (eSolar, eSolar DUO, eSolar Light) are vulnerable to these vulnerabilities. These devices are used in the Energy Sector.
+Affected Products
+The following Sinapsi devices with firmware prior to Version 2.0.2870_xxx_2.2.12 are affected:
+
+eSolar,
+eSolar DUO, and,
+eSolar Light.
+
+Impact
+Malicious attackers could use the vulnerabilities to exploit the device by gaining unauthorized access in the system, leaking stored information, and remotely executing code on the device. This could allow a loss of availability, integrity, and confidentiality of the affected system. Because Sinapsi devices are primarily used for control and monitoring of energy systems, the Energy Sector is affected. Some Sinapsi devices are also used for building automation.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+Sinapsi is an Italian-based company that sells devices used for energy monitoring and management as well as building automation applications.
+The affected products are Web-based SCADA monitoring and management systems. According to Sinapsi, the products are deployed across the Energy Sector and also used for building automation. Sinapsi estimates that these products are used primarily in Italy, but some vendors have marketed the products in the United States and other countries.
+Vulnerability Characterization
+Vulnerability Overview
+Hard-Coded CredentialsCWE, https://cwe.mitre.org/data/definitions/259.html, CWE-259: Hard-Coded Password, Web site last accessed November 20, 2012.
+The Sinapsi devices store hard-coded passwords in the PHP file of the device. By using the hard-coded passwords in the device, attackers can log into the device with administrative privileges. This could allow the attacker to have unauthorized access.
+CVE-2012-5862 has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).
+SQL InjectionCWE, https://cwe.mitre.org/data/definitions/89.html, CWE-89: SQL Injection, Web site last accessed November 20, 2012. f. NVD, https://web.nvd.nist.
+The Sinapsi devices do not check the validity of the data before executing queries. By accessing the SQL table of certain pages that do not require authentication within the device, attackers can leak information from the device. This could allow the attacker to compromise confidentiality.
+CVE-2012-5861 has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:N/A:N).
+Operating System Command InjectionCWE, https://cwe.mitre.org/data/definitions/78.html, CWE-78: OS Command Injection, Web site last accessed November 20, 2012.
+The Sinapsi devices do not check for special elements in commands sent to the system. By accessing certain pages with administrative privileges that do not require authentication within the device, attackers can execute arbitrary, unexpected, or dangerous commands directly onto the operating system.
+CVE-2012-5863 has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).
+Broken Session EnforcementCWE, https://cwe.mitre.org/data/definitions/287.html, CWE-287: Improper Authentication, Web site last accessed November 20, 2012.
+The Sinapsi devices do not check if users that visit pages within the device have properly authenticated. By directly visiting the pages within the device, attackers can gain unauthorized access with administrative privileges.
+CVE-2012-5864 has been assigned to this vulnerability. A CVSS v2 base score of 9.4 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:N).
+Vulnerability Details
+Exploitability
+These vulnerabilities could be exploited remotely.
+Existence of Exploit
+Exploits that target these vulnerabilities are publicly available.
+Difficulty
+An attacker with a low skill would be able to exploit these vulnerabilities.
+Mitigation
+Sinapsi has developed a new firmware version 2.0.2870_2.2.12 that mitigates these vulnerabilities. Sinapsi released the new firmware on Monday, November 19, 2012 directly to the devices. Users will be able to manually download the firmware on their device by using the Firmware Update function in the System Menu in the device’s Web interface. Sinapsi has also posted a security newsletter to its public Web site.
+Other affected vendors have been notified by Sinapsi and ICS-CERT, but the availability of new firmware upgrades are unknown by ICS-CERT at this time.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the US-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01A—Cyber Intrusion Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click Web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

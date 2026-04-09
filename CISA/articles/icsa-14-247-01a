@@ -1,0 +1,56 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-14-247-01A Sensys Networks traffic sensor vulnerabilities that was published September 04, 2014, on the NCCIC/ICS-CERT web site.
+Researcher Cesar Cerrudo of IOActive has identified vulnerabilities in the Sensys Networks VSN240-F and VSN240-T traffic sensors. Sensys Networks has produced updated product versions that mitigate these vulnerabilities.
+AFFECTED PRODUCTS
+--------- Begin Update A Part 1 of 2 --------
+The Sensys Networks traffic sensors, VSN240-F and VSN240-T, operating with the following software versions are affected:
+
+         Versions prior to VDS 2.10.1,
+         Versions prior to VDS 1.8.8, and
+         Versions prior to TrafficDOT 2.10.3
+
+--------- End Update A Part 1 of 2 ----------
+IMPACT
+Insufficient integrity checking by the traffic sensors may enable the installation of modified software that could damage the traffic sensors. A traffic sensor that has been rendered inoperable may cause the traffic system to default to a failsafe condition, prompting traffic lights of an intersection to operate on predetermined timed intervals. Only the traffic lights that are linked to compromised sensors may be impacted.
+Unencrypted communication between the traffic sensor and the access point could be modified and used to cause traffic collection data inaccuracies, which may have limited impact on traffic control for an intersection. Inaccurate collection of traffic data may yield limited influence over traffic light timing for an intersection.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Sensys Networks is a US-based company that supplies wireless traffic detection and integrated traffic data systems.
+The affected products, Sensys Networks VSN240-F and VSN240-T traffic sensors, are wireless vehicle detection sensors. According to Sensys Networks, these products are deployed primarily in the United States and in multiple countries around the world.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+DOWNLOAD OF CODE WITHOUT INTEGRITY CHECKCWE-494: Download of Code Without Integrity Check, http://cwe.mitre.org/data/definitions/494.html, web site last accessed September 04, 2014.
+
+The traffic sensors accept software modifications without sufficiently checking the integrity of the new code, leaving the devices vulnerable to modification and damage.
+CVE-2014-2378NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2378, web site last accessed October 28, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 6.5 has been assigned; the CVSS vector string is (AV:A/AC:H/Au:N/C:C/I:C/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:H/Au:N/C:C/I:C/A:P, web site last accessed September 04, 2014.
+
+MISSING ENCRYPTION OF SENSITIVE DATACWE-311: Missing Encryption of Sensitive Data, http://cwe.mitre.org/data/definitions/311.html, web site last accessed September 04, 2014.
+
+Unencrypted wireless traffic between a traffic sensor and an access point could be intercepted and replayed to influence traffic data, which could have a limited impact on traffic control for an intersection.
+CVE-2014-2379NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-2379, web site last accessed October 28, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:A/AC:H/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:H/Au:N/C:P/I:P/A:P, web site last accessed September 04, 2014.
+VULNERABILITY DETAILS
+
+EXPLOITABILITY
+
+These vulnerabilities could be exploited from an adjacent network.
+
+EXISTENCE OF EXPLOIT
+
+No known public exploits specifically target these vulnerabilities.
+
+DIFFICULTY
+
+An attacker with a high skill would be able to exploit these vulnerabilities.
+MITIGATION
+Sensys Networks has produced updated product versions VDS 2.10.1 and TrafficDOT 2.10.3 to remediate vulnerabilities identified in their VSN240-F and VSN240-T traffic sensors.
+--------- Begin Update A Part 2 of 2 --------
+Sensys Networks has released software update VDS 1.8.8, for an older model access point, to remediate traffic sensor vulnerabilities.
+The updated human-machine interface version, TrafficDOT 2.10.3, enables encrypted software downloads for sensors and sensor data authentication for access points and access point controller cards using updated versions VDS 2.10.1 or VDS 1.8.8.
+--------- End Update A Part 2 of 2 ----------
+Additional information about Sensys Networks’ software releases can be found at the following location:
+http://www.sensysnetworks.com/resources-by-category/#sw
+Updated product versions are available through Sensys Networks’ local distributors. Contact information for their local distributors can be found at the following location:
+http://www.sensysnetworks.com/distributors/
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

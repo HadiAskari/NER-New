@@ -1,0 +1,61 @@
+
+CVSS v3 9.8
+ATTENTION: Remotely exploitable/low skill level to exploit. Public exploits are available.
+Vendor: WAGO
+Equipment: PFC200 Series
+Vulnerability: Improper Authentication
+UPDATE INFORMATION
+This advisory is a follow-up to the alert titled ICS-ALERT-17-341-01 WAGO PFC200 that was published December 7, 2017, on the NCCIC/ICS-CERT website.
+AFFECTED PRODUCTS
+The following 3S CoDeSys Runtime versions of the PFC200 Series are affected:
+
+CoDeSys Version 2.3.X
+CoDeSys Version 2.4.X
+
+The affected CoDeSys Runtime version is part of WAGO PFC200 Firmware prior to 02.07.07(10), affected PFC200 devices:
+
+750-8202,
+750-8202/025-000,
+750-8202/025-001,
+750-8202/025-002,
+750-8202/040-001,
+750-8203,
+750-8203/025-000,
+750-8204,
+750-8204/025-000,
+750-8206,
+750-8206/025-000,
+750-8206/025-001,
+750-8207,
+750-8207/025-000,
+750-8207/025-001,
+750-8208, and
+750-8208/025-000
+
+IMPACT
+Successful exploitation of this vulnerability could allow a remote attacker unauthorized access to the PLC to perform operations on the file system without authentication.
+MITIGATION
+WAGO released a security patch with FW11 available at:
+http://global.wago.com/media/2_products/security/Sec-Advisory_CoDeSys.pdf
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should: Restrict access to Port 2455.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+VULNERABILITY OVERVIEW
+
+IMPROPER AUTHENTICATION CWE-287
+
+An attacker can execute different unauthenticated remote operations because of the CoDeSys Runtime application, which is available via network by default on Port 2455. An attacker could execute some unauthenticated commands such as reading, writing, or deleting arbitrary files, or manipulate the PLC application during runtime by sending specially-crafted TCP packets to Port 2455.
+CVE-2018-5459 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+RESEARCHER
+Reid Wightman of Dragos discovered the vulnerability in the CoDeSys Runtime application. T. Weber of SEC Consult reported this vulnerability to WAGO.
+BACKGROUND
+Critical Infrastructure Sectors: Commercial Facilities, Critical Manufacturing, Energy, and Transportation Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: United States, Germany, Switzerland, Poland, China, and India

@@ -1,0 +1,88 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.0
+ATTENTION: High Impact on Confidentiality, Integrity, and Availability 
+Vendor: Siemens 
+Equipment: RUGGEDCOM APE1808 Product Family 
+Vulnerabilities: Time-of-check Time-of-use (TOCTOU) Race Condition 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to take full control of the product and its data. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following software from Siemens is affected: 
+
+RUGGEDCOM APE1808 ADM (6GK6015-0AL20-0GL0): All versions 
+RUGGEDCOM APE1808 ADM CC (6GK6015-0AL20-0GL1): All versions 
+RUGGEDCOM APE1808 CKP (6GK6015-0AL20-0GK0): All versions 
+RUGGEDCOM APE1808 CKP CC (6GK6015-0AL20-0GK1): All versions 
+RUGGEDCOM APE1808 CLOUDCONNECT (6GK6015-0AL20-0GM0): All versions 
+RUGGEDCOM APE1808 CLOUDCONNECT CC (6GK6015-0AL20-0GM1): All versions 
+RUGGEDCOM APE1808 ELAN (6GK6015-0AL20-0GP0): All versions 
+RUGGEDCOM APE1808 ELAN CC (6GK6015-0AL20-0GP1): All versions 
+RUGGEDCOM APE1808 SAM-L (6GK6015-0AL20-0GN0): All versions 
+RUGGEDCOM APE1808 SAM-L CC (6GK6015-0AL20-0GN1): All versions 
+RUGGEDCOM APE1808CLA-P (6GK6015-0AL20-1AA0): All versions 
+RUGGEDCOM APE1808CLA-P CC (6GK6015-0AL20-1AA1): All versions 
+RUGGEDCOM APE1808CLA-S1 (6GK6015-0AL20-1AB0): All versions 
+RUGGEDCOM APE1808CLA-S1 CC (6GK6015-0AL20-1AB1): All versions 
+RUGGEDCOM APE1808CLA-S3 (6GK6015-0AL20-1AD0): All versions 
+RUGGEDCOM APE1808CLA-S3 CC (6GK6015-0AL20-1AD1): All versions 
+RUGGEDCOM APE1808CLA-S5 (6GK6015-0AL20-1AF0): All versions 
+RUGGEDCOM APE1808CLA-S5 CC (6GK6015-0AL20-1AF1): All versions 
+RUGGEDCOM APE1808LNX (6GK6015-0AL20-0GH0): All versions 
+RUGGEDCOM APE1808LNX CC (6GK6015-0AL20-0GH1): All versions 
+RUGGEDCOM APE1808W10 (6GK6015-0AL20-0GJ0): All versions 
+RUGGEDCOM APE1808W10 CC (6GK6015-0AL20-0GJ1): All versions 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367 
+DMA attacks on the parameter buffer used by the PnpSmm driver could change the contents after parameter values have been checked, but before they are used (e.g. a TOCTOU attack). This issue was discovered by Insyde engineering during a security review.  
+CVE-2022-30774 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367 
+Update description and links—DMA transactions that are targeted at input buffers used for the software SMI handler used by the FvbServicesRuntimeDxe driver—could cause SMRAM corruption through a TOCTOU attack. This issue was discovered by Insyde engineering based on the general description provided by Intel's iSTARE group.  
+CVE-2022-31243 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.3 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367 
+DMA transactions that are targeted at input buffers used for the FwBlockServiceSmm software SMI handler could cause SMRAM corruption through a TOCTOU attack. This issue was discovered by Insyde engineering based on the general description provided by Intel's iSTARE group.  
+CVE-2022-33906 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.4 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367 
+DMA transactions that are targeted at input buffers used for the software SMI handler used by the IdeBusDxe driver could cause SMRAM corruption through a TOCTOU attack. This issue was discovered by Insyde engineering based on the general description provided by Intel's iSTARE group.   
+CVE-2022-33907 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.5 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367 
+DMA transactions that are targeted at input buffers—used for the SdHostDriver software SMI handler—could cause SMRAM corruption through a TOCTOU attack. This issue was discovered by Insyde engineering based on the general description provided by Intel's iSTARE group.  
+CVE-2022-33908 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.6 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367 
+DMA attacks on the parameter bufferused by the Int15ServiceSmm software SMI handlercould lead to a TOCTOU attack on the SMI handler and lead to corruption of SMRAM.  This issue was discovered by Insyde engineering during a security review. 
+CVE-2022-33982 has been assigned to this vulnerability. A CVSS v3 base score of 6.4 has been assigned. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.7 TIME-OF-CHECK TIME-OF-USE (TOCTOU) RACE CONDITION CWE-367 
+DMA transactions that are targeted at input buffers—used for the SdMmcDevice software SMI handler—could cause SMRAM corruption through a TOCTOU attack.  This issue was discovered by Insyde engineering based on the general description provided by Intel's iSTARE group.  
+CVE-2022-33984 has been assigned to this vulnerability. A CVSS v3 base score of 7.0 has been assigned. The CVSS vector string is (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk: 
+
+Currently no fix is available, however, users should follow the general security recommendations below. 
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals. 
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage. 
+For more information, see the associated Siemens security advisory SSA-450613 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely. These vulnerabilities have a high attack complexity. 

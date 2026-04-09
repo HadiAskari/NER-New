@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Hitachi Energy 
+Equipment: Gateway Station (GWS) 
+Vulnerabilities: Improper Input Validation, Classic Buffer Overflow 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause part of GWS fail to start, allow unauthorized actors to run scripts, and/or cause a denial-of-service condition. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reports these vulnerabilities affect the following Gateway Station (GWS) versions:  
+
+GWS 3.0.0.0 
+GWS 3.1.0.0 
+GWS 3.2.0.0 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 IMPROPER INPUT VALIDATION CWE-20 
+A vulnerability exists in the ICCP stack due to validation flaw in the process establishing the ICCP communication. The validation flaw will cause a denial-of-service condition when ICCP of SYS600 is requested to forward any data item updates with timestamps too far in the future. By default, ICCP is not configured and not enabled. 
+CVE-2022-2277 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.2 IMPROPER INPUT VALIDATION CWE-20
+A vulnerability exists in the handling of malformed IEC 104 TCP packets. Upon receiving a malformed IEC 104 TCP packet, the malformed packet is dropped; however, the TCP connection is left open. This may cause a denial-of-service condition if the affected connection is left open.
+CVE-2022-29492 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+
+3.2.3 IMPROPER INPUT VALIDATION CWE-20 
+A vulnerability exists in the handling of specially crafted IEC 61850 packets with a valid data item but incorrect data type in the IEC 61850 OPC Server. The vulnerability may cause a denial-of-service condition on the IEC 61850 OPC Server component of the GWS product. 
+CVE-2022-29922 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.4 CLASSIC BUFFER OVERFLOW CWE-120 
+A vulnerability exists during the start of GWS in which an input validation flaw, causing a buffer overflow while reading a specific configuration file. Subsequently, GWS will fail to start. The configuration file can only be accessed by users with administrator access. 
+CVE-2022-1778 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Hitachi Energy has created an update to address the reported vulnerabilities and recommends users update to at least GWS version 3.3.0.0
+Hitachi Energy recommends the following general mitigation factors and security practices: 
+
+Configure firewalls to protect process control networks from attacks originating from outside the network  
+Physically protect process control systems from direct access by unauthorized personnel  
+Avoid directly connecting control systems to the internet 
+Separate process control networks from other networks using a firewall system with a minimal number of ports exposed  
+Process control systems should not be used for internet surfing, instant messaging, or receiving emails  
+Portable computers and removable storage media should be carefully scanned for viruses before connecting to a control system 
+Enforce proper password policies and processes 
+
+For more information, see Hitachi security advisory 8DBD000116. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity. 

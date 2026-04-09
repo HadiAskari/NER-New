@@ -1,0 +1,66 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Hitachi Energy
+Equipment: RTU500 series
+Vulnerability: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could cause an internal buffer overflow, which can reboot the product.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reported this vulnerability affects the following RTU500 series in which HCI Modbus TCP is configured and enabled by project configuration: 
+
+RTU500 series CMU Firmware version 12.0.*
+RTU500 series CMU Firmware version 12.2.*
+RTU500 series CMU Firmware version 12.4.*
+RTU500 series CMU Firmware version 12.6.*
+RTU500 series CMU Firmware version 12.7.*
+RTU500 series CMU Firmware version 13.2.*
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+A vulnerability exists in the HCI Modbus TCP function included in the affected product versions. If the HCI Modbus TCP is enabled and configured, then an attacker could exploit the vulnerability by sending a specially crafted message to the RTU500, causing the receiving RTU500 CMU to reboot. The vulnerability is caused by a validation error in the length information carried in MBAP header in the HCI Modbus TCP function.
+CVE-2022-28613 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi Energy reported this vulnerability to CISA.
+4. MITIGATIONS
+Hitachi Energy made the following updates available to remediate the vulnerability:
+
+RTU500 series CMU firmware version 12.0.1.0–12.0.13.0: Update to version 12.0.14.0 or higher.
+RTU500 series CMU firmware version 12.2.1.0–12.2.11.0: Update to version 12.2.12.0 or higher.
+RTU500 series CMU firmware version 12.4.1.0–12.4.11.0: Update to version 12.4.12.0 or higher.
+RTU500 series CMU firmware version 12.6.1.0–12.6.7.0: Update to version 12.6.8.0 or higher.
+RTU500 series CMU firmware version 12.7.1.0–12.7.3.0: Update to version 12.7.4.0 or higher.
+RTU500 series CMU firmware version 13.2.1.0–13.2.4.0: Update to version 13.3.1.0, 13.2.5.0, or higher.
+
+Because the vulnerability affects only the RTU500 series with HCI Modbus TCP configured and enabled, a possible mitigation is to disable the HCI Modbus TCP function if not used. The HCI Modbus TCP is disabled by default.
+Hitachi Energy recommends the following security practices and firewall configurations to help protect process control networks from outside attacks:
+
+Physically protect process control systems from unauthorized direct access.
+Separate process control systems from other networks using a firewall system with only the necessary ports open.
+Process control systems should not be used for internet surfing, instant messaging, or receiving emails.
+Portable computers and removable storage media should be carefully scanned for viruses before connecting to a control system.
+
+For more information, see Hitachi Energy advisory 8DBD000103 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is exploitable remotely. This vulnerability has a low attack complexity.

@@ -1,0 +1,69 @@
+
+1. EXECUTIVE SUMMARY
+
+​CVSS v3 5.9
+​ATTENTION: Exploitable remotely
+​Vendor: ICONICS, Mitsubishi Electric
+​Equipment: ICONICS Product Suite
+​Vulnerabilities: Buffer Overflow, Out-of-Bounds Read, Observable Timing Discrepancy, Double Free, and NULL Pointer Dereference
+
+2. RISK EVALUATION
+​Successful exploitation of these vulnerabilities could result in information disclosure, denial-of-service, or remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+​ICONICS reports these vulnerabilities affect the following products using OpenSSL:
+
+
+​ICONICS Suite including GENESIS64, Hyper Historian, AnalytiX, and MobileHMI: Version 10.97.2
+
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 ​CLASSIC BUFFER OVERFLOW CWE-120
+​A denial of service and potential crash vulnerability due to a buffer overrun condition exists in the OpenSSL library used in the ICONICS Suite. This vulnerability is in the X.509 certificate name constraint checking.
+​CVE-2022-3602 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2 ​CLASSIC BUFFER OVERFLOW CWE-120
+​A denial-of-service vulnerability due to a buffer overrun condition exists in the OpenSSL library used in the ICONICS Suite. This vulnerability is in the X.509 certificate verification.
+​CVE-2022-3786 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3 ​OUT-OF-BOUNDS READ CWE-125
+​A denial-of-service vulnerability due to an out of bounds read condition exists in the OpenSSL library used in the ICONICS Suite. This vulnerability is in the X.509 certificate verification.
+​CVE-2022-4203 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:H).
+3.2.4 ​OBSERVABLE TIMING DISCREPANCY CWE-208
+​An information disclosure vulnerability due to an observable timing discrepancy exists in the OpenSSL library used in the ICONICS Suite. This vulnerability is in the RSA decryption implementation.
+​CVE-2022-4304 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5 ​DOUBLE FREE CWE-415
+​A denial of service and potential crash vulnerability due to a double free condition exists in the OpenSSL library used in the ICONICS Suite. This vulnerability is in the reading of a PEM file.
+​CVE-2022-4450 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6 NULL POINTER DEREFERENCE CWE-476
+​A denial of service and potential crash vulnerability due to a NULL Pointer dereference exists in the OpenSSL library used in the ICONICS Suite. This vulnerability can occur when signatures are being verified.
+​CVE-2023-0401 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+​CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+​COUNTRIES/AREAS DEPLOYED: Worldwide
+​COMPANY HEADQUARTERS LOCATION: ICONICS is headquartered in the United States. Mitsubishi Electric is headquartered in Japan.
+
+3.4 RESEARCHER
+​ICONICS informed CISA that these products are affected by vulnerabilities in third-party components.
+4. MITIGATIONS
+​Version 10.97.2 Critical Fixes Rollup 2 and later is not vulnerable to these exploits. ICONICS recommends that users of its products take the following mitigation steps:
+
+​Ensure the 10.97.2 Critical Fixes Rollup release is applied to version 10.97.2 systems.
+​For systems that do not contain the patch/fix:
+
+​Do not use the BACnet/SC feature on a production system.
+
+
+
+​ICONICS and Mitsubishi Electric recommend updating the ICONICS Suite with the latest security patches as they become available. ICONICS Suite security patches may be found here (login required).
+​ICONICS and Mitsubishi Electric are releasing security updates as critical fixes/rollup releases. Refer to the ICONICS whitepaper on security vulnerabilities, the most recent version of which can be found here, and to the Mitsubishi Electric security advisories 2022-024 and 2023-009 for information on the availability of the security updates.
+​CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+​Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+​Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+​When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+​CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+​CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+​Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+​Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+​No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.

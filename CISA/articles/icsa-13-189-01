@@ -1,0 +1,49 @@
+
+OVERVIEW
+Independent researcher Luigi Auriemma identified a stack-based buffer overflow and a buffer copy without checking size of input vulnerabilities in QNX’s Phrelay, Phwindows, and Phditto products without coordination with ICS-CERT, the vendor, or any other coordinating entity known to ICS-CERT. QNX has produced a patch that mitigates these vulnerabilities. Luigi Auriemma has confirmed that the patch resolves the reported vulnerabilities.
+Proof-of-concept code has been publicly released that takes advantage of these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+Exploits that target these vulnerabilities are publicly available.
+AFFECTED PRODUCTS
+The following QNX products are affected:
+
+Phrelay (all versions),
+Phwindows (all versions), and
+Phditto (all versions).
+
+IMPACT
+Successful exploitation of these vulnerabilities could cause a denial-of-service (DoS) condition and may allow remote execution of arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+QNX is a Canadian-based company that produces the QNX Operating System. The QNX Operating System is a general purpose operating system upon which many device manufacturers build their embedded systems. The embedded systems are used primarily in the US but also worldwide. The embedded systems are used in multiple sectors including critical manufacturing, transportation, healthcare, defense industrial base, communications, energy, nuclear facilities, and commercial facilities.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERVIEWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, Web site last accessed July 08, 2013.
+
+The bpe_decompress function used in all the client/server programs of this protocol is affected by a stack-based buffer overflow caused by the lack of checks on the data sequentially stored in two buffers. By sending a specially crafted packet to Port 4868/UDP, an attacker could cause a DoS or possibly execute arbitrary code.
+CVE-2013-2687NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2687, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.8 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:N/I:N/A:C, Web site last accessed July 08, 2013.
+
+BUFFER COPY WITHOUT CHECKING SIZE OF INPUTCWE-120: Buffer Copy without Checking Size of Input,  http://cwe.mitre.org/data/definitions/120.html, Web site last accessed July 08, 2013.
+
+The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow. The buffer overflow affects Phrelay in the handling of the device file specified by the client as an existing session in Phrelay, Phditto, and Phwindows. By sending a specially crafted packet to Port 4868/UDP, an attacker could cause a DoS or possibly execute arbitrary code.
+CVE-2013-2688NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2688 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.4 has been assigned; the CVSS vector string is (AV:N/AC:H/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:H/Au:N/C:N/I:N/A:C, Web site last visited July 08, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target these vulnerabilities are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+QNX has released a patch that mitigates these vulnerabilities. The patch is compatible with targets that are running QNX Neutrino 6.5.0 or 6.5.0 SP1. The patch is available on the QNX Web site:
+http://www.qnx.com/download/feature.html?programid=24850
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last visited July 08, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last visited July 08, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.

@@ -1,0 +1,49 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on May 5, 2016, and is being released to the NCCIC/ICS-CERT web site.
+Independent researcher Maxim Rupp has identified authentication and cross-site request forgery (CSRF) vulnerabilities in KMC Controls’ Conquest BACnet routers through its web interface. KMC Controls has produced new firmware to mitigate these vulnerabilities. Maxim Rupp has tested the new firmware to validate that it resolves the vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+KMC Controls reports that the vulnerabilities affect the following products:
+
+BAC-5051E routers, firmware versions prior to E0.2.0.2
+
+IMPACT
+An unauthorized user can exploit these vulnerabilities to read the configuration of the target device.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+KMC Controls is based in the United States.
+The affected products, BAC-5051E routers, are used in building automation systems. According to KMC Controls, BAC-5051E routers are used in Commercial Facilities. KMC Controls estimates that these products are used in the Americas, the Middle East, and Southeast Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CROSS-SITE REQUEST FORGERYCWE-352: Cross-Site Request Forgery (CSRF), http://cwe.mitre.org/data/definitions/352.html, web site last accessed June 07, 2016.
+
+An unauthorized user can use a CSRF attack to read configuration data from a file.
+CVE-2016-4494NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4494, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N, web site last accessed June 07, 2016.
+
+MISSING AUTHENTICATION FOR CRITICAL FUNCTIONCWE-306: Missing Authentication for Critical Function, http://cwe.mitre.org/data/definitions/306.html, web site last accessed June 07, 2016.
+
+A missing authorization check allows an unauthorized user to read configuration data from a file.
+CVE-2016-4495NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-4495, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N, web site last accessed June 07, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+KMC Controls has released firmware Version E0.2.0.2 for the BAC-5051E router to add additional security for web-based access to the router’s configuration pages. KMC Controls recommends that all BAC-5051E routers be upgraded to this version. Users can obtain the latest version of the firmware in the KMC Controls partner portal (requires a login).
+https://partners.kmccontrols.com/user/login
+According to KMC Controls, the BAC-5051E router is not intended to be a public facing Internet device. For best security, install the router behind a firewall inside a site’s intranet network. KMC Controls has also sent a copy of its technical bulletin to users. A copy of this bulletin can be found on KMC Controls’ web site in the service bulletin section.
+ICS-CERT recommends, as quality assurance, that users test the update in a test development environment that reflects their production environment prior to installation. In addition, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

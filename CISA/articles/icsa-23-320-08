@@ -1,0 +1,165 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SCALANCE XB-200/XC-200/XP-200/XF-200BA/XR-300WG Family
+Vulnerabilities: Out-of-bounds Read, Inadequate Encryption Strength, Double Free, NULL Pointer Dereference, Allocation of Resources Without Limits or Throttling, Acceptance of Extraneous Untrusted Data With Trusted Data, Use of Hard-coded Cryptographic Key, Use of Weak Hash, Direct Request ('Forced Browsing'), Uncontrolled Resource Consumption, Unchecked Return Value, Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection'), Unsynchronized Access to Shared Data in a Multithreaded Context
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to cause a denial-of-service condition, change system configurations, inject arbitrary code, and change admin credentials.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products of Siemens, are affected:
+
+SCALANCE XB205-3 (SC, PN) (6GK5205-3BB00-2AB2): Versions prior to V4.5
+SCALANCE XB205-3 (ST, E/IP) (6GK5205-3BB00-2TB2): Versions prior to V4.5
+SCALANCE XB205-3 (ST, E/IP) (6GK5205-3BD00-2TB2): Versions prior to V4.5
+SCALANCE XB205-3 (ST, PN) (6GK5205-3BD00-2AB2): Versions prior to V4.5
+SCALANCE XB205-3LD (SC, E/IP) (6GK5205-3BF00-2TB2): Versions prior to V4.5
+SCALANCE XB205-3LD (SC, PN) (6GK5205-3BF00-2AB2): Versions prior to V4.5
+SCALANCE XB208 (E/IP) (6GK5208-0BA00-2TB2): Versions prior to V4.5
+SCALANCE XB208 (PN) (6GK5208-0BA00-2AB2): Versions prior to V4.5
+SCALANCE XB213-3 (SC, E/IP) (6GK5213-3BD00-2TB2): Versions prior to V4.5
+SCALANCE XB213-3 (SC, PN) (6GK5213-3BD00-2AB2): Versions prior to V4.5
+SCALANCE XB213-3 (ST, E/IP) (6GK5213-3BB00-2TB2): Versions prior to V4.5
+SCALANCE XB213-3 (ST, PN) (6GK5213-3BB00-2AB2): Versions prior to V4.5
+SCALANCE XB213-3LD (SC, E/IP) (6GK5213-3BF00-2TB2): Versions prior to V4.5
+SCALANCE XB213-3LD (SC, PN) (6GK5213-3BF00-2AB2): Versions prior to V4.5
+SCALANCE XB216 (E/IP) (6GK5216-0BA00-2TB2): Versions prior to V4.5
+SCALANCE XB216 (PN) (6GK5216-0BA00-2AB2): Versions prior to V4.5
+SCALANCE XC206-2 (SC) (6GK5206-2BD00-2AC2): Versions prior to V4.5
+SCALANCE XC206-2 (ST/BFOC) (6GK5206-2BB00-2AC2): Versions prior to V4.5
+SCALANCE XC206-2G PoE (6GK5206-2RS00-2AC2): Versions prior to V4.5
+SCALANCE XC206-2G PoE (54 V DC) (6GK5206-2RS00-5AC2): Versions prior to V4.5
+SCALANCE XC206-2G PoE EEC (54 V DC) (6GK5206-2RS00-5FC2): Versions prior to V4.5
+SCALANCE XC206-2SFP (6GK5206-2BS00-2AC2): Versions prior to V4.5
+SCALANCE XC206-2SFP EEC (6GK5206-2BS00-2FC2): Versions prior to V4.5
+SCALANCE XC206-2SFP G (6GK5206-2GS00-2AC2): Versions prior to V4.5
+SCALANCE XC206-2SFP G (EIP DEF.) (6GK5206-2GS00-2TC2): Versions prior to V4.5
+SCALANCE XC206-2SFP G EEC (6GK5206-2GS00-2FC2): Versions prior to V4.5
+SCALANCE XC208 (6GK5208-0BA00-2AC2): Versions prior to V4.5
+SCALANCE XC208EEC (6GK5208-0BA00-2FC2): Versions prior to V4.5
+SCALANCE XC208G (6GK5208-0GA00-2AC2): Versions prior to V4.5
+SCALANCE XC208G (EIP def.) (6GK5208-0GA00-2TC2): Versions prior to V4.5
+SCALANCE XC208G EEC (6GK5208-0GA00-2FC2): Versions prior to V4.5
+SCALANCE XC208G PoE (6GK5208-0RA00-2AC2): Versions prior to V4.5
+SCALANCE XC208G PoE (54 V DC) (6GK5208-0RA00-5AC2): Versions prior to V4.5
+SCALANCE XC216 (6GK5216-0BA00-2AC2): Versions prior to V4.5
+SCALANCE XC216-3G PoE (6GK5216-3RS00-2AC2): Versions prior to V4.5
+SCALANCE XC216-3G PoE (54 V DC) (6GK5216-3RS00-5AC2): Versions prior to V4.5
+SCALANCE XC216-4C (6GK5216-4BS00-2AC2): Versions prior to V4.5
+SCALANCE XC216-4C G (6GK5216-4GS00-2AC2): Versions prior to V4.5
+SCALANCE XC216-4C G (EIP Def.) (6GK5216-4GS00-2TC2): Versions prior to V4.5
+SCALANCE XC216-4C G EEC (6GK5216-4GS00-2FC2): Versions prior to V4.5
+SCALANCE XC216EEC (6GK5216-0BA00-2FC2): Versions prior to V4.5
+SCALANCE XC224 (6GK5224-0BA00-2AC2): Versions prior to V4.5
+SCALANCE XC224-4C G (6GK5224-4GS00-2AC2): Versions prior to V4.5
+SCALANCE XC224-4C G (EIP Def.) (6GK5224-4GS00-2TC2): Versions prior to V4.5
+SCALANCE XC224-4C G EEC (6GK5224-4GS00-2FC2): Versions prior to V4.5
+SCALANCE XF204 (6GK5204-0BA00-2GF2): Versions prior to V4.5
+SCALANCE XF204 DNA (6GK5204-0BA00-2YF2): Versions prior to V4.5
+SCALANCE XF204-2BA (6GK5204-2AA00-2GF2): Versions prior to V4.5
+SCALANCE XF204-2BA DNA (6GK5204-2AA00-2YF2): Versions prior to V4.5
+SCALANCE XP208 (6GK5208-0HA00-2AS6): Versions prior to V4.5
+SCALANCE XP208 (Ethernet/IP) (6GK5208-0HA00-2TS6): Versions prior to V4.5
+SCALANCE XP208EEC (6GK5208-0HA00-2ES6): Versions prior to V4.5
+SCALANCE XP208PoE EEC (6GK5208-0UA00-5ES6): Versions prior to V4.5
+SCALANCE XP216 (6GK5216-0HA00-2AS6): Versions prior to V4.5
+SCALANCE XP216 (Ethernet/IP) (6GK5216-0HA00-2TS6): Versions prior to V4.5
+SCALANCE XP216EEC (6GK5216-0HA00-2ES6): Versions prior to V4.5
+SCALANCE XP216POE EEC (6GK5216-0UA00-5ES6): Versions prior to V4.5
+SCALANCE XR324WG (24 x FE, AC 230V) (6GK5324-0BA00-3AR3): Versions prior to V4.5
+SCALANCE XR324WG (24 X FE, DC 24V) (6GK5324-0BA00-2AR3): Versions prior to V4.5
+SCALANCE XR326-2C PoE WG (6GK5326-2QS00-3AR3): Versions prior to V4.5
+SCALANCE XR326-2C PoE WG (without UL) (6GK5326-2QS00-3RR3): Versions prior to V4.5
+SCALANCE XR328-4C WG (24xFE, 4xGE, AC230V) (6GK5328-4FS00-3AR3): Versions prior to V4.5
+SCALANCE XR328-4C WG (24xFE, 4xGE, AC230V) (6GK5328-4FS00-3RR3): Versions prior to V4.5
+SCALANCE XR328-4C WG (24XFE, 4XGE, 24V) (6GK5328-4FS00-2AR3): Versions prior to V4.5
+SCALANCE XR328-4C WG (24xFE, 4xGE,DC24V) (6GK5328-4FS00-2RR3): Versions prior to V4.5
+SCALANCE XR328-4C WG (28xGE, AC 230V) (6GK5328-4SS00-3AR3): Versions prior to V4.5
+SCALANCE XR328-4C WG (28xGE, DC 24V) (6GK5328-4SS00-2AR3): Versions prior to V4.5
+SIPLUS NET SCALANCE XC206-2 (6AG1206-2BB00-7AC2): Versions prior to V4.5
+SIPLUS NET SCALANCE XC206-2SFP (6AG1206-2BS00-7AC2): Versions prior to V4.5
+SIPLUS NET SCALANCE XC208 (6AG1208-0BA00-7AC2): Versions prior to V4.5
+SIPLUS NET SCALANCE XC216-4C (6AG1216-4BS00-7AC2): Versions prior to V4.5
+
+3.2 Vulnerability Overview
+3.2.1 OUT-OF-BOUNDS READ CWE-125
+A read buffer overrun can be triggered in X.509 certificate verification, specifically in name constraint checking. Note that this occurs after certificate chain signature verification and requires either a CA to have signed the malicious certificate or for the application to continue certificate verification despite failure to construct a path to a trusted issuer. The read buffer overrun might result in a crash which could lead to a denial-of-service attack. In theory it could also result in the disclosure of private memory contents (such as private keys, or sensitive plaintext) although we are not aware of any working exploit leading to memory contents disclosure as of the time of release of this advisory. In a TLS client, this can be triggered by connecting to a malicious server. In a TLS server, this can be triggered if the server requests client authentication and a malicious client connects.
+CVE-2022-4203 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).
+3.2.2 INADEQUATE ENCRYPTION STRENGTH CWE-326
+A timing-based side channel exists in the OpenSSL RSA Decryption implementation which could be sufficient to recover a plaintext across a network in a Bleichenbacher style attack. To achieve a successful decryption an attacker would have to be able to send a very large number of trial messages for decryption. The vulnerability affects all RSA padding modes: PKCS#1 v1.5, RSA-OEAP and RSASVE. For example, in a TLS connection, RSA is commonly used by a client to send an encrypted pre-master secret to the server. An attacker that had observed a genuine connection between a client and a server could use this flaw to send trial messages to the server and record the time taken to process them. After a sufficiently large number of messages the attacker could recover the pre-master secret used for the original connection and thus be able to decrypt the application data sent over that connection.
+CVE-2022-4304 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.3 DOUBLE FREE CWE-415
+The function PEM_read_bio_ex() reads a PEM file from a BIO and parses and decodes the "name" (e.g. "CERTIFICATE"), any header data and the payload data. If the function succeeds then the "name_out", "header" and "data" arguments are populated with pointers to buffers containing the relevant decoded data. The caller is responsible for freeing those buffers. It is possible to construct a PEM file that results in 0 bytes of payload data. In this case PEM_read_bio_ex() will return a failure code but will populate the header argument with a pointer to a buffer that has already been freed. If the caller also frees this buffer, then a double free will occur. This will most likely lead to a crash. This could be exploited by an attacker who has the ability to supply malicious PEM files for parsing to achieve a denial-of-service attack. The functions PEM_read_bio() and PEM_read() are simple wrappers around PEM_read_bio_ex() and therefore these functions are also directly affected. These functions are also called indirectly by a number of other OpenSSL functions including PEM_X509_INFO_read_bio_ex() and SSL_CTX_use_serverinfo_file() which are also vulnerable. Some OpenSSL internal uses of these functions are not vulnerable because the caller does not free the header argument if PEM_read_bio_ex() returns a failure code. These locations include the PEM_read_bio_TYPE() functions as well as the decoders introduced in OpenSSL 3.0. The OpenSSL asn1parse command line application is also impacted by this issue.
+CVE-2022-4450 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4 NULL POINTER DEREFERENCE CWE-476
+An invalid pointer dereference on read can be triggered when an application tries to load malformed PKCS7 data with the d2i_PKCS7(), d2i_PKCS7_bio() or d2i_PKCS7_fp() functions. The result of the dereference is an application crash which could lead to a denial-of-service attack. The TLS implementation in OpenSSL does not call this function however third-party applications might call these functions on untrusted data.
+CVE-2023-0216 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.5 NULL POINTER DEREFERENCE CWE-476
+An invalid pointer dereference on read can be triggered when an application tries to check a malformed DSA public key by the EVP_PKEY_public_check() function. This will most likely lead to an application crash. This function can be called on public keys supplied from untrusted sources which could allow an attacker to cause a denial-of-service attack. The TLS implementation in OpenSSL does not call this function but applications might call the function if there are additional security requirements imposed by standards such as FIPS 140-3.
+CVE-2023-0217 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6 NULL POINTER DEREFERENCE CWE-476
+A NULL pointer can be dereferenced when signatures are being verified on PKCS7 signed or signedAndEnveloped data. In case the hash algorithm used for the signature is known to the OpenSSL library, but the implementation of the hash algorithm is not available the digest initialization will fail. There is a missing check for the return value from the initialization function which later leads to invalid usage of the digest API most likely leading to a crash. The unavailability of an algorithm can be caused by using FIPS enabled configuration of providers or more commonly by not loading the legacy provider. PKCS7 data is processed by the SMIME library calls and also by the time stamp (TS) library calls. The TLS implementation in OpenSSL does not call these functions however third-party applications would be affected if they call these functions to verify signatures on untrusted data.
+CVE-2023-0401 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.7 ALLOCATION OF RESOURCES WITHOUT LIMITS OR THROTTLING CWE-770
+Issue summary: Processing some specially crafted ASN.1 object identifiers or data containing them may be very slow. Impact summary: Applications that use OBJ_obj2txt() directly, or use any of the OpenSSL subsystems OCSP, PKCS7/SMIME, CMS, CMP/CRMF or TS with no message size limit may experience notable to very long delays when processing those messages, which may lead to a Denial of Service. An OBJECT IDENTIFIER is composed of a series of numbers - sub-identifiers - most of which have no size limit. OBJ_obj2txt() may be used to translate an ASN.1 OBJECT IDENTIFIER given in DER encoding form (using the OpenSSL type ASN1_OBJECT) to its canonical numeric text form, which are the sub-identifiers of the OBJECT IDENTIFIER in decimal form, separated by periods. When one of the sub-identifiers in the OBJECT IDENTIFIER is very large (these are sizes that are seen as absurdly large, taking up tens or hundreds of KiBs), the translation to a decimal number in text may take a very long time.
+CVE-2023-2650 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H).
+3.2.8 ACCEPTANCE OF EXTRANEOUS UNTRUSTED DATA WITH TRUSTED DATA CWE-349
+Affected products do not properly validate the content of uploaded X509 certificates which could allow an attacker with administrative privileges to execute arbitrary code on the device.
+CVE-2023-44317 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.9 USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+Affected devices use a hardcoded key to obfuscate the configuration backup that an administrator can export from the device. This could allow an authenticated attacker with administrative privileges or an attacker that obtains a configuration backup to extract configuration information from the exported file.
+CVE-2023-44318 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N).
+3.2.10 USE OF WEAK HASH CWE-328
+Affected devices use a weak checksum algorithm to protect the configuration backup that an administrator can export from the device. This could allow an authenticated attacker with administrative privileges or an attacker that tricks a legitimate administrator to upload a modified configuration file to change the configuration of an affected device.
+CVE-2023-44319 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N).
+3.2.11 DIRECT REQUEST ('FORCED BROWSING') CWE-425
+Affected devices do not properly validate the authentication when performing certain modifications in the web interface allowing an authenticated attacker to influence the user interface configured by an administrator.
+CVE-2023-44320 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N).
+3.2.12 UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+Affected devices do not properly validate the length of inputs when performing certain configuration changes in the web interface allowing an authenticated attacker to cause a denial of service condition. The device needs to be restarted for the web interface to become available again.
+CVE-2023-44321 has been assigned to this vulnerability. A CVSS v3 base score of 2.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L).
+3.2.13 UNCHECKED RETURN VALUE CWE-252
+Affected devices can be configured to send emails when certain events occur on the device. When presented with an invalid response from the SMTP server, the device triggers an error that disrupts email sending. An attacker with access to the network can use this to do disable notification of users when certain events occur.
+CVE-2023-44322 has been assigned to this vulnerability. A CVSS v3 base score of 3.7 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L).
+3.2.14 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS IN OUTPUT USED BY A DOWNSTREAM COMPONENT ('INJECTION') CWE-74
+Affected devices do not properly sanitize an input field. This could allow an authenticated remote attacker with administrative privileges to inject code or spawn a system root shell. Follow-up of CVE-2022-36323.
+CVE-2023-44373 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).
+3.2.15 UNSYNCHRONIZED ACCESS TO SHARED DATA IN A MULTITHREADED CONTEXT CWE-567
+Affected devices allow to change the password, but insufficiently check which password is to be changed. With this an authenticated attacker could, under certain conditions, be able to change the password of another potential admin user allowing for escalation of privileges. 
+CVE-2023-44374 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends updating the SCALANCE products to v4.5 or later version.
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-699386 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs). Recognize VPNs may have vulnerabilities, should be updated to the most recent version available, and are only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+November 16, 2023: Initial Publication
+

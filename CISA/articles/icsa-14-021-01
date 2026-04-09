@@ -1,0 +1,55 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on January 21, 2014, and is now being released to the NCCIC/ICS-CERT Web site.
+Independent researcher Stephen Dunlap has identified a password vulnerability in the Rockwell Automation RSLogix 5000 software. Rockwell Automation has produced a new version that mitigates this vulnerability.
+AFFECTED PRODUCTS
+The following RSLogix 5000 software versions are affected:
+
+Project files (.ACD) created using RSLogix 5000 software, V7 through V20.01 and V21.0 containing password protected content.
+
+IMPACT
+A vulnerability has been identified in RSLogix 5000 software that may allow customer-defined passwords, used to protect certain user-configured content, to become compromised. Successful exploitation may result in an unauthorized disclosure of user-created content. Exploitation will not directly disrupt operation of Rockwell Automation programmable controllers or other devices in the control system.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Rockwell Automation, which is a US-based company, provides industrial automation control and information products worldwide across a wide range of industries.
+The affected product, RSLogix 5000 software, is design and configuration software used with certain Rockwell Automation products. According to Rockwell Automation, the software is used in systems deployed across several sectors including chemical, critical manufacturing, food and agriculture, water and wastewater, and others. It is a globally available product used in the United States and the rest of the world.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INSUFFICIENTLY PROTECTED CREDENTIALSCWE-522: Insufficiently Protected Credentials, http://cwe.mitre.org/data/definitions/522.html, Web site last accessed February 04, 2014.
+
+A vulnerability has been identified in RSLogix 5000 software, V7 through V20.01 and V21.0 that may allow customer-defined passwords, used to protect certain user-configured content, to become compromised. Such passwords can be used to help prevent unauthorized access and viewing or tampering of particular content stored in controller configuration programs. Successful exploitation will not directly disrupt operation of Rockwell Automation programmable controllers or other devices in the control system.
+CVE-2014-0755NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0755, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 6.3 has been assigned; the CVSS vector string is (AV:L/AC:M/AU:N/C:C/I:C/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=(AV:L/AC:M/AU:N/C:C/I:C/A:N), Web site last accessed February 04, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user accesses the password file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a medium skill would be able to exploit this vulnerability.
+MITIGATION
+According to Rockwell Automation, new RSLogix 5000 versions, V20.03 and V21.03, have been released that address this vulnerability. These releases include mitigations that enhance password protection.
+Project files created in earlier affected RSLogix 5000 versions of software must be opened, resaved, and then downloaded to the appropriate controller to mitigate the risk associated with this discovered vulnerability.
+IMPORTANT: Files with protected content that have been opened and update using enhanced software will no longer be compatible with earlier versions of RSLogix 5000 software. For example, a V20.01 project file with protected content that has been opened and resaved using V20.03 software can only be opened with V20.03 and higher versions of software. Also, a V21.00 project file with protected content that has been opened and resaved using V21.03 software can only be opened with V21.03 and higher versions of software.
+For the procedure to update project files, please refer to Rockwell Automation Knowledgebase AID:565204 available here:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/565204.
+In addition to using current RSLogix 5000 software, Rockwell Automation also recommends the following actions to all concerned customers:
+
+Where possible, adopt a practice to track creation and distribution of protected ACD files, including duplicates and derivatives that contain protected content in the event that these files may need to be found or potentially disposed of in the future.
+Where possible, securely archive protected ACD files or those that contain protected content in a manner that prevents unauthorized access. For instance, store protected ACD files in physical and logical locations where access can be controlled and the files are stored in a protected, potentially encrypted manner.
+Where possible, securely transmit protected ACD files or those that contain protected content in a manner that prevents unauthorized access. For instance, email protected ACD files only to known recipients and encrypted the files such that only the target recipient can decrypt the content.
+Where possible, restrict physical and network access to controllers containing protected content only to authorized parties in order to help prevent unauthorized uploading of protected material into an ACD file. For some customers, FactoryTalk Security software may be a suitable option to assist customers with applying a Role-based Access Control (RBAC) solution to their system. FactoryTalk Security was integrated into RSLogix 5000 Version 10.00.
+Where possible, use a unique and complex password for each routine or Add-On Instruction desirable to protect, so as to reduce the risk that multiple files and protected content could be compromised, should a single password become learned.
+Where possible, adopt a password management practice to periodically change passwords applied to routines and Add-On Instructions to help mitigate the risk that a learned password may remain usable for an extended period of time or indefinitely.
+
+Rockwell Automation encourages their customers to subscribe to Rockwell Automation’s Security Advisory Index (AID:54102)Rockwell Automation Knowledgebase AID:54102, https://rockwellautomation.custhelp.com/app/answers/detail/a_id/54102, Web site last accessed February 04, 2014. for new and relevant information relating to this and other security-related matters.
+For more information and for assistance with assessing the state of security of your existing control system, including improving your system-level security when using Rockwell Automation and other vendor controls products, you can visit the Rockwell Automation Security Solutions Web site at http://www.rockwellautomation.com/solutions/security.
+NCCIC/ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+NCCIC/ICS-CERT also provides a section for control systems security recommended practices on the NCCIC/ICS-CERT Web page at http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. NCCIC/ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC/ICS-CERT Technical Information Paper ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the NCCIC/ICS-CERT Web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC/ICS-CERT for tracking and correlation against other incidents.

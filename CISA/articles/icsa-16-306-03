@@ -1,0 +1,49 @@
+
+OVERVIEW
+Avihay Kain and Mille Gandelsman of Indegy have identified a vulnerability in Schneider Electric Unity PRO Software product. Schneider Electric has released a security notification with instructions to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+Schneider Electric reports that the vulnerability affects the following versions of Unity PRO:
+
+Unity PRO, all versions prior to V11.1
+
+IMPACT
+An attacker who misleads a valid user into loading a specially crafted malicious file into Unity Simulator could remotely execute arbitrary code.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Schneider Electric’s corporate headquarters is located in Paris, France, and it maintains offices in more than 100 countries worldwide.
+The affected product, Unity PRO, is development software used to test, debug, and manage applications. According to Schneider Electric, Unity PRO is deployed across most sectors including Commercial Facilities and Energy. Schneider Electric estimates that this product is used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INSUFFICIENT CONTROL FLOW MANAGEMENTCWE-691: Insufficient Control Flow Management, https://cwe.mitre.org/data/definitions/691.html, web site last accessed November 01, 2016.
+
+Unity projects can be compiled as x86 instructions and loaded onto the PLC Simulator delivered with Unity PRO. These x86 instructions are subsequently executed directly by the simulator. A specially crafted patched Unity project file can make the simulator execute malicious code by redirecting the control flow of these instructions.
+CVE-2016-8354NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-8354 , NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H, web site last accessed November 01, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Detailed vulnerability information is publicly available that could be used to develop an exploit that targets this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince the user to accept the patched program file. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+This vulnerability is made possible when no application program has been loaded in the simulator or when the application program loaded in the simulator is not password protected.
+Schneider Electric recommends the following mitigation practices:
+
+Upgrade to Unity PRO Version 11.1. By default, it is not possible to launch this version of the simulator without any Unity PRO application associated.
+Exercise caution in selecting which project files are executed by the simulator. Do not trust files that come from unknown or untrusted sources.
+Use strong passwords to protect applications. It is not possible to load or to modify this application without being authenticated once the password protected application has been loaded onto the simulator.
+
+For more information on this vulnerability and more detailed mitigation instructions, please see Schneider Electric security notification SEVD-2016-288-01 at the following location:
+http://www.schneider-electric.com/ww/en/download/document/SEVD-2016-288-01
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

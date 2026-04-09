@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Automation Direct
+Equipment: CLICK PLC CPU modules
+Vulnerabilities: Authentication Bypass Using an Alternate Path or Channel, Cleartext Transmission of Sensitive Information, Unprotected Storage of Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to log in as a currently or previously authenticated user or discover passwords for valid users.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Automation Direct reports these vulnerabilities affect the following CLICK PLC CPU modules:
+
+CLICK PLC CPU Modules: C0-1x CPUs with All firmware prior to v3.00
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+The firmware does not protect against additional software programming connections. An attacker can connect to the PLC while an existing connection is already active.
+CVE-2021-32980 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+All programming connections receive the same unlocked privileges, which can result in a privilege escalation. During the time the PLC is unlocked by an authorized user, an attacker can connect to the PLC and read the project without authorization.
+CVE-2021-32984 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+After the PLC is unlocked by an authorized user, the unlocked state does not timeout. If the programming software is interrupted, the PLC remains unlocked. All subsequent programming connections are allowed without authorization. The PLC is only relocked by a power cycle, or when the programming software disconnects correctly.
+CVE-2021-32986 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Passwords are sent as plaintext during unlocking and project transfers. An attacker who has network visibility can observe the password exchange.
+CVE-2021-32982 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.2.5    UNPROTECTED STORAGE OF CREDENTIALS CWE-256
+The programming protocol allows for a previously entered password and lock state to be read by an attacker. If the previously entered password was successful, the attacker can then use the password to unlock the PLC.
+CVE-2021-32978 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Information Technology
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Irfan Ahmed and Adeen Ayub of Virginia Commonwealth University and Hyunguk Yoo of the University of New Orleans reported these vulnerabilities to Automation Direct.
+4. MITIGATIONS
+Automation Direct reports these vulnerabilities are all mitigated by Version 3.00 and recommends users update software and firmware to the latest version.
+Automation Direct also recommends users follow its security guidelines.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

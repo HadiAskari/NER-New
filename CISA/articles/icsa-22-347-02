@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Schneider Electric 
+Equipment: APC Easy UPS Online 
+Vulnerabilities: Missing Authentication for Critical Function, Unrestricted Upload of File with Dangerous Type, Incorrect Permission Assignment for Critical Resource, Use of Hard-coded Credentials.  
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in unauthenticated remote code execution, unauthenticated password changes, and escalation of privileges. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of APC Easy UPS Online, an uninterruptible power supply (UPS) monitoring software, are affected: 
+
+APC Easy UPS Online Version 2.5-GA and prior (Windows 7, 10, 11, Windows Server 2016, 2019, 2022) 
+APC Easy UPS Online Version 2.5-GA-01-22261 and prior (Windows 11, Windows Server 2019, 2022) 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Schneider Electric APC Easy UPS Online versions 2.5-GA and prior are missing authentication for the updatePassword endpoint implemented in the LoginAction.updatePassword method. An unauthenticated user could exploit this vulnerability to modify administrator passwords.
+CVE-2022-42970 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).  
+3.2.2 UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434 
+Schneider Electric APC Easy UPS Online versions 2.5-GA and prior deploy the improperly secured UpLoadAction.execute method. An unauthenticated user could use this method to upload a maliciously crafted JSF file to the images directory, which is located in the application web root directory, to enable unauthenticated remote code execution. 
+CVE-2022-42971 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.3 INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCE CWE-732
+Schneider Electric APC Easy UPS Online versions 2.5-GA and prior run the Tomcat instance with SYSTEM privileges. “NT AUTHORITY\Authenticated Users” could create new files in the Tomcat web root directory and could create and execute a maliciously crafted JSP file to escalate privileges and execute commands with system privileges. 
+CVE-2022-42972 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.4 USE OF HARD-CODED CREDENTIALS CWE-798 
+Schneider Electric APC Easy UPS Online versions 2.5-GA and prior use hard-coded MySQL database credentials. A local unauthorized user with access to the database could use the “select into dumpfile” operation to create arbitrary files, which could be used to execute commands with system privileges. 
+CVE-2022-42973 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: France 
+
+3.4 RESEARCHER
+rgod, working with Trend Micro Zero Day Initiative, reported CVE-2022-42970, CVE-2022-42971, and CVE-2022-42973 to CISA. 
+Piotr Bazydlo of Trend Micro Zero Day Initiative reported CVE-2022-42972 to CISA. 
+4. MITIGATIONS
+Schneider Electric recommends users to update the affected product to the latest version. See Schneider Electric’s security advisory for more information. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

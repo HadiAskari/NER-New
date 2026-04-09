@@ -1,0 +1,77 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: PTC
+Equipment: Kepware KEPServerEX
+Vulnerabilities: Heap-based Buffer Overflow, Stack-based Buffer Overflow
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-242-10 PTC Kepware KEPServerEX that was published August 30, 2022, to the ICS webpage at www.cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to crash the device or remotely execute arbitrary code.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following PTC products are affected by vulnerabilities found in Kepware KEPServerEX, a connectivity platform:
+
+Kepware KEPServerEX: Versions prior to 6.12
+ThingWorkx Kepware Server: Versions prior to 6.12
+ThingWorkx Industrial Connectivity: All versions
+OPC-Aggregator: Versions prior to 6.12
+ThingWorkx Kepware Edge: Versions 1.4 and prior
+
+The following products are known to be vulnerable:
+
+Rockwell Automation KEPServer Enterprise: Versions prior to v6.12
+GE Digital Industrial Gateway Server: Versions prior to v7.612
+Software Toolbox TOP Server: Versions prior to v6.12
+	 
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    HEAP-BASED BUFFER OVERFLOW CWE-122
+Specifically crafted OPC UA messages transmitted to the server could allow an attacker to crash the server and leak data.
+CVE-2022-2848 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H).
+4.2.2    STACK-BASED BUFFER OVERFLOW CWE-121
+Specifically crafted OPC UA messages transmitted to the server could allow an attacker to crash the server and remotely execute code.
+CVE-2022-2825 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+4.4 RESEARCHER
+Vera Mens, Uri Katz, and Sharon Brizinov of Claroty Research, working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to PTC.
+5. MITIGATIONS
+PTC recommends updating to the latest versions of the following products:
+
+Kepware KEPServerEX should upgrade to v6.12 or later
+ThingWorx Kepware Server should upgrade to v6.12 or later
+ThingWorx Industrial Connectivity should upgrade to ThingWorx Kepware Server v6.12 or later
+OPC-Aggregator should upgrade to v6.12 or later
+ThingWorx Kepware Edge: Upgrade to v1.5 or later
+
+For additional information and instructions on upgrading PTC software, refer to PTC’s security advisory (login required).
+PTC recommends upgrading the following products to their latest versions where feasible: 
+--------- Begin Update A part 1 of 1 ---------
+
+Rockwell Automation KEPServer Enterprise should upgrade to v13.01.00 or later
+
+--------- End Update A part 1 of 1 ---------
+
+GE Digital Industrial Gateway Server should upgrade to v7.612 or later
+Software Toolbox TOP Server should upgrade to v6.12 or later
+
+Users of these products should reach out to the associated vendors for any additional information or assistance with these products.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

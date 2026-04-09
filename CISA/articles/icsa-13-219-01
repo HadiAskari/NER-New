@@ -1,0 +1,52 @@
+
+Overview
+Adam Crain of Automatak and independent researcher Chris Sistrunk have identified improper DNP3 input validation in Schweitzer Engineering Laboratories’ real-time automation controllers (RTAC). Schweitzer Engineering Laboratories (SEL) has produced updated firmware that mitigates this vulnerability. Adam Crain and Chris Sistrunk tested this version to validate that it resolves the vulnerability. This vulnerability could be exploited remotely.
+Affected Products
+The following SEL products are affected:
+·         SEL-3530-R100 -V0-Z001001-D20090915 through SEL-3530- SEL-3530-R123-V0-Z002001
+·         SEL-3530-4-R107-V0-Z001001-D20100818 through SEL-3530-4-R123-V0-Z002001-D20130117
+·         SEL-3505-R119-V0-Z001001-D20120720 through SEL-3505-R123-V0-Z002001-D20130117
+·         SEL-2241-R113-V0-Z001001-D20110721 through SEL-2241-R123-V0-Z002001-D20130117 
+Impact
+The RTAC master device can be sent into an infinite loop by sending a specially crafted TCP packet from the master station on an IP-based network. If the device is connected via a serial connection, the same attack can be accomplished with physical access to the master station.  In certain conditions the DNP3 driver will automatically restart and resume communications. Under more severe conditions the device ALARM contact will assert indicating a problem and the device configuration settings must be reloaded.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+Background
+SEL is a US-based company that maintains offices in the United States and around the world.
+The affected products are RTACs designed for industrial environments. These devices are mostly used in the electric utilities subsector of the energy sector. SEL estimates that these products are used primarily in North America and Europe with a small percentage in Asia.
+Vulnerability Characterization
+Vulnerability Overview
+As this vulnerability affects Internet Protocol-connected and serial-connected devices, two CVSS scores have been calculated.
+
+IMPROPER INPUT VALIDATION - IP-BasedCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed August 06, 2013.
+
+The SEL RTAC master does not validate or incorrectly validates input. An attacker could cause the software to go into an infinite loop, causing the process to crash. In certain conditions the DNP3 driver will automatically restart and resume communications.  Under more severe conditions the device ALARM contact will assert indicating a problem and the device configuration settings must be reloaded.
+The following scoring is for IP-connected devices.
+CVE-2013-2792NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2792, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed August 06, 2013.
+
+IMPROPER INPUT VALIDATION - Serial-BasedCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, Web site last accessed August 06, 2013.
+
+The SEL RTAC master does not validate or incorrectly validate input. An attacker could cause the software to go into an infinite loop, causing the process to crash. In certain conditions the DNP3 driver will automatically restart and resume communications.  Under more severe conditions the device ALARM contact will assert indicating a problem and the device configuration settings must be reloaded.
+The following scoring is for serial-connected devices.
+CVE- 2013-2798NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2798, NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.7 has been assigned; the CVSS vector string is (AV:L/AC:M/Au:N/C:N/I:N/A:C)CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:M/Au:N/C:N/I:N/A:C, Web site last accessed August 06, 2013..
+Vulnerability Details
+Exploitability
+The IP-based vulnerability could be exploited remotely.
+The serial-based vulnerability is not remotely exploitable. Local access to the serial-based outstation is required.
+Existence of Exploit
+No known public exploits specifically target these vulnerabilities.
+Difficulty
+An attacker with a moderate skill level could craft an IP packet that would be able to exploit this vulnerability for an IP-based device.
+An attacker with a high skill level could exploit serial-based vulnerability as physical access to the device or some amount of social engineering is required.
+Mitigation
+SEL recommends that customers affected by this issue should contact their SEL Sales Representative or Customer Service Representative to obtain a free firmware upgrade CD-ROM packet, including upgrade instructions.
+In addition, the researchers suggest the following mitigations:
+·         Block DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DPN3-specific rule sets.
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+·         Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+·         Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+·         When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed August 06, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed August 06, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.
+ 
+ 

@@ -1,0 +1,51 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.3
+ATTENTION: Exploitable remotely
+Vendor: B&R Industrial Automation
+Equipment: Automation Studio 4
+Vulnerability: Unrestricted Upload of File with Dangerous Type
+
+2. RISK EVALUATION
+An attacker could leverage this vulnerability to execute code within the context of the affected system, which may threaten the integrity and confidentiality of data or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+B&R Automation reports the vulnerabilities affect the following versions of Automation Studio, a programmable logic controller (PLC) automation programming software:
+
+Automation Studio 4: All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+If the PLC has not been sufficiently secured, an attacker could manipulate stored project information. Alternatively, a remote attacker may use spoofing techniques to connect B&R Automation Studio to an attacker-controlled device with manipulated project files. When using project upload in B&R Automation Studio, such crafted projects will be loaded and opened in the security context of Automation Studio. This may result in remote code execution, information disclosure, and denial-of-service of the system running B&R Automation Studio.
+CVE-2021-22289 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Austria
+
+3.4 RESEARCHER
+Mr. Mashav Sapir of Claroty reported this vulnerability to CISA.
+4. MITIGATIONS
+Note: This feature is not activated by default. Do not use or enable the feature if it is not necessary for projects.
+B&R recommends users using this vulnerable project upload feature employ the following mitigations to minimize the risk of vulnerability exploitation:
+
+Use only Automation Network Service Link (ANSL) over SSL and enable authentication on the PLC.
+Configure password protection when using the “Backing up project source files on the target system” feature. Use strong passwords.
+Protect networks with PLCs from unauthorized access by using firewalls.
+Do not run B&R Automation Studio with elevated user privileges.
+Verify the integrity of B&R Automation Studio project files, which are exchanged via potentially insecure channels (e. g., using hashes or digital signatures).
+Ensure Windows User Access Control (UAC) is enabled
+
+In general, B&R recommends implementing B&R Cyber Security guidelines. For additional information and support, users should contact B&R directly. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+No known public exploits specifically target this vulnerability. This vulnerability has a high attack complexity.

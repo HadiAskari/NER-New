@@ -1,0 +1,126 @@
+
+
+Description
+
+This alert update provides additional information, updating NCCIC/ICS-CERT Alert titled ICS-ALERT-14-009-01B Situational Awareness Alert for OpenSSL Vulnerability (UPDATE B) that was published April 12, 2014, on the ICS-CERT web site.
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+SUMMARY
+This alert update is a follow-up to the updated NCCIC/ICS-CERT Alert titled ICS-ALERT-14-009-01B Situational Awareness Alert for OpenSSL Vulnerability that was published April 12, 2014, on the ICS-CERT web site.
+ICS-CERT is aware of a public report of a vulnerability with proof-of-concept (PoC) exploit code that could expose private secure sockets layer (SSL) keys used in the OpenSSL implementation of secure communication. According to this report, the vulnerability in OpenSSL Versions 1.0.1 through 1.0.1f contains a flaw in its implementation of the transport layer security/datagram transport layer security (TLS/DTLS) heartbeat functionality that could disclose private/encrypted information to an attacker. This vulnerability is commonly referred to as “heartbleed.” This vulnerability was discovered by a team of security engineers (Riku, Antti, and Matti) at Codenomicon and Neel Mehta of Google Security, who reported this vulnerability to the National Cyber Security Centre Finland (NCSC-FI) for vulnerability coordination and reporting to the OpenSSL team. This report was released without coordination with either the vendor or ICS-CERT. ICS-CERT is issuing this alert to provide early notice of the report and identify baseline mitigations for reducing risks to this and other cybersecurity attacks.
+The report included vulnerability details and PoC exploit code for the following vulnerability:
+
+
+
+Vulnerability Type
+Remotely Exploitable
+Impact
+
+
+Heartbleed SSL key exposure
+Yes
+Private/encrypted information exposure
+
+
+
+
+ICS-CERT continues to reach out to the vendor community to bring awareness of the OpenSSL vulnerability (CVE-2014-0160). The following information is provided to assist the ICS community in making risk assessments of its environment to mitigate the threat of this exploit.
+As part of DHS NCCIC, ICS-CERT is aware of reports of attempted exploitation and is in the process of confirming these reports. ICS-CERT continues to monitor the situation closely and encourages entities to report any and all incidents regarding this vulnerability to DHS.
+
+
+REFERENCE
+
+To date, the following noninclusive list of references are available for analysis:
+http://heartbleed.com/
+http://www.kb.cert.org/vuls/id/720951
+http://digital-forensics.sans.org/blog/2014/04/10/heartbleed-links-simulcast-etc/
+
+VULNERABILITY INFORMATION
+
+
+OUT OF BOUNDS READCWE-125: Out of Bounds Read, https://cwe.mitre.org/data/definitions/125.html, web site last accessed April 12, 2014.
+
+
+A flaw in the implementation of OpenSSL (ver. 1.0.1 to 1.0.1f, and 1.0.2-beta1) could allow the private key used in Secure Sockets Layer (SSL) to be exposed. An attacker could then decrypt and read any secure data passed on the network link.
+CVE-2014-0160CVE, http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160, web site last accessed April 12, 2014. has been assigned. A CVSS score of 6.4 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:P/A:N)NVD, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:P/A:N, web site last accessed April 12, 2014.
+
+
+TECHNICAL DETAILS
+
+The vulnerability exists in the Heartbeat extension (RFC6520) to OpenSSL’s Transport Layer Security (TLS) and the Datagram Transport Layer Security (DTLS) protocols. The Heartbeat extension is functionally a “keep-alive” between end-users and the secure server. It works by sending periodic “data pulses” of 64 KB in size to the secure server and once the server receives that data; it reciprocates by resending the same data at the same size.CVE, https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0160, web site last accessed April 12, 2014.
+The out-of-bounds “read” vulnerability exists because the Heartbeat extension does not properly validate the data being sent from the end-user. As a result, a malicious actor could send a specially crafted heartbeat request to the vulnerable server and obtain sensitive information stored in memory on the server. Furthermore, even though each heartbeat only allows requests to have a data size limited to 64 KB segments, it is possible to send repeated requests to retrieve more 64 KB segments, which could include encryption keys used for certificates, passwords, usernames, and even sensitive content that were stored at the time. An attacker could harvest enough data from the 64 KB segments to piece together larger groupings of information, which could help an attacker develop a broader understanding of the information being acquired.SANS OpenSSL Vulnerability, http://digital-forensics.sans.org/blog/2014/04/10/heartbleed-links-simulcast-etc, web site last accessed April 12, 2014.
+
+
+AFFECTED PRODUCTS
+
+The following OpenSSL libraries are affected:
+OpenSSL versions 1.0.1 through 1.0.1f and 1.0.2-beta1
+--------- Begin Update C Part 1 of 1 --------
+The following ICS vendor products and versions are affected. See the advisory links for additional information such as how to obtain the available patches/upgrades:
+Innominate – http://ics-cert.us-cert.gov/advisories/ICSA-14-105-02
+
+mGuard firmware Versions 8.0.0 and 8.0.1 (patched)
+mGuard firmware versions prior to 8.0.0 whether running on Innominate, Phoenix Contact, or other brands of devices are NOT affected.
+
+Siemens – http://ics-cert.us-cert.gov/advisories/ICSA-14-105-03
+
+eLAN-8.2 eLAN prior to 8.3.3 (affected when RIP is used - update available)
+WinCC OA only V3.12 (always affected)
+S7-1500 V1.5 (affected when HTTPS active)
+CP1543-1 V1.1 (affected when FTPS active)
+APE 2.0 (affected when SSL/TLS component is used in customer implementation).
+
+--------- End Update C Part 1 of 1----------
+ICS-CERT encourages any asset owners/operators, developers, or vendors to coordinate known implementations of the affected products directly with ICS-CERT.
+As OpenSSL may be used as a third-party component, asset owners, operators, and SCADA software developers are encouraged to investigate the use of the affected versions of OpenSSL in their environments.
+
+MITIGATION
+
+OpenSSL Version 1.0.1g has addressed and mitigates this vulnerability. Please contact your software vendor to check for availability of updates. Any system that may be affected by this vulnerability should regenerate any credential information (secret keys, passwords, etc.) with the assumption that an attacker has already used this vulnerability to obtain those items.
+
+
+DEVELOPERS
+
+Upgrade affected TLS/TDLS clients and servers to OpenSSL version 1.0.1g. Alternatively, affected versions of OpenSSL may be recompiled with the option “-DOPENSSL_NO_HEARTBEATS” to mitigate the vulnerability until an upgrade can be performed.
+
+ASSET OWNERS/OPERATORS
+
+Contact equipment vendors for specific mitigation information as the implementations may vary. In addition, IDS signatures are available that may provide awareness of an attack of this nature occurring. An example of these rule sets can be found hereIDS signature examples, http://blog.fox-it.com/2014/04/08/openssl-heartbleed-bug-live-blog/, web site last accessed April 12, 2014.:
+alert tcp any [!80,!445] -> any [!80,!445] (msg:"FOX-SRT - Suspicious - SSLv3 Large Heartbeat Response"; flow:established,to_client; content:"|18 03 00|"; depth: 3; byte_test:2, >, 200, 3, big; byte_test:2, <, 16385, 3, big; threshold:type limit, track by_src, count 1, seconds 600; reference:cve,2014-0160; classtype:bad-unknown; sid: 1000000; rev:4;)
+Additional Snort signatures have been provided by the FBI, “Mitigation against Open Secure Socket Layer Heartbeat Extension Vulnerability” at http://ics-cert.us-cert.gov/UPDATE-FBI-Snort-Signatures-Heartbleed-April-2014.
+Snort community rules can be found at http://www.snort.org/snort-rules/#community.
+Additional indicators of compromise are available on the Control Systems compartment of the US-CERT secure portal for owners and operators of critical infrastructure.
+ICS-CERT encourages U.S. asset owners and operators to join the Control Systems compartment of the US-CERT secure portal. Send your name, e-mail address, and company affiliation to ics-cert@hq.dhs.gov.
+NOTE:  ICS-CERT has not tested the validity or efficacy of these rule sets and cautions users to thoroughly test these solutions before implementing them into production environments!
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not      accessible from the Internet.CS-CERT ALERT, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-10-301-01, web site last accessed April 12, 2014.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+ICS-CERT also provides a recommended practices section for control systems on the ICS-CERT web site (http://ics-cert.us-cert.gov). Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Organizations that observe any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+
+

@@ -1,0 +1,57 @@
+
+OVERVIEW
+Siemens reports that they have released a firmware update for SIPROTEC 4 and SIPROTEC Compact devices to mitigate authentication bypass and resource exhaustion vulnerabilities. Kirill Nesterov and Anatoly Katushin from Kaspersky Lab reported some of these vulnerabilities directly to Siemens.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+Siemens reports that these vulnerabilities affect the following products:
+
+EN100 Ethernet module (as optional for SIPROTEC 4 and SIPROTEC Compact): All versions prior to V4.29
+
+IMPACT
+An attacker may be able to access the administrative web application by exploiting these vulnerabilities.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected products, SIPROTEC 4 and SIPROTEC Compact devices, provide a wide range of integrated protection, control, measurement, and automation functions for electrical substations and other fields of application. The EN100 module is used for enabling IEC 61850 communications with electrical/optical 100 Mbit interface for SIPROTEC 4 and SIPROTEC Compact devices. According to Siemens, SIPROTEC devices are deployed across several sectors including Energy. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+AUTHENTICATION BYPASS ISSUESCWE-592: Authentication Bypass Issues, http://cwe.mitre.org/data/definitions/592.html, web site last accessed September 6, 2016.
+
+Attackers with network access to the device’s web interface (Port 80/TCP) could possibly circumvent authentication and perform administrative operations.
+CVE-2016-7112NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7112, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N, web site last accessed September 6, 2016.
+
+RESOURCE EXHAUSTIONCWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion'), http://cwe.mitre.org/data/definitions/400.html, web site last accessed September 6, 2016.
+
+Specially crafted packets sent to Port 80/TCP could cause the affected device to go into defect mode.
+CVE-2016-7113NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7113, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L, web site last accessed September 6, 2016.
+
+AUTHENTICATION BYPASS ISSUESCWE-592: Authentication Bypass Issues, http://cwe.mitre.org/data/definitions/592.html, web site last accessed September 6, 2016.
+
+Attackers with network access to the device’s web interface (Port 80/TCP) could possibly circumvent authentication and perform administrative operations. A legitimate user must be logged into the web interface for the attack to be successful.
+CVE-2016-7114NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-7114, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N, web site last accessed September 6, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens provides firmware update V4.29 for EN100 modules included in SIPROTEC 4 and SIPROTEC Compact devices to fix the vulnerabilities. Siemens recommends users update to the latest firmware version.
+The firmware update for SIPROTEC 4 can be obtained from the SIPROTEC 4 downloads area:
+http://www.siemens.com/downloads/siprotec-4 (further navigation required to select correct update)
+The firmware update for SIPROTEC Compact with EN100 module can be obtained here:
+http://www.siemens.com/downloads/siprotec-compact (further navigation required to select correct update)
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens Security Advisory SSA-630413 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

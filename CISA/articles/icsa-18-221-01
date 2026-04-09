@@ -1,0 +1,55 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Crestron
+Equipment: TSW-X60 and MC3
+Vulnerabilities: OS Command Injections, Improper Access Control, Insufficiently Protected Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow remote code execution with escalated system privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products and versions are affected:
+
+TSW-X60, all versions prior to 2.001.0037.001; and
+MC3, all versions prior to 1.502.0047.001
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OS COMMAND INJECTION CWE-78
+This vulnerability may allow unauthenticated remote code execution via a Bash shell service in Crestron Toolbox Protocol (CTP). This vulnerability only affects TSW-X60 devices.
+CVE-2018-11228 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    OS COMMAND INJECTION CWE-78
+The vulnerability may allow unauthenticated remote code execution via command injection in Crestron Toolbox Protocol (CTP). This vulnerability only affects TSW-X60 devices.
+CVE-2018-11229 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER ACCESS CONTROL CWE-284
+The devices are shipped with authentication disabled, and there is no indication to users that they need to take steps to enable it. When compromised, the access to the CTP console is left open.
+CVE-2018-10630 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The passwords for special sudo accounts may be calculated using information accessible to those with regular user privileges. Attackers could decipher these passwords, which may allow them to execute hidden API calls and escape the CTP console sandbox environment with elevated privileges.
+CVE-2018-13341 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Government Facilities, Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Jackson Thuraisamy, working with Security Compass, reported some of these vulnerabilities to Crestron. In addition, Ricky “HeadlessZeke” Lawshae, working with Trend Micro’s Zero Day Initiative, reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Crestron recommends users upgrade their devices to the newest firmware located at:
+TSW-X60 (login required) – https://www.crestron.com/en-US/Software-Firmware/Firmware/Touchpanels/TSW-560-TSW-760-TSW-1060/2-001-0040-01
+MC3 (login required) – https://www.crestron.com/en-US/Software-Firmware/Firmware/3-Series-Processors/MC3/1-502-0047-001
+Crestron also recommends users refer to Crestron’s Online Help for more information about these and other vulnerabilities (Article #5471). Information for hardening devices is available in Article #5571.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

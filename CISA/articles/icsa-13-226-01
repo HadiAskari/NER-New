@@ -1,0 +1,50 @@
+
+OVERVIEW
+Adam Crain of Automatak and independent researcher Chris Sistrunk have identified a improper input validation vulnerability in the Kepware Technologies’ DNP Master Driver for the KEPServerEX Communications Platform. Kepware Technologies has produced a new version that mitigates this vulnerability. The researchers have tested the new version to validate that it resolves the vulnerability. This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Kepware Technologies products are affected:
+
+Kepware Technologies’ DNP Master Driver for the KEPServerEX Communicaitons Platform (Version v5.11.250.0).
+
+IMPACT
+The master station can be sent into an infinite loop by sending a specially crafted TCP packet or through serial communications. A successful attack exploiting this vulnerability could allow an attacker to put the master station into an infinite loop, causing a denial-of-service condition. The master station must be manually restarted to recover from the loop condition.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Kepware Technologies is a US-based company that maintains offices primarily in Portland, Maine. The KEPServerEX Communications Platform is used for industry and third-party connectivity communication software for automation, both OPC and embedded device communications.
+The affected product is a Microsoft Windows-based software that facilitates connectivity to multiple DNP3 compliant devices such as human-machine interfaces, remote terminal units, programmable logic controllers, and meters. According to Kepware Technologies, the KEPServerEX is deployed across several sectors including building automation, power distribution, oil and gas, and water and waste water.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation,  http://cwe.mitre.org/data/definitions/20.html, Web site last accessed August 14, 2013.
+
+The Kepware Technologies’ DNP Master Driver does not validate input on Port 20000/TCP. This can allow an infinite loop to occur outside the protocol stack, requiring a manual restart to restore communication and control.
+CVE-2013-2789NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2789 , NIST uses this advisory to create the CVE Web site report. This Web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 7.1 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:N/I:N/A:C).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:N/I:N/A:C, Web site last visited August 14, 2013.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+An attacker with a moderate skill would be able to exploit this vulnerability.
+MITIGATION
+Kepware Technologies has produced a new version of the software, V5.12.140.0, which resolves the vulnerability. Information about the new version is available at the Kepware support site (login required):
+https://my.kepware.com/mykepware/Login.aspx
+The researchers suggest the following mitigations:
+
+Block DNP3 traffic from traversing onto business or corporate networks through the use of an IPS or firewall with DPN3-specific rule sets.
+
+ICS‑CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.CSSP Recommended Practices, http://ics-cert.us-cert.gov/content/recommended-practices, Web site last accessed August 14, 2013. ICS‑CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies,Targeted Cyber Intrusion Detection and Mitigation Strategies, http://ics-cert.us-cert.gov/tips/ICS-TIP-12-146-01B, Web site last accessed August 14, 2013. that is available for download from the ICS-CERT Web page (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS‑CERT for tracking and correlation against other incidents.
+In addition, ICS‑CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click Web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, Web site last accessed August 14, 2013. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, Web site last accessed August 14, 2013. for more information on social engineering attacks.
+

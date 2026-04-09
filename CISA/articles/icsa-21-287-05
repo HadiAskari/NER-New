@@ -1,0 +1,93 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SINEC NMS network management software
+Vulnerabilities: Improper Limitation of a Pathname to a Restricted Directory, Improper Authorization, Exposure of Sensitive Information to an Unauthorized Actor, Deserialization of Untrusted Data, Improper Neutralization of Special Elements used in an SQL Command
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an authenticated remote attacker to execute arbitrary code on the system, with system privileges, under certain conditions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Siemens SINEC NMS software are affected:
+
+SINEC NMS: Versions prior to v1.0 SP2 Update 1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The affected system has a path traversal vulnerability when exporting a firmware container, which could allow a privileged, authenticated attacker to create arbitrary files on an affected system.
+CVE-2021-33722 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2    IMPROPER AUTHORIZATION CWE-285
+An authenticated attacker could change the user profile of any user without proper authorization, which could allow an attacker to change the password of any user in the affected system.
+CVE-2021-33723 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The affected system contains an arbitrary file deletion vulnerability that could allow an attacker to delete an arbitrary file or directory under a user-controlled path.
+CVE-2021-33724 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The affected system allows the deletion of arbitrary files or directories under a user-controlled path and does not correctly check if the relative path is still within the intended target directory.
+CVE-2021-33725 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).
+3.2.5    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The affected system allows to download arbitrary files under a user-controlled path and does not correctly check if the relative path is still within the intended target directory.
+CVE-2021-33726 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.6    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+An authenticated attacker could download the user profile of any user, allowing an attacker to leak confidential information.
+CVE-2021-33727 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+3.2.7    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+The affected system allows uploading JSON objects that are deserialized to Java objects. Due to insecure deserialization of user-supplied content by the affected software, a privileged attacker could exploit this vulnerability by sending a crafted serialized Java object.
+CVE-2021-33728 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.8    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND (‘SQL INJECTION’) CWE-89
+An authenticated attacker could import firmware containers to an affected system and execute arbitrary commands in the local database.
+CVE-2021-33729 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+3.2.9    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND (‘SQL INJECTION’) CWE-89
+A privileged, authenticated attacker could execute arbitrary commands in the local database by sending crafted requests to the web server of the affected application.
+CVE-2021-33730 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.10    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND (‘SQL INJECTION’) CWE-89
+A privileged authenticated attacker could execute arbitrary commands in the local database by sending crafted requests to the web server of the affected application.
+CVE-2021-33731 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.11    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND (‘SQL INJECTION’) CWE-89
+A privileged, authenticated attacker could execute arbitrary commands in the local database by sending crafted requests to the web server of the affected application.
+CVE-2021-33732 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.12    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND (‘SQL INJECTION’) CWE-89
+A privileged, authenticated attacker could execute arbitrary commands in the local database by sending crafted requests to the web server of the affected application.
+CVE-2021-33733 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.13    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND (‘SQL INJECTION’) CWE-89
+A privileged, authenticated attacker could execute arbitrary commands in the local database by sending crafted requests to the web server of the affected application.
+CVE-2021-33734 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.14    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND (‘SQL INJECTION’) CWE-89
+A privileged, authenticated attacker could execute arbitrary commands in the local database by sending crafted requests to the web server of the affected application.
+CVE-2021-33735 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.15    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND (‘SQL INJECTION’) CWE-89
+A privileged, authenticated attacker could execute arbitrary commands in the local database by sending crafted requests to the web server of the affected application.
+CVE-2021-33736 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Claroty’s Noam Moshe reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens has released an update for SINEC NMS and recommends updating to the latest version: v1.0 SP2 Update 1 or later.
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Restrict access to the affected systems, especially to Port 443/TCP, to trusted IP addresses only.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security, and following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For additional information, please refer to Siemens Security Advisory SSA-163251
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

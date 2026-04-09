@@ -1,0 +1,72 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC Products, TIM 1531 IRC
+Vulnerabilities: Improper Input Validation, Improper Validation of Specified Quantity in Input, Improper Validation of Specified Type of Input, Improper Validation of Syntactic Correctness of Input
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in a remote attacker causing a denial-of-service condition on the affected devices.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following software from Siemens is affected:
+
+SIMATIC Drive Controller family: All versions prior to V3.0.1
+SIMATIC ET 200SP Open Controller CPU 1515SP PC2 (incl. SIPLUS variants): All versions
+SIMATIC S7-1200 CPU family (incl. SIPLUS variants): All versions prior to V4.6.0
+SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants): All versions prior to V3.0.1
+SIMATIC S7-1500 Software Controller: All versions
+SIMATIC S7-PLCSIM Advanced: All versions prior V5.0
+SIPLUS TIM 1531 IRC (6AG1543-1MX00-7XE0): All versions
+TIM 1531 IRC (6GK7543-1MX00-0XE0): All versions
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+Affected devices do not correctly process certain specially crafted packets sent to port 102/TCP, which could allow an attacker to cause a denial-of-service condition on the device.
+CVE-2021-40365 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated. the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)
+3.2.2    IMPROPER VALIDATION OF SPECIFIED QUANTITY IN INPUT CWE-1284
+Affected devices do not correctly process certain specially crafted packets sent to port 102/TCP, which could allow an attacker to cause a denial-of-service condition on the device.
+CVE-2021-44693 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated. the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H)
+3.2.3    IMPROPER VALIDATION OF SPECIFIED TYPE OF INPUT CWE-1287
+Affected devices do not correctly process certain specially crafted packets sent to port 102/TCP, which could allow an attacker to cause a denial-of-service condition on the device.
+CVE-2021-44694 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated. the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:H)
+3.2.4    IMPROPER VALIDATION OF SYNTACTIC CORRECTNESS OF INPUT CWE-1286
+Affected devices do not correctly process certain specially crafted packets sent to port 102/TCP, which could allow an attacker to cause a denial-of-service condition on the device.
+CVE-2021-44695 has been assigned to this vulnerability. A CVSS v3 base score of 4.9 has been calculated. the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H)
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Gao Jian reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+Siemens released updates for several affected products and recommends updating to the latest versions. Siemens is preparing further updates and recommends countermeasures for products where updates are not, or not yet, available.
+
+SIMATIC Drive Controller family: Update to V3.0.1 or later version
+SIMATIC S7-PLCSIM Advanced: Update to V5.0 or later version
+SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants): Update to V3.0.1 or later version
+SIMATIC S7-1200 CPU family (incl. SIPLUS variants): Update to V4.6.0 or later version
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Restrict access to port 102/TCP to trusted systems with an external firewall
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security, and to follow the recommendations in the product manuals. Additional information on Industrial Security by Siemens can be found here.  
+For further inquiries on security vulnerabilities in Siemens products, users should contact Siemens ProductCERT.
+For more information, see the associated Siemens security advisory SSA-382653 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

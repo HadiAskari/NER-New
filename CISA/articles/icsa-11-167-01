@@ -1,0 +1,38 @@
+
+Overview
+ICS-CERT has received a report from Security researcher Dillon Beresford of NSS Labs concerning vulnerabililities affecting Sunway ForceControl and pNetPower SCADA/HMI applications. The reported vulnerabilities are heap-based buffer overflows that could result in a denial of service or the execution of arbitrary code.
+ICS-CERT has coordinated with the researcher, China National Vulnerability Database (CNVD), and Sunway to ensure full remediation of the reported vulnerabilities. Sunway has issued two patches that address both vulnerabilities. CNVD has confirmed the effectiveness of the patches issued by Sunway. Neither ICS-CERT nor the researcher has validated these patches. Sunway has issued a security bulletin describing their response.
+Affected Products
+According to the researcher, these vulnerabilities affect Sunway ForceControl 6.1 (SP1, SP2, and SP3) and pNetPower Version 6.
+Impact
+Successful exploitation of these vulnerabilities could allow an attacker to perform a remote denial of service or to remotely execute arbitrary code against the ForceControl and pNetPower server applications. This action can result in adverse application conditions and ultimately impact the production environment on which the SCADA system is used.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their environment, architecture, and product implementation.
+Background
+Beijing-based Sunway ForceControl Technology Co. provides SCADA HMI applications for a variety of industries. Sunway’s products are deployed primarily in China. According to the Sunway website, the products are also deployed in Europe, the Americas, Asia, and Africa. Sunway products are deployed across a wide variety of industries including petroleum, petrochemical, defense, railways, coal, energy, pharmaceutical, telecommunications, water, manufacturing, and others.
+Vulnerability Characterization
+Vulnerability Overview
+The following two vulnerabilities have been identified:
+
+The heap-based buffer overflow affecting ForceControl 6.1 WebServer can be exploited if an attacker makes a request to the httpsvr.exe process with a specially crafted HTTP URL. Successful exploitation results in a denial of service and the possible execution of arbitrary code.
+The heap-based buffer overflow affecting pNetPower AngelServer can be exploited if an attacker sends specially crafted UDP packets to the AngelServer.exe process. Successful exploitation results in a denial of service and the possible execution of arbitrary code.
+
+Vulnerability Details
+Exploitability
+Remote exploitability of this vulnerability could be possible.
+Existence of Exploit
+No known exploits specifically target this vulnerability.
+Difficulty
+Consistent exploit code is unlikely. An attacker would require at least an intermediate skill level to exploit this vulnerability.
+Mitigation
+Sunway has developed patches for both vulnerabilities, available at the Sunway website:
+
+For patching the ForceControl 6.1 WebServer URL request heap buffer overflow
+
+File Version: 6.0.5.3KB File Size: 27KBPublished: May 20, 2011Download Address: http://www.eforcecon.com/download_view.asp?Nid=3594Validated by : CNVD
+
+For patching the pNetPower 6.1 AngelServer UDP packet heap buffer overflow
+
+File Version: 6.0.11.3File Size: 32KBPublished: May 20, 2011Download Address: http://www.eforcecon.com/download_view.asp?Nid=3595Validated by : CNVD
+ICS-CERT encourages asset owners to minimize network exposure for all control system devices. Critical devices should not directly face the Internet. Locate control system networks and remote devices behind firewalls and isolate them from the business network. When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+The Control Systems Security Program (CSSP) also provides a section for control system security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.

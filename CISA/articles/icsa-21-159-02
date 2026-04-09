@@ -1,0 +1,75 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Open Design Alliance
+Equipment: Drawings SDK
+Vulnerabilities: Out-of-bounds Read, Out-of-bounds Write, Improper check for Unusual or Exceptional Conditions, Use After Free
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow code execution in the context of the current process or cause a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Drawings SDK, a software development kit for DWG and DGN, are affected:
+
+Drawings SDK: All versions prior to 2022.4
+Drawing SDK: Version 2022.4 is affected by CVE-2021-32946 and CVE-2021-32952
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS READ CWE-125
+The affected products are vulnerable to an out-of-bounds read due to parsing of DWG files resulting from the lack of proper validation of user-supplied data. This can result in a read past the end of an allocated buffer and allows attackers to cause a denial-of service condition or read sensitive information from memory.
+CVE-2021-32938 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L).
+3.2.2    OUT-OF-BOUNDS WRITE CWE-787
+An out-of-bounds write issue exists in the DXF file-recovering procedure resulting from the lack of proper validation of user-supplied data. This can result in a write past the end of an allocated buffer and allow attackers to cause a denial-of-service condition or execute code in the context of the current process.
+CVE-2021-32936 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    OUT-OF-BOUNDS READ CWE-125
+An out-of-bounds read issue exists in the DWG file-recovering procedure resulting from the lack of proper validation of user-supplied data. This can result in a read past the end of an allocated buffer and allow attackers to cause a denial-of-service condition or read sensitive information from memory locations.
+CVE-2021-32940 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L).
+3.2.4    IMPROPER CHECK FOR UNUSUAL OR EXCEPTIONAL CONDITIONS CWE-754
+An improper check for unusual or exceptional conditions issue exists within the parsing DGN files resulting from the lack of proper validation of the user-supplied data. This may result in several of out-of-bounds problems and allow attackers to cause a denial-of-service condition or execute code in the context of the current process.
+CVE-2021-32946 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.5    OUT-OF-BOUNDS WRITE CWE-787
+An out-of-bounds write issue exists in the DWG file-reading procedure resulting from the lack of proper validation of user-supplied data. This can result in a write past the end of an allocated buffer and allow attackers to cause a denial-of-service condition or execute code in the context of the current process.
+CVE-2021-32948 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.6    OUT-OF-BOUNDS READ CWE-125
+An out-of-bounds read issue exists within the parsing of DXF files in the affected product resulting from the lack of proper validation of user-supplied data. This can result in a read past the end of an allocated buffer and allows attackers to cause a denial-of-service condition or read sensitive information from memory locations.
+CVE-2021-32950 has been assigned to this vulnerability. A CVSS v3 base score of 4.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L).
+3.2.7    OUT-OF-BOUNDS WRITE CWE-787
+An out-of-bounds write issue exists in the DGN file-reading procedure in the affected product resulting from the lack of proper validation of user-supplied data. This can result in a write past the end of an allocated buffer and allow attackers to cause a denial-of-service condition or execute code in the context of the current process.
+CVE-2021-32952 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.8    USE AFTER FREE CWE-416
+A use-after-free issue exists in the DGN file-reading procedure in the affected product resulting from the lack of proper validation of user-supplied data. This can result in a memory corruption or arbitrary code execution, allowing attackers to cause a denial-of-service condition or execute code in the context of the current process.
+CVE-2021-32944 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Mat Powell and Brian Gorenc of Trend Micro’s Zero Day Initiative reported these vulnerabilities to CISA. Siemens ProductCERT assisted coordination with Open Design Alliance.
+4. MITIGATIONS
+Open Design Alliance recommends updating to v2022.5 or later (login and ODA membership required).
+For more information refer to Open Design Alliance’s Security Advisories.
+CISA recommends users take the following measures to protect themselves from social engineering attacks:
+
+Only use project files from trusted sources.
+Ensure the least-privilege user principle is followed.
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

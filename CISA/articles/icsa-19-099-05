@@ -1,0 +1,62 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: RUGGEDCOM ROX II
+Vulnerabilities: Double Free, Out-of-bounds Read, Uncontrolled Resource Consumption
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in remote code execution and/or a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following RUGGEDCOM product is affected:
+
+RUGGEDCOM ROX II: All versions prior to v2.13.0
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    DOUBLE FREE CWE-415
+The shipped version of the Quagga BGP daemon (bgpd) can double free memory when processing certain forms of UPDATE messages, containing cluster-list and/or unknown attributes. A successful attack could cause a denial of service or allow an attacker to execute arbitrary code.
+This vulnerability could be exploited by an attacker spoofing a malicious BGP UPDATE message within the network.
+CVE-2018-5379 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    OUT-OF-BOUNDS READ CWE-125
+The shipped version of the Quagga BGP daemon (bgpd) can overrun internal BGP code-to-string conversion tables used for debug by 1 pointer value, based on input.
+The vulnerability could be exploited by an attacker spoofing a malicious BGP code-point. Successful exploitation requires the attacker to be in the position of a configured, trusted BGP peer.
+CVE-2018-5380 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L).
+3.2.3    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The shipped version of the Quagga BGP daemon (bgpd) has a bug in its parsing of “Capabilities” in BGP OPEN messages. The parser can enter an infinite loop on invalid capabilities, causing a denial of service.
+The vulnerability could be exploited by an attacker spoofing a malicious BGP OPEN message. Successful exploitation requires the attacker to be in the position of a configured, trusted BGP peer.
+CVE-2018-5381 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Healthcare and Public Health, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Siemens has provided firmware update v2.13.0 to fix these vulnerabilities. The firmware updates for RUGGEDCOM ROX-based devices can be obtained by contacting the RUGGEDCOM support team at (login required):
+https://support.industry.siemens.com/my/WW/en/requests#createRequest
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Disable the BGP routing service if not in use in your setup.
+Configure BGP passwords to authenticate BGP neighbors.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for Industrial Security (Download), and following the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at:
+https://www.siemens.com/industrialsecurity
+For more information on the vulnerabilities and more detailed mitigation instructions, please see Siemens Security Advisory SSA-451142 at the following location:
+http://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

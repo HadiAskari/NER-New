@@ -1,0 +1,48 @@
+
+OVERVIEW
+NCCIC/ICS-CERT received a report from HP’s Zero Day Initiative (ZDI) concerning hardcoded credentials and authentication bypass vulnerabilities in Moxa’s OnCell Central Manager Software. These vulnerabilities were reported to ZDI by security researcher Andrea Micalizzi. Moxa has released a new version to mitigate these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Moxa OnCell Central Manager Software versions are affected:
+
+OnCell Central Manager Software prior to version 2.2.
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow an attacker to bypass the authentication mechanisms and perform remote code execution.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Moxa is a Taiwan-based company that maintains offices in several countries around the world, including the US, UK, India, Germany, France, China, Russia, and Brazil.
+The affected product, OnCell Central Manager, is a central management software that allows configuration, management, and monitoring of remote devices. According to Moxa, OnCell Central Manager is deployed across several sectors, including Commercial Facilities, Critical Manufacturing, Energy, Transportation Systems, and others. Moxa estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+USE OF HARD-CODED CREDENTIALSCWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, web site last accessed November 24, 2015.
+
+The affected products contain a hard-coded root account with full privilege access.
+CVE-2015-6481NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6481, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L, web site last accessed November 24, 2015.
+
+AUTHENTICATION BYPASS ISSUESCWE-592: Authentication Bypass Issues, http://cwe.mitre.org/data/definitions/592.html, web site last accessed November 24, 2015.
+
+The affected products contain a vulnerable servlet that could be used to bypass the authentication mechanism.
+CVE-2015-6480NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-6480, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L, web site last accessed November 24, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Moxa has released OnCell Central Manager, Version 2.2, to mitigate these vulnerabilities. Moxa recommends upgrading to Version 2.2, which can be downloaded at the following URL:
+http://www.moxa.com/support/sarch_result.aspx?type=soft&prod_id=3116&type_id=6
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Use application whitelisting, which will not prevent memory-based attacks such as exploiting buffer overflows vulnerabilities, but it can prevent shellcode from running executables that have not been authorized, thereby limiting the impact of memory-based attacks that call files.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

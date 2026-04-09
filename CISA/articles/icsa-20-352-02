@@ -1,0 +1,126 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: PTC
+Equipment: Kepware KEPServerEX
+Vulnerabilities: Stack-based Buffer Overflow, Heap-based Buffer Overflow, Use After Free
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-352-02 PTC Kepware KEPServerEX that was published December 17, 2020, on the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to a server crashing, a denial-of-service condition, data leakage, or remote code execution. 
+4. TECHNICAL DETAILS
+
+
+4.1 AFFECTED PRODUCTS
+The following products are affected by the vulnerabilities found in Kepware KEPServerEX, a connectivity platform:
+
+KEPServerEX: v6.0 to v6.9
+ThingWorx Kepware Server: v6.8 and v6.9
+ThingWorx Industrial Connectivity: All versions 
+OPC-Aggregator: All versions
+
+--------- Begin Update A Part 1 of 2 ---------
+
+The following products may have a vulnerable component: 
+Rockwell Automation KEPServer Enterprise: v6.6.504.0 and v6.9.572.0
+GE Digital Industrial Gateway Server: v7.68.804 and v7.66
+Software Toolbox TOP Server: All 6.x versions
+
+--------- End Update A Part 1 of 2 --------- 
+4.2 VULNERABILITY OVERVIEW
+4.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+The affected products are vulnerable to a stack-based buffer overflow. Opening a specifically crafted OPC UA message could allow an attacker to crash the server and remotely execute code. 
+CVE-2020-27265 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    HEAP-BASED BUFFER OVERFLOW CWE-122
+The affected products are vulnerable to a heap-based buffer overflow. Opening a specifically crafted OPC UA message could allow an attacker to crash the server and potentially leak data. 
+CVE-2020-27263 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H).
+4.2.3    USE AFTER FREE CWE-416
+The affected products are vulnerable to a use after free vulnerability, which may allow an attacker to create and close OPC UA connections at a high rate that may cause a server to crash. 
+CVE-2020-27267 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States 
+
+4.4 RESEARCHER
+Uri Katz of Claroty reported these vulnerabilities to PTC.
+5. MITIGATIONS
+PTC has released updates for the following products and recommends that users upgrade to the most current supported version: 
+
+KEPServerEX
+
+Version 6.6 should upgrade to Version 6.6.362.0
+Version 6.7 should upgrade to Version 6.7.1067.0
+Version 6.8 should upgrade to Version 6.8.838.0
+Version 6.9 should upgrade to Version 6.9.584.0
+
+
+ThingWorx Kepware Server
+
+Version 6.8 should upgrade to Version 6.8.839.0
+Version 6.9 should upgrade to Version 6.9.584.0
+
+
+
+--------- Begin Update A Part 2 of 2 ---------
+
+ThingWorx Industrial Connectivity
+
+Version 8.4 should upgrade to Version 8.4 (6.6.362.0)
+Version 8.5 should upgrade to Version 8.5 (6.7.1068.0)
+
+
+OPC-Aggregator
+
+Version 6.9 should upgrade to Version 6.9.584.0
+
+
+
+PTC recommends users of the following products upgrade to the most current supported version:
+
+Rockwell Automation KEPServer Enterprise
+
+Version 6.6 should upgrade to Version 6.6.550.0
+Version 6.9 should upgrade to Version 6.9.584.0
+
+
+
+Rockwell recommends users upgrade to the most current version available, depending on the base version of the affected product they are using. 
+--------- End Update A Part 2 of 2 ---------
+
+
+
+GE Digital Industrial Gateway Server
+
+Versions 7.68.804 and 7.66 should update to Version 7.68.839.0
+
+
+
+The GE Digital Security Advisory GED 20-05 can be accessed on the GE Digital Security Advisories Customer Center webpage.
+
+Software Toolbox TOP Server
+
+Version 6.7 should upgrade to Version 6.7.1068.0
+Version 6.8 should upgrade to Version 6.8.840.0
+Version 6.9 should upgrade to Version 6.9.584.0
+
+
+
+Software Toolbox has released updates and recommends users update their installations. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

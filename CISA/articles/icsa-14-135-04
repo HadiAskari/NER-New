@@ -1,0 +1,48 @@
+
+OVERVIEW
+On April 09, 2014, Unified Automation GmbH announced that its OPC UA Software Development Kits (SDKs) for Windows included vulnerable OpenSSL libraries. HTTPS support is disabled by default in Unified Automation SDK products. However if HTTPS is used, Unified Automation recommends replacing the OpenSSL library with a current version (1.01.g or later) to mitigate this vulnerability.
+This vulnerability could be exploited remotely. Exploits that target this vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+The following Unified Automation GmbH OPC UA SDK for Windows versions are affected:
+
+C++ based OPC UA SDK V1.4.0 (Windows), and
+ANSI C based OPC UA SDK V1.4.0 (Windows).
+
+IMPACT
+If HTTPS is enabled, then use of OPC UA SDK is vulnerable to OpenSSL vulnerability. A missing bounds check in the handling of the TLS Heartbeat extension can be used to reveal up to 64 kB of memory on a connected device. An attacker who successfully exploits this vulnerability could read data passed to this device to include the user credentials and cryptographic keys.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Unified Automation GmbH is a German-based company with SDKs sold worldwide and a majority of customers in Europe and the United States. SDKs are used in critical manufacturing and energy sectors. The SDKs are used by manufacturers of programmable logic controllers, human-machine interface/supervisory control and data acquisition, Data Logging and Supervisory Control (DSC) systems and some manufacturing execution systems (MES) vendors.
+The affected products, C++ based OPC UA SDK V1.4.0 (Windows) and ANSI C-based OPC UA SDK V1.4.0, are software development kits for OPC. Unified Automation offers products and services in the field of standardized communication in automation industry.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed May 15, 2014.
+
+The C++ UA OPC SDK and ANSI C OPC SDK V1.4.0 use the vulnerable version of OpenSSL 1.0.1f. This affects the use of HTTPS connections, if enabled.
+CVE-2014-0160NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160, web site last accessed May 15, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:P/I:N/A:N, web site last accessed May 15, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Unified Automation recommends the following solutions for customers using the HTTPS functionality:
+
+Disable HTTPS transport by configuration in the C++ SDK (default),
+Recompile the SDK without HTTPs Support (default), or
+Download the current version of OpenSSL from http://www.openssl.org or the personal download area on the Unified Automation web site and recompile the SDK.
+
+Further information from Unified Automation can be found on its web site:
+http://www.unified-automation.com/news/news-details/article/1139-heartbleed-bug-in-openssl.html
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

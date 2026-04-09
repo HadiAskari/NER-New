@@ -1,0 +1,64 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: CPCI85 for CP-8031/CP-8050, CPCI85, SICORE
+Vulnerabilities: Unverified Password Change, Missing Authentication for Critical Function
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to perform an unauthorized password reset which could lead to privilege escalation and potential leak of information.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Siemens SICAM product versions are affected:
+
+CPCI85 Central Processing/Communication: All versions prior to V5.40
+SICORE Base system: All versions prior to V1.4.0
+
+3.2 Vulnerability Overview
+3.2.1 UNVERIFIED PASSWORD CHANGE CWE-620
+The password of administrative accounts of the affected applications can be reset without requiring the knowledge of the current password, given the auto login is enabled. This could allow an unauthorized attacker to obtain administrative access of the affected applications.
+CVE-2024-37998 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-37998. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Affected devices allow a remote authenticated user or an unauthenticated user with physical access to downgrade the firmware of the device. This could allow an attacker to downgrade the device to older versions with known vulnerabilities.
+CVE-2024-39601 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-39601. A base score of 7.1 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Jan Kaestle from Siemens Energy reported the vulnerability CVE-2024-37998 to Siemens. Steffen Robertz, Gerhard Hechenberger, Stefan Viehböck, and Constantin Schieber-Knöbl from SEC Consult Vulnerability Lab reported the vulnerability CVE-2024-39601 to Siemens.
+4. MITIGATIONS
+Siemens recommends users to update to the latest version:
+
+CPCI85 Central Processing/Communication: Update to V5.40 or later
+SICORE Base system: Update to V1.4.0 or later
+
+Siemens has identified the following specific workarounds and mitigations that customers can apply to reduce the risk:
+
+CVE-2024-37998: Disable the auto login feature
+
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage
+For more information see the associated Siemens security advisory SSA-071402 in HTML and CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+July 25, 2024: Initial Publication
+

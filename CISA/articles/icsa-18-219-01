@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Delta Electronics 
+Equipment: CNCSoft and ScreenEditor
+Vulnerabilities: Stack-based Buffer Overflow, Out-of-Bounds Read
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to gain remote code execution with administrator privileges.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+According to Delta Electronics, the following products are affected:
+
+CNCSoft Version 1.00.83 and prior, and the accompanying,
+ScreenEditor Version 1.00.54
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+Multiple stack-based buffer overflow vulnerabilities cause the software to crash due to lacking user input validation before copying data from project files onto the stack.   
+CVE-2018-10636 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    OUT-OF-BOUNDS READ CWE-125
+Two out-of-bounds read vulnerabilities cause the software to crash due to lacking user input validation for processing project files.
+CVE-2018-10598 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan
+
+3.4 RESEARCHER
+Mat Powell working with Trend Micro’s Zero Day Initiative reported CVE-2018-10598 to NCCIC. Natnael Samson (Natti) working with Trend Micro Zero Day Initiative reported CVE-2018-10636 to NCCIC.
+4. MITIGATIONS
+Delta Electronics recommends the following:
+
+Update to the latest version of CNCSoft, v1.01.09. The updated version can be found at: http://www.deltaww.com/Products/PluginWebUserControl/downloadCenterCounter.aspx?DID=84&DocPath=1&hl=en-US
+Restrict the interaction with the application to trusted files.
+
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,53 @@
+
+CVSS v3 7.5
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Rockwell Automation
+Equipment: FactoryTalk Alarms and Events
+Vulnerability: Improper Input Validation
+AFFECTED PRODUCTS
+The following versions of FactoryTalk Alarms and Events, a component of the Factory Talk Services Platform, are affected:
+
+FactoryTalk Alarms and Events, Version 2.90 and earlier
+
+FactoryTalk Alarms and Events is used in the following Rockwell Automation products:
+
+FactoryTalk Services (RSLinx Enterprise), all versions.
+FactoryTalk View SE, versions 5.00 and later.
+Studio 5000 Logix Designer, versions 24 and later.
+
+IMPACT
+Successful exploitation of this vulnerability may allow an attacker to cause a denial of service condition in the in the history archiver service running on FactoryTalk Alarms and Events.
+MITIGATION
+Rockwell Automation recommends upgrading to the latest version of FactoryTalk Alarms and Events, Version 2.90 or later, and applying available patches, which can be obtained at the following location:
+https://compatibility.rockwellautomation.com/Pages/MultiProductDownload.aspx?crumb=112
+FactoryTalk Alarm and Event history is logged using the Rockwell Alarm Historian service using Port 403, writing alarms and events to the user-configured SQL Server database. If the Rockwell Automation Alarm Historian service is on the same machine as the Rockwell Alarm Event service, then Port 403 can be blocked remotely as the historical information is being logged to the local host rather than a remote host. Any other machine in the system that does not have the Rockwell Alarm Historian service on the same machine as the Rockwell Alarm Event service will require access to Port 403. However, FactoryTalk View SE clients using the Alarm and Event Log Viewer to view FactoryTalk Alarm and Event history do not require Port 403, and can thus be blocked.
+Rockwell Automation recommends that users who are unable to update and apply available patches should pursue risk mitigation strategies provided below. In addition, users are encouraged, when possible, to combine these strategies with the general security guidelines.
+
+Block all traffic to EtherNet/IP or other CIP protocol-based devices from outside the Manufacturing Zone by blocking or restricting access to TCP and UDP Port 2222 and Port 44818 using proper network infrastructure controls (such as firewalls), Unified Threat Management (UTM) devices, or other security appliances. For more information on TCP/UDP ports used by Rockwell Automation Products, see Knowledgebase Article ID 898270. Sign-in is required to access this Knowledgebase Article.
+Use trusted software, software patches, antivirus/antimalware programs, and interact only with trusted web sites and attachments.
+
+Rockwell Automation’s security notification is available at the following URL with a valid account (sign-in required):
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1065696
+NCCIC/ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+No known public exploits specifically target this  vulnerability.
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATION CWE-20
+
+An unauthenticated attacker with remote access to a network with FactoryTalk Alarms and Events can send a specially crafted set of packets packet to Port 403/TCP (the history archiver service), causing the service to either stall or terminate.
+CVE-2017-14022 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+RESEARCHER
+A major Oil and Gas company reported this vulnerability to ICS-CERT. 
+BACKGROUND
+Critical Infrastructure Sectors: Chemical, Critical Manufacturing, Food and Agriculture, Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Milwaukee, Wisconsin

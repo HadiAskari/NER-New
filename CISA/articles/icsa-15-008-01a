@@ -1,0 +1,103 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-15-008-01 Emerson HART DTM Vulnerability that was published January 8, 2015, on the NCCIC/ICS-CERT web site.
+Alexander Bolshev of Digital Security has identified an improper input vulnerability in the CodeWrights HART Device Type Manager (DTM) library utilized in Emerson’s HART DTM. CodeWrights has addressed the vulnerability with a new library, which Emerson has begun to integrate. Emerson has tested the new library to validate that it resolves the vulnerability.
+--------- Begin Update A Part 1 of 2 --------
+No known public exploits specifically target this vulnerability.
+--------- End Update A Part 1 of 2 ----------
+AFFECTED PRODUCTS
+The following products use the vulnerable HART DTM library and are affected:
+
+Fisher Controls DVC6000 Digital Valve Controller Rev. 2.01,
+Fisher Controls International DVC2000 Digital Valve Controller Rev. 1.01,
+Micro Motion 1500 Rev. 5 and 6,
+Micro Motion 1700 Analog Rev. 5 and 6,
+Micro Motion 1700 IS Rev. 6,
+Micro Motion 1700 Rev. 5,
+Micro Motion 1700IS Rev. 5,
+Micro Motion 2000 Config I/O Rev. 5,
+Micro Motion 2200S Rev. 1,
+Micro Motion 2400S Analog Rev. 2, 3, and 4,
+Micro Motion 2500/2700 Config I/O Rev. 5 and 6,
+Micro Motion 2700 Analog Rev. 5 and 6,
+Micro Motion 2700 IS Rev. 5 and 6,
+Micro Motion RFT9739 Rev. 4,
+Micro Motion Series 3000 Rev. 7,
+Rosemount 1151 Pressure Transmitter Rev. 5 and 6,
+Rosemount 2051 Pressure Transmitter Rev. 3, 9, and 10,
+Rosemount 2088 Pressure Transmitter Rev. 3, 9, and 10,
+Rosemount 2090 Pressure Transmitter Rev. 3,
+Rosemount 248 Temperature Transmitter Rev. 2,
+Rosemount 3051 Pressure Transmitter Rev. 3, 7, 9, and 10,
+Rosemount 3051S Advanced Diagnostics Rev. 2 and 3,
+Rosemount 3051S Electronic Remote Sensors Rev. 1,
+Rosemount 3051S Pressure Transmitter Rev. 7,
+Rosemount 3051SMV Direct Process Variable Rev. 1,
+Rosemount 3051SMV MultiVariable Mass Energy Flow Rev. 1,
+Rosemount 3095M MultiVariable™ Mass Flow Rev. 2,
+Rosemount 3100 Ultrasonic Level Transmitter Rev. 5,
+Rosemount 3144P Temperature Transmitter Rev. 3, 4, 5, and 6
+Rosemount 3300 Radar Level and Interface Transmitter Rev. 3,
+Rosemount 333 Triloop Rev. 1,
+Rosemount 4500 Pressure Transmitter Rev. 7,
+Rosemount 4600 Pressure Transmitter Rev. 1,
+Rosemount 5300 Radar Level and Interface Transmitter Rev. 1, 2, and 3,
+Rosemount 5400 Radar Level Transmitter Rev. 1 and 2,
+Rosemount 644 Temperature Transmitter Rev. 6, 7, 8, and 9,
+Rosemount 8712D Magnetic Flowmeter Rev. 1,
+Rosemount 8712E Magnetic Flowmeter Rev. 3,
+Rosemount 8712H Magnetic Flowmeter Rev. 1,
+Rosemount 8732C Magnetic Flowmeter Rev. 7,
+Rosemount 8732E Magnetic Flowmeter Rev. 2,
+Rosemount 8800C Vortex Flowmeter Rev. 3,
+Rosemount 8800D Vortex Flowmeter Rev. 1 and 2,
+Rosemount Analytical 1056 Rev. 1 and 2,
+Rosemount Analytical 5081A Rev. 2,
+Rosemount Analytical 5081CT Rev. 1,
+Rosemount Analytical 5081p Rev. 2,
+Rosemount Analytical 54eA Rev. 2,
+Rosemount Analytical 54eC Rev. 1,
+Rosemount Analytical 54epH Rev. 2,
+Rosemount Analytical OCT4000 Rev. 3,
+Rosemount Analytical OCX8800 Rev. 3,
+Rosemount Analytical XmtA Rev. 1,
+Rosemount Analytical XmtCT Rev. 1,
+Rosemount Analytical XmtpH Rev. 1,
+Rosemount Metran 150 Pressure Transmitter Rev. 9 and 10, and
+Rosemount Metran 75 Pressure Transmitter Rev. 9 and 10.
+
+IMPACT
+The vulnerability causes the HART DTM component to crash and also causes the HART service to stop responding. No loss of information or loss of control or view by the control system results from an attacker successfully exploiting this vulnerability.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Emerson Process Management is a global manufacturing and technology company offering multiple products and services in the industrial, commercial, and consumer markets through its network power, process management, industrial automation, climate technologies, and tools and storage businesses.
+The affected products are HART-based field devices. According to Emerson, these products are deployed across multiple critical infrastructure sectors. Emerson estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER INPUT VALIDATIONCWE-20: Improper Input Validation, http://cwe.mitre.org/data/definitions/20.html, web site last accessed January 08, 2014.
+
+By sending specially crafted response packets directly on the 4-20 mA current loop, the DTM component stops functioning and Field Device Tool (FDT) Frame application becomes unresponsive. A manipulated HART device and physical network access is required to exploit this vulnerability
+CVE-2014-9191NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9191, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 1.8 has been assigned; the CVSS vector string is (AV:A/AC:H/Au:N/C:N/I:N/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:A/AC:H/Au:N/C:N/I:N/A:P, web site last accessed January 08, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+Physical network access is required to exploit this vulnerability.
+EXISTENCE OF EXPLOIT
+--------- Begin Update A Part 2 of 2 --------
+No known public exploits specifically target this vulnerability.
+--------- End Update A Part 2 of 2 ----------
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Physical access to the 4 mA to 20 mA current loop is required in conjunction with a connected HART device modified to send crafted packets. The exploit also requires specific timing for the spoofed response. This decreases the likelihood of a successful exploit.
+MITIGATION
+Emerson updated the HART DTM for the Rosemount 644 Temperature Transmitter Rev. 8, DTM Version 1.4.181 on November 17, 2014. Installing this DTM will resolve the vulnerability for all the impacted Emerson products listed above. Emerson recommends downloading the updated DTM from its web site:
+http://www2.emersonprocess.com/en-US/documentation/deviceinstallkits/Pages/deviceinstallkitsearch.aspx
+An attacker would require physical access to the HART loop in order to execute this attack. The vulnerability is exploited by connecting a rogue device to the HART loop and sending malformed data to the frame. If the end user has adequate physical protection of the HART loop in place, exploitation is not possible. Field devices and WirelessHART installations are unaffected. Emerson recommends having physical protection of the end users’ entire infrastructure.
+More details can be found at Emerson’s advisory located:
+http://www2.emersonprocess.com/siteadmincenter/PM Central Web Documents/EMR EPM14001-1.pdf
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Provide physical protection to system controls, connections, and cabling.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

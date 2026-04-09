@@ -1,0 +1,46 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.3
+ATTENTION: Exploitable remotely/low attack complexity
+Equipment: Power Line Communications (PLC): J2497 (a.k.a. PLC4TRUCKS)
+Vulnerabilities: Missing Authentication for Critical Function, Improper Protection against Electromagnetic Fault Injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a nearby attacker to execute diagnostic functions in the trailer or light the trailer ABS fault telltale in a tractor. Please visit NMFTA for more details.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Power Line Communications (PLC): J2497 (a.k.a. PLC4TRUCKS), a bidirectional, serial communications link over the vehicle power supply line, is affected.
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Trailer brake controllers implement diagnostic functions which can be invoked by replaying J2497 messages. There is no authentication or authorization for these functions.
+CVE-2022-25922 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.2.2    IMPROPER PROTECTION AGAINST ELECTROMAGNETIC FAULT INJECTION CWE-1319
+Trailer power line communications J2497 (PLC4TRUCKS) receivers are susceptible to remote RF induced signals.
+CVE-2022-26131 has been assigned to this vulnerability. A CVSS v3 base score of 9.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Transportation Systems Sector
+COUNTRIES/AREAS DEPLOYED: United States, Canada, Mexico
+
+3.4 RESEARCHER
+National Motor Freight Traffic Association, Inc. (NMFTA) researcher Ben Gardiner, NMFTA motor freight carrier members, and Assured Information Security researchers Chris Poore, Dan Salloum, and Eric Thayer reported this vulnerability to CISA.
+4. MITIGATIONS
+The vulnerable technology, J2497, has been fielded since 2001 and the service lifetime of trailers is 15 to 30 years. For new equipment, the industry should consider dropping all J2497 features except for backwards-compatibility with LAMP ON detection only. For trailer equipment this means migrating all diagnostics to whatever newer trailer buses are established as the norm. For tractor equipment this means removing support for reception of any J2497 message other than LAMP messages and protecting the backwards-compatible trailers from attack. 
+NMFTA has published detailed information about how to mitigate these issues in the following ways:
+
+Install a LAMP ON firewall for each ECU
+Use a LAMP detect circuit LAMP ON sender with each trailer
+Change addresses dynamically on each tractor in response to detecting a transmitter on its current address. 
+Install RF chokes on each trailer between chassis ground and wiring ground
+Load with LAMP keyhole signal on each tractor
+Flood with jamming signal on each tractor
+
+Please visit NMFTA for additional details on these and other solutions.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

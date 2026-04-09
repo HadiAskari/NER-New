@@ -1,0 +1,100 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 5.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: RUGGEDCOM ROS
+Vulnerability: Uncontrolled Resource Consumption
+
+2. UPDATE
+This updated advisory is a follow-up to the original advisory titled ICSA-22-258-03 Siemens RUGGEDCOM ROS that was published September 15, 2022, on the ICS webpage on cisa.gov/ICS.
+3. RISK EVALUATION
+Successful exploitation of this vulnerability could occupy all available HTTP connections and cause a denial-of-service condition.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+ The following versions of RUGGEDCOM ROS-based devices, typically switches and serial-to-Ethernet devices, are affected:
+--------- Begin Update A part 1 of 2 ---------
+
+RUGGEDCOM ROS RMC8388 V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RS416Pv2 V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RS416v2 V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RS900 (32M) V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RS900G (32M) V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG907R V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG908C V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG909R V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG910C V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG920P V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG2100 (32M) V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG2288 V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG2300 V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG2300P V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSG2488 V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RSL910 V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RST916C V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RST916P V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RST2228 V5.X: All versions prior to V5.6.0
+RUGGEDCOM ROS RST2228P V5.X: All versions prior to V5.6.0
+
+--------- End Update A part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+Affected devices improperly handle partial HTTP requests which makes them vulnerable to slowloris attacks. This could allow a remote attacker to create a denial-of-service condition that persists until the attack ends.
+CVE-2022-39158 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+ Siemens reported this vulnerability to CISA.
+5. MITIGATIONS
+ Siemens has released updates for the following products:
+--------- Begin Update A part 2 of 2 ---------
+
+RUGGEDCOM ROS RMC8388 V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RS416Pv2 V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RS416v2 V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RS900 (32M) V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RS900G (32M) V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG907R V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG908C V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG909R V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG910C V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG920P V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG2100 (32M) V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG2288 V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG2300 V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG2300P V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSG2488 V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RSL910 V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RST916C V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RST916P V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RST2228 V5.X: Update to V5.6.0 or later.
+RUGGEDCOM ROS RST2228P V5.X: Update to V5.6.0 or later.
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Restrict access to port 80/tcp and 443/tcp to trusted IP addresses only.
+Deactivate the webserver if not required and if deactivation is supported by the product.
+
+--------- End Update A part 2 of 2 ---------
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ Operational Guidelines for Industrial Security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information see Siemens Security Advisory SSA-459643 in HTML or CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

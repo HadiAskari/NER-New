@@ -1,0 +1,50 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 6.1
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: GEOVAP
+Equipment: Reliance 4 SCADA/HMI
+Vulnerability: Cross-site Scripting
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated attacker to use HTTP proxy to inject arbitrary Javascript in a specially crafted HTTP request that may reflect it back in the HTTP response.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Reliance 4 SCADA/HMI, a SCADA/HMI system designed for the monitoring and control of industrial processes and for building automation, are affected:
+
+Reliance SCADA Version 4.7.3 Update 3 and prior.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+This vulnerability could allow an unauthorized attacker to inject arbitrary code.
+CVE-2018-17904 has been assigned to this vulnerability. A CVSS v3 base score of 6.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Transportation Systems, and Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Czech Republic
+
+3.4 RESEARCHER
+Ismail Mert AY AK reported this vulnerability to NCCIC.
+4. MITIGATIONS
+GEOVAP released Version 4.8.0, which mitigates the vulnerability. GEOVAP strongly recommends users upgrade existing projects to this version. It can be downloaded here:
+https://www.reliance-scada.com/en/support/articles/technical/what-is-new-in-reliance480#securitylevel.
+GEOVAP also recommends users switch the application to HTTPS to prevent the manipulation of HTTP messages in an HTTP proxy. Changing to HTTPS should help even if Version 4.7.3 Update 3 and prior are still used.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target this vulnerability.

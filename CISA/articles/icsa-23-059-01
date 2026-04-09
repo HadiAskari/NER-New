@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Hitachi Energy 
+Equipment: Gateway Station (GWS) 
+Vulnerabilities: NULL Pointer Dereference, Infinite Loop 
+
+ 
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause affected modules to stop working. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reports these vulnerabilities affect open-source software (OpenLDAP and OpenSSL) used by the following Gateway Station (GWS) versions:  
+
+GWS 2.0.0.0  
+GWS 2.1.0.0  
+GWS 2.2.0.0  
+GWS 2.3.0.0  
+GWS 2.4.0.0  
+GWS 3.0.0.0  
+GWS 3.1.0.0 
+GWS 3.2.0.0 and earlier 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 NULL POINTER DEREFERENCE CWE-476 
+A NULL pointer dereference was found in affected versions of OpenLDAP. An unauthenticated attacker could remotely crash the slapd process by sending a specially crafted request, causing a denial-of-service condition on the user authentication function.  
+Note: Local authentication will continue to work; the authentication service is not installed by default. 
+CVE-2020-25692 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.2 INFINITE LOOP CWE-835 
+A vulnerability exists in the OpenSSL’s BN_mod_sqrt() function, which computes a modular square root containing a bug that can cause it to loop forever for non-prime moduli. Internally, this function is used when parsing certificates containing elliptic curve public keys in compressed form or explicit elliptic curve parameters with a base point encoded in compressed form. Successful exploitation may cause a denial-of-service condition. 
+CVE-2022-0778 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Hitachi Energy has created an update to address the reported vulnerabilities and recommends users update to at least GWS version 3.3.0.0  
+For CVE-2020-25692, the vulnerability impacts GWS if the authentication service is installed. It is not installed by default but is required during the installation process of GWS, or installed manually later. Authentication Service (previously ABB Authentication Service) is only needed when GWS users are authenticated using centralized SDM600 user account management. 
+Hitachi Energy recommends the following general mitigation factors and security practices: 
+
+Configure firewalls to protect process control networks from attacks originating from outside the network  
+Physically protect process control systems from direct access by unauthorized personnel  
+Avoid directly connecting control systems to the internet 
+Separate process control networks from other networks using a firewall system with a minimal number of ports exposed  
+Process control systems should not be used for internet surfing, instant messaging, or receiving emails  
+Portable computers and removable storage media should be carefully scanned for viruses before connecting to a control system  
+Enforce proper password policies and processes 
+
+For more information, see Hitachi security advisory 8DBD000118. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.

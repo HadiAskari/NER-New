@@ -1,0 +1,80 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.5
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: Opcenter Execution Core
+
+--------- Begin Update B Part 1 of 5 ---------
+
+Vulnerabilities: Cross-site Scripting, SQL Injection, Improper Access Control, Insufficiently Protected Credentials
+
+--------- End Update B Part 1 of 5 ---------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-196-07 Siemens Opcenter Execution Core (Update A) that was published August 11, 2020, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+--------- Begin Update B Part 2 of 5 ---------
+Successful exploitation of these vulnerabilities may allow an attacker to obtain session cookies, read and modify application data, read internal information, perform unauthorized changes, and obtain passwords of currently logged in users. Should the attacker gain access to the session cookies, they could then hijack the session and perform arbitrary actions in the name of the victim.
+--------- End Update B Part 2 of 5 ---------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following products are affected:
+--------- Begin Update B Part 3 of 5 ---------
+
+Camstar Enterprise Platform: All versions. Only affected by CVE-2020-7576, CVE-2020-7577, CVE-2020-7578
+Opcenter Execution Core: All versions prior to v8.2.  Affected by CVE-2020-7576, CVE-2020-7577, CVE-2020-7578
+Opcenter Execution Core: Version 8.2. Affected by CVE-2020-7576, CVE-2020-28390
+Opcenter Execution Core: Versions 8.3. Affected by CVE-2020-28390
+
+--------- End Update B Part 3 of 5 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+An authenticated user with the ability to create containers, packages, or register defects could perform stored cross-site scripting (XSS) attacks within the vulnerable software.
+CVE-2020-7576 has been assigned to this vulnerability. A CVSS v3 base score of 8.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N).
+4.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND (‘SQL INJECTION’) CWE-89
+An authenticated user could perform an SQL injection attack by passing a modified SQL query through an input field to the back-end server.
+CVE-2020-7577 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).
+4.2.3    IMPROPER ACCESS CONTROL CWE-284
+Authenticated users could have access to resources they normally would not have. This vulnerability could allow an attacker to view internal information and perform unauthorized changes.
+CVE-2020-7578 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N). 
+--------- Begin Update B Part 4 of 5 ---------
+4.2.4    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The affected application leaks passwords of logged-in users when handling web client sessions. A local attacker who has access to the Web Client Session Storage may be able to obtain this information. 
+CVE-2020-28390 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+--------- End Update B Part 4 of 5 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing 
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+--------- Begin Update B Part 5 of 5 ---------
+
+Siemens recommends users upgrade to Opcenter Execution Core v8.4 or later (login required).
+
+--------- End Update B Part 5 of 5 ---------
+Siemens has identified the following specific workarounds and mitigations that customers can apply to reduce the risk:
+
+Configure a web application firewall to filter traffic containing XSS Injection and SQL Injections
+Restrict access to application webserver for trusted users only
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for Industrial Security and following the recommendations in the product manuals.
+Additional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information on these vulnerabilities and associated software updates, please see Siemens security advisory SSA-604937
+CISA recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

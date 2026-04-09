@@ -1,0 +1,69 @@
+
+
+Description
+
+This alert informs critical infrastructure and key resource (CIKR) asset owners and operators of recent and ongoing activity involving secure shell (SSH) scanning of Internet facing control systems
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+Summary
+ICS-CERT is issuing this alert to inform critical infrastructure and key resource (CIKR) asset owners and operators of recent and ongoing activity involving secure shell (SSH)“Secure Shell or SSH is a network protocol that allows data to be exchanged using a secure channel between two networked devices.” http://en.wikipedia.org/wiki/SecureShell, website last accessed February 02, 2012. scanning of Internet facing control systems.ICS-ALERT-11-343-01—Control System Internet Accessibility, http://www.us-cert.gov/controlsystems/pdf/ICS-ALERT-11-343-01.pdf, website last accessed February 03, 2012.  ICS-CERT is aware that many organizations have been seeing a large number of access attempts by remote attackers. Systems that provide SSH command line access are common targets for “brute force” attacks.
+As recently as this week, ICS-CERT received a report from an electric utility experiencing unsuccessful brute force activity against their networks.
+What Are Brute Force Attacks?
+A brute force authentication attack attempts to obtain a user’s logon credentials by guessing usernames and passwords. Brute force login tools exist for most services that allow remote access. Attackers can use brute force applications, such as password guessing tools and scripts, to automate username and password guessing. Such applications may use default password databases, dictionaries, or rainbow tables that contain commonly used passwords, or they may try all combinations of a character set to guess a password.
+To find running SSH services on networks, attackers probe a large number of IPs on Port 22/TCP—the default SSH listening port. If a response from the probe of Port 22/TCP is received, the attacker may initiate a brute force attack.
+Scanning: What to Look For
+ICS-CERT recommends that organizations monitor network logs for port scans as well as access attempts. Hundreds or thousands of login attempts over a relatively short time period is an indicator of a brute force attack because systems running SSH normally do not receive high volumes of login attempts. However, indication of an attack does not necessarily mean that the organization is the actual intended target. Scans are frequently executed against a wide range of IP addresses looking for any system meeting the attacker’s criteria (in this case, systems running SSH).
+Because high volume scans tend to be quickly discovered, attackers may try to evade intrusion detection systems (IDS) by making only a few careful attempts, then waiting to try again later. Organizations should look carefully for these “quiet” attempts as possible precursors to more direct attacks.
+Is SSH Running?
+While SSH is popularly associated with UNIX or Linux systems, many types of devices provide SSH access by default, including control systems equipment. Control system devices are often found on networks with SSH enabled by default.
+Mitigation
+ICS-CERT strongly encourages CIKR asset owners and operators to examine their control network configurations and establish a baseline configuration and traffic pattern.
+ICS-CERT also recommends that asset owners and operators audit their control systems—whether or not they think their control systems are connected to the Internet—to discover and verify removal of any default user names and passwords. Because each control system installation is unique, owners and operators may need to contact their system vendor or integrator for assistance with locating and eliminating default accounts.
+Control system owners and operators are encouraged to take the following defensive measures to minimize the risk of exploitation of these vulnerabilities.
+General Mitigations
+
+Minimize network exposure for all control system networks and devices. Control system devices should not directly face the Internet.
+Locate control system networks and devices behind firewalls, and isolate them from the business network. Stay actively aware of what is on the network by performing periodic port scans (where and when possible).ICS-CERT recognizes that control systems environments are often sensitive to port scanning. Organizations should refer to their established internal procedures prior to conducting any cybersecurity-related defensive measures.
+If remote access is required, employ secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+Remove, disable, or rename any default system accounts wherever possible.
+Implement account lockout policies to reduce the risk from brute forcing attempts.
+Implement policies requiring the use of strong passwords. Make password lengths long and combine letters, numbers, and special characters. For additional guidance, see Microsoft’s Online Privacy and Safety web page: Create stronger passwords.
+Monitor the creation of administrator level accounts by third-party vendors.
+
+SSH-Specific Mitigations
+
+Configure SSH servers to use nonstandard ports. SSH normally listens on Port 22/TCP, but can be configured to listen on any other unused TCP port (the TCP protocol offers 65,535 ports). Because many scanning tools only scan a limited (low) port range by default, selecting a nonstandard high port number can make the SSH less likely to be detected by those tools.
+Restrict access to SSH servers. Only allow access from specific hosts rather than allowing access from anywhere. If the SSH server supports public‐key authentication, consider using this as an option to static passwords.
+Use Intrusion Detection/Intrusion Prevention. An intrusion detection system (IDS) monitors networks for malicious activity or policy violations. IDS systems can aid in investigations of system breaches.
+
+Intrusion prevention systems (IPS) incorporate IDS functionality but also include the ability to block an attack as it is happening, preventing harm to the control system network rather than simply announcing that an attack has occurred.
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Recovery and Reporting
+Organizations that detect suspicious activity should check their logs to see if any of the attempts were successful. If a successful login attempt from a brute force attack is detected, follow-on steps should be taken to implement a cyber incident response plan.f In addition, organizations should carefully adhere to computer forensic best practices to avoid destroying potential evidence.CSSP, Creating Cyber Forensics Plans for Control Systems, http://www.us-cert.gov/controlsystems/practices/documents/ForensicsRP.pdf, website last accessed February 03, 2012.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+ 
+
+Mitigations
+
+ 
+ 

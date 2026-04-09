@@ -1,0 +1,40 @@
+
+OVERVIEW
+Tencent’s Keen Security Lab has identified a Gateway ECU vulnerability in Tesla Motors Inc.’s (Tesla) Model S automobile. Tesla has produced an over-the-air firmware update to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following vehicle firmware build versions are affected:
+
+All firmware versions before version 7.1 (2.36.31) with web browser functionality enabled.
+
+IMPACT
+The vulnerability allows the vehicle’s software and driving functions to be controlled remotely through the web browser, which must be launched or already running from a previous launch. This allows attackers to gain access to the vehicle’s CAN bus through a firmware validation flaw in the Gateway ECU of the vehicle.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Tesla is a US-based company that maintains offices in several countries around the world, including the US, Netherlands, and Japan.
+The affected vehicle firmware manages the car’s software and driving functions. According to Tesla, the software is deployed in the Transportation sector. Tesla reports that this product is used primarily in the United States, Europe, and Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+COMMAND INJECTIONCWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection'), https://cwe.mitre.org/data/definitions/77.html, web site last accessed December 06, 2016.
+
+The vehicle’s Gateway ECU is susceptible to commands that may allow an attacker to install malicious software allowing the attacker to send messages to the vehicle’s CAN bus.
+CVE-2016-9337NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-9337, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:H).CVSS Calculator, https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:H, web site last accessed December 06, 2016.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. A complex chain of exploits is required, including a web browser compromise, local privilege escalation, and custom-built firmware.
+MITIGATION
+On September 18, 2016, Tesla produced an over-the-air firmware update for vehicles affected by this vulnerability. Owners of the vehicles are encouraged to update their vehicle to the latest firmware.
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Not use the web browser in their vehicles if they have not updated to the latest firmware.
+Contact Tesla support if they need more information on how to upgrade to the latest firmware.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

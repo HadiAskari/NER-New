@@ -1,0 +1,60 @@
+
+OVERVIEW
+This advisory was originally posted to the US-CERT secure Portal library on April 21, 2015, and is being released to the NCCIC/ICS-CERT web site.
+Ivan Sanchez of WiseSecurity Team has identified a stack-based buffer overflow vulnerability in Rockwell Automation’s OPCTest.exe, which is a test client for RSLinx Classic’s support of the OPC-DA protocol. Rockwell Automation has produced a new version that mitigates this vulnerability.
+AFFECTED PRODUCTS
+The following RSLinx Classic versions are affected:
+
+RSLinx Classic, all versions prior to Version 3.73.00.
+
+IMPACT
+Successful exploitation of this vulnerability could result in the application crashing or allow malicious code injection.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Rockwell Automation, which is a US-based company, provides industrial automation control and information products worldwide across a wide range of industries.
+The affected product, RSLinx Classic, is used to enable communications for a variety of Rockwell Software applications used in industrial control systems. According to Rockwell Automation, the software is used across several sectors including Critical Manufacturing, Energy, Water and Wastewater Systems, and others. Rockwell Automation estimates that the product is used globally.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERFLOWCWE-121: Stack-based Buffer Overflow, http://cwe.mitre.org/data/definitions/121.html, web site last accessed April 21, 2015.
+
+Social engineering is required to convince a user to introduce and load a uniquely crafted CSV file that could cause a buffer overflow that may allow an attacker to crash the application, requiring a restart, or to execute malicious code with the same or higher privileges as the authenticated user.
+CVE-2014-9204NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-9204, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 5.9 has been assigned; the CVSS vector string is (AV:L/AC:H/Au:N/C:C/I:C/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:L/AC:H/Au:N/C:C/I:C/A:P, web site last accessed April 21, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability is not exploitable remotely and cannot be exploited without user interaction. The exploit is only triggered when a local user runs the vulnerable application and loads the malformed CSV file.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince the user to accept the malicious file. Additional user interaction is needed to load the malformed CSV file. This decreases the likelihood of a successful exploit.
+MITIGATION
+Rockwell Automation has produced a new version, Version 3.73, for RSLinx Classic that includes a new version of OPCTest.exe that mitigates the buffer overflow vulnerability. Rockwell Automation encourages asset owners using the affected software to upgrade to the newest available software version. Rockwell recommends that asset owners implement additional precautions and risk mitigation strategies, when possible, to enhance resilience against similar attacks:
+
+Do not open untrusted CSV files with OPCTest.exe.
+Limit access to those assets using RSLinx Classic and other software to authorized personnel.
+Run all software as User and not as an Administrator.
+Restrict network access to assets with RSLinx Classic and other software, as appropriate.
+Interact with, and only obtain software and software patches from trustworthy highly reputable sources.
+Use Whitelisting applications to help mitigate risk.
+Follow good network design practices that include network separation and segmentation; use DMZs with properly configured firewalls to selectively control and monitor traffic passed between zones and systems.
+Maintain layered physical and logical security to implement defense-in-depth design practices for the ICS.
+Reaffirm with employees the importance for constant vigilance, especially in regard to the ongoing potential for social engineering attacks to manipulate otherwise normal user behaviors.
+
+Rockwell Automation’s disclosure, which contains the link to its software download page, is available at the following location with a valid user account:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/646324
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed April 21, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed April 21, 2015. for more information on social engineering attacks.
+

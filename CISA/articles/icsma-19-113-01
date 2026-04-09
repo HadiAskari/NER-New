@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Fujifilm
+Equipment: FCR Capsula X/Carbon X
+Vulnerabilities: Uncontrolled Resource Consumption, Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in a denial-of-service condition in affected cassette reader units, causing potential image loss or device unavailability. Attackers could gain unauthorized access to the underlying operating system, allowing arbitrary code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following models and versions of Fujifilm Computed Radiography cassette readers are affected:
+
+CR-IR 357 FCR Carbon X
+CR-IR 357 FCR XC-2
+CR-IR 357 FCR Capsula X
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    UNCONTROLLED RESOURCE CONSUMPTION CWE-400
+The device is susceptible to a denial-of-service condition as a result of an overflow of TCP packets, which requires the device to be manually rebooted.
+CVE-2019-10948 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    IMPROPER ACCESS CONTROL CWE-284
+The device provides insecure telnet services that lack authentication requirements. An attacker who successfully exploits this vulnerability may be able to access the underlying operating system.
+CVE-2019-10950 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+3.4 RESEARCHER
+Marc Ruef and Rocco Gagliardi of Scip AG reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Fujifilm has stated the CR-IR 357 system can be configured with what they call Secure Host functionality. This configuration of the software instructs CR-IR 357 to ignore all network traffic other than from the IP address of the Fujifilm image acquisition console. However, this configuration prevents more than one image acquisition console to share the CR-IR 357 Reader Unit. If the user has not implemented Reader Unit sharing, they may contact Fujifilm to request Secure Host functionality be enabled. If the user has implemented Reader Unit sharing, they should contact Fujifilm to discuss available options. Fujifilm can be contacted at 888-FUJI-MED (888-385-4633). Users outside the United States should contact their Fujifilm contact.
+Fujifilm recommends that the first line of defense should be a compensating control of securing the user’s network. Measures should be taken to ensure only authorized devices and personnel have access to the network. Public or guest networks should be segmented, or users should use a VLAN to segregate public traffic from the private network. Administrative and technical controls should also be implemented.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all medical devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate medical systems and networks and remote devices behind firewalls, and isolate them from the business network.
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable unnecessary accounts and services.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA at the following location:
+
+https://www.fda.gov/MedicalDevices/DigitalHealth/ucm373213.htm
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,71 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.3
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Contec Health
+Equipment: CMS8000 Patient Monitor
+Vulnerabilities: Out-of-Bounds Write, Hidden Functionality, Privacy Leakage
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to remotely send specially formatted UDP requests or connect to an unknown external network that would allow them to write arbitrary data, resulting in remote code execution. The device may also leak patient information and sensor data to the same unknown external network. Simultaneous exploitation of all vulnerable devices on a shared network is possible.
+The Food and Drug Administration (FDA) has released a safety communication in connection with these vulnerabilities.
+CISA has released an additional Fact Sheet for CVE-2025-0626 and CVE-2025-0683.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Contec Health products are affected:
+
+CMS8000 Patient Monitor Firmware: Version smart3250-2.6.27-wlan2.1.7.cramfs
+CMS8000 Patient Monitor Firmware: Version CMS7.820.075.08/0.74(0.75)
+CMS8000 Patient Monitor Firmware: Version CMS7.820.120.01/0.93(0.95)
+CMS8000 Patient Monitor: All versions (CVE-2025-0626, CVE-2025-0683, CVE-2025-1204)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 OUT-OF-BOUNDS WRITE CWE-787
+The affected product is vulnerable to an out-of-bounds write, which could allow an attacker to send specially formatted UDP requests in order to write arbitrary data. This could result in remote code execution.
+CVE-2024-12248 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-12248. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 HIDDEN FUNCTIONALITY (BACKDOOR) CWE-912
+The "monitor" binary in the firmware of the affected product attempts to mount to a hard-coded, routable IP address, bypassing existing device network settings to do so. The function also enables the network interface of the device if it is disabled. The function is triggered by attempting to update the device from the user menu. This could serve as a backdoor to the device, and could lead to a malicious actor being able to upload and overwrite files on the device.
+CVE-2025-0626 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2025-0626. A base score of 7.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.3 EXPOSURE OF PRIVATE PERSONAL INFORMATION TO AN UNAUTHORIZED ACTOR (PRIVACY LEAKAGE) CWE-359
+In its default configuration, the affected product transmits plain-text patient data to a hard-coded public IP address when a patient is hooked up to the monitor. This could lead to a leakage of confidential patient data to any device with that IP address or an attacker in a machine-in-the-middle scenario.
+CVE-2025-0683 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.9 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2025-0683. A base score of 8.2 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.4 HIDDEN FUNCTIONALITY CWE-912
+The "update" binary in the firmware of the affected product sends attempts to mount to a hard-coded, routable IP address, bypassing existing device network settings to do so. The function triggers if the 'C' button is pressed at a specific time during the boot process. If an attacker is able to control or impersonate this IP address, they could upload and overwrite files on the device.
+CVE-2025-1204 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2025-1204. A base score of 7.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: China
+
+3.4 RESEARCHER
+An anonymous researcher reported CVE-2024-12248, CVE-2025-0626, and CVE-2025-0683 to CISA.
+Claroty - Team82 reported CVE-2025-1024 to CISA.
+4. MITIGATIONS
+Per FDA recommendation, CISA recommends users remove any Contec CMS8000 devices from their networks.
+If asset owners cannot remove the devices from their networks, users should block 202.114.4.0/24 from their networks, or block 202.114.4.119 and 202.114.4.120.
+Please note that this device may be re-labeled and sold by resellers. For a list of known re-labeled devices, please refer to FDA's safety communication.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks. Update firewall rules to prevent access to potentially affected devices.
+If network connected, ensure all medical devices are on a separate, low privilege subnet.
+Only use trusted manufacturers for safety critical systems.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+January 30, 2025: Initial Publication
+February 25, 2025: Update A - Added CVE-2025-1204, updated description for CVE-2025-0626. Added mitigations for the specific IP addresses. Added researcher credit to Claroty for CVE-2025-1204.
+

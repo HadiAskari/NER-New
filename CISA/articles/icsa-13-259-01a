@@ -1,0 +1,79 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the original advisory titled ICSA-13-259-01 Emerson ROC800 Multiple Vulnerabilities that was published September 26, 2013, on the NCCIC/ICS‑CERT web site.
+This advisory provides mitigation details for multiple vulnerabilities affecting the Emerson Process Management’s ROC800 remote terminal units (RTUs) products (ROC800, ROC800L, and DL8000).
+--------- Begin Update A Part 1 of 3 --------
+Researchers Dillon Beresford, Brian Meixell, Marc Ayala, and Eric Forner, formerly of Cimation, have identified multiple vulnerabilities in Emerson Process Management’s ROC800 RTU products. Emerson Process Management has produced a patch that mitigates these vulnerabilities. The researchers have tested the patch to validate that it resolves the vulnerabilities being patched.
+--------- End Update A Part 1 of 3 ----------
+These vulnerabilities can be exploited remotely.
+AFFECTED PRODUCTS
+The following Emerson Process Management RTUs are affected:
+
+ROC800 Version 3.50 and prior,
+DL8000 Version 2.30 and prior, and
+ROC800L Version 1.20 and prior.
+
+IMPACT
+An attacker who exploits these vulnerabilities could disable the device, compromise the device integrity, and remotely execute code on the target system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS‑CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Emerson Process Management is a global manufacturing and technology company offering multiple products and services in the industrial, commercial, and consumer markets through its network power, process management, industrial automation, climate technologies, and tools and storage businesses.
+The affected product, the ROC800 RTU, can perform many PLC-like functions for controlling devices. It is widely used in oil and gas pipelines, but can also be used as a general purpose controller in other applications. Emerson Process Management estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+HIDDEN FUNCTIONALITY CWE-912: Hidden Functionality, http://cwe.mitre.org/data/definitions/912.html, web site last accessed September 26, 2013.
+
+In the case of the ROC800 RTU, there are three separate hidden functionality vulnerabilities that are described below. Each of these hidden capabilities increases the attack surface for the device and can be exploited by an attacker.
+
+OSE DEBUG BROADCAST
+
+The ROC800 RTU runs the ENEA OSE operating system. The kernel running on the ROC800 device broadcasts a network beacon allowing easier detection of the OSE Debug vulnerability. This vulnerability could be exploited remotely.
+CVE-2013-0693 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0693, web site last accessed December 02, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed September 26, 2013.
+
+OSE DEBUG SERVICE
+
+The ROC800 RTU kernel has a port available for attaching a debug tool. A device with a running debug service allows debuggers to attach and remotely debug code on the device and is intended to be enabled, only on development systems and never on a production device. An attacker can remotely attach to the device and alter memory, registers, process states, and ultimately have full control of the device. This vulnerability could be exploited remotely.
+CVE-2013-0692 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0692, web site last accessed December 02, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C). CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed September 26, 2013.
+
+TFTP SERVER
+
+A TFTP server is available on the ROC800 RTU. A TFTP service is used for transferring files to a network attached device. The issue with the existence of this service is that arbitrary files can potentially be uploaded. This vulnerability could be exploited remotely.
+CVE-2013-0689 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0689, web site last accessed December 02, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C). CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed September 26, 2013.
+
+USE OF HARD-CODED CREDENTIALS CWE-798: Use of Hard-coded Credentials, http://cwe.mitre.org/data/definitions/798.html, web site last accessed September 26, 2013.
+
+Hard-coded accounts with passwords have been discovered in the ROC800 ROM. An attacker could have access to the operating system command shell and/or obtain authentication information for all ROC800 devices. These vulnerabilities could be exploited remotely.
+CVE-2013-0694 NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0694, web site last accessed December 02, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 9.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:S/C:C/I:C/A:C). CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:S/C:C/I:C/A:C, web site last accessed September 26, 2013.
+--------- Begin Update A Part 2 of 3 --------
+
+AUTHENTICATION BYPASS BY CAPTURE REPLAY CWE-294: Authentication Bypass by Capture-replay, http://cwe.mitre.org/data/definitions/294.html, web site last accessed December 02, 2014.
+
+A TCP replay attack could be executed on the ROC800 causing it to execute commands that are not intended by the user.
+CVE-2013-2810NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-2810, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C). CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/Au:N/C:C/I:C/A:C, web site last accessed December 02, 2014.
+--------- End Update A Part 2 of 3 ----------
+VULNERABILITY DETAILS
+EXPLOITABILITY
+All the vulnerabilities described in this advisory are remotely exploitable and can be used by an attacker to compromise the ROC800 device to varying degrees, including several that can result in the complete compromise of the device.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+The best mitigation for these vulnerabilities is to install the vendor patch. The Emerson Process Management patch is available via the following web link of which a user name and password is required:
+http://www3.emersonprocess.com/remote/support/support_login.html
+--------- Begin Update A Part 3 of 3 --------
+Emerson has identified and verified that a third-party secure router, the Moxa EDR-810, mitigates the identified vulnerabilities when used in combination with the ROC800 platform. Emerson asserts that by adding the EDR-810 between the host and the field device it is virtually impossible for an attacker to eavesdrop on communications or falsify commands.
+The EDR-810 is a highly integrated industrial multiport secure router with Firewall/NAT/VPN. The compatibility of the EDR-810 with the ROC800 platform has been tested and verified by Emerson Remote Automation Solutions. Emerson has determined that the EDR-810 is suitable for field installation. The EDR-810 uses IPSec server or client mode for encryption and authentication of all IP packets at the network layer to ensure confidentiality and sender authentication.
+Additional information about the Moxa EDR-810 secure router is available at the following location:
+http://www.moxa.com/product/EDR-810.htm
+--------- End Update A Part 3 of 3 ----------
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

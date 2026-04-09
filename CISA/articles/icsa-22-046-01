@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Schneider Electric
+Equipment: IGSS (Interactive Graphical SCADA System)
+Vulnerabilities: Integer Overflow or Wraparound, Path Traversal, Classic Buffer Overflow, Out-of-bounds Read, Improper Initialization, Missing Authorization
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in a variety of issues, including disclosure of data and loss of control of the SCADA system with IGSS running in production mode.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Schneider Electric reports these vulnerabilities affect the following IGSS Data Server module: 
+
+IGSS Data Server (IGSSdataServer.exe):  v15.0.0.22020 and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INTEGER OVERFLOW OR WRAPAROUND CWE-190
+A vulnerability exists that could cause heap-based buffer overflow, leading to denial of service and potentially remote code execution when an attacker sends multiple specially crafted messages.
+CVE-2022-24310 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A vulnerability exists that could cause modification of an existing file by inserting data at the beginning of the file or creating a new file in the context of the data server. This could potentially lead to remote code execution when an attacker sends a specially crafted message.
+CVE-2022-24311 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A vulnerability exists that could cause modification of an existing file by adding data at the end of the file or creating a new file in the context of the data server. This could potentially lead to remote code execution when an attacker sends a specially crafted message.
+CVE-2022-24312 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    BUFFER COPY WITHOUT CHECKING SIZE OF INPUT ('CLASSIC BUFFER OVERFLOW') CWE-120
+A vulnerability exists that could cause a stack-based buffer overflow potentially leading to remote code execution when an attacker sends a specially crafted message.
+CVE-2022-24313 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    OUT-OF-BOUNDS READ CWE-125
+A vulnerability exists that could cause memory leaks potentially resulting in denial of service when an attacker repeatedly sends a specially crafted message.
+CVE-2022-24314 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6    OUT-OF-BOUNDS READ CWE-125
+A vulnerability exists that could cause denial of service when an attacker repeatedly sends a specially crafted message.
+CVE-2022-24315 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.7    IMPROPER INITIALIZATION CWE-665
+A vulnerability exists that could cause information exposure when an attacker sends a specially crafted message.
+CVE-2022-24316 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.8    MISSING AUTHORIZATION CWE-862
+A vulnerability exists that could cause information exposure when an attacker sends a specific message.
+CVE-2022-24317 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Critical Manufacturing, Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: France
+
+3.4 RESEARCHER
+These vulnerabilities were reported to Schneider Electric and CISA separately by Tenable, and by Vyacheslav Moskvin working with Trend Micro’s Zero Day Initiative.
+4. MITIGATIONS
+Version 15.0.0.22021 of IGSS Data Server includes corrections for these vulnerabilities and is available for download through IGSS Master > Update IGSS Software.
+Schneider Electric recommends users use appropriate patching methodologies when applying these patches to their systems. They strongly recommend the use of back-ups and evaluating the impact of these patches in a test and development environment or on an offline infrastructure. Contact Schneider Electric’s Customer Care Center for assistance removing a patch.
+If users choose not to apply the remediation provided above, they should immediately apply the following mitigations to reduce the risk of exploit:
+
+Follow the general security recommendations below and verify devices are isolated on a private network and that firewalls are configured with strict boundaries for devices that require remote access.
+
+Schneider Electric strongly recommends the following industry cybersecurity best practices.
+
+Locate control and safety system networks and remote devices behind firewalls and isolate them from the network.
+Install physical controls so no unauthorized personnel can access your industrial control and safety systems, components, peripheral equipment, and networks.
+Place all controllers in locked cabinets and never leave them in the “Program” mode. 
+Never connect programming software to any network other than the network intended for that device.
+Scan all methods of mobile data exchange with the isolated network such as CDs, USB drives, etc., before use in the terminals or any node connected to these networks.
+Never allow mobile devices that have connected to any other network besides the intended network to connect to the safety or control networks without proper sanitation.
+Minimize network exposure for all control system devices and systems and ensure they are not accessible from the Internet.
+When remote access is required, use secure methods, such as virtual private networks (VPNs). Recognize that VPNs may have vulnerabilities and should be updated to the most current version available. Also, understand that VPNs are only as secure as the connected devices.
+
+For more information see Schneider Electric’s security notification: SEVD-2022-039-01 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

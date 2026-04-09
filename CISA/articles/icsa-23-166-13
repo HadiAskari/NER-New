@@ -1,0 +1,60 @@
+
+​​As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+​CVSS v3 7.2
+​ATTENTION: Low attack complexity
+​Vendor: Siemens
+​Equipment: SICAM A8000 Devices
+​Vulnerabilities: Command Injection, Use of Hard-coded Credentials, Exposed Dangerous Method or Function
+
+2. RISK EVALUATION
+​Successful exploitation of these vulnerabilities could allow an attacker, with direct physical access, to crack the root password to login to the device or remotely execute arbitrary code with root privileges. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+​The following products from Siemens are affected:
+
+​CP-8031 MASTER MODULE (6MF2803-1AA00): All versions prior to CPCI85 V05
+​CP-8050 MASTER MODULE (6MF2805-0AA00): All versions prior to CPCI85 V05
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 ​IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN A COMMAND ('COMMAND INJECTION') CWE-77
+​The web interface of affected devices is vulnerable to command injection due to missing server-side input sanitation. This could allow an authenticated privileged remote attacker to execute arbitrary code with root privileges.
+​CVE-2023-33919 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been calculated. The CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H).
+3.2.2 ​USE OF HARD-CODED CREDENTIALS CWE-798
+​The affected devices contain the hash of the root password in a hard-coded form, which could be exploited for UART console login to the device. An attacker with direct physical access could exploit this vulnerability.
+​CVE-2023-33920 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated. The CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3 ​EXPOSED DANGEROUS METHOD OR FUNCTION CWE-749
+​The affected devices contain an exposed UART console login interface. An attacker with direct physical access could try to brute force or crack the root password to login to the device.
+​CVE-2023-33921 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated. The CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+
+​CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+
+
+​COUNTRIES/AREAS DEPLOYED: Worldwide
+
+
+​COMPANY HEADQUARTERS LOCATION: Germany
+
+
+3.4 RESEARCHER
+​SEC Consult Vulnerability Lab, on behalf of Netz Niederösterreich GmbH, EVN Gruppe reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+​Siemens recommends updating the following products to the latest version:
+
+​CP-8050 MASTER MODULE (6MF2805-0AA00): Update to CPCI85 V05 or later version
+​CP-8031 MASTER MODULE (6MF2803-1AA00): Update to CPCI85 V05 or later version
+
+​Operators of critical power systems (e.g., TSOs or DSOs) worldwide are usually required by regulations to build resilience into the power grids by applying multi-level redundant secondary protection schemes. It is therefore recommended that the operators check whether appropriate resilient protection measures are in place. The risk of cyber incidents impacting the grid's reliability can thus be minimized by virtue of the grid design. Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated means to apply the security updates across multiple product instances may be used. Siemens strongly recommends prior validation of any security update before being applied, and supervision by trained staff of the update process in the target environment. As a general security measure Siemens strongly recommends protecting network access with appropriate mechanisms (e.g., firewalls, segmentation, VPN). It is advised to configure the environment according to our operational guidelines to run the devices in a protected IT environment.
+​Recommended security guidelines can be found at: https://www.siemens.com/gridsecurity.
+​For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT.
+​As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals.
+​Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+​For more information see the associated Siemens security advisory SSA-731916 in HTML and CSAF.
+​CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+​CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+​Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+​Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+​No known public exploits specifically target these vulnerabilities.

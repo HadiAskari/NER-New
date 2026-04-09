@@ -1,0 +1,39 @@
+
+Overview
+This updated advisory is a follow-up to the original advisory titled ICSA-13-038-01—360 Systems Image Server 2000 Series Remote Root Access that was published March 06, 2013, on the ICS-CERT Web site. This advisory provides mitigation details for a vulnerability that impacts the 360 Systems’ Image Server 2000 series devices. Exploitation of this vulnerability could cause loss of integrity.Independent researchers Neil Smith and Ryan Green have identified a hard-coded password vulnerability in 360 Systems’ Image Server 2000 series devices. 360 Systems has not released a patch, new version, or firmware upgrade to fix this issue, but recommends mitigating this vulnerability by removing the device from any public-facing networks. This vulnerability impacts the communications and emergency services sectors. This vulnerability could be exploited remotely.
+Affected Products
+The following 360 Systems product versions are affected:
+
+Image server 2000 (all models),
+Image Server Maxx (all models), and
+Maxx (all models)
+
+Background
+360 Systems is a US-based company that sells products in many countries around the world, including Asia, Latin America, Africa, and North America.The affected products are video servers used in broadcasting and emergency services. Accordingto 360 Systems the Image Server 2000 series devices are deployed in local and network broadcast stations. 360 Systems estimates that over 3,000 broadcasters use these systems.
+Vulnerability Characterization
+Vulnerability Overview
+Hard-Coded PasswordCWE-259: Use of Hard-coded Password, http://cwe.mitre.org/data/definitions/259.html, Web site last accessed March 08, 2013.
+--------- Begin Update A Part 1 of 1 --------
+The 360 Systems image server series contains a root user that is installed by default by the factory and set with a hardcoded password. An attacker can log into the device through Port 22/TCP using the root credential and hardcoded password with root privileges. This password cannot be changed by the user, neither can the root user account be removed.
+--------- End Update A Part 1 of 1 --------
+CVE-2012-4702 has been assigned to this vulnerability. A CVSS v2 base score of 10.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:C/I:C/A:C).
+Vulnerability Details
+Exploitability
+This vulnerability could be exploited remotely.
+Existence of Exploit
+No known public exploits specifically target this vulnerability.
+Difficulty
+An attacker with a low skill would be able to exploit this vulnerability.
+Mitigation
+360 Systems has not produced a patch, new version, or firmware upgrade that removes the hardcoded password or root user account. The vendor recommends that these devices be placed on closed, nonpublic-facing networks. The vendor further recommends the use of properly configured firewalls to restrict access to only necessary ports and the use of Virtual Private Networks if access is required. For more information on proper setup of this device, users may contact 360 Systems’ customer service department.
+The operations manuals for each of these devices states:
+The server is designed to be used in a private dedicated video network. A firewall must be used in systems that require internal security or connection to public networks. Consult with a network security specialist for guidance on the best hardware, programming and practices for your facility’s requirements.
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT Web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B—Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+

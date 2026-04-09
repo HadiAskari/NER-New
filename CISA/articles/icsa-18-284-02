@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: NUUO
+Equipment: CMS
+
+--------- Begin Update A Part 1 of 3 --------
+
+Vulnerabilities: Use of Insufficiently Random Values, Use of Obsolete Function, Incorrect Permission Assignment for Critical Resource, Use of Hard-coded Credentials, Path Traversal, Unrestricted Upload of File with Dangerous Type, SQL Injection
+
+--------- End Update A Part 1 of 3 ----------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-18-284-02 NUUO CMS that was published October 11, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+Successful exploitation of theses vulnerabilities could result in arbitrary remote code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of NUUO CMS, a central software management platform, are affected:
+
+CMS Versions 3.1 and prior.
+
+--------- Begin Update A Part 2 of 3 --------
+
+CMS Versions 3.3 and prior.
+
+--------- End Update A Part 2 of 3 --------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF INSUFFICIENTLY RANDOM VALUES CWE-330
+The application uses a session identification mechanism that could allow attackers to obtain the active session ID, which could allow arbitrary remote code execution.
+CVE-2018-17888 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2    USE OF OBSOLETE FUNCTION CWE-477
+The application uses insecure and outdated software components for functionality, which could allow arbitrary code execution.
+CVE-2018-17890 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    INCORRECT PERMISSION ASSIGNMENT FOR CRITICAL RESOURCE CWE-732
+The application implements a method of user account control that causes standard account security features to not be utilized as intended, which could allow user account compromise and may allow for remote code execution.
+CVE-2018-17892 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.4    USE OF HARD-CODED CREDENTIALS CWE-798
+The application creates default accounts that have hard-coded passwords, which could allow an attacker to gain privileged access.
+CVE-2018-17894 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+--------- Begin Update A Part 3 of 3 --------
+4.2.5    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The application allows external input to construct a pathname that is able to be resolved outside the intended directory. This could allow an attacker to impersonate a legitimate user, obtain restricted information, or execute arbitrary code.
+CVE-2018-17934 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+4.2.6    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The application allows the upload of arbitrary files that can modify or overwrite configuration files to the server, which could allow remote code execution.
+CVE-2018-17936 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).
+4.2.7    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+The web server application allows injection of arbitrary SQL characters, which can be used to inject SQL into an executing statement and allow arbitrary code execution.
+CVE-2018-18982 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).
+--------- End Update A Part 3 of 3 ----------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Financial Services, Government Facilities, Healthcare and Public Health, Transportation Systems.
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Taiwan 
+
+4.4 RESEARCHER
+Pedro Ribeiro reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+NUUO has developed a fix for the reported vulnerabilities and recommends users update to firmware v3.3 or the latest available. The update can be located at the following location:
+http://d1.nuuo.com/NUUO/CMS/v3.3.0/CMS_NUUO_All_v3.3.0.18.zip
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. 

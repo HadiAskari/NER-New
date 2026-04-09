@@ -1,0 +1,59 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Siemens
+Equipment: Simcenter Femap
+Vulnerabilities: Out-of-bounds Read, Out-of-bounds Write
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow arbitrary code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Simcenter Femap, a simulation application, are affected:
+
+Simcenter Femap: All versions prior to v2022.1.2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    OUT-OF-BOUNDS READ CWE-125
+The affected application contains an out of bounds read past the end of an allocated buffer while parsing specially crafted files. This could allow an attacker to execute code in the context of the current process.
+CVE-2022-28661 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H)
+3.2.2    OUT-OF-BOUNDS WRITE CWE-787
+The affected application contains an out of bounds write past the end of an allocated buffer while parsing specially crafted files. This could allow an attacker to leverage this vulnerability to leak information in the context of the current process.
+CVE-2022-28662 has been assigned to this vulnerability. A CVSS v3 base score of 3.3 has been calculated. the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N)
+3.2.3    OUT-OF-BOUNDS WRITE CWE-787
+The affected application contains an out of bounds write past the end of an allocated structure while parsing specially crafted files. This could allow an attacker to execute code in the context of the current process.
+CVE-2022-28663 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated. the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H)
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+xina1i working with Trend Micro Zero Day Initiative reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Siemens recommends the following specific workarounds and mitigations users can apply to reduce risk:
+
+Update to v2022.1.2 or later versions.
+Do not open untrusted files in Simcenter Femap.
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends to configure the environment according to Siemens' operational guidelines for industrial security, and to follow the recommendations in the product manuals. Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For further inquiries on security vulnerabilities in Siemens products and solutions, please contact the Siemens ProductCERT: https://www.siemens.com/cert/advisories
+Additional Reference: SSA-998762: (PDF)
+Additional Reference: SSA-998762: (TXT)
+Additional Reference: SSA-998762: (CSAF)
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

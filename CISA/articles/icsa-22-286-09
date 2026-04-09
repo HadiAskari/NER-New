@@ -1,0 +1,94 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global). 
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SICAM P850 and P855 devices
+Vulnerabilities: Session Fixation, Improper Neutralization of Parameter/Argument Delimiters
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-22-286-09 Siemens SICAM P850 and P855 Devices that was published October 13, 2022, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attack to take over another user’s session after login, cause a denial-of-service condition, or control the program counter which could result in arbitrary code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Siemens SICAM P850 and P855 are affected:
+
+SICAM P850 (7KG8500-0AA00-0AA0): All versions prior to v3.10
+SICAM P850 (7KG8500-0AA00-2AA0): All versions prior to v3.10
+SICAM P850 (7KG8500-0AA10-0AA0): All versions prior to v3.10
+SICAM P850 (7KG8500-0AA10-2AA0): All versions prior to v3.10
+SICAM P850 (7KG8500-0AA30-0AA0): All versions prior to v3.10
+SICAM P850 (7KG8500-0AA30-2AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA01-0AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA01-2AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA02-0AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA02-2AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA11-0AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA11-2AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA12-0AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA12-2AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA31-0AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA31-2AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA32-0AA0): All versions prior to v3.10
+SICAM P850 (7KG8501-0AA32-2AA0): All versions prior to v3.10
+SICAM P855 (7KG8550-0AA00-0AA0): All versions prior to v3.10
+SICAM P855 (7KG8550-0AA00-2AA0): All versions prior to v3.10
+SICAM P855 (7KG8550-0AA10-0AA0): All versions prior to v3.10
+SICAM P855 (7KG8550-0AA10-2AA0): All versions prior to v3.10
+SICAM P855 (7KG8550-0AA30-0AA0): All versions prior to v3.10
+SICAM P855 (7KG8550-0AA30-2AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA01-0AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA01-2AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA02-0AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA02-2AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA11-0AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA11-2AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA12-0AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA12-2AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA31-0AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA31-2AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA32-0AA0): All versions prior to v3.10
+SICAM P855 (7KG8551-0AA32-2AA0): All versions prior to v3.10
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    SESSION FIXATION CWE-384
+Affected SICAM P850 and P855 devices versions prior to 3.10 accept user defined session cookies and do not renew the session cookie after login or logout. This could allow an attacker to take over another user’s session after login.
+--------- Begin Update A part 1 of 2 ---------
+CVE-2022-40226 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+--------- End Update A part 1 of 2 ---------
+4.2.2    IMPROPER NEUTRALIZATION OF PARAMETER/ARGUMENT DELIMITERS CWE-141
+--------- Begin Update A part 2 of 2 ---------
+Affected SICAM P850 and P855 devices versions prior to 3.10 do not properly validate the parameter of a specific GET request. This could allow an unauthenticated user to set the device to a denial-of-service state or to control the program counter and execute arbitrary code on the device.
+--------- End Update A part 2 of 2 ---------
+CVE-2022-41665 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Michael Messner of Siemens Energy reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+Siemens has released updates for the affected products and recommends updating to the latest versions: 
+
+SICAM P850 devices: Update to v3.10 or later
+SICAM P855 devices: Update to v3.10 or later
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce risk:
+
+Avoid accessing links from untrusted sources while logged in to SICAM P850 or SICAM P855 devices
+
+Siemens recommends operators check for appropriate resilient protection measures; the risk of cyber incidents impacting the grid's reliability can be minimized by virtue of the grid design.
+Siemens strongly recommends applying the provided security updates using the corresponding tooling and documented procedures made available with the product. If supported by the product, an automated application of security updates across multiple product instances may be used. Siemens strongly recommends users to validate any security update before application; Siemens recommends the update process be supervised by trained staff in the target environment.
+As a general security measure, Siemens strongly recommends protecting network access with appropriate mechanisms, such as firewalls, network segmentation, or use of virtual private networks (VPNs). It is advised to configure the environment according to Siemens’ operational guidelines to run the devices in a protected IT environment.
+For additional resources, users should review Siemens’ security guidelines.
+For more information, see Siemens Security Advisory SSA-572005 in HTML or CSAF.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,59 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Westermo
+Equipment: EDW-100
+Vulnerabilities: Use of Hard-coded Password, Insufficiently Protected Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to access the device using hardcoded credentials and download cleartext username and passwords.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Westermo EDW-100, a Serial to Ethernet converter, are affected:
+
+EDW-100: All versions
+
+3.2 Vulnerability Overview
+3.2.1 Use of Hard-coded Password CWE-259
+Westermo EDW-100 has a hidden administrator account with a hardcoded password. In the firmware package, in "image.bin", the username root and the password for this account are both hard-coded and exposed as strings that can trivially be extracted. Currently there is no way to change this password.
+CVE-2024-36080 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-36080. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.2.2 Insufficiently Protected Credentials CWE-522
+Westermo EDW-100 allows an unauthenticated GET request that can download the configuration-file that contains the configuration, username, and passwords in clear-text.
+CVE-2024-36081 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-36081. A base score of 9.3 has been calculated; the CVSS vector string is (CVSS4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy, Water and Wastewater Systems, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Sweden
+
+3.4 RESEARCHER
+Nicolai Grødum and Sofia Lindqvist of PwC Norway reported these vulnerabilities to CISA.
+4. MITIGATIONS
+To mitigate the risks associated with these vulnerabilities, Westermo recommends:
+Network segregation, perimeter protection, network to network protection, and physical security measures. EDW-100 functions as an industrial serial to ethernet converter. This means that EDW-100 does not in itself have any of the protective measures you require in a modern security posture, EDW-100 should not be placed at the edge of the network but instead deployed using the techniques mentioned in the IEC 62443 standard.
+This means the use of network segregation and perimeter protection which can be accomplished by for example deploying a firewall and the use of VLANs.
+If data needs to flow into, or out of, the security zone containing EDW-100 it is important to have network to network protection enabled which for example can be applied with a Virtual Private Network (VPN).
+It is also crucial to have physical security measures put in place as the unit can be vulnerable to physical attacks and tampering. A recommendation to mitigate this risk is to place the unit in a separate enclosure with locks and alarms if it opened outside of normal maintenance.
+While the unit's design characteristics may necessitate extra precautions, implementing the suggested countermeasures ensures a secure deployment that effectively addresses associated risks.
+Westermo recommends replacing EDW-100 with Lynx DSS L105-S1. For further reference see 5-Port Managed Industrial Device Server Switch | L105-S1 ᐈ Westermo.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+May 30, 2024: Initial Publication
+

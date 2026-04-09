@@ -1,0 +1,76 @@
+
+1. EXECUTIVE SUMMARY
+--------- Begin Update A Part 1 of 5 --------
+
+
+CVSS v3 6.3
+
+
+--------- End Update A Part 1 of 5 -----------
+
+ATTENTION: Low skill level to exploit
+Vendor: Medtronic
+Equipment: N’Vision Clinician Programmer
+
+--------- Begin Update A Part 2 of 5 -----------
+
+Vulnerabilities: Missing Encryption of Sensitive Data, Protection Mechanism Failure
+
+--------- End Update A Part 2 of 5 -----------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-18-137-01 Medtronic N'Vision Clinician Programmer that was published May 17, 2018, on the NCCIC/ICS-CERT website.
+3. RISK EVALUATION
+As part of the normal functionality of this device, the N’Vision Clinician Programmer may store Personal Health Information (PHI) or Personal Identifying Information (PII). Successful exploitation of these vulnerabilities may allow an attacker with physical access to an 8870 N’Vision Compact Flash card to access this PHI or PII.
+--------- Begin Update A Part 3 of 5 --------
+Additionally, an attacker with physical access to the 8870 Application Card may be able to modify the card to execute arbitrary code on the 8840 Clinician Programmer.
+--------- End Update A Part 3 of 5 -----------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 4 of 5 --------
+The N’Vision Clinician Programmer is a small, portable device that offers a single programming platform for Medtronic Neurological implantable therapy devices, such as Medtronic neurostimulators and drug pumps. The following products are affected:
+--------- End Update A Part 4 of 5 -----------
+
+8840 N’Vision Clinician Programmer, all versions, and
+8870 N’Vision removable Application Card, all versions.
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1   MISSING ENCRYPTION OF SENSITIVE DATA CWE-311
+The affected product does not encrypt the following sensitive information while at rest:
+
+PII – Personally Identifiable Information. Some combination of personal data that enables the unique identification of an individual. PII is defined as “information that can be used to distinguish or trace an individual’s identity, either alone or when combined with other personal or identifying information that is linked or linkable to a specific individual.”
+PHI – Protected Health Information. Some combination of PII and associated health related data.
+
+CVE-2018-8849 has been assigned to this vulnerability. A CVSS v3 base score of 4.6 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+--------- Begin Update A Part 5 of 5 --------
+
+
+4.2.2    PROTECTION MECHANISM FAILURE CWE-693
+The 8840 Clinician Programmer executes the application program from the 8870 Application Card. An attacker with physical access to an 8870 Application Card and sufficient technical capability can modify the contents of this card, including the binary executables. If modified to bypass protection mechanisms, this malicious code will be run when the card is inserted into an 8840 Clinician Programmer.
+CVE-2018-10631 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been assigned; the CVSS vector string is (AV:P/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+--------- End Update A Part 5 of 5 -----------
+
+
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Healthcare and Public Health
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Dublin, Ireland
+
+4.4 RESEARCHER
+Billy Rios and Jonathan Butts of Whitescope LLC reported these vulnerabilities to NCCIC.
+5. MITIGATIONS
+Medtronic has not developed a product update to address the vulnerabilities, but is reinforcing security reminders within this advisory to help reduce the risk associated with the vulnerabilities.
+The 8870 Therapy Application card stores PHI and PII as part of its normal operating procedure and should be handled, managed and secured in a manner consistent with the applicable laws for patient data privacy.
+Medtronic recommends users take additional defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, hospitals and clinicians should:
+
+Maintain strict physical control of the 8870 application card.
+Use only legitimately obtained 8870 cards and not cards provided by any third party as firmware and system updates are provided directly by Medtronic using new 8870 application cards.
+8840 Programmers and 8870 Therapy Application compact flash cards are the property of Medtronic and should be returned to Medtronic when no longer in use. If that is not an option, you should securely dispose of them.
+
+Medtronic has released additional patient focused information, at the following location:
+https://www.medtronic.com/security
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.

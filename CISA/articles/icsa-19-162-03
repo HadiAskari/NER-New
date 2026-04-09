@@ -1,0 +1,64 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.5
+
+ATTENTION: Exploitable remotely/low skill level to exploit 
+Vendor: Siemens
+Equipment: LOGO!8 devices
+Vulnerabilities: Improper Restriction of Operations within the Bounds of a Memory Buffer, Session Fixation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to read the communication between the affected device and a user, and compromise the availability of the targeted system.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of LOGO!8 devices, that are used for basic small-scale automation tasks, are affected:
+
+SIEMENS LOGO!8: 6ED1052-xyyxx-0BA8 FS:01 to FS:06 / Firmware v1.80.xx and v1.81.xx
+SIEMENS LOGO!8: 6ED1052-xyy08-0BA0 FS:01 / Firmware version prior to v1.82.02
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+An attacker with network access to Port 10005/TCP of the LOGO!8 device could cause a denial-of-service condition by sending specially crafted packets. This security vulnerability could be exploited by an unauthenticated attacker with network access to the affected service. No user interaction is required, and successful exploitation could compromise the availability of the targeted system.
+CVE-2019-6571 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    SESSION FIXATION CWE-384
+The integrated webserver does not invalidate the Session ID upon user logout. An attacker who successfully extracted a valid Session ID is able to use it even after the user logs out. This security vulnerability could be exploited by an attacker in a privileged network position who is able to read the communication between the affected device and the user, or by an attacker who is able to obtain valid Session IDs through other means. To facilitate this exploit, the user must first invoke a session to the affected device.
+CVE-2019-6584 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Thomas Meesters from cirosec GmbH and Ruhr University of Bochum, and Christian Siemers and Irakli Edjibia from Hochschule Augsburg reported these vulnerabilities to Siemens.
+4. MITIGATIONS
+For Siemens LOGO!8: 6ED1052-xyyxx-0BA8 FS:01 to FS:06 / Firmware version v1.80.xx and v1.81.xx: Siemens recommends upgrading to a new version.
+Siemens has updates at https://support.industry.siemens.com/cs/ww/en/view/109767410 for the following product:
+
+Siemens LOGO!8: 6ED1052-xyy08-0BA0 FS:01 / Firmware version prior to v1.82.02: Update to vV1.82.02 or higher.
+
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Protect network access to the device.
+As a general security measure Siemens strongly recommends protecting network access to the devices with appropriate mechanisms. 
+In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for Industrial Security (https://cert-portal.siemens.com/operational-guidelines-industrial-security.pdf), and following the recommendations in the product manuals.
+
+Additional information on Industrial Security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens security advisory SSA-774850 at the following location: http://www.siemens.com/cert/advisories
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities. High skill level is needed to exploit.

@@ -1,0 +1,58 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Hitachi ABB Power Grids
+Equipment: eSOMS Telerik
+Vulnerabilities: Path Traversal, Deserialization of Untrusted Data, Improper Input Validation, Inadequate Encryption Strength, Insufficiently Protected Credentials, Path Traversal
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to upload malicious files to the server, discover sensitive information, or execute arbitrary code.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi ABB Power Grids reports the vulnerabilities affect the following eSOMS products: 
+
+eSOMS, all versions prior to 6.3 using a version of Telerik software 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    PATH TRAVERSAL CWE-22
+Path traversal in RadChart in Telerik UI for ASP.NET AJAX allows a remote attacker to read and delete an image with extension .BMP, .EXIF, .GIF, .ICON, .JPEG, .PNG, .TIFF, or .WMF on the server through a specially crafted request. 
+CVE-2019-19790 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    DESERIALIZATION OF UNTRUSTED DATA CWE-502
+Progress Telerik UI for ASP.NET AJAX through 2019.3.1023 contains a .NET deserialization vulnerability in the RadAsyncUpload function. This is exploitable when the encryption keys are known. 
+CVE-2019-18935 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER INPUT VALIDATION CWE-20
+Progress Telerik UI for ASP.NET AJAX before R2 2017 SP2 does not properly restrict user input to RadAsyncUpload, which allows remote attackers to perform arbitrary file uploads or execute arbitrary code. 
+CVE-2017-11357 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.4    INADEQUATE ENCRYPTION STRENGTH CWE-326
+Telerik.Web.UI in Progress Telerik UI for ASP.NET AJAX before R1 2017 and R2 before R2 2017 SP2 uses weak RadAsyncUpload encryption, which allows remote attackers to perform arbitrary file uploads or execute arbitrary code. 
+CVE-2017-11317 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.5    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+Telerik.Web.UI.dll in Progress Telerik UI for ASP.NET AJAX before R2 2017 SP1 and Sitefinity before 10.0.6412.0 does not properly protect Telerik.Web.UI.DialogParametersEncryptionKey or the MachineKey, which makes it easier for remote attackers to defeat cryptographic protection mechanisms, leading to a MachineKey leak, arbitrary file uploads or downloads, XSS, or ASP.NET ViewState compromise. 
+CVE-2017-9248 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.6    PATH TRAVERSAL CWE-22
+Absolute path traversal vulnerability in the RadAsyncUpload control in the RadControls in Telerik UI for ASP.NET AJAX before Q3 2012 SP2 allows remote attackers to write to arbitrary files, and consequently execute arbitrary code, via a full pathname in the UploadID metadata value. 
+CVE-2014-2217 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).
+3.2.7    PATH TRAVERSAL CWE-22
+Cross-site scripting (XSS) vulnerability in Telerik UI for ASP.NET AJAX RadEditor control 2014.1.403.35, 2009.3.1208.20, and other versions allows remote attackers to inject arbitrary web script or HTML via CSS expressions in style attributes. 
+CVE-2014-4958 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+Hitachi ABB Power Grids reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Hitachi ABB Power Grids has published an advisory for eSOMS Telerik and advises users to update to eSOMS Version 6.3 as soon as possible. 
+For additional information and support, contact a product provider or Hitachi ABB Power Grids service organization. For contact information, visit Hitachi ABB Power Grids contact-centers.
+Recommended security practices and firewall configurations can help protect a process control network from attacks that originate from outside the network. Such practices include ensuring applications and servers are physically protected from direct access by unauthorized personnel, have no direct connections to the Internet, are separated from other networks by means of a firewall system that has a minimal number of ports exposed, and others that must be evaluated case by case. Sensitive application servers should not be used for Internet surfing, instant messaging, or receiving e-mails. Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

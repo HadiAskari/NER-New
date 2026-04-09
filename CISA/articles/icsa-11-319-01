@@ -1,0 +1,41 @@
+
+Overview
+ICS-CERT has become aware of a report from the Zero Day Initiative concerning two vulnerabilities in the InduSoft Web Studio software. This information was reported to Zero Day Initiative by independent security researcher Luigi Auriemma.
+These vulnerabilities exploit unauthenticated remote code execution within the CEServer Operation and the CEServer.exe directories.
+Zero Day Initiative has coordinated with InduSoft, who has produced a patch that mitigates these vulnerabilities.
+Affected Products
+According to InduSoft, these vulnerabilities affect the following products:
+
+InduSoft Web Studio Versions 6.1 and 7.0.
+
+Impact
+An attacker who successfully exploits these vulnerabilities can execute arbitrary code on the targeted system.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+Background
+According to InduSoft, Web Studio is a collection of automation tools used to develop human-machine interfaces, supervisory control and data acquisition (SCADA) systems, and embedded instrumentation solutions. Web Studio is a software product sold worldwide in industries dealing with system automation.
+Vulnerability Characterization
+Vulnerability Overview
+Unauthenticated Remote Code Execution
+This vulnerability allows remote attackers to execute arbitrary code on vulnerable installations of InduSoft Web Studio. The vulnerability exists within the remote agent component (CEServer.exe) that listens by default on Port 4322/TCP. When handling incoming requests, the process fails to perform any type of authentication.
+CVE-2011-4051 has been assigned to this vulnerability.
+Remote Code Execution
+This vulnerability allows unauthenticated remote attackers to execute arbitrary code on vulnerable installations of InduSoft Web Studio. This vulnerability exists within the CEServer component, which is used as a runtime dependency for deployed applications that use InduSoft Web Studio. When handling the remove file operation (0x15), the process blindly copies user-supplied data to a fixed-length buffer on the stack.
+CVE-2011-4052 has been assigned to this vulnerability.
+Vulnerability Details
+Exploitability
+These vulnerabilities are remotely exploitable.
+Existence of Exploit
+No known public exploits exist that target these vulnerabilities.
+Difficulty
+An attacker with a moderate skill level could exploit these vulnerabilities.
+Mitigation
+InduSoft recommends that customers of InduSoft Web Studio software upgrade to the latest version and install the latest patch.
+In addition to installing the latest version and patch of InduSoft Web Studio, ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks:
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control systems security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+

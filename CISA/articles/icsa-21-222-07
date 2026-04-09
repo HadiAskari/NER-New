@@ -1,0 +1,70 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: SIMATIC
+Vulnerabilities: Out-of-Bounds Read, Use After Free
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-21-222-07 Siemens SIMATIC NET CP that was published August 10, 2021, on the ICS webpage on cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow a remote attacker to access sensitive information and execute arbitrary code.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SIMATIC NET CP 1543-1 (Incl. SIPLUS NET variants): All versions prior to v3.0
+
+--------- Begin Update A Part 1 of 2 ---------
+
+SIMATIC CP 1545-1 (6GK7545-1GX00-0XE0): All versions prior to v1.1
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    OUT-OF-BOUNDS READ CWE-125
+The affected products are vulnerable to an out-of-bounds read vulnerability in mod_cap via the cap_text.ccap_to_text function, which could lead to information disclosure.
+CVE-2020-9272 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.2    USE AFTER FREE CWE-416
+A malicious attacker could corrupt the memory pool by interrupting the data transfer channel. This triggers a use-after-free condition in alloc_pool in pool.c, which could lead to remote code execution.
+CVE-2020-9273 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens recommends users update to the latest software version:
+
+SIMATIC NET CP 1543-1 (Incl. SIPLUS NET variants): Update to v3.0 or later
+
+--------- Begin Update A Part 2 of 2 ---------
+
+SIMATIC CP 1545-1 (6GK7545-1GX00-0XE0): Update to v1.1 or later
+
+--------- End Update A Part 2 of 2 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Disable the embedded FTP server. The server is deactivated in the default configuration.
+Limit access to Port 21/TCP to trusted IP addresses.
+
+As a general security measure, Siemens strongly recommends users protect network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends users configure the environment according to Siemens operational guidelines for industrial security, and follow the recommendations in the product manual.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+For more information about this issue, please see Siemens Security Advisory SSA-679335
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,99 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 6.0
+ATTENTION: Low attack complexity
+Vendor: Rockwell Automation
+Equipment: FactoryTalk System Services and Policy Manager
+Vulnerabilities: Improper Privilege Management
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to obtain private keys, which would result in impersonating resources on the secured network.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Rockwell Automation FactoryTalk products are affected:
+
+FactoryTalk System Services: v6.40
+FactoryTalk Policy Manager: v6.40
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER PRIVILEGE MANAGEMENT CWE-269
+The v6.40 release of FactoryTalk Policy Manager allowed the private keys to be insecurely stored with read and execute privileges for the Windows group, ‘Everyone'. These keys are used to generate digital certificates and pre-shared keys. This vulnerability could allow a malicious user with access to the machine to obtain private keys. If obtained, a malicious user could impersonate resources on the secured network.
+CVE-2024-6325 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-6325. A base score of 6.0 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N).
+3.2.2 IMPROPER PRIVILEGE MANAGEMENT CWE-269
+An exposure of sensitive information vulnerability exists in the FactoryTalk System Service. A malicious user could exploit this vulnerability by starting a back-up or restore process, which temporarily exposes private keys, passwords, pre-shared keys, and database folders when they are temporarily copied to an interim folder. This vulnerability is due to the lack of explicit permissions set on the backup folder. If private keys are obtained by a malicious user, they could impersonate resources on the secured network.
+CVE-2024-6236 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.9 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-6236. A base score of 1.8 has been calculated; the CVSS vector string is (CVSS4.0/AV:L/AC:L/AT:P/PR:L/UI:A/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Users using the affected software are encouraged to implement the following steps to invalidate the existing vulnerable private keys/digital certificates and regenerate new secure ones.
+
+Clear CIP Security configurations from devices and from FactoryTalk Policy Manager (FTPM)
+Update FactoryTalk System Services (FTSS) and FactoryTalk Policy Manager to v6.40.01
+Redeploy CIP Security Policy
+
+Detailed steps are below:
+
+1) Remove deployed security policy from all devices using FTPM:
+
+Open FTPM.
+Document all Zone's security settings and all Conduit's settings as you must re-create them after updating FTPM.
+Change all devices port's Policies > Zone values to the "Unassigned" Zone.
+Delete all zones and conduits.
+Deploy (CIP). Ensure that all endpoints were reset successfully.
+(migrating from v6.40 only) Deploy (OPC UA). Ensure all endpoints were reset successfully.
+For any OPC UA clients, perform whatever steps are required by those clients to remove the previously applied certificates.
+Close FTPM
+
+
+2) Delete the \FTSS_backup folder: c:\ProgramData\Rockwell\RNAServer\Global\RnaStore\FTSS_Backup
+3) Delete the \keystore folder: c:\ProgramData\Rockwell Automation\FactoryTalk System Services\keystore
+4) Delete any backup copies of the \keystore folder. They will be named the same as the \keystore folder but with a suffix appended to it, like: c:\ProgramData\Rockwell Automation\FactoryTalk System Services\ keystore_source_2024_04_25_12_25_38_541566
+5) Delete the PSKs.json file: c:\ProgramData\Rockwell Automation\FactoryTalk System Services\PSKs.json
+6) Delete any backup copies of the PSKs.json file. They will be named the same as the PSKs.json file but with a suffix appended to it, like: c:\ProgramData\Rockwell Automation\FactoryTalk System Services\ PSKs.json_source_2024_05_17_07_38_25_200356
+7) Install FactoryTalk Policy Manager version 6.40.01.
+
+Restart the computer when prompted at the end of the install.
+Open FTPM. FTPM will attempt to connect to the FactoryTalk System Services web server before proceeding.
+If FTPM could not successfully connect to FactoryTalk System Services (FTSS), it is because the FTSS service hasn't started yet. It will eventually start or else you can start the FTSS service manually in Windows Services.
+
+
+10) Re-create the original Zones.
+11) Move the devices from the unassigned Zone back to their original zones.
+12) Re-create the original Conduits.
+13) Deploy (CIP endpoints).
+14) (migrating from v6.40 only) Deploy (OPC UA endpoints).
+
+For any OPC UA client endpoints, manually apply the newly generated certificates from this deploy.
+
+
+
+Additionally, users are encouraged to implement the suggested security best practices to minimize the risk of vulnerability.
+
+Security Best Practices
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+July 11, 2024: Initial Publication
+

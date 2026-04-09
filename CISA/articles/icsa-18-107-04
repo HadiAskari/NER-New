@@ -1,0 +1,97 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit.
+Vendor: Rockwell Automation
+Equipment: Allen-Bradley Stratix and ArmorStratix Switches
+Vulnerabilities: Improper Input Validation, Resource Management Errors, Improper Restriction of Operations within the Bounds of a Memory Buffer, Use of Externally-Controlled Format String.
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in loss of availability, confidentiality, and/or integrity caused by memory exhaustion, module restart, information corruption, and/or information exposure.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Allen-Bradley Stratix and ArmorStratix Switches use a vulnerable version of Cisco IOS or IOS XE:
+
+Allen-Bradley Stratix 5400 Industrial Ethernet Switches, versions 15.2(6)E0a and earlier;
+Allen-Bradley Stratix 5410 Industrial Distribution Switches, versions 15.2(6)E0a and earlier;
+Allen-Bradley Stratix 5700 Industrial Managed Ethernet Switches, versions 15.2(6)E0a and earlier;
+Allen-Bradley Stratix 8000 Modular Managed Ethernet Switches, versions 15.2(6)E0a and earlier;
+Allen-Bradley ArmorStratix 5700 Industrial Managed Ethernet Switches for extreme environments, versions 15.2(6)E0a and earlier.
+
+Updates for all affected products are now available and linked in the Mitigation section below.
+3.2 VULNERABILITY OVERVIEW
+3.2.1   IMPROPER INPUT VALIDATION CWE-20
+A vulnerability in the Smart Install feature of Cisco IOS Software and Cisco IOS XE Software could allow an unauthenticated remote attacker to trigger a reload of an affected device, resulting in a denial of service (DoS) condition, or to execute arbitrary code on an affected device.
+The vulnerability is due to improper validation of packet data. An attacker could exploit this vulnerability by sending a crafted Smart Install message to an affected device on TCP port 4786. A successful exploit could allow the attacker to cause a buffer overflow on the affected device.
+CVE-2018-0171 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2   RESOURCE MANAGEMENT ERRORS CWE-399
+A vulnerability in the Smart Install feature of Cisco IOS Software and Cisco IOS XE Software could allow an unauthenticated remote attacker to trigger a reload of an affected device, resulting in a DoS condition.
+The vulnerability is due to improper validation of packet data. An attacker could exploit this vulnerability by sending a crafted packet to an affected device on TCP port 4786.
+CVE-2018-0156 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.3   IMPROPER INPUT VALIDATION CWE-20
+A vulnerability in the DHCP option 82 encapsulation functionality of Cisco IOS Software and Cisco IOS XE Software could allow an unauthenticated remote attacker to cause an affected device to reload, resulting in a DoS condition.
+The vulnerability exists because the affected software performs incomplete input validation of option 82 information that it receives in DHCP Version 4 (DHCPv4) packets from DHCP relay agents. An attacker could exploit this vulnerability by sending a crafted DHCPv4 packet to an affected device. A successful exploit could allow the attacker to cause the affected device to reload, resulting in a DoS condition.
+CVE-2018-0174 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.4   IMPROPER INPUT VALIDATION CWE-20
+A vulnerability in the DHCP option 82 encapsulation functionality of Cisco IOS Software and Cisco IOS XE Software could allow an unauthenticated remote attacker to cause an affected device to reload, resulting in a DoS condition.
+The vulnerability exists because the affected software performs incomplete input validation of option 82 information that it receives in DHCP Version 4 (DHCPv4) packets from DHCP relay agents. An attacker could exploit this vulnerability by sending a crafted DHCPv4 packet to an affected device. A successful exploit could allow the attacker to cause a heap overflow condition on the affected device, which will cause the device to reload and result in a DoS condition.
+CVE-2018-0172 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.5   IMPROPER INPUT VALIDATION CWE-20
+A vulnerability in the Cisco IOS Software and Cisco IOS XE Software function that restores encapsulated option 82 information in DHCP Version 4 (DHCPv4) packets could allow an unauthenticated remote attacker to cause an affected device to reload, resulting in a DoS condition.
+The vulnerability exists because the affected software performs incomplete input validation of encapsulated option 82 information that it receives in DHCPOFFER messages from DHCPv4 servers. An attacker could exploit this vulnerability by sending a crafted DHCPv4 packet to an affected device, which the device would then forward to a DHCPv4 server. When the affected software processes the option 82 information that is encapsulated in the response from the server, an error could occur. A successful exploit could allow the attacker to cause the affected device to reload, resulting in a DoS condition.
+CVE-2018-0173 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.6   IMPROPER INPUT VALIDATION CWE-20
+A vulnerability in the Internet Key Exchange Version 2 (IKEv2) module of Cisco IOS Software and Cisco IOS XE Software could allow an unauthenticated remote attacker to cause a memory leak or a reload of an affected device that leads to a DoS condition.
+The vulnerability is due to incorrect processing of certain IKEv2 packets. An attacker could exploit this vulnerability by sending crafted IKEv2 packets to an affected device to be processed. A successful exploit could cause an affected device to continuously consume memory and eventually reload, resulting in a DoS condition.
+CVE-2018-0158 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+3.2.7   IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFER CWE-119
+A buffer overflow vulnerability in the LLDP subsystem of Cisco IOS Software, Cisco IOS XE Software, and Cisco IOS XR Software could allow an adjacent, unauthenticated attacker to cause a DoS condition or execute arbitrary code with elevated privileges.
+CVE-2018-0167 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.8   USE OF EXTERNALLY-CONTROLLED FORMAT STRING CWE-134
+A format string vulnerability in the LLDP subsystem of Cisco IOS Software and Cisco IOS XE Software could allow an adjacent, unauthenticated attacker to cause a DoS condition or execute arbitrary code with elevated privileges.
+CVE-2018-0175 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+Critical Infrastructure Sectors: Critical Manufacturing, Energy, Water and Wastewater Systems
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Wisconsin, USA
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to NCCIC from the semi-annual Cisco IOS and IOS XE Software Security Advisory Bundled Publication.
+4. MITIGATIONS
+Rockwell Automation recommends users upgrade to FRN 15.2(6)E1 or later. Updated software can be downloaded at:
+http://compatibility.rockwellautomation.com/Pages/MultiProductDownload.aspx?famID=15
+Rockwell Automation has provided knowledge base article number 1073268 on their website at the following location to address these vulnerabilities:
+https://rockwellautomation.custhelp.com/app/answers/detail/a_id/1073268/ (login required)
+Rockwell Automation also recommends implementing the following mitigations in addition to upgrading the software version:
+Cisco has released new Snort Rules at https://www.cisco.com/web/software/286271056/117258/sf-rules-2018-03-29-new.html to help address the following vulnerabilities:
+
+CVE-2018-0171 - Snort Rule 46096 and 46097
+CVE-2018-0156 - Snort Rule 41725
+CVE-2018-0174 - Snort Rule 46120
+CVE-2018-0172 - Snort Rule 46104
+CVE-2018-0173 - Snort Rule 46119
+CVE-2018-0158 - Snort Rule 46110
+
+Cisco adds the following notes for the Smart Install vulnerabilities (CVE-2018-0171 and CVE-2018-0156):
+
+Smart Install is turned off by express setup; however, upgraded switches but not re-setup may have it enabled.
+Disable the Smart Install feature with the no vstack configuration command if it is not needed or once setup is complete.
+Users who do use the feature—and need to leave it enabled—can use ACLs to block incoming traffic on TCP port 4786.
+
+CVE-2018-0167 and CVE-2018-0175 have no specific mitigations in place. See the following Cisco Vulnerability advisory for more details:
+https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20180328-lldp
+Rockwell Automation also recommends users implement the following general security guidelines:
+
+Help minimize network exposure for all control system devices and/or systems, and confirm that they are not accessible from the Internet.
+Locate control system networks and devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS-CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

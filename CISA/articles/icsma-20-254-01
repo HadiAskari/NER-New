@@ -1,0 +1,96 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 6.8
+ATTENTION: Low attack complexity
+Vendor: Philips
+Equipment: Patient Information Center iX (PICiX); PerformanceBridge Focal Point; IntelliVue Patient Monitors MX100, MX400-MX850, and MP2-MP90; and IntelliVue X2, and X3
+Vulnerabilities: Improper Neutralization of Formula Elements in a CSV File, Cross-site Scripting, Improper Authentication, Improper Check for Certificate Revocation, Improper Handling of Length Parameter Inconsistency, Improper Validation of Syntactic Correctness of Input, Improper Input Validation, Exposure of Resource to Wrong Sphere
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in unauthorized access, interrupted monitoring, and collection of access information and/or patient data.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the patient monitoring devices are affected:
+
+Patient Information Center iX (PICiX): Versions B.02, C.02, C.03
+PerformanceBridge Focal Point: Version A.01
+IntelliVue patient monitors MX100, MX400-MX850, and MP2-MP90: Versions N and prior
+IntelliVue X3 and X2: Versions N and prior
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER NEUTRALIZATION OF FORMULA ELEMENTS IN A CSV FILE CWE-1236
+In Patient Information Center iX (PICiX) Versions B.02, C.02, C.03, the software saves user-provided information into a comma-separated value (CSV) file, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as a command when the file is opened by spreadsheet software.
+CVE-2020-16214 has been assigned to this vulnerability. A CVSS v3.1 base score of 4.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N).
+3.2.2 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+In Patient Information Center iX (PICiX) Versions B.02, C.02, C.03, the software does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is then used as a webpage and served to other users. Successful exploitation could lead to unauthorized access to patient data via a read-only web application.
+CVE-2020-16218 has been assigned to this vulnerability. A CVSS v3.1 base score of 3.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N).
+3.2.3 IMPROPER AUTHENTICATION CWE-287
+In Patient Information Center iX (PICiX) Version B.02, C.02, C.03, and PerformanceBridge Focal Point Version A.01, when an actor claims to have a given identity, the software does not prove or insufficiently proves the claim is correct.
+CVE-2020-16222 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.0 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.4 IMPROPER CHECK FOR CERTIFICATE REVOCATION CWE-299
+In Patient Information Center iX (PICiX) Versions C.02 and C.03, PerformanceBridge Focal Point Version A.01, IntelliVue patient monitors MX100, MX400-MX550, MX750, MX850, and IntelliVue X3 Versions N and prior, the software does not check or incorrectly checks the revocation status of a certificate, which may cause it to use a compromised certificate.
+CVE-2020-16228 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.0 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:L).
+3.2.5 IMPROPER HANDLING OF LENGTH PARAMETER INCONSISTENCY CWE-130
+In Patient Information Center iX (PICiX) Versions C.02, C.03, the software parses a formatted message or structure but does not handle or incorrectly handles a length field that is inconsistent with the actual length of the associated data, causing the application on the surveillance station to restart.
+CVE-2020-16224 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6 IMPROPER VALIDATION OF SYNTACTIC CORRECTNESS OF INPUT CWE-1286
+In Patient Information Center iX (PICiX) Versions C.02, C.03, PerformanceBridge Focal Point Version A.01, the product receives input that is expected to be well-formed (i.e., to comply with a certain syntax) but it does not validate or incorrectly validates that the input complies with the syntax, causing the certificate enrollment service to crash. It does not impact monitoring but prevents new devices from enrolling.
+CVE-2020-16220 has been assigned to this vulnerability. A CVSS v3.1 base score of 3.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L).
+3.2.7 IMPROPER INPUT VALIDATION CWE-20
+In IntelliVue patient monitors MX100, MX400-550, MX600, MX700, MX750, MX800, MX850, MP2-MP90, and IntelliVue X2 and X3 Versions N and prior, the product receives input or data but does not validate or incorrectly validates that the input has the properties required to process the data safely and correctly, which can induce a denial-of-service condition through a system restart.
+CVE-2020-16216 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.8 EXPOSURE OF RESOURCE TO WRONG SPHERE CWE-668
+In Patient Information Center iX (PICiX) Versions B.02, C.02, C.03, the product exposes a resource to the wrong control sphere, providing unintended actors with inappropriate access to the resource. The application on the surveillance station operates in kiosk mode, which is vulnerable to local breakouts that could allow an attacker with physical access to escape the restricted environment with limited privileges.
+CVE-2020-16212 has been assigned to this vulnerability. A CVSS v3.1 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+3.4 RESEARCHER
+Julian Suleder, Nils Emmerich, Birk Kauer of ERNW Research GmbH, Dr. Oliver Matula of ERNW Enno, and Rey Netzwerke GmbH reported these vulnerabilities to the Federal Office for Information Security (BSI), Germany, in the context of the BSI project ManiMed (Manipulation of medical devices), which reported these to Philips.
+4. MITIGATIONS
+Note: To successfully exploit these vulnerabilities, an attacker would need to gain either physical access to surveillance stations and patient monitors or access to the medical device network.
+Philips released the following versions to remediate reported vulnerabilities:
+
+Patient Information Center iX (PICiX) Version C.03
+PerformanceBridge Focal Point
+IntelliVue Patient Monitors Versions N.00 and N.01
+IntelliVue Patient Monitors Version M.04: Contact a Philips service support team for an upgrade path
+Certificate revocation within the system was implemented for PIC iX and Performance Bridge FocalPoint in 2023. The implementation of the IntelliVue Patient Monitors will be completed in Q3 of 2024.
+
+As a mitigation to these vulnerabilities, Philips recommends the following:
+
+The Philips patient monitoring network is required to be physically or logically isolated from the hospital local area network (LAN). Philips recommends using a firewall or routers that can implement access control lists restricting access in and out of the patient monitoring network for only necessary ports and IP addresses. Refer to the Philips Patient Monitoring System Security for Clinical Networks guide for additional information on InCenter.
+By default, the simple certificate enrollment protocol (SCEP) service is not running. When needed, the service is configured to run based on the duration or the number of certificates to be assigned. One certificate is default, but if a certificate is not issued, the service will continue to run. Limit exposure by ensuring the SCEP service is not running unless it is actively being used to enroll new devices.
+When enrolling new devices using SCEP, enter a unique challenge password of 8-12 unpredictable and randomized digits.
+Implement physical security controls to prevent unauthorized login attempts on the PIC iX application. Servers should be kept in controlled locked data centers. Access to equipment at nurses' stations should be controlled and monitored.
+Only grant remote access to PIC iX servers on a must-have basis.
+Grant login privileges to the bedside monitor and PIC iX application on a role-based, least-privilege basis, and only to trusted users.
+
+Users with questions regarding their specific Philips Patient Information Center (PIC iX) and/or IntelliVue patient monitor installations and new release eligibility should contact their local Philips service support team, or regional service support, or call 1-800-722-9377.
+Please see the Philips product security website for the Philips advisory and the latest security information for Philips products.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Implement physical security measures to limit or control access to critical systems.
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable unnecessary accounts and services.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+September 10, 2020: Initial Publication
+August 31, 2020: Update A - Added info in the Mitigation section
+November 8, 2021: Update B - Added bullet PerformanceBridge Focal Point by Q4 of 2021 in Mitigation section
+December 14, 2023: Update C - Added certificate revocation bullet in Mitigation section
+

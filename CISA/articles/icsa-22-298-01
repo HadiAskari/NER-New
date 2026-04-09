@@ -1,0 +1,56 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Haas Automation, Inc
+Equipment: Haas Controller
+Vulnerabilities: Missing Authentication for Critical Function, Insufficient Granularity of Access Control, Cleartext Transmission of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an unauthorized attacker to cause denial-of-service of the production line, damage the tools used in the production line, introduce defects in pieces of the production line, and perform remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of the Haas Controller, a Computer Numerical Control (CNC), are affected:
+
+Haas Controller: Version 100.20.000.1110
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Authentication is currently unsupported in Haas Controller version 100.20.000.1110 when using the “Ethernet Q Commands” service, which allows any user on the same network segment as the controller (even while connected remotely) to access the service and write unauthorized macros to the device.
+CVE-2022-2474 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.2    INSUFFICIENT GRANULARITY OF ACCESS CONTROL CWE-1220
+Haas Controller version 100.20.000.1110 has insufficient granularity of access control when using the "Ethernet Q Commands" service. Any user is able to write macros into registers outside of the authorized accessible range. This could allow a user to access privileged resources or resources out of context.
+CVE-2022-2475 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Communication traffic involving "Ethernet Q Commands" service of Haas Controller version 100.20.000.1110 is transmitted in cleartext. This allows an attacker to obtain sensitive information being passed to and from the controller.
+CVE-2022-41636 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).
+ 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Marco Balduzzi of Trend Micro and Francesco Sortino from Celada Spa reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Haas Automation recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:  
+
+Locate control system devices and/or systems behind firewalls and isolate them from business networks.
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Ensure physical access controls are in place; only authorized end-users should have access to control systems.
+
+The researcher recommends the following workarounds to reduce risk:
+
+Add authentication to the “Ethernet Q Commands” service and use a strong enforced password.
+Add encryption where possible to prevent data sniffing and capturing of the authentication password.
+Limit the number of macros that can be written.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

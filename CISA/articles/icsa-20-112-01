@@ -1,0 +1,52 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.1
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Inductive Automation
+Equipment: Ignition 8 Gateway
+Vulnerability: Improper Access Control
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to write endless log statements into the database, which could result in a denial-of-service condition.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Ignition 8 Gateway are affected if running the Perspective Module:
+
+Ignition 8 Gateway versions prior to 8.0.10
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROLS CWE-284
+An unprotected logging route may allow an attacker to write endless log statements into the database without space limits or authentication. This results in consuming the entire available hard-disk space, causing a denial-of-service condition.
+CVE-2020-10641 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Information Technology
+COUNTRIES/AREAS DEPLOYED: United States
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Sharon Brizinov and Mashav Sapir from Claroty reported this vulnerability to Inductive Automation and CISA.
+4. MITIGATIONS
+Inductive Automation recommends the following mitigation:
+
+Upgrade Ignition 8 Gateway to v8.0.10
+
+The following workarounds are suggested if users cannot upgrade to v8.0.10 or above:
+
+If running the Perspective Module, set “perspective.routes” to a priority level of WARN or higher. The exploit triggers the code path that logs a message with priority level INFO.
+For gateways that are deployed behind a web application firewall or reverse proxy, deploy a rule to deny access to all gateway HTTP requests that include the path: /data/perspective/print-to-log.
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

@@ -1,0 +1,72 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Sierra Wireless
+Equipment: AirLink
+Vulnerabilities: Infinite Loop, NULL Pointer Dereference, Cross-site Scripting, Reachable Assertion, Use of Hard-coded Credentials, Use of Hard-coded Cryptographic Key
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to perform remote code execution to take full control of the device, steal credentials through a cross site scripting attack, or crash the device being accessed through a denial-of-service attack.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Sierra Wireless AirLink router with ALEOS firmware are affected:
+
+AirLink ALEOS firmware: All versions prior to 4.9.9
+AirLink ALEOS firmware: All versions prior to 4.17.0
+
+3.2 Vulnerability Overview
+3.2.1 LOOP WITH UNREACHABLE EXIT CONDITION ('INFINITE LOOP') CWE-835
+Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability in Sierra Wireless, Inc ALEOS could potentially allow a remote attacker to trigger a Denial-of-Service (DoS) condition for ACEManager without impairing other router functions. This condition is cleared by restarting the device.
+CVE-2023-40458 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2 NULL POINTER DEREFERENCE CWE-476
+The ACEManager component of ALEOS 4.16 and earlier does not adequately perform input sanitization during authentication, which could potentially result in a Denial-of-Service (DoS) condition for ACEManager without impairing other router functions. ACEManager recovers from the DoS condition by restarting within ten seconds of becoming unavailable.
+CVE-2023-40459 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.3 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The ACEManager component of ALEOS 4.16 and earlier does not validate uploaded file names and types, which could potentially allow an authenticated user to perform client-side script execution within ACEManager, altering the device functionality until the device is restarted.
+CVE-2023-40460 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L).
+3.2.4 IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The ACEManager component of ALEOS 4.16 and earlier allows an authenticated user with Administrator privileges to access a file upload field which does not fully validate the file name, creating a Stored Cross-Site Scripting condition.
+CVE-2023-40461 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H).
+3.2.5 REACHABLE ASSERTION CWE-617
+The ACEManager component of ALEOS 4.16 and earlier does not perform input sanitization during authentication, which could potentially result in a Denial-of-Service (DoS) condition for ACEManager without impairing other router functions. ACEManager recovers from the DoS condition by restarting within ten seconds of becoming unavailable.
+CVE-2023-40462 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.6 USE OF HARD-CODED CREDENTIALS CWE-798
+When configured in debugging mode by an authenticated user with administrative privileges, ALEOS 4.16 and earlier store the SHA512 hash of the common root password for that version in a directory accessible to a user with root privileges or equivalent access.
+CVE-2023-40463 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.7 USE OF HARD-CODED CRYPTOGRAPHIC KEY CWE-321
+Several versions of ALEOS, including ALEOS 4.16.0, use a hardcoded SSL certificate and private key. An attacker with access to these items could potentially perform a man in the middle attack between the ACEManager client and ACEManager server.
+CVE-2023-40464 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Communications, Emergency Services, Energy, Government Facilities, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Canada
+
+3.4 RESEARCHER
+Daniel dos Santos and Stanislav Dashevskyi of Forescout Technologies reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Sierra Wireless has released the following software fixes and recommends users update their devices:
+
+AirLink ALEOS firmware: Version 4.9.9
+AirLink ALEOS firmware: Version 4.17.0
+
+For more information, please see Sierra Wireless' security advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+December 07, 2023: Initial Publication
+

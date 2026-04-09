@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 2.0
+Vendor: Philips
+Equipment: IntelliBridge Enterprise (IBE)
+Vulnerability: Insertion of Sensitive Information into Log File
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an attacker to access credentials to the hospital’s clinical information systems (EMR).
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of IntelliBridge Enterprise (IBE), an interface, are affected:
+
+IntelliBridge Enterprise (IBE) Versions B.12 and prior
+
+The IntelliBridge Enterprise (IBE) provides HL7 interface interoperability between Philips products and a hospital’s clinical information system or electronic medical records by providing a single integration point to the enterprise. The IBE software and connection licenses serve as the main messaging service that implements communications, mapping, message delivery, data transformation, and routing of data to and from the Philips products to external systems. IntelliBridge Enterprise has no clinical user interface, nor does it interpret, inspect, or provide additional analytical functionality for medical device data.
+Workflows affected:
+IntelliBridge Enterprise system integration with,
+
+SureSigns (VS4)
+EarlyVue (VS30)
+IntelliVue Guardian (IGS)  
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSERTION OF SENSITIVE INFORMATION INTO LOG FILE CWE-532
+Unencrypted user credentials received in the IntelliBridge Enterprise (IBE) are logged within the transaction logs, which are secured behind the login based administrative web portal.
+The unencrypted user credentials sent from the affected products listed above, for the purpose of handshake or authentication with the
+Enterprise Systems, are logged as the payload in IntelliBridge Enterprise (IBE) within the transaction logs. An attacker with administrative privileges could exploit this vulnerability to read plain text credentials from log files.
+CVE-2020-12023 has been assigned to this vulnerability. A CVSS v3 base score of 2.0 has been calculated; the CVSS vector string is (AV:A/AC:H/PR:H/UI:N/S:U/C:L/I:N/A:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Netherlands
+
+3.4 RESEARCHER
+Customer Indiana University Health reported this vulnerability to Philips.
+4. MITIGATIONS
+Philips plans a new release (IBE B.13) by the end of Q4 2020 that remediates the security risk by not logging the plain text user credentials in the log file.
+As an interim mitigation to this vulnerability, Philips recommends the following:
+
+The IBE transaction logs are only accessible with administrative privileges. An additional account can be created on the IBE system with limited privileges, for service engineers.
+Reduce log retention to an acceptable timeframe that allows for recovery activities.
+
+Users with questions regarding their specific Philips IntelliBridge Enterprise installation should contact their local Philips service support team, or regional service support.
+Users can see the Philips advisory for more details, and contact the Philips Customer Service Solutions team for additional guidance. Please see the Philips product security website for the latest security information for Philips products. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Restrict system access to authorized personnel only and follow a least privilege approach.
+Apply defense-in-depth strategies.
+Disable unnecessary accounts and services.
+Where additional information is needed, refer to existing cybersecurity in medical device guidance issued by the FDA.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. High skill level is needed to exploit.

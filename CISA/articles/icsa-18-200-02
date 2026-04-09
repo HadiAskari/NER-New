@@ -1,0 +1,53 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: AVEVA Software, LLC. (AVEVA)
+Equipment: InTouch
+Vulnerability: Stack-based Buffer Overflow
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow an unauthenticated user to remotely execute code with the same privileges as those of the InTouch View process which could lead to a compromise of the InTouch HMI.Systems are only vulnerable if the operating system locales do not use a dot floating point separator.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of AVEVA InTouch, a HMI Platform, are affected:
+
+InTouch 2014 R2 SP1 and prior,
+InTouch 2017,
+InTouch 2017 Update 1, and
+InTouch 2017 Update 2
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    STACK-BASED BUFFER OVERFLOW CWE-121
+An unauthenticated user could send a specially crafted packet that could overflow the buffer on a locale not using a dot floating point separator. Exploitation could allow remote code execution under the privileges of the InTouch View process.
+CVE-2018-10628 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing, Energy, Food and Agriculture, Chemical, and Water and Wastewater 
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United Kingdom
+
+3.4 RESEARCHER
+George Lashenko of CyberX reported this vulnerability to NCCIC.
+4. MITIGATIONS
+AVEVA recommends the following mitigations for each version of software affected:
+InTouch 2014 R2 SP1 - Apply HF-11_1_SP1/CR149705 as soon as possible. Those using versions of InTouch older than 2014 R2 SP1 should first upgrade to a supported version of InTouch and then apply the corresponding hotfix.
+https://softwaresupportsp.schneider-electric.com/#/producthub/details?id=5057 (login required)
+InTouch 2017 Update 2 - Apply HF-17_2/CR149706 as soon as possible. Those using InTouch 2017 or 2017 Update 1 should first upgrade to InTouch 2017 Update 2, then apply HF-17_2/CR149706.
+https://softwaresupportsp.schneider-electric.com/#/producthub/details?id=5058 (login required)
+For more information AVEVA has released a Security Bulletin:
+https://sw.aveva.com/hubfs/assets-2018/pdf/security-bulletin/SecurityBulletin_LFSec127(003).pdf
+To contact AVEVA support visit:
+https://softwaresupport.aveva.com/
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. 

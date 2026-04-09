@@ -1,0 +1,70 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.8
+ATTENTION: Low attack complexity
+Vendor: Rockwell Automation
+Equipment: AADvance Trusted SIS Workstation
+Vulnerabilities: Improper Input Validation
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in an attacker executing code within the context of a current process.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of AADvance Trusted SIS Workstation, a manufacturing controller management suite, are affected:
+
+AADvance Trusted SIS Workstation: 2.00.01 and prior
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER INPUT VALIDATION CWE-20
+A vulnerability exists which could allow remote threat actors to execute arbitrary code on affected installations of 7-Zip. User interaction is required to exploit this vulnerability because the target must visit a malicious page or open a malicious file. The specific vulnerability exists in the analysis of 7Z files. The problem results from the lack of proper validation of user-supplied data, which can lead to an integer underflow before writing to memory. A threat actor can exploit this vulnerability to execute code in the context of the current process.
+CVE-2023-31102 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.2.2 Out-of-bounds Write CWE-787
+A SquashFS File Parsing Out-Of-Bounds Write Remote Code Execution exists in 7-Zip that allows remote threat actors to execute arbitrary code on affected installations of 7-Zip. User interaction is also required to exploit this vulnerability, as the target must visit a malicious page or open a malicious file. The specific vulnerability arises during the analysis of SQFS files due to the lack of proper validation of user-supplied data. This can cause a write operation to exceed the end of an allocated buffer. A threat actor can exploit this vulnerability to execute code in the context of the current process.
+CVE-2023-40481 has been assigned to this vulnerability. A CVSS v3 base score of 7.8 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Rockwell Automation offers users the following solutions:
+
+AADvance Trusted SIS Workstation: Update to version 2.00.02 or later
+
+Users using the affected software, who are not able to upgrade to the corrected version, are encouraged to apply security best practices, where possible.   
+
+Security Best Practices
+
+Rockwell Automation users with the affected software are encouraged to apply the following additional risk mitigations, if possible:
+
+Do not archive or restore projects from unknown sources.
+For information on how to mitigate Security Risks on industrial automation control systems, we encourage users to implement our suggested security best practices to minimize the risk of the vulnerability.
+
+For more information about this issue, please see the advisory on the Rockwell Automation security page.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time. These vulnerabilities are not exploitable remotely.
+5. UPDATE HISTORY
+
+September 12, 2024: Initial Publication
+

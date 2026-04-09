@@ -1,0 +1,154 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Siemens  
+Equipment: SCALANCE X-200, X-200IRT, and X-300 Switch Families 
+Vulnerabilities: Integer Overflow or Wraparound 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to memory corruption. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Siemens reports these vulnerabilities affect the following SCALANCE Switch Family products: 
+
+SCALANCE X200-4P IRT (6GK5200-4AH00-2BA3): All versions prior to V5.5.2 
+SCALANCE X201-3P IRT (6GK5201-3BH00-2BA3): All versions prior to V5.5.2 
+SCALANCE X201-3P IRT PRO (6GK5201-3JR00-2BA6): All versions prior to V5.5.2 
+SCALANCE X202-2IRT (6GK5202-2BB00-2BA3): All versions prior to V5.5.2 
+SCALANCE X202-2IRT (6GK5202-2BB10-2BA3): All versions prior to V5.5.2 
+SCALANCE X202-2P IRT (6GK5202-2BH00-2BA3): All versions prior to V5.5.2 
+SCALANCE X202-2P IRT PRO (6GK5202-2JR00-2BA6): All versions prior to V5.5.2 
+SCALANCE X204-2 (6GK5204-2BB10-2AA3): All versions prior to V5.2.6 
+SCALANCE X204-2FM (6GK5204-2BB11-2AA3): All versions prior to V5.2.6 
+SCALANCE X204-2LD (6GK5204-2BC10-2AA3): All versions prior to V5.2.6 
+SCALANCE X204-2LD TS (6GK5204-2BC10-2CA2): All versions prior to V5.2.6 
+SCALANCE X204-2TS (6GK5204-2BB10-2CA2): All versions prior to V5.2.6 
+SCALANCE X204IRT (6GK5204-0BA00-2BA3): All versions prior to V5.5.2 
+SCALANCE X204IRT (6GK5204-0BA10-2BA3): All versions prior to V5.5.2 
+SCALANCE X204IRT PRO (6GK5204-0JA00-2BA6): All versions prior to V5.5.2 
+SCALANCE X206-1 (6GK5206-1BB10-2AA3): All versions prior to V5.2.6 
+SCALANCE X206-1LD (6GK5206-1BC10-2AA3): All versions prior to V5.2.6 
+SCALANCE X208 (6GK5208-0BA10-2AA3): All versions prior to V5.2.6 
+SCALANCE X208PRO (6GK5208-0HA10-2AA6): All versions prior to V5.2.6 
+SCALANCE X212-2 (6GK5212-2BB00-2AA3): All versions prior to V5.2.6 
+SCALANCE X212-2LD (6GK5212-2BC00-2AA3): All versions prior to V5.2.6 
+SCALANCE X216 (6GK5216-0BA00-2AA3): All versions prior to V5.2.6 
+SCALANCE X224 (6GK5224-0BA00-2AA3): All versions prior to V5.2.6 
+SCALANCE X302-7 EEC (230V, coated) (6GK5302-7GD00-3GA3): All versions 
+SCALANCE X302-7 EEC (230V) (6GK5302-7GD00-3EA3): All versions 
+SCALANCE X302-7 EEC (24V, coated) (6GK5302-7GD00-1GA3): All versions 
+SCALANCE X302-7 EEC (24V) (6GK5302-7GD00-1EA3): All versions 
+SCALANCE X302-7 EEC (2x 230V, coated) (6GK5302-7GD00-4GA3): All versions 
+SCALANCE X302-7 EEC (2x 230V) (6GK5302-7GD00-4EA3): All versions 
+SCALANCE X302-7 EEC (2x 24V, coated) (6GK5302-7GD00-2GA3): All versions 
+SCALANCE X302-7 EEC (2x 24V) (6GK5302-7GD00-2EA3): All versions 
+SCALANCE X304-2FE (6GK5304-2BD00-2AA3): All versions 
+SCALANCE X306-1LD FE (6GK5306-1BF00-2AA3): All versions 
+SCALANCE X307-2 EEC (230V, coated) (6GK5307-2FD00-3GA3): All versions 
+SCALANCE X307-2 EEC (230V) (6GK5307-2FD00-3EA3): All versions 
+SCALANCE X307-2 EEC (24V, coated) (6GK5307-2FD00-1GA3): All versions 
+SCALANCE X307-2 EEC (24V) (6GK5307-2FD00-1EA3): All versions 
+SCALANCE X307-2 EEC (2x 230V, coated) (6GK5307-2FD00-4GA3): All versions 
+SCALANCE X307-2 EEC (2x 230V) (6GK5307-2FD00-4EA3): All versions 
+SCALANCE X307-2 EEC (2x 24V, coated) (6GK5307-2FD00-2GA3): All versions 
+SCALANCE X307-2 EEC (2x 24V) (6GK5307-2FD00-2EA3): All versions 
+SCALANCE X307-3 (6GK5307-3BL00-2AA3): All versions 
+SCALANCE X307-3 (6GK5307-3BL10-2AA3): All versions 
+SCALANCE X307-3LD (6GK5307-3BM00-2AA3): All versions 
+SCALANCE X307-3LD (6GK5307-3BM10-2AA3): All versions 
+SCALANCE X308-2 (6GK5308-2FL00-2AA3): All versions 
+SCALANCE X308-2 (6GK5308-2FL10-2AA3): All versions 
+SCALANCE X308-2LD (6GK5308-2FM00-2AA3): All versions 
+SCALANCE X308-2LD (6GK5308-2FM10-2AA3): All versions 
+SCALANCE X308-2LH (6GK5308-2FN00-2AA3): All versions 
+SCALANCE X308-2LH (6GK5308-2FN10-2AA3): All versions 
+SCALANCE X308-2LH+ (6GK5308-2FP00-2AA3): All versions 
+SCALANCE X308-2LH+ (6GK5308-2FP10-2AA3): All versions 
+SCALANCE X308-2M (6GK5308-2GG00-2AA2): All versions 
+SCALANCE X308-2M (6GK5308-2GG10-2AA2): All versions 
+SCALANCE X308-2M PoE (6GK5308-2QG00-2AA2): All versions 
+SCALANCE X308-2M PoE (6GK5308-2QG10-2AA2): All versions 
+SCALANCE X308-2M TS (6GK5308-2GG00-2CA2): All versions 
+SCALANCE X308-2M TS (6GK5308-2GG10-2CA2): All versions 
+SCALANCE X310 (6GK5310-0FA00-2AA3): All versions 
+SCALANCE X310 (6GK5310-0FA10-2AA3): All versions 
+SCALANCE X310FE (6GK5310-0BA00-2AA3): All versions 
+SCALANCE X310FE (6GK5310-0BA10-2AA3): All versions 
+SCALANCE X320-1 FE (6GK5320-1BD00-2AA3): All versions 
+SCALANCE X320-1-2LD FE (6GK5320-3BF00-2AA3): All versions 
+SCALANCE X408-2 (6GK5408-2FD00-2AA2): All versions 
+SCALANCE XF201-3P IRT (6GK5201-3BH00-2BD2): All versions prior to V5.5.2 
+SCALANCE XF202-2P IRT (6GK5202-2BH00-2BD2): All versions prior to V5.5.2 
+SCALANCE XF204 (6GK5204-0BA00-2AF2): All versions prior to V5.2.6 
+SCALANCE XF204-2 (6GK5204-2BC00-2AF2): All versions prior to V5.2.6 
+SCALANCE XF204-2BA IRT (6GK5204-2AA00-2BD2): All versions prior to V5.5.2 
+SCALANCE XF204IRT (6GK5204-0BA00-2BF2): All versions prior to V5.5.2 
+SCALANCE XF206-1 (6GK5206-1BC00-2AF2): All versions prior to V5.2.6 
+SCALANCE XF208 (6GK5208-0BA00-2AF2): All versions prior to V5.2.6 
+SCALANCE XR324-12M (230V, ports on front) (6GK5324-0GG00-3AR2): All versions 
+SCALANCE XR324-12M (230V, ports on front) (6GK5324-0GG10-3AR2): All versions 
+SCALANCE XR324-12M (230V, ports on rear) (6GK5324-0GG00-3HR2): All versions 
+SCALANCE XR324-12M (230V, ports on rear) (6GK5324-0GG10-3HR2): All versions 
+SCALANCE XR324-12M (24V, ports on front) (6GK5324-0GG00-1AR2): All versions 
+SCALANCE XR324-12M (24V, ports on front) (6GK5324-0GG10-1AR2): All versions 
+SCALANCE XR324-12M (24V, ports on rear) (6GK5324-0GG00-1HR2): All versions 
+SCALANCE XR324-12M (24V, ports on rear) (6GK5324-0GG10-1HR2): All versions 
+SCALANCE XR324-12M TS (24V) (6GK5324-0GG00-1CR2): All versions 
+SCALANCE XR324-12M TS (24V) (6GK5324-0GG10-1CR2): All versions 
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front) (6GK5324-4GG00-3ER2): All versions 
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front) (6GK5324-4GG10-3ER2): All versions 
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG00-3JR2): All versions 
+SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG10-3JR2): All versions 
+SCALANCE XR324-4M EEC (24V, ports on front) (6GK5324-4GG00-1ER2): All versions 
+SCALANCE XR324-4M EEC (24V, ports on front) (6GK5324-4GG10-1ER2): All versions 
+SCALANCE XR324-4M EEC (24V, ports on rear) (6GK5324-4GG00-1JR2): All versions 
+SCALANCE XR324-4M EEC (24V, ports on rear) (6GK5324-4GG10-1JR2): All versions 
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front) (6GK5324-4GG00-4ER2): All versions 
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front) (6GK5324-4GG10-4ER2): All versions 
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG00-4JR2): All versions 
+SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear) (6GK5324-4GG10-4JR2): All versions 
+SCALANCE XR324-4M EEC (2x 24V, ports on front) (6GK5324-4GG00-2ER2): All versions 
+SCALANCE XR324-4M EEC (2x 24V, ports on front) (6GK5324-4GG10-2ER2): All versions 
+SCALANCE XR324-4M EEC (2x 24V, ports on rear) (6GK5324-4GG00-2JR2): All versions 
+SCALANCE XR324-4M EEC (2x 24V, ports on rear) (6GK5324-4GG10-2JR2): All versions 
+SCALANCE XR324-4M PoE (230V, ports on front) (6GK5324-4QG00-3AR2): All versions 
+SCALANCE XR324-4M PoE (230V, ports on rear) (6GK5324-4QG00-3HR2): All versions 
+SCALANCE XR324-4M PoE (24V, ports on front) (6GK5324-4QG00-1AR2): All versions 
+SCALANCE XR324-4M PoE (24V, ports on rear) (6GK5324-4QG00-1HR2): All versions 
+SCALANCE XR324-4M PoE TS (24V, ports on front) (6GK5324-4QG00-1CR2): All versions 
+SIPLUS NET SCALANCE X202-2P IRT (6AG1202-2BH00-2BA3): All versions prior to V5.5.2 
+SIPLUS NET SCALANCE X308-2 (6AG1308-2FL10-4AA3): All versions 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 INTEGER OVERFLOW OR WRAPAROUND CWE-190 
+In Wind River VxWorks, the memory allocator has a possible overflow in calculating the memory block's size to be allocated by calloc(). As a result, the actual memory allocated is smaller than the buffer size specified by the arguments, leading to memory corruption. 
+CVE-2020-28895 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L). 
+3.2.2 INTEGER OVERFLOW OR WRAPAROUND CWE-190 
+In Wind River VxWorks, the memory allocator has a possible integer overflow in calculating a memory block's size to be allocated by calloc(). As a result, the actual memory allocated is smaller than the buffer size specified by the arguments, leading to memory corruption. 
+CVE-2020-35198 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Germany 
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Siemens has released a new firmware version for SCALANCE X-200 and X-200 IRT switches that address “Bad Alloc” vulnerabilities in the underlying operating system and recommends updating to the latest versions. Siemens recommends countermeasures for products where updates are not, or not yet available: 
+
+Update to V5.2.6 or later version.  
+Update to V5.5.2 or later version.  
+
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and to follow the recommendations in the product manuals. Additional information on industrial security by Siemens can be found on the Siemens Industrial Security web page. 
+For further inquiries on security vulnerabilities in Siemens products and solutions, users should contact the Siemens ProductCERT.  
+For more information, see the associated Siemens security advisory SSA-813746 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are exploitable remotely. These vulnerabilities have low attack complexity. 

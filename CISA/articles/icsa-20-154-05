@@ -1,0 +1,47 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.6
+ATTENTION: Low skill level to exploit/exploitable remotely
+Vendor: GE
+Equipment: Grid Solutions Reason RT Clocks
+Vulnerability: Missing Authentication for Critical Function
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could allow access to sensitive information, execution of arbitrary code, and cause the device to become unresponsive.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Grid Solutions Reason RT Clocks, a source of temporal synchronization signals in different formats and protocols, are affected:
+
+RT430, RT431, and RT434, all firmware versions prior to 08A05
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The device’s vulnerability in the web application could allow multiple unauthenticated attacks that could cause serious impact. The vulnerability may allow an unauthenticated attacker to execute arbitrary commands and send a request to a specific URL that could cause the device to become unresponsive. The unauthenticated attacker may change the password of the 'configuration' user account, allowing the attacker to modify the configuration of the device via the web interface using the new password. This vulnerability may also allow an unauthenticated attacker to bypass the authentication required to configure the device and reboot the system.
+CVE-2020-12017 has been assigned to this vulnerability. A CVSS v3 base score of 9.6 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:C/C:L/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Energy, Food and Agriculture, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Ehab Hussein of IOActive reported this vulnerability to GE.
+4. MITIGATIONS
+GE strongly recommends users of time synchronization products update their units to firmware Version 08A05 or greater to resolve these issues.
+GE recommends users evaluate their current risk and implement appropriate network security mitigation measures as follows:
+
+Use strong network and physical security protection to prevent an attacker from reaching the local network where Reason clocks are normally installed.
+Block TCP/IP Ports 80 and 443 to block the HTTP/HTTPS access to the RT clock web interface, avoiding all vulnerabilities. The TCP/IP port blocking should be limited to the Ethernet port interface where the RT clock is connected, using Access Control List (ACL) for instance; otherwise, other HTTP/HTTPS applications may be affected as well.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet
+Analyze security events to allow early detection of unexpected traffic/communication.
+
+GE suggests mitigation action does not ensure complete security, but it can be considered until the affected time synchronization product is upgraded.
+For more information on this vulnerability and firmware updates, please see Reason RT430/RT434 – GPS/GNSS Precision Clocks.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

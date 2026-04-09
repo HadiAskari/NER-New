@@ -1,0 +1,86 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 9.8
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Yokogawa
+Equipment: STARDOM Controllers
+
+--------- Begin Update A Part 1 of 5 --------
+
+Vulnerabilities: Use of Hard-coded Credentials, Session Fixation, Insufficiently Protected Credentials, Resource Exhaustion
+
+--------- End Update A Part 1 of 5 --------
+2. UPDATE INFORMATION
+  This updated advisory is a follow-up to the original advisory titled ICSA-18-151-03 Yokogawa STARDOM Controllers that was published May 31, 2018, on the NCCIC/ICS-CERT website.
+          3. RISK EVALUATION
+--------- Begin Update A Part 2 of 5 --------
+Successful exploitation of these vulnerabilities could allow an attacker to gain access to the affected device, cause a denial of service, or gain unauthorized access, which could result in remote arbitrary code execution.
+--------- End Update A Part 2 of 5 --------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+Yokogawa reports the vulnerability affects the following STARDOM Controller products:
+
+FCJ (R4.02 and prior),
+FCN-100 (R4.02 and prior),
+FCN-RTU (R4.02 and prior),
+FCN-500 (R4.02 and prior),
+
+--------- Begin Update A Part 3 of 5 --------
+
+FCJ (R4.10 and prior),
+FCN-100 (R4.10 and prior),
+FCN-RTU (R4.10 and prior), and
+FCN-500 (R4.10 and prior).
+
+--------- End Update A Part 3 of 5 --------
+4.2 VULNERABILITY OVERVIEW
+4.2.1 USE OF HARD-CODED CREDENTIALS CWE-798
+The affected controllers utilize hard-coded credentials that could allow an attacker to gain unauthorized administrative access to the device, which could result in remote code execution.
+CVE-2018-10592 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+--------- Begin Update A Part 4 of 5 --------
+4.2.2     INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The web application improperly protects credentials which could allow an attacker to obtain credentials for remote access to controllers. 
+CVE-2018-17900 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L).
+4.2.3    SESSION FIXATION CWE-384
+The application utilizes multiple methods of session management which could result in a denial of service to the remote management functions.
+CVE-2018-17902 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+4.2.4    USE OF HARD-CODED CREDENTIALS CWE-798
+The affected controllers utilize hard-coded credentials which may allow an attacker gain unauthorized access to the maintenance functions and obtain or modify information. This attack can be executed only during maintenance work.
+CVE-2018-17896 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:L).
+4.2.5    UNCONTROLLED RESOURCE CONSUMPTION ('RESOURCE EXHAUSTION') CWE-400
+The controller application fails to prevent memory exhaustion by unauthorized requests. This could allow an attacker to cause the controller to become unstable. 
+CVE-2018-17898 has been assigned to this vulnerability. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L).
+--------- End Update A Part 4 of 5 --------
+4.3 BACKGROUND
+
+Critical Infrastructure Sectors: Critical Manufacturing, Energy, and Food and Agriculture
+Countries/Areas Deployed: Worldwide
+Company Headquarters Location: Japan
+
+4.4 RESEARCHER
+VDLab of Venustech and Dongfang Electric Corporation (DEC) reported this vulnerability to NCCIC.
+5. MITIGATIONS
+--------- Begin Update A Part 5 of 5 --------
+Yokogawa has recommended users upgrade the FCN/FCJ software to Version R4.20 or later and reports that some vulnerabilities are remediated in that version. Yokogawa has determined the fix for the memory exhaustion vulnerability is provided by that revision. For the remaining vulnerabilities of insufficiently protected credentials, session fixation, and use of hard-coded credentials, Yokogawa recommends users employ the packet filter function in FCN and recommend restricting communication to only the appropriate source. Furthermore, Yokogawa recommends users take measures with the network so communication data cannot be captured by untrusted third parties. Yokogawa strongly suggests all users introduce appropriate security measures not only for the vulnerabilities identified, but to the overall system. 
+Yokogawa recommends users with questions related to this report (or on obtaining the updates) please utilize the product inquiry contact details at the following location: 
+http://stardom.biz/
+Yokogawa’s Security Advisory Report, YSAR-18-0004: Vulnerability of hardcoded password in STARDOM controllers, and YSAR-18-0007: Vulnerabilities in STARDOM controllers and other Yokogawa security reports are available at the following URL:
+https://www.yokogawa.com/library/resources/white-papers/yokogawa-security-advisory-report-list/
+Additionally, for questions related to these reports, please contact the following:
+https://contact.yokogawa.com/cs/gw?c-id=000498
+--------- End Update A Part 5 of 5 --------
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize and restrict remote device access where remote access is not required.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability.

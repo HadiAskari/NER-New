@@ -1,0 +1,63 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.0
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Emerson
+Equipment: WirelessHART Gateway
+Vulnerabilities: Missing Authentication for Critical Function, Improper Input Validation, Improper Limitation of a Pathname to a Restricted Directory, Write-what-where Condition, Improper Neutralization of Special Elements used in an OS Command, Exposure of Sensitive Information to an Unauthorized Actor 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities by an authenticated user can allow root level arbitrary write permission, which can lead to remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Emerson WirelessHART Gateway network communication devices are affected:
+
+WirelessHART 1410 Gateway: All versions prior to v4.7.94
+WirelessHART 1410D Gateway: All versions prior to v4.7.94
+WirelessHART 1420 Gateway: All versions prior to v4.7.94
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The affected product is vulnerable to a missing permission validation on system backup restore, which could lead to account take over and unapproved settings change.
+CVE-2021-42539 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.2    IMPROPER INPUT VALIDATION CWE-20
+The affected product is vulnerable to improper input validation in the restore file. This enables an attacker to provide malicious config files to replace any file on disk.
+CVE-2021-38485 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.3    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY CWE-22
+The affected product is vulnerable to directory traversal due to mishandling of provided backup folder structure.
+CVE-2021-42542 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.4    WRITE-WHAT-WHERE CONDITION CWE-123
+The affected product is vulnerable to a unsanitized extract folder for system configuration. A low-privileged user can leverage this logic to overwrite the settings and other key functionality.
+CVE-2021-42540 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.5    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND CWE-78
+The affected product is vulnerable to a parameter injection via passphrase, which enables the attacker to supply uncontrolled input.
+CVE-2021-42538 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.2.6    EXPOSURE OF SENSITIVE INFORMATION TO AN UNAUTHORIZED ACTOR CWE-200
+The affected product is vulnerable to a disclosure of peer username and password by allowing all users access to read global variables.
+CVE-2021-42536 has been assigned to this vulnerability. A CVSS v3 base score of 8.0 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Chemical, Critical Manufacturing, Dams, Energy, Food and Agriculture, Healthcare and Public Health, Transportation Systems, Water and Wastewater Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Amir Preminger of Claroty reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Emerson recommends upgrading to v4.7.105 to address these vulnerabilities.
+Users can visit the Emerson Gate Firmware site for and download instructions.
+If affected users do not yet have a free Guardian account, please see the updated Emerson Gateway Firmware download process by following the link above and viewing the download guide.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

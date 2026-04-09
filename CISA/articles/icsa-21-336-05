@@ -1,0 +1,57 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.1
+Vendor: Hitachi Energy
+Equipment: Relion 670/650/SAM600-IO
+Vulnerability: Insecure Default Initialization of Resource
+
+2. RISK EVALUATION
+Successful exploitation of this vulnerability could hijack existing TCP sessions to inject packets of their choosing or cause denial-of-service conditions.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Hitachi Energy reports this vulnerability affects the following Relion products:
+
+Relion 670/650 series: All revisions of Version 2.2.0
+Relion 670/650/SAM600-IO series: All revisions of Version 2.2.1
+Relion 670 series: All revisions of Version 2.2.2
+Relion 670 series: All revisions of Version 2.2.3 until 2.2.3.3
+Relion 670/650 series: All revisions of Version 2.2.4
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INSECURE DEFAULT INITIALIZATION OF RESOURCE CWE-1188
+A vulnerability exists in the early boot process of the product in which there is a tiny time gap where a previous version of VxWorks is loaded prior to booting up the complete application firmware. The older version of VxWorks is susceptible to Urgent/11, which may allow for remote code execution on the device before the operating system is loaded.
+CVE-2021-35535 has been assigned to this vulnerability. A CVSS v3 base score of 8.1 has been calculated; the CVSS vector string is (AV:L/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Switzerland
+
+3.4 RESEARCHER
+A Department of Energy CyTRICS researcher from Idaho National Laboratory reported this vulnerability to Hitachi Energy.
+4. MITIGATIONS
+Hitachi Energy recommends the following actions to mitigate this vulnerability:
+
+Relion 670/650 series Version 2.2.0: Upgrade to Version 2.2.5
+Relion 670/650/SAM600-IO series Version 2.2.1: Upgrade to Version 2.2.5
+Relion 670 series Version 2.2.2: Upgrade to Version 2.2.5
+Relion 670 series Version 2.2.3: Update to Revision 2.2.3.4 or upgrade to Version 2.2.5
+Relion 670/650 series Version 2.2.4: Upgrade to Version 2.2.5
+
+Hitachi Energy recommends the following security practices and firewall configurations to help protect process control networks from attacks that originate from outside the network:
+
+Physically protect process control systems from direct access by unauthorized personnel.
+Do not directly connect to the Internet.
+Separate from other networks by means of a firewall system that has a minimal number of ports exposed.
+Process control systems should not be used for Internet surfing, instant messaging, or receiving e-mails. 
+Portable computers and removable storage media should be carefully scanned for viruses before they are connected to a control system.
+
+Please see Hitachi Energy advisory 8DBD000061 for additional mitigation and update information.
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target this vulnerability. This vulnerability is not exploitable remotely. This vulnerability has a high attack complexity.

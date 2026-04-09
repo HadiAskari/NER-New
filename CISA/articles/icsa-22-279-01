@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.9
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Rockwell Automation
+Equipment: FactoryTalk VantagePoint software
+Vulnerabilities: Improper Access Control, SQL Injection
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow remote code execution.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Rockwell Automation products are affected:
+
+FactoryTalk VantagePoint: Firmware versions prior to 8.0
+FactoryTalk VantagePoint: Firmware versions between 8.0 and 8.10
+FactoryTalk VantagePoint: Firmware versions between 8.10 and 8.20
+FactoryTalk VantagePoint: Firmware versions between 8.20 and 8.30
+FactoryTalk VantagePoint: Firmware versions between 8.30 and 8.31
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER ACCESS CONTROL CWE-284
+The affected product has improper access controls. The FactoryTalk VantagePoint SQLServer account could allow a malicious user with read-only privileges to execute SQL statements in the back-end database.
+CVE-2022-38743 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.2    IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN SQL COMMAND ('SQL INJECTION') CWE-89
+The affected product lacks input validation when users enter SQL statements to retrieve information from the back-end database. This vulnerability could potentially allow a user with basic user privileges to perform remote code execution on the server.
+CVE-2022-3158 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Rockwell Automation recommends updating to the latest firmware versions:
+
+FactoryTalk VantagePoint: Update firmware to v8.0
+FactoryTalk VantagePoint: Update firmware to v8.10
+FactoryTalk VantagePoint: Update firmware to v8.20
+FactoryTalk VantagePoint: Update firmware to v8.30
+FactoryTalk VantagePoint: Update firmware to v8.31
+
+If users are unable to update the firmware, Rockwell Automation suggests configuring the database to follow the least privilege principle.
+For more information, users should see Rockwell Automation’s Security advisory.
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+	 
+
+No known public exploits specifically target these vulnerabilities.

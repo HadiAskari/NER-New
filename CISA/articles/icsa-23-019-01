@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.5
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Hitachi Energy 
+Equipment: PCU400 
+Vulnerabilities: Reliance on Uncontrolled Component 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could result in a denial-of-service condition on both the logging function of the device and its associated server. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of PCU400, a network manager and process communication unit, are affected: 
+
+PCU400: Versions 9.3.0 and later up to but not including 9.3.8 
+PCULogger tool: Version 1.0.1 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 RELIANCE ON UNCONTROLLED COMPONENT CWE-1357 
+The affected versions of PCU400 rely on a version of OpenSSL that contains a buffer overflow vulnerability. A buffer overrun can be triggered in X.509 certificate verification, specifically in name constraint checking. Note that this occurs after certificate chain signature verification and requires either a CA to have signed the malicious certificate or for the application to continue certificate verification despite failure to construct a path to a trusted issuer. In PCU400, this vulnerability could be exploited if a malicious TLS certificate is used to secure communication between PCU400 and PCULogger. Successful exploitation may cause a denial-of-service of the PCU400 Logger and PCUCAG server. 
+Note: the issue is related to logging with the PCULogger tool. Otherwise, the PCU system is not impacted. 
+CVE-2022-3602 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.2 RELIANCE ON UNCONTROLLED COMPONENT CWE-1357 
+The affected versions of PCU400 rely on a version of OpenSSL that contains a buffer overflow vulnerability. A buffer overrun can be triggered in X.509 certificate verification, specifically in name constraint checking. Note that this occurs after certificate chain signature verification and requires either a CA to have signed a malicious certificate or for an application to continue certificate verification despite failure to construct a path to a trusted issuer. In PCU400, this vulnerability could be exploited if a malicious TLS certificate is used to secure communication between PCU400 and PCULogger. Successful exploitation may cause a denial-of-service of the PCU400 Logger and PCUCAG server.  
+Note: the issue is related to logging with the PCULogger tool. Otherwise, the PCU system is not impacted. 
+CVE-2022-3786 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Energy 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: Switzerland 
+
+3.4 RESEARCHER
+Hitachi Energy reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Hitachi Energy has fixed the vulnerabilities in the following versions, and recommends users update their systems to the appropriate version: 
+
+PCU400: Version 9.3.8 or 9.4 or later 
+PCULogger: Version 1.1.0 or later 
+
+Users should contact a Hitachi Energy representative for instructions on acquiring and installing the new versions. 
+Hitachi Energy encourages users to apply recommended security practices and firewall configurations. These practices include, but are not limited to: 
+
+Protect process control systems from physical access by unauthorized personnel. 
+Do not allow process control systems to have direct connections to the Internet. 
+Separate process control systems from other networks by means of a firewall system that has a minimal number of ports exposed. 
+Apply security updates to installed software components. 
+Do not use process control systems for personal use, such as web browsing or checking emails. 
+Carefully scan portable computers and removable storage media for viruses before they are connected to a control system. 
+
+For more information, see Hitachi Energy advisory 8DBD000137. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

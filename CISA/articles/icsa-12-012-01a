@@ -1,0 +1,46 @@
+
+Overview
+This Advisory is a follow-up to “ICS-ALERT-11-285-01—Open Automation Software OPC Systems.NET Vulnerability” that was posted on the ICS-CERT website on October 12, 2011.Independent researcher Luigi Auriemma publicly reported a malformed packet vulnerability in Open Automation Software’s OPC Systems.NET along with proof-of-concept (PoC) exploit code. This public report was released without coordination with Open Automation Software, ICS-CERT, or any other coordinating entity known to ICS-CERT.ICS-CERT has coordinated this vulnerability with Open Automation Software, and they have produced an update that resolves this vulnerability. Luigi Auriemma has tested the update and has confirmed that it resolves the vulnerability.
+--------- Begin Update A Part 1 of 2 --------
+On January 20, 2012, Digital Security Research Group publicly reported a buffer overflow vulnerability in a third-party ActiveX control in OPC Systems.NET. This public report was released without coordination with Open Automation Software, ICS-CERT, or any other coordinating entity known to ICS-CERT.
+--------- End Update A Part 1 of 2 --------
+Affected Products
+All versions of OPC Sytems.NET prior to Version 5.0 are affected.
+Impact
+A malformed packet could be sent remotely to cause a denial of service.Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their environment, architecture, and product implementation.
+Background
+Open Automation Software is a US-based company that provides .NET products for supervisory control and data acquisition (SCADA) and human-machine interfaces (HMI) applications.According to Open Automation Software, OPC Systems.NET is an HMI application that is deployed across several sectors including manufacturing, information technology, energy, water and wastewater, defense, and others. Open Automation Software estimates that these products are used throughout the world with primary use in the United States.
+Vulnerability Characterization
+Vulnerability Overview
+Malformed Packet Vulnerability
+The vulnerability is exploitable by sending a malformed .NET Remote Procedural Call (RPC) packet to cause a denial of service through Port 58723/TCP.CVE-2011-4871http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2011-4871, NIST uses this advisory to create the CVE website report. This website will be active sometime after publication of this advisory. has been assigned to this vulnerability.
+--------- Begin Update A Part 2 of 2 --------
+Buffer Overflow Vulnerability
+Third-party ActiveX component FlexGrid 7.1 is vulnerable to a buffer overflow attack.
+CVE-2012-0227 has been assigned to this vulnerability.
+--------- End Update A Part 2 of 2 --------
+Vulnerability Details
+Exploitability
+This vulnerability is remotely exploitable.
+Existence of Exploit
+Public exploits are known to target this vulnerability.
+Difficulty
+Crafting a working exploit for this vulnerability requires moderate skill.
+Mitigation
+Open Automation Software has released OPC Systems.NET Version 5.0Open Automation Software Releases OPC Systems.NET Version 5.0 with Enhanced Network Security, http://www.opcsystems.com/news/wcf.htm, website last accessed January 11, 2012. that resolves the reported vulnerability by removing the vulnerable component. Customers with vulnerable versions of Open Automation Software OPC Sytems.NET should deploy the update, which is available at:http://www.opcsystems.com/downloads.htm
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices. Critical devices should not directly face the Internet.
+Locate control system networks and remote devices behind firewalls with properly configured rules—particularly TCP Port 58723—and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPN is only as secure as the connected devices.
+
+The Control Systems Security Program (CSSP) also provides a section for control system security recommended practices on the CSSP web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to taking defensive measures.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in e-mail messages
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, website last accessed January 09, 2012. for more information on avoiding e-mail scams
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, website last accessed January 09, 2012. for more information on social engineering attacks.
+
+ 
+

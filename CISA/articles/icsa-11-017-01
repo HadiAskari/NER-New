@@ -1,0 +1,31 @@
+
+Overview
+This advisory is a follow-up to ICS-ALERT-11-011-01 WellinTech Kingview Buffer Overflow, published on the ICS-CERT Web site on January 11, 2011.
+Independent security researcher Dillon Beresford reported a heap overflow vulnerability in WellinTech KingView V6.53, which may allow a remote, unauthenticated attacker to execute arbitrary code. ICS-CERT has verified the vulnerability.
+WellinTech has developed and released a patch to mitigate this vulnerability, 6.53(2010-12-15). This patch has been validated by both ICS-CERT and the independent security researcher.
+Affected Products
+This vulnerability affects both the Chinese and English language versions of KingView V6.53.
+Impact
+Successful exploitation of the heap overflow vulnerability in KingView V6.53 would allow a remote attacker to cause the service to crash and may allow the execution of arbitrary code as the user.
+The specific impact to an individual organization depends on many factors that are unique to the organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on its environment, architecture, and product implementation.
+Background
+According to the WellinTech website, KingView is widely used in power, water, building automation, mining, and other sectors, with most customers in China. It is also used in the Chinese aerospace industry.
+Vulnerability Characterization
+Vulnerability Overview
+A specially crafted packet sent to port 777/TCP can cause heap corruption when processed by the HistorySrv process. Successful exploitation of this vulnerability can lead a remote unauthenticated attacker to cause a denial of service, or to execute arbitrary code.
+Exploitability
+This vulnerability is remotely exploitable.
+Existence of Exploit
+Exploit code is publicly available.
+Difficulty
+An attacker would require an intermediate skill level to exploit this vulnerability.
+Mitigation
+ICS-CERT recommends that users of KingView take the following mitigation steps:
+
+Implement network or host-based firewall rules to limit network access to Port 777/TCP.
+Upgrade to the latest Version 6.53(2010-12-15) and install the patch. Users can download the patch at http://en.wellintech.com/products/detail.aspx?contentid=25.
+Minimize network exposure for all control system devices. Control system devices should not directly face the Internet.ICS-CERT ALERT, http://ics-cert.us-cert.gov/alerts/ICS-ALERT-10-301-01, website last accessed January 17, 2011.
+Control system networks and devices should be located behind firewalls, and be isolated from the business network. If remote access is required, secure methods such as Virtual Private Networks (VPNs) should be used.
+
+Organizations should follow their established internal procedures if any suspected malicious activity is observed and report their findings to ICS-CERT for tracking and correlation against other incidents. ICS-CERT reminds organizations that proper impact analysis and risk assessment should be performed prior to taking defensive measures.
+The Control System Security Program also provides a recommended practices section for control systems on the ICS-CERT website. Several recommended practices are available for reading or download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.

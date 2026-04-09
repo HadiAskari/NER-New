@@ -1,0 +1,98 @@
+
+View CSAF
+1. EXECUTIVE SUMMARY
+
+CVSS v4 9.2
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Snap One
+Equipment: OvrC Cloud, OvrC Pro Devices
+Vulnerabilities: Improper Resource Locking, Observable Response Discrepancy, Unprotected Alternate Channel, Cleartext Transmission of Sensitive Information, Improper Validation of Integrity Check Value, Open Redirect, Use of Weak Credentials, Hidden Functionality, Authentication Bypass by Spoofing, Missing Authentication for Critical Function
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to impersonate and claim devices, execute arbitrary code, and disclose information about the affected device.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following Snap One component is affected:
+
+OvrC Pro: All versions prior to 7.3
+
+3.2 Vulnerability Overview
+3.2.1 IMPROPER RESOURCE LOCKING CWE-413
+In Snap One OVRC cloud platform, the Hub is a device that is used to centralize and manage nested devices connected to it. A vulnerability exists where an attacker can impersonate a hub and send device requests to claim already claimed devices. The OVRC cloud platform receives the requests but does not validate if the found devices are already managed by another user.
+CVE-2023-28649 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2023-28649. A base score of 9.2 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H).
+3.2.2 OBSERVABLE RESPONSE DISCREPANCY CWE-204
+When supplying Snap One OVRC cloud servers with a random MAC address, it will return information about the device. The MAC address of devices can be enumerated in an attack and their information will be disclosed by the OVRC cloud.
+CVE-2023-28412 has been assigned to this vulnerability. A CVSS v3.1 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2023-28412. A base score of 6.9 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.3 UNPROTECTED ALTERNATE CHANNEL CWE-420
+Snap One OVRC cloud servers contain a route that can be exploited where an attacker can use to bypass requirements and claim devices outright.
+CVE-2023-31241 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2023-31241. A base score of 9.2 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H).
+3.2.4 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+Snap One OvrC Pro versions prior to 7.3 utilize HTTP connections when downloading a program from their servers. Because it does not use HTTPS, OVRC Pro devices are susceptible to exploitation.
+CVE-2023-31193 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2023-31193. A base score of 8.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.5 IMPROPER VALIDATION OF INTEGRITY CHECK VALUE CWE-354
+Snap One OVRC Pro devices versions 7.2 and prior do not validate firmware updates correctly. The device only calculates the MD5 hash of the firmware and does not check using a private-public key mechanism. The lack of complete PKI system and lack of firmware signature could allow attackers to upload arbitrary firmware updates resulting in code execution.
+CVE-2023-28386 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N).
+A CVSS v4 score has also been calculated for CVE-2023-28386. A base score of 9.2 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:H/SA:N).
+3.2.6 URL REDIRECTION TO UNTRUSTED SITE ('OPEN REDIRECT') CWE-601
+Devices using Snap One OVRC cloud are sent to web address when accessing a web management interface utilizing a HTTP connection. It is possible for attackers to impersonate a device and supply malicious information about the device's web server interface. By supplying malicious parameters, an attacker could redirect the user to arbitrary and dangerous locations on the web.
+CVE-2023-31245 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L).
+A CVSS v4 score has also been calculated for CVE-2023-31245. A base score of 5.1 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L).
+3.2.7 USE OF WEAK CREDENTIALS CWE-1391
+Snap One OvrC Pro versions prior to 7.2 have their own locally running web server accessible both from the local network and remotely. OvrC cloud contains a hidden superuser account that is accessible through hard-coded credentials.
+CVE-2023-31240 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L).
+A CVSS v4 score has also been calculated for CVE-2023-31240. A base score of 6.9 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L).
+3.2.8 HIDDEN FUNCTIONALITY CWE-912
+In Snap One OvrC Pro versions prior to 7.2, when logged into the superuser account, a new functionality appears that allows a user to execute arbitrary commands on the hub device.
+CVE-2023-25183 has been assigned to this vulnerability. A CVSS v3.1 base score of 8.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L).
+A CVSS v4 score has also been calculated for CVE-2023-25183. A base score of 6.9 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L).
+3.2.9 AUTHENTICATION BYPASS BY SPOOFING CWE-290
+Snap One OVRC cloud uses the MAC address as an identifier to provide information when requested. An attacker can impersonate other devices by supplying enumerated MAC addresses and receive sensitive information about the device.
+CVE-2024-50380 has been assigned to this vulnerability. A CVSS v3.1 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+A CVSS v4 score has also been calculated for CVE-2024-50380. A base score of 8.7 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N).
+3.2.10 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+A vulnerability exists in Snap One OVRC cloud where an attacker can impersonate a Hub device and send requests to claim and unclaimed devices. The attacker only needs to provide the MAC address of the targeted device and can make a request to unclaim it from its original connection and make a request to claim it.
+CVE-2024-50381 has been assigned to this vulnerability. A CVSS v3.1 base score of 9.1 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H).
+A CVSS v4 score has also been calculated for CVE-2024-50381. A base score of 8.8 has been calculated; the CVSS vector string is (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:H/SC:N/SI:N/SA:N).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Communications
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Uri Katz of Claroty reported these vulnerabilities to CISA.
+4. MITIGATIONS
+Snap One has released the following updates/fixes for the affected products:
+
+OvrC Pro v7.2 has been automatically pushed out to devices to update via OvrC cloud.
+OvrC Pro v7.3 has been automatically pushed out to devices to update via OvrC cloud.
+Disable UPnP.
+
+For more information, see Snap One's Release Notes.
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities, such as:
+
+Minimize network exposure for all control system devices and/or systems, ensuring they are not accessible from the internet.
+Locate control system networks and remote devices behind firewalls and isolating them from business networks.
+When remote access is required, use more secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+CISA encourages organizations to implement recommended cybersecurity strategies for proactive defense of ICS assets.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open attachments in unsolicited email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploitation specifically targeting these vulnerabilities has been reported to CISA at this time.
+5. UPDATE HISTORY
+
+May 16, 2023: Initial Publication
+November 12, 2024: Update A - Additional vulnerability and fixes
+

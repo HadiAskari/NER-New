@@ -1,0 +1,48 @@
+
+OVERVIEW
+Gleb Gritsai, Roman Ilin, Aleksandr Tlyapov, and Sergey Gordeychik from Positive Technologies have identified authentication vulnerabilities in the Siemens SIMATIC WinCC TIA Portal application. Siemens has produced a service pack that mitigates these vulnerabilities.
+These vulnerabilities could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+SIMATIC WinCC TIA Portal: All versions prior to V13 SP1
+
+IMPACT
+An attacker exploiting these vulnerabilities could possibly reconstruct used passwords or escalate privileges.
+Impact to individual organizations depends on many factors that are unique to each organization. NCCIC/ICS-CERT recommends that organizations evaluate the impact of these vulnerabilities based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is a multinational company headquartered in Munich, Germany.
+The affected product, SIMATIC WinCC TIA Portal, is engineering software for SIMATIC products. This software is deployed across several sectors including Chemical, Energy, Food and Agriculture, and Water and Wastewater Systems. Siemens estimates that these products are used primarily in the United States and Europe with a small percentage in Asia.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+INSUFFICIENTLY PROTECTED CREDENTIALSCWE-522: Insufficiently Protected Credentials, http://cwe.mitre.org/data/definitions/522.html, web site last accessed February 17, 2015.
+
+The remote management module of WinCC TIA Portal Multi Panels and Comfort Panels, and WinCC RT Advanced transmits weakly protected credentials over the network. Attackers capturing network traffic of the remote management module could possibly reconstruct used passwords.
+CVE-2015-1358NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1358, NIST uses this advisory to create the CVE web site report. This web site will be active sometime after publication of this advisory. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:N, web site last accessed February 17, 2015.
+
+HARD-CODED CRYPTOGRAPHIC KEYCWE-321: Use of Hard-coded Cryptographic Key, http://cwe.mitre.org/data/definitions/321.html, web site last accessed February 17, 2015.
+
+A hard-coded encryption key used in WinCC RT Professional could allow attackers to escalate their privileges if the application’s network communication with an authenticated user was captured.
+CVE-2014-4686NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4686, web site last accessed February 17, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:P/A:P).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:P/A:P, web site last accessed February 17, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+These vulnerabilities could be exploited remotely.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target these vulnerabilities.
+DIFFICULTY
+An attacker with a low skill would be able to exploit these vulnerabilities.
+MITIGATION
+Siemens provides Service Pack 1 for SIMATIC WinCC TIA Portal V13 which mitigates the vulnerabilities.
+http://support.automation.siemens.com/WW/view/en/106567433
+For more information on these vulnerabilities and detailed instructions, please see Siemens Security Advisory SSA-543623 at the following location:
+http://www.siemens.com/cert/advisories
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

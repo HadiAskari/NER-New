@@ -1,0 +1,67 @@
+
+As of January 10, 2023, CISA will no longer be updating ICS security advisories for Siemens product vulnerabilities beyond the initial advisory. For the most up-to-date information on vulnerabilities in this advisory, please see Siemens' ProductCERT Security Advisories (CERT Services | Services | Siemens Global).
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8 
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Third-party components libexpat and libcurl in SINEC NMS
+Vulnerabilities: Expected Behavior Violation, Improper Validation of Syntactic Correctness of Input, Stack-based Buffer Overflow, Use After Free, Double Free, Cleartext Transmission of Sensitive Information
+
+2. RISK EVALUATION
+Successful exploitation these vulnerabilities could allow an attacker to impact SINEC NMS confidentiality, integrity, and availability. 
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following products are affected:
+
+Third-Party components used in SINEC NMS: All versions prior to V1.0.3.1
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 EXPECTED BEHAVIOR VIOLATION CWE-440
+When doing HTTP(S) transfers, libcurl might erroneously use the read callback (`CURLOPT_READFUNCTION`) to ask for data to send—even when the `CURLOPT_POSTFIELDS` option has been set—if the same handle previously was used to issue a `PUT` request which used that callback. This flaw may surprise the application and cause it to either send off the wrong data or use memory after free or similar in the subsequent `POST` request. The problem exists in the logic for a reused handle when it is changed from a PUT to a POST. 
+CVE-2022-32221 has been assigned to this vulnerability. A CVSS v3 base score of 8.2 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N). 
+3.2.2 IMPROPER VALIDATION OF SYNTACTIC CORRECTNESS OF INPUT CWE-1286 
+When curl is used to retrieve and parse cookies from a HTTP(S) server, it accepts cookies using control codes that, when later sent back to a HTTP server, might cause the server to return 400 responses, effectively allowing a "sister site" to deny service to all “siblings.” 
+CVE-2022-35252 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.3 STACK-BASED BUFFER OVERFLOW CWE-121
+Curl could be directed to parse a `.netrc` file for credentials. If that file ends in a line with 4095 consecutive non-white space letters and no newline, curl would first read past the end of the stack-based buffer and, if the read works, write a zero byte beyond its boundary. This could  cause a segfault or similar, but circumstances might also cause different outcomes. If a malicious user can provide a custom netrc file to an application or otherwise affect its contents, then this flaw could be used to cause denial-of-service condition. 
+CVE-2022-35260 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H). 
+3.2.4 USE AFTER FREE CWE-416
+Libexpat before 2.4.9 has a use-after-free vulnerability in the doContent function in xmlparse.c. 
+CVE-2022-40674 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.5 USE AFTER FREE CWE-416
+Curl can be asked to tunnel almost all protocols it supports through an HTTP proxy. HTTP proxies can (and often do) deny such tunnel operations using an appropriate HTTP error response code. When denied to tunnel the specific protocols SMB or TELNET, curl could use a heap-allocated struct after freed in its transfer shutdown code path. 
+CVE-2022-43552 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.6 USE AFTER FREE CWE-416
+In libexpat through 2.4.9, there is a use after free vulnerability caused by overeager destruction of a shared DTD in XML_ExternalEntityParserCreate in out-of-memory situations. 
+CVE-2022-43680 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.7 DOUBLE FREE CWE-415
+Curl before 7.86.0 has a double free vulnerability. If curl is told to use an HTTP proxy for a transfer with a non-HTTP(S) URL, it sets up the connection to the remote server by issuing a CONNECT request to the proxy and then tunnels the rest of the protocol through. An HTTP proxy might refuse this request (HTTP proxies often only allow outgoing connections to specific port numbers, such as 443 for HTTPS) and instead return a non-200 status code to the client. Due to flaws in the error/cleanup handling, this could trigger a double free in curl if one of the following schemes were used in the URL for the transfer: dict, gopher, gophers, ldap, ldaps, rtmp, rtmps, or telnet. The earliest affected version is 7.77.0. 
+CVE-2022-42915 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). 
+3.2.8 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319
+In curl before 7.86.0, the HSTS check could be bypassed by tricking it into staying with HTTP. Using its HSTS support, curl can be instructed to use HTTPS directly (instead of using an insecure cleartext HTTP step) even when HTTP is provided in the URL. This mechanism could be bypassed if the host name in the given URL uses IDN characters that get replaced with ASCII counterparts as part of the IDN conversion, e.g., using the character UTF-8 U+3002 (IDEOGRAPHIC FULL STOP) instead of the common ASCII full stop of U+002E (.). The earliest affected version is 7.77.0 2021-05-26. 
+CVE-2022-42916 has been assigned to this vulnerability. A CVSS v3 base score of 9.1 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N). 
+3.2.9 CLEARTEXT TRANSMISSION OF SENSITIVE INFORMATION CWE-319 
+A vulnerability exists in curl <7.87.0 HSTS check that could be bypassed by tricking it into using HTTP. Using its HSTS support, curl can be instructed to use HTTPS instead of using an insecure clear-text HTTP step even when HTTP is provided in the URL. However, the HSTS mechanism could be bypassed if the host name in the given URL first uses IDN characters that get replaced to ASCII counterparts as part of the IDN conversion, such as using the character UTF-8 U+3002 (IDEOGRAPHIC FULL STOP) instead of the common ASCII full stop (U+002E). Then, in a subsequent request, it does not detect the HSTS state and makes a clear text transfer. Because it would store the information IDN encoded but look for it IDN decoded. 
+CVE-2022-43551 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Siemens has identified the following specific workaround/mitigation users can apply to reduce risk: 
+
+SINEC NMS: Update to V1.0.3.1 or later version
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens' operational guidelines for industrial security and following recommendations in the product manuals. 
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage. 
+For more information, see the associated Siemens security advisory SSA-892048 in HTML and CSAF. 
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures. 
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. 
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies. 
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents. 
+No known public exploits specifically target these vulnerabilities. 

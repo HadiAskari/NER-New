@@ -1,0 +1,90 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low skill level to exploit/public exploits are available
+Vendor: OpenClinic GA is a product of open-source collaboration on Source Forge
+Equipment: OpenClinic GA
+Vulnerabilities: Authentication Bypass Using an Alternate Path or Channel, Improper Restriction of Excessive Authentication Attempts, Improper Authentication, Missing Authorization, Execution with Unnecessary Privileges, Unrestricted Upload of File with Dangerous Type, Path Traversal, Improper Authorization, Cross-site Scripting, Use of Unmaintained Third-Party Components, Insufficiently Protected Credentials, Hidden Functionality
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSMA-20-184-01 OpenClinic GA that was published July 2, 2020, to the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to bypass authentication, discover restricted information, view/manipulate restricted database information, and/or execute malicious code.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of OpenClinic GA, an open-source integrated hospital information management system, are affected:
+
+OpenClinic GA Version 5.09.02
+OpenClinic GA Version 5.89.05b
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    AUTHENTICATION BYPASS USING AN ALTERNATE PATH OR CHANNEL CWE-288
+An attacker may bypass client-side access controls or use a crafted request to initiate a session with limited functionality, which may allow execution of admin functions such as SQL queries.
+CVE-2020-14485 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L).
+4.2.2    IMPROPER RESTRICTION OF EXCESSIVE AUTHENTICATION ATTEMPTS CWE-307
+An attacker can bypass the system’s account lockout protection, which may allow brute force password attacks.
+CVE-2020-14484 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.3    IMPROPER AUTHENTICATION CWE-287
+An authentication mechanism within the system does not contain sufficient complexity to protect against brute force attacks, which may allow unauthorized users to access the system after no more than a fixed maximum number of attempts.
+CVE-2020-14494 has been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+4.2.4    MISSING AUTHORIZATION CWE-862
+The system does not properly check permissions before executing SQL queries, which may allow a low-privilege user to access privileged information.
+CVE-2020-14491 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L).
+4.2.5    EXECUTION WITH UNNECESSARY PRIVILEGES CWE-250
+A low-privilege user may use SQL syntax to write arbitrary files to the server, which may allow the execution of arbitrary commands.
+CVE-2020-14493 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.6    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The system does not properly verify uploaded files, which may allow a low-privilege user to upload and execute arbitrary files on the system.
+CVE-2020-14488 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.7    IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+The system includes arbitrary local files specified within its parameter and executes some files, which may allow disclosure of sensitive files or the execution of malicious uploaded files.
+CVE-2020-14490 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).
+4.2.8    IMPROPER AUTHORIZATION CWE-285
+An attacker may bypass permission/authorization checks by ignoring the redirect of a permission failure, which may allow unauthorized execution of commands.
+CVE-2020-14486 has been assigned to this vulnerability. A CVSS v3 base score of 6.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L).
+4.2.9    IMPROPER NEUTRALIZATION OF INPUT DURING WEB PAGE GENERATION ('CROSS-SITE SCRIPTING') CWE-79
+The system does not properly neutralize user-controllable input, which may allow the execution of malicious code within the user’s browser.
+CVE-2020-14492 has been assigned to this vulnerability. A CVSS v3 base score of 5.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N).
+4.2.10    USE OF UNMAINTAINED THIRD-PARTY COMPONENTS CWE-1104
+The system contains third-party software versions that are end-of-life and contain known vulnerabilities, which may allow remote code execution.
+CVE-2014-0114, CVE-2016-1181, and CVE-2016-1182 are related to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.11    INSUFFICIENTLY PROTECTED CREDENTIALS CWE-522
+The system stores passwords using inadequate hashing complexity, which may allow an attacker to recover passwords using known password cracking techniques.
+CVE-2020-14489 has been assigned to this vulnerability. A CVSS v3 base score of 6.2 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.12    HIDDEN FUNCTIONALITY CWE-912
+The system contains a hidden default user account that may be accessed if an administrator has not expressly turned off this account, which may allow an attacker to login and execute arbitrary commands.
+Does not affect Version 5.89.05b.
+CVE-2020-14487 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L).
+ 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Open-source
+
+3.4 RESEARCHER
+Brian D. Hysell reported these vulnerabilities to CISA.
+4. MITIGATIONS
+--------- Begin Update B Part 1 of 1 ---------
+OpenClinic GA has released an updated version to resolve these vulnerabilities, and recommend users upgrade to Version 5.170.5 or later.
+--------- End Update B Part 1 of 1 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Ensure that least-privilege user principle is followed.
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+CISA also recommends users take the following measures to protect themselves from social engineering attacks: 
+
+Do not click web links or open unsolicited attachments in email messages. 
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams. 
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+

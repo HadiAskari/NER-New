@@ -1,0 +1,43 @@
+
+OVERVIEW
+Researcher Bob Radvanovsky of Infracritical has notified NCCIC/ICS-CERT that Certec has released new libraries that mitigate the OpenSSL Heartbleed vulnerability in atvise scada.
+This vulnerability could be exploited remotely. Exploits that target the OpenSSL Heartbleed vulnerability are known to be publicly available.
+AFFECTED PRODUCTS
+Certec reports that the vulnerability affects the following versions of atvise scada:
+
+atvise scada Versions 2.3 and above.
+
+IMPACT
+An attacker exploiting the OpenSSL Heartbleed vulnerability may be able to obtain private keys of the target system. The attacker could then use this key to impersonate the authenticated user and perform a man-in-the-middle attack.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Certec EDV GmbH is based in Austria.
+The affected product, atvise, is web-based human-machine interface supervisory control and data acquisition (HMI SCADA) systems. According to Certec, atvise is deployed in every field of industrial automation. Certec states that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+IMPROPER RESTRICTION OF OPERATIONS WITHIN THE BOUNDS OF A MEMORY BUFFERCWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer, http://cwe.mitre.org/data/definitions/119.html, web site last accessed April 24, 2014.
+
+The atvise scada uses the OpenSSL cryptographic library and transport layer security (TLS) implementation Version 1.0.1, which is known to be vulnerable to the Heartbleed vulnerability.
+CVE-2014-0160NVD, https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-0160, web site last accessed April 24, 2014. has been assigned to this vulnerability. A CVSS v2 base score of 5.0 has been assigned; the CVSS vector string is (AV:N/AC:L/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:L/AU:N/C:P/I:N/A:N, web site last accessed April 24, 2014.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+This vulnerability could be exploited remotely.
+EXISTENCE OF EXPOLIT
+Exploits that target this vulnerability are publicly available.
+DIFFICULTY
+An attacker with a low skill would be able to exploit this vulnerability.
+MITIGATION
+Certec has made the new OpenSSL (1.0.1g) libraries available to fix the Heartbleed bug in atvise. The DLLs and the installation instructions can be found on their web site at the following location:
+http://www.atvise.com/en/component/phocadownload/category/2-products?download=181:patch-openssl
+For more information, please see Certec’s security update at the following location:
+http://www.atvise.com/en/news-events/news/260-important-security-update-heartbleed-bug
+ICS-CERT encourages asset owners to take additional defensive measures to protect against this and other cybersecurity risks.
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies. ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.

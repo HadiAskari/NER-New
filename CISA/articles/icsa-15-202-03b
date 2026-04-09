@@ -1,0 +1,64 @@
+
+OVERVIEW
+This updated advisory is a follow-up to the advisory titled ICSA-15-202-03A Siemens RUGGEDCOM ROS and ROX Based Devices TLS POODLE Vulnerability that was published July 25, 2015, on the NCCIC/ICS-CERT web site.
+Siemens has reported to ICS-CERT that a Transport Layer Security (TLS) Padding Oracle On Downgraded Legacy Encryption (POODLE) vulnerability exists in the web interface of Siemens RUGGEDCOM ROS and ROX-based devices. Siemens has produced a firmware update to mitigate this vulnerability.
+This vulnerability could be exploited remotely.
+AFFECTED PRODUCTS
+The following Siemens RUGGEDCOM ROS versions are affected:
+
+RUGGEDCOM devices with ROS: All firmware versions prior to v4.2.0, and
+
+--------- Begin Update B Part 1 of 2 --------
+
+RUGGEDCOM devices with ROX II: All firmware versions prior to v2.9.0.
+
+Note – ROX I devices are not affected
+--------- End Update B Part 1 of 2 ----------
+
+IMPACT
+Successful exploitation of this vulnerability may allow attackers to hijack an active web session and access administrative functions on the devices without proper authorization or allow unprivileged users to perform privilege escalation.
+Impact to individual organizations depends on many factors that are unique to each organization. ICS-CERT recommends that organizations evaluate the impact of this vulnerability based on their operational environment, architecture, and product implementation.
+BACKGROUND
+Siemens is an international company headquartered in Munich, Germany.
+The affected products, Siemens RuggedCom ROS and ROX-based devices, are used to connect devices that operate in harsh environments such as electric utility substations and traffic control cabinets. According to Siemens, RuggedCom ROS and ROX-based devices are deployed across several sectors including Energy, Healthcare and Public Health, and Transportation Systems. Siemens estimates that these products are used worldwide.
+VULNERABILITY CHARACTERIZATION
+VULNERABILITY OVERVIEW
+
+CYRPTOGRAPHIC ISSUESCWE-310: Cryptographic Issues, http://cwe.mitre.org/data/definitions/310.html, web site last accessed July 21, 2015.
+
+The web interface (Port 443/TCP) of the affected devices is vulnerable to a padding oracle attack (also known as TLS POODLE). A remote attacker in a privileged network position could possibly recover parts of the plain text if unsuspecting users are misled to click on a malicious link.
+CVE-2015-5537NVD, http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5537, web site last accessed December 22, 2015. has been assigned to this vulnerability. A CVSS v2 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:M/Au:N/C:P/I:N/A:N).CVSS Calculator, http://nvd.nist.gov/cvss.cfm?version=2&vector=AV:N/AC:M/Au:N/C:P/I:N/A:N, web site last accessed July 21, 2015.
+VULNERABILITY DETAILS
+EXPLOITABILITY
+Exploitation of this vulnerability could allow remote attackers to recover parts of the plaintext of an encrypted connection under certain circumstances. This vulnerability can be staged remotely but cannot be exploited without user interaction. The exploit is only triggered when a local user voluntarily interacts with the attack mechanism.
+EXISTENCE OF EXPLOIT
+No known public exploits specifically target this vulnerability.
+DIFFICULTY
+Crafting a working exploit for this vulnerability would be difficult. Social engineering is required to convince the user to accept the malformed file. Additional user interaction is needed to load the malformed file. This decreases the likelihood of a successful exploit.
+MITIGATION
+--------- Begin Update B Part 2 of 2 --------
+Siemens has produced a firmware update v4.2.0 for ROS-based devices and firmware update v2.9.0 for ROX II-based devices, which fixes the vulnerability.
+--------- End Update B Part 2 of 2 ----------
+The firmware updates for the affected products can be obtained online at:
+http://www.siemens.com/automation/support-request
+Call a local hotline center:
+http://www.automation.siemens.com/
+Asset owners and operators should contact Siemens customer support to acquire the update.
+For more information on this vulnerability and detailed instructions, please see Siemens Security Advisory SSA-396873 at the following location:
+http://www.siemens.com/cert/advisories/
+ICS-CERT recommends that users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+ICS-CERT reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+ICS-CERT also provides a section for control systems security recommended practices on the ICS-CERT web page at: http://ics-cert.us-cert.gov/content/recommended-practices. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the ICS‑CERT Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT web site (http://ics-cert.us-cert.gov/).
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to ICS-CERT for tracking and correlation against other incidents.
+In addition, ICS-CERT recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email ScamsRecognizing and Avoiding Email Scams, http://www.us-cert.gov/reading_room/emailscams_0905.pdf, web site last accessed July 21, 2015. for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing AttacksNational Cyber Alert System Cyber Security Tip ST04-014, http://www.us-cert.gov/cas/tips/ST04-014.html, web site last accessed July 21, 2015. for more information on social engineering attacks.
+

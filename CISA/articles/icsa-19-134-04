@@ -1,0 +1,61 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.4
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Siemens
+Equipment: LOGO! 8 BM
+Vulnerabilities: Missing Authentication for Critical Function, Improper Handling of Extra Values, Plaintext Storage of a Password
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-20-161-04 Siemens LOGO! 8 BM that was published May 14, 2019, on the ICS webpage on us-cert.gov.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow device reconfiguration, access to project files, decryption of files, and access to passwords.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following versions of Siemens LOGO! 8 BM, a programmable logic controller, are affected:
+--------- Begin Update A Part 1 of 2 ---------
+
+Siemens LOGO! 8 BM: All versions prior to 8.3
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+Attackers with access to Port 10005/TCP could perform device reconfigurations and obtain project files from the devices.
+CVE-2019-10919 has been assigned to this vulnerability. A CVSS v3 base score of 9.4 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L).
+4.2.2     IMPROPER HANDLING OF EXTRA VALUES CWE-231
+Project data stored on the device, which is accessible via Port 10005/TCP, can be decrypted due to a hardcoded encryption key.
+CVE-2019-10920 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.3    PLAINTEXT STORAGE OF A PASSWORD CWE-256
+Unencrypted storage of passwords in the project could allow an attacker with access to Port 10005/TCP to obtain passwords of the device.
+CVE-2019-10921 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Transportation Systems
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Manuel Stotz and Matthias Deeg from SySS GmbH reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+--------- Begin Update A Part 2 of 2 ---------
+Siemens has released an update for the LOGO! 8 BM (update to v8.3) and recommends that customers update to the latest version.. Notice that in order to update, a new hardware version is required.
+To reduce risk, Siemens recommends that users apply defense-in-depth concepts, including protection concept outlined in the system manual.
+--------- End Update A Part 2 of 2 ---------
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following the recommendations in the product manuals.
+Additional information on industrial security for Siemens devices can be found at: 
+https://www.siemens.com/industrialsecurity
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens Security Advisory SSA-542701
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.cisa.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.cisa.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

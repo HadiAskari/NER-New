@@ -1,0 +1,115 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 7.4
+ATTENTION: Exploitable remotely
+Vendor: Mitsubishi Electric
+Equipment: FA products
+Vulnerabilities: Use of Password Hash Instead of Password for Authentication, Use of Weak Hash, Cleartext Storage of Sensitive Information, Authentication Bypass by Capture-replay
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-22-090-04 Mitsubishi Electric FA Products that was published March 31, 2022, on the ICS webpage on cisa.gov/ics.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities may allow an attacker to log in to the affected products and/or alter and obtain sensitive information.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following FA products are affected:
+
+MELSEC iQ-F Series FX5U(C) CPU modules, All models: All versions
+MELSEC iQ-F Series FX5UJ CPU modules, All models: All versions
+
+--------- Begin Update A Part 1 of 2 ---------
+
+MELSEC iQ-R series: All Versions of the following:
+
+R00/01/02CPU:
+R04/08/16/32/120(EN)CPU
+R08/16/32/120SFCPU
+R08/16/32/120PCPU
+R08/16/32/120PSFCPU
+R16/32/64MTCPU
+RJ71GN11-T2
+RJ71GN11-EIP
+RJ71C24(-R2/R4)
+RJ71EN71
+RJ71GF11-T2
+RJ71GP21(S)-SX
+RJ72GF15-T2
+
+
+MELSEC Q series: All Versions of the following: 
+
+Q03UDECPU, Q04/06/10/13/20/26/50/100UDEHCPU
+Q03/04/06/13/26UDVCPU
+Q04/06/13/26UDPVCPU
+QJ71C24N(-R2/R4)
+QJ71E71-100
+QJ72BR15
+QJ72LP25(-25/G/GE)
+
+
+MELSEC L series: All Versions of the following:
+
+L02/06/26CPU(-P), L26CPU-(P)BT
+LJ71C24(-R2)
+LJ71E71-100
+LJ72GF15-T2
+
+
+
+--------- End Update A Part 1 of 2 ---------
+4.2 VULNERABILITY OVERVIEW
+4.2.1    USE OF PASSWORD HASH INSTEAD OF PASSWORD FOR AUTHENTICATION CWE-836
+This vulnerability  allows a remote unauthenticated attacker to log in to the product by replaying an eavesdropped password hash.
+CVE-2022-25155 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.2    USE OF WEAK HASH CWE-328
+This vulnerability could allow a remote unauthenticated attacker to log in to the product by using a password reversed from an eavesdropped password hash.
+CVE-2022-25156 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N).
+4.2.3    USE OF PASSWORD HASH INSTEAD OF PASSWORD FOR AUTHENTICATION CWE-836
+This vulnerability could allow a remote unauthenticated attacker to disclose or tamper with the information in the product by using an eavesdropped password hash.
+CVE-2022-25157 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.2.4    CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+This vulnerability could allow a remote attacker to disclose or tamper with a file where the password hash is saved in cleartext.
+CVE-2022-25158 has been assigned to this vulnerability. A CVSS v3 base score of 7.4 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N).
+4.2.5    AUTHENTICATION BYPASS BY CAPTURE-REPLAY CWE-294
+This vulnerability could allow a remote unauthenticated attacker to log in to the product by replay attack.
+CVE-2022-25159 has been assigned to this vulnerability. A CVSS v3 base score of 5.9 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N).
+4.2.6     CLEARTEXT STORAGE OF SENSITIVE INFORMATION CWE-312
+This vulnerability could allow a remote unauthenticated attacker to disclose a file in a legitimate user's product by using previously eavesdropped cleartext information and to counterfeit a legitimate user’s system.
+CVE-2022-25160 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Critical Manufacturing
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Japan
+
+4.4 RESEARCHER
+Anton Dorfman, Dmitry Sklyarov, Iliya Rogachev and Artur Akhatov of Positive Technologies reported these vulnerabilities to Mitsubishi Electric.
+5. MITIGATIONS
+Mitsubishi Electric recommends users take the following mitigation measures to minimize the risk of exploitation of these vulnerabilities:
+
+When communicating via untrusted networks or hosts, encrypt the communication path by setting up a VPN.
+
+--------- Begin Update A Part 2 of 2 ---------
+
+Use firewalls or IP filter function to restrict connections to the products and prevent access from untrusted networks or hosts. For details on IP filter function, refer to the following product manual: 
+
+“12.1 IP Filter Function” in the MELSEC iQ-F FX 5 User’s Manual (Ethernet Communication)
+"IP filter" of "1.13 Security" in the MELSEC iQ-R Ethernet User's Manual (Application)
+"IP Filter Function" of "6.2 Security Function" in the MELSEC iQ-R Motion Controller Programming Manual (Common)
+"IP filter" of "1.4 Security" in the MELSEC iQ-R CC-Link IE TSN User's Manual (Application)
+"IP filter" of "9.5 Security" in the MELSEC iQ-R CC-Link IE TSN Plus Master/Local Module User’s Manual
+"14.3 IP Filter Function" in the Q Corresponding Ethernet Interface Module User's Manual (Basic)
+"14.3 IP Filter Function" in the MELSEC-L Ethernet Interface Module User's Manual (Basic)
+
+
+
+--------- End Update A Part 2 of 2 ---------
+For more information see Mitsubishi Electric’s advisory 2021-031
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities have a high attack complexity.

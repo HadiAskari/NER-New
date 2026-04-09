@@ -1,0 +1,73 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 8.8
+ATTENTION: Exploitable remotely/low attack complexity 
+Vendor: Rockwell Automation 
+Equipment: Stratix Devices 
+Vulnerabilities: Incorrect Authorization, Improper Input Validation, Improper Check for Unusual or Exceptional Conditions, Interpretation Conflict, OS Command Injection, Improper Verification of Cryptographic Signature, Path Traversal 
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could lead to a denial-of-service condition and allow remote code execution.  
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Stratix Devices, industrial ethernet switches, and the contained Cisco software are affected: 
+Cisco IOS XE and Cisco IOS software contained in: 
+
+Stratix 5800 switches: All versions prior to v16.12.01 
+Stratix 5400/5410 switches: All versions prior to v15.2(7)E2 (CVE-2020-3200 only) 
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1 INCORRECT AUTHORIZATION CWE-863
+The administrator graphical user interface (GUI) lacks correct handling of RBAC, which may allow a malicious user to send modified HTTP requests to the targeted device. If exploited, a read-only remote attacker could potentially execute commands or configuration changes as the administrator. 
+CVE-2020-3229 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.2 IMPROPER INPUT VALIDATION CWE-20
+Due to insufficient validation of user input, this vulnerability could allow a malicious user to inject custom input into the web user interface. If exploited, a remote attacker could potentially execute arbitrary code with administrative privileges on the operating system. 
+CVE-2020-3219 has been assigned to this vulnerability. A CVSS v3 base score of 8.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H). 
+3.2.3 IMPROPER CHECK FOR UNUSUAL OR EXCEPTIONAL CONDITIONS CWE-754
+A vulnerability in the DNS application layer gateway (ALG) functionality used by Network Address Translation (NAT) in Cisco IOS XE software could allow an unauthenticated, remote attacker to reload an affected device. 
+CVE-2021-1446 has been assigned to this vulnerability. A CVSS v3 base score of 8.6 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H). 
+3.2.4 INTERPRETATION CONFLICT CWE-436 
+A vulnerability in the Secure Shell (SSH) server code of Cisco IOS software and Cisco IOS XE software could allow an authenticated, remote attacker to reload an affected device. 
+CVE-2020-3200 has been assigned to this vulnerability. A CVSS v3 base score of 7.7 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H). 
+3.2.5 IMPROPER NEUTRALIZATION OF SPECIAL ELEMENTS USED IN AN OS COMMAND ('OS COMMAND INJECTION') CWE-78
+Due to improper input sanitization, this vulnerability could allow a malicious user with administrative privileges to submit specially crafted input in the web user interface. If exploited, a remote attacker could potentially execute arbitrary commands with root privileges on the operating system. 
+CVE-2020-3211 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.6 IMPROPER INPUT VALIDATION CWE-20
+Due to improper validation of user supplied input, a malicious user could potentially create a file on the target device and upload a second malicious file to the device. If exploited, a user could execute arbitrary code with root privileges on the underlying Linux shell. 
+CVE-2020-3218 has been assigned to this vulnerability. A CVSS v3 base score of 7.2 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H). 
+3.2.7 IMPROPER VERIFICATION OF CRYPTOGRAPHIC SIGNATURE CWE-347
+During the initial boot process, there is an improper check on the area code managing the verification of the digital signatures of the system files. If exploited, a malicious user could potentially install and boot malicious software images or execute unsigned binaries on the targeted device. A malicious user could exploit this vulnerability by loading unsigned software on the affected device. 
+CVE-2020-3209 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been assigned; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H). 
+3.2.8 IMPROPER LIMITATION OF A PATHNAME TO A RESTRICTED DIRECTORY ('PATH TRAVERSAL') CWE-22
+A vulnerability in the Cisco IOx application hosting environment of multiple Cisco platforms could allow an authenticated, remote attacker to conduct directory traversal attacks and read and write files on the underlying operating system or host system. 
+CVE-2021-1385 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N). 
+3.2.9 IMPROPER INPUT VALIDATION CWE-20
+A vulnerability in the web server authentication of Cisco IOS XE Software could allow an authenticated, remote attacker to crash the web server on the device. 
+CVE-2020-3516 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L). 
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple 
+COUNTRIES/AREAS DEPLOYED: Worldwide 
+COMPANY HEADQUARTERS LOCATION: United States 
+
+3.4 RESEARCHER
+Rockwell Automation reported these vulnerabilities to CISA. 
+4. MITIGATIONS
+Rockwell Automation has addressed these vulnerabilities updates and encourages users to combine these updates with Rockwell Automation’s Security Best Practices: 
+
+Stratix 5800 switches (All listed vulnerabilities except CVE-2020-3200): Update to Stratix 5800 v17.04.01 or later
+Stratix 5800 switches (CVE-2020-3200): Update to v16.12.01 or later
+Stratix 5400/5410 switches (CVE-2020-3200 only): Update to v15.2(7)E2 or later
+
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from business networks.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+CISA also provides a section for control systems security recommended practices on the ICS webpage at cisa.gov/ics. Several CISA products detailing cyber defense best practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage at cisa.gov/ics in the technical information paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+Organizations observing suspected malicious activity should follow established internal procedures and report findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.  

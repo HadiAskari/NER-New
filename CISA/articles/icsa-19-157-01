@@ -1,0 +1,74 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 10.0
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Optergy
+Equipment: Proton/Enterprise Building Management System
+Vulnerabilities: Information Exposure, Cross-site Request Forgery, Unrestricted Upload of File with Dangerous Type, Open Redirect, Hidden Functionality, Exposed Dangerous Method or Function, Use of Hard-coded Credentials
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to achieve remote code execution and gain full system access.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+The following versions of Proton/Enterprise Building Management Systems, are affected:
+
+Proton/Enterprise Versions 2.3.0a and prior
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    INFORMATION EXPOSURE CWE-200
+The application suffers from username disclosure via its username reset functionality. An attacker can enumerate and disclose all the valid users on the system. Furthermore, when calling a certain page from a remote location, the following internal information can be divulged for the current system: Name, Internal IP Address, Netmask, Hostname, Gateway, DNS Server, and DNS Server 2.
+CVE-2019-7272  and CVE-2019-7277 have been assigned to these vulnerabilities. A CVSS v3 base score of 5.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.2    CROSS-SITE REQUEST FORGERY (CSRF) CWE-352
+The affected application allows users to perform certain actions via HTTP requests without performing any validity checks to verify the requests. This can be exploited to perform certain actions with administrative privileges if a logged-in user visits a malicious website.
+CVE-2019-7273 has been assigned to this vulnerability. A CVSS v3 base score of 5.0 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L).
+3.2.3    UNRESTRICTED UPLOAD OF FILE WITH DANGEROUS TYPE CWE-434
+The vulnerability exists due to the absence of file extension validation when uploading files through the badge image upload script. A remote and unauthenticated attacker can upload files with arbitrary extensions into a directory within application’s web root and execute them with privileges of the web server.
+CVE-2019-7274 has been assigned to this vulnerability. A CVSS v3 base score of 9.9 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).
+3.2.4    URL REDIRECTION TO UNTRUSTED SITE ('OPEN REDIRECT') CWE-601
+This vulnerability can be exploited to redirect a user to an arbitrary website; e.g., when a user clicks a specially crafted link to the affected script hosted on a trusted domain.
+CVE-2019-7275 has been assigned to this vulnerability. A CVSS v3 base score of 3.1 has been calculated; the CVSS vector string is (AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N).
+3.2.5    HIDDEN FUNCTIONALITY CWE-912
+Attackers can directly navigate to an undocumented backdoor script and gain full system access. This allows unauthenticated code execution with highest privileges.
+CVE-2019-7276 has been assigned to this vulnerability. A CVSS v3 base score of 10.0 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H).
+3.2.6    EXPOSED DANGEROUS METHOD OR FUNCTION CWE-749
+Unauthenticated users may be able to use undeclared class functions to access certain resources directly.
+CVE-2019-7278 have been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L).
+3.2.7    USE OF HARD-CODED CREDENTIALS CWE-798
+Attackers can use CVE-2019-7278 to send unauthorized SMS messages to any phone number depending on the stored credits to the hard-coded credentials in the function.
+CVE-2019-7279 have been assigned to this vulnerability. A CVSS v3 base score of 7.3 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L)
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities, Government Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: United States
+
+3.4 RESEARCHER
+Gjoko Krstic of Applied Risk reported these vulnerabilities to Optergy.
+4. MITIGATIONS
+Optergy recommends the following procedure to remediate these issues:
+
+Update Optergy server to Version 2.4.5 (or later) to remediate the issues described in this advisory (Proton and Optergy Enterprise).
+Contact an Optergy Reseller who has access to this no charge software update.
+If unsure who to contact, send email to info@optergy.com
+
+The latest Optergy software updates include important security updates including enhancements to prevent unwanted intrusion. In addition to these software updates, Optergy emphasizes it is important for users to ensure the site network is also secure to add an extra layer of security. To keep the Optergy system safer from unintended access, Optergy recommends the following:
+
+Close Port 22 or disable port forwarding to Optergy server for Port 22 (SSH). This port is only used for technical support to remotely diagnose problems. If Port 22 is needed, open only for the duration of the support activity. Default state should be closed.
+Use secure SSL (Secure Socket Layer) connections when crossing Internet, this means using an enterprise LAN that has firewalls and routers to block incoming traffic. Alternatively, deploy the Optergy OpenVPN, which is built in and offers encrypted communication. Optergy supports SSL for encrypted communication.
+Use strong passwords. A strong password has a minimum of 12 characters, includes numbers, symbols, capital letters, lowercase letters, is not a Dictionary word or combination of Dictionary words, and doesn’t rely on obvious substitutions.
+Never share passwords. Concurrent logins can be prevented in web server and portal preferences.
+Use expiring passwords. Users of the system come and go, an expiring password will at least keep out people who may be no longer authorized to use the system.
+Always regularly update your software. Optergy updates always include stability, security, and other enhancements to maximize performance and reduce risk of downtime.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

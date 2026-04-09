@@ -1,0 +1,68 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 7.6
+
+ATTENTION: Exploitable remotely/low skill level to exploit
+Vendor: Phoenix Contact
+Equipment: PLCNext AXC F 2152
+Vulnerabilities: Key Management Errors, Improper Access Control, Man-in-the-Middle, Using Component with Known Vulnerabilities
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to decrypt passwords, bypass authentication, and deny service to the device. In addition, these vulnerabilities could interact with third-party vulnerabilities to cause other impacts to integrity, confidentiality, and availability.
+3. TECHNICAL DETAILS
+3.1 AFFECTED PRODUCTS
+Phoenix Contact reports these vulnerabilities affect firmware Version 1.x for the following PLCNext AXC F 2152 products:
+
+AXC F 2152: article number 2404267
+AXC F 2152: article number 1046568 (Starterkit)
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    KEY MANAGEMENT ERRORS CWE-320
+A remote attacker can exploit a server’s private key by sending carefully constructed UserIdentityTokens encrypted with the Basic128Rsa15 security policy. This could allow an attacker to decrypt passwords even if encrypted with another security policy such as Basic256Sha256.
+CVE-2018-7559 has been assigned to this vulnerability. A CVSS v3 base score of 7.6 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:L).
+3.2.2    IMPROPER ACCESS CONTROL CWE-284
+An attacker with physical access to the device can manipulate SD card data, which could allow an attacker to bypass the authentication of the device. This device is designed for use in a protected industrial environment with restricted physical access.
+CVE-2019-10998 has been assigned to this vulnerability. A CVSS v3 base score of 6.8 has been calculated; the CVSS vector string is (AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.2.3    CHANNEL ACCESSIBLE BY NON-ENDPOINT ('MAN-IN-THE-MIDDLE') CWE-300
+An attacker trying to connect to the device using a man-in-the-middle setup may crash the PLC service, resulting in a denial of service condition. The device must then be rebooted, or the PLC service must be restarted manually via Linux shell.
+CVE-2019-10997 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.4    USING COMPONENTS WITH KNOWN VULNERABILITIES
+This product uses older versions of several open-source software components containing vulnerabilities that may affect availability, integrity, or confidentiality of the AXC F 2152. See the full list of CVE identifiers in CERT VDE advisory number VDE-2019-009.
+Please see link in the Mitigations section for additional details.
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Zahra Khani of Firmalyzer reported some of these vulnerabilities to NCCIC. The OPC Foundation reported some of these vulnerabilities to Phoenix Contact.
+4. MITIGATIONS
+Phoenix Contact recommends affected users update to firmware release 2019.0 LTS or later, update to PLCNext Engineer release 2019.0 LTS or later, and apply the following specific mitigations below:
+
+Disable Basic128Rsa15 security policy in OPC Servers configuration. Use only Basic256 or higher.
+Follow the advice concerning SD card usage in the manual “Art.-Nr. 107708: UM EN AXC F 2152 Installing, starting up, and operating the AXC F 2152 controller um_en_axc_f_2152_107708_en_02.pdf” that can be found on the product page below:
+https://www.phoenixcontact.com/online/portal/us/?uri=pxc-oc-itemdetail:pid=2404267&library=usen&pcck=P-21-14-01&tab=1&selectedCategory=ALL
+Use the notification manager to monitor SD card exchanges by the application program.
+Subscribe to PSIRT news as updates on the SD card vulnerability will be provided in the future.
+
+Phoenix Contact also recommends users operate the devices in closed networks or environments protected with a suitable firewall. For detailed information on recommendations for measures to protect network-capable devices, please refer to the Phoenix Contact application note “Art.-Nr. 107913: AH EN INDUSTRIAL SECURITY - Measures to protect network-capable devices with Ethernet connection against unauthorized access,” which can be found at the following link:
+https://www.phoenixcontact.com/assets/downloads_ed/local_pc/web_dwl_technical_info/ah_en_industrial_security_107913_en_01.pdf
+For more information, CERT@VDE has released a security advisory available at the following link:
+https://cert.vde.com/en-us/advisories/vde-2019-009
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Ensure the product is in a physically secure area.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+NCCIC also recommends that users take the following measures to protect themselves from social engineering attacks:
+
+Do not click web links or open unsolicited attachments in email messages.
+Refer to Recognizing and Avoiding Email Scams for more information on avoiding email scams.
+Refer to Avoiding Social Engineering and Phishing Attacks for more information on social engineering attacks.
+
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,50 @@
+
+CVSS v3 8.3
+ATTENTION: Remotely exploitable/low skill level to exploit.
+Vendor: Delta Electronics
+Equipment: WPLSoft
+Vulnerabilities: Stack-based Buffer Overflow, Heap-based Buffer Overflow, Out-of-bounds Write.
+AFFECTED PRODUCTS
+The following versions of WPLSoft, a PLC programming software, are affected:
+
+WPLSoft, Versions 2.45.0 and prior.
+
+IMPACT
+Successful exploitation of these vulnerabilities could allow remote code execution or cause the software the attacker is accessing to crash.
+MITIGATION
+Delta Electronics recommends affected users update their software to the latest version of WPLSoft V2.46.0 that is available at the following location:
+http://www.deltaww.com/Products/PluginWebUserControl/downloadCenterCounter.aspx?DID=5043&DocPath=1&hl=en-US
+Additionally, Delta recommends users restrict the application’s interaction with trusted files.
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of these vulnerabilities. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available in the NCCIC Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies, that is available for download from the ICS-CERT website.
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.
+VULNERABILITY OVERVIEW
+
+STACK-BASED BUFFER OVERFLOW CWE-121
+
+The application utilizes a fixed length stack buffer where a value larger than the buffer can be read from a file into the buffer, causing the buffer to be overwritten, which may allow remote code execution or cause the application to crash.
+CVE-2018-7494 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:H).
+
+HEAP-BASED BUFFER OVERFLOW CWE-122
+
+The application utilizes a fixed length heap buffer where a value larger than the buffer can be read from a file into the buffer, causing the buffer to be overwritten, which may allow remote code execution or cause the application to crash.
+CVE-2018-7507 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:H).
+
+OUT-OF-BOUNDS WRITE CWE-787
+
+The application writes data from a file outside the bounds of the intended buffer space, which could cause memory corruption or may allow remote code execution.
+CVE-2018-7509 has been assigned to this vulnerability. A CVSS v3 base score of 8.3 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:H).
+RESEARCHER
+Axt working with Trend Micro’s Zero Day Initiative reported these vulnerabilities to NCCIC.
+BACKGROUND
+Critical Infrastructure Sectors: Commercial Facilities, Critical Manufacturing, Energy
+Countries/Areas Deployed: Asia, Europe, United States
+Company Headquarters Location: Taiwan

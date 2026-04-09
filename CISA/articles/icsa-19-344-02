@@ -1,0 +1,73 @@
+
+1. EXECUTIVE SUMMARY
+--------- Begin Update A Part 1 of 6 ---------
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendors: Siemens and PKE
+Equipment: SiNVR, SiVMS Video Servers
+Vulnerabilities: Missing Authentication for Critical Function, Weak Cryptography for Passwords
+
+--------- End Update A Part 1 of 6 ---------
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the original advisory titled ICSA-19-344-02 Siemens SiNVR 3 that was published December 10, 2019, to the ICS webpage on us-cert.cisa.gov.
+3. RISK EVALUATION
+--------- Begin Update A Part 2 of 6 ---------
+Successful exploitation of these vulnerabilities could allow an attacker to read the SiVMS/SiNVR users database, including the passwords of all users in obfuscated cleartext and configuration files.
+--------- End Update A Part 2 of 6 ---------
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+--------- Begin Update A Part 3 of 6 ---------
+The following versions of SiNVR/SiVMS Video Server, a video management solution, are affected:
+
+SiNVR 3 Central Control Server (CCS): all versions Moved to SSA-761844 and ICSA-21-103-10
+SiNVR/SiVMS Video Server: All versions prior to v5.0.0
+SiNVR/SiVMS Video Server: v5.0.0 and later is affected by CVE-2019-18340
+
+--------- End Update A Part 3 of 6 ---------
+4.2 VULNERABILITY OVERVIEW
+--------- Begin Update A Part 4 of 6 ---------
+CVE-2019-13947, CVE-2019-18337, CVE-2019-18338, CVE-2019-18341, and CVE-2019-18342 have been moved to SSA-761844 and ICSA-21-103-10.
+4.2.1 MISSING AUTHENTICATION FOR CRITICAL FUNCTION CWE-306
+The HTTP service (default specific port) of the SiNVR 3 Video Server contains an authentication bypass vulnerability, even when properly configured with enforced authentication.
+CVE-2019-18339 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been calculated; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.2 WEAK CRYPTOGRAPHY FOR PASSWORDS CWE-261
+Both the SiNVR 3 Video Server and the CCS store user and device passwords by applying weak cryptography.
+CVE-2019-18340 has been assigned to this vulnerability. A CVSS v3 base score of 5.5 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N).
+--------- End Update A Part 4 of 6 ---------
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Commercial Facilities
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+4.4 RESEARCHER
+Raphaël Rigo from Airbus Security Lab reported these vulnerabilities to Siemens.
+5. MITIGATIONS
+--------- Begin Update A Part 5 of 6 ---------
+Siemens recommends users to update to v5.0.0 or later.
+Siemens has identified the following specific workarounds and mitigations that users can apply to reduce the risk:
+
+General (applies to all vulnerabilities listed in this advisory) – Apply ACL/firewall configuration on the Video Servers to ensure that only legitimate systems can access the configured server ports. Harden all systems accordingly to prevent unauthorized access.
+CVE-2019-18339 - SiNVR/SiVMS deployments with active Control Center Server (CCS) should ensure that every video server and client have the Authorization Server set to “Control Center Server” (Configuration -> Appearance -> Desktop -> Authorization Server).
+CVE-2019-18340 - Harden the Video Servers to prevent local access by unauthorized users.
+
+--------- End Update A Part 5 of 6 ---------
+As a general security measure, Siemens strongly recommends protecting network access to devices with appropriate mechanisms. In order to operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and to following the recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found at: https://www.siemens.com/industrialsecurity
+--------- Begin Update A Part 6 of 6 ---------
+For more information on these vulnerabilities and more detailed mitigation instructions, please see Siemens security advisory SSA-761617 and the PKE security advisory. 
+--------- End Update A Part 6 of 6 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as virtual private networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on us-cert.gov. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on us-cert.gov in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities

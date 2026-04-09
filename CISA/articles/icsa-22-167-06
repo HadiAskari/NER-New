@@ -1,0 +1,78 @@
+
+1. EXECUTIVE SUMMARY
+
+CVSS v3 9.8
+ATTENTION: Exploitable remotely/low attack complexity
+Vendor: Siemens
+Equipment: Apache HTTP Server
+Vulnerabilities: NULL Pointer Dereference, Out-of-bounds Write, Server-side Request Forgery (SSRF)
+
+2. UPDATE INFORMATION
+This updated advisory is a follow-up to the advisory update titled ICSA-22-167-06 Siemens Apache HTTP Server that was published June 16, 2022, to the ICS webpage on www.cisa.gov/uscert.
+3. RISK EVALUATION
+Successful exploitation of these vulnerabilities could allow an attacker to access or modify resources, crash the device, or achieve code execution.
+4. TECHNICAL DETAILS
+4.1 AFFECTED PRODUCTS
+The following Siemens products are affected:
+
+RUGGEDCOM NMS: All versions when using the device firmware upgrade mechanism
+
+--------- Begin Update A part 1 of 3 ---------
+
+SINEC NMS: All versions prior to v1.0.3
+
+--------- End Update A part 1 of 3 ---------
+
+SINEMA Remote Connect Server: All versions prior to v3.1
+SINEMA Server v14: All versions
+
+4.2 VULNERABILITY OVERVIEW
+4.2.1    NULL POINTER DEREFERENCE CWE-476
+Malformed requests may cause the server to dereference a NULL pointer. This issue affects Apache HTTP Server v2.4.48 and earlier.
+CVE-2021-34798 has been assigned to this vulnerability. A CVSS v3 base score of 7.5 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+4.2.2    OUT-OF-BOUNDS WRITE CWE-787
+ap_escape_quotes() may write beyond the end of a buffer when given malicious input. No included modules pass untrusted data to these functions, but third-party and external modules may. This issue affects Apache HTTP Server v2.4.48 and earlier.
+CVE-2021-39275 has been assigned to this vulnerability. A CVSS v3 base score of 9.8 has been assigned; the CVSS vector string is (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+4.2.3    SERVER-SIDE REQUEST FORGERY (SSRF) CWE-918
+A crafted request uri-path can cause mod_proxy to forward the request to an origin server chosen by the remote user. This issue affects Apache HTTP Server v2.4.48 and earlier.
+CVE-2021-40438 has been assigned to this vulnerability. A CVSS v3 base score of 9.0 has been assigned; the CVSS vector string is (AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H).
+4.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Multiple Sectors
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: German
+
+4.4 RESEARCHER
+Siemens reported these vulnerabilities to CISA.
+5. MITIGATIONS
+Siemens recommends updating the following to the latest version:
+
+SINEMA Remote Connect Server: Update to v3.1 or later
+
+--------- Begin Update A part 2 of 3 ---------
+
+SINEC NMS: Update to v1.0.3 or later
+
+--------- End Update A part 2 of 3 ---------
+Siemens has identified the following specific workarounds and mitigations users can apply to reduce the risk:
+
+Restrict access to the affected systems, especially to Port 443/TCP, to trusted IP addresses only
+
+As a general security measure, Siemens recommends protecting network access to devices with appropriate mechanisms. To operate the devices in a protected IT environment, Siemens recommends configuring the environment according to Siemens’ operational guidelines for industrial security and following recommendations in the product manuals.
+Additional information on industrial security by Siemens can be found on the Siemens industrial security webpage.
+--------- Begin Update A part 3 of 3 ---------
+For more information see Siemens Security Advisory SSA-685781 in HTML or CSA
+--------- End Update A part 3 of 3 ---------
+CISA recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize VPN is only as secure as its connected devices.
+
+CISA reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+CISA also provides a section for control systems security recommended practices on the ICS webpage on cisa.gov/ics Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS webpage on cisa.gov/ics in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to CISA for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities.

@@ -1,0 +1,65 @@
+
+1. EXECUTIVE SUMMARY
+
+
+CVSS v3 8.4
+
+ATTENTION: Low skill level to exploit
+Vendor: Dräger
+Equipment: Infinity Delta 
+Vulnerabilities: Improper Input Validation, Information Exposure Through Log Files, Improper Privilege Management
+
+2. RISK EVALUATION
+Successful exploitation of these vulnerabilities could cause information disclosure of device logs, denial of service through device reboots of the patient monitors, and privilege escalation.
+3. TECHNICAL DETAILS
+
+
+3.1 AFFECTED PRODUCTS
+The following versions of Dräger patient monitoring medical devices are affected:
+
+Infinity Delta, all versions,
+Delta XL, all versions,
+Kappa, all version, and
+Infinity Explorer C700, all versions.
+
+3.2 VULNERABILITY OVERVIEW
+3.2.1    IMPROPER INPUT VALIDATION CWE-20
+A malformed network packet may cause the monitor to reboot. By repeatedly sending the malformed network packet, an attacker may be able to disrupt patient monitoring by causing the monitor to repeatedly reboot until it falls back to default configuration and loses network connectivity.
+CVE-2018-19010 has been assigned to this vulnerability. A CVSS v3 base score of 6.5 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).
+3.2.2    INFORMATION EXPOSURE THROUGH LOG FILES CWE-532
+Log files are accessible over an unauthenticated network connection. By accessing the log files, an attacker is able to gain insights about internals of the patient monitor, the location of the monitor, and wired network configuration.
+CVE-2018-19014 has been assigned to this vulnerability. A CVSS v3 base score of 4.3 has been calculated; the CVSS vector string is (AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N).
+3.2.3    IMPROPER PRIVILEGE MANAGEMENT CWE-269
+Via a specific dialog it is possible to break out of the kiosk mode and reach the underlying operating system. By breaking out of the kiosk mode, an attacker is able to take control of the operating system.
+CVE-2018-19012 has been assigned to this vulnerability. A CVSS v3 base score of 8.4 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).
+3.3 BACKGROUND
+
+CRITICAL INFRASTRUCTURE SECTORS: Healthcare and Public Health
+COUNTRIES/AREAS DEPLOYED: Worldwide
+COMPANY HEADQUARTERS LOCATION: Germany
+
+3.4 RESEARCHER
+Marc Ruef and Rocco Gagliardi, of scip AG, reported these vulnerabilities to NCCIC.
+4. MITIGATIONS
+Dräger released fixes for these vulnerabilitiesin December 2018. Users can find Delta/Infinity Explorer VF10.1 software releases for affected components via Dräger ServiceConnect.
+Dräger further advises:
+
+Users are advised to review their network segmentation configuration. The Dräger Infinity-Network is supposed to be either logically or physically separate from the hospital LAN.
+Users are advised to review the Windows patch level of their Infinity Explorer. The Infinity Explorer software is verified by Dräger on a monthly basis to be compatible to all latest operating system patches by Microsoft. Users can get the test report via their local sales representative.
+
+Users can direct further questions related to the vulnerabilities to a designated regional marketing manager. For reporting incidents and potential vulnerabilities in Dräger devices, please refer to https://static.draeger.com/security to contact the Product Security team directly.
+For more information on these vulnerabilities and associated software updates, please see Dräger product security advisory 201802 at:
+https://static.draeger.com/security
+NCCIC recommends users take defensive measures to minimize the risk of exploitation of this vulnerability. Specifically, users should:
+
+Minimize network exposure for all control system devices and/or systems, and ensure that they are not accessible from the Internet.
+Locate control system networks and remote devices behind firewalls, and isolate them from the business network.
+When remote access is required, use secure methods, such as Virtual Private Networks (VPNs), recognizing that VPNs may have vulnerabilities and should be updated to the most current version available. Also recognize that VPN is only as secure as the connected devices.
+
+NCCIC reminds organizations to perform proper impact analysis and risk assessment prior to deploying defensive measures.
+
+NCCIC also provides a section for control systems security recommended practices on the ICS-CERT web page. Several recommended practices are available for reading and download, including Improving Industrial Control Systems Cybersecurity with Defense-in-Depth Strategies.
+Additional mitigation guidance and recommended practices are publicly available on the ICS-CERT website in the Technical Information Paper, ICS-TIP-12-146-01B--Targeted Cyber Intrusion Detection and Mitigation Strategies.
+
+Organizations observing any suspected malicious activity should follow their established internal procedures and report their findings to NCCIC for tracking and correlation against other incidents.
+No known public exploits specifically target these vulnerabilities. These vulnerabilities are not exploitable remotely.
